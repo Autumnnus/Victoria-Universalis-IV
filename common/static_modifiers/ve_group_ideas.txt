@@ -152,32 +152,29 @@ economic_idea_7_mdf = {
 
 trade_idea_1_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	country_trade_route_competitiveness_mult = 0.25
+	state_trade_advantage_mult = 0.15
 }
 
 trade_idea_2_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	country_subsidies_bg_trade = yes
 	country_minting_mult = 0.1
 	country_can_form_construction_company_bool = yes
 }
 
 trade_idea_3_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	country_trade_route_cost_mult = -0.25
-	state_non_homeland_colony_growth_speed_mult = 0.1
+	state_non_homeland_colony_growth_speed_mult = 0.15
 }
 
 trade_idea_4_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	market_land_trade_capacity_add = 25
+	state_trade_capacity_mult = 0.1
 	country_company_throughput_bonus_add = 0.2
 }
 
 trade_idea_5_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	tariff_import_add = 0.15
-	tariff_export_add = 0.15
+	state_trade_advantage_from_capacity_add = 0.15
 }
 
 trade_idea_6_mdf = {
@@ -188,7 +185,7 @@ trade_idea_6_mdf = {
 
 trade_idea_7_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	country_trade_route_quantity_mult = 0.35
+	state_trade_advantage_mult = 0.10
 }
 
 defensive_idea_1_mdf = {

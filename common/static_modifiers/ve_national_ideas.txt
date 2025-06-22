@@ -27,7 +27,7 @@ gbr_idea_2 = {
 
 gbr_idea_3 = {
 	icon = gfx/interface/intelligensia.dds
-	country_trade_route_cost_mult = -0.2
+	state_trade_advantage_mult = 0.15
 }
 
 gbr_idea_4 = {
@@ -110,7 +110,7 @@ ger_idea_tradition_1 = {
 
 ger_idea_tradition_2 = {
 	icon = gfx/interface/intelligensia.dds
-	country_trade_route_quantity_mult = 0.1
+	state_trade_advantage_from_capacity_add = 0.1
 }
 
 ger_idea_bonus = {
@@ -299,13 +299,12 @@ tur_idea_3 = {
 
 tur_idea_4 = {
 	icon = gfx/interface/intelligensia.dds
-	country_trade_route_quantity_mult = 0.1
+	state_trade_advantage_from_capacity_add = 0.1
 }
 
 tur_idea_5 = {
 	icon = gfx/interface/intelligensia.dds
-	market_land_trade_capacity_add = 10
-	building_railway_mine_throughput_add = 0.1
+	state_trade_capacity_mult = 0.2
 }
 
 tur_idea_6 = {
@@ -326,7 +325,7 @@ qng_idea_tradition_1 = {
 
 qng_idea_tradition_2 = {
 	icon = gfx/interface/intelligensia.dds
-	market_land_trade_capacity_add = 10
+	state_trade_capacity_mult = 0.15
 }
 
 qng_idea_bonus = {
@@ -437,7 +436,7 @@ usa_idea_tradition_2 = {
 
 usa_idea_bonus = {
 	icon = gfx/interface/intelligensia.dds
-	country_trade_route_quantity_mult = 0.15
+	state_trade_advantage_mult = 0.15
 }
 
 usa_idea_1 = {
@@ -460,13 +459,13 @@ usa_idea_3 = {
 
 usa_idea_4 = {
 	icon = gfx/interface/intelligensia.dds
-	state_education_access_wealth_add = 0.002
-	state_mortality_wealth_mult = -0.05
+	state_education_access_wealth_add = 0.001
+	state_mortality_wealth_mult = -0.005
 }
 
 usa_idea_5 = {
 	icon = gfx/interface/intelligensia.dds
-	country_trade_route_competitiveness_mult = 0.1
+	state_trade_advantage_mult = 0.1
 }
 
 usa_idea_6 = {
@@ -476,7 +475,8 @@ usa_idea_6 = {
 
 usa_idea_7 = {
 	icon = gfx/interface/intelligensia.dds
-	country_minting_mult = 0.2
+	country_minting_mult = 0.15
+	country_minting_add = 1000
 }
 
 generic_idea_tradition_1 = {
@@ -517,7 +517,7 @@ generic_idea_4 = {
 
 generic_idea_5 = {
 	icon = gfx/interface/intelligensia.dds
-	country_trade_route_cost_mult = -0.1
+	state_trade_advantage_mult = 0.15
 }
 
 generic_idea_6 = {

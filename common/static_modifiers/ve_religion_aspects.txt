@@ -35,8 +35,8 @@ catholic_aspect_5_mdf = {
 
 catholic_aspect_6_mdf = {
 	icon = gfx/interface/catholic.dds
-	country_trade_route_cost_mult = -0.1
-	country_trade_route_quantity_mult = 0.2
+	state_trade_advantage_mult = 0.15
+	state_trade_advantage_from_capacity_add = 0.2
 }
 
 catholic_aspect_7_mdf = {
@@ -66,7 +66,7 @@ protestant_aspect_1_mdf = {
 protestant_aspect_2_mdf = {
 	icon = gfx/interface/catholic.dds
 	state_migration_pull_mult = 0.1
-	state_mortality_wealth_mult = -0.01
+	state_mortality_wealth_mult = -0.005
 }
 
 protestant_aspect_3_mdf = {
@@ -82,8 +82,8 @@ protestant_aspect_4_mdf = {
 
 protestant_aspect_5_mdf = {
 	icon = gfx/interface/catholic.dds
-	country_trade_route_cost_mult = -0.1
-	country_trade_route_quantity_mult = 0.2
+	state_trade_advantage_mult = 0.15
+	state_trade_advantage_from_capacity_add = 0.2
 }
 
 protestant_aspect_6_mdf = {
@@ -207,7 +207,7 @@ coptic_aspect_8_mdf = {
 sunni_pasive_mdf = {
 	icon = gfx/interface/catholic.dds
 	country_legitimacy_headofstate_add = 5
-	country_trade_route_cost_mult = -0.15
+	state_trade_advantage_mult = 0.15
 }
 
 sunni_aspect_1_mdf = {
@@ -284,7 +284,7 @@ shia_aspect_4_mdf = {
 
 shia_aspect_5_mdf = {
 	icon = gfx/interface/catholic.dds
-	country_trade_route_cost_mult = -0.1
+	state_trade_advantage_mult = 0.15
 }
 
 shia_aspect_6_mdf = {
@@ -355,7 +355,7 @@ jewish_aspect_7_mdf = {
 
 jewish_aspect_8_mdf = {
 	icon = gfx/interface/catholic.dds
-	country_trade_route_quantity_mult = 0.1
+	state_trade_advantage_from_capacity_add = 0.1
 }
 
 mahayana_pasive_mdf = {
@@ -445,7 +445,7 @@ hindu_aspect_4_mdf = {
 hindu_aspect_5_mdf = {
 	icon = gfx/interface/catholic.dds
 	state_tax_collection_mult = 0.1
-	country_trade_route_quantity_mult = 0.1
+	state_trade_advantage_from_capacity_add = 0.1
 }
 
 hindu_aspect_6_mdf = {
