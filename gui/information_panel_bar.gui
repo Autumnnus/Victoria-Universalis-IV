@@ -323,7 +323,7 @@ types information_panel_bar_types {
 					position = { -100 @buildings_position }
 					blockoverride "onclick" {
 						using = ve_clear_tab_bar
-						onclick = "[InformationPanelBar.OpenCompactBuildingBrowserPanelCycleFilters( GetPlayer.Self, '|is_urban|is_rural|is_development' )]"
+						onclick = "[InformationPanelBar.OpenCompactBuildingBrowserPanelCycleFilters( GetPlayer.Self, '|is_development|is_rural|is_urban' )]"
 						input_action = "open_buildings"
 					}
 				}
@@ -348,7 +348,7 @@ types information_panel_bar_types {
 						blockoverride "button_selected" {
 							visible = "[InformationPanelBar.IsPanelOpen('compact_building_browser')]"
 						}
-						onclick = "[InformationPanelBar.OpenCompactBuildingBrowserPanelCycleFilters( GetPlayer.Self, '|is_urban|is_rural|is_development' )]"
+						onclick = "[InformationPanelBar.OpenCompactBuildingBrowserPanelCycleFilters( GetPlayer.Self, '|is_development|is_rural|is_urban' )]"
 					}
 				}
 				sidebar_tooltip_area = {
@@ -387,7 +387,7 @@ types information_panel_bar_types {
 							visible = "[InformationPanelBar.IsPanelOpen('market')]"
 						}
 						using = ve_clear_tab_bar
-						onclick = "[InformationPanelBar.OpenMarketPanelCycleTabs(AccessPlayer.AccessFirstMarket, 'market', 'default|trade_routes|food_security|states')]"
+						onclick = "[InformationPanelBar.OpenMarketPanelCycleTabs(AccessPlayer.AccessFirstMarket.Self, 'market', 'default|world_market_trade|food_security|states')]"
 					}
 				}
 				sidebar_tooltip_area = {
@@ -582,7 +582,7 @@ types information_panel_bar_types {
 						blockoverride "button_selected" {
 							visible = "[InformationPanelBar.IsPanelOpen('companies')]"
 						}
-						onclick = "[InformationPanelBar.OpenPanel('companies')]"
+						onclick = "[InformationPanelBar.OpenPanelCycleTabs('companies', 'default|ranking')]"
 						using = ve_clear_tab_bar
 					}
 				}

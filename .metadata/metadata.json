@@ -1,12 +1,12 @@
 {
-  "name" : "Victoria Universalis IV",
-  "id" : "",
-  "version" : "1",
-  "supported_game_version" : "1.8.*",
-  "short_description" : "",
-  "tags" : [],
-  "relationships" : [],
-  "game_custom_data" : {
-    "multiplayer_synchronized" : true
+  "name": "Victoria Universalis IV",
+  "id": "",
+  "version": "1",
+  "supported_game_version": "1.9.*",
+  "short_description": "",
+  "tags": [],
+  "relationships": [],
+  "game_custom_data": {
+    "multiplayer_synchronized": true
   }
 }
