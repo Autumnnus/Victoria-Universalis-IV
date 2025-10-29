@@ -626,7 +626,7 @@ types topbar_components
 			size = { 725 100 }
 			allow_outside = yes
 			resizeparent = yes
-			
+
 			#alpha = 0
 			#position = { 0 -100 }
 
@@ -634,7 +634,7 @@ types topbar_components
 			#	name = _show
 			#	using = default_show_properties
 			#	#position_y = 0
-			#	
+			#
 			#	on_start = "[PdxGuiTriggerAllAnimations('hud_shiny_effect_show')]"
 			#}
 			#state = {
@@ -642,9 +642,9 @@ types topbar_components
 			#	using = default_hide_properties
 			#	#position_y = -100
 			#}
-			
+
 			using = default_fade_in_out
-			
+
 			onmousehierarchyenter = "[PdxGuiInterruptThenTriggerAllAnimations('hide_topbar_secondary_stats','show_topbar_secondary_stats')]"
 			onmousehierarchyleave = "[PdxGuiInterruptThenTriggerAllAnimations('show_topbar_secondary_stats','hide_topbar_secondary_stats')]"
 
@@ -655,7 +655,7 @@ types topbar_components
 				widget = {
 					using = fullscreen_hide
 					size = { 100% 100% }
-					
+
 					state = {
 						name = _show
 						alpha = 1
@@ -668,7 +668,7 @@ types topbar_components
 						duration = 0.2
 						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('notifications_maximize','notifications_minimize')]"
 					}
-					
+
 					background = {
 						texture = "gfx/interface/main_hud/topbar_bg.dds"
 						shaderfile = "gfx/FX/pdxgui_default.shader"
@@ -678,7 +678,7 @@ types topbar_components
 						spriteborder_right = 100
 						texture_density = 2
 						using = hud_elements_alpha
-						
+
 						modify_texture = {
 							texture = "gfx/interface/backgrounds/default_bg_shading.dds"
 							spriteType = Corneredstretched
@@ -701,16 +701,16 @@ types topbar_components
 						spriteborder_bottom = 94
 						spriteborder_right = 110
 						texture_density = 2
-						
+
 						using = hud_shiny_effect
 					}
 				}
-				
+
 				flowcontainer = {
 					margin_right = 35
 					margin_bottom = 7
 					resizeparent = yes
-					
+
 					container = {
 						### PRIMARY ICONS
 						flowcontainer = {
@@ -720,14 +720,14 @@ types topbar_components
 								spacing = 12
 							}
 							margin_bottom = 5
-							
+
 							flowcontainer = {
 								# TODO Mikael / Aron: surely there is a better way to do this
 								name = "tutorial_highlight_all_capacities"
 								block "spacing" {
 									spacing = 12
 								}
-								
+
 								### BUREAUCRACY
 								button = {
 									name = "tutorial_highlight_bureaucracy"
@@ -737,7 +737,7 @@ types topbar_components
 									using = tooltip_below
 									onclick = "[InformationPanelBar.OpenPanelTab('politics', 'institutions')]"
 									enabled = "[GetMetaPlayer.GetPlayedOrObservedCountry.IsValid]"
-							
+
 									icon = {
 										size = { 32 32 }
 										position = { 0 2 }
@@ -745,7 +745,7 @@ types topbar_components
 										texture = "gfx/interface/icons/topbar/bureaucracy_icon.dds"
 										parentanchor = vcenter
 									}
-									
+
 									textbox = {
 										position = { 35 -3 }
 										name = capital_value
@@ -755,21 +755,21 @@ types topbar_components
 										autoresize = yes
 										parentanchor = vcenter
 									}
-									
+
 									double_direction_progressbar = {
 										size = { 60 6 }
 										position = { 40 -3 }
 										parentanchor = bottom
-										
+
 										blockoverride "value_left" {
 											value = "[Negate_float(FixedPointToFloat(GetPlayer.GetDeficitPowerRatioForProgressBar('bureaucracy')))]"
 										}
 										blockoverride "value_right" {
 											value = "[FixedPointToFloat(GetPlayer.GetExcessPowerRatioForProgressBar('bureaucracy'))]"
 										}
-									}			
+									}
 								}
-							
+
 								### AUTHORITY
 								button = {
 									name = "tutorial_highlight_authority"
@@ -779,7 +779,7 @@ types topbar_components
 									using = tooltip_below
 									onclick = "[InformationPanelBar.OpenPanelTab('politics', 'default')]"
 									enabled = "[GetMetaPlayer.GetPlayedOrObservedCountry.IsValid]"
-							
+
 									icon = {
 										size = { 32 32 }
 										position = { 0 2 }
@@ -787,7 +787,7 @@ types topbar_components
 										texture = "gfx/interface/icons/topbar/authority_icon.dds"
 										parentanchor = vcenter
 									}
-								
+
 									textbox = {
 										position = { 35 -3 }
 										name = capital_value
@@ -797,21 +797,21 @@ types topbar_components
 										autoresize = yes
 										parentanchor = vcenter
 									}
-									
+
 									double_direction_progressbar = {
 										size = { 60 6 }
 										position = { 40 -3 }
 										parentanchor = bottom
-										
+
 										blockoverride "value_left" {
 											value = "[Negate_float(FixedPointToFloat(GetPlayer.GetDeficitPowerRatioForProgressBar('authority')))]"
 										}
 										blockoverride "value_right" {
 											value = "[FixedPointToFloat(GetPlayer.GetExcessPowerRatioForProgressBar('authority'))]"
 										}
-									}				
+									}
 								}
-							
+
 								### INFLUENCE
 								button = {
 									name = "tutorial_highlight_influence"
@@ -821,7 +821,7 @@ types topbar_components
 									using = tooltip_below
 									onclick = "[InformationPanelBar.OpenPanelTab('diplomatic_overview', 'default')]"
 									enabled = "[GetMetaPlayer.GetPlayedOrObservedCountry.IsValid]"
-									
+
 									icon = {
 										size = { 32 32 }
 										position = { 0 2 }
@@ -829,7 +829,7 @@ types topbar_components
 										texture = "gfx/interface/icons/topbar/influence_icon.dds"
 										parentanchor = vcenter
 									}
-									
+
 									textbox = {
 										position = { 35 -3 }
 										name = capital_value
@@ -839,12 +839,12 @@ types topbar_components
 										autoresize = yes
 										parentanchor = vcenter
 									}
-									
+
 									double_direction_progressbar = {
 										size = { 60 6 }
 										position = { 40 -3 }
 										parentanchor = bottom
-										
+
 										blockoverride "value_left" {
 											value = "[Negate_float(FixedPointToFloat(GetPlayer.GetDeficitPowerRatioForProgressBar('influence')))]"
 										}
@@ -922,16 +922,16 @@ types topbar_components
 						container = {
 								name = "tutorial_highlight_treasury"
 								layoutpolicy_vertical = expanding
-								
+
 								button = {
-									using = glow_button					
+									using = glow_button
 									size = { 100 40 }
 									tooltip = "CAPITAL_MONEY"
 									using = tooltip_below
 									using = money_tooltip_with_graph
 									onclick = "[InformationPanelBar.OpenPanelTab('budget', 'default')]"
 									enabled = "[GetMetaPlayer.GetPlayedOrObservedCountry.IsValid]"
-								
+
 									icon = {
 										size = { 32 32 }
 										position = { 0 2 }
@@ -939,7 +939,7 @@ types topbar_components
 										texture = "gfx/interface/icons/topbar/income_power_icon.dds"
 										parentanchor = vcenter
 									}
-								
+
 									textbox = {
 										position = { 35 -3 }
 										name = capital_value
@@ -961,43 +961,43 @@ types topbar_components
 											size = { 60 6 }
 											blockoverride "values" {
 												value = "[FixedPointToFloat(GetPlayer.GetCreditRatio)]"
-												min = 0  
+												min = 0
 												max = 1
 											}
 										}
 									}
-									
+
 									widget = {
 										size = { 60 12 }
 										position = { 40 0 }
 										parentanchor = bottom
 										visible = "[GreaterThan_CFixedPoint( GetPlayer.GetGoldReserveRatio, '(CFixedPoint)0' )]"
-									
+
 										gold_progressbar_horizontal = {
 											parentanchor = vcenter
 											name = "gold_progressbar"
 											size = { 60 6 }
 											blockoverride "values" {
 												value = "[FixedPointToFloat(GetPlayer.GetGoldReserveRatio )]"
-												min = 0  
+												min = 0
 												max = 1
 											}
 										}
 									}
 								}
+							}
+
 						}
-						
-						}
-						
+
 						#shows only on hover
 						topbar_secondary_icons = {
 							visible = "[GetVariableSystem.Exists('more_topbar_info')]"
 						}
-						
+
 						#locked
 						topbar_secondary_icons = {
 							visible = "[Not(GetVariableSystem.Exists('more_topbar_info'))]"
-							
+
 							blockoverride "animation" {
 								position = { 0 44 }
 							}
@@ -1005,7 +1005,7 @@ types topbar_components
 					}
 				}
 			}
-			
+
 			### LOCK TOGGLE FOR SECONDARY ROW OF ICONS
 			# button_icon_round_toggle = {
 			# 	visible = "[GetMetaPlayer.GetPlayedOrObservedCountry.IsValid]"
@@ -1081,7 +1081,7 @@ types topbar_components
 		using = clickthrough_blocker
 		size = { 57 57 }
 		position = { -4 78 }
-		
+
 		onclick = "[MapListPanelManager.OpenCurrentPanel]"
 		onclick = "[SetTempMapModeByKey('mm_default')]"
 

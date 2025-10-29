@@ -77,7 +77,7 @@ types vfx_types {
 
 			shaderfile = "gfx/FX/pdxgui_default.shader"
 			effectname = "PdxGuiDefault"
-
+			
 			block "parent_anchor" {}
 			block "position" {}
 			block "size" {
@@ -85,7 +85,7 @@ types vfx_types {
 			}
 
 			block "camera_fov_y_degrees" {}
-			block "camera_position" {}
+			block "camera_position" {}		
 			block "entity_instance" {}
 			block "alpha" {}
 			block "visible" {}
@@ -243,7 +243,7 @@ types windows {
 						using = default_list_position
 						layoutpolicy_vertical = preferred
 						layoutpolicy_horizontal = preferred
-						maximumsize = { -1 800 }
+						maximumsize = { -1 600 }
 
 						scrollbarpolicy_horizontal = always_off
 
@@ -453,7 +453,7 @@ types windows {
 								}
 							}
 						}
-
+						
 						widget = {
 							block "edit_visibility" {
 								visible = no
@@ -685,7 +685,7 @@ types windows {
 					raw_text = "Default Window Name"
 				}
 
-				align = center|nobaseline
+				align = hcenter|nobaseline
 				size = { 395 40 }
 				multiline = yes
 				fontsize_min = 17
@@ -740,6 +740,7 @@ types windows {
 				soundeffect = "snapshot:/Dynamic/mute_world_80"
 			}
 		}
+
 		state = {
 			name = _hide
 			alpha = 0
@@ -839,7 +840,7 @@ types windows {
 			margin_left = 50
 			layoutpolicy_vertical = expanding
 			layoutpolicy_horizontal = preferred
-
+			
 			block "content_margin_right" {
 				margin_right = 45
 			}
@@ -880,7 +881,7 @@ types windows {
 					}
 				}
 
-				close_button_large = {	
+				close_button_large = {
 					name = "tutorial_highlight_close_button"
 					parentanchor = top|right
 					block "close_button_onclick" {
@@ -888,7 +889,7 @@ types windows {
 					}
 					shortcut = "close_window"
 
-						block "close_button_position" {
+					block "close_button_position" {
 						position = { -11 15 }
 					}
 				}
@@ -908,12 +909,13 @@ types windows {
 	type fullscreen_scrollarea = scrollarea {
 		block "scrollarea_size" {
 			layoutpolicy_vertical = expanding
+
 			block "scrollarea_width" {
 				layoutpolicy_horizontal = expanding
 			}
 		}
 
-			scrollbarpolicy_horizontal = as_needed
+		scrollbarpolicy_horizontal = as_needed
 
 		scrollbar_horizontal = {
 			using = horizontal_scrollbar
