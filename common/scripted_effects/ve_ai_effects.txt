@@ -84,6 +84,9 @@ ve_ai_choose_idea = {
 						NOT = {
 							has_variable = can_go_mass_conscription
 						}
+						NOT = {
+							has_variable = can_go_professional_army
+						}
 						has_global_variable = age_2_started_trigger
 					}
 					set_variable = can_go_mass_conscription
@@ -157,6 +160,9 @@ ve_ai_choose_idea = {
 					limit = {
 						NOT = {
 							has_variable = can_go_nationalist
+						}
+						NOT = {
+							has_variable = can_go_reformist
 						}
 						has_global_variable = age_2_started_trigger
 					}
@@ -250,6 +256,9 @@ ve_ai_choose_idea = {
 						NOT = {
 							has_variable = can_go_reformist
 						}
+						NOT = {
+							has_variable = can_go_nationalist
+						}
 						has_global_variable = age_2_started_trigger
 					}
 					set_variable = can_go_reformist
@@ -342,6 +351,9 @@ ve_ai_choose_idea = {
 						NOT = {
 							has_variable = can_go_professional_army
 						}
+						NOT = {
+							has_variable = can_go_mass_conscription
+						}
 					}
 					set_variable = can_go_professional_army
 					change_variable = {
@@ -425,6 +437,10 @@ ve_ai_boost_idea = {
 			has_variable = can_go_extraction
 			NOT = {
 				has_variable = extraction_idea_completed
+			}
+			OR = {
+				var:extraction_idea < 6
+				has_global_variable = age_3_started_trigger
 			}
 		}
 		boost_extraction_idea_effect = yes

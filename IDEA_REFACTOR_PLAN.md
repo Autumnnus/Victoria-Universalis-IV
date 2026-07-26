@@ -1,5 +1,11 @@
 # Grup Fikirleri (Idea Groups) Refactor & Denge Planı
 
+> **2026-07-26 ikinci denge turu güncellemesi:** Bu dosya ilk refactor'ın tarihsel
+> handoff kaydıdır. Güncel grup rolleri, güç bantları ve test hedefleri için
+> [`IDEA_GROUP_BALANCE.md`](IDEA_GROUP_BALANCE.md) esas alınır. Grup modifier'ları
+> artık generated kabul edilmez; elle bakımı yapılır. `national_idea_pool` ham
+> fikir sayısından değil tamamlanan grup sayısından yeniden hesaplanır.
+
 > **Bu doküman bir handoff belgesidir.** Oturum/hesap değişse bile buradan devam edilebilir.
 > Yazıldığı tarih: 2026-07-26 · Branch: `master`
 > Talep eden karar: EU4 taklidi olan grup fikirlerini Victoria 3'ün kendi konseptine oturtmak + dengeyi düzeltmek.
@@ -664,8 +670,13 @@ Motor bir değişkeni flag adından arayamadığı için `idea_cost` hangi grubu
 
 **Denge sonucu:** 8 grubu bitirmek 22.400 puan, 100 yıllık bütçe ~18.000 → **~4.400 açık**, yani seçtiğin 8 grubun ancak ~6.4'ünü bitirebiliyorsun. Hedeflenen gerilim oluştu.
 
-#### ❌ 5d — `national_idea_pool` kalibrasyonu — GEREKMEDİ
-[`ve_national_ideas.txt`](common/scripted_guis/ve_national_ideas.txt) sayıldı: **7 kademe, eşikler 3/6/9/12/15/18/21.** 21 fikir ≈ 3 grup ≈ 8.400 puan, yani ~18.000 bütçenin çok altında. Kademeli maliyet ulusal fikirleri geciktirmiyor; eşiklere dokunulmadı.
+#### ✅ 5d — `national_idea_pool` kalibrasyonu — İKİNCİ TURDA TAMAMLANDI
+[`ve_national_ideas.txt`](common/scripted_guis/ve_national_ideas.txt) eşikleri
+**3/6/9/12/15/18/21** olarak korundu. Ancak her satın alınan fikrin +1 vermesi,
+artan maliyet eğrisiyle birlikte çok sayıda gruptan ucuz ilk fikirleri toplama
+teşviki yaratıyordu. `national_idea_pool` artık her satın alma ve iptalden sonra
+tamamlanmış gruplardan yeniden hesaplanıyor: **bir tamamlanmış grup = 3 puan =
+bir ulusal fikir.** Yarım gruplar ulusal ilerleme sağlamıyor.
 
 **Doğrulama (script'ten bağımsız):** 20 grubun hepsi için ambition tanımı/eklenme/kaldırma/loc, `boost_<grup>_idea_effect` varlığı, seviye 1..7 çağrıları (brace eşlemeli), `ve_idea_affordable` is_valid'de 1 + AI'da 1, age şartı — **tam eşleşme, sorunlu grup yok.** Maliyet eğrisi tanımlarla birebir. Kalıntı yok: `ve_idea_purchase_common` 0, `idea_cost_trigger` 0, kısaltılmış effect adı 0. GUI'de 4 buton tipi × 3 kolon.
 

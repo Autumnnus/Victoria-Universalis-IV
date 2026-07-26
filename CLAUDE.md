@@ -93,6 +93,19 @@ The vanilla game also contains many applicable `common/` categories, including `
 - Add names, descriptions, tooltips, event title/description/options, and concept text together with the mechanics that use them. Validate that all referenced keys exist.
 - Keep formatting markup (`#P`, `#Y`, `#tooltippable_concept`, icons, `\n`, etc.) consistent with nearby working entries and vanilla examples.
 
+## Testing and logs
+
+- Do not repeatedly ask the user to launch the game or manually test routine changes. When syntax, identifiers, braces, localization references, modifier definitions, and comparable vanilla patterns can be checked statically, perform those checks yourself and treat them as sufficient for normal implementation work.
+- Request or recommend user-run game testing only for important, critical, or genuinely runtime-dependent behavior that static inspection cannot establish. Examples include risky GUI overrides, save compatibility or migration, event/on-action dispatch, scope-dependent behavior, timing and pulse logic, multiplayer behavior, crashes, or a suspected engine-specific issue.
+- Do not end every task with a generic “test this in game” requirement. If no critical runtime uncertainty remains, report the static verification performed and finish the task.
+- When the user mentions errors, debugging, crashes, warnings, or logs—or when diagnosis requires game output—inspect the Victoria 3 logs at:
+
+```text
+C:\Users\prost\OneDrive\Documents\Paradox Interactive\Victoria 3\logs
+```
+
+- Treat the logs directory as a diagnostic, read-only source. Inspect relevant files such as `error.log`, `debug.log`, `game.log`, and `system.log` when present; do not modify, delete, truncate, or clear them.
+
 ## Verification checklist
 
 After an implementation, before reporting the task done:
@@ -100,7 +113,7 @@ After an implementation, before reporting the task done:
 1. Review every edited file and confirm nothing outside the workspace was touched.
 2. Search for all new identifiers and localization keys to catch spelling or scope mismatches.
 3. Check script braces and GUI block nesting; compare changed syntax with a known working vanilla or mod example.
-4. Validate the feature in Victoria 3 where feasible: load the mod, open the affected UI, exercise its action/trigger, and inspect the error log for parse, missing localization, missing asset, or invalid scope errors. If this isn't feasible in the current session, say so explicitly instead of claiming the feature works.
+4. Require Victoria 3 runtime validation only when the change is critical or cannot be verified reliably through static checks. When logs are relevant, inspect the configured Victoria 3 logs directory directly.
 5. Report files changed, validation performed, and any game-runtime checks that remain for the user.
 
 ## Working style for future requests

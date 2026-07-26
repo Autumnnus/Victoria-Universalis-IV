@@ -2798,6 +2798,7 @@ boost_extraction_idea_effect = {
 	else_if = {
 		limit = {
 			var:extraction_idea == 6
+			has_global_variable = age_3_started_trigger
 		}
 		change_variable = {
 			name = extraction_idea

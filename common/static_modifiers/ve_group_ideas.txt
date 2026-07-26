@@ -2,11 +2,11 @@
 # in common/scripted_effects/ve_idea_effects.txt. Tooltips are auto-derived from these
 # definitions by idea_N_tt_effects in common/scripted_effects/ve_idea_tooltip_effects.txt.
 #
-# GENERATED - the source of truth is the DESIGN table described in IDEA_REFACTOR_PLAN.md
-# section 5. Keep edits consistent with the balance rules in section 4.3:
-#   - one idea = one unit of power; if an idea carries two modifiers, each is half strength
+# Manually maintained. Design roles and power bands are documented in
+# IDEA_GROUP_BALANCE.md. Keep edits consistent with these balance rules:
+#   - modifier values are budgeted by gameplay leverage, not raw modifier count
 #   - idea 7 is the capstone: strongest, and carries the modifier that defines the group
-#   - a modifier type belongs to exactly one group, so each group keeps a distinct identity
+#   - each group has one primary strength, supporting strengths, and a known weakness
 #   - pool resources (bureaucracy, authority, prestige, influence, tech spread) use _mult,
 #     never flat _add, so they still matter in 1936
 #
@@ -25,7 +25,7 @@
 ### Industrialist
 industrialist_idea_1_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	state_construction_mult = 0.05
+	state_construction_mult = 0.03
 }
 industrialist_idea_2_mdf = {
 	icon = gfx/interface/icon_ideas.dds
@@ -49,13 +49,13 @@ industrialist_idea_6_mdf = {
 }
 industrialist_idea_7_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	state_construction_mult = 0.1
+	state_construction_mult = 0.04
 	building_group_bg_heavy_industry_throughput_add = 0.05
 }
 # ambition - granted when all 7 ideas of this group are bought
 industrialist_ambition_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	state_construction_mult = 0.1
+	state_construction_mult = 0.03
 	building_group_bg_manufacturing_throughput_add = 0.1
 }
 
@@ -138,7 +138,7 @@ financial_ambition_mdf = {
 ### Infrastructure (NEW)
 infrastructure_idea_1_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	state_infrastructure_mult = 0.1
+	state_infrastructure_mult = 0.08
 }
 infrastructure_idea_2_mdf = {
 	icon = gfx/interface/icon_ideas.dds
@@ -158,18 +158,18 @@ infrastructure_idea_5_mdf = {
 }
 infrastructure_idea_6_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	goods_output_coal_mult = 0.1
+	building_coal_mine_throughput_add = 0.1
 }
 infrastructure_idea_7_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	state_infrastructure_mult = 0.15
+	state_infrastructure_mult = 0.1
 	building_group_bg_infrastructure_throughput_add = 0.05
 }
 # ambition - granted when all 7 ideas of this group are bought
 infrastructure_ambition_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	state_infrastructure_mult = 0.15
-	building_group_bg_infrastructure_throughput_add = 0.1
+	state_infrastructure_mult = 0.07
+	building_group_bg_infrastructure_throughput_add = 0.05
 }
 
 ### Extraction (NEW)
@@ -214,7 +214,7 @@ extraction_ambition_mdf = {
 ### Labour [gated: age 2]
 labour_idea_1_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	state_working_adult_ratio_add = 0.03
+	state_working_adult_ratio_add = 0.01
 }
 labour_idea_2_mdf = {
 	icon = gfx/interface/icon_ideas.dds
@@ -239,14 +239,14 @@ labour_idea_6_mdf = {
 }
 labour_idea_7_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	state_working_adult_ratio_add = 0.03
+	state_working_adult_ratio_add = 0.01
 	state_dependent_wage_mult = 0.1
 }
 # ambition - granted when all 7 ideas of this group are bought
 labour_ambition_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	state_working_adult_ratio_add = 0.03
-	state_dependent_wage_mult = 0.15
+	state_working_adult_ratio_add = 0.01
+	state_dependent_wage_mult = 0.1
 }
 
 ########## SOCIETY ##########
@@ -294,7 +294,7 @@ academic_ambition_mdf = {
 ### Bureaucratic
 bureaucratic_idea_1_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	country_bureaucracy_mult = 0.1
+	country_bureaucracy_mult = 0.08
 }
 bureaucratic_idea_2_mdf = {
 	icon = gfx/interface/icon_ideas.dds
@@ -318,14 +318,14 @@ bureaucratic_idea_6_mdf = {
 }
 bureaucratic_idea_7_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	state_bureaucracy_population_base_cost_factor_mult = -0.15
-	country_bureaucracy_mult = 0.1
+	state_bureaucracy_population_base_cost_factor_mult = -0.1
+	country_bureaucracy_mult = 0.07
 }
 # ambition - granted when all 7 ideas of this group are bought
 bureaucratic_ambition_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	country_bureaucracy_mult = 0.15
-	country_authority_mult = 0.1
+	country_bureaucracy_mult = 0.1
+	country_authority_mult = 0.05
 }
 
 ### Parliamentary
@@ -339,7 +339,7 @@ parliamentary_idea_2_mdf = {
 }
 parliamentary_idea_3_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	country_law_enactment_speed_mult = 0.15
+	country_law_enactment_speed_mult = 0.1
 }
 parliamentary_idea_4_mdf = {
 	icon = gfx/interface/icon_ideas.dds
@@ -347,7 +347,7 @@ parliamentary_idea_4_mdf = {
 }
 parliamentary_idea_5_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	country_law_enactment_success_add = 0.1
+	country_law_enactment_success_add = 0.05
 }
 parliamentary_idea_6_mdf = {
 	icon = gfx/interface/icon_ideas.dds
@@ -356,20 +356,20 @@ parliamentary_idea_6_mdf = {
 }
 parliamentary_idea_7_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	country_law_enactment_speed_mult = 0.1
-	country_law_enactment_success_add = 0.05
+	country_law_enactment_speed_mult = 0.05
+	country_law_enactment_success_add = 0.025
 }
 # ambition - granted when all 7 ideas of this group are bought
 parliamentary_ambition_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	country_law_enactment_speed_mult = 0.15
-	country_law_enactment_success_add = 0.05
+	country_law_enactment_speed_mult = 0.05
+	country_law_enactment_success_add = 0.025
 }
 
 ### Welfare [gated: age 2]
 welfare_idea_1_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	state_mortality_mult = -0.03
+	state_mortality_mult = -0.02
 }
 welfare_idea_2_mdf = {
 	icon = gfx/interface/icon_ideas.dds
@@ -377,7 +377,7 @@ welfare_idea_2_mdf = {
 }
 welfare_idea_3_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	state_migration_pull_mult = 0.3
+	state_migration_pull_mult = 0.25
 }
 welfare_idea_4_mdf = {
 	icon = gfx/interface/icon_ideas.dds
@@ -397,14 +397,14 @@ welfare_idea_6_mdf = {
 }
 welfare_idea_7_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	state_mortality_mult = -0.03
+	state_mortality_mult = -0.02
 	state_political_strength_from_welfare_mult = 0.15
 }
 # ambition - granted when all 7 ideas of this group are bought
 welfare_ambition_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	state_mortality_mult = -0.03
-	state_migration_pull_mult = 0.2
+	state_mortality_mult = -0.02
+	state_migration_pull_mult = 0.15
 }
 
 ### Diplomatic
@@ -419,7 +419,7 @@ diplomatic_idea_2_mdf = {
 }
 diplomatic_idea_3_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	country_infamy_decay_mult = 0.25
+	country_infamy_decay_mult = 0.15
 }
 diplomatic_idea_4_mdf = {
 	icon = gfx/interface/icon_ideas.dds
@@ -431,18 +431,18 @@ diplomatic_idea_5_mdf = {
 }
 diplomatic_idea_6_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	country_infamy_generation_mult = -0.15
+	country_infamy_generation_mult = -0.1
 }
 diplomatic_idea_7_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	country_diplomatic_play_maneuvers_add = 30
+	country_diplomatic_play_maneuvers_add = 20
 	country_influence_mult = 0.1
 }
 # ambition - granted when all 7 ideas of this group are bought
 diplomatic_ambition_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	country_influence_mult = 0.15
-	country_infamy_decay_mult = 0.2
+	country_influence_mult = 0.1
+	country_infamy_decay_mult = 0.1
 }
 
 ### Nationalist [gated: age 2] [exclusive with reformist]
@@ -476,6 +476,7 @@ nationalist_ambition_mdf = {
 	icon = gfx/interface/icon_ideas.dds
 	state_conversion_mult = 0.2
 	state_assimilation_mult = 0.2
+	state_migration_pull_mult = -0.1
 }
 
 ### Reformist [gated: age 2] [exclusive with nationalist]
@@ -517,6 +518,7 @@ reformist_ambition_mdf = {
 	icon = gfx/interface/icon_ideas.dds
 	state_turmoil_effects_mult = -0.1
 	country_mass_migration_attraction_mult = 0.2
+	country_authority_mult = -0.05
 }
 
 ########## MILITARY ##########
@@ -525,7 +527,7 @@ reformist_ambition_mdf = {
 ### Offensive
 offensive_idea_1_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	unit_army_offense_add = 10
+	unit_army_offense_add = 5
 }
 offensive_idea_2_mdf = {
 	icon = gfx/interface/icon_ideas.dds
@@ -551,13 +553,13 @@ offensive_idea_6_mdf = {
 }
 offensive_idea_7_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	unit_army_offense_mult = 0.15
-	unit_army_offense_add = 5
+	unit_army_offense_mult = 0.1
+	unit_army_offense_add = 3
 }
 # ambition - granted when all 7 ideas of this group are bought
 offensive_ambition_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	unit_army_offense_mult = 0.1
+	unit_army_offense_mult = 0.05
 	unit_provinces_captured_mult = 0.1
 }
 
@@ -582,7 +584,7 @@ defensive_idea_4_mdf = {
 }
 defensive_idea_5_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	unit_kill_rate_add = 0.08
+	unit_kill_rate_add = 0.05
 }
 defensive_idea_6_mdf = {
 	icon = gfx/interface/icon_ideas.dds
@@ -590,13 +592,13 @@ defensive_idea_6_mdf = {
 }
 defensive_idea_7_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	unit_army_defense_mult = 0.15
+	unit_army_defense_mult = 0.1
 	unit_supply_consumption_mult = -0.15
 }
 # ambition - granted when all 7 ideas of this group are bought
 defensive_ambition_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	unit_army_defense_mult = 0.1
+	unit_army_defense_mult = 0.05
 	unit_provinces_lost_mult = -0.1
 }
 
@@ -644,7 +646,7 @@ professional_army_idea_1_mdf = {
 }
 professional_army_idea_2_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	country_military_wages_mult = -0.15
+	country_military_wages_mult = 0.1
 }
 professional_army_idea_3_mdf = {
 	icon = gfx/interface/icon_ideas.dds
@@ -665,14 +667,14 @@ professional_army_idea_6_mdf = {
 }
 professional_army_idea_7_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	building_training_rate_mult = 0.2
-	country_military_wages_mult = -0.1
+	building_training_rate_mult = 0.15
+	country_military_wages_mult = 0.05
 }
 # ambition - granted when all 7 ideas of this group are bought
 professional_army_ambition_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	building_training_rate_mult = 0.2
-	military_formation_mobilization_speed_mult = 0.15
+	building_training_rate_mult = 0.15
+	military_formation_mobilization_speed_mult = 0.1
 }
 
 ### Mass Conscription (NEW) [gated: age 2] [exclusive with professional_army]
@@ -704,12 +706,14 @@ mass_conscription_idea_7_mdf = {
 	icon = gfx/interface/icon_ideas.dds
 	state_conscription_rate_mult = 0.15
 	state_building_conscription_center_max_level_add = 10
+	country_war_exhaustion_casualties_mult = 0.15
 }
 # ambition - granted when all 7 ideas of this group are bought
 mass_conscription_ambition_mdf = {
 	icon = gfx/interface/icon_ideas.dds
 	state_conscription_rate_mult = 0.15
 	state_building_conscription_center_max_level_add = 10
+	unit_supply_consumption_mult = 0.1
 }
 
 ### Colonial [gated: age 2]
@@ -764,11 +768,11 @@ war_economy_idea_3_mdf = {
 }
 war_economy_idea_4_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	goods_output_explosives_mult = 0.1
+	building_explosives_factory_throughput_add = 0.1
 }
 war_economy_idea_5_mdf = {
 	icon = gfx/interface/icon_ideas.dds
-	goods_output_steel_mult = 0.1
+	building_steel_mill_throughput_add = 0.1
 }
 war_economy_idea_6_mdf = {
 	icon = gfx/interface/icon_ideas.dds

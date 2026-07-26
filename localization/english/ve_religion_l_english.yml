@@ -112,7 +112,7 @@
  ve_missionary_mdf:0 "Active Missionary"
 
  ve_religion_passive_text:0 "[GetPlayer.GetStateReligion.GetName] Passive Bonuses"
- ve_idea_cancel_window_title:0 "Do you want to cancel [StateRegion.MakeScope.Var('idea_group')]"
+ ve_idea_cancel_window_title:0 "Cancel [StateRegion.MakeScope.Var('idea_group')]? Spent idea points will not be refunded, and national ideas may be revoked."
  piety_cost:0 "Have at least 125 Piety and doesn't have the aspect's modifier."
  ve_call_all_missionaries:0 "Calls all active missionaries"
 

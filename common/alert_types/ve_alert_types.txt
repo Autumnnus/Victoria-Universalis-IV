@@ -2,8 +2,7 @@
 	script_context = player_country
 	texture = "gfx/interface/intelligensia.dds"
 	valid = {
-		idea_cost_trigger = yes
-		var:national_idea_pool < 56
+		ve_can_purchase_any_idea = yes
 	}
 	type = alert
 }

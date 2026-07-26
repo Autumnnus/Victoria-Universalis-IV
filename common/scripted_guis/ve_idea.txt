@@ -2680,6 +2680,10 @@ boost_idea_group = {
 					GROUP = extraction
 				}
 				has_variable = can_go_extraction
+				OR = {
+					var:extraction_idea < 6
+					has_global_variable = age_3_started_trigger
+				}
 			}
 			flag:mass_conscription_idea = {
 				ve_idea_affordable = {

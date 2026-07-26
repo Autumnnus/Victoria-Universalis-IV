@@ -89,6 +89,10 @@
 }
 
 cancel_national_idea_mdf = {
+	# National ideas are earned by completed idea groups. Rebuild the progress
+	# before removing national modifiers so cancelling a group cannot leave
+	# stale progress from its seven individual ideas.
+	ve_recalculate_national_idea_pool = yes
 	if = {
 		limit = {
 			exists = c:GBR
@@ -178,27 +182,94 @@ cancel_national_idea_mdf = {
 	}
 }
 
-idea_cost = {
-	change_variable = {
-		name = idea_point_pool
-		subtract = 300
+# One completed group is worth three national-idea progress points. National
+# idea thresholds remain 3/6/9/.../21, so each completed group unlocks exactly
+# one national idea. Recalculation also makes group cancellation deterministic.
+ve_recalculate_national_idea_pool = {
+	set_variable = {
+		name = national_idea_pool
+		value = 0
 	}
-}
-
-# Shared tail for every group idea purchase in ve_idea_effects.txt.
-# Credits progress toward the national idea unlocks, then charges the idea point cost.
-# Called once per branch of every boost_*_idea_effect; scope = country.
-ve_idea_purchase_common = {
 	if = {
-		limit = {
-			var:national_idea_pool < 200
-		}
-		change_variable = {
-			name = national_idea_pool
-			add = 1
-		}
+		limit = { var:academic_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
 	}
-	idea_cost = yes
+	if = {
+		limit = { var:financial_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:infrastructure_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:extraction_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:mass_conscription_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:war_economy_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:industrialist_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:bureaucratic_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:nationalist_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:parliamentary_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:diplomatic_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:mercantile_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:welfare_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:reformist_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:labour_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:offensive_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:defensive_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:naval_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:professional_army_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
+	if = {
+		limit = { var:colonial_idea >= 7 }
+		change_variable = { name = national_idea_pool add = 3 }
+	}
 }
 
 splendor_cost = {
@@ -897,17 +968,9 @@ ve_law_change_effects = {
 
 # Faz 5c - tiered cost. One per idea level; called from the matching branch of
 # boost_<group>_idea_effect, which is the only place that knows the level.
-# Credits progress toward the national idea unlocks, then charges that level's cost.
+# Rebuilds progress from completed groups, then charges that level's cost.
 ve_idea_purchase_1 = {
-	if = {
-		limit = {
-			var:national_idea_pool < 200
-		}
-		change_variable = {
-			name = national_idea_pool
-			add = 1
-		}
-	}
+	ve_recalculate_national_idea_pool = yes
 	change_variable = {
 		name = idea_point_pool
 		subtract = 200
@@ -915,15 +978,7 @@ ve_idea_purchase_1 = {
 }
 
 ve_idea_purchase_2 = {
-	if = {
-		limit = {
-			var:national_idea_pool < 200
-		}
-		change_variable = {
-			name = national_idea_pool
-			add = 1
-		}
-	}
+	ve_recalculate_national_idea_pool = yes
 	change_variable = {
 		name = idea_point_pool
 		subtract = 250
@@ -931,15 +986,7 @@ ve_idea_purchase_2 = {
 }
 
 ve_idea_purchase_3 = {
-	if = {
-		limit = {
-			var:national_idea_pool < 200
-		}
-		change_variable = {
-			name = national_idea_pool
-			add = 1
-		}
-	}
+	ve_recalculate_national_idea_pool = yes
 	change_variable = {
 		name = idea_point_pool
 		subtract = 300
@@ -947,15 +994,7 @@ ve_idea_purchase_3 = {
 }
 
 ve_idea_purchase_4 = {
-	if = {
-		limit = {
-			var:national_idea_pool < 200
-		}
-		change_variable = {
-			name = national_idea_pool
-			add = 1
-		}
-	}
+	ve_recalculate_national_idea_pool = yes
 	change_variable = {
 		name = idea_point_pool
 		subtract = 375
@@ -963,15 +1002,7 @@ ve_idea_purchase_4 = {
 }
 
 ve_idea_purchase_5 = {
-	if = {
-		limit = {
-			var:national_idea_pool < 200
-		}
-		change_variable = {
-			name = national_idea_pool
-			add = 1
-		}
-	}
+	ve_recalculate_national_idea_pool = yes
 	change_variable = {
 		name = idea_point_pool
 		subtract = 450
@@ -979,15 +1010,7 @@ ve_idea_purchase_5 = {
 }
 
 ve_idea_purchase_6 = {
-	if = {
-		limit = {
-			var:national_idea_pool < 200
-		}
-		change_variable = {
-			name = national_idea_pool
-			add = 1
-		}
-	}
+	ve_recalculate_national_idea_pool = yes
 	change_variable = {
 		name = idea_point_pool
 		subtract = 550
@@ -995,18 +1018,9 @@ ve_idea_purchase_6 = {
 }
 
 ve_idea_purchase_7 = {
-	if = {
-		limit = {
-			var:national_idea_pool < 200
-		}
-		change_variable = {
-			name = national_idea_pool
-			add = 1
-		}
-	}
+	ve_recalculate_national_idea_pool = yes
 	change_variable = {
 		name = idea_point_pool
 		subtract = 675
 	}
 }
-
