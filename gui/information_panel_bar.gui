@@ -624,7 +624,7 @@ types information_panel_bar_types {
 							visible = "[InformationPanelBar.IsPanelOpen('society')]"
 						}
 						using = ve_clear_tab_bar
-						onclick = "[InformationPanelBar.OpenPanelCycleTabs('society', 'default|cultures|religions')]"
+						onclick = "[InformationPanelBar.OpenPanelCycleTabs('society', 'default|cultures|religions|classes')]"
 					}
 				}
 				sidebar_tooltip_area_small = {
@@ -706,7 +706,7 @@ types information_panel_bar_types {
 							visible = "[InformationPanelBar.IsPanelOpen('journal')]"
 						}
 						using = ve_clear_tab_bar
-						onclick = "[InformationPanelBar.OpenPanelCycleTabs('journal', 'default|inactive_journal_entries')]"
+						onclick = "[InformationPanelBar.OpenPanelCycleTabs('journal', 'default|inactive_journal_entries|nation_formation')]"
 					}
 					textbox = {
 						parentanchor = right|top

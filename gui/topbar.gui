@@ -203,6 +203,32 @@ types topbar_components
 						fontsize_min = 12
 					}
 				}
+				# Kept in sync with the current vanilla secondary-stat row.
+				flowcontainer = {
+					minimumsize = { 66 30 }
+					maximumsize = { 66 30 }
+					spacing = 2
+					tooltip = "[Country.GetInfamyDesc]"
+					using = tooltip_below
+					onmousehierarchyenter = "[SetTempMapModeByKey('mm_infamy')]"
+					onmousehierarchyleave = "[RemoveTempMapMode]"
+					alpha = "[TransparentIfZero(Country.GetInfamy)]"
+					alwaystransparent = no
+
+					icon = {
+						size = { @secondary_icon_size @secondary_icon_size }
+						texture = "[Country.GetInfamyIconTexture]"
+						parentanchor = vcenter
+					}
+					textbox = {
+						parentanchor = vcenter
+						raw_text = "#variable [Country.GetInfamy|0]#!"
+						autoresize = yes
+						align = left|nobaseline
+						elide = right
+						fontsize_min = 12
+					}
+				}
 				flowcontainer = {
 					minimumsize = { 28 28 }
 					maximumsize = { 28 28 }
