@@ -901,14 +901,16 @@ types windows {
 					}
 				}
 
-				close_button_large = {
-					name = "tutorial_highlight_close_button"
-					parentanchor = top|right
-					onclick = "[InformationPanelBar.ClosePanel]"
-					shortcut = "close_window"
+				block "close_button_fullscreen" {
+					close_button_large = {
+						name = "tutorial_highlight_close_button"
+						parentanchor = top|right
+						onclick = "[InformationPanelBar.ClosePanel]"
+						shortcut = "close_window"
 
-					block "close_button_position" {
-						position = { -11 15 }
+						block "close_button_position" {
+							position = { -11 15 }
+						}
 					}
 				}
 			}

@@ -179,11 +179,28 @@ types ve_gui_panel_types
 		}
 	}
 	type ve_panel_fullscreen_block_window = fullscreen_block_window {
-		blockoverride "back_button_onclick" {
-			onclick = "[GetVariableSystem.Clear('ve_tab_var')]"
+		# VE is controlled by ve_tab_var rather than InformationPanelBar.
+		# Override the current vanilla fullscreen button blocks so mouse and keyboard
+		# shortcuts both close this independent fullscreen panel.
+		blockoverride "back_button_fullscreen" {
+			back_button_large = {
+				position = { 11 15 }
+				parentanchor = top|left
+				onclick = "[GetVariableSystem.Clear('ve_tab_var')]"
+				input_action = "back"
+			}
 		}
-		blockoverride "close_button_onclick" {
-			onclick = "[GetVariableSystem.Clear('ve_tab_var')]"
+		blockoverride "close_button_fullscreen" {
+			close_button_large = {
+				name = "tutorial_highlight_close_button"
+				parentanchor = top|right
+				onclick = "[GetVariableSystem.Clear('ve_tab_var')]"
+				shortcut = "close_window"
+
+				block "close_button_position" {
+					position = { -11 15 }
+				}
+			}
 		}
 	}
 }
