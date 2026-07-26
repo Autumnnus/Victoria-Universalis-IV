@@ -498,6 +498,14 @@ dev.5 = {
 		remove_global_variable = ve_age_3_started
 		set_global_variable = age_2_started_trigger
 		every_country = {
+			limit = {
+				is_ai = no
+			}
+			trigger_event = {
+				id = ve_ages.1
+			}
+		}
+		every_country = {
 			set_variable = {
 				name = ve_splender_points
 				value = 0
@@ -597,11 +605,20 @@ dev.6 = {
 	desc = dev.4.d
 	flavor = dev.4.f
 	duration = 0
+	hidden = yes
 	immediate = {
 		set_global_variable = ve_age_3_started
 		remove_global_variable = ve_age_1_started
 		remove_global_variable = ve_age_2_started
 		set_global_variable = age_3_started_trigger
+		every_country = {
+			limit = {
+				is_ai = no
+			}
+			trigger_event = {
+				id = ve_ages.2
+			}
+		}
 		every_country = {
 			set_variable = {
 				name = ve_splender_points

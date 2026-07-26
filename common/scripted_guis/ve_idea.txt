@@ -3,11 +3,17 @@ cancel_idea = {
 	effect = {
 		switch = {
 			trigger = scope:idea_group
-			flag:innovative_idea = {
-				remove_variable = can_go_innovative
-				remove_variable = innovative_idea_completed
+			flag:academic_idea = {
+				remove_variable = can_go_academic
+				remove_variable = academic_idea_completed
+				if = {
+					limit = {
+						has_modifier = academic_ambition_mdf
+					}
+					remove_modifier = academic_ambition_mdf
+				}
 				set_variable = {
-					name = innovative_idea
+					name = academic_idea
 					value = 0
 				}
 				change_variable = {
@@ -16,9 +22,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = innovative_idea_1_mdf
+						has_modifier = academic_idea_1_mdf
 					}
-					remove_modifier = innovative_idea_1_mdf
+					remove_modifier = academic_idea_1_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -31,9 +37,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = innovative_idea_2_mdf
+						has_modifier = academic_idea_2_mdf
 					}
-					remove_modifier = innovative_idea_2_mdf
+					remove_modifier = academic_idea_2_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -46,9 +52,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = innovative_idea_3_mdf
+						has_modifier = academic_idea_3_mdf
 					}
-					remove_modifier = innovative_idea_3_mdf
+					remove_modifier = academic_idea_3_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -61,9 +67,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = innovative_idea_4_mdf
+						has_modifier = academic_idea_4_mdf
 					}
-					remove_modifier = innovative_idea_4_mdf
+					remove_modifier = academic_idea_4_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -76,9 +82,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = innovative_idea_5_mdf
+						has_modifier = academic_idea_5_mdf
 					}
-					remove_modifier = innovative_idea_5_mdf
+					remove_modifier = academic_idea_5_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -91,9 +97,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = innovative_idea_6_mdf
+						has_modifier = academic_idea_6_mdf
 					}
-					remove_modifier = innovative_idea_6_mdf
+					remove_modifier = academic_idea_6_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -106,9 +112,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = innovative_idea_7_mdf
+						has_modifier = academic_idea_7_mdf
 					}
-					remove_modifier = innovative_idea_7_mdf
+					remove_modifier = academic_idea_7_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -121,11 +127,17 @@ cancel_idea = {
 				}
 				cancel_national_idea_mdf = yes
 			}
-			flag:economic_idea = {
-				remove_variable = can_go_economic
-				remove_variable = economic_idea_completed
+			flag:financial_idea = {
+				remove_variable = can_go_financial
+				remove_variable = financial_idea_completed
+				if = {
+					limit = {
+						has_modifier = financial_ambition_mdf
+					}
+					remove_modifier = financial_ambition_mdf
+				}
 				set_variable = {
-					name = economic_idea
+					name = financial_idea
 					value = 0
 				}
 				change_variable = {
@@ -134,9 +146,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = economic_idea_1_mdf
+						has_modifier = financial_idea_1_mdf
 					}
-					remove_modifier = economic_idea_1_mdf
+					remove_modifier = financial_idea_1_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -149,9 +161,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = economic_idea_2_mdf
+						has_modifier = financial_idea_2_mdf
 					}
-					remove_modifier = economic_idea_2_mdf
+					remove_modifier = financial_idea_2_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -164,9 +176,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = economic_idea_3_mdf
+						has_modifier = financial_idea_3_mdf
 					}
-					remove_modifier = economic_idea_3_mdf
+					remove_modifier = financial_idea_3_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -179,9 +191,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = economic_idea_4_mdf
+						has_modifier = financial_idea_4_mdf
 					}
-					remove_modifier = economic_idea_4_mdf
+					remove_modifier = financial_idea_4_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -194,9 +206,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = economic_idea_5_mdf
+						has_modifier = financial_idea_5_mdf
 					}
-					remove_modifier = economic_idea_5_mdf
+					remove_modifier = financial_idea_5_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -209,9 +221,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = economic_idea_6_mdf
+						has_modifier = financial_idea_6_mdf
 					}
-					remove_modifier = economic_idea_6_mdf
+					remove_modifier = financial_idea_6_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -224,9 +236,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = economic_idea_7_mdf
+						has_modifier = financial_idea_7_mdf
 					}
-					remove_modifier = economic_idea_7_mdf
+					remove_modifier = financial_idea_7_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -239,11 +251,17 @@ cancel_idea = {
 				}
 				cancel_national_idea_mdf = yes
 			}
-			flag:administrative_idea = {
-				remove_variable = can_go_administrative
-				remove_variable = administrative_idea_completed
+			flag:infrastructure_idea = {
+				remove_variable = can_go_infrastructure
+				remove_variable = infrastructure_idea_completed
+				if = {
+					limit = {
+						has_modifier = infrastructure_ambition_mdf
+					}
+					remove_modifier = infrastructure_ambition_mdf
+				}
 				set_variable = {
-					name = administrative_idea
+					name = infrastructure_idea
 					value = 0
 				}
 				change_variable = {
@@ -252,9 +270,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = administrative_idea_1_mdf
+						has_modifier = infrastructure_idea_1_mdf
 					}
-					remove_modifier = administrative_idea_1_mdf
+					remove_modifier = infrastructure_idea_1_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -267,9 +285,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = administrative_idea_2_mdf
+						has_modifier = infrastructure_idea_2_mdf
 					}
-					remove_modifier = administrative_idea_2_mdf
+					remove_modifier = infrastructure_idea_2_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -282,9 +300,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = administrative_idea_3_mdf
+						has_modifier = infrastructure_idea_3_mdf
 					}
-					remove_modifier = administrative_idea_3_mdf
+					remove_modifier = infrastructure_idea_3_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -297,9 +315,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = administrative_idea_4_mdf
+						has_modifier = infrastructure_idea_4_mdf
 					}
-					remove_modifier = administrative_idea_4_mdf
+					remove_modifier = infrastructure_idea_4_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -312,9 +330,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = administrative_idea_5_mdf
+						has_modifier = infrastructure_idea_5_mdf
 					}
-					remove_modifier = administrative_idea_5_mdf
+					remove_modifier = infrastructure_idea_5_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -327,9 +345,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = administrative_idea_6_mdf
+						has_modifier = infrastructure_idea_6_mdf
 					}
-					remove_modifier = administrative_idea_6_mdf
+					remove_modifier = infrastructure_idea_6_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -342,9 +360,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = administrative_idea_7_mdf
+						has_modifier = infrastructure_idea_7_mdf
 					}
-					remove_modifier = administrative_idea_7_mdf
+					remove_modifier = infrastructure_idea_7_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -357,11 +375,17 @@ cancel_idea = {
 				}
 				cancel_national_idea_mdf = yes
 			}
-			flag:ethnocentrism_idea = {
-				remove_variable = can_go_ethnocentrism
-				remove_variable = ethnocentrism_idea_completed
+			flag:extraction_idea = {
+				remove_variable = can_go_extraction
+				remove_variable = extraction_idea_completed
+				if = {
+					limit = {
+						has_modifier = extraction_ambition_mdf
+					}
+					remove_modifier = extraction_ambition_mdf
+				}
 				set_variable = {
-					name = ethnocentrism_idea
+					name = extraction_idea
 					value = 0
 				}
 				change_variable = {
@@ -370,9 +394,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = ethnocentrism_idea_1_mdf
+						has_modifier = extraction_idea_1_mdf
 					}
-					remove_modifier = ethnocentrism_idea_1_mdf
+					remove_modifier = extraction_idea_1_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -385,9 +409,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = ethnocentrism_idea_2_mdf
+						has_modifier = extraction_idea_2_mdf
 					}
-					remove_modifier = ethnocentrism_idea_2_mdf
+					remove_modifier = extraction_idea_2_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -400,9 +424,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = ethnocentrism_idea_3_mdf
+						has_modifier = extraction_idea_3_mdf
 					}
-					remove_modifier = ethnocentrism_idea_3_mdf
+					remove_modifier = extraction_idea_3_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -415,9 +439,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = ethnocentrism_idea_4_mdf
+						has_modifier = extraction_idea_4_mdf
 					}
-					remove_modifier = ethnocentrism_idea_4_mdf
+					remove_modifier = extraction_idea_4_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -430,9 +454,629 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_variable = ethnocentrism_idea_5_var
+						has_modifier = extraction_idea_5_mdf
 					}
-					remove_variable = ethnocentrism_idea_5_var
+					remove_modifier = extraction_idea_5_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = extraction_idea_6_mdf
+					}
+					remove_modifier = extraction_idea_6_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = extraction_idea_7_mdf
+					}
+					remove_modifier = extraction_idea_7_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				cancel_national_idea_mdf = yes
+			}
+			flag:mass_conscription_idea = {
+				remove_variable = can_go_mass_conscription
+				remove_variable = mass_conscription_idea_completed
+				if = {
+					limit = {
+						has_modifier = mass_conscription_ambition_mdf
+					}
+					remove_modifier = mass_conscription_ambition_mdf
+				}
+				set_variable = {
+					name = mass_conscription_idea
+					value = 0
+				}
+				change_variable = {
+					name = idea_group_unlocked
+					subtract = 1
+				}
+				if = {
+					limit = {
+						has_modifier = mass_conscription_idea_1_mdf
+					}
+					remove_modifier = mass_conscription_idea_1_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = mass_conscription_idea_2_mdf
+					}
+					remove_modifier = mass_conscription_idea_2_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = mass_conscription_idea_3_mdf
+					}
+					remove_modifier = mass_conscription_idea_3_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = mass_conscription_idea_4_mdf
+					}
+					remove_modifier = mass_conscription_idea_4_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = mass_conscription_idea_5_mdf
+					}
+					remove_modifier = mass_conscription_idea_5_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = mass_conscription_idea_6_mdf
+					}
+					remove_modifier = mass_conscription_idea_6_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = mass_conscription_idea_7_mdf
+					}
+					remove_modifier = mass_conscription_idea_7_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				cancel_national_idea_mdf = yes
+			}
+			flag:war_economy_idea = {
+				remove_variable = can_go_war_economy
+				remove_variable = war_economy_idea_completed
+				if = {
+					limit = {
+						has_modifier = war_economy_ambition_mdf
+					}
+					remove_modifier = war_economy_ambition_mdf
+				}
+				set_variable = {
+					name = war_economy_idea
+					value = 0
+				}
+				change_variable = {
+					name = idea_group_unlocked
+					subtract = 1
+				}
+				if = {
+					limit = {
+						has_modifier = war_economy_idea_1_mdf
+					}
+					remove_modifier = war_economy_idea_1_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = war_economy_idea_2_mdf
+					}
+					remove_modifier = war_economy_idea_2_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = war_economy_idea_3_mdf
+					}
+					remove_modifier = war_economy_idea_3_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = war_economy_idea_4_mdf
+					}
+					remove_modifier = war_economy_idea_4_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = war_economy_idea_5_mdf
+					}
+					remove_modifier = war_economy_idea_5_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = war_economy_idea_6_mdf
+					}
+					remove_modifier = war_economy_idea_6_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = war_economy_idea_7_mdf
+					}
+					remove_modifier = war_economy_idea_7_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				cancel_national_idea_mdf = yes
+			}
+			flag:industrialist_idea = {
+				remove_variable = can_go_industrialist
+				remove_variable = industrialist_idea_completed
+				if = {
+					limit = {
+						has_modifier = industrialist_ambition_mdf
+					}
+					remove_modifier = industrialist_ambition_mdf
+				}
+				set_variable = {
+					name = industrialist_idea
+					value = 0
+				}
+				change_variable = {
+					name = idea_group_unlocked
+					subtract = 1
+				}
+				if = {
+					limit = {
+						has_modifier = industrialist_idea_1_mdf
+					}
+					remove_modifier = industrialist_idea_1_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = industrialist_idea_2_mdf
+					}
+					remove_modifier = industrialist_idea_2_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = industrialist_idea_3_mdf
+					}
+					remove_modifier = industrialist_idea_3_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = industrialist_idea_4_mdf
+					}
+					remove_modifier = industrialist_idea_4_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = industrialist_idea_5_mdf
+					}
+					remove_modifier = industrialist_idea_5_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = industrialist_idea_6_mdf
+					}
+					remove_modifier = industrialist_idea_6_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = industrialist_idea_7_mdf
+					}
+					remove_modifier = industrialist_idea_7_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				cancel_national_idea_mdf = yes
+			}
+			flag:bureaucratic_idea = {
+				remove_variable = can_go_bureaucratic
+				remove_variable = bureaucratic_idea_completed
+				if = {
+					limit = {
+						has_modifier = bureaucratic_ambition_mdf
+					}
+					remove_modifier = bureaucratic_ambition_mdf
+				}
+				set_variable = {
+					name = bureaucratic_idea
+					value = 0
+				}
+				change_variable = {
+					name = idea_group_unlocked
+					subtract = 1
+				}
+				if = {
+					limit = {
+						has_modifier = bureaucratic_idea_1_mdf
+					}
+					remove_modifier = bureaucratic_idea_1_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = bureaucratic_idea_2_mdf
+					}
+					remove_modifier = bureaucratic_idea_2_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = bureaucratic_idea_3_mdf
+					}
+					remove_modifier = bureaucratic_idea_3_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = bureaucratic_idea_4_mdf
+					}
+					remove_modifier = bureaucratic_idea_4_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = bureaucratic_idea_5_mdf
+					}
+					remove_modifier = bureaucratic_idea_5_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = bureaucratic_idea_6_mdf
+					}
+					remove_modifier = bureaucratic_idea_6_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = bureaucratic_idea_7_mdf
+					}
+					remove_modifier = bureaucratic_idea_7_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				cancel_national_idea_mdf = yes
+			}
+			flag:nationalist_idea = {
+				remove_variable = can_go_nationalist
+				remove_variable = nationalist_idea_completed
+				if = {
+					limit = {
+						has_modifier = nationalist_ambition_mdf
+					}
+					remove_modifier = nationalist_ambition_mdf
+				}
+				set_variable = {
+					name = nationalist_idea
+					value = 0
+				}
+				change_variable = {
+					name = idea_group_unlocked
+					subtract = 1
+				}
+				if = {
+					limit = {
+						has_modifier = nationalist_idea_1_mdf
+					}
+					remove_modifier = nationalist_idea_1_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = nationalist_idea_2_mdf
+					}
+					remove_modifier = nationalist_idea_2_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = nationalist_idea_3_mdf
+					}
+					remove_modifier = nationalist_idea_3_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_modifier = nationalist_idea_4_mdf
+					}
+					remove_modifier = nationalist_idea_4_mdf
+					if = {
+						limit = {
+							var:national_idea_pool > 0
+						}
+						change_variable = {
+							name = national_idea_pool
+							subtract = 1
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_variable = nationalist_idea_5_var
+					}
+					remove_variable = nationalist_idea_5_var
 					every_scope_state = {
 						limit = {
 							owner = ROOT
@@ -467,9 +1111,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = ethnocentrism_idea_6_mdf
+						has_modifier = nationalist_idea_6_mdf
 					}
-					remove_modifier = ethnocentrism_idea_6_mdf
+					remove_modifier = nationalist_idea_6_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -482,9 +1126,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_variable = ethnocentrism_idea_7_var
+						has_variable = nationalist_idea_7_var
 					}
-					remove_variable = ethnocentrism_idea_7_var
+					remove_variable = nationalist_idea_7_var
 					change_variable = {
 						name = avaible_missionaries
 						subtract = 2
@@ -515,11 +1159,17 @@ cancel_idea = {
 				}
 				cancel_national_idea_mdf = yes
 			}
-			flag:politics_idea = {
-				remove_variable = can_go_politics
-				remove_variable = politics_idea_completed
+			flag:parliamentary_idea = {
+				remove_variable = can_go_parliamentary
+				remove_variable = parliamentary_idea_completed
+				if = {
+					limit = {
+						has_modifier = parliamentary_ambition_mdf
+					}
+					remove_modifier = parliamentary_ambition_mdf
+				}
 				set_variable = {
-					name = politics_idea
+					name = parliamentary_idea
 					value = 0
 				}
 				change_variable = {
@@ -528,9 +1178,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = politics_idea_1_mdf
+						has_modifier = parliamentary_idea_1_mdf
 					}
-					remove_modifier = politics_idea_1_mdf
+					remove_modifier = parliamentary_idea_1_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -543,9 +1193,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = politics_idea_2_mdf
+						has_modifier = parliamentary_idea_2_mdf
 					}
-					remove_modifier = politics_idea_2_mdf
+					remove_modifier = parliamentary_idea_2_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -558,9 +1208,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = politics_idea_3_mdf
+						has_modifier = parliamentary_idea_3_mdf
 					}
-					remove_modifier = politics_idea_3_mdf
+					remove_modifier = parliamentary_idea_3_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -573,9 +1223,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = politics_idea_4_mdf
+						has_modifier = parliamentary_idea_4_mdf
 					}
-					remove_modifier = politics_idea_4_mdf
+					remove_modifier = parliamentary_idea_4_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -588,9 +1238,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = politics_idea_5_mdf
+						has_modifier = parliamentary_idea_5_mdf
 					}
-					remove_modifier = politics_idea_5_mdf
+					remove_modifier = parliamentary_idea_5_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -603,9 +1253,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = politics_idea_6_mdf
+						has_modifier = parliamentary_idea_6_mdf
 					}
-					remove_modifier = politics_idea_6_mdf
+					remove_modifier = parliamentary_idea_6_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -618,9 +1268,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = politics_idea_7_mdf
+						has_modifier = parliamentary_idea_7_mdf
 					}
-					remove_modifier = politics_idea_7_mdf
+					remove_modifier = parliamentary_idea_7_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -636,6 +1286,12 @@ cancel_idea = {
 			flag:diplomatic_idea = {
 				remove_variable = can_go_diplomatic
 				remove_variable = diplomatic_idea_completed
+				if = {
+					limit = {
+						has_modifier = diplomatic_ambition_mdf
+					}
+					remove_modifier = diplomatic_ambition_mdf
+				}
 				set_variable = {
 					name = diplomatic_idea
 					value = 0
@@ -751,11 +1407,17 @@ cancel_idea = {
 				}
 				cancel_national_idea_mdf = yes
 			}
-			flag:trade_idea = {
-				remove_variable = can_go_trade
-				remove_variable = trade_idea_completed
+			flag:mercantile_idea = {
+				remove_variable = can_go_mercantile
+				remove_variable = mercantile_idea_completed
+				if = {
+					limit = {
+						has_modifier = mercantile_ambition_mdf
+					}
+					remove_modifier = mercantile_ambition_mdf
+				}
 				set_variable = {
-					name = trade_idea
+					name = mercantile_idea
 					value = 0
 				}
 				change_variable = {
@@ -764,9 +1426,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = trade_idea_1_mdf
+						has_modifier = mercantile_idea_1_mdf
 					}
-					remove_modifier = trade_idea_1_mdf
+					remove_modifier = mercantile_idea_1_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -779,9 +1441,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = trade_idea_2_mdf
+						has_modifier = mercantile_idea_2_mdf
 					}
-					remove_modifier = trade_idea_2_mdf
+					remove_modifier = mercantile_idea_2_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -794,9 +1456,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = trade_idea_3_mdf
+						has_modifier = mercantile_idea_3_mdf
 					}
-					remove_modifier = trade_idea_3_mdf
+					remove_modifier = mercantile_idea_3_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -809,9 +1471,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = trade_idea_4_mdf
+						has_modifier = mercantile_idea_4_mdf
 					}
-					remove_modifier = trade_idea_4_mdf
+					remove_modifier = mercantile_idea_4_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -824,9 +1486,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = trade_idea_5_mdf
+						has_modifier = mercantile_idea_5_mdf
 					}
-					remove_modifier = trade_idea_5_mdf
+					remove_modifier = mercantile_idea_5_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -839,9 +1501,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = trade_idea_6_mdf
+						has_modifier = mercantile_idea_6_mdf
 					}
-					remove_modifier = trade_idea_6_mdf
+					remove_modifier = mercantile_idea_6_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -854,9 +1516,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = trade_idea_7_mdf
+						has_modifier = mercantile_idea_7_mdf
 					}
-					remove_modifier = trade_idea_7_mdf
+					remove_modifier = mercantile_idea_7_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -869,11 +1531,17 @@ cancel_idea = {
 				}
 				cancel_national_idea_mdf = yes
 			}
-			flag:qualification_idea = {
-				remove_variable = can_go_qualification
-				remove_variable = qualification_idea_completed
+			flag:welfare_idea = {
+				remove_variable = can_go_welfare
+				remove_variable = welfare_idea_completed
+				if = {
+					limit = {
+						has_modifier = welfare_ambition_mdf
+					}
+					remove_modifier = welfare_ambition_mdf
+				}
 				set_variable = {
-					name = qualification_idea
+					name = welfare_idea
 					value = 0
 				}
 				change_variable = {
@@ -882,9 +1550,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = qualification_idea_1_mdf
+						has_modifier = welfare_idea_1_mdf
 					}
-					remove_modifier = qualification_idea_1_mdf
+					remove_modifier = welfare_idea_1_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -897,9 +1565,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = qualification_idea_2_mdf
+						has_modifier = welfare_idea_2_mdf
 					}
-					remove_modifier = qualification_idea_2_mdf
+					remove_modifier = welfare_idea_2_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -912,9 +1580,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = qualification_idea_3_mdf
+						has_modifier = welfare_idea_3_mdf
 					}
-					remove_modifier = qualification_idea_3_mdf
+					remove_modifier = welfare_idea_3_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -927,9 +1595,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = qualification_idea_4_mdf
+						has_modifier = welfare_idea_4_mdf
 					}
-					remove_modifier = qualification_idea_4_mdf
+					remove_modifier = welfare_idea_4_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -942,9 +1610,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = qualification_idea_5_mdf
+						has_modifier = welfare_idea_5_mdf
 					}
-					remove_modifier = qualification_idea_5_mdf
+					remove_modifier = welfare_idea_5_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -957,9 +1625,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = qualification_idea_6_mdf
+						has_modifier = welfare_idea_6_mdf
 					}
-					remove_modifier = qualification_idea_6_mdf
+					remove_modifier = welfare_idea_6_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -972,9 +1640,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = qualification_idea_7_mdf
+						has_modifier = welfare_idea_7_mdf
 					}
-					remove_modifier = qualification_idea_7_mdf
+					remove_modifier = welfare_idea_7_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -987,11 +1655,17 @@ cancel_idea = {
 				}
 				cancel_national_idea_mdf = yes
 			}
-			flag:humanist_idea = {
-				remove_variable = can_go_humanist
-				remove_variable = humanist_idea_completed
+			flag:reformist_idea = {
+				remove_variable = can_go_reformist
+				remove_variable = reformist_idea_completed
+				if = {
+					limit = {
+						has_modifier = reformist_ambition_mdf
+					}
+					remove_modifier = reformist_ambition_mdf
+				}
 				set_variable = {
-					name = humanist_idea
+					name = reformist_idea
 					value = 0
 				}
 				change_variable = {
@@ -1000,9 +1674,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = humanist_idea_1_mdf
+						has_modifier = reformist_idea_1_mdf
 					}
-					remove_modifier = humanist_idea_1_mdf
+					remove_modifier = reformist_idea_1_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1015,9 +1689,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = humanist_idea_2_mdf
+						has_modifier = reformist_idea_2_mdf
 					}
-					remove_modifier = humanist_idea_2_mdf
+					remove_modifier = reformist_idea_2_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1030,9 +1704,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = humanist_idea_3_mdf
+						has_modifier = reformist_idea_3_mdf
 					}
-					remove_modifier = humanist_idea_3_mdf
+					remove_modifier = reformist_idea_3_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1045,9 +1719,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = humanist_idea_4_mdf
+						has_modifier = reformist_idea_4_mdf
 					}
-					remove_modifier = humanist_idea_4_mdf
+					remove_modifier = reformist_idea_4_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1060,9 +1734,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = humanist_idea_5_mdf
+						has_modifier = reformist_idea_5_mdf
 					}
-					remove_modifier = humanist_idea_5_mdf
+					remove_modifier = reformist_idea_5_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1075,9 +1749,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = humanist_idea_6_mdf
+						has_modifier = reformist_idea_6_mdf
 					}
-					remove_modifier = humanist_idea_6_mdf
+					remove_modifier = reformist_idea_6_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1090,9 +1764,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = humanist_idea_7_mdf
+						has_modifier = reformist_idea_7_mdf
 					}
-					remove_modifier = humanist_idea_7_mdf
+					remove_modifier = reformist_idea_7_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1105,11 +1779,17 @@ cancel_idea = {
 				}
 				cancel_national_idea_mdf = yes
 			}
-			flag:syndicalism_idea = {
-				remove_variable = can_go_syndicalism
-				remove_variable = syndicalism_idea_completed
+			flag:labour_idea = {
+				remove_variable = can_go_labour
+				remove_variable = labour_idea_completed
+				if = {
+					limit = {
+						has_modifier = labour_ambition_mdf
+					}
+					remove_modifier = labour_ambition_mdf
+				}
 				set_variable = {
-					name = syndicalism_idea
+					name = labour_idea
 					value = 0
 				}
 				change_variable = {
@@ -1118,9 +1798,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = syndicalism_idea_1_mdf
+						has_modifier = labour_idea_1_mdf
 					}
-					remove_modifier = syndicalism_idea_1_mdf
+					remove_modifier = labour_idea_1_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1133,9 +1813,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = syndicalism_idea_2_mdf
+						has_modifier = labour_idea_2_mdf
 					}
-					remove_modifier = syndicalism_idea_2_mdf
+					remove_modifier = labour_idea_2_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1148,9 +1828,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = syndicalism_idea_3_mdf
+						has_modifier = labour_idea_3_mdf
 					}
-					remove_modifier = syndicalism_idea_3_mdf
+					remove_modifier = labour_idea_3_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1163,9 +1843,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = syndicalism_idea_4_mdf
+						has_modifier = labour_idea_4_mdf
 					}
-					remove_modifier = syndicalism_idea_4_mdf
+					remove_modifier = labour_idea_4_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1178,9 +1858,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = syndicalism_idea_5_mdf
+						has_modifier = labour_idea_5_mdf
 					}
-					remove_modifier = syndicalism_idea_5_mdf
+					remove_modifier = labour_idea_5_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1193,9 +1873,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = syndicalism_idea_6_mdf
+						has_modifier = labour_idea_6_mdf
 					}
-					remove_modifier = syndicalism_idea_6_mdf
+					remove_modifier = labour_idea_6_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1208,9 +1888,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = syndicalism_idea_7_mdf
+						has_modifier = labour_idea_7_mdf
 					}
-					remove_modifier = syndicalism_idea_7_mdf
+					remove_modifier = labour_idea_7_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1226,6 +1906,12 @@ cancel_idea = {
 			flag:offensive_idea = {
 				remove_variable = can_go_offensive
 				remove_variable = offensive_idea_completed
+				if = {
+					limit = {
+						has_modifier = offensive_ambition_mdf
+					}
+					remove_modifier = offensive_ambition_mdf
+				}
 				set_variable = {
 					name = offensive_idea
 					value = 0
@@ -1344,6 +2030,12 @@ cancel_idea = {
 			flag:defensive_idea = {
 				remove_variable = can_go_defensive
 				remove_variable = defensive_idea_completed
+				if = {
+					limit = {
+						has_modifier = defensive_ambition_mdf
+					}
+					remove_modifier = defensive_ambition_mdf
+				}
 				set_variable = {
 					name = defensive_idea
 					value = 0
@@ -1462,6 +2154,12 @@ cancel_idea = {
 			flag:naval_idea = {
 				remove_variable = can_go_naval
 				remove_variable = naval_idea_completed
+				if = {
+					limit = {
+						has_modifier = naval_ambition_mdf
+					}
+					remove_modifier = naval_ambition_mdf
+				}
 				set_variable = {
 					name = naval_idea
 					value = 0
@@ -1577,11 +2275,17 @@ cancel_idea = {
 				}
 				cancel_national_idea_mdf = yes
 			}
-			flag:militarization_idea = {
-				remove_variable = can_go_militarization
-				remove_variable = militarization_idea_completed
+			flag:professional_army_idea = {
+				remove_variable = can_go_professional_army
+				remove_variable = professional_army_idea_completed
+				if = {
+					limit = {
+						has_modifier = professional_army_ambition_mdf
+					}
+					remove_modifier = professional_army_ambition_mdf
+				}
 				set_variable = {
-					name = militarization_idea
+					name = professional_army_idea
 					value = 0
 				}
 				change_variable = {
@@ -1590,9 +2294,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = militarization_idea_1_mdf
+						has_modifier = professional_army_idea_1_mdf
 					}
-					remove_modifier = militarization_idea_1_mdf
+					remove_modifier = professional_army_idea_1_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1605,9 +2309,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = militarization_idea_2_mdf
+						has_modifier = professional_army_idea_2_mdf
 					}
-					remove_modifier = militarization_idea_2_mdf
+					remove_modifier = professional_army_idea_2_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1620,9 +2324,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = militarization_idea_3_mdf
+						has_modifier = professional_army_idea_3_mdf
 					}
-					remove_modifier = militarization_idea_3_mdf
+					remove_modifier = professional_army_idea_3_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1635,9 +2339,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = militarization_idea_4_mdf
+						has_modifier = professional_army_idea_4_mdf
 					}
-					remove_modifier = militarization_idea_4_mdf
+					remove_modifier = professional_army_idea_4_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1650,9 +2354,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = militarization_idea_5_mdf
+						has_modifier = professional_army_idea_5_mdf
 					}
-					remove_modifier = militarization_idea_5_mdf
+					remove_modifier = professional_army_idea_5_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1665,9 +2369,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = militarization_idea_6_mdf
+						has_modifier = professional_army_idea_6_mdf
 					}
-					remove_modifier = militarization_idea_6_mdf
+					remove_modifier = professional_army_idea_6_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1680,9 +2384,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = militarization_idea_7_mdf
+						has_modifier = professional_army_idea_7_mdf
 					}
-					remove_modifier = militarization_idea_7_mdf
+					remove_modifier = professional_army_idea_7_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1695,11 +2399,17 @@ cancel_idea = {
 				}
 				cancel_national_idea_mdf = yes
 			}
-			flag:imperialist_idea = {
-				remove_variable = can_go_imperialist
-				remove_variable = imperialist_idea_completed
+			flag:colonial_idea = {
+				remove_variable = can_go_colonial
+				remove_variable = colonial_idea_completed
+				if = {
+					limit = {
+						has_modifier = colonial_ambition_mdf
+					}
+					remove_modifier = colonial_ambition_mdf
+				}
 				set_variable = {
-					name = imperialist_idea
+					name = colonial_idea
 					value = 0
 				}
 				change_variable = {
@@ -1708,9 +2418,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = imperialist_idea_1_mdf
+						has_modifier = colonial_idea_1_mdf
 					}
-					remove_modifier = imperialist_idea_1_mdf
+					remove_modifier = colonial_idea_1_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1723,9 +2433,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = imperialist_idea_2_mdf
+						has_modifier = colonial_idea_2_mdf
 					}
-					remove_modifier = imperialist_idea_2_mdf
+					remove_modifier = colonial_idea_2_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1738,9 +2448,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = imperialist_idea_3_mdf
+						has_modifier = colonial_idea_3_mdf
 					}
-					remove_modifier = imperialist_idea_3_mdf
+					remove_modifier = colonial_idea_3_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1753,9 +2463,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = imperialist_idea_4_mdf
+						has_modifier = colonial_idea_4_mdf
 					}
-					remove_modifier = imperialist_idea_4_mdf
+					remove_modifier = colonial_idea_4_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1768,9 +2478,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = imperialist_idea_5_mdf
+						has_modifier = colonial_idea_5_mdf
 					}
-					remove_modifier = imperialist_idea_5_mdf
+					remove_modifier = colonial_idea_5_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1783,9 +2493,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = imperialist_idea_6_mdf
+						has_modifier = colonial_idea_6_mdf
 					}
-					remove_modifier = imperialist_idea_6_mdf
+					remove_modifier = colonial_idea_6_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1798,9 +2508,9 @@ cancel_idea = {
 				}
 				if = {
 					limit = {
-						has_modifier = imperialist_idea_7_mdf
+						has_modifier = colonial_idea_7_mdf
 					}
-					remove_modifier = imperialist_idea_7_mdf
+					remove_modifier = colonial_idea_7_mdf
 					if = {
 						limit = {
 							var:national_idea_pool > 0
@@ -1822,34 +2532,64 @@ boost_idea_group = {
 	is_shown = {
 		switch = {
 			trigger = scope:idea_group
-			flag:innovative_idea = {
-				has_variable = can_go_innovative
+			flag:academic_idea = {
+				has_variable = can_go_academic
 				NOT = {
-					has_variable = innovative_idea_completed
+					has_variable = academic_idea_completed
 				}
 			}
-			flag:economic_idea = {
-				has_variable = can_go_economic
+			flag:financial_idea = {
+				has_variable = can_go_financial
 				NOT = {
-					has_variable = economic_idea_completed
+					has_variable = financial_idea_completed
 				}
 			}
-			flag:administrative_idea = {
-				has_variable = can_go_administrative
+			flag:infrastructure_idea = {
+				has_variable = can_go_infrastructure
 				NOT = {
-					has_variable = administrative_idea_completed
+					has_variable = infrastructure_idea_completed
 				}
 			}
-			flag:ethnocentrism_idea = {
-				has_variable = can_go_ethnocentrism
+			flag:extraction_idea = {
+				has_variable = can_go_extraction
 				NOT = {
-					has_variable = ethnocentrism_idea_completed
+					has_variable = extraction_idea_completed
 				}
 			}
-			flag:politics_idea = {
-				has_variable = can_go_politics
+			flag:mass_conscription_idea = {
+				has_variable = can_go_mass_conscription
 				NOT = {
-					has_variable = politics_idea_completed
+					has_variable = mass_conscription_idea_completed
+				}
+			}
+			flag:war_economy_idea = {
+				has_variable = can_go_war_economy
+				NOT = {
+					has_variable = war_economy_idea_completed
+				}
+			}
+			flag:industrialist_idea = {
+				has_variable = can_go_industrialist
+				NOT = {
+					has_variable = industrialist_idea_completed
+				}
+			}
+			flag:bureaucratic_idea = {
+				has_variable = can_go_bureaucratic
+				NOT = {
+					has_variable = bureaucratic_idea_completed
+				}
+			}
+			flag:nationalist_idea = {
+				has_variable = can_go_nationalist
+				NOT = {
+					has_variable = nationalist_idea_completed
+				}
+			}
+			flag:parliamentary_idea = {
+				has_variable = can_go_parliamentary
+				NOT = {
+					has_variable = parliamentary_idea_completed
 				}
 			}
 			flag:diplomatic_idea = {
@@ -1858,28 +2598,28 @@ boost_idea_group = {
 					has_variable = diplomatic_idea_completed
 				}
 			}
-			flag:trade_idea = {
-				has_variable = can_go_trade
+			flag:mercantile_idea = {
+				has_variable = can_go_mercantile
 				NOT = {
-					has_variable = trade_idea_completed
+					has_variable = mercantile_idea_completed
 				}
 			}
-			flag:qualification_idea = {
-				has_variable = can_go_qualification
+			flag:welfare_idea = {
+				has_variable = can_go_welfare
 				NOT = {
-					has_variable = qualification_idea_completed
+					has_variable = welfare_idea_completed
 				}
 			}
-			flag:humanist_idea = {
-				has_variable = can_go_humanist
+			flag:reformist_idea = {
+				has_variable = can_go_reformist
 				NOT = {
-					has_variable = humanist_idea_completed
+					has_variable = reformist_idea_completed
 				}
 			}
-			flag:syndicalism_idea = {
-				has_variable = can_go_syndicalism
+			flag:labour_idea = {
+				has_variable = can_go_labour
 				NOT = {
-					has_variable = syndicalism_idea_completed
+					has_variable = labour_idea_completed
 				}
 			}
 			flag:offensive_idea = {
@@ -1900,16 +2640,16 @@ boost_idea_group = {
 					has_variable = naval_idea_completed
 				}
 			}
-			flag:militarization_idea = {
-				has_variable = can_go_militarization
+			flag:professional_army_idea = {
+				has_variable = can_go_professional_army
 				NOT = {
-					has_variable = militarization_idea_completed
+					has_variable = professional_army_idea_completed
 				}
 			}
-			flag:imperialist_idea = {
-				has_variable = can_go_imperialist
+			flag:colonial_idea = {
+				has_variable = can_go_colonial
 				NOT = {
-					has_variable = imperialist_idea_completed
+					has_variable = colonial_idea_completed
 				}
 			}
 		}
@@ -1917,129 +2657,209 @@ boost_idea_group = {
 	is_valid = {
 		switch = {
 			trigger = scope:idea_group
-			flag:innovative_idea = {
-				idea_cost_trigger = yes
-				has_variable = can_go_innovative
+			flag:academic_idea = {
+				ve_idea_affordable = {
+					GROUP = academic
+				}
+				has_variable = can_go_academic
 			}
-			flag:economic_idea = {
-				idea_cost_trigger = yes
-				has_variable = can_go_economic
+			flag:financial_idea = {
+				ve_idea_affordable = {
+					GROUP = financial
+				}
+				has_variable = can_go_financial
 			}
-			flag:administrative_idea = {
-				idea_cost_trigger = yes
-				has_variable = can_go_administrative
+			flag:infrastructure_idea = {
+				ve_idea_affordable = {
+					GROUP = infrastructure
+				}
+				has_variable = can_go_infrastructure
 			}
-			flag:ethnocentrism_idea = {
-				idea_cost_trigger = yes
-				has_variable = can_go_ethnocentrism
+			flag:extraction_idea = {
+				ve_idea_affordable = {
+					GROUP = extraction
+				}
+				has_variable = can_go_extraction
 			}
-			flag:politics_idea = {
-				idea_cost_trigger = yes
-				has_variable = can_go_politics
+			flag:mass_conscription_idea = {
+				ve_idea_affordable = {
+					GROUP = mass_conscription
+				}
+				has_variable = can_go_mass_conscription
+			}
+			flag:war_economy_idea = {
+				ve_idea_affordable = {
+					GROUP = war_economy
+				}
+				has_variable = can_go_war_economy
+			}
+			flag:industrialist_idea = {
+				ve_idea_affordable = {
+					GROUP = industrialist
+				}
+				has_variable = can_go_industrialist
+			}
+			flag:bureaucratic_idea = {
+				ve_idea_affordable = {
+					GROUP = bureaucratic
+				}
+				has_variable = can_go_bureaucratic
+			}
+			flag:nationalist_idea = {
+				ve_idea_affordable = {
+					GROUP = nationalist
+				}
+				has_variable = can_go_nationalist
+			}
+			flag:parliamentary_idea = {
+				ve_idea_affordable = {
+					GROUP = parliamentary
+				}
+				has_variable = can_go_parliamentary
 			}
 			flag:diplomatic_idea = {
-				idea_cost_trigger = yes
+				ve_idea_affordable = {
+					GROUP = diplomatic
+				}
 				has_variable = can_go_diplomatic
 			}
-			flag:trade_idea = {
-				idea_cost_trigger = yes
-				has_variable = can_go_trade
+			flag:mercantile_idea = {
+				ve_idea_affordable = {
+					GROUP = mercantile
+				}
+				has_variable = can_go_mercantile
 			}
-			flag:qualification_idea = {
-				idea_cost_trigger = yes
-				has_variable = can_go_qualification
+			flag:welfare_idea = {
+				ve_idea_affordable = {
+					GROUP = welfare
+				}
+				has_variable = can_go_welfare
 			}
-			flag:humanist_idea = {
-				idea_cost_trigger = yes
-				has_variable = can_go_humanist
+			flag:reformist_idea = {
+				ve_idea_affordable = {
+					GROUP = reformist
+				}
+				has_variable = can_go_reformist
 			}
-			flag:syndicalism_idea = {
-				idea_cost_trigger = yes
-				has_variable = can_go_syndicalism
+			flag:labour_idea = {
+				ve_idea_affordable = {
+					GROUP = labour
+				}
+				has_variable = can_go_labour
 			}
 			flag:offensive_idea = {
-				idea_cost_trigger = yes
+				ve_idea_affordable = {
+					GROUP = offensive
+				}
 				has_variable = can_go_offensive
 			}
 			flag:defensive_idea = {
-				idea_cost_trigger = yes
+				ve_idea_affordable = {
+					GROUP = defensive
+				}
 				has_variable = can_go_defensive
 			}
 			flag:naval_idea = {
-				idea_cost_trigger = yes
+				ve_idea_affordable = {
+					GROUP = naval
+				}
 				has_variable = can_go_naval
 			}
-			flag:militarization_idea = {
-				idea_cost_trigger = yes
-				has_variable = can_go_militarization
+			flag:professional_army_idea = {
+				ve_idea_affordable = {
+					GROUP = professional_army
+				}
+				has_variable = can_go_professional_army
 			}
-			flag:imperialist_idea = {
-				idea_cost_trigger = yes
-				has_variable = can_go_imperialist
+			flag:colonial_idea = {
+				ve_idea_affordable = {
+					GROUP = colonial
+				}
+				has_variable = can_go_colonial
 			}
 		}
 	}
 	effect = {
 		switch = {
 			trigger = scope:idea_group
-			flag:innovative_idea = {
-				boost_inno_idea_effect = yes
+			flag:academic_idea = {
+				boost_academic_idea_effect = yes
 				national_idea_mdf = yes
 			}
-			flag:economic_idea = {
-				boost_eco_idea_effect = yes
+			flag:financial_idea = {
+				boost_financial_idea_effect = yes
 				national_idea_mdf = yes
 			}
-			flag:administrative_idea = {
-				boost_adm_idea_effect = yes
+			flag:infrastructure_idea = {
+				boost_infrastructure_idea_effect = yes
 				national_idea_mdf = yes
 			}
-			flag:ethnocentrism_idea = {
-				boost_ethno_idea_effect = yes
+			flag:extraction_idea = {
+				boost_extraction_idea_effect = yes
 				national_idea_mdf = yes
 			}
-			flag:politics_idea = {
-				boost_pol_idea_effect = yes
+			flag:mass_conscription_idea = {
+				boost_mass_conscription_idea_effect = yes
+				national_idea_mdf = yes
+			}
+			flag:war_economy_idea = {
+				boost_war_economy_idea_effect = yes
+				national_idea_mdf = yes
+			}
+			flag:industrialist_idea = {
+				boost_industrialist_idea_effect = yes
+				national_idea_mdf = yes
+			}
+			flag:bureaucratic_idea = {
+				boost_bureaucratic_idea_effect = yes
+				national_idea_mdf = yes
+			}
+			flag:nationalist_idea = {
+				boost_nationalist_idea_effect = yes
+				national_idea_mdf = yes
+			}
+			flag:parliamentary_idea = {
+				boost_parliamentary_idea_effect = yes
 				national_idea_mdf = yes
 			}
 			flag:diplomatic_idea = {
-				boost_dip_idea_effect = yes
+				boost_diplomatic_idea_effect = yes
 				national_idea_mdf = yes
 			}
-			flag:trade_idea = {
-				boost_trade_idea_effect = yes
+			flag:mercantile_idea = {
+				boost_mercantile_idea_effect = yes
 				national_idea_mdf = yes
 			}
-			flag:qualification_idea = {
-				boost_quali_idea_effect = yes
+			flag:welfare_idea = {
+				boost_welfare_idea_effect = yes
 				national_idea_mdf = yes
 			}
-			flag:humanist_idea = {
-				boost_hum_idea_effect = yes
+			flag:reformist_idea = {
+				boost_reformist_idea_effect = yes
 				national_idea_mdf = yes
 			}
-			flag:syndicalism_idea = {
-				boost_synd_idea_effect = yes
+			flag:labour_idea = {
+				boost_labour_idea_effect = yes
 				national_idea_mdf = yes
 			}
 			flag:offensive_idea = {
-				boost_off_idea_effect = yes
+				boost_offensive_idea_effect = yes
 				national_idea_mdf = yes
 			}
 			flag:defensive_idea = {
-				boost_def_idea_effect = yes
+				boost_defensive_idea_effect = yes
 				national_idea_mdf = yes
 			}
 			flag:naval_idea = {
-				boost_nav_idea_effect = yes
+				boost_naval_idea_effect = yes
 				national_idea_mdf = yes
 			}
-			flag:militarization_idea = {
-				boost_mil_idea_effect = yes
+			flag:professional_army_idea = {
+				boost_professional_army_idea_effect = yes
 				national_idea_mdf = yes
 			}
-			flag:imperialist_idea = {
-				boost_imp_idea_effect = yes
+			flag:colonial_idea = {
+				boost_colonial_idea_effect = yes
 				national_idea_mdf = yes
 			}
 		}
@@ -2054,29 +2874,63 @@ embrace_idea_group = {
 	is_shown = {
 		switch = {
 			trigger = scope:idea_group
-			flag:innovative_idea = {
+			flag:academic_idea = {
 				NOT = {
-					has_variable = can_go_innovative
+					has_variable = can_go_academic
 				}
 			}
-			flag:economic_idea = {
+			flag:financial_idea = {
 				NOT = {
-					has_variable = can_go_economic
+					has_variable = can_go_financial
 				}
 			}
-			flag:administrative_idea = {
+			flag:infrastructure_idea = {
 				NOT = {
-					has_variable = can_go_administrative
+					has_variable = can_go_infrastructure
 				}
 			}
-			flag:ethnocentrism_idea = {
+			flag:extraction_idea = {
 				NOT = {
-					has_variable = can_go_ethnocentrism
+					has_variable = can_go_extraction
 				}
 			}
-			flag:politics_idea = {
+			flag:mass_conscription_idea = {
+				has_global_variable = age_2_started_trigger
 				NOT = {
-					has_variable = can_go_politics
+					has_variable = can_go_mass_conscription
+				}
+				NOT = {
+					has_variable = can_go_professional_army
+				}
+			}
+			flag:war_economy_idea = {
+				has_global_variable = age_3_started_trigger
+				NOT = {
+					has_variable = can_go_war_economy
+				}
+			}
+			flag:industrialist_idea = {
+				NOT = {
+					has_variable = can_go_industrialist
+				}
+			}
+			flag:bureaucratic_idea = {
+				NOT = {
+					has_variable = can_go_bureaucratic
+				}
+			}
+			flag:nationalist_idea = {
+				has_global_variable = age_2_started_trigger
+				NOT = {
+					has_variable = can_go_nationalist
+				}
+				NOT = {
+					has_variable = can_go_reformist
+				}
+			}
+			flag:parliamentary_idea = {
+				NOT = {
+					has_variable = can_go_parliamentary
 				}
 			}
 			flag:diplomatic_idea = {
@@ -2084,24 +2938,30 @@ embrace_idea_group = {
 					has_variable = can_go_diplomatic
 				}
 			}
-			flag:trade_idea = {
+			flag:mercantile_idea = {
 				NOT = {
-					has_variable = can_go_trade
+					has_variable = can_go_mercantile
 				}
 			}
-			flag:qualification_idea = {
+			flag:welfare_idea = {
+				has_global_variable = age_2_started_trigger
 				NOT = {
-					has_variable = can_go_qualification
+					has_variable = can_go_welfare
 				}
 			}
-			flag:humanist_idea = {
+			flag:reformist_idea = {
+				has_global_variable = age_2_started_trigger
 				NOT = {
-					has_variable = can_go_humanist
+					has_variable = can_go_reformist
+				}
+				NOT = {
+					has_variable = can_go_nationalist
 				}
 			}
-			flag:syndicalism_idea = {
+			flag:labour_idea = {
+				has_global_variable = age_2_started_trigger
 				NOT = {
-					has_variable = can_go_syndicalism
+					has_variable = can_go_labour
 				}
 			}
 			flag:offensive_idea = {
@@ -2119,14 +2979,18 @@ embrace_idea_group = {
 					has_variable = can_go_naval
 				}
 			}
-			flag:militarization_idea = {
+			flag:professional_army_idea = {
 				NOT = {
-					has_variable = can_go_militarization
+					has_variable = can_go_professional_army
+				}
+				NOT = {
+					has_variable = can_go_mass_conscription
 				}
 			}
-			flag:imperialist_idea = {
+			flag:colonial_idea = {
+				has_global_variable = age_2_started_trigger
 				NOT = {
-					has_variable = can_go_imperialist
+					has_variable = can_go_colonial
 				}
 			}
 		}
@@ -2134,7 +2998,7 @@ embrace_idea_group = {
 	effect = {
 		switch = {
 			trigger = scope:idea_group
-			flag:innovative_idea = {
+			flag:academic_idea = {
 				change_variable = {
 					name = idea_group_unlocked
 					add = 1
@@ -2142,17 +3006,17 @@ embrace_idea_group = {
 				if = {
 					limit = {
 						NOT = {
-							has_variable = can_go_innovative
+							has_variable = can_go_academic
 						}
 					}
-					set_variable = can_go_innovative
+					set_variable = can_go_academic
 				}
 				set_variable = {
-					name = innovative_idea
+					name = academic_idea
 					value = 0
 				}
 			}
-			flag:economic_idea = {
+			flag:financial_idea = {
 				change_variable = {
 					name = idea_group_unlocked
 					add = 1
@@ -2160,17 +3024,17 @@ embrace_idea_group = {
 				if = {
 					limit = {
 						NOT = {
-							has_variable = can_go_economic
+							has_variable = can_go_financial
 						}
 					}
-					set_variable = can_go_economic
+					set_variable = can_go_financial
 				}
 				set_variable = {
-					name = economic_idea
+					name = financial_idea
 					value = 0
 				}
 			}
-			flag:administrative_idea = {
+			flag:infrastructure_idea = {
 				change_variable = {
 					name = idea_group_unlocked
 					add = 1
@@ -2178,17 +3042,17 @@ embrace_idea_group = {
 				if = {
 					limit = {
 						NOT = {
-							has_variable = can_go_administrative
+							has_variable = can_go_infrastructure
 						}
 					}
-					set_variable = can_go_administrative
+					set_variable = can_go_infrastructure
 				}
 				set_variable = {
-					name = administrative_idea
+					name = infrastructure_idea
 					value = 0
 				}
 			}
-			flag:ethnocentrism_idea = {
+			flag:extraction_idea = {
 				change_variable = {
 					name = idea_group_unlocked
 					add = 1
@@ -2196,17 +3060,17 @@ embrace_idea_group = {
 				if = {
 					limit = {
 						NOT = {
-							has_variable = can_go_ethnocentrism
+							has_variable = can_go_extraction
 						}
 					}
-					set_variable = can_go_ethnocentrism
+					set_variable = can_go_extraction
 				}
 				set_variable = {
-					name = ethnocentrism_idea
+					name = extraction_idea
 					value = 0
 				}
 			}
-			flag:politics_idea = {
+			flag:mass_conscription_idea = {
 				change_variable = {
 					name = idea_group_unlocked
 					add = 1
@@ -2214,13 +3078,103 @@ embrace_idea_group = {
 				if = {
 					limit = {
 						NOT = {
-							has_variable = can_go_politics
+							has_variable = can_go_mass_conscription
 						}
 					}
-					set_variable = can_go_politics
+					set_variable = can_go_mass_conscription
 				}
 				set_variable = {
-					name = politics_idea
+					name = mass_conscription_idea
+					value = 0
+				}
+			}
+			flag:war_economy_idea = {
+				change_variable = {
+					name = idea_group_unlocked
+					add = 1
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_variable = can_go_war_economy
+						}
+					}
+					set_variable = can_go_war_economy
+				}
+				set_variable = {
+					name = war_economy_idea
+					value = 0
+				}
+			}
+			flag:industrialist_idea = {
+				change_variable = {
+					name = idea_group_unlocked
+					add = 1
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_variable = can_go_industrialist
+						}
+					}
+					set_variable = can_go_industrialist
+				}
+				set_variable = {
+					name = industrialist_idea
+					value = 0
+				}
+			}
+			flag:bureaucratic_idea = {
+				change_variable = {
+					name = idea_group_unlocked
+					add = 1
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_variable = can_go_bureaucratic
+						}
+					}
+					set_variable = can_go_bureaucratic
+				}
+				set_variable = {
+					name = bureaucratic_idea
+					value = 0
+				}
+			}
+			flag:nationalist_idea = {
+				change_variable = {
+					name = idea_group_unlocked
+					add = 1
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_variable = can_go_nationalist
+						}
+					}
+					set_variable = can_go_nationalist
+				}
+				set_variable = {
+					name = nationalist_idea
+					value = 0
+				}
+			}
+			flag:parliamentary_idea = {
+				change_variable = {
+					name = idea_group_unlocked
+					add = 1
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_variable = can_go_parliamentary
+						}
+					}
+					set_variable = can_go_parliamentary
+				}
+				set_variable = {
+					name = parliamentary_idea
 					value = 0
 				}
 			}
@@ -2242,7 +3196,7 @@ embrace_idea_group = {
 					value = 0
 				}
 			}
-			flag:trade_idea = {
+			flag:mercantile_idea = {
 				change_variable = {
 					name = idea_group_unlocked
 					add = 1
@@ -2250,17 +3204,17 @@ embrace_idea_group = {
 				if = {
 					limit = {
 						NOT = {
-							has_variable = can_go_trade
+							has_variable = can_go_mercantile
 						}
 					}
-					set_variable = can_go_trade
+					set_variable = can_go_mercantile
 				}
 				set_variable = {
-					name = trade_idea
+					name = mercantile_idea
 					value = 0
 				}
 			}
-			flag:qualification_idea = {
+			flag:welfare_idea = {
 				change_variable = {
 					name = idea_group_unlocked
 					add = 1
@@ -2268,17 +3222,17 @@ embrace_idea_group = {
 				if = {
 					limit = {
 						NOT = {
-							has_variable = can_go_qualification
+							has_variable = can_go_welfare
 						}
 					}
-					set_variable = can_go_qualification
+					set_variable = can_go_welfare
 				}
 				set_variable = {
-					name = qualification_idea
+					name = welfare_idea
 					value = 0
 				}
 			}
-			flag:humanist_idea = {
+			flag:reformist_idea = {
 				change_variable = {
 					name = idea_group_unlocked
 					add = 1
@@ -2286,17 +3240,17 @@ embrace_idea_group = {
 				if = {
 					limit = {
 						NOT = {
-							has_variable = can_go_humanist
+							has_variable = can_go_reformist
 						}
 					}
-					set_variable = can_go_humanist
+					set_variable = can_go_reformist
 				}
 				set_variable = {
-					name = humanist_idea
+					name = reformist_idea
 					value = 0
 				}
 			}
-			flag:syndicalism_idea = {
+			flag:labour_idea = {
 				change_variable = {
 					name = idea_group_unlocked
 					add = 1
@@ -2304,13 +3258,13 @@ embrace_idea_group = {
 				if = {
 					limit = {
 						NOT = {
-							has_variable = can_go_syndicalism
+							has_variable = can_go_labour
 						}
 					}
-					set_variable = can_go_syndicalism
+					set_variable = can_go_labour
 				}
 				set_variable = {
-					name = syndicalism_idea
+					name = labour_idea
 					value = 0
 				}
 			}
@@ -2368,7 +3322,7 @@ embrace_idea_group = {
 					value = 0
 				}
 			}
-			flag:militarization_idea = {
+			flag:professional_army_idea = {
 				change_variable = {
 					name = idea_group_unlocked
 					add = 1
@@ -2376,17 +3330,17 @@ embrace_idea_group = {
 				if = {
 					limit = {
 						NOT = {
-							has_variable = can_go_militarization
+							has_variable = can_go_professional_army
 						}
 					}
-					set_variable = can_go_militarization
+					set_variable = can_go_professional_army
 				}
 				set_variable = {
-					name = militarization_idea
+					name = professional_army_idea
 					value = 0
 				}
 			}
-			flag:imperialist_idea = {
+			flag:colonial_idea = {
 				change_variable = {
 					name = idea_group_unlocked
 					add = 1
@@ -2394,13 +3348,13 @@ embrace_idea_group = {
 				if = {
 					limit = {
 						NOT = {
-							has_variable = can_go_imperialist
+							has_variable = can_go_colonial
 						}
 					}
-					set_variable = can_go_imperialist
+					set_variable = can_go_colonial
 				}
 				set_variable = {
-					name = imperialist_idea
+					name = colonial_idea
 					value = 0
 				}
 			}
@@ -2475,5 +3429,203 @@ idea_tooltip_7 = {
 	}
 	effect = {
 		idea_7_tt_effects = yes
+	}
+}
+
+
+# Mutually exclusive pairs (Faz 4e). True when the counterpart path was taken
+# and this one was not, so the panel can show 'path closed' instead of a Cancel button.
+ve_idea_group_locked = {
+	scope = country
+	saved_scopes = {
+		idea_group
+	}
+	is_shown = {
+		switch = {
+			trigger = scope:idea_group
+			flag:industrialist_idea = {
+				always = no
+			}
+			flag:mercantile_idea = {
+				always = no
+			}
+			flag:financial_idea = {
+				always = no
+			}
+			flag:infrastructure_idea = {
+				always = no
+			}
+			flag:extraction_idea = {
+				always = no
+			}
+			flag:labour_idea = {
+				always = no
+			}
+			flag:academic_idea = {
+				always = no
+			}
+			flag:bureaucratic_idea = {
+				always = no
+			}
+			flag:parliamentary_idea = {
+				always = no
+			}
+			flag:welfare_idea = {
+				always = no
+			}
+			flag:diplomatic_idea = {
+				always = no
+			}
+			flag:nationalist_idea = {
+				has_variable = can_go_reformist
+				NOT = {
+					has_variable = can_go_nationalist
+				}
+			}
+			flag:reformist_idea = {
+				has_variable = can_go_nationalist
+				NOT = {
+					has_variable = can_go_reformist
+				}
+			}
+			flag:offensive_idea = {
+				always = no
+			}
+			flag:defensive_idea = {
+				always = no
+			}
+			flag:naval_idea = {
+				always = no
+			}
+			flag:professional_army_idea = {
+				has_variable = can_go_mass_conscription
+				NOT = {
+					has_variable = can_go_professional_army
+				}
+			}
+			flag:mass_conscription_idea = {
+				has_variable = can_go_professional_army
+				NOT = {
+					has_variable = can_go_mass_conscription
+				}
+			}
+			flag:colonial_idea = {
+				always = no
+			}
+			flag:war_economy_idea = {
+				always = no
+			}
+		}
+	}
+}
+
+
+# Age gate (Faz 5b). True when this group's age has not begun and the group is not
+# embraced, so the panel can show 'not yet available' instead of a Cancel button.
+# Uses age_N_started_trigger, which is never removed - ve_age_N_started is.
+ve_idea_group_age_locked = {
+	scope = country
+	saved_scopes = {
+		idea_group
+	}
+	is_shown = {
+		switch = {
+			trigger = scope:idea_group
+			flag:industrialist_idea = {
+				always = no
+			}
+			flag:mercantile_idea = {
+				always = no
+			}
+			flag:financial_idea = {
+				always = no
+			}
+			flag:infrastructure_idea = {
+				always = no
+			}
+			flag:extraction_idea = {
+				always = no
+			}
+			flag:labour_idea = {
+				NOT = {
+					has_global_variable = age_2_started_trigger
+				}
+				NOT = {
+					has_variable = can_go_labour
+				}
+			}
+			flag:academic_idea = {
+				always = no
+			}
+			flag:bureaucratic_idea = {
+				always = no
+			}
+			flag:parliamentary_idea = {
+				always = no
+			}
+			flag:welfare_idea = {
+				NOT = {
+					has_global_variable = age_2_started_trigger
+				}
+				NOT = {
+					has_variable = can_go_welfare
+				}
+			}
+			flag:diplomatic_idea = {
+				always = no
+			}
+			flag:nationalist_idea = {
+				NOT = {
+					has_global_variable = age_2_started_trigger
+				}
+				NOT = {
+					has_variable = can_go_nationalist
+				}
+			}
+			flag:reformist_idea = {
+				NOT = {
+					has_global_variable = age_2_started_trigger
+				}
+				NOT = {
+					has_variable = can_go_reformist
+				}
+			}
+			flag:offensive_idea = {
+				always = no
+			}
+			flag:defensive_idea = {
+				always = no
+			}
+			flag:naval_idea = {
+				always = no
+			}
+			flag:professional_army_idea = {
+				always = no
+			}
+			flag:mass_conscription_idea = {
+				NOT = {
+					has_global_variable = age_2_started_trigger
+				}
+				NOT = {
+					has_variable = can_go_mass_conscription
+				}
+			}
+			flag:colonial_idea = {
+				NOT = {
+					has_global_variable = age_2_started_trigger
+				}
+				NOT = {
+					has_variable = can_go_colonial
+				}
+			}
+			flag:war_economy_idea = {
+				NOT = {
+					has_global_variable = age_3_started_trigger
+				}
+				NOT = {
+					has_variable = can_go_war_economy
+				}
+			}
+		}
 	}
 }

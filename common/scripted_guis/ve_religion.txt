@@ -2032,7 +2032,7 @@ ve_send_missionary = {
 		set_variable = selected_state_religion
 		if = {
 			limit = {
-				has_variable = ethnocentrism_idea_5_var
+				has_variable = nationalist_idea_5_var
 			}
 			add_modifier = {
 				name = ve_missionary_mdf
@@ -2102,7 +2102,7 @@ ve_send_diffusionist = {
 		set_variable = selected_state_culture
 		if = {
 			limit = {
-				has_variable = ethnocentrism_idea_5_var
+				has_variable = nationalist_idea_5_var
 			}
 			add_modifier = {
 				name = ve_diffusionist_mdf

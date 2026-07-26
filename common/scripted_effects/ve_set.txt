@@ -361,55 +361,110 @@ set_ideas = {
 	if = {
 		limit = {
 			NOT = {
-				has_variable = innovative_idea
+				has_variable = academic_idea
 			}
 		}
 		set_variable = {
-			name = innovative_idea
+			name = academic_idea
 			value = 0
 		}
 	}
 	if = {
 		limit = {
 			NOT = {
-				has_variable = economic_idea
+				has_variable = financial_idea
 			}
 		}
 		set_variable = {
-			name = economic_idea
+			name = financial_idea
 			value = 0
 		}
 	}
 	if = {
 		limit = {
 			NOT = {
-				has_variable = administrative_idea
+				has_variable = infrastructure_idea
 			}
 		}
 		set_variable = {
-			name = administrative_idea
+			name = infrastructure_idea
 			value = 0
 		}
 	}
 	if = {
 		limit = {
 			NOT = {
-				has_variable = ethnocentrism_idea
+				has_variable = extraction_idea
 			}
 		}
 		set_variable = {
-			name = ethnocentrism_idea
+			name = extraction_idea
 			value = 0
 		}
 	}
 	if = {
 		limit = {
 			NOT = {
-				has_variable = politics_idea
+				has_variable = mass_conscription_idea
 			}
 		}
 		set_variable = {
-			name = politics_idea
+			name = mass_conscription_idea
+			value = 0
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_variable = war_economy_idea
+			}
+		}
+		set_variable = {
+			name = war_economy_idea
+			value = 0
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_variable = industrialist_idea
+			}
+		}
+		set_variable = {
+			name = industrialist_idea
+			value = 0
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_variable = bureaucratic_idea
+			}
+		}
+		set_variable = {
+			name = bureaucratic_idea
+			value = 0
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_variable = nationalist_idea
+			}
+		}
+		set_variable = {
+			name = nationalist_idea
+			value = 0
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_variable = parliamentary_idea
+			}
+		}
+		set_variable = {
+			name = parliamentary_idea
 			value = 0
 		}
 	}
@@ -427,44 +482,44 @@ set_ideas = {
 	if = {
 		limit = {
 			NOT = {
-				has_variable = trade_idea
+				has_variable = mercantile_idea
 			}
 		}
 		set_variable = {
-			name = trade_idea
+			name = mercantile_idea
 			value = 0
 		}
 	}
 	if = {
 		limit = {
 			NOT = {
-				has_variable = qualification_idea
+				has_variable = welfare_idea
 			}
 		}
 		set_variable = {
-			name = qualification_idea
+			name = welfare_idea
 			value = 0
 		}
 	}
 	if = {
 		limit = {
 			NOT = {
-				has_variable = humanist_idea
+				has_variable = reformist_idea
 			}
 		}
 		set_variable = {
-			name = humanist_idea
+			name = reformist_idea
 			value = 0
 		}
 	}
 	if = {
 		limit = {
 			NOT = {
-				has_variable = syndicalism_idea
+				has_variable = labour_idea
 			}
 		}
 		set_variable = {
-			name = syndicalism_idea
+			name = labour_idea
 			value = 0
 		}
 	}
@@ -504,43 +559,82 @@ set_ideas = {
 	if = {
 		limit = {
 			NOT = {
-				has_variable = militarization_idea
+				has_variable = professional_army_idea
 			}
 		}
 		set_variable = {
-			name = militarization_idea
+			name = professional_army_idea
 			value = 0
 		}
 	}
 	if = {
 		limit = {
 			NOT = {
-				has_variable = imperialist_idea
+				has_variable = colonial_idea
 			}
 		}
 		set_variable = {
-			name = imperialist_idea
+			name = colonial_idea
 			value = 0
 		}
 	}
 }
 
 set_national_idea = {
+	# Each tag is guarded with exists: SGF, NGF and PRU are not present when this runs during
+	# setup, and comparing against a country that does not exist raises
+	# "Invalid right side during comparison 'c'". Same pattern the rest of this file uses.
 	if = {
 		limit = {
 			NOR = {
-				this = c:GBR
-				this = c:FRA
-				this = c:GER
-				this = c:SGF
-				this = c:NGF
-				this = c:PRU
-				this = c:AUS
-				this = c:RUS
-				this = c:TUR
-				this = c:CHI
-				this = c:JAP
-				this = c:USA
+				AND = {
+					exists = c:GBR
+					this = c:GBR
+				}
+				AND = {
+					exists = c:FRA
+					this = c:FRA
+				}
+				AND = {
+					exists = c:GER
+					this = c:GER
+				}
+				AND = {
+					exists = c:SGF
+					this = c:SGF
+				}
+				AND = {
+					exists = c:NGF
+					this = c:NGF
+				}
+				AND = {
+					exists = c:PRU
+					this = c:PRU
+				}
+				AND = {
+					exists = c:AUS
+					this = c:AUS
+				}
+				AND = {
+					exists = c:RUS
+					this = c:RUS
+				}
+				AND = {
+					exists = c:TUR
+					this = c:TUR
+				}
+				AND = {
+					exists = c:CHI
+					this = c:CHI
+				}
+				AND = {
+					exists = c:JAP
+					this = c:JAP
+				}
+				AND = {
+					exists = c:USA
+					this = c:USA
+				}
 			}
 		}
 		set_variable = generic_idea_country

@@ -1,6 +1,6 @@
 ﻿GLOBAL = {
 	random_country = {
-		set_global_variable = ve_age_1_started		#Victorian Age - 1936
+		set_global_variable = ve_age_1_started		#Age of Victoria - until 1871 (see dev.5 / dev.6 for age transitions)
 		set_global_variable = {
 			name = idea_point_value_pool
 			value = 0

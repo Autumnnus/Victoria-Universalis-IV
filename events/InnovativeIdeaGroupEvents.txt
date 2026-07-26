@@ -15,7 +15,7 @@ innovative_flavor.1 = {
 		months = normal_modifier_time
 	}
 	trigger = {
-		has_variable = can_go_innovative
+		has_variable = can_go_academic
 		root.infamy >= infamy_threshold:infamous
 		NOT = {
 			has_modifier = ve_bad_reputation
@@ -46,7 +46,7 @@ innovative_flavor.2 = {
 		months = normal_modifier_time
 	}
 	trigger = {
-		has_variable = can_go_innovative
+		has_variable = can_go_academic
 		root.infamy < infamy_threshold:infamous
 		NOT = {
 			has_modifier = ve_new_thinkers
@@ -77,7 +77,7 @@ innovative_flavor.3 = {
 		months = normal_modifier_time
 	}
 	trigger = {
-		has_variable = can_go_innovative
+		has_variable = can_go_academic
 		NOT = {
 			has_modifier = ve_new_thinkers
 		}
@@ -107,7 +107,7 @@ innovative_flavor.4 = {
 		months = normal_modifier_time
 	}
 	trigger = {
-		has_variable = can_go_innovative
+		has_variable = can_go_academic
 		year >= 1845
 		market_capital.market = {
 			mg:fine_art = {
@@ -143,7 +143,7 @@ innovative_flavor.5 = {
 		months = normal_modifier_time
 	}
 	trigger = {
-		has_variable = can_go_innovative
+		has_variable = can_go_academic
 		NOR = {
 			has_modifier = ve_focus_production
 			has_modifier = ve_focus_society
@@ -189,7 +189,7 @@ innovative_flavor.6 = {
 		months = normal_modifier_time
 	}
 	trigger = {
-		has_variable = can_go_innovative
+		has_variable = can_go_academic
 		ig:ig_landowners = {
 			is_powerful = yes
 		}
@@ -229,7 +229,7 @@ innovative_flavor.7 = {
 		months = normal_modifier_time
 	}
 	trigger = {
-		has_variable = can_go_innovative
+		has_variable = can_go_academic
 	}
 	option = {
 		name = innovative_flavor.1.a
@@ -260,7 +260,7 @@ innovative_flavor.8 = {
 		months = normal_modifier_time
 	}
 	trigger = {
-		has_variable = can_go_innovative
+		has_variable = can_go_academic
 		NOT = {
 			has_modifier = ve_military_theory
 		}

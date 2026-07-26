@@ -5,10 +5,10 @@
  ve_call_all_missionaries:0 "Call All Missionaries"
  ve_aspects:0 "Aspects"
  ve_piety_tt:0 "#tooltippable_concept Monthly Piety: \n#Y Base: +4 \nIf Theocracy law is activated: +2 \nIf State Religion law is activated: +2 \nIf Freedom of Consience law is activated: +1 \nIf religion is Catholic or Protestant and Cologne Cathedral is owned: +2 \nIf religion is Sunni or Shia and Kaaba is owned: +2 \nIf religion is Hindu and Ayodhya is owned: +2 \nIf religion is Sikh and have Gomateshwara Statue: +2"
- ve_missionary_tt:0 "#tooltippable_concept Missionaries: \n#Y Base: +1 \nIf State Religion law is activated: +2 \nIf Freedom of Consience law is activated: +1 \nIf Ethnocentrism Idea Completed: +1 \n#negative_value If Total Separation law is activated, the missionary mechanic will be disabled."
+ ve_missionary_tt:0 "#tooltippable_concept Missionaries: \n#Y Base: +1 \nIf State Religion law is activated: +2 \nIf Freedom of Consience law is activated: +1 \nIf Nationalist Idea Completed: +1 \n#negative_value If Total Separation law is activated, the missionary mechanic will be disabled."
  ve_holy_site_piety_tt:0 "#positive_value Monthly +2 Piety"
  ve_missionary_power_txt:0 "Missionary Power"
- ve_missionary_power_tt:0 "#tooltippable_concept Missionary Power: \n#Y Base: 5% \nIf State Religion law is activated: 0.7% \nIf Freedom of Consience law is activated: 0.3% \nIf Theocracy is activated: 0.7% \nIf Ethnocentrism Idea V Completed: 0.7% \nIf Religious Schools law is activated: 0.7% \nEvery conversion modifier of the mod will be transferred to Missionary Power."
+ ve_missionary_power_tt:0 "#tooltippable_concept Missionary Power: \n#Y Base: 5% \nIf State Religion law is activated: 0.7% \nIf Freedom of Consience law is activated: 0.3% \nIf Theocracy is activated: 0.7% \nIf Nationalist Idea V Completed: 0.7% \nIf Religious Schools law is activated: 0.7% \nEvery conversion modifier of the mod will be transferred to Missionary Power."
  ve_max_missionary_power_tt:0 "#tooltippable_concept Maximum Missionary Power: #Y [GetPlayer.MakeScope.ScriptValue('max_missionary_power_250k')|%2] \n#lore It can be different for each country and religion."
 
 

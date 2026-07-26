@@ -252,8 +252,43 @@ splendor_cost_trigger = {
 	splender_points_value >= 800
 }
 idea_cost_trigger = {
-	idea_point_value >= 300
+	idea_point_value >= 200
 }
 culture_cost_trigger = {
 	culture_reform_point_value >= 750
+}
+
+# Faz 5c - can this country afford the NEXT idea of $GROUP$?
+# var:$GROUP$_idea holds how many are already bought, so level N+1 costs IDEA_COST[N+1].
+ve_idea_affordable = {
+	OR = {
+		AND = {
+			var:$GROUP$_idea == 0
+			idea_point_value >= 200
+		}
+		AND = {
+			var:$GROUP$_idea == 1
+			idea_point_value >= 250
+		}
+		AND = {
+			var:$GROUP$_idea == 2
+			idea_point_value >= 300
+		}
+		AND = {
+			var:$GROUP$_idea == 3
+			idea_point_value >= 375
+		}
+		AND = {
+			var:$GROUP$_idea == 4
+			idea_point_value >= 450
+		}
+		AND = {
+			var:$GROUP$_idea == 5
+			idea_point_value >= 550
+		}
+		AND = {
+			var:$GROUP$_idea == 6
+			idea_point_value >= 675
+		}
+	}
 }

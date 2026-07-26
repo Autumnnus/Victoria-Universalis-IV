@@ -185,6 +185,22 @@ idea_cost = {
 	}
 }
 
+# Shared tail for every group idea purchase in ve_idea_effects.txt.
+# Credits progress toward the national idea unlocks, then charges the idea point cost.
+# Called once per branch of every boost_*_idea_effect; scope = country.
+ve_idea_purchase_common = {
+	if = {
+		limit = {
+			var:national_idea_pool < 200
+		}
+		change_variable = {
+			name = national_idea_pool
+			add = 1
+		}
+	}
+	idea_cost = yes
+}
+
 splendor_cost = {
 	change_variable = {
 		name = ve_splender_points
@@ -670,7 +686,7 @@ ve_law_change_effects = {
 	if = {
 		limit = {
 			NOT = {
-				has_variable = ethnocentrism_idea_5_var
+				has_variable = nationalist_idea_5_var
 			}
 		}
 		if = {
@@ -775,7 +791,7 @@ ve_law_change_effects = {
 	}
 	else_if = {
 		limit = {
-			has_variable = ethnocentrism_idea_5_var
+			has_variable = nationalist_idea_5_var
 		}
 		if = {
 			limit = {
@@ -878,3 +894,119 @@ ve_law_change_effects = {
 		}
 	}
 }
+
+# Faz 5c - tiered cost. One per idea level; called from the matching branch of
+# boost_<group>_idea_effect, which is the only place that knows the level.
+# Credits progress toward the national idea unlocks, then charges that level's cost.
+ve_idea_purchase_1 = {
+	if = {
+		limit = {
+			var:national_idea_pool < 200
+		}
+		change_variable = {
+			name = national_idea_pool
+			add = 1
+		}
+	}
+	change_variable = {
+		name = idea_point_pool
+		subtract = 200
+	}
+}
+
+ve_idea_purchase_2 = {
+	if = {
+		limit = {
+			var:national_idea_pool < 200
+		}
+		change_variable = {
+			name = national_idea_pool
+			add = 1
+		}
+	}
+	change_variable = {
+		name = idea_point_pool
+		subtract = 250
+	}
+}
+
+ve_idea_purchase_3 = {
+	if = {
+		limit = {
+			var:national_idea_pool < 200
+		}
+		change_variable = {
+			name = national_idea_pool
+			add = 1
+		}
+	}
+	change_variable = {
+		name = idea_point_pool
+		subtract = 300
+	}
+}
+
+ve_idea_purchase_4 = {
+	if = {
+		limit = {
+			var:national_idea_pool < 200
+		}
+		change_variable = {
+			name = national_idea_pool
+			add = 1
+		}
+	}
+	change_variable = {
+		name = idea_point_pool
+		subtract = 375
+	}
+}
+
+ve_idea_purchase_5 = {
+	if = {
+		limit = {
+			var:national_idea_pool < 200
+		}
+		change_variable = {
+			name = national_idea_pool
+			add = 1
+		}
+	}
+	change_variable = {
+		name = idea_point_pool
+		subtract = 450
+	}
+}
+
+ve_idea_purchase_6 = {
+	if = {
+		limit = {
+			var:national_idea_pool < 200
+		}
+		change_variable = {
+			name = national_idea_pool
+			add = 1
+		}
+	}
+	change_variable = {
+		name = idea_point_pool
+		subtract = 550
+	}
+}
+
+ve_idea_purchase_7 = {
+	if = {
+		limit = {
+			var:national_idea_pool < 200
+		}
+		change_variable = {
+			name = national_idea_pool
+			add = 1
+		}
+	}
+	change_variable = {
+		name = idea_point_pool
+		subtract = 675
+	}
+}
+
