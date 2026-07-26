@@ -35,8 +35,7 @@ ve_weak_bureaucracy = {
 
 ve_support_new_model_bureaucracy = {
 	icon = gfx/interface/icon_splendor_tiny.dds
-	state_pop_support_law_appointed_bureaucrats_mult = 0.25
-	state_pop_support_law_elected_bureaucrats_mult = 0.25
+	country_bureaucracy_add = 200
 }
 
 ve_military_theory = {
@@ -51,7 +50,7 @@ ve_economy_improvements = {
 
 ve_inefficient_production = {
 	icon = gfx/interface/icon_splendor_tiny.dds
-	building_production_mult = -0.2
+	building_throughput_add = -0.2
 }
 
 ve_successful_bureaucracy = {

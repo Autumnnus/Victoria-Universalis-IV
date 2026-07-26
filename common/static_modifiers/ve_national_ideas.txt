@@ -1,11 +1,11 @@
 gbr_idea_tradition_1 = {
 	icon = gfx/interface/intelligensia.dds
-	unit_navy_offense_add = 7
+	ship_accuracy_add = 7
 }
 
 gbr_idea_tradition_2 = {
 	icon = gfx/interface/intelligensia.dds
-	unit_advancement_speed_mult = 0.1
+	character_advancement_speed_mult = 0.1
 }
 
 gbr_idea_bonus = {
@@ -100,7 +100,6 @@ fra_idea_6 = {
 
 fra_idea_7 = {
 	icon = gfx/interface/intelligensia.dds
-	country_max_declared_interests_mult = 0.25
 }
 
 ger_idea_tradition_1 = {
@@ -178,7 +177,6 @@ aus_idea_1 = {
 aus_idea_2 = {
 	icon = gfx/interface/intelligensia.dds
 	country_influence_add = 200
-	country_max_declared_interests_add = 1
 }
 
 aus_idea_3 = {
@@ -265,7 +263,7 @@ rus_idea_7 = {
 
 tur_idea_tradition_1 = {
 	icon = gfx/interface/intelligensia.dds
-	country_law_enactment_time_mult = -0.1
+	country_law_enactment_speed_mult = 0.1
 }
 
 tur_idea_tradition_2 = {
@@ -486,7 +484,7 @@ generic_idea_tradition_1 = {
 
 generic_idea_tradition_2 = {
 	icon = gfx/interface/intelligensia.dds
-	political_movement_radicalism_mult = -0.1
+	political_movement_radicalism_add = -0.1
 }
 
 generic_idea_bonus = {
@@ -523,10 +521,11 @@ generic_idea_5 = {
 generic_idea_6 = {
 	icon = gfx/interface/intelligensia.dds
 	unit_offense_water_add = 7
-	unit_navy_offense_add = 7
+	ship_accuracy_add = 7
 }
 
 generic_idea_7 = {
 	icon = gfx/interface/intelligensia.dds
 	battle_casualties_mult = -0.1
 }
+

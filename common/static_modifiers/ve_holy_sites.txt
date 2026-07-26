@@ -146,7 +146,7 @@ dwarka_hs_mdf = {
 
 harmandir_sahib_hs_mdf = {
 	icon = gfx/interface/monument.dds
-	political_movement_radicalism_mult = -0.1
+	political_movement_radicalism_add = -0.1
 }
 
 kashi_vishwanath_temple_hs_mdf = {
@@ -168,3 +168,4 @@ gomateshwara_statue_hs_mdf = {
 	icon = gfx/interface/monument.dds
 	#piety
 }
+

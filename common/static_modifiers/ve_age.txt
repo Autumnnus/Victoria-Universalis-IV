@@ -1,7 +1,7 @@
 golden_age_mdf = {
 	icon = gfx/interface/icon_splendor_tiny.dds
 	unit_army_offense_mult = 0.1
-	unit_navy_offense_mult = 0.1
+	ship_accuracy_mult = 0.1
 	building_group_bg_manufacturing_throughput_add = 0.1
 	building_group_bg_mining_throughput_add = 0.1
 	#idea, piety ve kültür cost indirimi
@@ -24,7 +24,7 @@ age_1_bonus_3 = {
 
 age_1_bonus_4 = {
 	icon = gfx/interface/icon_splendor_tiny.dds
-	country_max_declared_interests_add = 2
+	country_influence_mult = 0.1
 }
 
 age_1_bonus_5 = {
@@ -44,7 +44,7 @@ age_1_bonus_7 = {
 
 age_1_bonus_8 = {
 	icon = gfx/interface/icon_splendor_tiny.dds
-	country_convoys_capacity_mult = 0.25
+	ship_supply_capacity_mult = 0.25
 }
 
 age_1_bonus_9 = {
@@ -166,12 +166,13 @@ age_3_bonus_8 = {
 
 age_3_bonus_9 = {
 	icon = gfx/interface/icon_splendor_tiny.dds
-	military_formation_movement_speed_mult = 0.15
+	military_formation_army_movement_speed_mult = 0.15
+	military_formation_fleet_movement_speed_mult = 0.15
 }
 
 age_3_bonus_10 = {
 	icon = gfx/interface/icon_splendor_tiny.dds
-	country_ignores_landing_craft_penalty_bool = yes
+	ship_naval_invasion_efficiency_mult = 0.25
 	unit_offense_water_add = 10
 }
 

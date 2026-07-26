@@ -89,7 +89,7 @@
 			value = flag:humanist_idea
 		}
 	}
-	s:STATE_ANDALUSIA = {
+	s:STATE_EAST_ANGOLA = {
 		add_to_global_variable_list = {
 			name = dip_ideas
 			target = this
