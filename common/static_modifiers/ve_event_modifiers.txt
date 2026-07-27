@@ -64,3 +64,9 @@ ve_corruption = {
 	country_bureaucracy_add = -200
 	state_tax_capacity_mult = -0.1
 }
+
+ve_national_insight_implementation_strain = {
+	icon = gfx/interface/intelligensia.dds
+	country_bureaucracy_add = -25
+	country_authority_add = -25
+}

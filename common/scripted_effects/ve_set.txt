@@ -1,27 +1,5 @@
 #This file contains the effects of the mechanics that countries should have at the start of the game and after it starts
-set_missionary_cultural_missionary = {
-	if = {
-		limit = {
-			NOT = {
-				has_variable = avaible_culture_missionaries
-			}
-		}
-		set_variable = {
-			name = avaible_culture_missionaries
-			value = ve_set_citizenship_law_effects
-		}
-	}
-	if = {
-		limit = {
-			NOT = {
-				has_variable = total_culture_missionaries
-			}
-		}
-		set_variable = {
-			name = total_culture_missionaries
-			value = ve_set_citizenship_law_effects
-		}
-	}
+ve_initialize_missionaries = {
 	if = {
 		limit = {
 			NOT = {
@@ -58,17 +36,6 @@ set_point_system = {
 	if = {
 		limit = {
 			NOT = {
-				has_variable = culture_reform_value
-			}
-		}
-		set_variable = {
-			name = culture_reform_value
-			value = 0
-		}
-	}
-	if = {
-		limit = {
-			NOT = {
 				has_variable = culture_reform_point
 			}
 		}
@@ -85,17 +52,6 @@ set_point_system = {
 		}
 		set_variable = {
 			name = piety_bar_point
-			value = 0
-		}
-	}
-	if = {
-		limit = {
-			NOT = {
-				has_variable = selected_reform_value
-			}
-		}
-		set_variable = {
-			name = selected_reform_value
 			value = 0
 		}
 	}
@@ -131,6 +87,26 @@ set_point_system = {
 			name = ve_triggered_objectives
 			value = 0
 		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_variable = ve_age_rewards_purchased
+			}
+		}
+		set_variable = {
+			name = ve_age_rewards_purchased
+			value = ve_current_age_rewards_owned
+		}
+	}
+	if = {
+		limit = {
+			has_variable = clicked_golden_age
+			NOT = {
+				has_variable = ve_golden_age_used
+			}
+		}
+		set_variable = ve_golden_age_used
 	}
 	if = {
 		limit = {
@@ -641,122 +617,6 @@ set_national_idea = {
 	}
 }
 
-religion_passive_bonuses = {
-	if = {
-		limit = {
-			country_has_state_religion = rel:catholic
-		}
-		add_modifier = {
-			name = catholic_pasive_mdf
-			months = -1
-		}
-	}
-	else_if = {
-		limit = {
-			country_has_state_religion = rel:protestant
-		}
-		add_modifier = {
-			name = protestant_pasive_mdf
-			months = -1
-		}
-	}
-	else_if = {
-		limit = {
-			country_has_state_religion = rel:orthodox
-		}
-		add_modifier = {
-			name = orthodox_pasive_mdf
-			months = -1
-		}
-	}
-	else_if = {
-		limit = {
-			country_has_state_religion = rel:oriental_orthodox
-		}
-		add_modifier = {
-			name = coptic_pasive_mdf
-			months = -1
-		}
-	}
-	else_if = {
-		limit = {
-			country_has_state_religion = rel:sunni
-		}
-		add_modifier = {
-			name = sunni_pasive_mdf
-			months = -1
-		}
-	}
-	else_if = {
-		limit = {
-			country_has_state_religion = rel:shiite
-		}
-		add_modifier = {
-			name = shia_pasive_mdf
-			months = -1
-		}
-	}
-	else_if = {
-		limit = {
-			country_has_state_religion = rel:jewish
-		}
-		add_modifier = {
-			name = jewish_pasive_mdf
-			months = -1
-		}
-	}
-	else_if = {
-		limit = {
-			OR = {
-				country_has_state_religion = rel:mahayana
-				country_has_state_religion = rel:gelugpa
-				country_has_state_religion = rel:theravada
-				country_has_state_religion = rel:shinto
-				country_has_state_religion = rel:confucian
-			}
-		}
-		add_modifier = {
-			name = mahayana_pasive_mdf
-			months = -1
-		}
-	}
-	else_if = {
-		limit = {
-			country_has_state_religion = rel:hindu
-		}
-		add_modifier = {
-			name = hindu_pasive_mdf
-			months = -1
-		}
-	}
-	else_if = {
-		limit = {
-			country_has_state_religion = rel:sikh
-		}
-		add_modifier = {
-			name = sikh_pasive_mdf
-			months = -1
-		}
-	}
-	else_if = {
-		limit = {
-			country_has_state_religion = rel:animist
-		}
-		add_modifier = {
-			name = animist_pasive_mdf
-			months = -1
-		}
-	}
-	else_if = {
-		limit = {
-			country_has_state_religion = rel:atheist
-		}
-		add_modifier = {
-			name = atheist_pasive_mdf
-			months = -1
-		}
-	}
-}
 
 national_idea_traditions = {
 	if = {

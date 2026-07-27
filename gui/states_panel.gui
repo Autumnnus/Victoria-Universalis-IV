@@ -1328,28 +1328,28 @@ types state_panel_types
 						vbox = {
 							spacing = 10
 							text_single = {
-								text = "ve_send_cultural_missionary"
-								tooltip = "ve_send_cultural_missionary_tt"
+								text = "ve_targeted_cultural_project_state_action"
+								tooltip = "ve_targeted_cultural_project_state_action_tt"
 								align = center|nobaseline
 							}
 							button = {
 								size = { 100 40 }
-								text = "ve_send"
+								text = "ve_start_cultural_project_button"
 								using = default_button_action
-								tooltip = "[GetScriptedGui('ve_send_diffusionist').BuildTooltip( GuiScope.SetRoot( StatesPanel.GetState.MakeScope ).AddScope('country2',GetPlayer.MakeScope).End )]"
-								onclick = "[GetScriptedGui('ve_send_diffusionist').Execute( GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country2',GetPlayer.MakeScope).End )]"
-								enabled = "[GetScriptedGui('ve_send_diffusionist').IsValid( GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country2',GetPlayer.MakeScope).End )]"
-								visible = "[GetScriptedGui('ve_send_diffusionist').IsShown(GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country2',GetPlayer.MakeScope).End)]"
+								tooltip = "[GetScriptedGui('ve_begin_targeted_cultural_project_state').BuildTooltip( GuiScope.SetRoot( StatesPanel.GetState.MakeScope ).AddScope('country2',GetPlayer.MakeScope).End )]"
+								onclick = "[GetScriptedGui('ve_begin_targeted_cultural_project_state').Execute( GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country2',GetPlayer.MakeScope).End )]"
+								enabled = "[GetScriptedGui('ve_begin_targeted_cultural_project_state').IsValid( GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country2',GetPlayer.MakeScope).End )]"
+								visible = "[GetScriptedGui('ve_begin_targeted_cultural_project_state').IsShown(GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country2',GetPlayer.MakeScope).End)]"
 								using = ui_close
 							}
 							button = {
 								size = { 100 40 }
-								text = "ve_return"
+								text = "ve_cancel_cultural_project_button"
 								using = default_button_action
-								tooltip = "[GetScriptedGui('ve_return_diffusionist').BuildTooltip( GuiScope.SetRoot( StatesPanel.GetState.MakeScope ).AddScope('country4',GetPlayer.MakeScope).End )]"
-								onclick = "[GetScriptedGui('ve_return_diffusionist').Execute( GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country4',GetPlayer.MakeScope).End )]"
-								enabled = "[GetScriptedGui('ve_return_diffusionist').IsValid( GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country4',GetPlayer.MakeScope).End )]"
-								visible = "[GetScriptedGui('ve_return_diffusionist').IsShown(GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country4',GetPlayer.MakeScope).End)]"
+								tooltip = "[GetScriptedGui('ve_cancel_targeted_cultural_project_state').BuildTooltip( GuiScope.SetRoot( StatesPanel.GetState.MakeScope ).AddScope('country4',GetPlayer.MakeScope).End )]"
+								onclick = "[GetScriptedGui('ve_cancel_targeted_cultural_project_state').Execute( GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country4',GetPlayer.MakeScope).End )]"
+								enabled = "[GetScriptedGui('ve_cancel_targeted_cultural_project_state').IsValid( GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country4',GetPlayer.MakeScope).End )]"
+								visible = "[GetScriptedGui('ve_cancel_targeted_cultural_project_state').IsShown(GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country4',GetPlayer.MakeScope).End)]"
 								using = ui_close
 							}
 						}

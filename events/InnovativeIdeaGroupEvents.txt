@@ -235,11 +235,12 @@ innovative_flavor.7 = {
 		name = innovative_flavor.1.a
 		default_option = yes
 		change_variable = {
-			name = idea_point_value
+			name = idea_point_pool
 			add = 200
 		}
+		ve_clamp_national_insight = yes
 		change_variable = {
-			name = splender_points_value
+			name = ve_splender_points
 			add = 50
 		}
 	}

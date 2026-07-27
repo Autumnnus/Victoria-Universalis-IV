@@ -1,0 +1,304 @@
+# Era Momentum objectives. These are intentionally country-relative: small
+# countries can qualify through structural progress while large powers can
+# qualify through scale.
+
+ve_age_objective_1_trigger = {
+	trigger_if = {
+		limit = { has_global_variable = ve_age_1_started }
+		pop_type_percent_country = {
+			pop_type = peasants
+			percent < 0.60
+		}
+	}
+	trigger_else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		OR = {
+			GDP >= 100000000
+			pop_type_percent_country = {
+				pop_type = peasants
+				percent < 0.25
+			}
+		}
+	}
+	trigger_else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		OR = {
+			has_law = law_type:law_universal_suffrage
+			has_law = law_type:law_council_republic
+			AND = {
+				OR = {
+					has_law = law_type:law_parliamentary_republic
+					has_law = law_type:law_presidential_republic
+				}
+				government_legitimacy >= 75
+			}
+		}
+	}
+}
+
+ve_age_objective_2_trigger = {
+	trigger_if = {
+		limit = { has_global_variable = ve_age_1_started }
+		has_law = law_type:law_slavery_banned
+		NOT = { has_law = law_type:law_serfdom }
+	}
+	trigger_else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		OR = {
+			literacy_rate >= 0.65
+			institution_investment_level = {
+				institution = institution_schools
+				value >= 4
+			}
+		}
+	}
+	trigger_else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		calc_true_if = {
+			amount >= 2
+			institution_investment_level = {
+				institution = institution_health_system
+				value >= 3
+			}
+			institution_investment_level = {
+				institution = institution_social_security
+				value >= 3
+			}
+			institution_investment_level = {
+				institution = institution_workplace_safety
+				value >= 3
+			}
+			institution_investment_level = {
+				institution = institution_schools
+				value >= 3
+			}
+		}
+	}
+}
+
+ve_age_objective_3_trigger = {
+	trigger_if = {
+		limit = { has_global_variable = ve_age_1_started }
+		government_legitimacy >= 60
+		bureaucracy >= 0
+		approaching_bureaucracy_shortage = no
+	}
+	trigger_else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		OR = {
+			any_subject_or_below = { count >= 2 }
+			AND = {
+				is_subject = no
+				is_country_type = recognized
+			}
+		}
+	}
+	trigger_else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		OR = {
+			AND = {
+				total_population < 10000000
+				country_has_building_type_levels = {
+					target = bt:building_power_plant
+					value >= 1
+				}
+			}
+			country_has_building_type_levels = {
+				target = bt:building_power_plant
+				value >= 5
+			}
+		}
+	}
+}
+
+ve_age_objective_4_trigger = {
+	trigger_if = {
+		limit = { has_global_variable = ve_age_1_started }
+		OR = {
+			literacy_rate >= 0.40
+			institution_investment_level = {
+				institution = institution_schools
+				value >= 2
+			}
+		}
+	}
+	trigger_else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		OR = {
+			AND = {
+				total_population < 10000000
+				country_has_building_type_levels = {
+					target = bt:building_port
+					value >= 2
+				}
+			}
+			country_has_building_type_levels = {
+				target = bt:building_port
+				value >= 10
+			}
+			num_declared_interests >= 5
+		}
+	}
+	trigger_else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		OR = {
+			country_has_building_type_levels = {
+				target = bt:building_oil_rig
+				value >= 1
+			}
+			country_has_building_type_levels = {
+				target = bt:building_motor_industry
+				value >= 5
+			}
+		}
+	}
+}
+
+ve_age_objective_5_trigger = {
+	trigger_if = {
+		limit = { has_global_variable = ve_age_1_started }
+		OR = {
+			AND = {
+				total_population < 5000000
+				country_has_building_type_levels = {
+					target = bt:building_railway
+					value >= 1
+				}
+			}
+			country_has_building_type_levels = {
+				target = bt:building_railway
+				value >= 3
+			}
+		}
+	}
+	trigger_else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		country_turmoil < 0.05
+		government_legitimacy >= 60
+	}
+	trigger_else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		OR = {
+			country_army_unit_type_fraction = {
+				target = unit_type:combat_unit_type_trench_infantry
+				value >= 0.50
+			}
+			country_army_unit_type_fraction = {
+				target = unit_type:combat_unit_type_squad_infantry
+				value >= 0.50
+			}
+		}
+		country_army_unit_type_fraction = {
+			target = unit_type:combat_unit_type_shrapnel_artillery
+			value >= 0.15
+		}
+	}
+}
+
+ve_age_objective_6_trigger = {
+	trigger_if = {
+		limit = { has_global_variable = ve_age_1_started }
+		is_subject = no
+		country_turmoil < 0.10
+		government_legitimacy >= 50
+	}
+	trigger_else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		OR = {
+			institution_investment_level = {
+				institution = institution_health_system
+				value >= 2
+			}
+			institution_investment_level = {
+				institution = institution_workplace_safety
+				value >= 2
+			}
+			institution_investment_level = {
+				institution = institution_social_security
+				value >= 2
+			}
+		}
+	}
+	trigger_else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		army_size >= 40
+		OR = {
+			country_has_building_type_levels = {
+				target = bt:building_arms_industry
+				value >= 5
+			}
+			country_has_building_type_levels = {
+				target = bt:building_munition_plant
+				value >= 3
+			}
+		}
+	}
+}
+
+ve_age_objective_7_trigger = {
+	trigger_if = {
+		limit = { has_global_variable = ve_age_1_started }
+		OR = {
+			is_country_type = recognized
+			country_rank = rank_value:major_power
+			country_rank = rank_value:great_power
+			num_declared_interests >= 3
+		}
+	}
+	trigger_else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		OR = {
+			country_army_unit_type_fraction = {
+				target = unit_type:combat_unit_type_skirmish_infantry
+				value >= 0.50
+			}
+			country_army_unit_type_fraction = {
+				target = unit_type:combat_unit_type_trench_infantry
+				value >= 0.50
+			}
+		}
+		country_army_unit_type_fraction = {
+			target = unit_type:combat_unit_type_mobile_artillery
+			value >= 0.10
+		}
+	}
+	trigger_else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		OR = {
+			country_rank = rank_value:great_power
+			country_rank = rank_value:major_power
+			is_power_bloc_leader = yes
+			num_declared_interests >= 6
+		}
+	}
+}
+
+ve_can_purchase_era_reward = {
+	OR = {
+		AND = {
+			var:ve_age_rewards_purchased <= 0
+			ve_era_momentum_value >= 200
+		}
+		AND = {
+			var:ve_age_rewards_purchased == 1
+			ve_era_momentum_value >= 300
+		}
+		AND = {
+			var:ve_age_rewards_purchased == 2
+			ve_era_momentum_value >= 400
+		}
+		AND = {
+			var:ve_age_rewards_purchased == 3
+			ve_era_momentum_value >= 500
+		}
+		AND = {
+			var:ve_age_rewards_purchased >= 4
+			ve_era_momentum_value >= 600
+		}
+	}
+}
+
+ve_can_activate_golden_age = {
+	NOT = { has_variable = ve_golden_age_used }
+	var:ve_triggered_objectives >= 4
+}

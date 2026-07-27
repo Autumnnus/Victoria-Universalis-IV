@@ -70,13 +70,32 @@ types ve_gui_panel_types
 													using = frame_small_mask
 												}
 												hbox = {
+													spacing = 8
 													button = {
 														using = default_button_action
-														size = { 100% 40 }
-														text = "ve_golden_age"
-														onclick = "[GetScriptedGui('ve_golden_age').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
-														enabled = "[GetScriptedGui('ve_golden_age').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-														tooltip = "[GetScriptedGui('ve_golden_age').BuildTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														size = { 225 40 }
+														text = "ve_golden_age_industrial"
+														onclick = "[GetScriptedGui('ve_golden_age_industrial').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														enabled = "[GetScriptedGui('ve_golden_age_industrial').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+														tooltip = "[GetScriptedGui('ve_golden_age_industrial').BuildTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														using = tooltip_below
+													}
+													button = {
+														using = default_button_action
+														size = { 225 40 }
+														text = "ve_golden_age_cultural"
+														onclick = "[GetScriptedGui('ve_golden_age_cultural').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														enabled = "[GetScriptedGui('ve_golden_age_cultural').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+														tooltip = "[GetScriptedGui('ve_golden_age_cultural').BuildTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														using = tooltip_below
+													}
+													button = {
+														using = default_button_action
+														size = { 225 40 }
+														text = "ve_golden_age_strategic"
+														onclick = "[GetScriptedGui('ve_golden_age_strategic').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														enabled = "[GetScriptedGui('ve_golden_age_strategic').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+														tooltip = "[GetScriptedGui('ve_golden_age_strategic').BuildTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 														using = tooltip_below
 													}
 												}
@@ -199,13 +218,32 @@ types ve_gui_panel_types
 													using = frame_small_mask
 												}
 												hbox = {
+													spacing = 8
 													button = {
 														using = default_button_action
-														size = { 100% 40 }
-														text = "ve_golden_age"
-														tooltip = "[GetScriptedGui('ve_golden_age').BuildTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
-														onclick = "[GetScriptedGui('ve_golden_age').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
-														enabled = "[GetScriptedGui('ve_golden_age').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+														size = { 225 40 }
+														text = "ve_golden_age_industrial"
+														onclick = "[GetScriptedGui('ve_golden_age_industrial').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														enabled = "[GetScriptedGui('ve_golden_age_industrial').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+														tooltip = "[GetScriptedGui('ve_golden_age_industrial').BuildTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														using = tooltip_below
+													}
+													button = {
+														using = default_button_action
+														size = { 225 40 }
+														text = "ve_golden_age_cultural"
+														onclick = "[GetScriptedGui('ve_golden_age_cultural').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														enabled = "[GetScriptedGui('ve_golden_age_cultural').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+														tooltip = "[GetScriptedGui('ve_golden_age_cultural').BuildTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														using = tooltip_below
+													}
+													button = {
+														using = default_button_action
+														size = { 225 40 }
+														text = "ve_golden_age_strategic"
+														onclick = "[GetScriptedGui('ve_golden_age_strategic').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														enabled = "[GetScriptedGui('ve_golden_age_strategic').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+														tooltip = "[GetScriptedGui('ve_golden_age_strategic').BuildTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 														using = tooltip_below
 													}
 												}
@@ -328,13 +366,32 @@ types ve_gui_panel_types
 													using = frame_small_mask
 												}
 												hbox = {
+													spacing = 8
 													button = {
 														using = default_button_action
-														size = { 100% 40 }
-														text = "ve_golden_age"
-														onclick = "[GetScriptedGui('ve_golden_age').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
-														enabled = "[GetScriptedGui('ve_golden_age').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-														tooltip = "[GetScriptedGui('ve_golden_age').BuildTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														size = { 225 40 }
+														text = "ve_golden_age_industrial"
+														onclick = "[GetScriptedGui('ve_golden_age_industrial').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														enabled = "[GetScriptedGui('ve_golden_age_industrial').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+														tooltip = "[GetScriptedGui('ve_golden_age_industrial').BuildTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														using = tooltip_below
+													}
+													button = {
+														using = default_button_action
+														size = { 225 40 }
+														text = "ve_golden_age_cultural"
+														onclick = "[GetScriptedGui('ve_golden_age_cultural').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														enabled = "[GetScriptedGui('ve_golden_age_cultural').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+														tooltip = "[GetScriptedGui('ve_golden_age_cultural').BuildTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														using = tooltip_below
+													}
+													button = {
+														using = default_button_action
+														size = { 225 40 }
+														text = "ve_golden_age_strategic"
+														onclick = "[GetScriptedGui('ve_golden_age_strategic').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+														enabled = "[GetScriptedGui('ve_golden_age_strategic').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+														tooltip = "[GetScriptedGui('ve_golden_age_strategic').BuildTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 														using = tooltip_below
 													}
 												}
@@ -725,7 +782,7 @@ types ve_gui_panel_types
 							}
 							icon = {
 								texture = "gfx/interface/ve_age/population_radical.dds"
-								visible = "[Not(GetScriptedGui('ve_age_bonus_10').IsShown(GuiScope.SetRoot( GetPlayer.MakeScope ).End ))]"
+								visible = no
 								tooltip = "[GetScriptedGui('ve_age_bonus_10').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								using = ve_shimmer
 								background = {
@@ -758,7 +815,7 @@ types ve_gui_panel_types
 							}
 							icon = {
 								texture = "gfx/interface/ve_age/aggresive_exp_icon.dds"
-								visible = "[Not(GetScriptedGui('ve_age_bonus_11').IsShown(GuiScope.SetRoot( GetPlayer.MakeScope ).End ))]"
+								visible = no
 								tooltip = "[GetScriptedGui('ve_age_bonus_11').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								using = ve_shimmer
 								background = {
@@ -1095,7 +1152,7 @@ types ve_gui_panel_types
 							}
 							icon = {
 								texture = "gfx/interface/ve_age/tolerance_heathen.dds"
-								visible = "[Not(GetScriptedGui('ve_age_bonus_10').IsShown(GuiScope.SetRoot( GetPlayer.MakeScope ).End ))]"
+								visible = no
 								tooltip = "[GetScriptedGui('ve_age_bonus_10').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								using = ve_shimmer
 								background = {
@@ -1128,7 +1185,7 @@ types ve_gui_panel_types
 							}
 							icon = {
 								texture = "gfx/interface/ve_age/culture_conversion_cost.dds"
-								visible = "[Not(GetScriptedGui('ve_age_bonus_11').IsShown(GuiScope.SetRoot( GetPlayer.MakeScope ).End ))]"
+								visible = no
 								tooltip = "[GetScriptedGui('ve_age_bonus_11').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								using = ve_shimmer
 								background = {
@@ -1465,7 +1522,7 @@ types ve_gui_panel_types
 							}
 							icon = {
 								texture = "gfx/interface/ve_age/landing_penalty.dds"
-								visible = "[Not(GetScriptedGui('ve_age_bonus_10').IsShown(GuiScope.SetRoot( GetPlayer.MakeScope ).End ))]"
+								visible = no
 								tooltip = "[GetScriptedGui('ve_age_bonus_10').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								using = ve_shimmer
 								background = {
@@ -1498,7 +1555,7 @@ types ve_gui_panel_types
 							}
 							icon = {
 								texture = "gfx/interface/ve_age/global_manpower_modifier.dds"
-								visible = "[Not(GetScriptedGui('ve_age_bonus_11').IsShown(GuiScope.SetRoot( GetPlayer.MakeScope ).End ))]"
+								visible = no
 								tooltip = "[GetScriptedGui('ve_age_bonus_11').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								using = ve_shimmer
 								background = {
@@ -1587,7 +1644,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 2
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_2').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_2').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -1637,7 +1694,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 3
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_3').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_3').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -1687,7 +1744,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 4
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_4').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_4').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -1737,7 +1794,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 5
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_5').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_5').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -1787,7 +1844,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 6
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_6').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_6').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -1837,7 +1894,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 7
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_7').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_7').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -1958,7 +2015,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 2
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_2').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_2').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -2008,7 +2065,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 3
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_3').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_3').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -2058,7 +2115,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 4
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_4').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_4').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -2108,7 +2165,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 5
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_5').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_5').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -2158,7 +2215,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 6
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_6').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_6').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -2208,7 +2265,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 7
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_7').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_7').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -2329,7 +2386,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 2
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_2').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_2').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -2379,7 +2436,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 3
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_3').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_3').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -2429,7 +2486,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 4
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_4').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_4').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -2479,7 +2536,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 5
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_5').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_5').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -2529,7 +2586,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 6
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_6').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_6').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg
@@ -2579,7 +2636,7 @@ types ve_gui_panel_types
 							hbox = {	#Age Objective 7
 								layoutpolicy_horizontal = preferred
 								enabled = "[GetScriptedGui('ve_age_obj_7').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_age_obj_1').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								tooltip = "[GetScriptedGui('ve_age_obj_7').ExecuteTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 								margin = { 10 0 }
 								hbox = {
 									using = main_bg

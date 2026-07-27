@@ -516,30 +516,6 @@ types topbar_components
 							align = left|nobaseline
 						}
 				}
-						
-				#Cultural Missionary
-				flowcontainer = {
-						visible = "[GetScriptedGui('ve_hide_culture_missionary_topbar').IsShown(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
-						minimumsize = { 90 28 }
-						maximumsize = { 90 28 }
-						spacing = 5
-						using = tooltip_below
-						tooltip = "ve_cultural_missionary_tt"
-						icon = {
-							size = { @secondary_icon_size @secondary_icon_size }
-							texture = "gfx/interface/icon2_diffusionist.dds"
-							parentanchor = vcenter
-						}
-
-						textbox = {
-							parentanchor = vcenter
-							text = "cultural_missionary_topbar"
-							default_format = "#tooltip_header"
-							autoresize = yes
-							align = left|nobaseline
-						}
-				}
-
 				#Idea Point
 				flowcontainer = {
 						minimumsize = { 90 28 }
@@ -547,7 +523,7 @@ types topbar_components
 						spacing = 2
 						using = tooltip_below
 						margin_left = 3
-						tooltip = "[GetPlayer.GetCustom('idea_points_cus_loc')]"
+						tooltip = "ve_national_insight_tt"
 						icon = {
 							size = { @secondary_icon_size @secondary_icon_size }
 							texture = "gfx/interface/icon_ideas.dds"
@@ -594,7 +570,7 @@ types topbar_components
 						maximumsize = { 90 28 }
 						spacing = 2
 						using = tooltip_below
-						visible = "[GetScriptedGui('hide_reform_point').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						visible = "[GetScriptedGui('ve_show_cultural_mandate_topbar').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						tooltip = "ve_culture_reform_point_tt"
 
 						icon = {

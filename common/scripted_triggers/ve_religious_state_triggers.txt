@@ -1,0 +1,117 @@
+# Phase 4: Religious State
+# The active model follows the Church and State law. An atheist state religion
+# is also treated as secular so console-driven or legacy transitions stay safe.
+
+ve_is_atheist_state = {
+	OR = {
+		has_law = law_type:law_state_atheism
+		country_has_state_religion = rel:atheist
+	}
+}
+
+ve_is_confessional_state = {
+	has_law = law_type:law_state_religion
+	NOT = {
+		ve_is_atheist_state = yes
+	}
+}
+
+ve_is_pluralist_state = {
+	NOR = {
+		ve_is_atheist_state = yes
+		ve_is_confessional_state = yes
+	}
+}
+
+ve_missionaries_enabled = {
+	OR = {
+		ve_is_confessional_state = yes
+		has_law = law_type:law_freedom_of_conscience
+	}
+	NOT = {
+		ve_is_atheist_state = yes
+	}
+}
+
+ve_religious_program_affordable = {
+	ve_religious_state_value >= 50
+	NOT = { has_modifier = ve_religious_program_strain_mdf }
+}
+
+ve_has_religious_program_1 = {
+	OR = {
+		has_modifier = ve_confessional_program_1_mdf
+		has_modifier = ve_pluralist_program_1_mdf
+		has_modifier = ve_atheist_program_1_mdf
+	}
+}
+
+ve_has_religious_program_2 = {
+	OR = {
+		has_modifier = ve_confessional_program_2_mdf
+		has_modifier = ve_pluralist_program_2_mdf
+		has_modifier = ve_atheist_program_2_mdf
+	}
+}
+
+ve_has_religious_program_3 = {
+	OR = {
+		has_modifier = ve_confessional_program_3_mdf
+		has_modifier = ve_pluralist_program_3_mdf
+		has_modifier = ve_atheist_program_3_mdf
+	}
+}
+
+ve_has_religious_program_4 = {
+	OR = {
+		has_modifier = ve_confessional_program_4_mdf
+		has_modifier = ve_pluralist_program_4_mdf
+		has_modifier = ve_atheist_program_4_mdf
+	}
+}
+
+ve_has_religious_program_5 = {
+	OR = {
+		has_modifier = ve_confessional_program_5_mdf
+		has_modifier = ve_pluralist_program_5_mdf
+		has_modifier = ve_atheist_program_5_mdf
+	}
+}
+
+ve_has_religious_program_6 = {
+	OR = {
+		has_modifier = ve_confessional_program_6_mdf
+		has_modifier = ve_pluralist_program_6_mdf
+		has_modifier = ve_atheist_program_6_mdf
+	}
+}
+
+ve_has_religious_program_7 = {
+	OR = {
+		has_modifier = ve_confessional_program_7_mdf
+		has_modifier = ve_pluralist_program_7_mdf
+		has_modifier = ve_atheist_program_7_mdf
+	}
+}
+
+ve_has_religious_program_8 = {
+	OR = {
+		has_modifier = ve_confessional_program_8_mdf
+		has_modifier = ve_pluralist_program_8_mdf
+		has_modifier = ve_atheist_program_8_mdf
+	}
+}
+
+ve_can_adopt_any_religious_program = {
+	ve_religious_program_affordable = yes
+	OR = {
+		NOT = { ve_has_religious_program_1 = yes }
+		NOT = { ve_has_religious_program_2 = yes }
+		NOT = { ve_has_religious_program_3 = yes }
+		NOT = { ve_has_religious_program_4 = yes }
+		NOT = { ve_has_religious_program_5 = yes }
+		NOT = { ve_has_religious_program_6 = yes }
+		NOT = { ve_has_religious_program_7 = yes }
+		NOT = { ve_has_religious_program_8 = yes }
+	}
+}

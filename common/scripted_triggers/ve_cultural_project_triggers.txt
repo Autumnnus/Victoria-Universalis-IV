@@ -1,0 +1,107 @@
+# Phase 6: Cultural Projects
+
+ve_has_active_cultural_project = {
+	has_variable = ve_cultural_project_type
+	var:ve_cultural_project_type > 0
+}
+
+ve_has_no_active_cultural_project = {
+	NOT = { ve_has_active_cultural_project = yes }
+}
+
+ve_can_begin_cultural_project = {
+	ve_has_no_active_cultural_project = yes
+	NOT = { has_modifier = ve_cultural_project_backlash_mdf }
+}
+
+ve_can_begin_national_curriculum = {
+	ve_can_begin_cultural_project = yes
+	ve_national_identity_value >= 100
+}
+
+ve_can_begin_shared_symbols = {
+	ve_can_begin_cultural_project = yes
+	ve_national_identity_value >= 75
+}
+
+ve_can_begin_ethnic_campaign = {
+	ve_can_begin_cultural_project = yes
+	ve_is_ethnic_identity = yes
+	ve_national_identity_value >= 125
+}
+
+ve_can_begin_civic_initiative = {
+	ve_can_begin_cultural_project = yes
+	ve_is_civic_identity = yes
+	ve_national_identity_value >= 100
+}
+
+ve_can_begin_composite_compact = {
+	ve_can_begin_cultural_project = yes
+	ve_is_composite_identity = yes
+	ve_national_identity_value >= 150
+	var:ve_national_cohesion >= 40
+}
+
+ve_can_begin_model_project = {
+	OR = {
+		ve_can_begin_ethnic_campaign = yes
+		ve_can_begin_civic_initiative = yes
+		ve_can_begin_composite_compact = yes
+	}
+}
+
+# Scope: state
+ve_state_has_cultural_project_target = {
+	owner = {
+		OR = {
+			ve_can_begin_ethnic_campaign = yes
+			ve_can_begin_civic_initiative = yes
+			ve_can_begin_composite_compact = yes
+		}
+	}
+	any_scope_culture = {
+		NOT = { is_primary_culture_of = ROOT.owner }
+		ROOT = {
+			"culture_percent_state(prev)" >= 0.05
+		}
+		OR = {
+			ROOT.owner = {
+				NOT = { ve_is_composite_identity = yes }
+			}
+			ROOT.owner = {
+				NOT = {
+					is_target_in_variable_list = {
+						name = ve_recognized_constituent_cultures
+						target = PREV
+					}
+				}
+			}
+		}
+	}
+}
+
+ve_project_is_countrywide = {
+	OR = {
+		var:ve_cultural_project_type == 1
+		var:ve_cultural_project_type == 2
+	}
+}
+
+ve_project_is_targeted = {
+	OR = {
+		var:ve_cultural_project_type == 3
+		var:ve_cultural_project_type == 4
+		var:ve_cultural_project_type == 5
+	}
+}
+
+ve_has_cultural_movement_pressure = {
+	any_political_movement = {
+		OR = {
+			is_political_movement_type = movement_cultural_minority
+			is_political_movement_type = movement_cultural_majority
+		}
+		political_movement_radicalism >= 0.25
+	}
+}

@@ -1,0 +1,57 @@
+ve_ethnic_identity_mdf = {
+	icon = gfx/interface/monarch_cultures_icon.dds
+	state_assimilation_mult = 0.15
+	country_authority_mult = 0.05
+	state_migration_pull_mult = -0.05
+	country_radicalism_increases_open_prejudice_mult = 0.05
+}
+
+ve_civic_identity_mdf = {
+	icon = gfx/interface/monarch_cultures_icon.dds
+	state_migration_pull_mult = 0.07
+	state_education_access_add = 0.01
+	state_assimilation_mult = -0.10
+	country_authority_mult = -0.05
+	country_bureaucracy_add = -50
+}
+
+ve_composite_identity_mdf = {
+	icon = gfx/interface/monarch_cultures_icon.dds
+	country_radicalism_increases_cultural_erasure_mult = -0.10
+	country_radicalism_increases_second_rate_citizen_mult = -0.10
+	country_influence_mult = 0.05
+	state_assimilation_mult = -0.15
+	country_authority_mult = -0.05
+	country_bureaucracy_add = -75
+}
+
+ve_ethnic_high_cohesion_mdf = {
+	icon = gfx/interface/monarch_cultures_icon.dds
+	state_conscription_rate_mult = 0.05
+	country_legitimacy_base_add = 3
+}
+
+ve_civic_high_cohesion_mdf = {
+	icon = gfx/interface/monarch_cultures_icon.dds
+	state_pop_qualifications_mult = 0.05
+	country_legitimacy_base_add = 3
+}
+
+ve_composite_high_cohesion_mdf = {
+	icon = gfx/interface/monarch_cultures_icon.dds
+	country_influence_mult = 0.05
+	country_legitimacy_base_add = 3
+}
+
+ve_low_national_cohesion_mdf = {
+	icon = gfx/interface/monarch_cultures_icon.dds
+	country_law_enactment_success_add = -0.05
+	country_legitimacy_base_add = -5
+}
+
+ve_identity_transition_backlash_mdf = {
+	icon = gfx/interface/monarch_cultures_icon.dds
+	country_bureaucracy_add = -100
+	country_authority_add = -50
+	country_law_enactment_success_add = -0.05
+}

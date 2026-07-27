@@ -1,0 +1,408 @@
+ve_clear_cultural_project_state = {
+	every_scope_state = {
+		remove_modifier = ve_ethnic_campaign_active_mdf
+		remove_modifier = ve_civic_initiative_active_mdf
+		remove_modifier = ve_composite_compact_active_mdf
+		remove_variable = selected_state_culture
+	}
+}
+
+ve_clear_active_cultural_project = {
+	remove_modifier = ve_cultural_project_administration_mdf
+	ve_clear_cultural_project_state = yes
+	remove_variable = ve_cultural_project_type
+	remove_variable = ve_cultural_project_progress
+	remove_variable = ve_cultural_project_target_state
+	remove_variable = ve_cultural_project_target_culture
+	remove_variable = ve_cultural_project_primary_culture
+}
+
+ve_initialize_cultural_projects = {
+	if = {
+		limit = {
+			NOT = { has_variable = ve_cultural_projects_initialized }
+		}
+		set_variable = ve_cultural_projects_initialized
+		ve_clear_active_cultural_project = yes
+	}
+}
+
+ve_begin_cultural_project_common = {
+	set_variable = {
+		name = ve_cultural_project_progress
+		value = 0
+	}
+	add_modifier = {
+		name = ve_cultural_project_administration_mdf
+		months = -1
+	}
+}
+
+ve_begin_national_curriculum = {
+	change_variable = {
+		name = culture_reform_point
+		subtract = 100
+	}
+	set_variable = {
+		name = ve_cultural_project_type
+		value = 1
+	}
+	ve_begin_cultural_project_common = yes
+	ve_clamp_cultural_mandate = yes
+}
+
+ve_begin_shared_symbols = {
+	change_variable = {
+		name = culture_reform_point
+		subtract = 75
+	}
+	set_variable = {
+		name = ve_cultural_project_type
+		value = 2
+	}
+	ve_begin_cultural_project_common = yes
+	ve_clamp_cultural_mandate = yes
+}
+
+# Scope: state. The largest non-primary culture with at least five percent of
+# the state's population becomes the project target.
+ve_begin_targeted_cultural_project = {
+	ordered_scope_culture = {
+		limit = {
+			NOT = { is_primary_culture_of = ROOT.owner }
+			ROOT = {
+				"culture_percent_state(prev)" >= 0.05
+			}
+			OR = {
+				ROOT.owner = {
+					NOT = { ve_is_composite_identity = yes }
+				}
+				ROOT.owner = {
+					NOT = {
+						is_target_in_variable_list = {
+							name = ve_recognized_constituent_cultures
+							target = PREV
+						}
+					}
+				}
+			}
+		}
+		order_by = "root.culture_percent_state(this)"
+		position = 0
+		check_range_bounds = no
+		save_temporary_scope_as = ve_project_target_culture
+	}
+
+	owner = {
+		set_variable = {
+			name = ve_cultural_project_target_state
+			value = ROOT
+		}
+		set_variable = {
+			name = ve_cultural_project_target_culture
+			value = scope:ve_project_target_culture
+		}
+		random_primary_culture = {
+			save_temporary_scope_as = ve_project_primary_culture
+		}
+		set_variable = {
+			name = ve_cultural_project_primary_culture
+			value = scope:ve_project_primary_culture
+		}
+
+		if = {
+			limit = { ve_is_ethnic_identity = yes }
+			change_variable = {
+				name = culture_reform_point
+				subtract = 125
+			}
+			set_variable = {
+				name = ve_cultural_project_type
+				value = 3
+			}
+			ROOT = {
+				add_modifier = {
+					name = ve_ethnic_campaign_active_mdf
+					months = -1
+				}
+			}
+			add_radicals = {
+				value = small_radicals
+				culture = scope:ve_project_target_culture
+			}
+		}
+		else_if = {
+			limit = { ve_is_civic_identity = yes }
+			change_variable = {
+				name = culture_reform_point
+				subtract = 100
+			}
+			set_variable = {
+				name = ve_cultural_project_type
+				value = 4
+			}
+			ROOT = {
+				add_modifier = {
+					name = ve_civic_initiative_active_mdf
+					months = -1
+				}
+			}
+		}
+		else = {
+			change_variable = {
+				name = culture_reform_point
+				subtract = 150
+			}
+			set_variable = {
+				name = ve_cultural_project_type
+				value = 5
+			}
+			ROOT = {
+				add_modifier = {
+					name = ve_composite_compact_active_mdf
+					months = -1
+				}
+			}
+		}
+		ve_begin_cultural_project_common = yes
+		ve_clamp_cultural_mandate = yes
+	}
+}
+
+ve_finish_national_curriculum = {
+	add_modifier = {
+		name = ve_national_curriculum_result_mdf
+		months = 120
+	}
+	change_variable = {
+		name = culture_reform_point
+		add = 20
+	}
+	change_variable = {
+		name = ve_national_cohesion
+		add = 5
+	}
+}
+
+ve_finish_shared_symbols = {
+	add_modifier = {
+		name = ve_shared_symbols_result_mdf
+		months = 96
+	}
+	change_variable = {
+		name = culture_reform_point
+		add = 20
+	}
+	change_variable = {
+		name = ve_national_cohesion
+		add = 7
+	}
+}
+
+ve_finish_ethnic_campaign = {
+	var:ve_cultural_project_target_state ?= {
+		every_scope_pop = {
+			limit = {
+				culture = ROOT.var:ve_cultural_project_target_culture
+			}
+			change_pop_culture = {
+				target = ROOT.var:ve_cultural_project_primary_culture
+				value = 0.05
+			}
+		}
+		add_modifier = {
+			name = ve_ethnic_campaign_result_mdf
+			months = 120
+		}
+	}
+	add_radicals = {
+		value = small_radicals
+		culture = var:ve_cultural_project_target_culture
+	}
+	change_variable = {
+		name = culture_reform_point
+		add = 25
+	}
+	change_variable = {
+		name = ve_national_cohesion
+		add = 8
+	}
+}
+
+ve_finish_civic_initiative = {
+	add_culture_acceptance_modifier = {
+		culture = var:ve_cultural_project_target_culture
+		days = 3650
+		multiplier = 15
+	}
+	var:ve_cultural_project_target_state ?= {
+		add_loyalists_in_state = {
+			value = small_radicals
+			culture = ROOT.var:ve_cultural_project_target_culture
+		}
+		add_modifier = {
+			name = ve_civic_initiative_result_mdf
+			months = 120
+		}
+	}
+	change_variable = {
+		name = culture_reform_point
+		add = 25
+	}
+	change_variable = {
+		name = ve_national_cohesion
+		add = 10
+	}
+}
+
+ve_finish_composite_compact = {
+	add_culture_acceptance_modifier = {
+		culture = var:ve_cultural_project_target_culture
+		multiplier = 15
+	}
+	add_to_variable_list = {
+		name = ve_recognized_constituent_cultures
+		target = var:ve_cultural_project_target_culture
+	}
+	var:ve_cultural_project_target_state ?= {
+		add_loyalists_in_state = {
+			value = medium_radicals
+			culture = ROOT.var:ve_cultural_project_target_culture
+		}
+		add_modifier = {
+			name = ve_composite_compact_result_mdf
+			months = 120
+		}
+	}
+	change_variable = {
+		name = culture_reform_point
+		add = 30
+	}
+	change_variable = {
+		name = ve_national_cohesion
+		add = 12
+	}
+}
+
+ve_finish_cultural_project = {
+	if = {
+		limit = { var:ve_cultural_project_type == 1 }
+		ve_finish_national_curriculum = yes
+	}
+	else_if = {
+		limit = { var:ve_cultural_project_type == 2 }
+		ve_finish_shared_symbols = yes
+	}
+	else_if = {
+		limit = { var:ve_cultural_project_type == 3 }
+		ve_finish_ethnic_campaign = yes
+	}
+	else_if = {
+		limit = { var:ve_cultural_project_type == 4 }
+		ve_finish_civic_initiative = yes
+	}
+	else_if = {
+		limit = { var:ve_cultural_project_type == 5 }
+		ve_finish_composite_compact = yes
+	}
+	ve_clear_active_cultural_project = yes
+	ve_clamp_cultural_mandate = yes
+	ve_clamp_national_cohesion = yes
+}
+
+ve_cancel_cultural_project = {
+	if = {
+		limit = { ve_has_active_cultural_project = yes }
+		ve_clear_active_cultural_project = yes
+		change_variable = {
+			name = ve_national_cohesion
+			subtract = 5
+		}
+		add_modifier = {
+			name = ve_cultural_project_backlash_mdf
+			months = 24
+		}
+		ve_clamp_national_cohesion = yes
+	}
+}
+
+ve_cancel_cultural_project_for_identity_change = {
+	if = {
+		limit = { ve_has_active_cultural_project = yes }
+		ve_clear_active_cultural_project = yes
+	}
+}
+
+ve_update_cultural_project = {
+	ve_initialize_cultural_projects = yes
+	if = {
+		limit = { ve_has_active_cultural_project = yes }
+		if = {
+			limit = {
+				ve_project_is_targeted = yes
+				OR = {
+					NOT = { has_variable = ve_cultural_project_target_state }
+					NOT = { has_variable = ve_cultural_project_target_culture }
+					NOT = {
+						var:ve_cultural_project_target_state ?= {
+							owner = ROOT
+						}
+					}
+				}
+			}
+			ve_cancel_cultural_project = yes
+		}
+		else = {
+			change_variable = {
+				name = ve_cultural_project_progress
+				add = ve_monthly_cultural_project_progress
+			}
+			if = {
+				limit = { var:ve_cultural_project_progress >= 100 }
+				ve_finish_cultural_project = yes
+			}
+		}
+	}
+}
+
+ve_ai_uses_cultural_projects = {
+	if = {
+		limit = {
+			is_ai = yes
+			ve_has_no_active_cultural_project = yes
+			ve_national_identity_value >= 100
+		}
+		random_list = {
+			40 = {
+				if = {
+					limit = {
+						any_scope_state = {
+							ve_state_has_cultural_project_target = yes
+						}
+					}
+					ordered_scope_state = {
+						limit = {
+							ve_state_has_cultural_project_target = yes
+						}
+						order_by = state_population
+						position = 0
+						check_range_bounds = no
+						ve_begin_targeted_cultural_project = yes
+					}
+				}
+			}
+			35 = {
+				if = {
+					limit = { ve_can_begin_national_curriculum = yes }
+					ve_begin_national_curriculum = yes
+				}
+			}
+			25 = {
+				if = {
+					limit = { ve_can_begin_shared_symbols = yes }
+					ve_begin_shared_symbols = yes
+				}
+			}
+		}
+	}
+}

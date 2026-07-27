@@ -1,0 +1,98 @@
+ve_era_objectives_satisfied = {
+	if = {
+		limit = { ve_age_objective_1_trigger = yes }
+		add = 1
+	}
+	if = {
+		limit = { ve_age_objective_2_trigger = yes }
+		add = 1
+	}
+	if = {
+		limit = { ve_age_objective_3_trigger = yes }
+		add = 1
+	}
+	if = {
+		limit = { ve_age_objective_4_trigger = yes }
+		add = 1
+	}
+	if = {
+		limit = { ve_age_objective_5_trigger = yes }
+		add = 1
+	}
+	if = {
+		limit = { ve_age_objective_6_trigger = yes }
+		add = 1
+	}
+	if = {
+		limit = { ve_age_objective_7_trigger = yes }
+		add = 1
+	}
+}
+
+ve_era_reward_cost = {
+	if = {
+		limit = { var:ve_age_rewards_purchased <= 0 }
+		value = 200
+	}
+	else_if = {
+		limit = { var:ve_age_rewards_purchased == 1 }
+		value = 300
+	}
+	else_if = {
+		limit = { var:ve_age_rewards_purchased == 2 }
+		value = 400
+	}
+	else_if = {
+		limit = { var:ve_age_rewards_purchased == 3 }
+		value = 500
+	}
+	else = {
+		value = 600
+	}
+}
+
+# Used only when migrating a save that predates the escalating-cost variable.
+ve_current_age_rewards_owned = {
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		if = { limit = { has_modifier = age_1_bonus_1 } add = 1 }
+		if = { limit = { has_modifier = age_1_bonus_2 } add = 1 }
+		if = { limit = { has_modifier = age_1_bonus_3 } add = 1 }
+		if = { limit = { has_modifier = age_1_bonus_4 } add = 1 }
+		if = { limit = { has_modifier = age_1_bonus_5 } add = 1 }
+		if = { limit = { has_modifier = age_1_bonus_6 } add = 1 }
+		if = { limit = { has_modifier = age_1_bonus_7 } add = 1 }
+		if = { limit = { has_modifier = age_1_bonus_8 } add = 1 }
+		if = { limit = { has_modifier = age_1_bonus_9 } add = 1 }
+		if = { limit = { has_modifier = age_1_bonus_10 } add = 1 }
+		if = { limit = { has_modifier = age_1_bonus_11 } add = 1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		if = { limit = { has_modifier = age_2_bonus_1 } add = 1 }
+		if = { limit = { has_modifier = age_2_bonus_2 } add = 1 }
+		if = { limit = { has_modifier = age_2_bonus_3 } add = 1 }
+		if = { limit = { has_modifier = age_2_bonus_4 } add = 1 }
+		if = { limit = { has_modifier = age_2_bonus_5 } add = 1 }
+		if = { limit = { has_modifier = age_2_bonus_6 } add = 1 }
+		if = { limit = { has_modifier = age_2_bonus_7 } add = 1 }
+		if = { limit = { has_modifier = age_2_bonus_8 } add = 1 }
+		if = { limit = { has_modifier = age_2_bonus_9 } add = 1 }
+		if = { limit = { has_modifier = age_2_bonus_10 } add = 1 }
+		if = { limit = { has_modifier = age_2_bonus_11 } add = 1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		if = { limit = { has_modifier = age_3_bonus_1 } add = 1 }
+		if = { limit = { has_modifier = age_3_bonus_2 } add = 1 }
+		if = { limit = { has_modifier = age_3_bonus_3 } add = 1 }
+		if = { limit = { has_modifier = age_3_bonus_4 } add = 1 }
+		if = { limit = { has_modifier = age_3_bonus_5 } add = 1 }
+		if = { limit = { has_modifier = age_3_bonus_6 } add = 1 }
+		if = { limit = { has_modifier = age_3_bonus_7 } add = 1 }
+		if = { limit = { has_modifier = age_3_bonus_8 } add = 1 }
+		if = { limit = { has_modifier = age_3_bonus_9 } add = 1 }
+		if = { limit = { has_modifier = age_3_bonus_10 } add = 1 }
+		if = { limit = { has_modifier = age_3_bonus_11 } add = 1 }
+	}
+}

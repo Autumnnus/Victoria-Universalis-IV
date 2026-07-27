@@ -10,13 +10,11 @@
 #   - pool resources (bureaucracy, authority, prestige, influence, tech spread) use _mult,
 #     never flat _add, so they still matter in 1936
 #
-# nationalist ideas 5 and 7 are effect-driven (missionary mechanic) and carry no modifier;
+# nationalist ideas 5 and 7 are effect-driven (religious missionary mechanic) and carry no modifier;
 # their tooltips come from nationalist_idea_5_tt / _7_tt.
 #
-# DO NOT split nationalist idea 2. common/script_values/missionary_value.txt checks
-# has_modifier = nationalist_idea_2_mdf in 14 places - 7 feed religious missionary power and
-# 7 feed cultural missionary power - so that one modifier must keep BOTH
-# state_conversion_mult and state_assimilation_mult.
+# DO NOT split nationalist idea 2. common/script_values/missionary_value.txt
+# evaluates nationalist_idea_2_mdf throughout the live Missionary Power formula.
 
 
 ########## PRODUCTION ##########

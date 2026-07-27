@@ -1,0 +1,572 @@
+# Phase 4: Religious State lifecycle and program purchases.
+
+ve_clear_religious_programs = {
+	remove_modifier = ve_confessional_program_1_mdf
+	remove_modifier = ve_confessional_program_2_mdf
+	remove_modifier = ve_confessional_program_3_mdf
+	remove_modifier = ve_confessional_program_4_mdf
+	remove_modifier = ve_confessional_program_5_mdf
+	remove_modifier = ve_confessional_program_6_mdf
+	remove_modifier = ve_confessional_program_7_mdf
+	remove_modifier = ve_confessional_program_8_mdf
+	remove_modifier = ve_pluralist_program_1_mdf
+	remove_modifier = ve_pluralist_program_2_mdf
+	remove_modifier = ve_pluralist_program_3_mdf
+	remove_modifier = ve_pluralist_program_4_mdf
+	remove_modifier = ve_pluralist_program_5_mdf
+	remove_modifier = ve_pluralist_program_6_mdf
+	remove_modifier = ve_pluralist_program_7_mdf
+	remove_modifier = ve_pluralist_program_8_mdf
+	remove_modifier = ve_atheist_program_1_mdf
+	remove_modifier = ve_atheist_program_2_mdf
+	remove_modifier = ve_atheist_program_3_mdf
+	remove_modifier = ve_atheist_program_4_mdf
+	remove_modifier = ve_atheist_program_5_mdf
+	remove_modifier = ve_atheist_program_6_mdf
+	remove_modifier = ve_atheist_program_7_mdf
+	remove_modifier = ve_atheist_program_8_mdf
+}
+
+ve_clear_religious_settlement_modifiers = {
+	remove_modifier = ve_confessional_settlement_mdf
+	remove_modifier = ve_pluralist_settlement_mdf
+	remove_modifier = ve_atheist_settlement_mdf
+	ve_clear_confessional_faith_family = yes
+	remove_modifier = ve_confessional_high_settlement_mdf
+	remove_modifier = ve_pluralist_high_settlement_mdf
+	remove_modifier = ve_atheist_high_settlement_mdf
+	remove_modifier = ve_religious_low_settlement_mdf
+}
+
+ve_clear_confessional_faith_family = {
+	if = {
+		limit = {
+			OR = {
+				has_modifier = ve_confessional_christian_family_mdf
+				has_modifier = ve_confessional_islamic_family_mdf
+				has_modifier = ve_confessional_jewish_family_mdf
+				has_modifier = ve_confessional_dharmic_family_mdf
+				has_modifier = ve_confessional_scholarly_family_mdf
+				has_modifier = ve_confessional_animist_family_mdf
+			}
+		}
+		remove_modifier = ve_confessional_christian_family_mdf
+		remove_modifier = ve_confessional_islamic_family_mdf
+		remove_modifier = ve_confessional_jewish_family_mdf
+		remove_modifier = ve_confessional_dharmic_family_mdf
+		remove_modifier = ve_confessional_scholarly_family_mdf
+		remove_modifier = ve_confessional_animist_family_mdf
+	}
+}
+
+ve_sync_confessional_faith_family = {
+	if = {
+		limit = {
+			OR = {
+				country_has_state_religion = rel:catholic
+				country_has_state_religion = rel:protestant
+				country_has_state_religion = rel:orthodox
+				country_has_state_religion = rel:oriental_orthodox
+			}
+			NOT = { has_modifier = ve_confessional_christian_family_mdf }
+		}
+		remove_modifier = ve_confessional_islamic_family_mdf
+		remove_modifier = ve_confessional_jewish_family_mdf
+		remove_modifier = ve_confessional_dharmic_family_mdf
+		remove_modifier = ve_confessional_scholarly_family_mdf
+		remove_modifier = ve_confessional_animist_family_mdf
+		add_modifier = { name = ve_confessional_christian_family_mdf months = -1 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				country_has_state_religion = rel:sunni
+				country_has_state_religion = rel:shiite
+			}
+			NOT = { has_modifier = ve_confessional_islamic_family_mdf }
+		}
+		remove_modifier = ve_confessional_christian_family_mdf
+		remove_modifier = ve_confessional_jewish_family_mdf
+		remove_modifier = ve_confessional_dharmic_family_mdf
+		remove_modifier = ve_confessional_scholarly_family_mdf
+		remove_modifier = ve_confessional_animist_family_mdf
+		add_modifier = { name = ve_confessional_islamic_family_mdf months = -1 }
+	}
+	else_if = {
+		limit = {
+			country_has_state_religion = rel:jewish
+			NOT = { has_modifier = ve_confessional_jewish_family_mdf }
+		}
+		remove_modifier = ve_confessional_christian_family_mdf
+		remove_modifier = ve_confessional_islamic_family_mdf
+		remove_modifier = ve_confessional_dharmic_family_mdf
+		remove_modifier = ve_confessional_scholarly_family_mdf
+		remove_modifier = ve_confessional_animist_family_mdf
+		add_modifier = { name = ve_confessional_jewish_family_mdf months = -1 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				country_has_state_religion = rel:hindu
+				country_has_state_religion = rel:sikh
+			}
+			NOT = { has_modifier = ve_confessional_dharmic_family_mdf }
+		}
+		remove_modifier = ve_confessional_christian_family_mdf
+		remove_modifier = ve_confessional_islamic_family_mdf
+		remove_modifier = ve_confessional_jewish_family_mdf
+		remove_modifier = ve_confessional_scholarly_family_mdf
+		remove_modifier = ve_confessional_animist_family_mdf
+		add_modifier = { name = ve_confessional_dharmic_family_mdf months = -1 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				country_has_state_religion = rel:mahayana
+				country_has_state_religion = rel:gelugpa
+				country_has_state_religion = rel:theravada
+				country_has_state_religion = rel:shinto
+				country_has_state_religion = rel:confucian
+			}
+			NOT = { has_modifier = ve_confessional_scholarly_family_mdf }
+		}
+		remove_modifier = ve_confessional_christian_family_mdf
+		remove_modifier = ve_confessional_islamic_family_mdf
+		remove_modifier = ve_confessional_jewish_family_mdf
+		remove_modifier = ve_confessional_dharmic_family_mdf
+		remove_modifier = ve_confessional_animist_family_mdf
+		add_modifier = { name = ve_confessional_scholarly_family_mdf months = -1 }
+	}
+	else_if = {
+		limit = {
+			country_has_state_religion = rel:animist
+			NOT = { has_modifier = ve_confessional_animist_family_mdf }
+		}
+		remove_modifier = ve_confessional_christian_family_mdf
+		remove_modifier = ve_confessional_islamic_family_mdf
+		remove_modifier = ve_confessional_jewish_family_mdf
+		remove_modifier = ve_confessional_dharmic_family_mdf
+		remove_modifier = ve_confessional_scholarly_family_mdf
+		add_modifier = { name = ve_confessional_animist_family_mdf months = -1 }
+	}
+}
+
+ve_set_religious_model_variable = {
+	if = {
+		limit = { ve_is_confessional_state = yes }
+		set_variable = {
+			name = ve_religious_model
+			value = 1
+		}
+	}
+	else_if = {
+		limit = { ve_is_pluralist_state = yes }
+		set_variable = {
+			name = ve_religious_model
+			value = 2
+		}
+	}
+	else = {
+		set_variable = {
+			name = ve_religious_model
+			value = 3
+		}
+	}
+}
+
+ve_add_religious_transition_crisis = {
+	if = {
+		limit = {
+			ve_is_atheist_state = yes
+			OR = {
+				literacy_rate < 0.50
+				ig:ig_devout = { ig_clout >= 0.20 }
+			}
+		}
+		add_modifier = {
+			name = ve_religious_settlement_crisis_mdf
+			months = 60
+		}
+	}
+	else_if = {
+		limit = { ve_is_atheist_state = yes }
+		add_modifier = {
+			name = ve_religious_settlement_crisis_mdf
+			months = 36
+		}
+	}
+	else_if = {
+		limit = { ve_is_confessional_state = yes }
+		add_modifier = {
+			name = ve_religious_settlement_crisis_mdf
+			months = 48
+		}
+	}
+	else = {
+		add_modifier = {
+			name = ve_religious_settlement_crisis_mdf
+			months = 36
+		}
+	}
+}
+
+ve_initialize_or_transition_religious_model = {
+	if = {
+		limit = {
+			NOT = { has_variable = ve_religious_model }
+		}
+		ve_clear_religious_programs = yes
+		ve_clear_religious_settlement_modifiers = yes
+		ve_set_religious_model_variable = yes
+		set_variable = {
+			name = piety_bar_point
+			value = 50
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				AND = {
+					ve_is_confessional_state = yes
+					var:ve_religious_model != 1
+				}
+				AND = {
+					ve_is_pluralist_state = yes
+					var:ve_religious_model != 2
+				}
+				AND = {
+					ve_is_atheist_state = yes
+					var:ve_religious_model != 3
+				}
+			}
+		}
+		ve_clear_religious_programs = yes
+		ve_clear_religious_settlement_modifiers = yes
+		remove_modifier = ve_religious_program_strain_mdf
+		ve_set_religious_model_variable = yes
+		set_variable = {
+			name = piety_bar_point
+			value = 35
+		}
+		ve_add_religious_transition_crisis = yes
+	}
+}
+
+ve_sync_religious_settlement_modifiers = {
+	if = {
+		limit = { ve_is_confessional_state = yes }
+		remove_modifier = ve_pluralist_settlement_mdf
+		remove_modifier = ve_atheist_settlement_mdf
+		ve_sync_confessional_faith_family = yes
+		if = {
+			limit = {
+				NOT = { has_modifier = ve_confessional_settlement_mdf }
+			}
+			add_modifier = {
+				name = ve_confessional_settlement_mdf
+				months = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { ve_is_pluralist_state = yes }
+		remove_modifier = ve_confessional_settlement_mdf
+		remove_modifier = ve_atheist_settlement_mdf
+		ve_clear_confessional_faith_family = yes
+		if = {
+			limit = {
+				NOT = { has_modifier = ve_pluralist_settlement_mdf }
+			}
+			add_modifier = {
+				name = ve_pluralist_settlement_mdf
+				months = -1
+			}
+		}
+	}
+	else = {
+		remove_modifier = ve_confessional_settlement_mdf
+		remove_modifier = ve_pluralist_settlement_mdf
+		ve_clear_confessional_faith_family = yes
+		if = {
+			limit = {
+				NOT = { has_modifier = ve_atheist_settlement_mdf }
+			}
+			add_modifier = {
+				name = ve_atheist_settlement_mdf
+				months = -1
+			}
+		}
+	}
+
+	if = {
+		limit = { var:piety_bar_point >= 75 }
+		remove_modifier = ve_religious_low_settlement_mdf
+		if = {
+			limit = { ve_is_confessional_state = yes }
+			remove_modifier = ve_pluralist_high_settlement_mdf
+			remove_modifier = ve_atheist_high_settlement_mdf
+			if = {
+				limit = {
+					NOT = { has_modifier = ve_confessional_high_settlement_mdf }
+				}
+				add_modifier = {
+					name = ve_confessional_high_settlement_mdf
+					months = -1
+				}
+			}
+		}
+		else_if = {
+			limit = { ve_is_pluralist_state = yes }
+			remove_modifier = ve_confessional_high_settlement_mdf
+			remove_modifier = ve_atheist_high_settlement_mdf
+			if = {
+				limit = {
+					NOT = { has_modifier = ve_pluralist_high_settlement_mdf }
+				}
+				add_modifier = {
+					name = ve_pluralist_high_settlement_mdf
+					months = -1
+				}
+			}
+		}
+		else = {
+			remove_modifier = ve_confessional_high_settlement_mdf
+			remove_modifier = ve_pluralist_high_settlement_mdf
+			if = {
+				limit = {
+					NOT = { has_modifier = ve_atheist_high_settlement_mdf }
+				}
+				add_modifier = {
+					name = ve_atheist_high_settlement_mdf
+					months = -1
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = { var:piety_bar_point <= 25 }
+		remove_modifier = ve_confessional_high_settlement_mdf
+		remove_modifier = ve_pluralist_high_settlement_mdf
+		remove_modifier = ve_atheist_high_settlement_mdf
+		if = {
+			limit = {
+				NOT = { has_modifier = ve_religious_low_settlement_mdf }
+			}
+			add_modifier = {
+				name = ve_religious_low_settlement_mdf
+				months = -1
+			}
+		}
+	}
+	else = {
+		remove_modifier = ve_confessional_high_settlement_mdf
+		remove_modifier = ve_pluralist_high_settlement_mdf
+		remove_modifier = ve_atheist_high_settlement_mdf
+		remove_modifier = ve_religious_low_settlement_mdf
+	}
+}
+
+ve_clamp_religious_state = {
+	if = {
+		limit = { var:piety_bar_point < 0 }
+		set_variable = {
+			name = piety_bar_point
+			value = 0
+		}
+	}
+	else_if = {
+		limit = { var:piety_bar_point > 100 }
+		set_variable = {
+			name = piety_bar_point
+			value = 100
+		}
+	}
+}
+
+ve_religious_program_cost = {
+	change_variable = {
+		name = piety_bar_point
+		subtract = 25
+	}
+	add_modifier = {
+		name = ve_religious_program_strain_mdf
+		months = 24
+	}
+	ve_clamp_religious_state = yes
+}
+
+ve_adopt_religious_program_1 = {
+	ve_religious_program_cost = yes
+	if = {
+		limit = { ve_is_confessional_state = yes }
+		add_modifier = { name = ve_confessional_program_1_mdf months = -1 }
+	}
+	else_if = {
+		limit = { ve_is_pluralist_state = yes }
+		add_modifier = { name = ve_pluralist_program_1_mdf months = -1 }
+	}
+	else = {
+		add_modifier = { name = ve_atheist_program_1_mdf months = -1 }
+	}
+}
+
+ve_adopt_religious_program_2 = {
+	ve_religious_program_cost = yes
+	if = {
+		limit = { ve_is_confessional_state = yes }
+		add_modifier = { name = ve_confessional_program_2_mdf months = -1 }
+	}
+	else_if = {
+		limit = { ve_is_pluralist_state = yes }
+		add_modifier = { name = ve_pluralist_program_2_mdf months = -1 }
+	}
+	else = {
+		add_modifier = { name = ve_atheist_program_2_mdf months = -1 }
+	}
+}
+
+ve_adopt_religious_program_3 = {
+	ve_religious_program_cost = yes
+	if = {
+		limit = { ve_is_confessional_state = yes }
+		add_modifier = { name = ve_confessional_program_3_mdf months = -1 }
+	}
+	else_if = {
+		limit = { ve_is_pluralist_state = yes }
+		add_modifier = { name = ve_pluralist_program_3_mdf months = -1 }
+	}
+	else = {
+		add_modifier = { name = ve_atheist_program_3_mdf months = -1 }
+	}
+}
+
+ve_adopt_religious_program_4 = {
+	ve_religious_program_cost = yes
+	if = {
+		limit = { ve_is_confessional_state = yes }
+		add_modifier = { name = ve_confessional_program_4_mdf months = -1 }
+	}
+	else_if = {
+		limit = { ve_is_pluralist_state = yes }
+		add_modifier = { name = ve_pluralist_program_4_mdf months = -1 }
+	}
+	else = {
+		add_modifier = { name = ve_atheist_program_4_mdf months = -1 }
+	}
+}
+
+ve_adopt_religious_program_5 = {
+	ve_religious_program_cost = yes
+	if = {
+		limit = { ve_is_confessional_state = yes }
+		add_modifier = { name = ve_confessional_program_5_mdf months = -1 }
+	}
+	else_if = {
+		limit = { ve_is_pluralist_state = yes }
+		add_modifier = { name = ve_pluralist_program_5_mdf months = -1 }
+	}
+	else = {
+		add_modifier = { name = ve_atheist_program_5_mdf months = -1 }
+	}
+}
+
+ve_adopt_religious_program_6 = {
+	ve_religious_program_cost = yes
+	if = {
+		limit = { ve_is_confessional_state = yes }
+		add_modifier = { name = ve_confessional_program_6_mdf months = -1 }
+	}
+	else_if = {
+		limit = { ve_is_pluralist_state = yes }
+		add_modifier = { name = ve_pluralist_program_6_mdf months = -1 }
+	}
+	else = {
+		add_modifier = { name = ve_atheist_program_6_mdf months = -1 }
+	}
+}
+
+ve_adopt_religious_program_7 = {
+	ve_religious_program_cost = yes
+	if = {
+		limit = { ve_is_confessional_state = yes }
+		add_modifier = { name = ve_confessional_program_7_mdf months = -1 }
+	}
+	else_if = {
+		limit = { ve_is_pluralist_state = yes }
+		add_modifier = { name = ve_pluralist_program_7_mdf months = -1 }
+	}
+	else = {
+		add_modifier = { name = ve_atheist_program_7_mdf months = -1 }
+	}
+}
+
+ve_adopt_religious_program_8 = {
+	ve_religious_program_cost = yes
+	if = {
+		limit = { ve_is_confessional_state = yes }
+		add_modifier = { name = ve_confessional_program_8_mdf months = -1 }
+	}
+	else_if = {
+		limit = { ve_is_pluralist_state = yes }
+		add_modifier = { name = ve_pluralist_program_8_mdf months = -1 }
+	}
+	else = {
+		add_modifier = { name = ve_atheist_program_8_mdf months = -1 }
+	}
+}
+
+ve_ai_uses_religion = {
+	if = {
+		limit = { ve_can_adopt_any_religious_program = yes }
+		random_list = {
+			1 = {
+				if = {
+					limit = { NOT = { ve_has_religious_program_1 = yes } }
+					ve_adopt_religious_program_1 = yes
+				}
+			}
+			1 = {
+				if = {
+					limit = { NOT = { ve_has_religious_program_2 = yes } }
+					ve_adopt_religious_program_2 = yes
+				}
+			}
+			1 = {
+				if = {
+					limit = { NOT = { ve_has_religious_program_3 = yes } }
+					ve_adopt_religious_program_3 = yes
+				}
+			}
+			1 = {
+				if = {
+					limit = { NOT = { ve_has_religious_program_4 = yes } }
+					ve_adopt_religious_program_4 = yes
+				}
+			}
+			1 = {
+				if = {
+					limit = { NOT = { ve_has_religious_program_5 = yes } }
+					ve_adopt_religious_program_5 = yes
+				}
+			}
+			1 = {
+				if = {
+					limit = { NOT = { ve_has_religious_program_6 = yes } }
+					ve_adopt_religious_program_6 = yes
+				}
+			}
+			1 = {
+				if = {
+					limit = { NOT = { ve_has_religious_program_7 = yes } }
+					ve_adopt_religious_program_7 = yes
+				}
+			}
+			1 = {
+				if = {
+					limit = { NOT = { ve_has_religious_program_8 = yes } }
+					ve_adopt_religious_program_8 = yes
+				}
+			}
+		}
+	}
+}

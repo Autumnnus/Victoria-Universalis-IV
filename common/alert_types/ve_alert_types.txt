@@ -11,7 +11,7 @@ max_piety = {
 	script_context = player_country
 	texture = "gfx/interface/catholic.dds"
 	valid = {
-		piety_cost_trigger = yes
+		ve_can_adopt_any_religious_program = yes
 	}
 	type = alert
 }
@@ -20,11 +20,7 @@ max_culture_reform_point = {
 	script_context = player_country
 	texture = "gfx/interface/monarch_cultures_icon.dds"
 	valid = {
-		culture_cost_trigger = yes
-		NOR = {
-			has_variable = supremacy_7_on
-			has_variable = intellectual_7_on
-		}
+		ve_can_change_identity_model = yes
 	}
 	type = alert
 }
@@ -46,6 +42,9 @@ can_unlock_age_bonus = {
 					has_modifier = age_1_bonus_4
 					has_modifier = age_1_bonus_5
 					has_modifier = age_1_bonus_6
+					has_modifier = age_1_bonus_7
+					has_modifier = age_1_bonus_8
+					has_modifier = age_1_bonus_9
 				}
 			}
 		}
@@ -61,6 +60,9 @@ can_unlock_age_bonus = {
 					has_modifier = age_2_bonus_4
 					has_modifier = age_2_bonus_5
 					has_modifier = age_2_bonus_6
+					has_modifier = age_2_bonus_7
+					has_modifier = age_2_bonus_8
+					has_modifier = age_2_bonus_9
 				}
 			}
 		}
@@ -76,6 +78,9 @@ can_unlock_age_bonus = {
 					has_modifier = age_3_bonus_4
 					has_modifier = age_3_bonus_5
 					has_modifier = age_3_bonus_6
+					has_modifier = age_3_bonus_7
+					has_modifier = age_3_bonus_8
+					has_modifier = age_3_bonus_9
 				}
 			}
 		}
@@ -88,21 +93,18 @@ can_use_missionary = {
 	valid = {
 		has_variable = avaible_missionaries
 		avaible_missionaries >= 1
-		NOT = {
-			has_law = law_type:law_total_separation
-		}
+		ve_missionaries_enabled = yes
 	}
 	type = important_action
 	alert_group = ve_missionary_group
 }
 
-can_use_culture_missionary = {
+ve_can_begin_targeted_cultural_project = {
 	script_context = player_country
 	valid = {
-		has_variable = avaible_culture_missionaries
-		avaible_culture_missionaries >= 1
-		NOT = {
-			has_law = law_type:law_multicultural
+		ve_has_no_active_cultural_project = yes
+		any_scope_state = {
+			ve_state_has_cultural_project_target = yes
 		}
 	}
 	type = important_action

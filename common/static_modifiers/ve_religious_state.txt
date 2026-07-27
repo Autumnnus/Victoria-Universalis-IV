@@ -1,0 +1,216 @@
+# Shared model settlements
+ve_confessional_settlement_mdf = {
+	icon = gfx/interface/catholic.dds
+	country_authority_mult = 0.05
+	state_conversion_mult = 0.10
+	interest_group_ig_devout_pol_str_mult = 0.10
+	state_migration_pull_mult = -0.03
+	country_radicalism_increases_open_prejudice_mult = 0.05
+}
+
+ve_pluralist_settlement_mdf = {
+	icon = gfx/interface/catholic.dds
+	state_migration_pull_mult = 0.05
+	state_conversion_mult = -0.15
+	country_bureaucracy_add = -25
+	country_radicalism_increases_open_prejudice_mult = -0.05
+}
+
+ve_atheist_settlement_mdf = {
+	icon = gfx/interface/intelligensia.dds
+	country_tech_spread_mult = 0.05
+	state_education_access_add = 0.02
+	country_authority_mult = -0.05
+	interest_group_ig_devout_pol_str_mult = -0.10
+	country_radicalism_increases_open_prejudice_mult = 0.05
+}
+
+# Confessional faith-family flavor. These packages are deliberately smaller
+# than the state-model settlement and programs.
+ve_confessional_christian_family_mdf = {
+	icon = gfx/interface/catholic.dds
+	country_bureaucracy_mult = 0.025
+	country_authority_mult = 0.025
+}
+
+ve_confessional_islamic_family_mdf = {
+	icon = gfx/interface/catholic.dds
+	state_tax_capacity_mult = 0.03
+	country_influence_mult = 0.03
+}
+
+ve_confessional_jewish_family_mdf = {
+	icon = gfx/interface/catholic.dds
+	state_migration_pull_mult = 0.03
+	country_tech_spread_mult = 0.03
+}
+
+ve_confessional_dharmic_family_mdf = {
+	icon = gfx/interface/catholic.dds
+	country_legitimacy_base_add = 3
+	state_mortality_mult = -0.01
+}
+
+ve_confessional_scholarly_family_mdf = {
+	icon = gfx/interface/catholic.dds
+	state_education_access_add = 0.01
+	country_tech_spread_mult = 0.03
+}
+
+ve_confessional_animist_family_mdf = {
+	icon = gfx/interface/catholic.dds
+	state_conscription_rate_mult = 0.05
+	country_authority_mult = 0.025
+}
+
+ve_confessional_high_settlement_mdf = {
+	icon = gfx/interface/catholic.dds
+	country_authority_mult = 0.05
+	country_legitimacy_base_add = 5
+}
+
+ve_pluralist_high_settlement_mdf = {
+	icon = gfx/interface/catholic.dds
+	state_migration_pull_mult = 0.05
+	country_legitimacy_base_add = 5
+}
+
+ve_atheist_high_settlement_mdf = {
+	icon = gfx/interface/intelligensia.dds
+	country_tech_spread_mult = 0.05
+	country_bureaucracy_mult = 0.05
+}
+
+ve_religious_low_settlement_mdf = {
+	icon = gfx/interface/catholic.dds
+	country_law_enactment_success_add = -0.05
+	country_legitimacy_base_add = -5
+}
+
+ve_religious_settlement_crisis_mdf = {
+	icon = gfx/interface/catholic.dds
+	country_bureaucracy_add = -50
+	country_authority_add = -50
+	country_law_enactment_success_add = -0.05
+}
+
+ve_religious_program_strain_mdf = {
+	icon = gfx/interface/catholic.dds
+	country_bureaucracy_add = -25
+	country_authority_add = -25
+}
+
+# State-level assignment used by the live Missionary action.
+ve_missionary_mdf = {
+	icon = gfx/interface/catholic.dds
+	state_radicalism_increases_violent_hostility_mult = 0.2
+	state_radicalism_increases_cultural_erasure_mult = 0.2
+	state_radicalism_increases_open_prejudice_mult = 0.2
+}
+
+# Confessional doctrines
+ve_confessional_program_1_mdf = {
+	icon = gfx/interface/catholic.dds
+	country_authority_add = 50
+}
+ve_confessional_program_2_mdf = {
+	icon = gfx/interface/catholic.dds
+	state_education_access_add = 0.02
+	interest_group_ig_devout_pol_str_mult = 0.05
+}
+ve_confessional_program_3_mdf = {
+	icon = gfx/interface/catholic.dds
+	state_mortality_mult = -0.02
+}
+ve_confessional_program_4_mdf = {
+	icon = gfx/interface/catholic.dds
+	country_loyalism_increases_full_acceptance_mult = 0.10
+}
+ve_confessional_program_5_mdf = {
+	icon = gfx/interface/catholic.dds
+	state_conversion_mult = 0.15
+}
+ve_confessional_program_6_mdf = {
+	icon = gfx/interface/catholic.dds
+	state_conscription_rate_mult = 0.10
+}
+ve_confessional_program_7_mdf = {
+	icon = gfx/interface/catholic.dds
+	country_influence_mult = 0.05
+}
+ve_confessional_program_8_mdf = {
+	icon = gfx/interface/catholic.dds
+	country_law_enactment_success_add = 0.05
+	interest_group_ig_devout_pol_str_mult = 0.05
+}
+
+# Pluralist programs
+ve_pluralist_program_1_mdf = {
+	icon = gfx/interface/catholic.dds
+	country_radicalism_increases_open_prejudice_mult = -0.10
+	country_radicalism_increases_second_rate_citizen_mult = -0.10
+}
+ve_pluralist_program_2_mdf = {
+	icon = gfx/interface/catholic.dds
+	state_migration_pull_mult = 0.10
+}
+ve_pluralist_program_3_mdf = {
+	icon = gfx/interface/catholic.dds
+	state_education_access_add = 0.02
+}
+ve_pluralist_program_4_mdf = {
+	icon = gfx/interface/catholic.dds
+	country_loyalism_increases_full_acceptance_mult = 0.10
+}
+ve_pluralist_program_5_mdf = {
+	icon = gfx/interface/catholic.dds
+	state_pop_qualifications_mult = 0.05
+}
+ve_pluralist_program_6_mdf = {
+	icon = gfx/interface/catholic.dds
+	country_influence_mult = 0.05
+}
+ve_pluralist_program_7_mdf = {
+	icon = gfx/interface/catholic.dds
+	country_bureaucracy_mult = 0.05
+}
+ve_pluralist_program_8_mdf = {
+	icon = gfx/interface/catholic.dds
+	country_law_enactment_success_add = 0.05
+}
+
+# Secular-state programs
+ve_atheist_program_1_mdf = {
+	icon = gfx/interface/intelligensia.dds
+	country_bureaucracy_mult = 0.05
+}
+ve_atheist_program_2_mdf = {
+	icon = gfx/interface/intelligensia.dds
+	state_tax_capacity_mult = 0.05
+}
+ve_atheist_program_3_mdf = {
+	icon = gfx/interface/intelligensia.dds
+	state_education_access_add = 0.03
+}
+ve_atheist_program_4_mdf = {
+	icon = gfx/interface/intelligensia.dds
+	state_mortality_mult = -0.02
+}
+ve_atheist_program_5_mdf = {
+	icon = gfx/interface/intelligensia.dds
+	country_loyalism_increases_full_acceptance_mult = 0.10
+}
+ve_atheist_program_6_mdf = {
+	icon = gfx/interface/intelligensia.dds
+	country_weekly_innovation_add = 3
+}
+ve_atheist_program_7_mdf = {
+	icon = gfx/interface/intelligensia.dds
+	interest_group_ig_devout_pol_str_mult = -0.10
+	country_authority_mult = -0.03
+}
+ve_atheist_program_8_mdf = {
+	icon = gfx/interface/intelligensia.dds
+	country_law_enactment_success_add = 0.05
+	country_legitimacy_base_add = 5
+}

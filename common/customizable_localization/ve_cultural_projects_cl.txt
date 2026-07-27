@@ -1,0 +1,47 @@
+ve_cultural_project_name = {
+	type = country
+	random_valid = no
+	text = { trigger = { var:ve_cultural_project_type == 1 } localization_key = ve_national_curriculum_name }
+	text = { trigger = { var:ve_cultural_project_type == 2 } localization_key = ve_shared_symbols_name }
+	text = { trigger = { var:ve_cultural_project_type == 3 } localization_key = ve_ethnic_campaign_name }
+	text = { trigger = { var:ve_cultural_project_type == 4 } localization_key = ve_civic_initiative_name }
+	text = { trigger = { var:ve_cultural_project_type == 5 } localization_key = ve_composite_compact_name }
+	text = { localization_key = ve_no_active_cultural_project }
+}
+
+ve_cultural_project_target = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_project_is_targeted = yes } localization_key = ve_targeted_cultural_project_target }
+	text = { trigger = { ve_project_is_countrywide = yes } localization_key = ve_countrywide_cultural_project_target }
+	text = { localization_key = ve_no_cultural_project_target }
+}
+
+ve_cultural_project_description = {
+	type = country
+	random_valid = no
+	text = { trigger = { var:ve_cultural_project_type == 1 } localization_key = ve_national_curriculum_desc }
+	text = { trigger = { var:ve_cultural_project_type == 2 } localization_key = ve_shared_symbols_desc }
+	text = { trigger = { var:ve_cultural_project_type == 3 } localization_key = ve_ethnic_campaign_desc }
+	text = { trigger = { var:ve_cultural_project_type == 4 } localization_key = ve_civic_initiative_desc }
+	text = { trigger = { var:ve_cultural_project_type == 5 } localization_key = ve_composite_compact_desc }
+	text = { localization_key = ve_no_active_cultural_project }
+}
+
+ve_model_project_name = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_ethnic_identity = yes } localization_key = ve_ethnic_campaign_name }
+	text = { trigger = { ve_is_civic_identity = yes } localization_key = ve_civic_initiative_name }
+	text = { trigger = { ve_is_composite_identity = yes } localization_key = ve_composite_compact_name }
+	text = { localization_key = ve_composite_compact_name }
+}
+
+ve_model_project_description = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_ethnic_identity = yes } localization_key = ve_ethnic_campaign_desc }
+	text = { trigger = { ve_is_civic_identity = yes } localization_key = ve_civic_initiative_desc }
+	text = { trigger = { ve_is_composite_identity = yes } localization_key = ve_composite_compact_desc }
+	text = { localization_key = ve_composite_compact_desc }
+}

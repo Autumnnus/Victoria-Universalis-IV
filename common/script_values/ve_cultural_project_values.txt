@@ -1,0 +1,116 @@
+ve_cultural_project_progress_base = 1
+
+ve_cultural_project_progress_administration = {
+	if = {
+		limit = {
+			bureaucracy >= 0
+			approaching_bureaucracy_shortage = no
+		}
+		add = 2
+	}
+	else = {
+		subtract = 1
+	}
+}
+
+ve_cultural_project_progress_legitimacy = {
+	if = {
+		limit = { government_legitimacy >= 75 }
+		add = 1
+	}
+	else_if = {
+		limit = { government_legitimacy < 25 }
+		subtract = 1
+	}
+}
+
+ve_cultural_project_progress_education = {
+	if = {
+		limit = { ve_is_civic_identity = yes }
+		if = {
+			limit = { literacy_rate >= 0.75 }
+			add = 2
+		}
+		else_if = {
+			limit = { literacy_rate >= 0.50 }
+			add = 1
+		}
+	}
+	else_if = {
+		limit = {
+			ve_is_ethnic_identity = yes
+			primary_cultures_percent_country >= 0.75
+		}
+		add = 1
+	}
+	else_if = {
+		limit = {
+			ve_is_composite_identity = yes
+			primary_cultures_percent_country <= 0.75
+		}
+		add = 1
+	}
+}
+
+ve_cultural_project_progress_cohesion = {
+	if = {
+		limit = { var:ve_national_cohesion >= 75 }
+		add = 1
+	}
+	else_if = {
+		limit = { var:ve_national_cohesion <= 25 }
+		subtract = 1
+	}
+}
+
+ve_cultural_project_progress_movement = {
+	if = {
+		limit = { ve_has_cultural_movement_pressure = yes }
+		subtract = 1
+	}
+}
+
+ve_cultural_project_progress_target = {
+	if = {
+		limit = {
+			ve_project_is_targeted = yes
+			has_variable = ve_cultural_project_target_state
+		}
+		if = {
+			limit = {
+				var:ve_cultural_project_target_state ?= {
+					turmoil >= 0.25
+				}
+			}
+			subtract = 2
+		}
+		else_if = {
+			limit = {
+				var:ve_cultural_project_target_state ?= {
+					turmoil >= 0.10
+				}
+			}
+			subtract = 1
+		}
+	}
+}
+
+ve_monthly_cultural_project_progress = {
+	add = ve_cultural_project_progress_base
+	add = ve_cultural_project_progress_administration
+	add = ve_cultural_project_progress_legitimacy
+	add = ve_cultural_project_progress_education
+	add = ve_cultural_project_progress_cohesion
+	add = ve_cultural_project_progress_movement
+	add = ve_cultural_project_progress_target
+	min = 1
+	max = 7
+	round = yes
+}
+
+ve_cultural_project_progress_remaining = {
+	value = 100
+	subtract = var:ve_cultural_project_progress
+	min = 0
+	round = yes
+}

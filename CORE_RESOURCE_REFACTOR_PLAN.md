@@ -2,8 +2,9 @@
 
 > Status: design and implementation handoff document  
 > Scope: Idea Points, religion/atheism, culture/National Identity, Ages/Splendor  
-> Implementation has not started. Values in this document are initial balance
-> targets unless explicitly marked as a locked decision.
+> Implementation status: Phases 0-9 complete; the core resource refactor is implemented.
+> Values in this document are initial balance targets unless
+> explicitly marked as a locked decision.
 
 ## 0. Objective
 
@@ -915,7 +916,10 @@ Deliverable: complete dependency table with no implementation behavior change.
 ### Phase 1 — Shared framework
 
 - split monthly update effects;
-- implement reusable cap/equilibrium helpers;
+- expose stable stock and monthly-change script values to update effects and
+  GUI;
+- implement cap/equilibrium behavior inside the relevant system's vertical
+  migration rather than imposing one shared resource rule;
 - implement tooltip-facing calculation values;
 - remove visible-resource difficulty branches;
 - preserve old behavior temporarily behind the new interfaces if necessary.
@@ -1001,6 +1005,7 @@ Critical runtime verification is required only for:
 
 - dynamic religion-panel transformation;
 - religious settlement transitions and modifier cleanup;
+- National Identity model transitions, panel bindings, and legacy-save cleanup;
 - dynamic culture/state project targeting;
 - age objective first-completion flags;
 - age transition reset;
@@ -1107,3 +1112,466 @@ review, not guessed in advance:
 - how many significant cultures the National Identity panel can target safely;
 - whether Identity Model changes require a cooldown in addition to backlash;
 - final names and localization tone for resources and models.
+
+## 17. Phase 0 audit result
+
+Phase 0 was completed before changing resource behavior. The existing storage
+variables remain in place during the bridge so save migration and stale-state
+cleanup can be implemented deliberately rather than through a mass rename.
+
+### Dependency map
+
+| Target system | Current storage | Monthly calculation | Main spenders and writers | Player-facing dependencies |
+| --- | --- | --- | --- | --- |
+| National Insight | `idea_point_pool` | `monthly_idea_points` | idea purchase effects and scripted GUIs; developer controls; released-country inheritance | idea panel, topbar, idea alert, AI idea selection |
+| Religious State | `piety_bar_point` | `monthly_piety_points` | religion aspect effects and scripted GUIs; developer controls | religion panel, topbar, piety alert, aspect customizable localization, AI religion selection |
+| National Identity | `culture_reform_point` | `monthly_culture_reform_point` | fourteen culture reform GUIs; AI reform selection; developer controls; released-country inheritance | culture panel, topbar, culture alert, cultural missionary system |
+| Era Momentum | `ve_splender_points` | `monthly_splender_points` | age reward GUIs; `splendor_cost`; AI age selection; developer controls; age-transition resets | age panel, topbar, age alert, objective display |
+
+All four resources are currently granted by `ve_monthly_points`, called from
+hidden monthly event `dev.4`. The same event also performs initialization,
+idea-slot updates, holy-site updates, law-change synchronization, atheism
+cleanup, missionary cleanup, and all AI spending. Resource generation must
+remain cheap because it shares this country-monthly pulse.
+
+### Auxiliary state that must migrate with the resources
+
+- Ideas: group-level variables, idea selection variables,
+  `national_idea_pool`, idea slot variables, and idea cancellation paths.
+- Religion: permanent passive modifiers, eight aspect slots, aspect selection
+  variables, holy-site modifiers, missionary counts, and atheism cleanup.
+- Culture: `culture_reform_value`, `selected_reform_value`,
+  `stop_getting_reform_point`, fourteen ladder modifiers and flags, cultural
+  missionary counts, selected states, and AI reform choices.
+- Ages: three global age flags, transition-trigger globals,
+  `ve_triggered_objectives`, objective state, all age reward modifiers, and
+  Golden Age state.
+
+### Lifecycle and migration hazards
+
+1. Released and civil-war countries currently inherit only Idea Points and
+   Culture Reform Points from two rank-one-country global accumulators in
+   `dev.8`. This is brittle and must be replaced with explicit initialization
+   based on the new country's current conditions.
+2. Age transitions in `dev.5` and `dev.6` reset Splendor for every country and
+   remove every modifier from the previous age. The Momentum migration must
+   retain this cleanup guarantee while also clearing completion flags and
+   escalating-cost state.
+3. State Atheism currently receives piety income, uses atheist versions of the
+   same aspect slots, and receives missionary capacity. The new Atheist State
+   cannot reuse these semantics accidentally.
+4. `ve_law_change_effects` couples religion law to missionaries and
+   citizenship law to cultural missionaries. Identity-model and religious-model
+   transitions must replace or explicitly preserve those side effects.
+5. Culture reform purchases duplicate their point cost and ladder mutation
+   across player scripted GUIs and AI effects. The replacement needs one shared
+   purchase/project effect to prevent rule drift.
+6. Religion aspect eligibility text repeats piety checks throughout
+   customizable localization. Meter and model checks need centralized scripted
+   triggers before the panel is rewritten.
+7. Existing alerts test fixed costs (125, 750, and 800). They must move with
+   each system and must not remain active against compatibility variables.
+
+### Vanilla support confirmed during the audit
+
+- current Victoria 3 exposes country/state cultural-acceptance triggers,
+  including state and country-average acceptance;
+- per-culture country acceptance modifier types exist in the current vanilla
+  modifier definitions;
+- laws, institutions, interest-group state, legitimacy, literacy, bureaucracy,
+  turmoil, and economic balance can therefore supply native inputs instead of
+  parallel EU4-style mana rules;
+- dynamic culture targeting and runtime application of per-culture acceptance
+  remain a critical prototype item for Phase 6 because the target-dependent
+  modifier wiring is engine-sensitive.
+
+### Phase 1 bridge decision
+
+The monthly dispatcher now delegates to four stable entry points:
+
+- `ve_update_national_insight`;
+- `ve_update_religious_state`;
+- `ve_update_national_identity`;
+- `ve_update_era_momentum`.
+
+During the compatibility bridge these effects still use the legacy variables
+and formulas through stable `ve_*_value` and `ve_monthly_*` script values, so
+the structural change does not alter balance. Difficulty branches remain only
+inside those legacy formulas and will be removed when each visible resource is
+migrated; removing them before a replacement formula exists would create an
+arbitrary temporary balance change. Each later phase will replace exactly one
+entry point, then migrate its GUI, alert, AI, initialization, and cleanup as a
+single vertical slice.
+
+## 18. Phase 2 implementation result — National Insight
+
+National Insight is the first fully migrated resource. It intentionally retains
+`idea_point_pool` as its save-compatible storage variable while all active
+calculations and affordability checks use `ve_`-prefixed interfaces.
+
+### Monthly model
+
+The pre-cap monthly value is built from:
+
+- base recovery: +6;
+- literacy: +1 to +4;
+- education institution: +0 to +3;
+- university capacity in population-scaled bands: +0 to +2;
+- healthy or overworked administration: +1 or -2;
+- government legitimacy: -2 to +2;
+- Intelligentsia approval: -1 to +1;
+- loans, country turmoil, and active implementation strain: 0 to -5.
+
+The result is clamped to 2-18 before stock pressure. Income is multiplied by
+0.5 from 750 stock, by 0.25 from 900 stock, and by 0 at 1000. All recurring and
+known one-time changes use a shared hard clamp of 0-1000.
+
+### Purchase strain
+
+Buying any idea applies `ve_national_insight_implementation_strain` for 24
+months. It costs 25 Bureaucracy and 25 Authority and reduces Insight generation
+by 2 per month while active. Repeated rapid purchases refresh the duration
+rather than creating an unbounded stack.
+
+### Migration changes
+
+- player and AI use the same visible monthly formula;
+- idea affordability checks use `ve_national_insight_value`;
+- the topbar and idea panel display the calculated monthly breakdown;
+- the obsolete rank-one-country global Idea Point inheritance was removed;
+- released and civil-war countries begin from their own initialized stock and
+  immediately generate Insight from their own conditions;
+- the obsolete literacy-only custom localization and legacy monthly Idea Point
+  formula were removed;
+- the Innovative idea event now awards the actual resource variable rather than
+  accidentally creating a variable named after the old script value.
+
+## 19. Phase 3 implementation result — Era Momentum
+
+Splendor has been replaced in player-facing text and active calculations by
+Era Momentum. The save-compatible `ve_splender_points` variable remains the
+underlying stock while all live logic uses the new centralized values,
+triggers, effects, and scripted GUIs.
+
+### Objective-driven income
+
+- the universal +3 monthly allowance and AI difficulty income are no longer
+  used by the live monthly update;
+- each currently satisfied objective grants +1 Era Momentum per month;
+- each of the seven objectives grants +50 once on its first completion in an
+  age;
+- losing an objective removes its monthly income but does not erase completion
+  or permit the +50 award to repeat;
+- each age transition resets stock, completed-objective count, escalating cost
+  state, and the preceding age's completion flags.
+
+The three age sets now focus on Industry and Nations, Empire and Mass Society,
+and Mass Politics and Total War. Scale-sensitive alternatives allow both large
+powers and successfully modernized small countries to participate.
+
+### Rewards and Golden Ages
+
+- every age offers nine tag-neutral rewards across state/society,
+  economy/technology, and world/military themes;
+- costs escalate per age from 200 to 300, 400, 500, and then 600 for every
+  later purchase;
+- AI uses the same affordability trigger, escalating cost, and purchase effect
+  as the player;
+- four distinct completed objectives unlock one once-per-game Golden Age
+  choice: Industrial, Cultural, or Strategic;
+- each Golden Age lasts 15 years and has a focused modifier package.
+
+The age panel now exposes the actual current income, completed-objective count,
+and next reward cost. Legacy reward slots 10 and 11 remain defined only for
+old-save cleanup and are hidden from the live UI.
+
+## 20. Phase 4 implementation result — Religious State
+
+Piety has been replaced by a 0–100 state-of-society meter. The save-compatible
+`piety_bar_point` variable remains the storage layer, while laws select one of
+three playable models:
+
+- State Religion uses **Religious Authority**;
+- Freedom of Conscience and Total Separation use **Religious Harmony**;
+- State Atheism or an atheist state religion uses **Secular Legitimacy**.
+
+### Equilibrium model
+
+The meter moves by 20 percent of the distance toward its current equilibrium,
+rounded and capped at five points per month. Equilibrium responds to:
+
+- model-specific support from the Devout, Intelligentsia, literacy, and the
+  selected Church and State law;
+- government legitimacy and administrative capacity;
+- country turmoil;
+- an active settlement transition or program implementation strain.
+
+The target is clamped to 15–85, leaving a recovery route during crises while
+preventing passive permanent maximum strength. Values at 75 or above grant a
+model-specific established-settlement benefit; values at 25 or below impose a
+shared political crisis.
+
+### Doctrines and programs
+
+Each model has eight permanent choices with model-specific rewards. Adoption
+requires at least 50 meter strength, consumes 25, and creates 24 months of
+administrative and authority strain. The three sets emphasize:
+
+- Confessional State: authority, conversion, community institutions,
+  mobilization, and Devout power;
+- Pluralist State: legitimacy, migration, education, qualifications,
+  administration, and reduced centralized conversion;
+- Secular State: bureaucracy, civil registration, public education, welfare,
+  innovation, civic legitimacy, and reduced Devout power.
+
+Player and AI actions use the same affordability and purchase effects.
+Confessional states also receive a deliberately smaller faith-family package
+for Christian, Islamic, Jewish, Dharmic, Buddhist/East Asian, or local sacred
+traditions. This preserves religious texture without making faith choice more
+important than the state's actual political settlement.
+
+### Transitions and legacy migration
+
+The monthly lifecycle detects a changed religious model. A transition removes
+all old religion aspects, all programs from the previous model, passive
+settlement modifiers, and holy-site benefits that are no longer applicable.
+It resets the meter to 35 and applies a 36–60 month settlement crisis; adopting
+State Atheism in a low-literacy or strongly clerical society receives the
+longest transition.
+
+State Atheism now has no missionaries. Pluralist states retain missionaries
+only under Freedom of Conscience, while Total Separation disables them. Holy
+sites are a Confessional State subsystem and are hidden and mechanically
+cleared under Pluralist and Secular settlements.
+
+## 21. Phase 5 implementation result — National Identity
+
+The permanent National Supremacy versus Intellectual Nation ladder has been
+removed from live gameplay. `culture_reform_point` remains the save-compatible
+storage variable but is now presented and calculated as **Cultural Mandate**.
+Countries select one of three viable political definitions of the nation:
+
+- **Ethnic Nation** emphasizes assimilation, authority, and mobilization, while
+  reducing migration attraction and making open prejudice more destabilizing;
+- **Civic Nation** emphasizes migration, education, qualifications, and shared
+  citizenship, while consuming administration and reducing authority and
+  centralized assimilation;
+- **Composite State** emphasizes negotiated coexistence, lower discrimination
+  pressure, legitimacy, and diplomatic influence, while requiring the most
+  administration and limiting assimilation.
+
+### Cultural Mandate
+
+Mandate has a hard cap of 500 and a soft-cap band beginning at 400. Monthly
+income has a recovery base of 2 and responds to legitimacy, bureaucracy,
+literacy, turmoil, transition backlash, and alignment between the selected
+Identity Model and Citizenship law. The pre-cap result is clamped to 1–8;
+income is halved from 400 and stops at 500.
+
+Changing Identity Model costs 200 Mandate, resets National Cohesion to 35, and
+applies 60 months of Identity Transition Backlash. The backlash consumes
+Bureaucracy and Authority, reduces law-enactment success, slows Mandate
+generation, and prevents another model change until it expires.
+
+### National Cohesion
+
+National Cohesion is a 0–100 dynamic meter. It moves by 20 percent of the
+distance toward equilibrium each month, rounded and capped at five points.
+The equilibrium is clamped to 15–85 and responds to legitimacy,
+administrative capacity, turmoil, transition backlash, model-law alignment,
+and model-specific conditions such as literacy.
+
+At 75 or more, each Identity Model grants a distinct cohesion reward. At 25 or
+less, all models suffer reduced legitimacy and law-enactment success. This
+makes an identity choice strongest when supported by the country's laws and
+institutions instead of functioning as a free permanent bonus package.
+
+### Migration and temporary bridge
+
+Initialization selects a deterministic model from current Citizenship law,
+sets Cohesion safely, clamps inherited Mandate, and removes all fourteen old
+ladder modifiers and their state variables. Player and AI model changes share
+the same triggers, costs, cooldown, and effects. The alert, developer controls,
+topbar, and National Identity panel now use the new model.
+
+The cultural-bureaucrat/diffusion system remained as a temporary compatibility
+bridge until Phase 6 validated dynamic state and culture targeting.
+
+## 22. Phase 6 implementation result — Cultural Projects and Acceptance
+
+The old pool of cultural bureaucrats and its automatic six-month assimilation
+pulse have been removed from live gameplay. Cultural Mandate now funds one
+visible Cultural Project at a time. All projects progress from 0 to 100 through
+the same monthly calculation, which responds to administration, legitimacy,
+literacy, National Cohesion, cultural-movement pressure, and—in targeted
+projects—the target state's turmoil. Monthly progress is clamped to 1–7.
+
+### Countrywide projects
+
+- **National Curriculum** costs 100 Mandate and creates a ten-year education
+  and qualifications program after completion.
+- **Shared Symbols** costs 75 Mandate and creates an eight-year authority and
+  loyalist-generation program after completion.
+
+Both projects return a small amount of Mandate and Cohesion when completed,
+making completion rewarding without refunding the initial investment.
+
+### Identity-specific targeted projects
+
+Targeted projects are started from an owned state's panel. The largest
+eligible non-primary culture comprising at least five percent of that state
+becomes the explicit project target:
+
+- **Ethnic Integration Campaign** costs 125 Mandate, creates political
+  resistance, converts five percent of the targeted culture in the selected
+  state into a primary culture on completion, and leaves a ten-year
+  assimilation program.
+- **Equal Citizenship Initiative** costs 100 Mandate and grants the target
+  culture +15 Acceptance for ten years, local loyalists, and a ten-year
+  qualifications and migration program.
+- **Constituent Compact** costs 150 Mandate, requires at least 40 Cohesion, and
+  permanently grants the target culture +15 Acceptance. The culture is then
+  recorded as a recognized constituent and cannot be selected for another
+  compact.
+
+Changing Identity Model safely cancels the current project before transition.
+Voluntary cancellation does not refund Mandate, removes five Cohesion, and
+creates a two-year administrative and political backlash.
+
+### Interface, AI, and migration
+
+The National Identity panel now shows exact project costs, durations,
+completion results, active target culture and state, current progress, and the
+full monthly progress breakdown. The state-panel action and culture alert have
+been repurposed for targeted projects. AI countries use the same costs,
+eligibility rules, target selection, progress, and outcomes as players.
+
+Initialization clears old cultural-bureaucrat counters and state assignments.
+The legacy citizenship-law synchronization no longer recreates them, and the
+old half-yearly cultural conversion code is no longer dispatched. Dynamic
+stored state/culture scopes and the native culture-acceptance effect are used
+instead of parallel culture variables.
+
+## 23. Phase 7 implementation result — Integration and balance
+
+The final pass audited all four resources together instead of balancing each
+panel in isolation. Modifier types were checked against the current read-only
+vanilla definitions, duplicate live identifiers were removed, and the
+recurring lifecycle was reviewed for player, AI, released-country, civil-war,
+and old-save initialization.
+
+### Final pacing targets
+
+- one complete Idea Group costs 2,800 National Insight. Before purchase strain
+  and soft-cap pressure, sustained monthly income of 8–16 completes a group in
+  roughly 15–29 years; repeated purchases add 24-month implementation strain;
+- Era Momentum grants one point per currently satisfied objective each month
+  and 50 once per distinct objective. In a 35-year age, maintaining roughly
+  four objectives supports about five of the nine rewards, while six objectives
+  supports about six;
+- Religious-State programs remain 25-point permanent choices, but Program
+  Implementation Strain now prevents another adoption for 24 months. Acquiring
+  all eight therefore takes at least 14 years instead of being compressed into
+  a few high-equilibrium years;
+- Cultural Projects require 100 total progress. At the normal 4–6 monthly
+  range they last about 17–25 months; severe instability can extend a project
+  toward the 100-month floor, while the absolute best case remains 15 months;
+- 100 Cultural Mandate takes about 13–25 months at the intended 4–8 income
+  range, before the 400-point soft cap and the administrative cost of an active
+  project.
+
+### Cross-system specialization
+
+Generic state capacity still matters, but a single high-literacy or
+high-bureaucracy build no longer maximizes every cultural route:
+
+- Civic Nation receives the strongest literacy contribution;
+- Ethnic Nation receives its social contribution from primary-culture
+  demographic concentration;
+- Composite State receives it from a genuinely plural population;
+- Civic Cohesion falls when a non-primary culture above ten percent of the
+  population remains at very low Acceptance;
+- all models still react to cultural movements, turmoil, legitimacy, and their
+  Citizenship-law alignment.
+
+Potential innovation stacking was also reduced. Established Secular States now
+receive technology spread rather than another flat innovation source, and
+Academic Freedom grants +3 rather than +5 weekly innovation. This preserves a
+strong scientific route without allowing the religious model, an Idea Group,
+and an Era reward to create excessive flat innovation together.
+
+### Lifecycle and cleanup
+
+- Era Momentum now has an idempotent monthly initializer. Old saves that
+  already possess the mod's main initialization flag but lack Phase 3 counters
+  reconstruct reward ownership and Golden Age state safely;
+- released and civil-war countries initialize the four storage resources and
+  then pass through the same model/project/objective initialization as every
+  other country on their first monthly pulse;
+- the former cultural-missionary topbar element, alert terminology, state
+  action identifiers, cultural counters, conversion dispatch, and live
+  diffusion hooks were removed or renamed to Cultural Project terminology;
+- Nationalist Idea V now affects only Missionary Conversion Power, while
+  Nationalist Idea VII is the sole source of its advertised +2 missionary
+  capacity. Acquiring or cancelling Idea VII immediately resynchronizes
+  capacity from the current Church and State law without double-counting;
+- six duplicate definitions of the missionary annex-cleanup effect were
+  consolidated into one deterministic definition;
+- obsolete compatibility bindings were subsequently removed in Phase 9; the
+  live resource flow no longer depends on the superseded aspect or cultural
+  missionary architecture.
+
+### Final verification
+
+The completed implementation passed brace and GUI-nesting checks, unique
+identifier checks by content category, English localization reference and
+duplicate-key checks, modifier-definition checks against the current vanilla
+installation, stale active-reference searches, and whitespace validation.
+Player and AI actions share the same affordability triggers and mutation
+effects for Ideas, Religious Programs, Identity changes, Cultural Projects,
+Era rewards, and Golden Ages.
+
+## 24. Phase 8 implementation result — UI and tooltip clarity
+
+The four resource panels now expose the values needed to make decisions
+without consulting source files or guessing hidden thresholds.
+
+- National Insight displays its live income breakdown and correct 1,000-point
+  scale. Idea purchase buttons list all seven tier costs, the 24-month
+  implementation strain, and the no-refund rule;
+- Religious Settlement displays its exact equilibrium components, monthly
+  convergence rule, and the effects of the 25/75 thresholds. Every Religious
+  Program tooltip changes with the active settlement and states its permanent
+  modifier before showing affordability and cooldown requirements;
+- National Identity displays exact Mandate and Cohesion inputs. Cultural
+  Projects expose current and remaining progress, monthly components, target,
+  administrative burden, cancellation consequences, and completion outcome;
+- Era Momentum displays satisfied and completed objectives, monthly income,
+  rewards purchased, the full escalating cost ladder, and the age-reset rule.
+  Each Golden Age choice now states its distinct 15-year effects.
+
+Incorrect vanilla `BUILDING_PROGRESS_TOOLTIP` bindings were removed from the
+custom Insight and Religious Settlement bars. All custom resource bars now
+route to their own mechanical explanation, and the Insight bar uses its actual
+1,000-point cap.
+
+The UI pass passed script/GUI brace checks, English localization reference and
+duplicate-key checks, scripted-value reference checks, customizable
+localization reference checks, and whitespace validation.
+
+## 25. Phase 9 implementation result — major-patch support policy
+
+The refactor is now a major-patch baseline rather than an old-save migration.
+Only English localization is maintained for new and changed player-facing text.
+Non-English localization files are intentionally not synchronized.
+
+The active initialization paths no longer scan for, remove, or reconstruct
+superseded Cultural Missionary, religion-aspect, or culture-reform state. New
+campaigns therefore enter the current resource systems directly.
+
+The obsolete religion-aspect GUI, effects, customizable localization, and
+static-modifier files were removed together with the inactive AI routines and
+Cultural Missionary calculations. The active Missionary modifier was moved
+into the current Religious State modifier file. Holy Sites, their monthly state
+ownership scan, modifiers, panel, diagnostic hooks, and English localization were
+removed; the new Religious State system is now the sole religious progression loop.

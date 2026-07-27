@@ -575,18 +575,6 @@ boost_nationalist_idea_effect = {
 					months = -1
 				}
 			}
-			every_scope_state = {
-				limit = {
-					owner = ROOT
-					has_modifier = ve_diffusionist_mdf
-				}
-				remove_modifier = ve_diffusionist_mdf
-				add_modifier = {
-					name = ve_diffusionist_mdf
-					multiplier = 3
-					months = -1
-				}
-			}
 			ve_idea_purchase_5 = yes
 		}
 	}
@@ -627,22 +615,6 @@ boost_nationalist_idea_effect = {
 			}
 			set_variable = nationalist_idea_7_var
 			ve_law_change_effects = yes
-			change_variable = {
-				name = avaible_missionaries
-				add = 2
-			}
-			change_variable = {
-				name = avaible_culture_missionaries
-				add = 2
-			}
-			change_variable = {
-				name = total_missionaries
-				add = 2
-			}
-			change_variable = {
-				name = total_culture_missionaries
-				add = 2
-			}
 		}
 		ve_idea_purchase_7 = yes
 		set_variable = nationalist_idea_completed

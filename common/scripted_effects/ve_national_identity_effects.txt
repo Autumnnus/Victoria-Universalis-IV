@@ -1,0 +1,250 @@
+
+ve_clear_identity_modifiers = {
+	remove_modifier = ve_ethnic_identity_mdf
+	remove_modifier = ve_civic_identity_mdf
+	remove_modifier = ve_composite_identity_mdf
+	remove_modifier = ve_ethnic_high_cohesion_mdf
+	remove_modifier = ve_civic_high_cohesion_mdf
+	remove_modifier = ve_composite_high_cohesion_mdf
+	remove_modifier = ve_low_national_cohesion_mdf
+}
+
+ve_set_initial_identity_model = {
+	if = {
+		limit = {
+			OR = {
+				has_law = law_type:law_ethnostate
+				has_law = law_type:law_national_supremacy
+			}
+		}
+		set_variable = {
+			name = ve_identity_model
+			value = 1
+		}
+	}
+	else_if = {
+		limit = { has_law = law_type:law_multicultural }
+		set_variable = {
+			name = ve_identity_model
+			value = 2
+		}
+	}
+	else = {
+		set_variable = {
+			name = ve_identity_model
+			value = 3
+		}
+	}
+}
+
+ve_clamp_cultural_mandate = {
+	if = {
+		limit = { var:culture_reform_point < 0 }
+		set_variable = {
+			name = culture_reform_point
+			value = 0
+		}
+	}
+	else_if = {
+		limit = { var:culture_reform_point > 500 }
+		set_variable = {
+			name = culture_reform_point
+			value = 500
+		}
+	}
+}
+
+ve_clamp_national_cohesion = {
+	if = {
+		limit = { var:ve_national_cohesion < 0 }
+		set_variable = {
+			name = ve_national_cohesion
+			value = 0
+		}
+	}
+	else_if = {
+		limit = { var:ve_national_cohesion > 100 }
+		set_variable = {
+			name = ve_national_cohesion
+			value = 100
+		}
+	}
+}
+
+ve_initialize_national_identity = {
+	if = {
+		limit = {
+			NOT = { has_variable = ve_identity_model }
+		}
+		ve_clear_identity_modifiers = yes
+		ve_set_initial_identity_model = yes
+		set_variable = {
+			name = ve_national_cohesion
+			value = 50
+		}
+		ve_clamp_cultural_mandate = yes
+	}
+	else_if = {
+		limit = {
+			NOT = { has_variable = ve_national_cohesion }
+		}
+		set_variable = {
+			name = ve_national_cohesion
+			value = 50
+		}
+	}
+}
+
+ve_sync_identity_modifiers = {
+	if = {
+		limit = { ve_is_ethnic_identity = yes }
+		remove_modifier = ve_civic_identity_mdf
+		remove_modifier = ve_composite_identity_mdf
+		if = {
+			limit = { NOT = { has_modifier = ve_ethnic_identity_mdf } }
+			add_modifier = { name = ve_ethnic_identity_mdf months = -1 }
+		}
+	}
+	else_if = {
+		limit = { ve_is_civic_identity = yes }
+		remove_modifier = ve_ethnic_identity_mdf
+		remove_modifier = ve_composite_identity_mdf
+		if = {
+			limit = { NOT = { has_modifier = ve_civic_identity_mdf } }
+			add_modifier = { name = ve_civic_identity_mdf months = -1 }
+		}
+	}
+	else = {
+		remove_modifier = ve_ethnic_identity_mdf
+		remove_modifier = ve_civic_identity_mdf
+		if = {
+			limit = { NOT = { has_modifier = ve_composite_identity_mdf } }
+			add_modifier = { name = ve_composite_identity_mdf months = -1 }
+		}
+	}
+
+	if = {
+		limit = { var:ve_national_cohesion >= 75 }
+		remove_modifier = ve_low_national_cohesion_mdf
+		if = {
+			limit = { ve_is_ethnic_identity = yes }
+			remove_modifier = ve_civic_high_cohesion_mdf
+			remove_modifier = ve_composite_high_cohesion_mdf
+			if = {
+				limit = { NOT = { has_modifier = ve_ethnic_high_cohesion_mdf } }
+				add_modifier = { name = ve_ethnic_high_cohesion_mdf months = -1 }
+			}
+		}
+		else_if = {
+			limit = { ve_is_civic_identity = yes }
+			remove_modifier = ve_ethnic_high_cohesion_mdf
+			remove_modifier = ve_composite_high_cohesion_mdf
+			if = {
+				limit = { NOT = { has_modifier = ve_civic_high_cohesion_mdf } }
+				add_modifier = { name = ve_civic_high_cohesion_mdf months = -1 }
+			}
+		}
+		else = {
+			remove_modifier = ve_ethnic_high_cohesion_mdf
+			remove_modifier = ve_civic_high_cohesion_mdf
+			if = {
+				limit = { NOT = { has_modifier = ve_composite_high_cohesion_mdf } }
+				add_modifier = { name = ve_composite_high_cohesion_mdf months = -1 }
+			}
+		}
+	}
+	else_if = {
+		limit = { var:ve_national_cohesion <= 25 }
+		remove_modifier = ve_ethnic_high_cohesion_mdf
+		remove_modifier = ve_civic_high_cohesion_mdf
+		remove_modifier = ve_composite_high_cohesion_mdf
+		if = {
+			limit = { NOT = { has_modifier = ve_low_national_cohesion_mdf } }
+			add_modifier = { name = ve_low_national_cohesion_mdf months = -1 }
+		}
+	}
+	else = {
+		remove_modifier = ve_ethnic_high_cohesion_mdf
+		remove_modifier = ve_civic_high_cohesion_mdf
+		remove_modifier = ve_composite_high_cohesion_mdf
+		remove_modifier = ve_low_national_cohesion_mdf
+	}
+}
+
+ve_identity_transition_cost = {
+	ve_cancel_cultural_project_for_identity_change = yes
+	change_variable = {
+		name = culture_reform_point
+		subtract = 200
+	}
+	set_variable = {
+		name = ve_national_cohesion
+		value = 35
+	}
+	add_modifier = {
+		name = ve_identity_transition_backlash_mdf
+		months = 60
+	}
+	ve_clamp_cultural_mandate = yes
+}
+
+ve_change_to_ethnic_identity = {
+	ve_identity_transition_cost = yes
+	ve_clear_identity_modifiers = yes
+	set_variable = {
+		name = ve_identity_model
+		value = 1
+	}
+	ve_sync_identity_modifiers = yes
+}
+
+ve_change_to_civic_identity = {
+	ve_identity_transition_cost = yes
+	ve_clear_identity_modifiers = yes
+	set_variable = {
+		name = ve_identity_model
+		value = 2
+	}
+	ve_sync_identity_modifiers = yes
+}
+
+ve_change_to_composite_identity = {
+	ve_identity_transition_cost = yes
+	ve_clear_identity_modifiers = yes
+	set_variable = {
+		name = ve_identity_model
+		value = 3
+	}
+	ve_sync_identity_modifiers = yes
+}
+
+ve_ai_uses_culture = {
+	if = {
+		limit = {
+			ve_can_choose_ethnic_identity = yes
+			OR = {
+				has_law = law_type:law_ethnostate
+				has_law = law_type:law_national_supremacy
+			}
+		}
+		ve_change_to_ethnic_identity = yes
+	}
+	else_if = {
+		limit = {
+			ve_can_choose_civic_identity = yes
+			has_law = law_type:law_multicultural
+		}
+		ve_change_to_civic_identity = yes
+	}
+	else_if = {
+		limit = {
+			ve_can_choose_composite_identity = yes
+			OR = {
+				has_law = law_type:law_racial_segregation
+				has_law = law_type:law_cultural_exclusion
+			}
+		}
+		ve_change_to_composite_identity = yes
+	}
+	ve_ai_uses_cultural_projects = yes
+}

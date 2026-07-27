@@ -1,0 +1,49 @@
+# Shared topbar bindings. These are intentionally separate from individual
+# resource panels because the topbar is active while every VE panel is closed.
+
+ve_top_bar = {
+	scope = country
+	is_shown = {
+		has_variable = ve_top_bar_on
+	}
+	effect = {
+		if = {
+			limit = { has_variable = ve_top_bar_on }
+			remove_variable = ve_top_bar_on
+		}
+		else = {
+			set_variable = ve_top_bar_on
+		}
+	}
+}
+
+ve_hide_missionary_topbar = {
+	scope = country
+	is_shown = {
+		ve_missionaries_enabled = yes
+	}
+}
+
+ve_show_cultural_mandate_topbar = {
+	scope = country
+	is_shown = {
+		has_variable = culture_reform_point
+	}
+}
+
+enable_ve_system = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = victoria_universalis_system_on } }
+			ve_initialize_missionaries = yes
+			ve_law_change_effects = yes
+			set_point_system = yes
+			set_idea_buttons = yes
+			set_ideas = yes
+			set_national_idea = yes
+			national_idea_traditions = yes
+			ve_idea_cap_effects = yes
+		}
+	}
+}

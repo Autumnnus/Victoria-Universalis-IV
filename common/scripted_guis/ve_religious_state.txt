@@ -1,0 +1,222 @@
+ve_aspect_button_1 = {
+	scope = country
+	is_shown = { NOT = { ve_has_religious_program_1 = yes } }
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_program_1_tt
+			ve_religious_program_affordable = yes
+		}
+		NOT = { ve_has_religious_program_1 = yes }
+	}
+	effect = { ve_adopt_religious_program_1 = yes }
+}
+
+ve_aspect_button_2 = {
+	scope = country
+	is_shown = { NOT = { ve_has_religious_program_2 = yes } }
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_program_2_tt
+			ve_religious_program_affordable = yes
+		}
+		NOT = { ve_has_religious_program_2 = yes }
+	}
+	effect = { ve_adopt_religious_program_2 = yes }
+}
+
+ve_aspect_button_3 = {
+	scope = country
+	is_shown = { NOT = { ve_has_religious_program_3 = yes } }
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_program_3_tt
+			ve_religious_program_affordable = yes
+		}
+		NOT = { ve_has_religious_program_3 = yes }
+	}
+	effect = { ve_adopt_religious_program_3 = yes }
+}
+
+ve_aspect_button_4 = {
+	scope = country
+	is_shown = { NOT = { ve_has_religious_program_4 = yes } }
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_program_4_tt
+			ve_religious_program_affordable = yes
+		}
+		NOT = { ve_has_religious_program_4 = yes }
+	}
+	effect = { ve_adopt_religious_program_4 = yes }
+}
+
+ve_aspect_button_5 = {
+	scope = country
+	is_shown = { NOT = { ve_has_religious_program_5 = yes } }
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_program_5_tt
+			ve_religious_program_affordable = yes
+		}
+		NOT = { ve_has_religious_program_5 = yes }
+	}
+	effect = { ve_adopt_religious_program_5 = yes }
+}
+
+ve_aspect_button_6 = {
+	scope = country
+	is_shown = { NOT = { ve_has_religious_program_6 = yes } }
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_program_6_tt
+			ve_religious_program_affordable = yes
+		}
+		NOT = { ve_has_religious_program_6 = yes }
+	}
+	effect = { ve_adopt_religious_program_6 = yes }
+}
+
+ve_aspect_button_7 = {
+	scope = country
+	is_shown = { NOT = { ve_has_religious_program_7 = yes } }
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_program_7_tt
+			ve_religious_program_affordable = yes
+		}
+		NOT = { ve_has_religious_program_7 = yes }
+	}
+	effect = { ve_adopt_religious_program_7 = yes }
+}
+
+ve_aspect_button_8 = {
+	scope = country
+	is_shown = { NOT = { ve_has_religious_program_8 = yes } }
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_program_8_tt
+			ve_religious_program_affordable = yes
+		}
+		NOT = { ve_has_religious_program_8 = yes }
+	}
+	effect = { ve_adopt_religious_program_8 = yes }
+}
+
+ve_call_all_missionaries = {
+	scope = country
+	is_valid = {
+		avaible_missionaries != total_missionaries
+	}
+	effect = {
+		call_missionaries_effect = yes
+	}
+}
+
+ve_send_missionary = {
+	scope = state
+	saved_scopes = { country }
+	is_shown = {
+		NOT = { has_modifier = ve_missionary_mdf }
+	}
+	is_valid = {
+		scope:country = {
+			has_variable = avaible_missionaries
+			avaible_missionaries >= 1
+			ve_missionaries_enabled = yes
+		}
+		owner = scope:country
+	}
+	effect = {
+		set_variable = selected_state_religion
+		if = {
+			limit = { has_variable = nationalist_idea_5_var }
+			add_modifier = { name = ve_missionary_mdf multiplier = 3 months = -1 }
+		}
+		else = {
+			add_modifier = { name = ve_missionary_mdf months = -1 }
+		}
+		scope:country = {
+			change_variable = { name = avaible_missionaries subtract = 1 }
+		}
+	}
+}
+
+ve_return_missionary = {
+	scope = state
+	saved_scopes = { country3 }
+	is_shown = { has_modifier = ve_missionary_mdf }
+	is_valid = { owner = scope:country3 }
+	effect = {
+		remove_modifier = ve_missionary_mdf
+		remove_variable = selected_state_religion
+		scope:country3 = {
+			change_variable = { name = avaible_missionaries add = 1 }
+		}
+	}
+}
+
+ve_passive_bonus_tooltip = {
+	scope = country
+	effect = {
+		if = {
+			limit = { ve_is_confessional_state = yes }
+			add_modifier = { name = ve_confessional_settlement_mdf months = -1 }
+			if = {
+				limit = {
+					OR = {
+						country_has_state_religion = rel:catholic
+						country_has_state_religion = rel:protestant
+						country_has_state_religion = rel:orthodox
+						country_has_state_religion = rel:oriental_orthodox
+					}
+				}
+				add_modifier = { name = ve_confessional_christian_family_mdf months = -1 }
+			}
+			else_if = {
+				limit = {
+					OR = {
+						country_has_state_religion = rel:sunni
+						country_has_state_religion = rel:shiite
+					}
+				}
+				add_modifier = { name = ve_confessional_islamic_family_mdf months = -1 }
+			}
+			else_if = {
+				limit = { country_has_state_religion = rel:jewish }
+				add_modifier = { name = ve_confessional_jewish_family_mdf months = -1 }
+			}
+			else_if = {
+				limit = {
+					OR = {
+						country_has_state_religion = rel:hindu
+						country_has_state_religion = rel:sikh
+					}
+				}
+				add_modifier = { name = ve_confessional_dharmic_family_mdf months = -1 }
+			}
+			else_if = {
+				limit = {
+					OR = {
+						country_has_state_religion = rel:mahayana
+						country_has_state_religion = rel:gelugpa
+						country_has_state_religion = rel:theravada
+						country_has_state_religion = rel:shinto
+						country_has_state_religion = rel:confucian
+					}
+				}
+				add_modifier = { name = ve_confessional_scholarly_family_mdf months = -1 }
+			}
+			else_if = {
+				limit = { country_has_state_religion = rel:animist }
+				add_modifier = { name = ve_confessional_animist_family_mdf months = -1 }
+			}
+		}
+		else_if = {
+			limit = { ve_is_pluralist_state = yes }
+			add_modifier = { name = ve_pluralist_settlement_mdf months = -1 }
+		}
+		else = {
+			add_modifier = { name = ve_atheist_settlement_mdf months = -1 }
+		}
+	}
+}

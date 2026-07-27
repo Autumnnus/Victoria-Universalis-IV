@@ -1,0 +1,8 @@
+ve_identity_model_name = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_ethnic_identity = yes } localization_key = ve_ethnic_identity_name }
+	text = { trigger = { ve_is_civic_identity = yes } localization_key = ve_civic_identity_name }
+	text = { trigger = { ve_is_composite_identity = yes } localization_key = ve_composite_identity_name }
+	text = { localization_key = ve_composite_identity_name }
+}

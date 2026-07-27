@@ -30,7 +30,7 @@ ve_gui_panel_types
 							}
 							vbox = {
 								spacing = 8
-								tooltip = "[GetPlayer.GetCustom('idea_points_cus_loc')]"
+								tooltip = "ve_national_insight_tt"
 								textbox = {
 									text = "ve_idea_points"	
 									using = fontsize_xxl
@@ -47,11 +47,11 @@ ve_gui_panel_types
 										80
 										15
 									}
-									tooltip = "BUILDING_PROGRESS_TOOLTIP"
+									tooltip = "ve_national_insight_tt"
 									blockoverride
 									"values"
 									{
-										max = 999
+										max = 1000
 										value = "[GetPlayer.MakeScope.Var('idea_point_pool').GetValue]"
 									}
 								}
@@ -65,7 +65,7 @@ ve_gui_panel_types
 										50
 										15
 									}
-									tooltip = "BUILDING_PROGRESS_TOOLTIP"
+									tooltip = "embrace_idea_tt"
 									blockoverride
 									"values"
 									{
@@ -1563,6 +1563,7 @@ ve_gui_panel_types
 										visible = "[GetScriptedGui('boost_idea_group').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
 										enabled = "[GetScriptedGui('boost_idea_group').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
 										onclick = "[GetScriptedGui('boost_idea_group').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
+										tooltip = "[GetScriptedGui('boost_idea_group').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
 										using = tooltip_above
 										using = technology_confirm_button_sound
 									}
@@ -2276,6 +2277,7 @@ ve_gui_panel_types
 										visible = "[GetScriptedGui('boost_idea_group').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
 										enabled = "[GetScriptedGui('boost_idea_group').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
 										onclick = "[GetScriptedGui('boost_idea_group').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
+										tooltip = "[GetScriptedGui('boost_idea_group').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
 										using = tooltip_above
 										using = technology_confirm_button_sound
 									}
@@ -3088,6 +3090,7 @@ ve_gui_panel_types
 										visible = "[GetScriptedGui('boost_idea_group').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
 										enabled = "[GetScriptedGui('boost_idea_group').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
 										onclick = "[GetScriptedGui('boost_idea_group').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
+										tooltip = "[GetScriptedGui('boost_idea_group').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
 										using = tooltip_above
 										using = technology_confirm_button_sound
 									}
