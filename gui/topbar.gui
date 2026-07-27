@@ -493,13 +493,13 @@ types topbar_components
 					margin = { 0 -5 }
 					margin_left = 5
 				}
-				#Missionary
+				#Religious Project
 				flowcontainer = {
-						visible = "[GetScriptedGui('ve_hide_missionary_topbar').IsShown(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+						visible = "[GetScriptedGui('ve_show_religious_project_topbar').IsShown(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 						minimumsize = { 90 28 }
 						maximumsize = { 90 28 }
 						spacing = 5
-						tooltip = "ve_missionary_tt"
+						tooltip = "ve_religious_project_topbar_tt"
 						using = tooltip_below
 						onclick = "[GetVariableSystem.SetOrToggle('ve_tab_var', GetVariableSystem.Get('ve_last_tab'))]"
 						icon = {
@@ -510,7 +510,7 @@ types topbar_components
 
 						textbox = {
 							parentanchor = vcenter
-							text = "missionary_topbar"
+							text = "religious_project_topbar"
 							default_format = "#tooltip_header"
 							autoresize = yes
 							align = left|nobaseline

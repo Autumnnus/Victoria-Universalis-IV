@@ -579,105 +579,10 @@ reform_bar_effects = {
 	}
 }
 
-call_missionaries_effect = {
-	every_scope_state = {
-		limit = {
-			has_modifier = ve_missionary_mdf
-		}
-		remove_modifier = ve_missionary_mdf
-		remove_variable = selected_state_religion
-	}
-	set_variable = {
-		name = avaible_missionaries
-		value = total_missionaries
-	}
-}
-
-prevent_annex_foreign_missionary = {
-	if = {
-		limit = {
-			avaible_missionaries > total_missionaries
-		}
-		call_missionaries_effect = yes
-	}
-	else_if = {
-		limit = {
-			total_missionaries < active_missionary_value
-		}
-		call_missionaries_effect = yes
-	}
-}
-
-ve_law_change_effects = {
-	if = {
-		limit = {
-			has_law = law_type:law_state_religion
-			OR = {
-				AND = {
-					NOT = { has_variable = nationalist_idea_7_var }
-					total_missionaries != 3
-				}
-				AND = {
-					has_variable = nationalist_idea_7_var
-					total_missionaries != 5
-				}
-			}
-		}
-		set_variable = {
-			name = total_missionaries
-			value = 3
-		}
-		if = {
-			limit = { has_variable = nationalist_idea_7_var }
-			change_variable = {
-				name = total_missionaries
-				add = 2
-			}
-		}
-		call_missionaries_effect = yes
-	}
-	else_if = {
-		limit = {
-			has_law = law_type:law_freedom_of_conscience
-			OR = {
-				AND = {
-					NOT = { has_variable = nationalist_idea_7_var }
-					total_missionaries != 1
-				}
-				AND = {
-					has_variable = nationalist_idea_7_var
-					total_missionaries != 3
-				}
-			}
-		}
-		set_variable = {
-			name = total_missionaries
-			value = 1
-		}
-		if = {
-			limit = { has_variable = nationalist_idea_7_var }
-			change_variable = {
-				name = total_missionaries
-				add = 2
-			}
-		}
-		call_missionaries_effect = yes
-	}
-	else_if = {
-		limit = {
-			OR = {
-				has_law = law_type:law_state_atheism
-				has_law = law_type:law_total_separation
-			}
-			total_missionaries != 0
-		}
-		set_variable = {
-			name = total_missionaries
-			value = 0
-		}
-		call_missionaries_effect = yes
-	}
-}
+# The missionary system (call_missionaries_effect, ve_process_active_missionaries,
+# ve_reconcile_missionary_pool, prevent_annex_foreign_missionary, ve_law_change_effects)
+# was retired in favor of the Targeted Religious Project - see
+# common/scripted_effects/ve_religious_state_effects.txt.
 
 # Faz 5c - tiered cost. One per idea level; called from the matching branch of
 # boost_<group>_idea_effect, which is the only place that knows the level.

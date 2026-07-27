@@ -1,0 +1,38 @@
+# Notification policy for Victoria Universalis IV.
+#
+# Alerts in this file deliberately answer one question only: "Can the player
+# take a meaningful action right now?" Stockpiling alone is not an alert. This
+# keeps the red alert area quiet when a resource is locked by age, strain,
+# unavailable laws, or an already active project.
+
+ve_can_begin_cultural_project_now = {
+	OR = {
+		ve_can_begin_national_curriculum = yes
+		ve_can_begin_shared_symbols = yes
+	}
+}
+
+ve_can_begin_targeted_cultural_project_now = {
+	ve_can_begin_model_project = yes
+	any_scope_state = {
+		ve_state_has_cultural_project_target = yes
+	}
+}
+
+# Cultural Mandate only becomes an alert once it is both spendable and starting
+# to be wasted. Below 300 the player is simply saving, which is a valid choice
+# and must not produce a red alert every month.
+ve_should_alert_cultural_mandate_surplus = {
+	var:culture_reform_point >= 300
+	OR = {
+		ve_can_begin_cultural_project_now = yes
+		ve_can_begin_targeted_cultural_project_now = yes
+	}
+}
+
+ve_can_begin_targeted_religious_project_now = {
+	ve_can_begin_religious_project_any = yes
+	any_scope_state = {
+		ve_state_has_religious_project_target = yes
+	}
+}

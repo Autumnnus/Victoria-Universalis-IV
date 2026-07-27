@@ -169,6 +169,54 @@ ve_sync_identity_modifiers = {
 		remove_modifier = ve_composite_high_cohesion_mdf
 		remove_modifier = ve_low_national_cohesion_mdf
 	}
+	set_variable = {
+		name = ve_synced_identity_model
+		value = var:ve_identity_model
+	}
+	if = {
+		limit = { var:ve_national_cohesion >= 75 }
+		set_variable = { name = ve_synced_identity_tier value = 1 }
+	}
+	else_if = {
+		limit = { var:ve_national_cohesion <= 25 }
+		set_variable = { name = ve_synced_identity_tier value = 3 }
+	}
+	else = {
+		set_variable = { name = ve_synced_identity_tier value = 2 }
+	}
+}
+
+ve_sync_identity_if_needed = {
+	if = {
+		limit = {
+			OR = {
+				NOT = { has_variable = ve_synced_identity_model }
+				NOT = { has_variable = ve_synced_identity_tier }
+			}
+		}
+		ve_sync_identity_modifiers = yes
+	}
+	else_if = {
+		limit = {
+			OR = {
+				var:ve_synced_identity_model != var:ve_identity_model
+				AND = {
+					var:ve_national_cohesion >= 75
+					var:ve_synced_identity_tier != 1
+				}
+				AND = {
+					var:ve_national_cohesion <= 25
+					var:ve_synced_identity_tier != 3
+				}
+				AND = {
+					var:ve_national_cohesion > 25
+					var:ve_national_cohesion < 75
+					var:ve_synced_identity_tier != 2
+				}
+			}
+		}
+		ve_sync_identity_modifiers = yes
+	}
 }
 
 ve_identity_transition_cost = {

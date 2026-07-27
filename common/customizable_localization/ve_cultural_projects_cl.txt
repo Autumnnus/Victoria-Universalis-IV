@@ -45,3 +45,24 @@ ve_model_project_description = {
 	text = { trigger = { ve_is_composite_identity = yes } localization_key = ve_composite_compact_desc }
 	text = { localization_key = ve_composite_compact_desc }
 }
+
+# Short card body and cost line for the identity-model project shown on the
+# National Identity page. The full effect list stays in ve_model_project_description,
+# which that card uses as its tooltip.
+ve_model_project_short = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_ethnic_identity = yes } localization_key = ve_ethnic_campaign_short }
+	text = { trigger = { ve_is_civic_identity = yes } localization_key = ve_civic_initiative_short }
+	text = { trigger = { ve_is_composite_identity = yes } localization_key = ve_composite_compact_short }
+	text = { localization_key = ve_composite_compact_short }
+}
+
+ve_model_project_cost = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_ethnic_identity = yes } localization_key = ve_ethnic_campaign_cost }
+	text = { trigger = { ve_is_civic_identity = yes } localization_key = ve_civic_initiative_cost }
+	text = { trigger = { ve_is_composite_identity = yes } localization_key = ve_composite_compact_cost }
+	text = { localization_key = ve_composite_compact_cost }
+}

@@ -1,4 +1,4 @@
-ve_cultural_mandate_base = 2
+﻿ve_cultural_mandate_base = 2
 
 ve_cultural_mandate_legitimacy = {
 	if = {
@@ -149,6 +149,10 @@ ve_monthly_national_identity = {
 }
 
 ve_identity_model_cohesion = {
+	# The identity model is initialized by monthly setup. The culture panel can
+	# evaluate this value before that setup has run, so it must always return a
+	# numeric fallback instead of `none`.
+	value = 0
 	if = {
 		limit = { ve_is_ethnic_identity = yes }
 		if = {
@@ -315,9 +319,16 @@ ve_national_cohesion_equilibrium = {
 }
 
 ve_monthly_national_cohesion = {
-	add = ve_national_cohesion_equilibrium
-	subtract = var:ve_national_cohesion
-	multiply = 0.20
+	value = 0
+	# GUI tooltips evaluate this before ve_initialize_national_identity has run
+	# for the scope being displayed (e.g. an unselected/uninitialized country),
+	# so var:ve_national_cohesion can be 'none' - guard instead of erroring.
+	if = {
+		limit = { has_variable = ve_national_cohesion }
+		add = ve_national_cohesion_equilibrium
+		subtract = var:ve_national_cohesion
+		multiply = 0.20
+	}
 	min = -5
 	max = 5
 	round = yes

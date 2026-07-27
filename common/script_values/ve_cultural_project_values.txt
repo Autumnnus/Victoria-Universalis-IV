@@ -1,4 +1,4 @@
-ve_cultural_project_progress_base = 1
+﻿ve_cultural_project_progress_base = 1
 
 ve_cultural_project_progress_administration = {
 	if = {

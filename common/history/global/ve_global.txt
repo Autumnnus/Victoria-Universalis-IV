@@ -99,8 +99,6 @@
 		}
 	}
 	every_country = {
-		ve_initialize_missionaries = yes
-		ve_law_change_effects = yes
 		set_point_system = yes
 		set_idea_buttons = yes
 		set_ideas = yes

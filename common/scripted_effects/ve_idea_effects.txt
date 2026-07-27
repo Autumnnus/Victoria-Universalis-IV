@@ -1,3 +1,98 @@
+# Dev-cheat repair tool (see events/developer_events.txt dev.1.l): recomputes
+# idea_group_unlocked as the number of can_go_X flags actually set, instead of
+# trusting the stored counter - fixes saves inflated by the pre-fix
+# embrace_idea_group double-increment bug.
+ve_recalculate_idea_group_unlocked = {
+	set_variable = {
+		name = idea_group_unlocked
+		value = 0
+	}
+	if = {
+		limit = { has_variable = can_go_academic }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_agrarian }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_financial }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_infrastructure }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_extraction }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_mass_conscription }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_war_economy }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_industrialist }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_bureaucratic }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_nationalist }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_parliamentary }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_diplomatic }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_mercantile }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_welfare }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_reformist }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_labour }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_offensive }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_defensive }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_naval }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_professional_army }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_colonial }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+}
+
 boost_academic_idea_effect = {
 	if = {
 		limit = {
@@ -563,18 +658,6 @@ boost_nationalist_idea_effect = {
 				}
 			}
 			set_variable = nationalist_idea_5_var
-			every_scope_state = {
-				limit = {
-					owner = ROOT
-					has_modifier = ve_missionary_mdf
-				}
-				remove_modifier = ve_missionary_mdf
-				add_modifier = {
-					name = ve_missionary_mdf
-					multiplier = 3
-					months = -1
-				}
-			}
 			ve_idea_purchase_5 = yes
 		}
 	}
@@ -613,8 +696,9 @@ boost_nationalist_idea_effect = {
 					has_variable = nationalist_idea_7_var
 				}
 			}
+			# Adds +0.03 more to ve_religious_conversion_bonus for the Targeted
+			# Religious Project (see ve_religious_state_effects.txt).
 			set_variable = nationalist_idea_7_var
-			ve_law_change_effects = yes
 		}
 		ve_idea_purchase_7 = yes
 		set_variable = nationalist_idea_completed
@@ -3101,6 +3185,161 @@ boost_war_economy_idea_effect = {
 		set_variable = war_economy_idea_completed
 		add_modifier = {
 			name = war_economy_ambition_mdf
+			months = -1
+		}
+	}
+}
+
+boost_agrarian_idea_effect = {
+	if = {
+		limit = {
+			var:agrarian_idea == 0
+		}
+		change_variable = {
+			name = agrarian_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = agrarian_idea_1_mdf
+				}
+			}
+			add_modifier = {
+				name = agrarian_idea_1_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_1 = yes
+	}
+	else_if = {
+		limit = {
+			var:agrarian_idea == 1
+		}
+		change_variable = {
+			name = agrarian_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = agrarian_idea_2_mdf
+				}
+			}
+			add_modifier = {
+				name = agrarian_idea_2_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_2 = yes
+	}
+	else_if = {
+		limit = {
+			var:agrarian_idea == 2
+		}
+		change_variable = {
+			name = agrarian_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = agrarian_idea_3_mdf
+				}
+			}
+			add_modifier = {
+				name = agrarian_idea_3_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_3 = yes
+	}
+	else_if = {
+		limit = {
+			var:agrarian_idea == 3
+		}
+		change_variable = {
+			name = agrarian_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = agrarian_idea_4_mdf
+				}
+			}
+			add_modifier = {
+				name = agrarian_idea_4_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_4 = yes
+	}
+	else_if = {
+		limit = {
+			var:agrarian_idea == 4
+		}
+		change_variable = {
+			name = agrarian_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = agrarian_idea_5_mdf
+				}
+			}
+			add_modifier = {
+				name = agrarian_idea_5_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_5 = yes
+	}
+	else_if = {
+		limit = {
+			var:agrarian_idea == 5
+		}
+		change_variable = {
+			name = agrarian_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = agrarian_idea_6_mdf
+				}
+			}
+			add_modifier = {
+				name = agrarian_idea_6_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_6 = yes
+	}
+	else_if = {
+		limit = {
+			var:agrarian_idea == 6
+		}
+		change_variable = {
+			name = agrarian_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = agrarian_idea_7_mdf
+				}
+			}
+			add_modifier = {
+				name = agrarian_idea_7_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_7 = yes
+		set_variable = agrarian_idea_completed
+		add_modifier = {
+			name = agrarian_ambition_mdf
 			months = -1
 		}
 	}

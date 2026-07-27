@@ -18,6 +18,7 @@
  ve_idea_age_locked_tt:0 "#N This idea group belongs to a later age."
  ve_boost_idea:0 "Boost Idea"
  academic_idea_name:0 "#b Academic Idea"
+ agrarian_idea_name:0 "#b Agrarian Idea"
  financial_idea_name:0 "#b Financial Idea"
  infrastructure_idea_name:0 "#b Infrastructure Idea"
  extraction_idea_name:0 "#b Extraction Idea"

@@ -35,6 +35,10 @@ ve_can_purchase_any_idea = {
 			ve_idea_affordable = { GROUP = academic }
 		}
 		AND = {
+			has_variable = can_go_agrarian
+			ve_idea_affordable = { GROUP = agrarian }
+		}
+		AND = {
 			has_variable = can_go_financial
 			ve_idea_affordable = { GROUP = financial }
 		}

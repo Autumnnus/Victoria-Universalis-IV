@@ -1,26 +1,16 @@
 #This file contains the effects of the mechanics that countries should have at the start of the game and after it starts
-ve_initialize_missionaries = {
+ve_initialize_country_system = {
 	if = {
 		limit = {
-			NOT = {
-				has_variable = avaible_missionaries
-			}
+			NOT = { has_variable = victoria_universalis_system_on }
 		}
-		set_variable = {
-			name = avaible_missionaries
-			value = ve_set_religion_law_effects
-		}
-	}
-	if = {
-		limit = {
-			NOT = {
-				has_variable = total_missionaries
-			}
-		}
-		set_variable = {
-			name = total_missionaries
-			value = ve_set_religion_law_effects
-		}
+		set_point_system = yes
+		set_idea_buttons = yes
+		set_ideas = yes
+		set_national_idea = yes
+		national_idea_traditions = yes
+		ve_idea_cap_effects = yes
+		set_variable = ve_1936_countries
 	}
 }
 
@@ -41,6 +31,17 @@ set_point_system = {
 		}
 		set_variable = {
 			name = culture_reform_point
+			value = 0
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_variable = piety_reform_point
+			}
+		}
+		set_variable = {
+			name = piety_reform_point
 			value = 0
 		}
 	}
@@ -342,6 +343,17 @@ set_ideas = {
 		}
 		set_variable = {
 			name = academic_idea
+			value = 0
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_variable = agrarian_idea
+			}
+		}
+		set_variable = {
+			name = agrarian_idea
 			value = 0
 		}
 	}

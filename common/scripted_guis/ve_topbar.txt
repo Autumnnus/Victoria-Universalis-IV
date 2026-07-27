@@ -17,10 +17,10 @@ ve_top_bar = {
 	}
 }
 
-ve_hide_missionary_topbar = {
+ve_show_religious_project_topbar = {
 	scope = country
 	is_shown = {
-		ve_missionaries_enabled = yes
+		ve_religious_project_enabled = yes
 	}
 }
 
@@ -36,8 +36,6 @@ enable_ve_system = {
 	effect = {
 		if = {
 			limit = { NOT = { has_variable = victoria_universalis_system_on } }
-			ve_initialize_missionaries = yes
-			ve_law_change_effects = yes
 			set_point_system = yes
 			set_idea_buttons = yes
 			set_ideas = yes

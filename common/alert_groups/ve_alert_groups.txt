@@ -46,5 +46,5 @@ expensive_government_goods = {
 expensive_military_goods = {
 }
 
-ve_missionary_group = {
+ve_state_project_group = {
 }

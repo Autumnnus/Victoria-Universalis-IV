@@ -1,4 +1,4 @@
-ve_era_objectives_satisfied = {
+﻿ve_era_objectives_satisfied = {
 	if = {
 		limit = { ve_age_objective_1_trigger = yes }
 		add = 1

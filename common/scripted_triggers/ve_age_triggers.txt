@@ -298,6 +298,24 @@ ve_can_purchase_era_reward = {
 	}
 }
 
+ve_can_purchase_era_reward_slot = {
+	ve_can_purchase_era_reward = yes
+	OR = {
+		AND = {
+			has_global_variable = ve_age_1_started
+			NOT = { has_modifier = age_1_bonus_$SLOT$ }
+		}
+		AND = {
+			has_global_variable = ve_age_2_started
+			NOT = { has_modifier = age_2_bonus_$SLOT$ }
+		}
+		AND = {
+			has_global_variable = ve_age_3_started
+			NOT = { has_modifier = age_3_bonus_$SLOT$ }
+		}
+	}
+}
+
 ve_can_activate_golden_age = {
 	NOT = { has_variable = ve_golden_age_used }
 	var:ve_triggered_objectives >= 4

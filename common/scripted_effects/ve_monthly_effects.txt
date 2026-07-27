@@ -5,12 +5,18 @@
 
 ve_update_religious_state = {
 	ve_initialize_or_transition_religious_model = yes
+	ve_update_religious_project = yes
 	change_variable = {
 		name = piety_bar_point
 		add = ve_monthly_religious_state
 	}
 	ve_clamp_religious_state = yes
-	ve_sync_religious_settlement_modifiers = yes
+	change_variable = {
+		name = piety_reform_point
+		add = ve_monthly_piety_reform
+	}
+	ve_clamp_piety_reform = yes
+	ve_sync_religious_state_if_needed = yes
 }
 
 ve_clamp_national_insight = {
@@ -54,7 +60,7 @@ ve_update_national_identity = {
 		add = ve_monthly_national_cohesion
 	}
 	ve_clamp_national_cohesion = yes
-	ve_sync_identity_modifiers = yes
+	ve_sync_identity_if_needed = yes
 }
 
 ve_update_era_momentum = {
@@ -71,4 +77,44 @@ ve_monthly_points = {
 	ve_update_national_insight = yes
 	ve_update_national_identity = yes
 	ve_update_era_momentum = yes
+}
+
+# Native pulse entry points. Resource accounting remains monthly, while
+# strategic AI choices and state reconciliation run only twice per year.
+ve_monthly_country_tick = {
+	# Cheap save-compatibility fallback for countries created by an engine path
+	# that does not expose a dedicated country-release hook.
+	if = {
+		limit = {
+			NOT = { has_variable = victoria_universalis_system_on }
+		}
+		ve_initialize_country_system = yes
+	}
+	# Save migration for the post-refactor Agrarian group. Adoption also sets
+	# the value, but initializing it here keeps old-save GUI/script reads numeric.
+	if = {
+		limit = {
+			NOT = { has_variable = agrarian_idea }
+		}
+		set_variable = {
+			name = agrarian_idea
+			value = 0
+		}
+	}
+	ve_monthly_points = yes
+	if = {
+		limit = { is_ai = yes }
+		ve_ai_monthly_idea_tick = yes
+	}
+}
+
+ve_half_yearly_country_tick = {
+	if = {
+		limit = { is_ai = yes }
+		ve_ai_half_yearly_strategy_tick = yes
+	}
+}
+
+ve_yearly_country_tick = {
+	ve_idea_cap_effects = yes
 }

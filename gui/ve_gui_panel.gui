@@ -55,7 +55,7 @@ types ve_gui_panel_types
 				blockoverride
 				"first_button_selected"
 				{
-					text = "VE_IDEAS"
+					text = "VE_IDEAS_SELECTED"
 				}
 				blockoverride
 				"second_button"
@@ -81,7 +81,7 @@ types ve_gui_panel_types
 				blockoverride
 				"second_button_selected"
 				{
-					text = "VE_RELIGION"
+					text = "VE_RELIGION_SELECTED"
 				}
 				blockoverride
 				"third_button"
@@ -107,7 +107,7 @@ types ve_gui_panel_types
 				blockoverride
 				"third_button_selected"
 				{
-					text = "VE_CULTURE"
+					text = "VE_CULTURE_SELECTED"
 				}
 				blockoverride
 				"fourth_button"
@@ -133,7 +133,7 @@ types ve_gui_panel_types
 				blockoverride
 				"fourth_button_selected"
 				{
-					text = "VE_AGE_BONUS"
+					text = "VE_AGE_BONUS_SELECTED"
 				}
 			}
 		}

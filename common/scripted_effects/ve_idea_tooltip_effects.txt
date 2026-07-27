@@ -8,6 +8,13 @@ idea_1_tt_effects = {
 				months = -1
 			}
 		}
+		flag:agrarian_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = agrarian_idea_1_mdf
+				months = -1
+			}
+		}
 		flag:financial_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
@@ -151,6 +158,13 @@ idea_2_tt_effects = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
 				name = academic_idea_2_mdf
+				months = -1
+			}
+		}
+		flag:agrarian_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = agrarian_idea_2_mdf
 				months = -1
 			}
 		}
@@ -300,6 +314,13 @@ idea_3_tt_effects = {
 				months = -1
 			}
 		}
+		flag:agrarian_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = agrarian_idea_3_mdf
+				months = -1
+			}
+		}
 		flag:financial_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
@@ -443,6 +464,13 @@ idea_4_tt_effects = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
 				name = academic_idea_4_mdf
+				months = -1
+			}
+		}
+		flag:agrarian_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = agrarian_idea_4_mdf
 				months = -1
 			}
 		}
@@ -592,6 +620,13 @@ idea_5_tt_effects = {
 				months = -1
 			}
 		}
+		flag:agrarian_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = agrarian_idea_5_mdf
+				months = -1
+			}
+		}
 		flag:financial_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
@@ -734,6 +769,13 @@ idea_6_tt_effects = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
 				name = academic_idea_6_mdf
+				months = -1
+			}
+		}
+		flag:agrarian_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = agrarian_idea_6_mdf
 				months = -1
 			}
 		}
@@ -880,6 +922,13 @@ idea_7_tt_effects = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
 				name = academic_idea_7_mdf
+				months = -1
+			}
+		}
+		flag:agrarian_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = agrarian_idea_7_mdf
 				months = -1
 			}
 		}

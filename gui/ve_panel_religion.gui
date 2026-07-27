@@ -55,10 +55,10 @@ ve_gui_panel_types
 						 layoutpolicy_horizontal = expanding
 						vbox = {
 							spacing = 10
-							visible = "[GetScriptedGui('ve_hide_missionary_topbar').IsShown(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
-							tooltip = "ve_missionary_tt"
+							visible = "[GetScriptedGui('ve_show_religious_project_topbar').IsShown(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+							tooltip = "ve_piety_reform_tt"
 							textbox = {
-								text = "ve_missionaries"
+								text = "ve_piety_reform"
 								default_format = "#tooltippable_name"
 								using = fontsize_xxl
 								align = nobaseline
@@ -66,20 +66,26 @@ ve_gui_panel_types
 								autoresize = yes
 							}
 							textbox = {
-								text = "missionary_topbar"
+								text = "[GetPlayer.MakeScope.Var('piety_reform_point').GetValue]"
 								default_format = "#instruction"
 								using = fontsize_xxl
 								align = nobaseline
 								elide = left
 								autoresize = yes
 							}
-							button = {
-								using = default_button_action
-								size = { 250 40 }
-								text = "ve_call_all_missionaries"
-								onclick = "[GetScriptedGui('ve_call_all_missionaries').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
-								enabled = "[GetScriptedGui('ve_call_all_missionaries').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								using = tooltip_below
+							white_progressbar_horizontal = {
+								size = {
+									130
+									15
+								}
+								tooltip = "ve_piety_reform_tt"
+								blockoverride
+								"values"
+								{
+									min = 0
+									max = 500
+									value = "[GetPlayer.MakeScope.Var('piety_reform_point').GetValue]"
+								}
 							}
 						}
 						vbox = {
@@ -110,6 +116,7 @@ ve_gui_panel_types
 								blockoverride
 								"values"
 								{
+									min = 0
 									max = 100
 									value = "[GetPlayer.MakeScope.Var('piety_bar_point').GetValue]"
 								}
@@ -117,10 +124,10 @@ ve_gui_panel_types
 						}
 						vbox = {
 							spacing = 10
-							visible = "[GetScriptedGui('ve_hide_missionary_topbar').IsShown(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+							visible = "[GetScriptedGui('ve_show_religious_project_topbar').IsShown(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+							tooltip = "ve_religious_project_progress_tt"
 							textbox = {
-								tooltip = "ve_missionary_power_tt"
-								text = "ve_missionary_power_txt"
+								text = "ve_religious_project_progress"
 								default_format = "#tooltippable_name"
 								using = fontsize_xxl
 								align = nobaseline
@@ -128,9 +135,8 @@ ve_gui_panel_types
 								autoresize = yes
 							}
 							textbox = {
-								tooltip = "ve_max_missionary_power_tt"
-								text = "[GetPlayer.MakeScope.ScriptValue('missionary_power_250k')|%2]"
-								default_format = "#tooltippable_concept"
+								raw_text = "[GetPlayer.GetCustom('ve_religious_project_status')]"
+								default_format = "#instruction"
 								using = fontsize_xxl
 								align = nobaseline
 								elide = left
@@ -138,14 +144,16 @@ ve_gui_panel_types
 							}
 							white_progressbar_horizontal = {
 								size = {
-									80
+									130
 									15
 								}
+								tooltip = "ve_religious_project_progress_tt"
 								blockoverride
 								"values"
 								{
-									max = "[GetPlayer.MakeScope.ScriptValue('max_missionary_power_250k')|%2]"
-									value = "[GetPlayer.MakeScope.ScriptValue('missionary_power_250k')|%2]"
+									min = 0
+									max = 100
+									value = "[GetPlayer.MakeScope.Var('ve_religious_project_progress').GetValue]"
 								}
 							}
 						}
@@ -211,6 +219,7 @@ ve_gui_panel_types
 						}
 						vbox = {
 							#Aspect 1
+							layoutpolicy_horizontal = expanding
 							spacing = 10
 							
 							margin = {
@@ -222,6 +231,7 @@ ve_gui_panel_types
 									100
 									100
 								}
+								textbox = { raw_text = "#P ●#!" fontsize = 18 position = { 72 -4 } visible = "[Not(GetScriptedGui('ve_aspect_button_1').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
 								onclick = "[GetScriptedGui('ve_aspect_button_1').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								enabled = "[GetScriptedGui('ve_aspect_button_1').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								tooltip = "[GetScriptedGui('ve_aspect_button_1').BuildTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -259,6 +269,7 @@ ve_gui_panel_types
 						}
 						vbox = {
 							#Aspect 2
+							layoutpolicy_horizontal = expanding
 							spacing = 10
 							margin = {
 								15
@@ -269,6 +280,7 @@ ve_gui_panel_types
 									100
 									100
 								}
+								textbox = { raw_text = "#P ●#!" fontsize = 18 position = { 72 -4 } visible = "[Not(GetScriptedGui('ve_aspect_button_2').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
 								onclick = "[GetScriptedGui('ve_aspect_button_2').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								enabled = "[GetScriptedGui('ve_aspect_button_2').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								tooltip = "[GetScriptedGui('ve_aspect_button_2').BuildTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -304,6 +316,7 @@ ve_gui_panel_types
 						}
 						vbox = {
 							#Aspect 3
+							layoutpolicy_horizontal = expanding
 							spacing = 10
 							margin = {
 								15
@@ -314,6 +327,7 @@ ve_gui_panel_types
 									100
 									100
 								}
+								textbox = { raw_text = "#P ●#!" fontsize = 18 position = { 72 -4 } visible = "[Not(GetScriptedGui('ve_aspect_button_3').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
 								onclick = "[GetScriptedGui('ve_aspect_button_3').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								enabled = "[GetScriptedGui('ve_aspect_button_3').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								tooltip = "[GetScriptedGui('ve_aspect_button_3').BuildTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -323,7 +337,7 @@ ve_gui_panel_types
 									fontsize = 60
 									align = center|nobaseline
 									parentanchor = vcenter
-									visible = "[GetScriptedGui('ve_aspect_button_8').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									visible = "[GetScriptedGui('ve_aspect_button_3').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 									size = {
 										100%
 										100%
@@ -349,6 +363,7 @@ ve_gui_panel_types
 						}
 						vbox = {
 							#Aspect 4
+							layoutpolicy_horizontal = expanding
 							spacing = 10
 							margin = {
 								15
@@ -359,6 +374,7 @@ ve_gui_panel_types
 									100
 									100
 								}
+								textbox = { raw_text = "#P ●#!" fontsize = 18 position = { 72 -4 } visible = "[Not(GetScriptedGui('ve_aspect_button_4').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
 								onclick = "[GetScriptedGui('ve_aspect_button_4').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								enabled = "[GetScriptedGui('ve_aspect_button_4').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								tooltip = "[GetScriptedGui('ve_aspect_button_4').BuildTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -401,6 +417,7 @@ ve_gui_panel_types
 						}
 						vbox = {
 							#Aspect 5
+							layoutpolicy_horizontal = expanding
 							spacing = 10
 							margin = {
 								15
@@ -411,6 +428,7 @@ ve_gui_panel_types
 									100
 									100
 								}
+								textbox = { raw_text = "#P ●#!" fontsize = 18 position = { 72 -4 } visible = "[Not(GetScriptedGui('ve_aspect_button_5').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
 								onclick = "[GetScriptedGui('ve_aspect_button_5').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								enabled = "[GetScriptedGui('ve_aspect_button_5').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								tooltip = "[GetScriptedGui('ve_aspect_button_5').BuildTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -446,6 +464,7 @@ ve_gui_panel_types
 						}						
 						vbox = {
 							#Aspect 6
+							layoutpolicy_horizontal = expanding
 							spacing = 10
 							margin = {
 								15
@@ -456,6 +475,7 @@ ve_gui_panel_types
 									100
 									100
 								}
+								textbox = { raw_text = "#P ●#!" fontsize = 18 position = { 72 -4 } visible = "[Not(GetScriptedGui('ve_aspect_button_6').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
 								onclick = "[GetScriptedGui('ve_aspect_button_6').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								enabled = "[GetScriptedGui('ve_aspect_button_6').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								tooltip = "[GetScriptedGui('ve_aspect_button_6').BuildTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -491,6 +511,7 @@ ve_gui_panel_types
 						}
 						vbox = {
 							#Aspect 7
+							layoutpolicy_horizontal = expanding
 							spacing = 10
 							margin = {
 								15
@@ -501,6 +522,7 @@ ve_gui_panel_types
 									100
 									100
 								}
+								textbox = { raw_text = "#P ●#!" fontsize = 18 position = { 72 -4 } visible = "[Not(GetScriptedGui('ve_aspect_button_7').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
 								onclick = "[GetScriptedGui('ve_aspect_button_7').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								enabled = "[GetScriptedGui('ve_aspect_button_7').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								tooltip = "[GetScriptedGui('ve_aspect_button_7').BuildTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -536,6 +558,7 @@ ve_gui_panel_types
 						}
 						vbox = {
 							#Aspect 8
+							layoutpolicy_horizontal = expanding
 							spacing = 10
 							margin = {
 								15
@@ -546,6 +569,7 @@ ve_gui_panel_types
 									100
 									100
 								}
+								textbox = { raw_text = "#P ●#!" fontsize = 18 position = { 72 -4 } visible = "[Not(GetScriptedGui('ve_aspect_button_8').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
 								onclick = "[GetScriptedGui('ve_aspect_button_8').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								enabled = "[GetScriptedGui('ve_aspect_button_8').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								tooltip = "[GetScriptedGui('ve_aspect_button_8').BuildTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"

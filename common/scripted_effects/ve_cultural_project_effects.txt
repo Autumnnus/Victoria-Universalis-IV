@@ -374,34 +374,56 @@ ve_ai_uses_cultural_projects = {
 		}
 		random_list = {
 			40 = {
-				if = {
+				trigger = {
+					any_scope_state = {
+						ve_state_has_cultural_project_target = yes
+					}
+				}
+				modifier = {
+					if = {
+						limit = { has_strategy = ai_strategy_nationalist_agenda }
+						add = 40
+					}
+				}
+				ordered_scope_state = {
 					limit = {
-						any_scope_state = {
-							ve_state_has_cultural_project_target = yes
-						}
+						ve_state_has_cultural_project_target = yes
 					}
-					ordered_scope_state = {
-						limit = {
-							ve_state_has_cultural_project_target = yes
-						}
-						order_by = state_population
-						position = 0
-						check_range_bounds = no
-						ve_begin_targeted_cultural_project = yes
-					}
+					order_by = state_population
+					position = 0
+					check_range_bounds = no
+					ve_begin_targeted_cultural_project = yes
 				}
 			}
 			35 = {
-				if = {
-					limit = { ve_can_begin_national_curriculum = yes }
-					ve_begin_national_curriculum = yes
+				trigger = { ve_can_begin_national_curriculum = yes }
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								has_strategy = ai_strategy_progressive_agenda
+								has_strategy = ai_strategy_egalitarian_agenda
+							}
+						}
+						add = 35
+					}
 				}
+				ve_begin_national_curriculum = yes
 			}
 			25 = {
-				if = {
-					limit = { ve_can_begin_shared_symbols = yes }
-					ve_begin_shared_symbols = yes
+				trigger = { ve_can_begin_shared_symbols = yes }
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								has_strategy = ai_strategy_conservative_agenda
+								has_strategy = ai_strategy_nationalist_agenda
+							}
+						}
+						add = 30
+					}
 				}
+				ve_begin_shared_symbols = yes
 			}
 		}
 	}

@@ -1,104 +1,118 @@
-# Phase 4: Religious State
-# The active model follows the Church and State law. An atheist state religion
-# is also treated as secular so console-driven or legacy transitions stay safe.
-
-ve_is_atheist_state = {
-	OR = {
-		has_law = law_type:law_state_atheism
-		country_has_state_religion = rel:atheist
-	}
-}
+# Phase 4/7: Religious State
+# The active model follows the lawgroup_church_and_state law directly, mirroring
+# the 4 real laws in that group (see common/laws/00_church_and_state.txt in the
+# vanilla game files):
+#   law_state_religion (+ millet/people_of_book variants) -> Confessional
+#   law_freedom_of_conscience                             -> Freedom of Conscience
+#   law_total_separation                                  -> Total Separation (true neutral)
+#   law_state_atheism                                     -> State Atheism (aggressive secularization)
+# Vanilla's law_state_atheism itself grants state_conversion_mult=+0.25 and force
+# -converts 10% of every incorporated state to rel:atheist on activation; it is
+# the aggressive model, not a tolerant one. law_total_separation is the one that
+# disables every acceptance-gated conversion allowance (country_allow_conversion_
+# <status>_bool = no for all 5 tiers) and gives flat unconditional acceptance -
+# that is the truly neutral/tolerant model.
 
 ve_is_confessional_state = {
-	has_law = law_type:law_state_religion
-	NOT = {
-		ve_is_atheist_state = yes
-	}
+	has_law_or_variant = law_type:law_state_religion
 }
 
-ve_is_pluralist_state = {
-	NOR = {
-		ve_is_atheist_state = yes
-		ve_is_confessional_state = yes
-	}
+ve_is_freedom_state = {
+	has_law = law_type:law_freedom_of_conscience
 }
 
-ve_missionaries_enabled = {
+ve_is_separation_state = {
+	has_law = law_type:law_total_separation
+}
+
+ve_is_atheism_state = {
+	has_law_or_variant = law_type:law_state_atheism
+}
+
+# Total Separation deliberately has no active/targeted lever - it is the model
+# that suppresses conversion pressure entirely, matching its vanilla law.
+ve_religious_project_enabled = {
 	OR = {
 		ve_is_confessional_state = yes
-		has_law = law_type:law_freedom_of_conscience
-	}
-	NOT = {
-		ve_is_atheist_state = yes
+		ve_is_freedom_state = yes
+		ve_is_atheism_state = yes
 	}
 }
 
 ve_religious_program_affordable = {
-	ve_religious_state_value >= 50
+	var:piety_reform_point >= 25
 	NOT = { has_modifier = ve_religious_program_strain_mdf }
 }
 
 ve_has_religious_program_1 = {
 	OR = {
 		has_modifier = ve_confessional_program_1_mdf
-		has_modifier = ve_pluralist_program_1_mdf
-		has_modifier = ve_atheist_program_1_mdf
+		has_modifier = ve_freedom_program_1_mdf
+		has_modifier = ve_separation_program_1_mdf
+		has_modifier = ve_atheism_program_1_mdf
 	}
 }
 
 ve_has_religious_program_2 = {
 	OR = {
 		has_modifier = ve_confessional_program_2_mdf
-		has_modifier = ve_pluralist_program_2_mdf
-		has_modifier = ve_atheist_program_2_mdf
+		has_modifier = ve_freedom_program_2_mdf
+		has_modifier = ve_separation_program_2_mdf
+		has_modifier = ve_atheism_program_2_mdf
 	}
 }
 
 ve_has_religious_program_3 = {
 	OR = {
 		has_modifier = ve_confessional_program_3_mdf
-		has_modifier = ve_pluralist_program_3_mdf
-		has_modifier = ve_atheist_program_3_mdf
+		has_modifier = ve_freedom_program_3_mdf
+		has_modifier = ve_separation_program_3_mdf
+		has_modifier = ve_atheism_program_3_mdf
 	}
 }
 
 ve_has_religious_program_4 = {
 	OR = {
 		has_modifier = ve_confessional_program_4_mdf
-		has_modifier = ve_pluralist_program_4_mdf
-		has_modifier = ve_atheist_program_4_mdf
+		has_modifier = ve_freedom_program_4_mdf
+		has_modifier = ve_separation_program_4_mdf
+		has_modifier = ve_atheism_program_4_mdf
 	}
 }
 
 ve_has_religious_program_5 = {
 	OR = {
 		has_modifier = ve_confessional_program_5_mdf
-		has_modifier = ve_pluralist_program_5_mdf
-		has_modifier = ve_atheist_program_5_mdf
+		has_modifier = ve_freedom_program_5_mdf
+		has_modifier = ve_separation_program_5_mdf
+		has_modifier = ve_atheism_program_5_mdf
 	}
 }
 
 ve_has_religious_program_6 = {
 	OR = {
 		has_modifier = ve_confessional_program_6_mdf
-		has_modifier = ve_pluralist_program_6_mdf
-		has_modifier = ve_atheist_program_6_mdf
+		has_modifier = ve_freedom_program_6_mdf
+		has_modifier = ve_separation_program_6_mdf
+		has_modifier = ve_atheism_program_6_mdf
 	}
 }
 
 ve_has_religious_program_7 = {
 	OR = {
 		has_modifier = ve_confessional_program_7_mdf
-		has_modifier = ve_pluralist_program_7_mdf
-		has_modifier = ve_atheist_program_7_mdf
+		has_modifier = ve_freedom_program_7_mdf
+		has_modifier = ve_separation_program_7_mdf
+		has_modifier = ve_atheism_program_7_mdf
 	}
 }
 
 ve_has_religious_program_8 = {
 	OR = {
 		has_modifier = ve_confessional_program_8_mdf
-		has_modifier = ve_pluralist_program_8_mdf
-		has_modifier = ve_atheist_program_8_mdf
+		has_modifier = ve_freedom_program_8_mdf
+		has_modifier = ve_separation_program_8_mdf
+		has_modifier = ve_atheism_program_8_mdf
 	}
 }
 
@@ -113,5 +127,99 @@ ve_can_adopt_any_religious_program = {
 		NOT = { ve_has_religious_program_6 = yes }
 		NOT = { ve_has_religious_program_7 = yes }
 		NOT = { ve_has_religious_program_8 = yes }
+	}
+}
+
+# Phase 7: Targeted Religious Project (replaces the old missionary system).
+# Mirrors common/scripted_triggers/ve_cultural_project_triggers.txt.
+
+ve_has_active_religious_project = {
+	has_variable = ve_religious_project_type
+	var:ve_religious_project_type > 0
+}
+
+ve_has_no_active_religious_project = {
+	NOT = { ve_has_active_religious_project = yes }
+}
+
+ve_can_begin_religious_project = {
+	ve_has_no_active_religious_project = yes
+	ve_religious_project_enabled = yes
+	NOT = { has_modifier = ve_religious_project_backlash_mdf }
+}
+
+ve_can_begin_confessional_conversion = {
+	ve_can_begin_religious_project = yes
+	ve_is_confessional_state = yes
+	var:piety_reform_point >= 125
+}
+
+ve_can_begin_freedom_outreach = {
+	ve_can_begin_religious_project = yes
+	ve_is_freedom_state = yes
+	var:piety_reform_point >= 100
+}
+
+ve_can_begin_secularization_campaign = {
+	ve_can_begin_religious_project = yes
+	ve_is_atheism_state = yes
+	var:piety_reform_point >= 150
+}
+
+ve_can_begin_religious_project_any = {
+	OR = {
+		ve_can_begin_confessional_conversion = yes
+		ve_can_begin_freedom_outreach = yes
+		ve_can_begin_secularization_campaign = yes
+	}
+}
+
+# Scope: state. Room to push if the owner's own religious model isn't already
+# dominant there - avoids needing an unverified "iterate every religion" list.
+ve_state_has_religious_project_target = {
+	owner = {
+		ve_can_begin_religious_project_any = yes
+	}
+	NOT = {
+		religion_percent_state = {
+			target = owner.religion
+			value >= 0.90
+		}
+	}
+}
+
+ve_religious_project_is_targeted = {
+	var:ve_religious_project_type > 0
+}
+
+# Just the Piety Reform threshold for the active model, without the base
+# no-active-project/backlash checks - used to itemize the "why is this
+# disabled" tooltip on the state button instead of one flat requirements line.
+ve_country_meets_religious_project_cost = {
+	OR = {
+		AND = {
+			ve_is_confessional_state = yes
+			var:piety_reform_point >= 125
+		}
+		AND = {
+			ve_is_freedom_state = yes
+			var:piety_reform_point >= 100
+		}
+		AND = {
+			ve_is_atheism_state = yes
+			var:piety_reform_point >= 150
+		}
+	}
+}
+
+# Scope: state. Is this state the one the owner's active project is running
+# against? Used to show a live progress bar directly on the state panel.
+ve_state_is_active_religious_project_target = {
+	save_temporary_scope_as = ve_check_state
+	owner = {
+		ve_has_active_religious_project = yes
+		var:ve_religious_project_target_state ?= {
+			this = scope:ve_check_state
+		}
 	}
 }

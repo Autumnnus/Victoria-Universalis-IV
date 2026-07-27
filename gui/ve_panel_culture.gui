@@ -1,5 +1,15 @@
 types ve_gui_panel_types
 {
+	# Simplified National Identity page.
+	#
+	# Layout rules used here, so future edits keep the page readable:
+	#   1. Card bodies hold at most a two-line summary. Every full modifier
+	#      list lives in that card's tooltip (*_desc / *_tt localization).
+	#   2. The active Identity Model is stated three times: in the summary
+	#      strip, as a checkmark badge on its card, and by replacing that
+	#      card's button with a static "Active Model" label.
+	#   3. Each section opens with one short help paragraph that says whether
+	#      the player has to do anything at all.
 	type ve_panel_culture = vbox {
 		layoutpolicy_horizontal = expanding
 		layoutpolicy_vertical = expanding
@@ -9,121 +19,170 @@ types ve_gui_panel_types
 			layoutpolicy_vertical = expanding
 			spacing = 15
 
-			hbox = { # National identity overview
+			hbox = { # Summary strip
 				layoutpolicy_horizontal = expanding
 				margin = { 0 20 }
+				spacing = 15
 
-				hbox = {
+				hbox = { # Primary cultures
 					using = main_bg
 					layoutpolicy_horizontal = preferred
 					vbox = {
-						spacing = 10
-						margin = { 30 10 }
+						spacing = 8
+						margin = { 25 12 }
 						icon = {
 							texture = "gfx/interface/population/pop_culture.dds"
-							size = { 120 120 }
+							size = { 84 84 }
 						}
 						textbox = {
-							text = "#v [GetPlayer.GetPrimaryCulturesDesc]#!"
-							using = fontsize_xxl
+							text = "ve_primary_cultures_label"
+							default_format = "#instruction"
+							using = fontsize_large
+							align = center|nobaseline
+							autoresize = yes
+						}
+						textbox = {
+							raw_text = "#v [GetPlayer.GetPrimaryCulturesDesc]#!"
+							using = fontsize_xl
 							align = center
 							elide = left
 							minimumsize = { 100 -1 }
-							maximumsize = { 420 -1 }
+							maximumsize = { 300 -1 }
 							multiline = yes
 							autoresize = yes
 						}
 					}
 				}
 
-				hbox = {
+				hbox = { # Active model + resources
 					using = main_bg
 					layoutpolicy_horizontal = expanding
 					hbox = {
 						layoutpolicy_horizontal = expanding
-						margin = { 20 20 }
-						spacing = 35
+						margin = { 25 20 }
+						spacing = 30
 
-						vbox = {
-							spacing = 10
+						vbox = { # Active Identity Model
+							spacing = 8
 							tooltip = "[GetScriptedGui('ve_identity_model_tooltip').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-							using = tooltip_below
 							textbox = {
-								text = "ve_current_identity_model"
+								text = "ve_active_identity_model"
 								default_format = "#tooltippable_name"
-								using = fontsize_xxl
+								using = fontsize_large
 								align = nobaseline
 								autoresize = yes
 							}
-							textbox = {
-								raw_text = "[GetPlayer.GetCustom('ve_identity_model_name')]"
-								default_format = "#instruction"
-								using = fontsize_xxl
-								align = nobaseline
-								autoresize = yes
-							}
-						}
-
-						vbox = {
-							spacing = 10
-							tooltip = "ve_culture_reform_point_tt"
-							textbox = {
-								text = "ve_cultural_mandate"
-								default_format = "#tooltippable_name"
-								using = fontsize_xxl
-								align = nobaseline
-								autoresize = yes
-							}
-							textbox = {
-								text = "[GetPlayer.MakeScope.Var('culture_reform_point').GetValue|0] / 500"
-								default_format = "#instruction"
-								using = fontsize_xxl
-								align = nobaseline
-								autoresize = yes
-							}
-							white_progressbar_horizontal = {
-								size = { 130 15 }
-								tooltip = "ve_culture_reform_point_tt"
-								blockoverride "values" {
-									max = 500
-									value = "[GetPlayer.MakeScope.Var('culture_reform_point').GetValue]"
+							hbox = {
+								spacing = 8
+								icon = {
+									size = { 40 40 }
+									texture = "gfx/interface/ve_ideas/idea_aristocracy_ideas.dds"
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)1')]"
+								}
+								icon = {
+									size = { 40 40 }
+									texture = "gfx/interface/ve_ideas/idea_humanist_ideas.dds"
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)2')]"
+								}
+								icon = {
+									size = { 40 40 }
+									texture = "gfx/interface/ve_ideas/idea_diplomatic_ideas.dds"
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)3')]"
+								}
+								textbox = {
+									raw_text = "#P [GetPlayer.GetCustom('ve_identity_model_name')]#!"
+									using = fontsize_xxl
+									align = vcenter|nobaseline
+									autoresize = yes
 								}
 							}
 						}
 
-						vbox = {
-							spacing = 10
-							tooltip = "ve_national_cohesion_tt"
+						vbox = { # Cultural Mandate
+							spacing = 8
+							tooltip = "ve_culture_reform_point_tt"
 							textbox = {
-								text = "ve_national_cohesion"
+								text = "ve_cultural_mandate"
 								default_format = "#tooltippable_name"
-								using = fontsize_xxl
+								using = fontsize_large
 								align = nobaseline
 								autoresize = yes
 							}
 							hbox = {
 								spacing = 8
 								textbox = {
-									text = "[GetPlayer.MakeScope.Var('ve_national_cohesion').GetValue|0] / 100"
+									raw_text = "[GetPlayer.MakeScope.Var('culture_reform_point').GetValue|0] / 500"
 									default_format = "#instruction"
 									using = fontsize_xxl
 									align = nobaseline
 									autoresize = yes
 								}
 								textbox = {
-									text = "([GetPlayer.MakeScope.ScriptValue('ve_monthly_national_cohesion')|+=0])"
-									using = fontsize_xl
+									raw_text = "([GetPlayer.MakeScope.ScriptValue('ve_monthly_national_identity')|+=0])"
+									using = fontsize_large
 									align = nobaseline
 									autoresize = yes
 								}
 							}
 							white_progressbar_horizontal = {
-								size = { 130 15 }
-								tooltip = "ve_national_cohesion_tt"
+								size = { 150 12 }
+								blockoverride "values" {
+									max = 500
+									value = "[GetPlayer.MakeScope.Var('culture_reform_point').GetValue]"
+								}
+							}
+							textbox = {
+								text = "ve_cultural_mandate_hint"
+								default_format = "#instruction"
+								using = fontsize_small
+								align = nobaseline
+								maximumsize = { 210 -1 }
+								multiline = yes
+								autoresize = yes
+							}
+						}
+
+						vbox = { # National Cohesion
+							spacing = 8
+							tooltip = "ve_national_cohesion_tt"
+							textbox = {
+								text = "ve_national_cohesion"
+								default_format = "#tooltippable_name"
+								using = fontsize_large
+								align = nobaseline
+								autoresize = yes
+							}
+							hbox = {
+								spacing = 8
+								textbox = {
+									raw_text = "[GetPlayer.MakeScope.Var('ve_national_cohesion').GetValue|0] / 100"
+									default_format = "#instruction"
+									using = fontsize_xxl
+									align = nobaseline
+									autoresize = yes
+								}
+								textbox = {
+									raw_text = "([GetPlayer.MakeScope.ScriptValue('ve_monthly_national_cohesion')|+=0])"
+									using = fontsize_large
+									align = nobaseline
+									autoresize = yes
+								}
+							}
+							white_progressbar_horizontal = {
+								size = { 150 12 }
 								blockoverride "values" {
 									max = 100
 									value = "[GetPlayer.MakeScope.Var('ve_national_cohesion').GetValue]"
 								}
+							}
+							textbox = {
+								text = "ve_national_cohesion_hint"
+								default_format = "#instruction"
+								using = fontsize_small
+								align = nobaseline
+								maximumsize = { 230 -1 }
+								multiline = yes
+								autoresize = yes
 							}
 						}
 					}
@@ -144,96 +203,290 @@ types ve_gui_panel_types
 					}
 				}
 
-				hbox = {
+				vbox = {
 					using = main_bg
 					layoutpolicy_horizontal = expanding
-					margin = { 20 20 }
-					spacing = 20
+					margin = { 20 18 }
+					spacing = 15
 
-					vbox = {
-						layoutpolicy_horizontal = expanding
-						spacing = 15
-						textbox = {
-							text = "ve_ethnic_identity_name"
-							default_format = "#tooltip_header"
-							using = fontsize_xxl
-							align = center|nobaseline
-							autoresize = yes
-						}
-						textbox = {
-							text = "ve_ethnic_identity_desc"
-							using = fontsize_xl
-							align = center|nobaseline
-							maximumsize = { 360 -1 }
-							multiline = yes
-							autoresize = yes
-						}
-						button = {
-							using = default_button_action
-							size = { 300 45 }
-							text = "ve_adopt_ethnic_identity"
-							onclick = "[GetScriptedGui('ve_choose_ethnic_identity').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-							enabled = "[GetScriptedGui('ve_choose_ethnic_identity').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-							tooltip = "[GetScriptedGui('ve_choose_ethnic_identity').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-							using = tooltip_below
-						}
+					textbox = {
+						text = "ve_identity_models_help"
+						using = fontsize_large
+						align = center|nobaseline
+						maximumsize = { 1200 -1 }
+						multiline = yes
+						autoresize = yes
 					}
 
-					vbox = {
+					hbox = {
 						layoutpolicy_horizontal = expanding
-						spacing = 15
-						textbox = {
-							text = "ve_civic_identity_name"
-							default_format = "#tooltip_header"
-							using = fontsize_xxl
-							align = center|nobaseline
-							autoresize = yes
-						}
-						textbox = {
-							text = "ve_civic_identity_desc"
-							using = fontsize_xl
-							align = center|nobaseline
-							maximumsize = { 360 -1 }
-							multiline = yes
-							autoresize = yes
-						}
-						button = {
-							using = default_button_action
-							size = { 300 45 }
-							text = "ve_adopt_civic_identity"
-							onclick = "[GetScriptedGui('ve_choose_civic_identity').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-							enabled = "[GetScriptedGui('ve_choose_civic_identity').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-							tooltip = "[GetScriptedGui('ve_choose_civic_identity').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-							using = tooltip_below
-						}
-					}
+						spacing = 20
 
-					vbox = {
-						layoutpolicy_horizontal = expanding
-						spacing = 15
-						textbox = {
-							text = "ve_composite_identity_name"
-							default_format = "#tooltip_header"
-							using = fontsize_xxl
-							align = center|nobaseline
-							autoresize = yes
+						vbox = { # Ethnic Nation
+							using = main_bg
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							vbox = {
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								margin = { 18 16 }
+								spacing = 8
+								tooltip = "ve_ethnic_identity_desc"
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									spacing = 6
+									expand = {}
+									icon = {
+										texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
+										size = { 22 22 }
+										visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)1')]"
+									}
+									textbox = {
+										text = "ve_identity_model_active_badge"
+										default_format = "#P"
+										using = fontsize_large
+										align = vcenter|nobaseline
+										autoresize = yes
+										visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)1')]"
+									}
+									expand = {}
+								}
+
+								icon = {
+									texture = "gfx/interface/ve_ideas/idea_aristocracy_ideas.dds"
+									size = { 64 64 }
+								}
+								textbox = {
+									text = "ve_ethnic_identity_name"
+									default_format = "#tooltip_header"
+									using = fontsize_xxl
+									align = center|nobaseline
+									autoresize = yes
+								}
+								textbox = {
+									text = "ve_ethnic_identity_short"
+									using = fontsize_large
+									align = center|nobaseline
+									maximumsize = { 330 -1 }
+									multiline = yes
+									autoresize = yes
+								}
+								textbox = {
+									text = "ve_ethnic_identity_unlocks"
+									default_format = "#instruction"
+									using = fontsize_large
+									align = center|nobaseline
+									maximumsize = { 330 -1 }
+									multiline = yes
+									autoresize = yes
+								}
+								expand = {}
+								textbox = {
+									text = "ve_hover_for_details"
+									default_format = "#instruction"
+									using = fontsize_small
+									align = center|nobaseline
+									autoresize = yes
+								}
+								button = {
+									using = default_button_action
+									size = { 300 40 }
+									text = "ve_switch_identity_button"
+									onclick = "[GetScriptedGui('ve_choose_ethnic_identity').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									enabled = "[GetScriptedGui('ve_choose_ethnic_identity').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									tooltip = "[GetScriptedGui('ve_choose_ethnic_identity').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									using = tooltip_below
+									visible = "[Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)1'))]"
+								}
+								textbox = {
+									text = "ve_identity_model_active_footer"
+									default_format = "#P"
+									using = fontsize_xl
+									align = center|nobaseline
+									minimumsize = { 300 40 }
+									autoresize = yes
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)1')]"
+								}
+							}
 						}
-						textbox = {
-							text = "ve_composite_identity_desc"
-							using = fontsize_xl
-							align = center|nobaseline
-							maximumsize = { 360 -1 }
-							multiline = yes
-							autoresize = yes
+
+						vbox = { # Civic Nation
+							using = main_bg
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							vbox = {
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								margin = { 18 16 }
+								spacing = 8
+								tooltip = "ve_civic_identity_desc"
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									spacing = 6
+									expand = {}
+									icon = {
+										texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
+										size = { 22 22 }
+										visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)2')]"
+									}
+									textbox = {
+										text = "ve_identity_model_active_badge"
+										default_format = "#P"
+										using = fontsize_large
+										align = vcenter|nobaseline
+										autoresize = yes
+										visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)2')]"
+									}
+									expand = {}
+								}
+
+								icon = {
+									texture = "gfx/interface/ve_ideas/idea_humanist_ideas.dds"
+									size = { 64 64 }
+								}
+								textbox = {
+									text = "ve_civic_identity_name"
+									default_format = "#tooltip_header"
+									using = fontsize_xxl
+									align = center|nobaseline
+									autoresize = yes
+								}
+								textbox = {
+									text = "ve_civic_identity_short"
+									using = fontsize_large
+									align = center|nobaseline
+									maximumsize = { 330 -1 }
+									multiline = yes
+									autoresize = yes
+								}
+								textbox = {
+									text = "ve_civic_identity_unlocks"
+									default_format = "#instruction"
+									using = fontsize_large
+									align = center|nobaseline
+									maximumsize = { 330 -1 }
+									multiline = yes
+									autoresize = yes
+								}
+								expand = {}
+								textbox = {
+									text = "ve_hover_for_details"
+									default_format = "#instruction"
+									using = fontsize_small
+									align = center|nobaseline
+									autoresize = yes
+								}
+								button = {
+									using = default_button_action
+									size = { 300 40 }
+									text = "ve_switch_identity_button"
+									onclick = "[GetScriptedGui('ve_choose_civic_identity').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									enabled = "[GetScriptedGui('ve_choose_civic_identity').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									tooltip = "[GetScriptedGui('ve_choose_civic_identity').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									using = tooltip_below
+									visible = "[Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)2'))]"
+								}
+								textbox = {
+									text = "ve_identity_model_active_footer"
+									default_format = "#P"
+									using = fontsize_xl
+									align = center|nobaseline
+									minimumsize = { 300 40 }
+									autoresize = yes
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)2')]"
+								}
+							}
 						}
-						button = {
-							using = default_button_action
-							size = { 300 45 }
-							text = "ve_adopt_composite_identity"
-							onclick = "[GetScriptedGui('ve_choose_composite_identity').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-							enabled = "[GetScriptedGui('ve_choose_composite_identity').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-							tooltip = "[GetScriptedGui('ve_choose_composite_identity').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-							using = tooltip_below
+
+						vbox = { # Composite State
+							using = main_bg
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							vbox = {
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								margin = { 18 16 }
+								spacing = 8
+								tooltip = "ve_composite_identity_desc"
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									spacing = 6
+									expand = {}
+									icon = {
+										texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
+										size = { 22 22 }
+										visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)3')]"
+									}
+									textbox = {
+										text = "ve_identity_model_active_badge"
+										default_format = "#P"
+										using = fontsize_large
+										align = vcenter|nobaseline
+										autoresize = yes
+										visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)3')]"
+									}
+									expand = {}
+								}
+
+								icon = {
+									texture = "gfx/interface/ve_ideas/idea_diplomatic_ideas.dds"
+									size = { 64 64 }
+								}
+								textbox = {
+									text = "ve_composite_identity_name"
+									default_format = "#tooltip_header"
+									using = fontsize_xxl
+									align = center|nobaseline
+									autoresize = yes
+								}
+								textbox = {
+									text = "ve_composite_identity_short"
+									using = fontsize_large
+									align = center|nobaseline
+									maximumsize = { 330 -1 }
+									multiline = yes
+									autoresize = yes
+								}
+								textbox = {
+									text = "ve_composite_identity_unlocks"
+									default_format = "#instruction"
+									using = fontsize_large
+									align = center|nobaseline
+									maximumsize = { 330 -1 }
+									multiline = yes
+									autoresize = yes
+								}
+								expand = {}
+								textbox = {
+									text = "ve_hover_for_details"
+									default_format = "#instruction"
+									using = fontsize_small
+									align = center|nobaseline
+									autoresize = yes
+								}
+								button = {
+									using = default_button_action
+									size = { 300 40 }
+									text = "ve_switch_identity_button"
+									onclick = "[GetScriptedGui('ve_choose_composite_identity').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									enabled = "[GetScriptedGui('ve_choose_composite_identity').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									tooltip = "[GetScriptedGui('ve_choose_composite_identity').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									using = tooltip_below
+									visible = "[Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)3'))]"
+								}
+								textbox = {
+									text = "ve_identity_model_active_footer"
+									default_format = "#P"
+									using = fontsize_xl
+									align = center|nobaseline
+									minimumsize = { 300 40 }
+									autoresize = yes
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)3')]"
+								}
+							}
 						}
 					}
 				}
@@ -252,95 +505,128 @@ types ve_gui_panel_types
 						visible = no
 					}
 				}
-				hbox = {
+
+				vbox = { # A project is running
 					using = main_bg
 					layoutpolicy_horizontal = expanding
-					margin = { 20 20 }
-					spacing = 30
+					margin = { 20 18 }
+					spacing = 15
 					visible = "[GetScriptedGui('ve_has_active_cultural_project_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 
-					vbox = {
+					hbox = {
 						layoutpolicy_horizontal = expanding
-						spacing = 10
-						textbox = {
-							raw_text = "[GetPlayer.GetCustom('ve_cultural_project_name')]"
-							default_format = "#tooltip_header"
-							using = fontsize_xxl
-							autoresize = yes
-						}
-						textbox = {
-							raw_text = "[GetPlayer.GetCustom('ve_cultural_project_target')]"
-							default_format = "#instruction"
-							using = fontsize_xl
-							multiline = yes
-							autoresize = yes
-						}
-						textbox = {
-							raw_text = "[GetPlayer.GetCustom('ve_cultural_project_description')]"
-							using = fontsize_l
-							maximumsize = { 520 -1 }
-							multiline = yes
-							autoresize = yes
-						}
-					}
+						spacing = 30
 
-					vbox = {
-						layoutpolicy_horizontal = expanding
-						spacing = 10
-						tooltip = "ve_cultural_project_progress_tt"
-						using = tooltip_below
-						textbox = {
-							text = "ve_cultural_project_progress"
-							default_format = "#tooltippable_name"
-							using = fontsize_xl
-							autoresize = yes
-						}
-						hbox = {
-							spacing = 10
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							spacing = 6
+							tooltip = "[GetPlayer.GetCustom('ve_cultural_project_description')]"
 							textbox = {
-								text = "[GetPlayer.MakeScope.Var('ve_cultural_project_progress').GetValue|0] / 100"
+								text = "ve_cultural_project_active_label"
 								default_format = "#instruction"
+								using = fontsize_large
+								autoresize = yes
+							}
+							textbox = {
+								raw_text = "[GetPlayer.GetCustom('ve_cultural_project_name')]"
+								default_format = "#tooltip_header"
 								using = fontsize_xxl
 								autoresize = yes
 							}
 							textbox = {
-								text = "([GetPlayer.MakeScope.ScriptValue('ve_monthly_cultural_project_progress')|+=0])"
-								using = fontsize_xl
+								raw_text = "[GetPlayer.GetCustom('ve_cultural_project_target')]"
+								using = fontsize_large
+								maximumsize = { 520 -1 }
+								multiline = yes
+								autoresize = yes
+							}
+							textbox = {
+								text = "ve_hover_for_details"
+								default_format = "#instruction"
+								using = fontsize_small
 								autoresize = yes
 							}
 						}
-						white_progressbar_horizontal = {
-							size = { 260 15 }
+
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							spacing = 6
 							tooltip = "ve_cultural_project_progress_tt"
-							blockoverride "values" {
-								max = 100
-								value = "[GetPlayer.MakeScope.Var('ve_cultural_project_progress').GetValue]"
+							using = tooltip_below
+							textbox = {
+								text = "ve_cultural_project_progress"
+								default_format = "#tooltippable_name"
+								using = fontsize_large
+								autoresize = yes
+							}
+							hbox = {
+								spacing = 10
+								textbox = {
+									raw_text = "[GetPlayer.MakeScope.Var('ve_cultural_project_progress').GetValue|0] / 100"
+									default_format = "#instruction"
+									using = fontsize_xxl
+									autoresize = yes
+								}
+								textbox = {
+									raw_text = "([GetPlayer.MakeScope.ScriptValue('ve_monthly_cultural_project_progress')|+=0])"
+									using = fontsize_large
+									autoresize = yes
+								}
+							}
+							white_progressbar_horizontal = {
+								size = { 260 15 }
+								blockoverride "values" {
+									max = 100
+									value = "[GetPlayer.MakeScope.Var('ve_cultural_project_progress').GetValue]"
+								}
+							}
+						}
+
+						vbox = {
+							spacing = 8
+							button = {
+								using = default_button_action
+								size = { 260 40 }
+								text = "ve_cancel_cultural_project_button"
+								onclick = "[GetVariableSystem.Set('confirm_cancel_cultural_project', 'yes')]"
+								enabled = "[GetScriptedGui('ve_cancel_cultural_project_gui').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								visible = "[Not(GetVariableSystem.Exists('confirm_cancel_cultural_project'))]"
+								tooltip = "ve_cancel_cultural_project_tt"
+								using = tooltip_below
+							}
+							button = {
+								using = default_button_action
+								size = { 260 40 }
+								text = "ve_confirm_cancel_button"
+								onclick = "[GetVariableSystem.Clear('confirm_cancel_cultural_project')]"
+								onclick = "[GetScriptedGui('ve_cancel_cultural_project_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								visible = "[GetVariableSystem.Exists('confirm_cancel_cultural_project')]"
+								tooltip = "ve_cancel_cultural_project_tt"
+								using = tooltip_below
+							}
+							button = {
+								using = default_button_action
+								size = { 260 40 }
+								text = "ve_keep_project_button"
+								onclick = "[GetVariableSystem.Clear('confirm_cancel_cultural_project')]"
+								visible = "[GetVariableSystem.Exists('confirm_cancel_cultural_project')]"
 							}
 						}
 					}
-
-					button = {
-						using = default_button_action
-						size = { 260 45 }
-						text = "ve_cancel_cultural_project_button"
-						onclick = "[GetScriptedGui('ve_cancel_cultural_project_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-						enabled = "[GetScriptedGui('ve_cancel_cultural_project_gui').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-						tooltip = "ve_cancel_cultural_project_tt"
-						using = tooltip_below
-					}
 				}
 
-				vbox = {
+				vbox = { # No project running
 					using = main_bg
 					layoutpolicy_horizontal = expanding
-					margin = { 20 20 }
-					spacing = 20
+					margin = { 20 18 }
+					spacing = 15
 					visible = "[GetScriptedGui('ve_has_no_active_cultural_project_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 
 					textbox = {
 						text = "ve_cultural_projects_intro"
-						using = fontsize_xl
+						using = fontsize_large
 						align = center|nobaseline
+						maximumsize = { 1200 -1 }
 						multiline = yes
 						autoresize = yes
 					}
@@ -349,90 +635,168 @@ types ve_gui_panel_types
 						layoutpolicy_horizontal = expanding
 						spacing = 20
 
-						vbox = {
+						vbox = { # National Curriculum
+							using = main_bg
 							layoutpolicy_horizontal = expanding
-							spacing = 10
-							textbox = {
-								text = "ve_national_curriculum_name"
-								default_format = "#tooltip_header"
-								using = fontsize_xxl
-								align = center|nobaseline
-								autoresize = yes
-							}
-							textbox = {
-								text = "ve_national_curriculum_desc"
-								using = fontsize_xl
-								align = center|nobaseline
-								maximumsize = { 390 -1 }
-								multiline = yes
-								autoresize = yes
-							}
-							button = {
-								using = default_button_action
-								size = { 300 45 }
-								text = "ve_begin_national_curriculum"
-								onclick = "[GetScriptedGui('ve_begin_national_curriculum_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								enabled = "[GetScriptedGui('ve_begin_national_curriculum_gui').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_begin_national_curriculum_gui').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								using = tooltip_below
+							layoutpolicy_vertical = expanding
+							vbox = {
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								margin = { 18 16 }
+								spacing = 8
+								tooltip = "ve_national_curriculum_desc"
+								icon = {
+									texture = "gfx/interface/ve_ideas/idea_innovativeness_ideas.dds"
+									size = { 56 56 }
+								}
+								textbox = {
+									text = "ve_national_curriculum_name"
+									default_format = "#tooltip_header"
+									using = fontsize_xxl
+									align = center|nobaseline
+									autoresize = yes
+								}
+								textbox = {
+									text = "ve_national_curriculum_cost"
+									using = fontsize_large
+									align = center|nobaseline
+									autoresize = yes
+								}
+								textbox = {
+									text = "ve_national_curriculum_short"
+									using = fontsize_large
+									align = center|nobaseline
+									maximumsize = { 330 -1 }
+									multiline = yes
+									autoresize = yes
+								}
+								expand = {}
+								textbox = {
+									text = "ve_hover_for_details"
+									default_format = "#instruction"
+									using = fontsize_small
+									align = center|nobaseline
+									autoresize = yes
+								}
+								button = {
+									using = default_button_action
+									size = { 300 40 }
+									text = "ve_begin_project_button"
+									onclick = "[GetScriptedGui('ve_begin_national_curriculum_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									enabled = "[GetScriptedGui('ve_begin_national_curriculum_gui').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									tooltip = "[GetScriptedGui('ve_begin_national_curriculum_gui').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									using = tooltip_below
+								}
 							}
 						}
 
-						vbox = {
+						vbox = { # Shared Symbols
+							using = main_bg
 							layoutpolicy_horizontal = expanding
-							spacing = 10
-							textbox = {
-								text = "ve_shared_symbols_name"
-								default_format = "#tooltip_header"
-								using = fontsize_xxl
-								align = center|nobaseline
-								autoresize = yes
-							}
-							textbox = {
-								text = "ve_shared_symbols_desc"
-								using = fontsize_xl
-								align = center|nobaseline
-								maximumsize = { 390 -1 }
-								multiline = yes
-								autoresize = yes
-							}
-							button = {
-								using = default_button_action
-								size = { 300 45 }
-								text = "ve_begin_shared_symbols"
-								onclick = "[GetScriptedGui('ve_begin_shared_symbols_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								enabled = "[GetScriptedGui('ve_begin_shared_symbols_gui').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_begin_shared_symbols_gui').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								using = tooltip_below
+							layoutpolicy_vertical = expanding
+							vbox = {
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								margin = { 18 16 }
+								spacing = 8
+								tooltip = "ve_shared_symbols_desc"
+								icon = {
+									texture = "gfx/interface/ve_ideas/idea_humanist_ideas.dds"
+									size = { 56 56 }
+								}
+								textbox = {
+									text = "ve_shared_symbols_name"
+									default_format = "#tooltip_header"
+									using = fontsize_xxl
+									align = center|nobaseline
+									autoresize = yes
+								}
+								textbox = {
+									text = "ve_shared_symbols_cost"
+									using = fontsize_large
+									align = center|nobaseline
+									autoresize = yes
+								}
+								textbox = {
+									text = "ve_shared_symbols_short"
+									using = fontsize_large
+									align = center|nobaseline
+									maximumsize = { 330 -1 }
+									multiline = yes
+									autoresize = yes
+								}
+								expand = {}
+								textbox = {
+									text = "ve_hover_for_details"
+									default_format = "#instruction"
+									using = fontsize_small
+									align = center|nobaseline
+									autoresize = yes
+								}
+								button = {
+									using = default_button_action
+									size = { 300 40 }
+									text = "ve_begin_project_button"
+									onclick = "[GetScriptedGui('ve_begin_shared_symbols_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									enabled = "[GetScriptedGui('ve_begin_shared_symbols_gui').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									tooltip = "[GetScriptedGui('ve_begin_shared_symbols_gui').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									using = tooltip_below
+								}
 							}
 						}
 
-						vbox = {
+						vbox = { # Identity-model project, started from a State
+							using = main_bg
 							layoutpolicy_horizontal = expanding
-							spacing = 10
-							textbox = {
-								raw_text = "[GetPlayer.GetCustom('ve_model_project_name')]"
-								default_format = "#tooltip_header"
-								using = fontsize_xxl
-								align = center|nobaseline
-								autoresize = yes
-							}
-							textbox = {
-								raw_text = "[GetPlayer.GetCustom('ve_model_project_description')]"
-								using = fontsize_xl
-								align = center|nobaseline
-								maximumsize = { 390 -1 }
-								multiline = yes
-								autoresize = yes
-							}
-							textbox = {
-								text = "ve_targeted_project_start_instruction"
-								default_format = "#instruction"
-								using = fontsize_xl
-								align = center|nobaseline
-								maximumsize = { 390 -1 }
-								multiline = yes
-								autoresize = yes
+							layoutpolicy_vertical = expanding
+							vbox = {
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								margin = { 18 16 }
+								spacing = 8
+								tooltip = "[GetPlayer.GetCustom('ve_model_project_description')]"
+								icon = {
+									texture = "gfx/interface/culture_conversion_cost.dds"
+									size = { 56 56 }
+								}
+								textbox = {
+									raw_text = "[GetPlayer.GetCustom('ve_model_project_name')]"
+									default_format = "#tooltip_header"
+									using = fontsize_xxl
+									align = center|nobaseline
+									autoresize = yes
+								}
+								textbox = {
+									raw_text = "[GetPlayer.GetCustom('ve_model_project_cost')]"
+									using = fontsize_large
+									align = center|nobaseline
+									autoresize = yes
+								}
+								textbox = {
+									raw_text = "[GetPlayer.GetCustom('ve_model_project_short')]"
+									using = fontsize_large
+									align = center|nobaseline
+									maximumsize = { 330 -1 }
+									multiline = yes
+									autoresize = yes
+								}
+								expand = {}
+								textbox = {
+									text = "ve_hover_for_details"
+									default_format = "#instruction"
+									using = fontsize_small
+									align = center|nobaseline
+									autoresize = yes
+								}
+								textbox = {
+									text = "ve_targeted_project_start_instruction"
+									default_format = "#instruction"
+									using = fontsize_large
+									align = center|nobaseline
+									maximumsize = { 330 -1 }
+									multiline = yes
+									autoresize = yes
+								}
 							}
 						}
 					}

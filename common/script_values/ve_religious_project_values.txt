@@ -1,0 +1,195 @@
+﻿# Phase 7: Targeted Religious Project progress. Mirrors
+# common/script_values/ve_cultural_project_values.txt.
+
+ve_religious_project_progress_base = 1
+
+ve_religious_project_progress_administration = {
+	if = {
+		limit = {
+			bureaucracy >= 0
+			approaching_bureaucracy_shortage = no
+		}
+		add = 2
+	}
+	else = {
+		subtract = 1
+	}
+}
+
+ve_religious_project_progress_legitimacy = {
+	if = {
+		limit = { government_legitimacy >= 75 }
+		add = 1
+	}
+	else_if = {
+		limit = { government_legitimacy < 25 }
+		subtract = 1
+	}
+}
+
+ve_religious_project_progress_devout = {
+	if = {
+		limit = { ve_is_confessional_state = yes }
+		if = {
+			limit = { ig:ig_devout = { ig_approval >= 5 } }
+				add = 2
+		}
+		else_if = {
+			limit = { ig:ig_devout = { ig_approval <= -5 } }
+			subtract = 1
+		}
+	}
+	else_if = {
+		limit = { ve_is_atheism_state = yes }
+		if = {
+			limit = { literacy_rate >= 0.75 }
+			add = 2
+		}
+		else_if = {
+			limit = { literacy_rate >= 0.50 }
+			add = 1
+		}
+	}
+	else_if = {
+		limit = { ve_is_freedom_state = yes }
+		if = {
+			limit = { literacy_rate >= 0.50 }
+			add = 1
+		}
+	}
+}
+
+ve_religious_project_progress_equilibrium = {
+	if = {
+		limit = { var:piety_bar_point >= 75 }
+		add = 1
+	}
+	else_if = {
+		limit = { var:piety_bar_point <= 25 }
+		subtract = 1
+	}
+}
+
+ve_religious_project_progress_movement = {
+	if = {
+		limit = {
+			any_political_movement = {
+				OR = {
+					is_political_movement_type = movement_religious_minority
+					is_political_movement_type = movement_religious_majority
+				}
+				political_movement_radicalism >= 0.25
+			}
+		}
+		subtract = 1
+	}
+}
+
+ve_religious_project_progress_target = {
+	if = {
+		limit = {
+			ve_religious_project_is_targeted = yes
+			has_variable = ve_religious_project_target_state
+		}
+		if = {
+			limit = {
+				var:ve_religious_project_target_state ?= {
+					turmoil >= 0.25
+				}
+			}
+			subtract = 2
+		}
+		else_if = {
+			limit = {
+				var:ve_religious_project_target_state ?= {
+					turmoil >= 0.10
+				}
+			}
+			subtract = 1
+		}
+	}
+}
+
+ve_monthly_religious_project_progress = {
+	add = ve_religious_project_progress_base
+	add = ve_religious_project_progress_administration
+	add = ve_religious_project_progress_legitimacy
+	add = ve_religious_project_progress_devout
+	add = ve_religious_project_progress_equilibrium
+	add = ve_religious_project_progress_movement
+	add = ve_religious_project_progress_target
+	min = 1
+	max = 7
+	round = yes
+}
+
+# Phase 7: piety_reform_point income - the spendable currency, separate from
+# the piety_bar_point equilibrium meter. Mirrors
+# common/script_values/ve_national_identity_values.txt (base + legitimacy +
+# administration + a model-fit bonus), with the same soft cap shape.
+
+ve_piety_reform_base = 2
+
+ve_piety_reform_legitimacy = {
+	if = {
+		limit = { government_legitimacy >= 75 }
+		add = 2
+	}
+	else_if = {
+		limit = { government_legitimacy >= 50 }
+		add = 1
+	}
+	else_if = {
+		limit = { government_legitimacy < 25 }
+		subtract = 1
+	}
+}
+
+ve_piety_reform_administration = {
+	if = {
+		limit = {
+			bureaucracy >= 0
+			approaching_bureaucracy_shortage = no
+		}
+		add = 2
+	}
+	else = {
+		subtract = 2
+	}
+}
+
+ve_piety_reform_devout_support = {
+	if = {
+		limit = { ig:ig_devout = { ig_approval >= 5 } }
+		add = 1
+	}
+	else_if = {
+		limit = { ig:ig_devout = { ig_approval <= -5 } }
+		subtract = 1
+	}
+}
+
+ve_piety_reform_cap_multiplier = {
+	if = {
+		limit = { var:piety_reform_point >= 500 }
+		value = 0
+	}
+	else_if = {
+		limit = { var:piety_reform_point >= 400 }
+		value = 0.50
+	}
+	else = {
+		value = 1
+	}
+}
+
+ve_monthly_piety_reform = {
+	add = ve_piety_reform_base
+	add = ve_piety_reform_legitimacy
+	add = ve_piety_reform_administration
+	add = ve_piety_reform_devout_support
+	min = 1
+	max = 8
+	multiply = ve_piety_reform_cap_multiplier
+	round = yes
+}

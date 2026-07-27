@@ -60,6 +60,16 @@
 			value = flag:labour_idea
 		}
 	}
+	s:STATE_PUNJAB = {
+		add_to_global_variable_list = {
+			name = prod_ideas
+			target = this
+		}
+		set_variable = {
+			name = idea_group
+			value = flag:agrarian_idea
+		}
+	}
 	# ===== soc_ideas =====
 	s:STATE_MINSK = {
 		add_to_global_variable_list = {

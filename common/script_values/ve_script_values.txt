@@ -1,4 +1,4 @@
-piety_value = {
+﻿piety_value = {
 	add = var:piety_bar_point
 }
 
@@ -274,41 +274,6 @@ ve_monthly_era_momentum = {
 
 
 
-
-avaible_missionaries = {
-	add = var:avaible_missionaries
-}
-
-total_missionaries = {
-	add = var:total_missionaries
-}
-
-ve_set_religion_law_effects = {
-	if = {
-		limit = {
-			has_law = law_type:law_state_religion
-		}
-		add = 3
-	}
-	else_if = {
-		limit = {
-			has_law = law_type:law_freedom_of_conscience
-		}
-		add = 1
-	}
-	else_if = {
-		limit = {
-			has_law = law_type:law_state_atheism
-		}
-		add = 3
-	}
-	else_if = {
-		limit = {
-			has_law = law_type:law_total_separation
-		}
-		add = 0
-	}
-}
 
 ve_set_citizenship_law_effects = {
 	if = {

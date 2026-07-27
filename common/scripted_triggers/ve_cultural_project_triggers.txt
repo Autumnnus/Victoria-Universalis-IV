@@ -16,30 +16,32 @@ ve_can_begin_cultural_project = {
 
 ve_can_begin_national_curriculum = {
 	ve_can_begin_cultural_project = yes
-	ve_national_identity_value >= 100
+	# Use the actual spendable stock so the project button and alerts cannot
+	# disagree because of a derived script-value evaluation.
+	var:culture_reform_point >= 100
 }
 
 ve_can_begin_shared_symbols = {
 	ve_can_begin_cultural_project = yes
-	ve_national_identity_value >= 75
+	var:culture_reform_point >= 75
 }
 
 ve_can_begin_ethnic_campaign = {
 	ve_can_begin_cultural_project = yes
 	ve_is_ethnic_identity = yes
-	ve_national_identity_value >= 125
+	var:culture_reform_point >= 125
 }
 
 ve_can_begin_civic_initiative = {
 	ve_can_begin_cultural_project = yes
 	ve_is_civic_identity = yes
-	ve_national_identity_value >= 100
+	var:culture_reform_point >= 100
 }
 
 ve_can_begin_composite_compact = {
 	ve_can_begin_cultural_project = yes
 	ve_is_composite_identity = yes
-	ve_national_identity_value >= 150
+	var:culture_reform_point >= 150
 	var:ve_national_cohesion >= 40
 }
 
@@ -93,6 +95,65 @@ ve_project_is_targeted = {
 		var:ve_cultural_project_type == 3
 		var:ve_cultural_project_type == 4
 		var:ve_cultural_project_type == 5
+	}
+}
+
+# Just the Cultural Mandate threshold (+ cohesion floor for Composite) for the
+# active identity model, without the base no-active-project/backlash checks -
+# used to itemize the "why is this disabled" tooltip on the state button
+# instead of one flat requirements line.
+ve_country_meets_cultural_project_cost = {
+	OR = {
+		AND = {
+			ve_is_ethnic_identity = yes
+			var:culture_reform_point >= 125
+		}
+		AND = {
+			ve_is_civic_identity = yes
+			var:culture_reform_point >= 100
+		}
+		AND = {
+			ve_is_composite_identity = yes
+			var:culture_reform_point >= 150
+			var:ve_national_cohesion >= 40
+		}
+	}
+}
+
+# Scope: state. Just the "is there an eligible non-primary culture here"
+# check from ve_state_has_cultural_project_target, without the owner
+# affordability check - the itemized tooltip checks that separately.
+ve_state_has_eligible_target_culture = {
+	any_scope_culture = {
+		NOT = { is_primary_culture_of = ROOT.owner }
+		ROOT = {
+			"culture_percent_state(prev)" >= 0.05
+		}
+		OR = {
+			ROOT.owner = {
+				NOT = { ve_is_composite_identity = yes }
+			}
+			ROOT.owner = {
+				NOT = {
+					is_target_in_variable_list = {
+						name = ve_recognized_constituent_cultures
+						target = PREV
+					}
+				}
+			}
+		}
+	}
+}
+
+# Scope: state. Is this state the one the owner's active project is running
+# against? Used to show a live progress bar directly on the state panel.
+ve_state_is_active_cultural_project_target = {
+	save_temporary_scope_as = ve_check_state
+	owner = {
+		ve_has_active_cultural_project = yes
+		var:ve_cultural_project_target_state ?= {
+			this = scope:ve_check_state
+		}
 	}
 }
 

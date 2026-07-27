@@ -453,114 +453,175 @@ ve_activate_strategic_golden_age = {
 	add_modifier = { name = ve_golden_age_strategic_mdf years = 15 }
 }
 
-# AI deliberately takes the first affordable untaken reward. This keeps AI
-# spending deterministic and uses the same cost curve as the player.
+# AI selects only from affordable, untaken rewards. Strategy modifiers preserve
+# some variety while making industrial, colonial and military countries favor
+# rewards that support their current vanilla AI plan.
 ve_ai_uses_age_bonuses = {
 	if = {
-		limit = {
-			ve_can_purchase_era_reward = yes
-			OR = {
-				AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_1 } }
-				AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_1 } }
-				AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_1 } }
+		limit = { ve_can_purchase_era_reward = yes }
+		random_list = {
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 1 } }
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								has_strategy = ai_strategy_progressive_agenda
+								bureaucracy < 0
+							}
+						}
+						add = 20
+					}
+				}
+				ve_add_era_reward_1 = yes
+			}
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 2 } }
+				modifier = {
+					if = {
+						limit = { has_strategy = ai_strategy_egalitarian_agenda }
+						add = 25
+					}
+				}
+				ve_add_era_reward_2 = yes
+			}
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 3 } }
+				modifier = {
+					if = {
+						limit = { has_strategy = ai_strategy_progressive_agenda }
+						add = 20
+					}
+				}
+				ve_add_era_reward_3 = yes
+			}
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 4 } }
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								has_strategy = ai_strategy_resource_expansion
+								has_strategy = ai_strategy_industrial_expansion
+							}
+						}
+						add = 30
+					}
+				}
+				ve_add_era_reward_4 = yes
+			}
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 5 } }
+				modifier = {
+					if = {
+						limit = { has_strategy = ai_strategy_industrial_expansion }
+						add = 50
+					}
+				}
+				ve_add_era_reward_5 = yes
+			}
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 6 } }
+				modifier = {
+					if = {
+						limit = { has_strategy = ai_strategy_economic_imperialism }
+						add = 35
+					}
+				}
+				ve_add_era_reward_6 = yes
+			}
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 7 } }
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								has_strategy = ai_strategy_colonial_expansion
+								has_strategy = ai_strategy_territorial_expansion
+							}
+						}
+						add = 45
+					}
+				}
+				ve_add_era_reward_7 = yes
+			}
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 8 } }
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								has_strategy = ai_strategy_colonial_expansion
+								has_strategy = ai_strategy_maintain_power_balance
+							}
+						}
+						add = 35
+					}
+				}
+				ve_add_era_reward_8 = yes
+			}
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 9 } }
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								is_at_war = yes
+								has_strategy = ai_strategy_territorial_expansion
+							}
+						}
+						add = 45
+					}
+				}
+				ve_add_era_reward_9 = yes
 			}
 		}
-		ve_add_era_reward_1 = yes
-	}
-	else_if = {
-		limit = {
-			ve_can_purchase_era_reward = yes
-			OR = {
-				AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_2 } }
-				AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_2 } }
-				AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_2 } }
-			}
-		}
-		ve_add_era_reward_2 = yes
-	}
-	else_if = {
-		limit = {
-			ve_can_purchase_era_reward = yes
-			OR = {
-				AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_3 } }
-				AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_3 } }
-				AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_3 } }
-			}
-		}
-		ve_add_era_reward_3 = yes
-	}
-	else_if = {
-		limit = {
-			ve_can_purchase_era_reward = yes
-			OR = {
-				AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_4 } }
-				AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_4 } }
-				AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_4 } }
-			}
-		}
-		ve_add_era_reward_4 = yes
-	}
-	else_if = {
-		limit = {
-			ve_can_purchase_era_reward = yes
-			OR = {
-				AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_5 } }
-				AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_5 } }
-				AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_5 } }
-			}
-		}
-		ve_add_era_reward_5 = yes
-	}
-	else_if = {
-		limit = {
-			ve_can_purchase_era_reward = yes
-			OR = {
-				AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_6 } }
-				AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_6 } }
-				AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_6 } }
-			}
-		}
-		ve_add_era_reward_6 = yes
-	}
-	else_if = {
-		limit = {
-			ve_can_purchase_era_reward = yes
-			OR = {
-				AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_7 } }
-				AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_7 } }
-				AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_7 } }
-			}
-		}
-		ve_add_era_reward_7 = yes
-	}
-	else_if = {
-		limit = {
-			ve_can_purchase_era_reward = yes
-			OR = {
-				AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_8 } }
-				AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_8 } }
-				AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_8 } }
-			}
-		}
-		ve_add_era_reward_8 = yes
-	}
-	else_if = {
-		limit = {
-			ve_can_purchase_era_reward = yes
-			OR = {
-				AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_9 } }
-				AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_9 } }
-				AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_9 } }
-			}
-		}
-		ve_add_era_reward_9 = yes
 	}
 	if = {
 		limit = { ve_can_activate_golden_age = yes }
 		random_list = {
-			40 = { ve_activate_industrial_golden_age = yes }
-			30 = { ve_activate_cultural_golden_age = yes }
-			30 = { ve_activate_strategic_golden_age = yes }
+			40 = {
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								has_strategy = ai_strategy_industrial_expansion
+								has_strategy = ai_strategy_resource_expansion
+							}
+						}
+						add = 50
+					}
+				}
+				ve_activate_industrial_golden_age = yes
+			}
+			30 = {
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								has_strategy = ai_strategy_progressive_agenda
+								has_strategy = ai_strategy_egalitarian_agenda
+							}
+						}
+						add = 50
+					}
+				}
+				ve_activate_cultural_golden_age = yes
+			}
+			30 = {
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								is_at_war = yes
+								has_strategy = ai_strategy_territorial_expansion
+							}
+						}
+						add = 60
+					}
+				}
+				ve_activate_strategic_golden_age = yes
+			}
 		}
 	}
 }

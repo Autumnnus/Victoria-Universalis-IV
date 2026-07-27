@@ -31,6 +31,10 @@ ve_cancel_cultural_project_gui = {
 	}
 	is_valid = {
 		ve_has_active_cultural_project = yes
+		custom_tooltip = {
+			text = ve_cultural_project_cancel_warning
+			always = yes
+		}
 	}
 	effect = {
 		ve_cancel_cultural_project = yes
@@ -56,13 +60,23 @@ ve_begin_targeted_cultural_project_state = {
 	saved_scopes = { country2 }
 	is_shown = {
 		owner = scope:country2
-		ve_state_has_cultural_project_target = yes
 	}
 	is_valid = {
 		custom_tooltip = {
-			text = ve_targeted_project_state_requirements_tt
-			owner = scope:country2
-			ve_state_has_cultural_project_target = yes
+			text = ve_cultural_project_req_no_active
+			scope:country2 = { ve_has_no_active_cultural_project = yes }
+		}
+		custom_tooltip = {
+			text = ve_cultural_project_req_no_backlash
+			scope:country2 = { NOT = { has_modifier = ve_cultural_project_backlash_mdf } }
+		}
+		custom_tooltip = {
+			text = ve_cultural_project_req_reform_point
+			scope:country2 = { ve_country_meets_cultural_project_cost = yes }
+		}
+		custom_tooltip = {
+			text = ve_cultural_project_req_target
+			ve_state_has_eligible_target_culture = yes
 		}
 	}
 	effect = {
@@ -82,8 +96,21 @@ ve_cancel_targeted_cultural_project_state = {
 	}
 	is_valid = {
 		scope:country4 = { ve_project_is_targeted = yes }
+		custom_tooltip = {
+			text = ve_cultural_project_cancel_warning
+			always = yes
+		}
 	}
 	effect = {
 		scope:country4 = { ve_cancel_cultural_project = yes }
+	}
+}
+
+# Phase 7 UI: is THIS state the owner's active project target? Drives the
+# per-state progress bar in states_panel.gui.
+ve_state_active_cultural_project_gui = {
+	scope = state
+	is_shown = {
+		ve_state_is_active_cultural_project_target = yes
 	}
 }

@@ -1,6 +1,7 @@
 ﻿can_unlock_ideas = {
 	script_context = player_country
 	texture = "gfx/interface/intelligensia.dds"
+	color = red
 	valid = {
 		ve_can_purchase_any_idea = yes
 	}
@@ -10,17 +11,24 @@
 max_piety = {
 	script_context = player_country
 	texture = "gfx/interface/catholic.dds"
+	color = red
 	valid = {
 		ve_can_adopt_any_religious_program = yes
 	}
 	type = alert
 }
 
-max_culture_reform_point = {
+# There is deliberately no alert for "you could change the Identity Model".
+# A country always has an active model, switching is a rare strategic choice,
+# and an alert there reads as an instruction to adopt something every time the
+# Mandate stock passes 200. Cultural Mandate surplus is covered by the single
+# alert below instead.
+ve_can_begin_cultural_project = {
 	script_context = player_country
 	texture = "gfx/interface/monarch_cultures_icon.dds"
+	color = red
 	valid = {
-		ve_can_change_identity_model = yes
+		ve_should_alert_cultural_mandate_surplus = yes
 	}
 	type = alert
 }
@@ -28,6 +36,7 @@ max_culture_reform_point = {
 can_unlock_age_bonus = {
 	script_context = player_country
 	texture = "gfx/interface/icon_splendor_tiny.dds"
+	color = red
 	valid = {
 		splendor_cost_trigger = yes
 		trigger_if = {
@@ -88,25 +97,22 @@ can_unlock_age_bonus = {
 	type = alert
 }
 
-can_use_missionary = {
-	script_context = player_country
-	valid = {
-		has_variable = avaible_missionaries
-		avaible_missionaries >= 1
-		ve_missionaries_enabled = yes
-	}
-	type = important_action
-	alert_group = ve_missionary_group
-}
-
 ve_can_begin_targeted_cultural_project = {
 	script_context = player_country
+	color = red
 	valid = {
-		ve_has_no_active_cultural_project = yes
-		any_scope_state = {
-			ve_state_has_cultural_project_target = yes
-		}
+		ve_can_begin_targeted_cultural_project_now = yes
 	}
 	type = important_action
-	alert_group = ve_missionary_group
+	alert_group = ve_state_project_group
+}
+
+ve_can_begin_targeted_religious_project = {
+	script_context = player_country
+	color = red
+	valid = {
+		ve_can_begin_targeted_religious_project_now = yes
+	}
+	type = important_action
+	alert_group = ve_state_project_group
 }

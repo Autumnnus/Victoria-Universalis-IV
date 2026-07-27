@@ -4,6 +4,9 @@ idea_1_tt_triggers = {
 		flag:academic_idea = {
 			var:academic_idea >= 1
 		}
+		flag:agrarian_idea = {
+			var:agrarian_idea >= 1
+		}
 		flag:financial_idea = {
 			var:financial_idea >= 1
 		}
@@ -69,6 +72,9 @@ idea_2_tt_triggers = {
 		trigger = scope:idea_group
 		flag:academic_idea = {
 			var:academic_idea >= 2
+		}
+		flag:agrarian_idea = {
+			var:agrarian_idea >= 2
 		}
 		flag:financial_idea = {
 			var:financial_idea >= 2
@@ -136,6 +142,9 @@ idea_3_tt_triggers = {
 		flag:academic_idea = {
 			var:academic_idea >= 3
 		}
+		flag:agrarian_idea = {
+			var:agrarian_idea >= 3
+		}
 		flag:financial_idea = {
 			var:financial_idea >= 3
 		}
@@ -201,6 +210,9 @@ idea_4_tt_triggers = {
 		trigger = scope:idea_group
 		flag:academic_idea = {
 			var:academic_idea >= 4
+		}
+		flag:agrarian_idea = {
+			var:agrarian_idea >= 4
 		}
 		flag:financial_idea = {
 			var:financial_idea >= 4
@@ -268,6 +280,9 @@ idea_5_tt_triggers = {
 		flag:academic_idea = {
 			var:academic_idea >= 5
 		}
+		flag:agrarian_idea = {
+			var:agrarian_idea >= 5
+		}
 		flag:financial_idea = {
 			var:financial_idea >= 5
 		}
@@ -334,6 +349,9 @@ idea_6_tt_triggers = {
 		flag:academic_idea = {
 			var:academic_idea >= 6
 		}
+		flag:agrarian_idea = {
+			var:agrarian_idea >= 6
+		}
 		flag:financial_idea = {
 			var:financial_idea >= 6
 		}
@@ -399,6 +417,9 @@ idea_7_tt_triggers = {
 		trigger = scope:idea_group
 		flag:academic_idea = {
 			var:academic_idea >= 7
+		}
+		flag:agrarian_idea = {
+			var:agrarian_idea >= 7
 		}
 		flag:financial_idea = {
 			var:financial_idea >= 7

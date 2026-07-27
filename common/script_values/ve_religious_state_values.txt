@@ -1,4 +1,4 @@
-# The meter is an equilibrium state, not a stockpile. Every model starts from a
+﻿# The meter is an equilibrium state, not a stockpile. Every model starts from a
 # different social settlement and then reacts to institutions and instability.
 
 ve_religious_model_base_equilibrium = {
@@ -7,11 +7,15 @@ ve_religious_model_base_equilibrium = {
 		value = 55
 	}
 	else_if = {
-		limit = { ve_is_atheist_state = yes }
+		limit = { ve_is_atheism_state = yes }
 		value = 45
 	}
-	else = {
+	else_if = {
+		limit = { ve_is_separation_state = yes }
 		value = 60
+	}
+	else = {
+		value = 55
 	}
 }
 
@@ -32,7 +36,7 @@ ve_religious_model_support = {
 		}
 	}
 	else_if = {
-		limit = { ve_is_atheist_state = yes }
+		limit = { ve_is_atheism_state = yes }
 		if = {
 			limit = { literacy_rate >= 0.75 }
 			add = 15
@@ -58,11 +62,18 @@ ve_religious_model_support = {
 			subtract = 10
 		}
 	}
-	else = {
+	else_if = {
+		limit = { ve_is_separation_state = yes }
 		if = {
-			limit = { has_law = law_type:law_total_separation }
+			limit = { country_turmoil < 0.10 }
 			add = 5
 		}
+		if = {
+			limit = { ig:ig_devout = { ig_clout >= 0.20 } }
+			subtract = 5
+		}
+	}
+	else = {
 		if = {
 			limit = { country_turmoil < 0.10 }
 			add = 5
@@ -124,9 +135,16 @@ ve_religious_state_equilibrium = {
 }
 
 ve_monthly_religious_state = {
-	add = ve_religious_state_equilibrium
-	subtract = var:piety_bar_point
-	multiply = 0.20
+	value = 0
+	# GUI tooltips can evaluate this before piety_bar_point has been
+	# initialized for the scope being displayed - guard instead of erroring
+	# (see the identical fix on ve_monthly_national_cohesion).
+	if = {
+		limit = { has_variable = piety_bar_point }
+		add = ve_religious_state_equilibrium
+		subtract = var:piety_bar_point
+		multiply = 0.20
+	}
 	min = -5
 	max = 5
 	round = yes

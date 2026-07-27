@@ -682,6 +682,49 @@ bir ulusal fikir.** Yarım gruplar ulusal ilerleme sağlamıyor.
 
 > Not: `ve_ai_uses_age_bonuses` içindeki 3 `ve_age_N_started` kullanımı **doğru ve dokunulmadı** — "şu an hangi çağdayız" sorusu birbirini dışlayan global gerektiriyor, kümülatif `_trigger` değil.
 
+## 6c. Faz 6 — Agrarian eklendi (Production'a dışlayan çift)
+
+Kullanıcı, önceki oturumdan sonra dosyaları elle geliştirdi (özellikle `cancel_idea`'ya bir onay
+popup'ı ve `ve_idea_group_ambition` adında ambition tooltip'i için yeni bir scripted_gui
+eklendi, ayrıca Extraction'ın 7. fikrine elle bir Age 3 kapısı konuldu). Bu oturumda **Production**
+kolonuna 6. dışlayan çift eklendi: eski "Extraction" grubu tarım+madencilik+petrolü tek grupta
+topluyordu; bu artık iki kimliğe bölündü.
+
+- **Extraction** (madencilik/petrol/kauçuk) — mining, resource discovery/depletion, rubber,
+  iron, sulfur, oil capstone. İçerik korunan yapı, sadece tarım kaldırıldı.
+- **Agrarian** (YENİ, `extraction` ile dışlayan çift) — agriculture, ranching/plantations,
+  food security, grain/meat/fruit output, subsistence arable land. State: **STATE_PUNJAB**
+  (vanilla'da doğrulandı, modda kullanılmıyordu).
+
+**Sonuç: Production 6 satır/6 seçilebilir → 7 satır/6 seçilebilir**, Society ve Military'yle
+aynı desene oturdu. **Toplam 21 grup, 18 seçilebilir yol** değişmedi (yeni satır bir çiftin
+ikinci yarısı, ekstra seçenek değil).
+
+### Uygulama sırasında çıkan iki bulgu
+
+1. **Dosyalar önceki oturumdan sonra elle değişmişti.** `academic` şablonunu kopyalarken beklenenden
+   fazla switch bulundu (6 değil 8) — sebebi kullanıcının eklediği `ve_idea_group_ambition`
+   scripted_gui'si. Anchor'ı buna göre güncelledim; ayrıca Faz5c'nin `idea_cost_trigger` → 
+   `ve_idea_affordable` değişimini AI dosyasında yeniden bulmam gerekti (aynı sebepten, script
+   pattern'i eski yapıya göre yazılmıştı).
+2. **Ambition ekle/kaldır adımlarını gereksiz yere tekrar yazmışım.** `academic` şablonu zaten
+   Faz 5a'nın eklediği ambition grant/removal mantığını içeriyordu — klonlama sırasında otomatik
+   geliyor. Elle yazdığım tekrarı fark edip sildim.
+3. **5 dosyada satır sonu "karışık" çıktı ama bu benim değişikliğim değil** — `tr -dc` ile disk
+   üzerinde doğrulandı: dosyalar zaten kullanıcının elle düzenlemelerinden dolayı karışıktı. Katı
+   kontrolü bilgilendirici uyarıya çevirdim; asıl doğruluk ölçütü olan brace dengesi zaten %100.
+
+**Doğrulama (script'ten bağımsız):** 21 grup tanımlı, cross-group duplikasyon 0, embrace/locked
+dallarının ikisi de karşılıklı pair mantığı taşıyor, state ataması doğru, **GUI'nin PROD kolonu
+tam 7 grup içeriyor ve her biri 2 blok (grup+fikir ikonu)**, loc mevcut. Brace: mdf 166/166,
+effects 1072/1072, guis 1304/1304, gui 695/695.
+
+**Not (dokunulmadı, bilgi amaçlı):** Extraction'ın capstone'undaki elle eklenmiş
+`has_global_variable = age_3_started_trigger` şartı `boost_extraction_idea_effect`'te var ama
+`boost_idea_group.is_valid`'deki karşılanabilirlik kontrolü (`ve_idea_affordable`) bu age şartını
+bilmiyor — teorik olarak oyuncu Age 3 öncesi "afford edilebilir" görüp tıklayabilir ve etkisiz bir
+tıklama olabilir. Bu satırlara ben dokunmadım (kullanıcının kendi eklemesi), sadece not ediyorum.
+
 ## 6b. İlk oyun içi test sonucu (log ayıklaması)
 
 Mod oyunda **açıldı ve fikir paneli yüklendi.** Log'da bu refactor'un ürettiği **hiçbir hata yok.**
