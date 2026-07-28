@@ -133,7 +133,7 @@ ve_gui_panel_types
 											fontsize = 60
 											align = center|nobaseline
 											parentanchor = vcenter
-											visible = "[GetScriptedGui('ve_national_idea_1').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											visible = "[GetScriptedGui('ve_national_idea_1_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											size = {
 												100%
 												100%
@@ -141,14 +141,15 @@ ve_gui_panel_types
 											tooltip = "[GetScriptedGui('ve_national_idea_1').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
 										}
-										textbox = {
-											text = "@[Concatenate(GetPlayer.GetTagName, '_idea_icon_1_black')]!"
-											using = main_bg
-											default_format = "#tooltip_header"
+											textbox = {
+												text = "@[Concatenate(GetPlayer.GetTagName, '_idea_icon_1_black')]!"
+												using = main_bg
+												default_format = "#lore"
+												alpha = 0.35
 											fontsize = 60
 											align = center|nobaseline
 											parentanchor = vcenter
-											visible = "[Not(GetScriptedGui('ve_national_idea_1').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+											visible = "[Not(GetScriptedGui('ve_national_idea_1_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 											size = {
 												100%
 												100%
@@ -158,7 +159,7 @@ ve_gui_panel_types
 										}
 										
 										icon = {
-											enabled = "[GetScriptedGui('ve_national_idea_1').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											enabled = "[GetScriptedGui('ve_national_idea_1_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											texture = "gfx/interface/icons/notification_icons/technology.dds"
 											visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_1').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -185,7 +186,7 @@ ve_gui_panel_types
 											fontsize = 60
 											align = center|nobaseline
 											parentanchor = vcenter
-											visible = "[GetScriptedGui('ve_national_idea_2').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											visible = "[GetScriptedGui('ve_national_idea_2_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_2').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
 											size = {
@@ -193,14 +194,15 @@ ve_gui_panel_types
 												100%
 											}
 										}
-										textbox = {
-											text = "@[Concatenate(GetPlayer.GetTagName, '_idea_icon_2_black')]!"
-											using = main_bg
-											default_format = "#tooltip_header"
+											textbox = {
+												text = "@[Concatenate(GetPlayer.GetTagName, '_idea_icon_2_black')]!"
+												using = main_bg
+												default_format = "#lore"
+												alpha = 0.35
 											fontsize = 60
 											align = center|nobaseline
 											parentanchor = vcenter
-											visible = "[Not(GetScriptedGui('ve_national_idea_2').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+											visible = "[Not(GetScriptedGui('ve_national_idea_2_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 											tooltip = "[GetScriptedGui('ve_national_idea_2').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
 											size = {
@@ -210,7 +212,7 @@ ve_gui_panel_types
 										}
 										
 										icon = {
-											enabled = "[GetScriptedGui('ve_national_idea_2').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											enabled = "[GetScriptedGui('ve_national_idea_2_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											texture = "gfx/interface/icons/military_icons/defense.dds"
 											visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_2').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -237,7 +239,7 @@ ve_gui_panel_types
 											fontsize = 60
 											align = center|nobaseline
 											parentanchor = vcenter
-											visible = "[GetScriptedGui('ve_national_idea_3').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											visible = "[GetScriptedGui('ve_national_idea_3_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_3').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
 											size = {
@@ -245,14 +247,15 @@ ve_gui_panel_types
 												100%
 											}
 										}
-										textbox = {
-											text = "@[Concatenate(GetPlayer.GetTagName, '_idea_icon_3_black')]!"
-											using = main_bg
-											default_format = "#tooltip_header"
+											textbox = {
+												text = "@[Concatenate(GetPlayer.GetTagName, '_idea_icon_3_black')]!"
+												using = main_bg
+												default_format = "#lore"
+												alpha = 0.35
 											fontsize = 60
 											align = center|nobaseline
 											parentanchor = vcenter
-											visible = "[Not(GetScriptedGui('ve_national_idea_3').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+											visible = "[Not(GetScriptedGui('ve_national_idea_3_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 											tooltip = "[GetScriptedGui('ve_national_idea_3').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
 											size = {
@@ -262,7 +265,7 @@ ve_gui_panel_types
 										}
 										
 										icon = {
-											enabled = "[GetScriptedGui('ve_national_idea_3').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											enabled = "[GetScriptedGui('ve_national_idea_3_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											texture = "gfx/interface/icons/notification_icons/authority.dds"
 											visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_3').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -289,7 +292,7 @@ ve_gui_panel_types
 											using = main_bg
 											align = center|nobaseline
 											parentanchor = vcenter
-											visible = "[GetScriptedGui('ve_national_idea_4').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											visible = "[GetScriptedGui('ve_national_idea_4_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_4').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
 											size = {
@@ -297,14 +300,15 @@ ve_gui_panel_types
 												100%
 											}
 										}
-										textbox = {
-											text = "@[Concatenate(GetPlayer.GetTagName, '_idea_icon_4_black')]!"
-											default_format = "#tooltip_header"
+											textbox = {
+												text = "@[Concatenate(GetPlayer.GetTagName, '_idea_icon_4_black')]!"
+												default_format = "#lore"
+												alpha = 0.35
 											fontsize = 60
 											using = main_bg
 											align = center|nobaseline
 											parentanchor = vcenter
-											visible = "[Not(GetScriptedGui('ve_national_idea_4').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+											visible = "[Not(GetScriptedGui('ve_national_idea_4_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 											tooltip = "[GetScriptedGui('ve_national_idea_4').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
 											size = {
@@ -314,7 +318,7 @@ ve_gui_panel_types
 										}
 										
 										icon = {
-											enabled = "[GetScriptedGui('ve_national_idea_4').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											enabled = "[GetScriptedGui('ve_national_idea_4_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											texture = "gfx/interface/icons/law_icons/public_schools.dds"
 											visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_4').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -341,7 +345,7 @@ ve_gui_panel_types
 											using = main_bg
 											align = center|nobaseline
 											parentanchor = vcenter
-											visible = "[GetScriptedGui('ve_national_idea_5').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											visible = "[GetScriptedGui('ve_national_idea_5_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_5').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
 											size = {
@@ -349,14 +353,15 @@ ve_gui_panel_types
 												100%
 											}
 										}
-										textbox = {
-											text = "@[Concatenate(GetPlayer.GetTagName, '_idea_icon_5_black')]!"
-											default_format = "#tooltip_header"
+											textbox = {
+												text = "@[Concatenate(GetPlayer.GetTagName, '_idea_icon_5_black')]!"
+												default_format = "#lore"
+												alpha = 0.35
 											fontsize = 60
 											using = main_bg
 											align = center|nobaseline
 											parentanchor = vcenter
-											visible = "[Not(GetScriptedGui('ve_national_idea_5').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+											visible = "[Not(GetScriptedGui('ve_national_idea_5_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 											tooltip = "[GetScriptedGui('ve_national_idea_5').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
 											size = {
@@ -366,7 +371,7 @@ ve_gui_panel_types
 										}
 										
 										icon = {
-											enabled = "[GetScriptedGui('ve_national_idea_5').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											enabled = "[GetScriptedGui('ve_national_idea_5_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											texture = "gfx/interface/icons/notification_icons/trade_route.dds"
 											visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_5').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -393,7 +398,7 @@ ve_gui_panel_types
 											using = main_bg
 											align = center|nobaseline
 											parentanchor = vcenter
-											visible = "[GetScriptedGui('ve_national_idea_6').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											visible = "[GetScriptedGui('ve_national_idea_6_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_6').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
 											size = {
@@ -401,14 +406,15 @@ ve_gui_panel_types
 												100%
 											}
 										}
-										textbox = {
-											text = "@[Concatenate(GetPlayer.GetTagName, '_idea_icon_6_black')]!"
-											default_format = "#tooltip_header"
+											textbox = {
+												text = "@[Concatenate(GetPlayer.GetTagName, '_idea_icon_6_black')]!"
+												default_format = "#lore"
+												alpha = 0.35
 											fontsize = 60
 											using = main_bg
 											align = center|nobaseline
 											parentanchor = vcenter
-											visible = "[Not(GetScriptedGui('ve_national_idea_6').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+											visible = "[Not(GetScriptedGui('ve_national_idea_6_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 											tooltip = "[GetScriptedGui('ve_national_idea_6').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
 											size = {
@@ -418,7 +424,7 @@ ve_gui_panel_types
 										}
 										
 										icon = {
-											enabled = "[GetScriptedGui('ve_national_idea_6').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											enabled = "[GetScriptedGui('ve_national_idea_6_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											texture = "gfx/interface/icons/military_icons/navy_icons/accuracy.dds"
 											visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_6').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -445,7 +451,7 @@ ve_gui_panel_types
 											using = main_bg
 											align = center|nobaseline
 											parentanchor = vcenter
-											visible = "[GetScriptedGui('ve_national_idea_7').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											visible = "[GetScriptedGui('ve_national_idea_7_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_7').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
 											size = {
@@ -453,14 +459,15 @@ ve_gui_panel_types
 												100%
 											}
 										}
-										textbox = {
-											text = "@[Concatenate(GetPlayer.GetTagName, '_idea_icon_7_black')]!"
-											default_format = "#tooltip_header"
+											textbox = {
+												text = "@[Concatenate(GetPlayer.GetTagName, '_idea_icon_7_black')]!"
+												default_format = "#lore"
+												alpha = 0.35
 											fontsize = 60
 											using = main_bg
 											align = center|nobaseline
 											parentanchor = vcenter
-											visible = "[Not(GetScriptedGui('ve_national_idea_7').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+											visible = "[Not(GetScriptedGui('ve_national_idea_7_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 											tooltip = "[GetScriptedGui('ve_national_idea_7').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
 											size = {
@@ -470,7 +477,7 @@ ve_gui_panel_types
 										}
 										
 										icon = {
-											enabled = "[GetScriptedGui('ve_national_idea_7').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											enabled = "[GetScriptedGui('ve_national_idea_7_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											texture = "gfx/interface/icons/production_method_icons/field_hospitals.dds"
 											visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_7').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -490,7 +497,7 @@ ve_gui_panel_types
 									5
 								}
 								default_progressbar_horizontal = {
-									 visible = "[Not(GetScriptedGui('ve_national_idea_7').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+									 visible = yes
 									layoutpolicy_horizontal = growing
 									size = {
 										100%
@@ -555,7 +562,7 @@ ve_gui_panel_types
 										}
 									}
 									icon = {
-										enabled = "[GetScriptedGui('ve_national_idea_7').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										enabled = yes
 										texture = "gfx/interface/icons/notification_icons/influence.dds"
 										visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 										using = tooltip_above
@@ -632,7 +639,7 @@ ve_gui_panel_types
 										fontsize = 60
 										align = center|nobaseline
 										parentanchor = vcenter
-										visible = "[GetScriptedGui('ve_national_idea_7').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										visible = "[GetScriptedGui('ve_national_idea_7_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 										using = tooltip_above
 										size = {
 											100%
@@ -641,11 +648,12 @@ ve_gui_panel_types
 									}
 									textbox = {
 										text = "@[Concatenate(GetPlayer.GetTagName, '_idea_icon_bonus_black')]!"
-										default_format = "#tooltip_header"
+										default_format = "#lore"
+										alpha = 0.35
 										fontsize = 60
 										align = center|nobaseline
 										parentanchor = vcenter
-										visible = "[Not(GetScriptedGui('ve_national_idea_7').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+										visible = "[Not(GetScriptedGui('ve_national_idea_7_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 										using = tooltip_above
 										size = {
 											100%
@@ -656,7 +664,7 @@ ve_gui_panel_types
 									icon = {
 										texture = "gfx/interface/icons/notification_icons/bureaucracy.dds"
 										visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-										enabled = "[GetScriptedGui('ve_national_idea_7').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										enabled = "[GetScriptedGui('ve_national_idea_7_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 										using = tooltip_above
 										size = {
 											100%
@@ -898,6 +906,18 @@ ve_gui_panel_types
 											text = "[Localize(Concatenate(StateRegion.MakeScope.Var('idea_group').GetFlagName,'_name'))]"
 											align = center|nobaseline
 											layoutpolicy_horizontal = expanding
+										}
+										widget = {
+											size = { 30 30 }
+											background = { using = Background_Area_Dark }
+											tooltip = "[GetScriptedGui('ve_idea_group_ambition').ExecuteTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
+											using = tooltip_above
+											icon = {
+												position = { 3 3 }
+												size = { 24 24 }
+												texture = "gfx/interface/ve_ideas/great_project_upgrade_cost.dds"
+												enabled = "[GetScriptedGui('ve_idea_group_ambition').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
+											}
 										}
 										button = {
 											size = { 30 30 }
@@ -1580,29 +1600,6 @@ ve_gui_panel_types
 											visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'reformist_idea')]"
 											blockoverride "values" { max = 7 value = "[GetPlayer.MakeScope.Var('reformist_idea').GetValue]" }
 										}
-										widget = {
-											size = { 106 32 }
-											background = { using = Background_Area_Dark }
-											tooltip = "[GetScriptedGui('ve_idea_group_ambition').ExecuteTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
-											using = tooltip_above
-											icon = {
-												position = { 6 4 }
-												size = { 24 24 }
-												texture = "gfx/interface/ve_ideas/great_project_upgrade_cost.dds"
-												enabled = "[GetScriptedGui('ve_idea_group_ambition').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
-												tooltip = "[GetScriptedGui('ve_idea_group_ambition').ExecuteTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
-												using = tooltip_above
-											}
-											textbox = {
-												position = { 34 9 }
-												text = "ve_ambition"
-												tooltip = "[GetScriptedGui('ve_idea_group_ambition').ExecuteTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
-												using = tooltip_above
-												using = fontsize_small
-												default_format = "#tooltippable_name"
-												autoresize = yes
-											}
-										}
 									}
 									button = {
 										using = default_button_action
@@ -1789,6 +1786,18 @@ ve_gui_panel_types
 											text = "[Localize(Concatenate(StateRegion.MakeScope.Var('idea_group').GetFlagName,'_name'))]"
 											align = center|nobaseline
 											layoutpolicy_horizontal = expanding
+										}
+										widget = {
+											size = { 30 30 }
+											background = { using = Background_Area_Dark }
+											tooltip = "[GetScriptedGui('ve_idea_group_ambition').ExecuteTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
+											using = tooltip_above
+											icon = {
+												position = { 3 3 }
+												size = { 24 24 }
+												texture = "gfx/interface/ve_ideas/great_project_upgrade_cost.dds"
+												enabled = "[GetScriptedGui('ve_idea_group_ambition').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
+											}
 										}
 										button = {
 											size = { 30 30 }
@@ -2471,29 +2480,6 @@ ve_gui_panel_types
 											visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'agrarian_idea')]"
 											blockoverride "values" { max = 7 value = "[GetPlayer.MakeScope.Var('agrarian_idea').GetValue]" }
 										}
-										widget = {
-											size = { 106 32 }
-											background = { using = Background_Area_Dark }
-											tooltip = "[GetScriptedGui('ve_idea_group_ambition').ExecuteTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
-											using = tooltip_above
-											icon = {
-												position = { 6 4 }
-												size = { 24 24 }
-												texture = "gfx/interface/ve_ideas/great_project_upgrade_cost.dds"
-												enabled = "[GetScriptedGui('ve_idea_group_ambition').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
-												tooltip = "[GetScriptedGui('ve_idea_group_ambition').ExecuteTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
-												using = tooltip_above
-											}
-											textbox = {
-												position = { 34 9 }
-												text = "ve_ambition"
-												tooltip = "[GetScriptedGui('ve_idea_group_ambition').ExecuteTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
-												using = tooltip_above
-												using = fontsize_small
-												default_format = "#tooltippable_name"
-												autoresize = yes
-											}
-										}
 									}
 									button = {
 										using = default_button_action
@@ -2680,6 +2666,18 @@ ve_gui_panel_types
 											text = "[Localize(Concatenate(StateRegion.MakeScope.Var('idea_group').GetFlagName,'_name'))]"
 											align = center|nobaseline
 											layoutpolicy_horizontal = expanding
+										}
+										widget = {
+											size = { 30 30 }
+											background = { using = Background_Area_Dark }
+											tooltip = "[GetScriptedGui('ve_idea_group_ambition').ExecuteTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
+											using = tooltip_above
+											icon = {
+												position = { 3 3 }
+												size = { 24 24 }
+												texture = "gfx/interface/ve_ideas/great_project_upgrade_cost.dds"
+												enabled = "[GetScriptedGui('ve_idea_group_ambition').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
+											}
 										}
 										button = {
 											size = { 30 30 }
@@ -3361,29 +3359,6 @@ ve_gui_panel_types
 											size = { 100% 12 }
 											visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'war_economy_idea')]"
 											blockoverride "values" { max = 7 value = "[GetPlayer.MakeScope.Var('war_economy_idea').GetValue]" }
-										}
-										widget = {
-											size = { 106 32 }
-											background = { using = Background_Area_Dark }
-											tooltip = "[GetScriptedGui('ve_idea_group_ambition').ExecuteTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
-											using = tooltip_above
-											icon = {
-												position = { 6 4 }
-												size = { 24 24 }
-												texture = "gfx/interface/ve_ideas/great_project_upgrade_cost.dds"
-												enabled = "[GetScriptedGui('ve_idea_group_ambition').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
-												tooltip = "[GetScriptedGui('ve_idea_group_ambition').ExecuteTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
-												using = tooltip_above
-											}
-											textbox = {
-												position = { 34 9 }
-												text = "ve_ambition"
-												tooltip = "[GetScriptedGui('ve_idea_group_ambition').ExecuteTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
-												using = tooltip_above
-												using = fontsize_small
-												default_format = "#tooltippable_name"
-												autoresize = yes
-											}
 										}
 									}
 									button = {

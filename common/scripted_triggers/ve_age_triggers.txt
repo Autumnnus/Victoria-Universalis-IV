@@ -316,6 +316,79 @@ ve_can_purchase_era_reward_slot = {
 	}
 }
 
+ve_can_purchase_country_era_reward_10 = {
+	ve_can_purchase_era_reward = yes
+	OR = {
+		AND = {
+			has_global_variable = ve_age_1_started
+			NOT = { has_modifier = age_1_bonus_10 }
+			OR = {
+				country_has_primary_culture = cu:north_italian
+				country_has_primary_culture = cu:south_italian
+			}
+		}
+		AND = {
+			has_global_variable = ve_age_2_started
+			NOT = { has_modifier = age_2_bonus_10 }
+			exists = c:AUS
+			this = c:AUS
+		}
+		AND = {
+			has_global_variable = ve_age_3_started
+			NOR = {
+				has_modifier = age_3_bonus_10
+				has_modifier = age_3_bonus_10_2
+			}
+			exists = c:GBR
+			this = c:GBR
+		}
+	}
+}
+
+ve_can_purchase_country_era_reward_11 = {
+	ve_can_purchase_era_reward = yes
+	OR = {
+		AND = {
+			has_global_variable = ve_age_1_started
+			NOT = { has_modifier = age_1_bonus_11 }
+			OR = {
+				country_has_primary_culture = cu:north_german
+				country_has_primary_culture = cu:south_german
+			}
+		}
+		AND = {
+			has_global_variable = ve_age_2_started
+			NOT = { has_modifier = age_2_bonus_11 }
+			exists = c:RUS
+			this = c:RUS
+		}
+		AND = {
+			has_global_variable = ve_age_3_started
+			NOT = { has_modifier = age_3_bonus_11 }
+			exists = c:CHI
+			this = c:CHI
+		}
+	}
+}
+
+ve_can_purchase_country_era_reward_12 = {
+	ve_can_purchase_era_reward = yes
+	OR = {
+		AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_12 } exists = c:NET this = c:NET }
+		AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_12 } exists = c:BEL this = c:BEL }
+		AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_12 } exists = c:FRA this = c:FRA }
+	}
+}
+
+ve_can_purchase_country_era_reward_13 = {
+	ve_can_purchase_era_reward = yes
+	OR = {
+		AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_13 } exists = c:TUR this = c:TUR }
+		AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_13 } exists = c:USA this = c:USA }
+		AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_13 } exists = c:JAP this = c:JAP }
+	}
+}
+
 ve_can_activate_golden_age = {
 	NOT = { has_variable = ve_golden_age_used }
 	var:ve_triggered_objectives >= 4

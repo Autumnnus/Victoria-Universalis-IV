@@ -12,6 +12,8 @@
  age_1_bonus_9:0 "Westernization"
  age_1_bonus_10:0 "Unification of Italy"
  age_1_bonus_11:0 "Unification of Germany"
+ age_1_bonus_12:0 "Hollanda Deniz Ticareti"
+ age_1_bonus_13:0 "Tanzimat Reformları"
  age_2_bonus_1:0 "Censors"
  age_2_bonus_2:0 "Resource Discoveries"
  age_2_bonus_3:0 "Local Police"
@@ -23,6 +25,8 @@
  age_2_bonus_9:0 "Resource Exploitation"
  age_2_bonus_10:0 "Indivisible Unity"
  age_2_bonus_11:0 "Russian Education"
+ age_2_bonus_12:0 "Belçika Sömürge Yönetimi"
+ age_2_bonus_13:0 "Amerikan Finans Sistemi"
  age_3_bonus_1:0 "Enhanced Health System"
  age_3_bonus_2:0 "World Diplomacy"
  age_3_bonus_3:0 "War Industry"
@@ -34,7 +38,9 @@
  age_3_bonus_9:0 "German Officers"
  age_3_bonus_10:0 "British Naval Invasion"
  age_3_bonus_10_2:0 "British Marines"
- age_3_bonus_11:0 "Russian Great Army"
+ age_3_bonus_11:0 "Qing Modernleşmesi"
+ age_3_bonus_12:0 "Fransız Savunma Doktrini"
+ age_3_bonus_13:0 "Japon Deniz Modernizasyonu"
 
  #Culture Modifiers
  national_supremacy_mdf_1:0 "Public Health Services"

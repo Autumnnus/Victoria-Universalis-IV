@@ -582,6 +582,14 @@ dev.5 = {
 				}
 				remove_modifier = age_1_bonus_11
 			}
+			if = {
+				limit = { has_modifier = age_1_bonus_12 }
+				remove_modifier = age_1_bonus_12
+			}
+			if = {
+				limit = { has_modifier = age_1_bonus_13 }
+				remove_modifier = age_1_bonus_13
+			}
 		}
 	}
 	trigger = {
@@ -679,6 +687,14 @@ dev.6 = {
 					has_modifier = age_2_bonus_11
 				}
 				remove_modifier = age_2_bonus_11
+			}
+			if = {
+				limit = { has_modifier = age_2_bonus_12 }
+				remove_modifier = age_2_bonus_12
+			}
+			if = {
+				limit = { has_modifier = age_2_bonus_13 }
+				remove_modifier = age_2_bonus_13
 			}
 		}
 	}

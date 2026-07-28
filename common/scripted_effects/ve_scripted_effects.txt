@@ -194,9 +194,9 @@
 }
 
 cancel_national_idea_mdf = {
-	# National ideas are earned by completed idea groups. Rebuild the progress
-	# before removing national modifiers so cancelling a group cannot leave
-	# stale progress from its seven individual ideas.
+	# National ideas are earned from individual group-idea levels. Rebuild the
+	# progress before removing national modifiers so cancellation cannot leave
+	# stale national-idea progress behind.
 	ve_recalculate_national_idea_pool = yes
 	if = {
 		limit = {
@@ -475,93 +475,56 @@ ve_refresh_national_idea_profile = {
 	national_idea_mdf = yes
 }
 
-# One completed group is worth three national-idea progress points. National
-# idea thresholds remain 3/6/9/.../21, so each completed group unlocks exactly
-# one national idea. Recalculation also makes group cancellation deterministic.
+# Every purchased group idea contributes one national-idea progress point.
+# National ideas unlock at 3/6/9/.../21 total points. The cap keeps the
+# national profile at its seven intended ideas even if more groups are opened.
+# Recalculation also makes group cancellation deterministic.
 ve_recalculate_national_idea_pool = {
+	# Nationalist ideas 5 and 7 use variables for their mechanical effects.
+	# Mirror existing saves into permanent ownership modifiers so every group
+	# icon can consistently use its modifier as the active-state source.
+	if = {
+		limit = {
+			has_variable = nationalist_idea_5_var
+			NOT = { has_modifier = nationalist_idea_5_mdf }
+		}
+		add_modifier = { name = nationalist_idea_5_mdf months = -1 }
+	}
+	if = {
+		limit = {
+			has_variable = nationalist_idea_7_var
+			NOT = { has_modifier = nationalist_idea_7_mdf }
+		}
+		add_modifier = { name = nationalist_idea_7_mdf months = -1 }
+	}
 	set_variable = {
 		name = national_idea_pool
 		value = 0
 	}
+	change_variable = { name = national_idea_pool add = var:academic_idea }
+	change_variable = { name = national_idea_pool add = var:agrarian_idea }
+	change_variable = { name = national_idea_pool add = var:financial_idea }
+	change_variable = { name = national_idea_pool add = var:infrastructure_idea }
+	change_variable = { name = national_idea_pool add = var:extraction_idea }
+	change_variable = { name = national_idea_pool add = var:mass_conscription_idea }
+	change_variable = { name = national_idea_pool add = var:war_economy_idea }
+	change_variable = { name = national_idea_pool add = var:industrialist_idea }
+	change_variable = { name = national_idea_pool add = var:bureaucratic_idea }
+	change_variable = { name = national_idea_pool add = var:nationalist_idea }
+	change_variable = { name = national_idea_pool add = var:parliamentary_idea }
+	change_variable = { name = national_idea_pool add = var:diplomatic_idea }
+	change_variable = { name = national_idea_pool add = var:mercantile_idea }
+	change_variable = { name = national_idea_pool add = var:welfare_idea }
+	change_variable = { name = national_idea_pool add = var:reformist_idea }
+	change_variable = { name = national_idea_pool add = var:labour_idea }
+	change_variable = { name = national_idea_pool add = var:offensive_idea }
+	change_variable = { name = national_idea_pool add = var:defensive_idea }
+	change_variable = { name = national_idea_pool add = var:naval_idea }
+	change_variable = { name = national_idea_pool add = var:professional_army_idea }
+	change_variable = { name = national_idea_pool add = var:colonial_idea }
 	if = {
-		limit = { var:academic_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:financial_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:infrastructure_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:extraction_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:mass_conscription_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:war_economy_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:industrialist_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:bureaucratic_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:nationalist_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:parliamentary_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:diplomatic_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:mercantile_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:welfare_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:reformist_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:labour_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:offensive_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:defensive_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:naval_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:professional_army_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
-	}
-	if = {
-		limit = { var:colonial_idea >= 7 }
-		change_variable = { name = national_idea_pool add = 3 }
+		limit = { var:national_idea_pool > 21 }
+		set_variable = { name = national_idea_pool value = 21 }
 	}
 }
 

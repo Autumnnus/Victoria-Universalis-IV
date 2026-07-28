@@ -5,6 +5,7 @@ ve_national_idea_1 = {
 	}
 	is_valid = {
 		var:national_idea_pool >= 3
+		NOT = { ve_national_idea_1_completed = yes }
 	}
 	effect = {
 		if = {
@@ -293,6 +294,7 @@ ve_national_idea_2 = {
 	}
 	is_valid = {
 		var:national_idea_pool >= 6
+		NOT = { ve_national_idea_2_completed = yes }
 	}
 	effect = {
 		if = {
@@ -581,6 +583,7 @@ ve_national_idea_3 = {
 	}
 	is_valid = {
 		var:national_idea_pool >= 9
+		NOT = { ve_national_idea_3_completed = yes }
 	}
 	effect = {
 		if = {
@@ -869,6 +872,7 @@ ve_national_idea_4 = {
 	}
 	is_valid = {
 		var:national_idea_pool >= 12
+		NOT = { ve_national_idea_4_completed = yes }
 	}
 	effect = {
 		if = {
@@ -1157,6 +1161,7 @@ ve_national_idea_5 = {
 	}
 	is_valid = {
 		var:national_idea_pool >= 15
+		NOT = { ve_national_idea_5_completed = yes }
 	}
 	effect = {
 		if = {
@@ -1445,6 +1450,7 @@ ve_national_idea_6 = {
 	}
 	is_valid = {
 		var:national_idea_pool >= 18
+		NOT = { ve_national_idea_6_completed = yes }
 	}
 	effect = {
 		if = {
@@ -1733,6 +1739,7 @@ ve_national_idea_7 = {
 	}
 	is_valid = {
 		var:national_idea_pool >= 21
+		NOT = { ve_national_idea_7_completed = yes }
 	}
 	effect = {
 		if = {
@@ -2714,4 +2721,41 @@ ve_national_idea_img = {
 		}
 		has_variable = generic_idea_country
 	}
+}
+
+# These presentation states intentionally read the actual country modifiers,
+# not the pooled progress. A slot is active only after its idea was granted.
+ve_national_idea_1_active = {
+	scope = country
+	is_shown = { ve_national_idea_1_completed = yes }
+}
+
+ve_national_idea_2_active = {
+	scope = country
+	is_shown = { ve_national_idea_2_completed = yes }
+}
+
+ve_national_idea_3_active = {
+	scope = country
+	is_shown = { ve_national_idea_3_completed = yes }
+}
+
+ve_national_idea_4_active = {
+	scope = country
+	is_shown = { ve_national_idea_4_completed = yes }
+}
+
+ve_national_idea_5_active = {
+	scope = country
+	is_shown = { ve_national_idea_5_completed = yes }
+}
+
+ve_national_idea_6_active = {
+	scope = country
+	is_shown = { ve_national_idea_6_completed = yes }
+}
+
+ve_national_idea_7_active = {
+	scope = country
+	is_shown = { ve_national_idea_7_completed = yes }
 }

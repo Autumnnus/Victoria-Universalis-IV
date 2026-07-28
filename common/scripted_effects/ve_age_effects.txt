@@ -438,6 +438,76 @@ ve_add_era_reward_9 = {
 	}
 }
 
+ve_add_era_reward_10 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_10 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_10 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		if = {
+			limit = { has_modifier = naval_idea_4_mdf }
+			add_modifier = { name = age_3_bonus_10_2 months = -1 }
+		}
+		else = {
+			add_modifier = { name = age_3_bonus_10 months = -1 }
+		}
+	}
+}
+
+ve_add_era_reward_11 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_11 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_11 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		add_modifier = { name = age_3_bonus_11 months = -1 }
+	}
+}
+
+ve_add_era_reward_12 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_12 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_12 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		add_modifier = { name = age_3_bonus_12 months = -1 }
+	}
+}
+
+ve_add_era_reward_13 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_13 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_13 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		add_modifier = { name = age_3_bonus_13 months = -1 }
+	}
+}
+
 ve_activate_industrial_golden_age = {
 	set_variable = ve_golden_age_used
 	add_modifier = { name = ve_golden_age_industrial_mdf years = 15 }
@@ -574,6 +644,22 @@ ve_ai_uses_age_bonuses = {
 					}
 				}
 				ve_add_era_reward_9 = yes
+			}
+			35 = {
+				trigger = { ve_can_purchase_country_era_reward_10 = yes }
+				ve_add_era_reward_10 = yes
+			}
+			35 = {
+				trigger = { ve_can_purchase_country_era_reward_11 = yes }
+				ve_add_era_reward_11 = yes
+			}
+			35 = {
+				trigger = { ve_can_purchase_country_era_reward_12 = yes }
+				ve_add_era_reward_12 = yes
+			}
+			35 = {
+				trigger = { ve_can_purchase_country_era_reward_13 = yes }
+				ve_add_era_reward_13 = yes
 			}
 		}
 	}

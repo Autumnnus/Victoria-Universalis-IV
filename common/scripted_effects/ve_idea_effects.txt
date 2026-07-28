@@ -658,6 +658,10 @@ boost_nationalist_idea_effect = {
 				}
 			}
 			set_variable = nationalist_idea_5_var
+			add_modifier = {
+				name = nationalist_idea_5_mdf
+				months = -1
+			}
 			ve_idea_purchase_5 = yes
 		}
 	}
@@ -699,6 +703,10 @@ boost_nationalist_idea_effect = {
 			# Adds +0.03 more to ve_religious_conversion_bonus for the Targeted
 			# Religious Project (see ve_religious_state_effects.txt).
 			set_variable = nationalist_idea_7_var
+			add_modifier = {
+				name = nationalist_idea_7_mdf
+				months = -1
+			}
 		}
 		ve_idea_purchase_7 = yes
 		set_variable = nationalist_idea_completed

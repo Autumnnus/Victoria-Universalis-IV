@@ -12,6 +12,14 @@ ve_initialize_country_system = {
 		ve_idea_cap_effects = yes
 		set_variable = ve_1936_countries
 	}
+	# National Identity was added after the original point-system setup. Keep
+	# this outside the legacy-system guard so loading an older save initializes
+	# its model and cohesion before the culture panel is evaluated.
+	ve_initialize_national_identity = yes
+	# Rebuild national-idea progress outside the legacy setup guard. This keeps
+	# existing saves in sync when the national-idea progression rules change.
+	ve_recalculate_national_idea_pool = yes
+	national_idea_mdf = yes
 }
 
 set_point_system = {

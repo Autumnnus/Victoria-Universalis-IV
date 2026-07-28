@@ -53,13 +53,19 @@ ve_cultural_project_progress_education = {
 }
 
 ve_cultural_project_progress_cohesion = {
+	# This value is also evaluated by the culture-panel tooltip before the
+	# monthly country pulse has initialized every country in an existing save.
+	# Never dereference the variable until the migration/default setup has run.
 	if = {
-		limit = { var:ve_national_cohesion >= 75 }
-		add = 1
-	}
-	else_if = {
-		limit = { var:ve_national_cohesion <= 25 }
-		subtract = 1
+		limit = { has_variable = ve_national_cohesion }
+		if = {
+			limit = { var:ve_national_cohesion >= 75 }
+			add = 1
+		}
+		else_if = {
+			limit = { var:ve_national_cohesion <= 25 }
+			subtract = 1
+		}
 	}
 }
 

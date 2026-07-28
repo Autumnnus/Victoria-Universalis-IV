@@ -2,68 +2,68 @@ idea_1_tt_triggers = {
 	switch = {
 		trigger = scope:idea_group
 		flag:academic_idea = {
-			var:academic_idea >= 1
-		}
+				has_modifier = academic_idea_1_mdf
+			}
 		flag:agrarian_idea = {
-			var:agrarian_idea >= 1
-		}
+				has_modifier = agrarian_idea_1_mdf
+			}
 		flag:financial_idea = {
-			var:financial_idea >= 1
-		}
+				has_modifier = financial_idea_1_mdf
+			}
 		flag:infrastructure_idea = {
-			var:infrastructure_idea >= 1
-		}
+				has_modifier = infrastructure_idea_1_mdf
+			}
 		flag:extraction_idea = {
-			var:extraction_idea >= 1
-		}
+				has_modifier = extraction_idea_1_mdf
+			}
 		flag:mass_conscription_idea = {
-			var:mass_conscription_idea >= 1
-		}
+				has_modifier = mass_conscription_idea_1_mdf
+			}
 		flag:war_economy_idea = {
-			var:war_economy_idea >= 1
-		}
+				has_modifier = war_economy_idea_1_mdf
+			}
 		flag:industrialist_idea = {
-			var:industrialist_idea >= 1
-		}
+				has_modifier = industrialist_idea_1_mdf
+			}
 		flag:bureaucratic_idea = {
-			var:bureaucratic_idea >= 1
-		}
+				has_modifier = bureaucratic_idea_1_mdf
+			}
 		flag:nationalist_idea = {
-			var:nationalist_idea >= 1
-		}
+				has_modifier = nationalist_idea_1_mdf
+			}
 		flag:parliamentary_idea = {
-			var:parliamentary_idea >= 1
-		}
+				has_modifier = parliamentary_idea_1_mdf
+			}
 		flag:diplomatic_idea = {
-			var:diplomatic_idea >= 1
-		}
+				has_modifier = diplomatic_idea_1_mdf
+			}
 		flag:mercantile_idea = {
-			var:mercantile_idea >= 1
-		}
+				has_modifier = mercantile_idea_1_mdf
+			}
 		flag:welfare_idea = {
-			var:welfare_idea >= 1
-		}
+				has_modifier = welfare_idea_1_mdf
+			}
 		flag:reformist_idea = {
-			var:reformist_idea >= 1
-		}
+				has_modifier = reformist_idea_1_mdf
+			}
 		flag:labour_idea = {
-			var:labour_idea >= 1
-		}
+				has_modifier = labour_idea_1_mdf
+			}
 		flag:offensive_idea = {
-			var:offensive_idea >= 1
-		}
+				has_modifier = offensive_idea_1_mdf
+			}
 		flag:defensive_idea = {
-			var:defensive_idea >= 1
-		}
+				has_modifier = defensive_idea_1_mdf
+			}
 		flag:naval_idea = {
-			var:naval_idea >= 1
-		}
+				has_modifier = naval_idea_1_mdf
+			}
 		flag:professional_army_idea = {
-			var:professional_army_idea >= 1
-		}
+				has_modifier = professional_army_idea_1_mdf
+			}
 		flag:colonial_idea = {
-			var:colonial_idea >= 1
-		}
+				has_modifier = colonial_idea_1_mdf
+			}
 	}
 }
 
@@ -71,68 +71,68 @@ idea_2_tt_triggers = {
 	switch = {
 		trigger = scope:idea_group
 		flag:academic_idea = {
-			var:academic_idea >= 2
-		}
+				has_modifier = academic_idea_2_mdf
+			}
 		flag:agrarian_idea = {
-			var:agrarian_idea >= 2
-		}
+				has_modifier = agrarian_idea_2_mdf
+			}
 		flag:financial_idea = {
-			var:financial_idea >= 2
-		}
+				has_modifier = financial_idea_2_mdf
+			}
 		flag:infrastructure_idea = {
-			var:infrastructure_idea >= 2
-		}
+				has_modifier = infrastructure_idea_2_mdf
+			}
 		flag:extraction_idea = {
-			var:extraction_idea >= 2
-		}
+				has_modifier = extraction_idea_2_mdf
+			}
 		flag:mass_conscription_idea = {
-			var:mass_conscription_idea >= 2
-		}
+				has_modifier = mass_conscription_idea_2_mdf
+			}
 		flag:war_economy_idea = {
-			var:war_economy_idea >= 2
-		}
+				has_modifier = war_economy_idea_2_mdf
+			}
 		flag:industrialist_idea = {
-			var:industrialist_idea >= 2
-		}
+				has_modifier = industrialist_idea_2_mdf
+			}
 		flag:bureaucratic_idea = {
-			var:bureaucratic_idea >= 2
-		}
+				has_modifier = bureaucratic_idea_2_mdf
+			}
 		flag:nationalist_idea = {
-			var:nationalist_idea >= 2
-		}
+				has_modifier = nationalist_idea_2_mdf
+			}
 		flag:parliamentary_idea = {
-			var:parliamentary_idea >= 2
-		}
+				has_modifier = parliamentary_idea_2_mdf
+			}
 		flag:diplomatic_idea = {
-			var:diplomatic_idea >= 2
-		}
+				has_modifier = diplomatic_idea_2_mdf
+			}
 		flag:mercantile_idea = {
-			var:mercantile_idea >= 2
-		}
+				has_modifier = mercantile_idea_2_mdf
+			}
 		flag:welfare_idea = {
-			var:welfare_idea >= 2
-		}
+				has_modifier = welfare_idea_2_mdf
+			}
 		flag:reformist_idea = {
-			var:reformist_idea >= 2
-		}
+				has_modifier = reformist_idea_2_mdf
+			}
 		flag:labour_idea = {
-			var:labour_idea >= 2
-		}
+				has_modifier = labour_idea_2_mdf
+			}
 		flag:offensive_idea = {
-			var:offensive_idea >= 2
-		}
+				has_modifier = offensive_idea_2_mdf
+			}
 		flag:defensive_idea = {
-			var:defensive_idea >= 2
-		}
+				has_modifier = defensive_idea_2_mdf
+			}
 		flag:naval_idea = {
-			var:naval_idea >= 2
-		}
+				has_modifier = naval_idea_2_mdf
+			}
 		flag:professional_army_idea = {
-			var:professional_army_idea >= 2
-		}
+				has_modifier = professional_army_idea_2_mdf
+			}
 		flag:colonial_idea = {
-			var:colonial_idea >= 2
-		}
+				has_modifier = colonial_idea_2_mdf
+			}
 	}
 }
 
@@ -140,68 +140,68 @@ idea_3_tt_triggers = {
 	switch = {
 		trigger = scope:idea_group
 		flag:academic_idea = {
-			var:academic_idea >= 3
-		}
+				has_modifier = academic_idea_3_mdf
+			}
 		flag:agrarian_idea = {
-			var:agrarian_idea >= 3
-		}
+				has_modifier = agrarian_idea_3_mdf
+			}
 		flag:financial_idea = {
-			var:financial_idea >= 3
-		}
+				has_modifier = financial_idea_3_mdf
+			}
 		flag:infrastructure_idea = {
-			var:infrastructure_idea >= 3
-		}
+				has_modifier = infrastructure_idea_3_mdf
+			}
 		flag:extraction_idea = {
-			var:extraction_idea >= 3
-		}
+				has_modifier = extraction_idea_3_mdf
+			}
 		flag:mass_conscription_idea = {
-			var:mass_conscription_idea >= 3
-		}
+				has_modifier = mass_conscription_idea_3_mdf
+			}
 		flag:war_economy_idea = {
-			var:war_economy_idea >= 3
-		}
+				has_modifier = war_economy_idea_3_mdf
+			}
 		flag:industrialist_idea = {
-			var:industrialist_idea >= 3
-		}
+				has_modifier = industrialist_idea_3_mdf
+			}
 		flag:bureaucratic_idea = {
-			var:bureaucratic_idea >= 3
-		}
+				has_modifier = bureaucratic_idea_3_mdf
+			}
 		flag:nationalist_idea = {
-			var:nationalist_idea >= 3
-		}
+				has_modifier = nationalist_idea_3_mdf
+			}
 		flag:parliamentary_idea = {
-			var:parliamentary_idea >= 3
-		}
+				has_modifier = parliamentary_idea_3_mdf
+			}
 		flag:diplomatic_idea = {
-			var:diplomatic_idea >= 3
-		}
+				has_modifier = diplomatic_idea_3_mdf
+			}
 		flag:mercantile_idea = {
-			var:mercantile_idea >= 3
-		}
+				has_modifier = mercantile_idea_3_mdf
+			}
 		flag:welfare_idea = {
-			var:welfare_idea >= 3
-		}
+				has_modifier = welfare_idea_3_mdf
+			}
 		flag:reformist_idea = {
-			var:reformist_idea >= 3
-		}
+				has_modifier = reformist_idea_3_mdf
+			}
 		flag:labour_idea = {
-			var:labour_idea >= 3
-		}
+				has_modifier = labour_idea_3_mdf
+			}
 		flag:offensive_idea = {
-			var:offensive_idea >= 3
-		}
+				has_modifier = offensive_idea_3_mdf
+			}
 		flag:defensive_idea = {
-			var:defensive_idea >= 3
-		}
+				has_modifier = defensive_idea_3_mdf
+			}
 		flag:naval_idea = {
-			var:naval_idea >= 3
-		}
+				has_modifier = naval_idea_3_mdf
+			}
 		flag:professional_army_idea = {
-			var:professional_army_idea >= 3
-		}
+				has_modifier = professional_army_idea_3_mdf
+			}
 		flag:colonial_idea = {
-			var:colonial_idea >= 3
-		}
+				has_modifier = colonial_idea_3_mdf
+			}
 	}
 }
 
@@ -209,68 +209,68 @@ idea_4_tt_triggers = {
 	switch = {
 		trigger = scope:idea_group
 		flag:academic_idea = {
-			var:academic_idea >= 4
-		}
+				has_modifier = academic_idea_4_mdf
+			}
 		flag:agrarian_idea = {
-			var:agrarian_idea >= 4
-		}
+				has_modifier = agrarian_idea_4_mdf
+			}
 		flag:financial_idea = {
-			var:financial_idea >= 4
-		}
+				has_modifier = financial_idea_4_mdf
+			}
 		flag:infrastructure_idea = {
-			var:infrastructure_idea >= 4
-		}
+				has_modifier = infrastructure_idea_4_mdf
+			}
 		flag:extraction_idea = {
-			var:extraction_idea >= 4
-		}
+				has_modifier = extraction_idea_4_mdf
+			}
 		flag:mass_conscription_idea = {
-			var:mass_conscription_idea >= 4
-		}
+				has_modifier = mass_conscription_idea_4_mdf
+			}
 		flag:war_economy_idea = {
-			var:war_economy_idea >= 4
-		}
+				has_modifier = war_economy_idea_4_mdf
+			}
 		flag:industrialist_idea = {
-			var:industrialist_idea >= 4
-		}
+				has_modifier = industrialist_idea_4_mdf
+			}
 		flag:bureaucratic_idea = {
-			var:bureaucratic_idea >= 4
-		}
+				has_modifier = bureaucratic_idea_4_mdf
+			}
 		flag:nationalist_idea = {
-			var:nationalist_idea >= 4
-		}
+				has_modifier = nationalist_idea_4_mdf
+			}
 		flag:parliamentary_idea = {
-			var:parliamentary_idea >= 4
-		}
+				has_modifier = parliamentary_idea_4_mdf
+			}
 		flag:diplomatic_idea = {
-			var:diplomatic_idea >= 4
-		}
+				has_modifier = diplomatic_idea_4_mdf
+			}
 		flag:mercantile_idea = {
-			var:mercantile_idea >= 4
-		}
+				has_modifier = mercantile_idea_4_mdf
+			}
 		flag:welfare_idea = {
-			var:welfare_idea >= 4
-		}
+				has_modifier = welfare_idea_4_mdf
+			}
 		flag:reformist_idea = {
-			var:reformist_idea >= 4
-		}
+				has_modifier = reformist_idea_4_mdf
+			}
 		flag:labour_idea = {
-			var:labour_idea >= 4
-		}
+				has_modifier = labour_idea_4_mdf
+			}
 		flag:offensive_idea = {
-			var:offensive_idea >= 4
-		}
+				has_modifier = offensive_idea_4_mdf
+			}
 		flag:defensive_idea = {
-			var:defensive_idea >= 4
-		}
+				has_modifier = defensive_idea_4_mdf
+			}
 		flag:naval_idea = {
-			var:naval_idea >= 4
-		}
+				has_modifier = naval_idea_4_mdf
+			}
 		flag:professional_army_idea = {
-			var:professional_army_idea >= 4
-		}
+				has_modifier = professional_army_idea_4_mdf
+			}
 		flag:colonial_idea = {
-			var:colonial_idea >= 4
-		}
+				has_modifier = colonial_idea_4_mdf
+			}
 	}
 }
 
@@ -278,68 +278,68 @@ idea_5_tt_triggers = {
 	switch = {
 		trigger = scope:idea_group
 		flag:academic_idea = {
-			var:academic_idea >= 5
-		}
+				has_modifier = academic_idea_5_mdf
+			}
 		flag:agrarian_idea = {
-			var:agrarian_idea >= 5
-		}
+				has_modifier = agrarian_idea_5_mdf
+			}
 		flag:financial_idea = {
-			var:financial_idea >= 5
-		}
+				has_modifier = financial_idea_5_mdf
+			}
 		flag:infrastructure_idea = {
-			var:infrastructure_idea >= 5
-		}
+				has_modifier = infrastructure_idea_5_mdf
+			}
 		flag:extraction_idea = {
-			var:extraction_idea >= 5
-		}
+				has_modifier = extraction_idea_5_mdf
+			}
 		flag:mass_conscription_idea = {
-			var:mass_conscription_idea >= 5
-		}
+				has_modifier = mass_conscription_idea_5_mdf
+			}
 		flag:war_economy_idea = {
-			var:war_economy_idea >= 5
-		}
+				has_modifier = war_economy_idea_5_mdf
+			}
 		flag:industrialist_idea = {
-			var:industrialist_idea >= 5
-		}
+				has_modifier = industrialist_idea_5_mdf
+			}
 		flag:bureaucratic_idea = {
-			var:bureaucratic_idea >= 5
-		}
+				has_modifier = bureaucratic_idea_5_mdf
+			}
 		flag:nationalist_idea = {
-			var:nationalist_idea >= 5
-		}
+				has_modifier = nationalist_idea_5_mdf
+			}
 		flag:parliamentary_idea = {
-			var:parliamentary_idea >= 5
-		}
+				has_modifier = parliamentary_idea_5_mdf
+			}
 		flag:diplomatic_idea = {
-			var:diplomatic_idea >= 5
-		}
+				has_modifier = diplomatic_idea_5_mdf
+			}
 		flag:mercantile_idea = {
-			var:mercantile_idea >= 5
-		}
+				has_modifier = mercantile_idea_5_mdf
+			}
 		flag:welfare_idea = {
-			var:welfare_idea >= 5
-		}
+				has_modifier = welfare_idea_5_mdf
+			}
 		flag:reformist_idea = {
-			var:reformist_idea >= 5
-		}
+				has_modifier = reformist_idea_5_mdf
+			}
 		flag:labour_idea = {
-			var:labour_idea >= 5
-		}
+				has_modifier = labour_idea_5_mdf
+			}
 		flag:offensive_idea = {
-			var:offensive_idea >= 5
-		}
+				has_modifier = offensive_idea_5_mdf
+			}
 		flag:defensive_idea = {
-			var:defensive_idea >= 5
-		}
+				has_modifier = defensive_idea_5_mdf
+			}
 		flag:naval_idea = {
-			var:naval_idea >= 5
-		}
+				has_modifier = naval_idea_5_mdf
+			}
 		flag:professional_army_idea = {
-			var:professional_army_idea >= 5
-		}
+				has_modifier = professional_army_idea_5_mdf
+			}
 		flag:colonial_idea = {
-			var:colonial_idea >= 5
-		}
+				has_modifier = colonial_idea_5_mdf
+			}
 	}
 }
 
@@ -347,68 +347,68 @@ idea_6_tt_triggers = {
 	switch = {
 		trigger = scope:idea_group
 		flag:academic_idea = {
-			var:academic_idea >= 6
-		}
+				has_modifier = academic_idea_6_mdf
+			}
 		flag:agrarian_idea = {
-			var:agrarian_idea >= 6
-		}
+				has_modifier = agrarian_idea_6_mdf
+			}
 		flag:financial_idea = {
-			var:financial_idea >= 6
-		}
+				has_modifier = financial_idea_6_mdf
+			}
 		flag:infrastructure_idea = {
-			var:infrastructure_idea >= 6
-		}
+				has_modifier = infrastructure_idea_6_mdf
+			}
 		flag:extraction_idea = {
-			var:extraction_idea >= 6
-		}
+				has_modifier = extraction_idea_6_mdf
+			}
 		flag:mass_conscription_idea = {
-			var:mass_conscription_idea >= 6
-		}
+				has_modifier = mass_conscription_idea_6_mdf
+			}
 		flag:war_economy_idea = {
-			var:war_economy_idea >= 6
-		}
+				has_modifier = war_economy_idea_6_mdf
+			}
 		flag:industrialist_idea = {
-			var:industrialist_idea >= 6
-		}
+				has_modifier = industrialist_idea_6_mdf
+			}
 		flag:bureaucratic_idea = {
-			var:bureaucratic_idea >= 6
-		}
+				has_modifier = bureaucratic_idea_6_mdf
+			}
 		flag:nationalist_idea = {
-			var:nationalist_idea >= 6
-		}
+				has_modifier = nationalist_idea_6_mdf
+			}
 		flag:parliamentary_idea = {
-			var:parliamentary_idea >= 6
-		}
+				has_modifier = parliamentary_idea_6_mdf
+			}
 		flag:diplomatic_idea = {
-			var:diplomatic_idea >= 6
-		}
+				has_modifier = diplomatic_idea_6_mdf
+			}
 		flag:mercantile_idea = {
-			var:mercantile_idea >= 6
-		}
+				has_modifier = mercantile_idea_6_mdf
+			}
 		flag:welfare_idea = {
-			var:welfare_idea >= 6
-		}
+				has_modifier = welfare_idea_6_mdf
+			}
 		flag:reformist_idea = {
-			var:reformist_idea >= 6
-		}
+				has_modifier = reformist_idea_6_mdf
+			}
 		flag:labour_idea = {
-			var:labour_idea >= 6
-		}
+				has_modifier = labour_idea_6_mdf
+			}
 		flag:offensive_idea = {
-			var:offensive_idea >= 6
-		}
+				has_modifier = offensive_idea_6_mdf
+			}
 		flag:defensive_idea = {
-			var:defensive_idea >= 6
-		}
+				has_modifier = defensive_idea_6_mdf
+			}
 		flag:naval_idea = {
-			var:naval_idea >= 6
-		}
+				has_modifier = naval_idea_6_mdf
+			}
 		flag:professional_army_idea = {
-			var:professional_army_idea >= 6
-		}
+				has_modifier = professional_army_idea_6_mdf
+			}
 		flag:colonial_idea = {
-			var:colonial_idea >= 6
-		}
+				has_modifier = colonial_idea_6_mdf
+			}
 	}
 }
 
@@ -416,67 +416,67 @@ idea_7_tt_triggers = {
 	switch = {
 		trigger = scope:idea_group
 		flag:academic_idea = {
-			var:academic_idea >= 7
-		}
+				has_modifier = academic_idea_7_mdf
+			}
 		flag:agrarian_idea = {
-			var:agrarian_idea >= 7
-		}
+				has_modifier = agrarian_idea_7_mdf
+			}
 		flag:financial_idea = {
-			var:financial_idea >= 7
-		}
+				has_modifier = financial_idea_7_mdf
+			}
 		flag:infrastructure_idea = {
-			var:infrastructure_idea >= 7
-		}
+				has_modifier = infrastructure_idea_7_mdf
+			}
 		flag:extraction_idea = {
-			var:extraction_idea >= 7
-		}
+				has_modifier = extraction_idea_7_mdf
+			}
 		flag:mass_conscription_idea = {
-			var:mass_conscription_idea >= 7
-		}
+				has_modifier = mass_conscription_idea_7_mdf
+			}
 		flag:war_economy_idea = {
-			var:war_economy_idea >= 7
-		}
+				has_modifier = war_economy_idea_7_mdf
+			}
 		flag:industrialist_idea = {
-			var:industrialist_idea >= 7
-		}
+				has_modifier = industrialist_idea_7_mdf
+			}
 		flag:bureaucratic_idea = {
-			var:bureaucratic_idea >= 7
-		}
+				has_modifier = bureaucratic_idea_7_mdf
+			}
 		flag:nationalist_idea = {
-			var:nationalist_idea >= 7
-		}
+				has_modifier = nationalist_idea_7_mdf
+			}
 		flag:parliamentary_idea = {
-			var:parliamentary_idea >= 7
-		}
+				has_modifier = parliamentary_idea_7_mdf
+			}
 		flag:diplomatic_idea = {
-			var:diplomatic_idea >= 7
-		}
+				has_modifier = diplomatic_idea_7_mdf
+			}
 		flag:mercantile_idea = {
-			var:mercantile_idea >= 7
-		}
+				has_modifier = mercantile_idea_7_mdf
+			}
 		flag:welfare_idea = {
-			var:welfare_idea >= 7
-		}
+				has_modifier = welfare_idea_7_mdf
+			}
 		flag:reformist_idea = {
-			var:reformist_idea >= 7
-		}
+				has_modifier = reformist_idea_7_mdf
+			}
 		flag:labour_idea = {
-			var:labour_idea >= 7
-		}
+				has_modifier = labour_idea_7_mdf
+			}
 		flag:offensive_idea = {
-			var:offensive_idea >= 7
-		}
+				has_modifier = offensive_idea_7_mdf
+			}
 		flag:defensive_idea = {
-			var:defensive_idea >= 7
-		}
+				has_modifier = defensive_idea_7_mdf
+			}
 		flag:naval_idea = {
-			var:naval_idea >= 7
-		}
+				has_modifier = naval_idea_7_mdf
+			}
 		flag:professional_army_idea = {
-			var:professional_army_idea >= 7
-		}
+				has_modifier = professional_army_idea_7_mdf
+			}
 		flag:colonial_idea = {
-			var:colonial_idea >= 7
-		}
+				has_modifier = colonial_idea_7_mdf
+			}
 	}
 }

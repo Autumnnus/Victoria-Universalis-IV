@@ -1,12 +1,33 @@
 
 ve_clear_identity_modifiers = {
-	remove_modifier = ve_ethnic_identity_mdf
-	remove_modifier = ve_civic_identity_mdf
-	remove_modifier = ve_composite_identity_mdf
-	remove_modifier = ve_ethnic_high_cohesion_mdf
-	remove_modifier = ve_civic_high_cohesion_mdf
-	remove_modifier = ve_composite_high_cohesion_mdf
-	remove_modifier = ve_low_national_cohesion_mdf
+	if = {
+		limit = { has_modifier = ve_ethnic_identity_mdf }
+		remove_modifier = ve_ethnic_identity_mdf
+	}
+	if = {
+		limit = { has_modifier = ve_civic_identity_mdf }
+		remove_modifier = ve_civic_identity_mdf
+	}
+	if = {
+		limit = { has_modifier = ve_composite_identity_mdf }
+		remove_modifier = ve_composite_identity_mdf
+	}
+	if = {
+		limit = { has_modifier = ve_ethnic_high_cohesion_mdf }
+		remove_modifier = ve_ethnic_high_cohesion_mdf
+	}
+	if = {
+		limit = { has_modifier = ve_civic_high_cohesion_mdf }
+		remove_modifier = ve_civic_high_cohesion_mdf
+	}
+	if = {
+		limit = { has_modifier = ve_composite_high_cohesion_mdf }
+		remove_modifier = ve_composite_high_cohesion_mdf
+	}
+	if = {
+		limit = { has_modifier = ve_low_national_cohesion_mdf }
+		remove_modifier = ve_low_national_cohesion_mdf
+	}
 }
 
 ve_set_initial_identity_model = {
@@ -93,81 +114,47 @@ ve_initialize_national_identity = {
 			value = 50
 		}
 	}
+	# Apply the matching model and cohesion-tier modifiers immediately. This
+	# keeps panels and scripted GUI actions consistent before the first monthly
+	# pulse, including when an older save is loaded.
+	ve_sync_identity_if_needed = yes
 }
 
 ve_sync_identity_modifiers = {
+	# BuildTooltip evaluates scripted-GUI effects in a dry-run scope. Guarded
+	# cleanup is therefore required: remove_modifier logs an error if the
+	# modifier is absent, even though the intended final state is correct.
+	ve_clear_identity_modifiers = yes
+
 	if = {
 		limit = { ve_is_ethnic_identity = yes }
-		remove_modifier = ve_civic_identity_mdf
-		remove_modifier = ve_composite_identity_mdf
-		if = {
-			limit = { NOT = { has_modifier = ve_ethnic_identity_mdf } }
-			add_modifier = { name = ve_ethnic_identity_mdf months = -1 }
-		}
+		add_modifier = { name = ve_ethnic_identity_mdf months = -1 }
 	}
 	else_if = {
 		limit = { ve_is_civic_identity = yes }
-		remove_modifier = ve_ethnic_identity_mdf
-		remove_modifier = ve_composite_identity_mdf
-		if = {
-			limit = { NOT = { has_modifier = ve_civic_identity_mdf } }
-			add_modifier = { name = ve_civic_identity_mdf months = -1 }
-		}
+		add_modifier = { name = ve_civic_identity_mdf months = -1 }
 	}
 	else = {
-		remove_modifier = ve_ethnic_identity_mdf
-		remove_modifier = ve_civic_identity_mdf
-		if = {
-			limit = { NOT = { has_modifier = ve_composite_identity_mdf } }
-			add_modifier = { name = ve_composite_identity_mdf months = -1 }
-		}
+		add_modifier = { name = ve_composite_identity_mdf months = -1 }
 	}
 
 	if = {
 		limit = { var:ve_national_cohesion >= 75 }
-		remove_modifier = ve_low_national_cohesion_mdf
 		if = {
 			limit = { ve_is_ethnic_identity = yes }
-			remove_modifier = ve_civic_high_cohesion_mdf
-			remove_modifier = ve_composite_high_cohesion_mdf
-			if = {
-				limit = { NOT = { has_modifier = ve_ethnic_high_cohesion_mdf } }
-				add_modifier = { name = ve_ethnic_high_cohesion_mdf months = -1 }
-			}
+			add_modifier = { name = ve_ethnic_high_cohesion_mdf months = -1 }
 		}
 		else_if = {
 			limit = { ve_is_civic_identity = yes }
-			remove_modifier = ve_ethnic_high_cohesion_mdf
-			remove_modifier = ve_composite_high_cohesion_mdf
-			if = {
-				limit = { NOT = { has_modifier = ve_civic_high_cohesion_mdf } }
-				add_modifier = { name = ve_civic_high_cohesion_mdf months = -1 }
-			}
+			add_modifier = { name = ve_civic_high_cohesion_mdf months = -1 }
 		}
 		else = {
-			remove_modifier = ve_ethnic_high_cohesion_mdf
-			remove_modifier = ve_civic_high_cohesion_mdf
-			if = {
-				limit = { NOT = { has_modifier = ve_composite_high_cohesion_mdf } }
-				add_modifier = { name = ve_composite_high_cohesion_mdf months = -1 }
-			}
+			add_modifier = { name = ve_composite_high_cohesion_mdf months = -1 }
 		}
 	}
 	else_if = {
 		limit = { var:ve_national_cohesion <= 25 }
-		remove_modifier = ve_ethnic_high_cohesion_mdf
-		remove_modifier = ve_civic_high_cohesion_mdf
-		remove_modifier = ve_composite_high_cohesion_mdf
-		if = {
-			limit = { NOT = { has_modifier = ve_low_national_cohesion_mdf } }
-			add_modifier = { name = ve_low_national_cohesion_mdf months = -1 }
-		}
-	}
-	else = {
-		remove_modifier = ve_ethnic_high_cohesion_mdf
-		remove_modifier = ve_civic_high_cohesion_mdf
-		remove_modifier = ve_composite_high_cohesion_mdf
-		remove_modifier = ve_low_national_cohesion_mdf
+		add_modifier = { name = ve_low_national_cohesion_mdf months = -1 }
 	}
 	set_variable = {
 		name = ve_synced_identity_model

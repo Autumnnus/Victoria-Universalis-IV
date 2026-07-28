@@ -202,18 +202,195 @@ ve_age_bonus_9 = {
 	effect = { ve_add_era_reward_9 = yes }
 }
 
-# Kept as hidden compatibility bindings because the existing panel still
-# contains legacy slots. The locked placeholder icons are hidden in GUI.
+# Two additional rewards are national specializations. They remain optional;
+# every country still has the nine shared rewards above.
 ve_age_bonus_10 = {
 	scope = country
-	is_shown = { always = no }
-	is_valid = { always = no }
+	is_shown = {
+		OR = {
+			AND = {
+				has_global_variable = ve_age_1_started
+				NOT = { has_modifier = age_1_bonus_10 }
+			}
+			AND = {
+				has_global_variable = ve_age_2_started
+				NOT = { has_modifier = age_2_bonus_10 }
+			}
+			AND = {
+				has_global_variable = ve_age_3_started
+				NOR = {
+					has_modifier = age_3_bonus_10
+					has_modifier = age_3_bonus_10_2
+				}
+			}
+		}
+	}
+	is_valid = {
+		trigger_if = {
+			limit = { has_global_variable = ve_age_1_started }
+			custom_tooltip = {
+				text = ve_age_1_bonus_10_tt
+				ve_can_purchase_era_reward = yes
+				OR = {
+					country_has_primary_culture = cu:north_italian
+					country_has_primary_culture = cu:south_italian
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { has_global_variable = ve_age_2_started }
+			custom_tooltip = {
+				text = ve_age_2_bonus_10_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:AUS
+				this = c:AUS
+			}
+		}
+		trigger_else_if = {
+			limit = { has_global_variable = ve_age_3_started }
+			custom_tooltip = {
+				text = ve_age_3_bonus_10_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:GBR
+				this = c:GBR
+			}
+		}
+	}
+	effect = { ve_add_era_reward_10 = yes }
 }
 
 ve_age_bonus_11 = {
 	scope = country
-	is_shown = { always = no }
-	is_valid = { always = no }
+	is_shown = {
+		OR = {
+			AND = {
+				has_global_variable = ve_age_1_started
+				NOT = { has_modifier = age_1_bonus_11 }
+			}
+			AND = {
+				has_global_variable = ve_age_2_started
+				NOT = { has_modifier = age_2_bonus_11 }
+			}
+			AND = {
+				has_global_variable = ve_age_3_started
+				NOT = { has_modifier = age_3_bonus_11 }
+			}
+		}
+	}
+	is_valid = {
+		trigger_if = {
+			limit = { has_global_variable = ve_age_1_started }
+			custom_tooltip = {
+				text = ve_age_1_bonus_11_tt
+				ve_can_purchase_era_reward = yes
+				OR = {
+					country_has_primary_culture = cu:north_german
+					country_has_primary_culture = cu:south_german
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { has_global_variable = ve_age_2_started }
+			custom_tooltip = {
+				text = ve_age_2_bonus_11_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:RUS
+				this = c:RUS
+			}
+		}
+		trigger_else_if = {
+			limit = { has_global_variable = ve_age_3_started }
+			custom_tooltip = {
+				text = ve_age_3_bonus_11_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:CHI
+				this = c:CHI
+			}
+		}
+	}
+	effect = { ve_add_era_reward_11 = yes }
+}
+
+ve_age_bonus_12 = {
+	scope = country
+	is_shown = {
+		OR = {
+			AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_12 } }
+			AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_12 } }
+			AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_12 } }
+		}
+	}
+	is_valid = {
+		trigger_if = {
+			limit = { has_global_variable = ve_age_1_started }
+			custom_tooltip = {
+				text = ve_age_1_bonus_12_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:NET
+				this = c:NET
+			}
+		}
+		trigger_else_if = {
+			limit = { has_global_variable = ve_age_2_started }
+			custom_tooltip = {
+				text = ve_age_2_bonus_12_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:BEL
+				this = c:BEL
+			}
+		}
+		trigger_else_if = {
+			limit = { has_global_variable = ve_age_3_started }
+			custom_tooltip = {
+				text = ve_age_3_bonus_12_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:FRA
+				this = c:FRA
+			}
+		}
+	}
+	effect = { ve_add_era_reward_12 = yes }
+}
+
+ve_age_bonus_13 = {
+	scope = country
+	is_shown = {
+		OR = {
+			AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_13 } }
+			AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_13 } }
+			AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_13 } }
+		}
+	}
+	is_valid = {
+		trigger_if = {
+			limit = { has_global_variable = ve_age_1_started }
+			custom_tooltip = {
+				text = ve_age_1_bonus_13_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:TUR
+				this = c:TUR
+			}
+		}
+		trigger_else_if = {
+			limit = { has_global_variable = ve_age_2_started }
+			custom_tooltip = {
+				text = ve_age_2_bonus_13_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:USA
+				this = c:USA
+			}
+		}
+		trigger_else_if = {
+			limit = { has_global_variable = ve_age_3_started }
+			custom_tooltip = {
+				text = ve_age_3_bonus_13_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:JAP
+				this = c:JAP
+			}
+		}
+	}
+	effect = { ve_add_era_reward_13 = yes }
 }
 
 ve_golden_age_industrial = {

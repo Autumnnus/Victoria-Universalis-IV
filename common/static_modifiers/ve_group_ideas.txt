@@ -10,9 +10,11 @@
 #   - pool resources (bureaucracy, authority, prestige, influence, tech spread) use _mult,
 #     never flat _add, so they still matter in 1936
 #
-# nationalist ideas 5 and 7 are effect-driven (missionary mechanic, now the
-# Targeted Religious Project - see ve_religious_state_effects.txt) and carry no
-# modifier; their tooltips come from nationalist_idea_5_tt / _7_tt.
+# Nationalist ideas 5 and 7 are effect-driven (missionary mechanic, now the
+# Targeted Religious Project - see ve_religious_state_effects.txt). Their
+# modifiers are ownership markers only: the mechanical effect remains variable
+# driven, while the Ideas panel can use the same modifier-based active state as
+# every other group-idea icon.
 #
 # DO NOT split nationalist idea 2. ve_religious_conversion_bonus in
 # ve_religious_state_effects.txt checks has_modifier = nationalist_idea_2_mdf,
@@ -508,13 +510,17 @@ nationalist_idea_4_mdf = {
 	icon = gfx/interface/icon_ideas.dds
 	country_radicals_from_legitimacy_mult = -0.2
 }
-# nationalist_idea_5_mdf intentionally absent - effect-driven idea
+nationalist_idea_5_mdf = {
+	icon = gfx/interface/icon_ideas.dds
+}
 nationalist_idea_6_mdf = {
 	icon = gfx/interface/icon_ideas.dds
 	country_higher_diplomatic_acceptance_same_religion_bool = yes
 	country_prestige_mult = 0.1
 }
-# nationalist_idea_7_mdf intentionally absent - effect-driven idea
+nationalist_idea_7_mdf = {
+	icon = gfx/interface/icon_ideas.dds
+}
 # ambition - granted when all 7 ideas of this group are bought
 nationalist_ambition_mdf = {
 	icon = gfx/interface/icon_ideas.dds
