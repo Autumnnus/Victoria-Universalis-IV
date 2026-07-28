@@ -1082,6 +1082,11 @@ types country_panel_types
 			visible = "[Country.IsColonizable]"
 		}
 
+		# Victoria Universalis country intelligence. This is deliberately placed in
+		# the existing country panel so CountryPanel.GetCountry supplies the correct
+		# scope for both the player and every foreign country.
+									ve_country_universalis_overview = {}
+
 		# BEHAVIOR
 		flowcontainer = {
 			using = is_not_player_and_not_colonizable_country
@@ -3606,6 +3611,122 @@ types war_panel
 		}
 	}
 
+	# Compact, read-only overview used by the vanilla country panel. The detailed
+	# mechanics remain in the VE fullscreen panels; this card identifies a
+	# selected country's active choices without creating another panel context.
+	type ve_country_universalis_overview = widget {
+		size = { @panel_width_minus_10 240 }
+
+		background = {
+			size = { 100% 100% }
+			using = main_bg
+		}
+
+		default_header = {
+			size = { 100% 34 }
+			blockoverride "text" {
+				text = "ve_country_panel_title"
+			}
+		}
+
+		textbox = {
+			position = { 14 37 }
+			size = { 100% 17 }
+			text = "ve_country_panel_desc"
+			using = fontsize_small
+			align = hcenter|nobaseline
+			alpha = 0.72
+		}
+
+		widget = {
+			position = { 12 59 }
+			size = { 250 62 }
+			background = { using = paper_bg }
+			textbox = {
+				position = { 10 7 }
+				size = { 230 18 }
+				text = "ve_country_panel_ideas"
+				using = fontsize_small
+				default_format = "#title"
+			}
+			button = {
+				position = { 9 29 }
+				size = { 232 25 }
+				using = default_button
+				tooltip = "[GetScriptedGui('ve_country_panel_ideas_tooltip').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+				textbox = {
+					size = { 100% 100% }
+					text = "ve_country_panel_ideas_open"
+					align = hcenter|vcenter|nobaseline
+					alwaystransparent = yes
+				}
+			}
+		}
+
+		widget = {
+			position = { 274 59 }
+			size = { 250 62 }
+			background = { using = paper_bg }
+			textbox = {
+				position = { 10 7 }
+				size = { 230 18 }
+				text = "ve_country_panel_culture"
+				using = fontsize_small
+				default_format = "#title"
+			}
+			textbox = {
+				position = { 10 28 }
+				size = { 230 18 }
+				raw_text = "#P [Country.GetCustom('ve_identity_model_name')]#! — [Country.GetPrimaryCulturesDesc]"
+				align = vcenter|nobaseline
+				elide = right
+				tooltip = "[Country.GetPrimaryCulturesDesc]"
+			}
+		}
+
+		widget = {
+			position = { 12 131 }
+			size = { 512 68 }
+			background = { using = paper_bg }
+			textbox = {
+				position = { 10 6 }
+				size = { 155 18 }
+				text = "ve_country_panel_religion"
+				using = fontsize_small
+				default_format = "#title"
+			}
+			textbox = {
+				position = { 165 6 }
+				size = { 335 18 }
+				raw_text = "#P [Country.GetCustom('ve_religious_model_name')]#! — [Country.GetStateReligion.GetNameNoIcon]"
+				align = right|nobaseline
+				elide = left
+			}
+			flowcontainer = {
+				position = { 9 31 }
+				size = { 494 29 }
+				direction = horizontal
+				spacing = 4
+				button = { using = default_button size = { 118 25 } visible = "[GetScriptedGui('ve_country_panel_program_1').IsShown(GuiScope.SetRoot(Country.MakeScope).End)]" tooltip = "[Country.GetCustom('ve_religious_program_1_effect')]" textbox = { raw_text = "[Country.GetCustom('religion_aspect_text_1')]" size = { 100% 100% } align = hcenter|vcenter|nobaseline alwaystransparent = yes elide = right } }
+				button = { using = default_button size = { 118 25 } visible = "[GetScriptedGui('ve_country_panel_program_2').IsShown(GuiScope.SetRoot(Country.MakeScope).End)]" tooltip = "[Country.GetCustom('ve_religious_program_2_effect')]" textbox = { raw_text = "[Country.GetCustom('religion_aspect_text_2')]" size = { 100% 100% } align = hcenter|vcenter|nobaseline alwaystransparent = yes elide = right } }
+				button = { using = default_button size = { 118 25 } visible = "[GetScriptedGui('ve_country_panel_program_3').IsShown(GuiScope.SetRoot(Country.MakeScope).End)]" tooltip = "[Country.GetCustom('ve_religious_program_3_effect')]" textbox = { raw_text = "[Country.GetCustom('religion_aspect_text_3')]" size = { 100% 100% } align = hcenter|vcenter|nobaseline alwaystransparent = yes elide = right } }
+				button = { using = default_button size = { 118 25 } visible = "[GetScriptedGui('ve_country_panel_program_4').IsShown(GuiScope.SetRoot(Country.MakeScope).End)]" tooltip = "[Country.GetCustom('ve_religious_program_4_effect')]" textbox = { raw_text = "[Country.GetCustom('religion_aspect_text_4')]" size = { 100% 100% } align = hcenter|vcenter|nobaseline alwaystransparent = yes elide = right } }
+				button = { using = default_button size = { 118 25 } visible = "[GetScriptedGui('ve_country_panel_program_5').IsShown(GuiScope.SetRoot(Country.MakeScope).End)]" tooltip = "[Country.GetCustom('ve_religious_program_5_effect')]" textbox = { raw_text = "[Country.GetCustom('religion_aspect_text_5')]" size = { 100% 100% } align = hcenter|vcenter|nobaseline alwaystransparent = yes elide = right } }
+				button = { using = default_button size = { 118 25 } visible = "[GetScriptedGui('ve_country_panel_program_6').IsShown(GuiScope.SetRoot(Country.MakeScope).End)]" tooltip = "[Country.GetCustom('ve_religious_program_6_effect')]" textbox = { raw_text = "[Country.GetCustom('religion_aspect_text_6')]" size = { 100% 100% } align = hcenter|vcenter|nobaseline alwaystransparent = yes elide = right } }
+				button = { using = default_button size = { 118 25 } visible = "[GetScriptedGui('ve_country_panel_program_7').IsShown(GuiScope.SetRoot(Country.MakeScope).End)]" tooltip = "[Country.GetCustom('ve_religious_program_7_effect')]" textbox = { raw_text = "[Country.GetCustom('religion_aspect_text_7')]" size = { 100% 100% } align = hcenter|vcenter|nobaseline alwaystransparent = yes elide = right } }
+				button = { using = default_button size = { 118 25 } visible = "[GetScriptedGui('ve_country_panel_program_8').IsShown(GuiScope.SetRoot(Country.MakeScope).End)]" tooltip = "[Country.GetCustom('ve_religious_program_8_effect')]" textbox = { raw_text = "[Country.GetCustom('religion_aspect_text_8')]" size = { 100% 100% } align = hcenter|vcenter|nobaseline alwaystransparent = yes elide = right } }
+			}
+		}
+
+		button = {
+			position = { 12 208 }
+			size = { 512 25 }
+			using = default_button
+			text = "ve_country_panel_age"
+			tooltip = "[GetScriptedGui('ve_country_panel_age_tooltip').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+		}
+	}
+
 	#COUNTRY STATS ENTRY GAME OVER
 	type country_stats_entry_game_over = widget {
 		size =  { 300 50 }
@@ -4415,5 +4536,3 @@ types country_info
 		}
 	}
 }
-
-

@@ -1,0 +1,72 @@
+# Read-only CountryPanel bindings. Each entry receives the selected country's
+# scope from gui/country_panel.gui, so foreign countries are evaluated safely.
+ve_country_panel_program_1 = { scope = country is_shown = { ve_has_religious_program_1 = yes } }
+ve_country_panel_program_2 = { scope = country is_shown = { ve_has_religious_program_2 = yes } }
+ve_country_panel_program_3 = { scope = country is_shown = { ve_has_religious_program_3 = yes } }
+ve_country_panel_program_4 = { scope = country is_shown = { ve_has_religious_program_4 = yes } }
+ve_country_panel_program_5 = { scope = country is_shown = { ve_has_religious_program_5 = yes } }
+ve_country_panel_program_6 = { scope = country is_shown = { ve_has_religious_program_6 = yes } }
+ve_country_panel_program_7 = { scope = country is_shown = { ve_has_religious_program_7 = yes } }
+ve_country_panel_program_8 = { scope = country is_shown = { ve_has_religious_program_8 = yes } }
+
+ve_country_panel_ideas_tooltip = {
+	scope = country
+	effect = {
+		custom_tooltip = { text = ve_country_panel_ideas_tooltip }
+		if = { limit = { var:academic_idea > 0 } custom_tooltip = { text = academic_idea_name } }
+		if = { limit = { var:agrarian_idea > 0 } custom_tooltip = { text = agrarian_idea_name } }
+		if = { limit = { var:financial_idea > 0 } custom_tooltip = { text = financial_idea_name } }
+		if = { limit = { var:infrastructure_idea > 0 } custom_tooltip = { text = infrastructure_idea_name } }
+		if = { limit = { var:extraction_idea > 0 } custom_tooltip = { text = extraction_idea_name } }
+		if = { limit = { var:mass_conscription_idea > 0 } custom_tooltip = { text = mass_conscription_idea_name } }
+		if = { limit = { var:war_economy_idea > 0 } custom_tooltip = { text = war_economy_idea_name } }
+		if = { limit = { var:industrialist_idea > 0 } custom_tooltip = { text = industrialist_idea_name } }
+		if = { limit = { var:bureaucratic_idea > 0 } custom_tooltip = { text = bureaucratic_idea_name } }
+		if = { limit = { var:nationalist_idea > 0 } custom_tooltip = { text = nationalist_idea_name } }
+		if = { limit = { var:parliamentary_idea > 0 } custom_tooltip = { text = parliamentary_idea_name } }
+		if = { limit = { var:diplomatic_idea > 0 } custom_tooltip = { text = diplomatic_idea_name } }
+		if = { limit = { var:mercantile_idea > 0 } custom_tooltip = { text = mercantile_idea_name } }
+		if = { limit = { var:welfare_idea > 0 } custom_tooltip = { text = welfare_idea_name } }
+		if = { limit = { var:reformist_idea > 0 } custom_tooltip = { text = reformist_idea_name } }
+		if = { limit = { var:labour_idea > 0 } custom_tooltip = { text = labour_idea_name } }
+		if = { limit = { var:offensive_idea > 0 } custom_tooltip = { text = offensive_idea_name } }
+		if = { limit = { var:defensive_idea > 0 } custom_tooltip = { text = defensive_idea_name } }
+		if = { limit = { var:naval_idea > 0 } custom_tooltip = { text = naval_idea_name } }
+		if = { limit = { var:professional_army_idea > 0 } custom_tooltip = { text = professional_army_idea_name } }
+		if = { limit = { var:colonial_idea > 0 } custom_tooltip = { text = colonial_idea_name } }
+	}
+}
+
+ve_country_panel_age_tooltip = {
+	scope = country
+	effect = {
+		custom_tooltip = { text = ve_country_panel_age_tooltip }
+		if = { limit = { has_modifier = age_1_bonus_1 } custom_tooltip = { text = age_1_bonus_1 } }
+		if = { limit = { has_modifier = age_1_bonus_2 } custom_tooltip = { text = age_1_bonus_2 } }
+		if = { limit = { has_modifier = age_1_bonus_3 } custom_tooltip = { text = age_1_bonus_3 } }
+		if = { limit = { has_modifier = age_1_bonus_4 } custom_tooltip = { text = age_1_bonus_4 } }
+		if = { limit = { has_modifier = age_1_bonus_5 } custom_tooltip = { text = age_1_bonus_5 } }
+		if = { limit = { has_modifier = age_1_bonus_6 } custom_tooltip = { text = age_1_bonus_6 } }
+		if = { limit = { has_modifier = age_1_bonus_7 } custom_tooltip = { text = age_1_bonus_7 } }
+		if = { limit = { has_modifier = age_1_bonus_8 } custom_tooltip = { text = age_1_bonus_8 } }
+		if = { limit = { has_modifier = age_1_bonus_9 } custom_tooltip = { text = age_1_bonus_9 } }
+		if = { limit = { has_modifier = age_2_bonus_1 } custom_tooltip = { text = age_2_bonus_1 } }
+		if = { limit = { has_modifier = age_2_bonus_2 } custom_tooltip = { text = age_2_bonus_2 } }
+		if = { limit = { has_modifier = age_2_bonus_3 } custom_tooltip = { text = age_2_bonus_3 } }
+		if = { limit = { has_modifier = age_2_bonus_4 } custom_tooltip = { text = age_2_bonus_4 } }
+		if = { limit = { has_modifier = age_2_bonus_5 } custom_tooltip = { text = age_2_bonus_5 } }
+		if = { limit = { has_modifier = age_2_bonus_6 } custom_tooltip = { text = age_2_bonus_6 } }
+		if = { limit = { has_modifier = age_2_bonus_7 } custom_tooltip = { text = age_2_bonus_7 } }
+		if = { limit = { has_modifier = age_2_bonus_8 } custom_tooltip = { text = age_2_bonus_8 } }
+		if = { limit = { has_modifier = age_2_bonus_9 } custom_tooltip = { text = age_2_bonus_9 } }
+		if = { limit = { has_modifier = age_3_bonus_1 } custom_tooltip = { text = age_3_bonus_1 } }
+		if = { limit = { has_modifier = age_3_bonus_2 } custom_tooltip = { text = age_3_bonus_2 } }
+		if = { limit = { has_modifier = age_3_bonus_3 } custom_tooltip = { text = age_3_bonus_3 } }
+		if = { limit = { has_modifier = age_3_bonus_4 } custom_tooltip = { text = age_3_bonus_4 } }
+		if = { limit = { has_modifier = age_3_bonus_5 } custom_tooltip = { text = age_3_bonus_5 } }
+		if = { limit = { has_modifier = age_3_bonus_6 } custom_tooltip = { text = age_3_bonus_6 } }
+		if = { limit = { has_modifier = age_3_bonus_7 } custom_tooltip = { text = age_3_bonus_7 } }
+		if = { limit = { has_modifier = age_3_bonus_8 } custom_tooltip = { text = age_3_bonus_8 } }
+		if = { limit = { has_modifier = age_3_bonus_9 } custom_tooltip = { text = age_3_bonus_9 } }
+	}
+}
