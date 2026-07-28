@@ -2693,20 +2693,25 @@ ve_national_idea_bonus = {
 ve_national_idea_img = {
 	scope = country
 	is_shown = {
-		# NOR = {
-		# 	exists = c:GBR this = c:GBR
-		# 	exists = c:FRA this = c:FRA
-		# 	exists = c:GER this = c:GER
-		# 	exists = c:PRU this = c:PRU
-		# 	exists = c:NGF this = c:NGF
-		# 	exists = c:SGF this = c:SGF
-		# 	exists = c:AUS  this = c:AUS
-		# 	exists = c:RUS this = c:RUS
-		# 	exists = c:TUR this = c:TUR
-		# 	exists = c:CHI this = c:CHI
-		# 	exists = c:JAP this = c:JAP
-		# 	exists = c:USA this = c:USA
-		# }
+		# Generic fallback art must never be drawn beneath a dedicated profile.
+		# The explicit guard also fixes older saves that retained this variable.
+		NOR = {
+			AND = { exists = c:SPA this = c:SPA }
+			AND = { exists = c:IBE this = c:IBE }
+			AND = { exists = c:ITA this = c:ITA }
+			AND = { exists = c:SWE this = c:SWE }
+			AND = { exists = c:SCA this = c:SCA }
+			AND = { exists = c:BIC this = c:BIC }
+			AND = { exists = c:HND this = c:HND }
+			AND = { exists = c:MEX this = c:MEX }
+			AND = { exists = c:BRZ this = c:BRZ }
+			AND = { exists = c:NET this = c:NET }
+			AND = { exists = c:BEL this = c:BEL }
+			AND = { exists = c:PER this = c:PER }
+			AND = { exists = c:EGY this = c:EGY }
+			AND = { exists = c:KOR this = c:KOR }
+			AND = { exists = c:ARG this = c:ARG }
+		}
 		has_variable = generic_idea_country
 	}
 }

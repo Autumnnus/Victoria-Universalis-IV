@@ -25,11 +25,9 @@ ve_religious_high_settlement_effect = {
 	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_high_settlement_effect }
 }
 
-# The button widget supplies its own disabled treatment. Icons communicate the
-# active state model; program names and effects provide the mechanical detail.
-# Total Separation reuses the vanilla law icon (no original art can be
-# produced for a 4th icon family - see IDEA_REFACTOR_PLAN.md for the same
-# accepted limitation elsewhere in this mod).
+# The button widget supplies its own disabled treatment. Each model/program
+# pair resolves to a dedicated vanilla text icon in gui/ve_texticons.gui; the
+# label and tooltip below it provide the complete mechanical detail.
 ve_religion_aspect_1 = {
 	type = country
 	random_valid = no

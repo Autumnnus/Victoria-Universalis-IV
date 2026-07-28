@@ -159,7 +159,7 @@ ve_gui_panel_types
 										
 										icon = {
 											enabled = "[GetScriptedGui('ve_national_idea_1').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											texture = "gfx/interface/ve_ideas/global_institution_spread.dds"
+											texture = "gfx/interface/icons/notification_icons/technology.dds"
 											visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_1').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
@@ -211,7 +211,7 @@ ve_gui_panel_types
 										
 										icon = {
 											enabled = "[GetScriptedGui('ve_national_idea_2').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											texture = "gfx/interface/ve_national_ideas/fire_damage_received.dds"
+											texture = "gfx/interface/icons/military_icons/defense.dds"
 											visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_2').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
@@ -263,7 +263,7 @@ ve_gui_panel_types
 										
 										icon = {
 											enabled = "[GetScriptedGui('ve_national_idea_3').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											texture = "gfx/interface/ve_ideas/authority_icon.dds"
+											texture = "gfx/interface/icons/notification_icons/authority.dds"
 											visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_3').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
@@ -315,7 +315,7 @@ ve_gui_panel_types
 										
 										icon = {
 											enabled = "[GetScriptedGui('ve_national_idea_4').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											texture = "gfx/interface/ve_national_ideas/institution_growth.dds"
+											texture = "gfx/interface/icons/law_icons/public_schools.dds"
 											visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_4').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
@@ -367,7 +367,7 @@ ve_gui_panel_types
 										
 										icon = {
 											enabled = "[GetScriptedGui('ve_national_idea_5').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											texture = "gfx/interface/ve_ideas/trade_value.dds"
+											texture = "gfx/interface/icons/notification_icons/trade_route.dds"
 											visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_5').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
@@ -419,7 +419,7 @@ ve_gui_panel_types
 										
 										icon = {
 											enabled = "[GetScriptedGui('ve_national_idea_6').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											texture = "gfx/interface/ve_ideas/naval_morale.dds"
+											texture = "gfx/interface/icons/military_icons/navy_icons/accuracy.dds"
 											visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_6').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
@@ -471,7 +471,7 @@ ve_gui_panel_types
 										
 										icon = {
 											enabled = "[GetScriptedGui('ve_national_idea_7').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											texture = "gfx/interface/ve_national_ideas/max_attrition.dds"
+											texture = "gfx/interface/icons/production_method_icons/field_hospitals.dds"
 											visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											tooltip = "[GetScriptedGui('ve_national_idea_7').ExecuteTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 											using = tooltip_above
@@ -556,7 +556,7 @@ ve_gui_panel_types
 									}
 									icon = {
 										enabled = "[GetScriptedGui('ve_national_idea_7').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-										texture = "gfx/interface/ve_national_ideas/diplomatic_reputation.dds"
+										texture = "gfx/interface/icons/notification_icons/influence.dds"
 										visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 										using = tooltip_above
 										size = {
@@ -587,7 +587,7 @@ ve_gui_panel_types
 									}
 									
 									icon = {
-										texture = "gfx/interface/ve_national_ideas/unrest_suppression_icon.dds"
+										texture = "gfx/interface/icons/generic_icons/population_radical.dds"
 										visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 										using = tooltip_above
 										size = {
@@ -654,7 +654,7 @@ ve_gui_panel_types
 									}
 									
 									icon = {
-										texture = "gfx/interface/ve_national_ideas/bureaucracy_shortage.dds"
+										texture = "gfx/interface/icons/notification_icons/bureaucracy.dds"
 										visible = "[GetScriptedGui('ve_national_idea_img').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 										enabled = "[GetScriptedGui('ve_national_idea_7').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 										using = tooltip_above
@@ -794,7 +794,8 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'academic_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_innovativeness_ideas.dds"
+													# Vanilla university icon: the group-level emblem does not need a mod copy.
+													texture = "gfx/interface/icons/building_icons/building_university.dds"
 													size = {
 														120
 														120
@@ -808,7 +809,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'bureaucratic_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_administrative_ideas.dds"
+													texture = "gfx/interface/icons/pops_icons/bureaucrats.dds"
 													size = {
 														120
 														120
@@ -822,7 +823,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'parliamentary_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_aristocracy_ideas.dds"
+													texture = "gfx/interface/icons/political_parties/liberal.dds"
 													size = {
 														120
 														120
@@ -836,7 +837,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'welfare_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_influence_ideas.dds"
+													texture = "gfx/interface/icons/decree/decree_promote_social_mobility.dds"
 													size = {
 														120
 														120
@@ -850,7 +851,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'diplomatic_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_diplomatic_ideas.dds"
+													texture = "gfx/interface/icons/generic_icons/diplomatic_treaties.dds"
 													size = {
 														120
 														120
@@ -864,7 +865,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'nationalist_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_religious_ideas.dds"
+													texture = "gfx/interface/icons/generic_icons/national_awakening.dds"
 													size = {
 														120
 														120
@@ -878,7 +879,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'reformist_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_humanist_ideas.dds"
+													texture = "gfx/interface/icons/ideology_icons/reformer.dds"
 													size = {
 														120
 														120
@@ -1685,7 +1686,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'industrialist_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_economic_ideas.dds"
+													texture = "gfx/interface/icons/building_icons/steel_mills.dds"
 													size = {
 														120
 														120
@@ -1699,7 +1700,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'mercantile_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_trade_ideas.dds"
+													texture = "gfx/interface/icons/building_icons/building_trade_center.dds"
 													size = {
 														120
 														120
@@ -1713,7 +1714,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'financial_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_economic_ideas.dds"
+													texture = "gfx/interface/icons/building_icons/building_financial_district.dds"
 													size = {
 														120
 														120
@@ -1727,7 +1728,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'infrastructure_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_expansion_ideas.dds"
+													texture = "gfx/interface/icons/building_icons/building_railway.dds"
 													size = {
 														120
 														120
@@ -1741,7 +1742,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'extraction_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_indigenous_ideas.dds"
+													texture = "gfx/interface/icons/building_icons/iron_mine.dds"
 													size = {
 														120
 														120
@@ -1755,7 +1756,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'labour_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_indigenous_ideas.dds"
+													texture = "gfx/interface/icons/pops_icons/laborers.dds"
 													size = {
 														120
 														120
@@ -1769,7 +1770,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'agrarian_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_indigenous_ideas.dds"
+													texture = "gfx/interface/icons/building_icons/wheat_farm.dds"
 													size = {
 														120
 														120
@@ -2576,7 +2577,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'offensive_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_offensive_ideas.dds"
+													texture = "gfx/interface/icons/military_icons/offense.dds"
 													size = {
 														120
 														120
@@ -2590,7 +2591,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'defensive_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_defensive_ideas.dds"
+													texture = "gfx/interface/icons/military_icons/defense.dds"
 													size = {
 														120
 														120
@@ -2604,7 +2605,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'naval_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_naval_ideas.dds"
+													texture = "gfx/interface/icons/building_icons/naval_base.dds"
 													size = {
 														120
 														120
@@ -2618,7 +2619,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'professional_army_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_theocracy_gov_ideas.dds"
+													texture = "gfx/interface/icons/building_icons/building_barracks.dds"
 													size = {
 														120
 														120
@@ -2632,7 +2633,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'mass_conscription_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_offensive_ideas.dds"
+													texture = "gfx/interface/icons/building_icons/building_conscription_center.dds"
 													size = {
 														120
 														120
@@ -2646,7 +2647,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'colonial_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_expansion_ideas.dds"
+													texture = "gfx/interface/icons/principles_icons/colonial_offices.dds"
 													size = {
 														120
 														120
@@ -2660,7 +2661,7 @@ ve_gui_panel_types
 												}
 												visible = "[EqualTo_string(StateRegion.MakeScope.Var('idea_group').GetFlagName, 'war_economy_idea')]"
 												icon = {
-													texture = "gfx/interface/ve_ideas/idea_defensive_ideas.dds"
+													texture = "gfx/interface/icons/principles_icons/military_industry.dds"
 													size = {
 														120
 														120

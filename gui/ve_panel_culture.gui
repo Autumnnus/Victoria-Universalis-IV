@@ -76,17 +76,17 @@ types ve_gui_panel_types
 								spacing = 8
 								icon = {
 									size = { 40 40 }
-									texture = "gfx/interface/ve_ideas/idea_aristocracy_ideas.dds"
+									texture = "gfx/interface/icons/ideology_icons/ethno_nationalist.dds"
 									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)1')]"
 								}
 								icon = {
 									size = { 40 40 }
-									texture = "gfx/interface/ve_ideas/idea_humanist_ideas.dds"
+									texture = "gfx/interface/icons/ideology_icons/egalitarian.dds"
 									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)2')]"
 								}
 								icon = {
 									size = { 40 40 }
-									texture = "gfx/interface/ve_ideas/idea_diplomatic_ideas.dds"
+									texture = "gfx/interface/icons/ideology_icons/particularist.dds"
 									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)3')]"
 								}
 								textbox = {
@@ -254,7 +254,7 @@ types ve_gui_panel_types
 								}
 
 								icon = {
-									texture = "gfx/interface/ve_ideas/idea_aristocracy_ideas.dds"
+									texture = "gfx/interface/icons/ideology_icons/ethno_nationalist.dds"
 									size = { 64 64 }
 								}
 								textbox = {
@@ -343,7 +343,7 @@ types ve_gui_panel_types
 								}
 
 								icon = {
-									texture = "gfx/interface/ve_ideas/idea_humanist_ideas.dds"
+									texture = "gfx/interface/icons/ideology_icons/egalitarian.dds"
 									size = { 64 64 }
 								}
 								textbox = {
@@ -432,7 +432,7 @@ types ve_gui_panel_types
 								}
 
 								icon = {
-									texture = "gfx/interface/ve_ideas/idea_diplomatic_ideas.dds"
+									texture = "gfx/interface/icons/ideology_icons/particularist.dds"
 									size = { 64 64 }
 								}
 								textbox = {
@@ -646,7 +646,7 @@ types ve_gui_panel_types
 								spacing = 8
 								tooltip = "ve_national_curriculum_desc"
 								icon = {
-									texture = "gfx/interface/ve_ideas/idea_innovativeness_ideas.dds"
+									texture = "gfx/interface/icons/institution_icons/schools.dds"
 									size = { 56 56 }
 								}
 								textbox = {
@@ -701,7 +701,7 @@ types ve_gui_panel_types
 								spacing = 8
 								tooltip = "ve_shared_symbols_desc"
 								icon = {
-									texture = "gfx/interface/ve_ideas/idea_humanist_ideas.dds"
+									texture = "gfx/interface/icons/decree/decree_promote_national_values.dds"
 									size = { 56 56 }
 								}
 								textbox = {
@@ -756,8 +756,19 @@ types ve_gui_panel_types
 								spacing = 8
 								tooltip = "[GetPlayer.GetCustom('ve_model_project_description')]"
 								icon = {
-									texture = "gfx/interface/culture_conversion_cost.dds"
+									texture = "gfx/interface/icons/generic_icons/assimilation.dds"
 									size = { 56 56 }
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)1')]"
+								}
+								icon = {
+									texture = "gfx/interface/icons/law_icons/freedom_of_conscience.dds"
+									size = { 56 56 }
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)2')]"
+								}
+								icon = {
+									texture = "gfx/interface/icons/map_mode_icons/cultures.dds"
+									size = { 56 56 }
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_identity_model').GetValue, '(CFixedPoint)3')]"
 								}
 								textbox = {
 									raw_text = "[GetPlayer.GetCustom('ve_model_project_name')]"

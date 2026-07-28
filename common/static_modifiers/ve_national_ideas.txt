@@ -1,532 +1,532 @@
 gbr_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/navy_icons/accuracy.dds
 	ship_accuracy_add = 7
 }
 
 gbr_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/military_formation_identity_icons/army_01.dds
 	character_advancement_speed_mult = 0.1
 }
 
 gbr_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/prestige.dds
 	country_prestige_from_navy_power_projection_mult = 0.2
 }
 
 gbr_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/influence.dds
 	country_influence_mult = 0.1
 }
 
 gbr_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/technology.dds
 	country_production_tech_research_speed_mult = 0.05
 	country_military_tech_research_speed_mult = 0.05
 	country_society_tech_research_speed_mult = 0.05
 }
 
 gbr_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_advantage_mult = 0.15
 }
 
 gbr_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/colonial_resettlement.dds
 	state_colony_growth_creation_factor = 0.15
 }
 
 gbr_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/legitimacy.dds
 	country_legitimacy_headofstate_add = 10
 }
 
 gbr_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/railways.dds
 	state_infrastructure_mult = 0.15
 }
 
 gbr_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/offense.dds
 	unit_army_offense_add = 10
 }
 
 fra_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/influence.dds
 	country_influence_add = 150
 }
 
 fra_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/population_radical.dds
 	political_movement_radicalism_add = -0.1
 }
 
 fra_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/prestige.dds
 	country_prestige_mult = 0.15
 }
 
 fra_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/urban_center.dds
 	state_urbanization_per_level_add = 10
 }
 
 fra_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/morale.dds
 	unit_morale_damage_mult = 0.1
 }
 
 fra_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/population_radical.dds
 	country_radicalism_increases_violent_hostility_mult = -0.02
 	country_radicalism_increases_cultural_erasure_mult = -0.02
 	country_radicalism_increases_open_prejudice_mult = -0.02
 }
 
 fra_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/steel_mills.dds
 	building_group_bg_manufacturing_throughput_add = 0.1
 }
 
 fra_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/offense.dds
 	unit_army_offense_add = 10
 	building_training_rate_mult = 0.2
 }
 
 fra_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/bureaucracy.dds
 	state_bureaucracy_population_base_cost_factor_mult = -0.1
 }
 
 fra_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_pop_qualifications_mult = 0.1
 }
 
 ger_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/morale.dds
 	unit_morale_damage_mult = 0.1
 }
 
 ger_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_advantage_from_capacity_add = 0.1
 }
 
 ger_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/offense.dds
 	unit_army_offense_mult = 0.15
 }
 
 ger_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/technology.dds
 	country_tech_spread_mult = 0.1
 	building_university_throughput_add = 0.1
 }
 
 ger_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/legitimacy.dds
 	country_legitimacy_headofstate_add = 10
 }
 
 ger_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/ai_attitude_icons/domineering.dds
 	country_infamy_decay_mult = 0.1
 }
 
 ger_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/bureaucracy.dds
 	country_bureaucracy_mult = 0.1
 }
 
 ger_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/unused/birth_control.dds
 	state_birth_rate_mult = 0.02
 }
 
 ger_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/morale.dds
 	unit_morale_recovery_mult = 0.1
 	building_training_rate_mult = 0.1
 }
 
 ger_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_pop_qualifications_mult = 0.15
 }
 
 aus_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/morale.dds
 	unit_morale_loss_mult = -0.1
 }
 
 aus_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/character_trait_icons/experienced_diplomat.dds
 	country_improve_relations_speed_mult = 0.1
 }
 
 aus_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/legitimacy.dds
 	country_legitimacy_govt_leader_clout_add = 15
 }
 
 aus_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/ai_attitude_icons/domineering.dds
 	country_infamy_generation_mult = -0.1
 }
 
 aus_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/influence.dds
 	country_influence_add = 200
 }
 
 aus_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/defense.dds
 	unit_army_defense_add = 10
 	unit_morale_damage_mult = 0.05
 }
 
 aus_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/railways.dds
 	state_infrastructure_mult = 0.1
 }
 
 aus_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/map_mode_icons/gdp_ownership.dds
 	country_loan_interest_rate_mult = -0.1
 	state_capitalists_investment_pool_efficiency_mult = 0.1
 }
 
 aus_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/population_radical.dds
 	country_radicalism_increases_open_prejudice_mult = -0.025
 	country_radicalism_increases_second_rate_citizen_mult = -0.025
 	country_radicalism_increases_full_acceptance_mult = -0.025
 }
 
 aus_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/military_formation_identity_icons/army_01.dds
 	country_military_wages_mult = -0.2
 	building_training_rate_mult = 0.1
 }
 
 rus_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/bureaucracy.dds
 	state_bureaucracy_population_base_cost_factor_mult = -0.1
 }
 
 rus_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/navy_icons/supply_efficiency.dds
 	unit_supply_consumption_mult = -0.1
 }
 
 rus_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/legitimacy.dds
 	country_legitimacy_base_add = 10
 }
 
 rus_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/laws.dds
 	country_law_enactment_success_add = 0.05
 }
 
 rus_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/technology.dds
 	country_military_tech_research_speed_mult = 0.075
 }
 
 rus_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/resource.dds
 	country_resource_depletion_chance_mult = -0.2
 }
 
 rus_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/offense.dds
 	state_conscription_rate_mult = 0.25
 	unit_offense_add = 5
 }
 
 rus_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/ai_attitude_icons/domineering.dds
 	country_infamy_generation_mult = -0.15
 }
 
 rus_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/morale.dds
 	unit_morale_damage_mult = 0.1
 	unit_morale_loss_mult = -0.1
 }
 
 rus_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/prestige.dds
 	country_prestige_from_army_power_projection_mult = 0.15
 }
 
 tur_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/laws.dds
 	country_law_enactment_speed_mult = 0.1
 }
 
 tur_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/population_radical.dds
 	country_radicalism_increases_violent_hostility_mult = -0.025
 	country_radicalism_increases_cultural_erasure_mult = -0.025
 	country_radicalism_increases_open_prejudice_mult = -0.025
 }
 
 tur_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/army_reserves.dds
 	state_conscription_rate_mult = 0.2
 }
 
 tur_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/bureaucracy.dds
 	country_bureaucracy_mult = 0.1
 }
 
 tur_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/technology.dds
 	country_tech_spread_mult = 0.1
 	state_education_access_add = 0.015
 }
 
 tur_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/offense.dds
 	unit_morale_recovery_mult = 0.1
 	unit_army_offense_mult = 0.1
 }
 
 tur_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_advantage_from_capacity_add = 0.1
 }
 
 tur_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_capacity_mult = 0.2
 }
 
 tur_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/laws.dds
 	interest_group_in_government_approval_add = 2
 	state_decree_cost_mult = -0.2
 }
 
 tur_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/ai_attitude_icons/domineering.dds
 	country_infamy_decay_mult = 0.2
 }
 
 qng_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/influence.dds
 	country_influence_mult = 0.15
 }
 
 qng_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_capacity_mult = 0.15
 }
 
 qng_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/bureaucracy.dds
 	country_bureaucracy_investment_cost_factor_mult = -0.15
 }
 
 qng_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/technology.dds
 	country_society_tech_spread_mult = 0.05
 }
 
 qng_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/offense.dds
 	unit_morale_damage_mult = 0.1
 	unit_offense_developed_mult = 0.1
 }
 
 qng_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/prestige.dds
 	country_prestige_mult = 0.1
 }
 
 qng_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/ai_attitude_icons/domineering.dds
 	country_infamy_decay_mult = 0.1
 }
 
 qng_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/railways.dds
 	state_infrastructure_mult = 0.15
 }
 
 qng_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/defense.dds
 	unit_supply_consumption_mult = -0.25
 	unit_defense_hazardous_add = 10
 }
 
 qng_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/urban_center.dds
 	state_urbanization_per_level_mult = 0.1
 }
 
 jap_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/laws.dds
 	country_law_enactment_success_add = 0.05
 }
 
 jap_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/technology.dds
 	country_production_tech_research_speed_mult = 0.05
 	country_military_tech_research_speed_mult = 0.05
 	country_society_tech_research_speed_mult = 0.05
 }
 
 jap_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/maneuvers.dds
 	country_diplomatic_play_maneuvers_add = 15
 }
 
 jap_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/authority.dds
 	country_authority_add = 100
 }
 
 jap_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_education_access_add = 0.015
 }
 
 jap_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/morale.dds
 	unit_morale_damage_mult = 0.1
 	unit_morale_loss_mult = -0.1
 }
 
 jap_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/colonial_resettlement.dds
 	state_colony_growth_speed_mult = 0.1
 }
 
 jap_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/population_radical.dds
 	country_radicals_from_conquest_mult = -0.1
 }
 
 jap_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/bureaucracy.dds
 	state_bureaucracy_population_base_cost_factor_mult = -0.1
 }
 
 jap_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/offense.dds
 	unit_army_offense_mult = 0.1
 	unit_provinces_captured_mult = 0.2
 }
 
 usa_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/map_mode_icons/migration_attraction.dds
 	state_migration_pull_mult = 0.15
 }
 
 usa_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/legitimacy.dds
 	country_legitimacy_govt_total_votes_add = 8
 }
 
 usa_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_advantage_mult = 0.15
 }
 
 usa_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/population_radical.dds
 	country_radicalism_increases_open_prejudice_mult = -0.02
 	country_radicalism_increases_second_rate_citizen_mult = -0.02
 	country_radicalism_increases_full_acceptance_mult = -0.02
 }
 
 usa_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/map_mode_icons/migration_attraction.dds
 	state_working_adult_ratio_add = 0.05
 }
 
 usa_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/morale.dds
 	unit_morale_damage_mult = 0.1
 	unit_recovery_rate_add = 0.1
 }
 
 usa_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_education_access_wealth_add = 0.001
 	state_mortality_wealth_mult = -0.005
 }
 
 usa_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_advantage_mult = 0.1
 }
 
 usa_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_pop_qualifications_mult = 0.15
 }
 
 usa_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/gold_mine.dds
 	country_minting_mult = 0.15
 	country_minting_add = 500
 }
 
 generic_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/influence.dds
 	country_influence_add = 100
 }
 
 generic_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/population_radical.dds
 	political_movement_radicalism_add = -0.1
 }
 
 generic_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/bureaucracy.dds
 	country_bureaucracy_mult = 0.1
 }
 
 generic_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/technology.dds
 	country_tech_spread_add = 15
 }
 
 generic_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/defense.dds
 	unit_army_defense_add = 7
 	unit_morale_loss_mult = -0.1
 }
 
 generic_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/authority.dds
 	country_authority_mult = 0.1
 }
 
 generic_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_education_access_add = 0.015
 }
 
 generic_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_advantage_mult = 0.15
 }
 
 generic_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/navy_icons/accuracy.dds
 	unit_offense_water_add = 7
 	ship_accuracy_add = 7
 }
 
  generic_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/production_method_icons/field_hospitals.dds
 	battle_casualties_mult = -0.1
 }
 
@@ -534,601 +534,601 @@ generic_idea_6 = {
 # vanilla game/common/modifier_type_definitions (Victoria 3, read-only reference).
 
 ve_spa_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/influence.dds
 	country_influence_mult = 0.1
 }
 
 ve_spa_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_capacity_mult = 0.1
 }
 
 ve_spa_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/prestige.dds
 	country_prestige_from_navy_power_projection_mult = 0.15
 }
 
 ve_spa_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/technology.dds
 	country_society_tech_research_speed_mult = 0.05
 }
 
 ve_spa_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/colonial_resettlement.dds
 	state_colony_growth_creation_factor = 0.1
 }
 
 ve_spa_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_advantage_mult = 0.1
 }
 
 ve_spa_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/ai_attitude_icons/domineering.dds
 	country_infamy_generation_mult = -0.1
 }
 
 ve_spa_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/railways.dds
 	state_infrastructure_mult = 0.1
 }
 
 ve_spa_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/navy_icons/accuracy.dds
 	ship_accuracy_add = 5
 }
 
 ve_spa_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/prestige.dds
 	country_prestige_mult = 0.1
 }
 
 ve_ita_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_pop_qualifications_mult = 0.1
 }
 
 ve_ita_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/prestige.dds
 	country_prestige_mult = 0.1
 }
 
 ve_ita_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/steel_mills.dds
 	building_group_bg_manufacturing_throughput_add = 0.1
 }
 
 ve_ita_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/railways.dds
 	state_infrastructure_mult = 0.1
 }
 
 ve_ita_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/steel_mills.dds
 	building_group_bg_manufacturing_throughput_add = 0.05
 }
 
 ve_ita_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/building_university.dds
 	building_university_throughput_add = 0.1
 }
 
 ve_ita_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/laws.dds
 	country_law_enactment_speed_mult = 0.1
 }
 
 ve_ita_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/offense.dds
 	unit_army_offense_add = 5
 }
 
 ve_ita_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/navy_icons/ship_designer_icons/ship_designer_armor_high.dds
 	ship_armor_mult = 0.1
 }
 
 ve_ita_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_advantage_mult = 0.1
 }
 
 ve_swe_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_education_access_add = 0.01
 }
 
 ve_swe_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/iron_mine.dds
 	building_group_bg_mining_throughput_add = 0.05
 }
 
 ve_swe_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_pop_qualifications_mult = 0.15
 }
 
 ve_swe_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/technology.dds
 	country_tech_spread_mult = 0.1
 }
 
 ve_swe_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/railways.dds
 	state_infrastructure_mult = 0.1
 }
 
 ve_swe_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/defense.dds
 	unit_army_defense_add = 7
 }
 
 ve_swe_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/bureaucracy.dds
 	state_bureaucracy_population_base_cost_factor_mult = -0.1
 }
 
 ve_swe_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/technology.dds
 	country_military_tech_research_speed_mult = 0.05
 }
 
 ve_swe_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/navy_icons/supply_efficiency.dds
 	ship_supply_capacity_mult = 0.1
 }
 
 ve_swe_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/prestige.dds
 	country_prestige_from_army_power_projection_mult = 0.1
 }
 
 ve_ind_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/bureaucracy.dds
 	country_bureaucracy_mult = 0.1
 }
 
 ve_ind_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/commercial_agriculture.dds
 	building_group_bg_agriculture_throughput_add = 0.05
 }
 
 ve_ind_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_capacity_mult = 0.15
 }
 
 ve_ind_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/railways.dds
 	state_infrastructure_mult = 0.1
 }
 
 ve_ind_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_pop_qualifications_mult = 0.1
 }
 
 ve_ind_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/coffee_plantation.dds
 	building_group_bg_plantations_throughput_add = 0.05
 }
 
 ve_ind_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/army_reserves.dds
 	state_conscription_rate_mult = 0.15
 }
 
 ve_ind_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_advantage_mult = 0.1
 }
 
 ve_ind_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/laws.dds
 	country_law_enactment_speed_mult = 0.1
 }
 
 ve_ind_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/defense.dds
 	unit_army_defense_add = 7
 }
 
 ve_mex_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/iron_mine.dds
 	building_group_bg_mining_throughput_add = 0.05
 }
 
 ve_mex_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/authority.dds
 	country_authority_add = 50
 }
 
 ve_mex_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/map_mode_icons/migration_attraction.dds
 	state_migration_pull_mult = 0.15
 }
 
 ve_mex_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/resource.dds
 	building_group_bg_extraction_throughput_add = 0.1
 }
 
 ve_mex_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/resource.dds
 	country_resource_depletion_chance_mult = -0.1
 }
 
 ve_mex_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/defense.dds
 	unit_army_defense_add = 7
 }
 
 ve_mex_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/railways.dds
 	state_infrastructure_mult = 0.1
 }
 
 ve_mex_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/ai_attitude_icons/domineering.dds
 	country_infamy_decay_mult = 0.1
 }
 
 ve_mex_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/technology.dds
 	country_society_tech_research_speed_mult = 0.05
 }
 
 ve_mex_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/prestige.dds
 	country_prestige_mult = 0.1
 }
 
 ve_bra_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/map_mode_icons/migration_attraction.dds
 	state_migration_pull_mult = 0.1
 }
 
 ve_bra_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/coffee_plantation.dds
 	building_group_bg_plantations_throughput_add = 0.05
 }
 
 ve_bra_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/prestige.dds
 	country_prestige_mult = 0.1
 }
 
 ve_bra_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/coffee_plantation.dds
 	building_group_bg_plantations_throughput_add = 0.1
 }
 
 ve_bra_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/resource.dds
 	building_group_bg_extraction_throughput_add = 0.05
 }
 
 ve_bra_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_capacity_mult = 0.1
 }
 
 ve_bra_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_education_access_add = 0.01
 }
 
 ve_bra_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/defense.dds
 	unit_army_defense_add = 5
 }
 
 ve_bra_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_pop_qualifications_mult = 0.1
 }
 
 ve_bra_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/assimilation.dds
 	state_assimilation_mult = 0.1
 }
 
 ve_net_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_capacity_mult = 0.15
 }
 
 ve_net_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/navy_icons/accuracy.dds
 	ship_accuracy_add = 5
 }
 
 ve_net_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/map_mode_icons/gdp_ownership.dds
 	state_capitalists_investment_pool_efficiency_mult = 0.1
 }
 
 ve_net_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_advantage_mult = 0.15
 }
 
 ve_net_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/influence.dds
 	country_influence_mult = 0.1
 }
 
 ve_net_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/navy_icons/ship_designer_icons/ship_designer_armor_high.dds
 	ship_armor_mult = 0.1
 }
 
 ve_net_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/gold_mine.dds
 	country_minting_mult = 0.1
 }
 
 ve_net_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/colonial_resettlement.dds
 	state_colony_growth_creation_factor = 0.1
 }
 
 ve_net_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/railways.dds
 	state_infrastructure_mult = 0.1
 }
 
 ve_net_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/prestige.dds
 	country_prestige_from_navy_power_projection_mult = 0.1
 }
 
 ve_bel_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/railways.dds
 	state_infrastructure_mult = 0.1
 }
 
 ve_bel_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/steel_mills.dds
 	building_group_bg_manufacturing_throughput_add = 0.05
 }
 
 ve_bel_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/steel_mills.dds
 	building_group_bg_heavy_industry_throughput_add = 0.1
 }
 
 ve_bel_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/building_university.dds
 	building_university_throughput_add = 0.1
 }
 
 ve_bel_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/technology.dds
 	country_tech_spread_mult = 0.1
 }
 
 ve_bel_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_pop_qualifications_mult = 0.1
 }
 
 ve_bel_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/steel_mills.dds
 	building_group_bg_heavy_industry_throughput_add = 0.05
 }
 
 ve_bel_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_advantage_mult = 0.1
 }
 
 ve_bel_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/defense.dds
 	unit_army_defense_add = 5
 }
 
 ve_bel_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/bureaucracy.dds
 	country_bureaucracy_mult = 0.1
 }
 
 ve_per_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/resource.dds
 	country_resource_depletion_chance_mult = -0.1
 }
 
 ve_per_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_capacity_mult = 0.1
 }
 
 ve_per_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/iron_mine.dds
 	building_group_bg_mining_throughput_add = 0.1
 }
 
 ve_per_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/resource.dds
 	building_group_bg_extraction_throughput_add = 0.1
 }
 
 ve_per_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/defense.dds
 	unit_army_defense_add = 7
 }
 
 ve_per_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/bureaucracy.dds
 	country_bureaucracy_mult = 0.1
 }
 
 ve_per_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/ai_attitude_icons/domineering.dds
 	country_infamy_generation_mult = -0.1
 }
 
 ve_per_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/railways.dds
 	state_infrastructure_mult = 0.1
 }
 
 ve_per_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/authority.dds
 	country_authority_add = 50
 }
 
 ve_per_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/morale.dds
 	unit_morale_recovery_mult = 0.1
 }
 
 ve_egy_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/commercial_agriculture.dds
 	building_group_bg_agriculture_throughput_add = 0.05
 }
 
 ve_egy_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_capacity_mult = 0.1
 }
 
 ve_egy_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/building_icons/coffee_plantation.dds
 	building_group_bg_plantations_throughput_add = 0.1
 }
 
 ve_egy_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/railways.dds
 	state_infrastructure_mult = 0.1
 }
 
 ve_egy_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/bureaucracy.dds
 	country_bureaucracy_mult = 0.1
 }
 
 ve_egy_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/map_mode_icons/migration_attraction.dds
 	state_migration_pull_mult = 0.1
 }
 
 ve_egy_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/offense.dds
 	unit_army_offense_add = 5
 }
 
 ve_egy_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/prestige.dds
 	country_prestige_mult = 0.1
 }
 
 ve_egy_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_education_access_add = 0.01
 }
 
 ve_egy_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/navy_icons/supply_efficiency.dds
 	ship_supply_capacity_mult = 0.1
 }
 
 ve_kor_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_education_access_add = 0.01
 }
 
 ve_kor_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/technology.dds
 	country_military_tech_research_speed_mult = 0.05
 }
 
 ve_kor_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/technology.dds
 	country_tech_spread_mult = 0.1
 }
 
 ve_kor_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_pop_qualifications_mult = 0.1
 }
 
 ve_kor_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/bureaucracy.dds
 	country_bureaucracy_mult = 0.1
 }
 
 ve_kor_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/defense.dds
 	unit_army_defense_add = 7
 }
 
 ve_kor_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/morale.dds
 	unit_morale_damage_mult = 0.1
 }
 
 ve_kor_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/railways.dds
 	state_infrastructure_mult = 0.1
 }
 
 ve_kor_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/generic_icons/prestige.dds
 	country_prestige_mult = 0.1
 }
 
 ve_kor_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/authority.dds
 	country_authority_add = 50
 }
 
 ve_arg_idea_tradition_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/map_mode_icons/migration_attraction.dds
 	state_migration_pull_mult = 0.1
 }
 
 ve_arg_idea_tradition_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/commercial_agriculture.dds
 	building_group_bg_agriculture_throughput_add = 0.05
 }
 
 ve_arg_idea_bonus = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/map_mode_icons/migration_attraction.dds
 	state_migration_pull_mult = 0.15
 }
 
 ve_arg_idea_1 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/commercial_agriculture.dds
 	building_group_bg_agriculture_throughput_add = 0.1
 }
 
 ve_arg_idea_2 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/invention_icons/railways.dds
 	state_infrastructure_mult = 0.1
 }
 
 ve_arg_idea_3 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/trade_route.dds
 	state_trade_advantage_mult = 0.1
 }
 
 ve_arg_idea_4 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/law_icons/public_schools.dds
 	state_pop_qualifications_mult = 0.1
 }
 
 ve_arg_idea_5 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/military_icons/offense.dds
 	unit_army_offense_add = 5
 }
 
 ve_arg_idea_6 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/resource.dds
 	country_resource_depletion_chance_mult = -0.1
 }
 
 ve_arg_idea_7 = {
-	icon = gfx/interface/intelligensia.dds
+	icon = gfx/interface/icons/notification_icons/authority.dds
 	country_authority_add = 50
 }
