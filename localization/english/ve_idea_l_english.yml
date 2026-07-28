@@ -45,7 +45,7 @@
  colonial_idea_name:0 "#b Colonial Idea"
 
 
- ve_max_idea_text:0 "[GetPlayer.MakeScope.Var('idea_group_unlocked').GetValue] / 8"
+ ve_max_idea_text:0 "[GetPlayer.MakeScope.Var('idea_group_unlocked').GetValue] / 7"
  nationalist_idea_5_tt:0 "#positive_value +0.7% Missionary Conversion Power"
  nationalist_idea_7_tt:0 "#P +2 Missionaries"
- embrace_idea_tt:0 "#Y An idea group slot will be activated every 10 years. The maximum idea group limit is 8."
+ embrace_idea_tt:0 "#Y An idea group slot will be activated every 10 years. The maximum idea group limit is 7."

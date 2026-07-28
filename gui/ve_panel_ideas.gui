@@ -70,7 +70,7 @@ ve_gui_panel_types
 									"values"
 									{
 										# max = "[GetPlayer.MakeScope.Var('idea_group_cap').GetValue]"
-										max = 8
+										max = 7
 										value = "[GetPlayer.MakeScope.Var('idea_group_unlocked').GetValue]"
 									}
 								}

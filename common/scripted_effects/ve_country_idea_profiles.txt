@@ -1,0 +1,1024 @@
+# Additional national idea application and cancellation profiles.
+# These are dispatched by ve_scripted_effects.txt and displayed by ve_national_ideas.txt.
+
+ve_spanish_ideas = {
+	if = {
+		limit = {
+			var:national_idea_pool >= 3
+			NOT = { has_modifier = ve_spa_idea_1 }
+		}
+		add_modifier = { name = ve_spa_idea_1 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 6
+			NOT = { has_modifier = ve_spa_idea_2 }
+		}
+		add_modifier = { name = ve_spa_idea_2 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 9
+			NOT = { has_modifier = ve_spa_idea_3 }
+		}
+		add_modifier = { name = ve_spa_idea_3 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 12
+			NOT = { has_modifier = ve_spa_idea_4 }
+		}
+		add_modifier = { name = ve_spa_idea_4 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 15
+			NOT = { has_modifier = ve_spa_idea_5 }
+		}
+		add_modifier = { name = ve_spa_idea_5 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 18
+			NOT = { has_modifier = ve_spa_idea_6 }
+		}
+		add_modifier = { name = ve_spa_idea_6 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 21
+			NOT = { has_modifier = ve_spa_idea_7 }
+		}
+		add_modifier = { name = ve_spa_idea_7 months = -1 }
+		add_modifier = { name = ve_spa_idea_bonus months = -1 }
+	}
+}
+
+ve_italian_ideas = {
+	if = {
+		limit = {
+			var:national_idea_pool >= 3
+			NOT = { has_modifier = ve_ita_idea_1 }
+		}
+		add_modifier = { name = ve_ita_idea_1 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 6
+			NOT = { has_modifier = ve_ita_idea_2 }
+		}
+		add_modifier = { name = ve_ita_idea_2 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 9
+			NOT = { has_modifier = ve_ita_idea_3 }
+		}
+		add_modifier = { name = ve_ita_idea_3 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 12
+			NOT = { has_modifier = ve_ita_idea_4 }
+		}
+		add_modifier = { name = ve_ita_idea_4 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 15
+			NOT = { has_modifier = ve_ita_idea_5 }
+		}
+		add_modifier = { name = ve_ita_idea_5 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 18
+			NOT = { has_modifier = ve_ita_idea_6 }
+		}
+		add_modifier = { name = ve_ita_idea_6 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 21
+			NOT = { has_modifier = ve_ita_idea_7 }
+		}
+		add_modifier = { name = ve_ita_idea_7 months = -1 }
+		add_modifier = { name = ve_ita_idea_bonus months = -1 }
+	}
+}
+
+ve_swedish_ideas = {
+	if = {
+		limit = {
+			var:national_idea_pool >= 3
+			NOT = { has_modifier = ve_swe_idea_1 }
+		}
+		add_modifier = { name = ve_swe_idea_1 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 6
+			NOT = { has_modifier = ve_swe_idea_2 }
+		}
+		add_modifier = { name = ve_swe_idea_2 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 9
+			NOT = { has_modifier = ve_swe_idea_3 }
+		}
+		add_modifier = { name = ve_swe_idea_3 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 12
+			NOT = { has_modifier = ve_swe_idea_4 }
+		}
+		add_modifier = { name = ve_swe_idea_4 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 15
+			NOT = { has_modifier = ve_swe_idea_5 }
+		}
+		add_modifier = { name = ve_swe_idea_5 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 18
+			NOT = { has_modifier = ve_swe_idea_6 }
+		}
+		add_modifier = { name = ve_swe_idea_6 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 21
+			NOT = { has_modifier = ve_swe_idea_7 }
+		}
+		add_modifier = { name = ve_swe_idea_7 months = -1 }
+		add_modifier = { name = ve_swe_idea_bonus months = -1 }
+	}
+}
+
+ve_indian_ideas = {
+	if = {
+		limit = {
+			var:national_idea_pool >= 3
+			NOT = { has_modifier = ve_ind_idea_1 }
+		}
+		add_modifier = { name = ve_ind_idea_1 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 6
+			NOT = { has_modifier = ve_ind_idea_2 }
+		}
+		add_modifier = { name = ve_ind_idea_2 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 9
+			NOT = { has_modifier = ve_ind_idea_3 }
+		}
+		add_modifier = { name = ve_ind_idea_3 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 12
+			NOT = { has_modifier = ve_ind_idea_4 }
+		}
+		add_modifier = { name = ve_ind_idea_4 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 15
+			NOT = { has_modifier = ve_ind_idea_5 }
+		}
+		add_modifier = { name = ve_ind_idea_5 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 18
+			NOT = { has_modifier = ve_ind_idea_6 }
+		}
+		add_modifier = { name = ve_ind_idea_6 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 21
+			NOT = { has_modifier = ve_ind_idea_7 }
+		}
+		add_modifier = { name = ve_ind_idea_7 months = -1 }
+		add_modifier = { name = ve_ind_idea_bonus months = -1 }
+	}
+}
+
+ve_mexican_ideas = {
+	if = {
+		limit = {
+			var:national_idea_pool >= 3
+			NOT = { has_modifier = ve_mex_idea_1 }
+		}
+		add_modifier = { name = ve_mex_idea_1 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 6
+			NOT = { has_modifier = ve_mex_idea_2 }
+		}
+		add_modifier = { name = ve_mex_idea_2 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 9
+			NOT = { has_modifier = ve_mex_idea_3 }
+		}
+		add_modifier = { name = ve_mex_idea_3 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 12
+			NOT = { has_modifier = ve_mex_idea_4 }
+		}
+		add_modifier = { name = ve_mex_idea_4 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 15
+			NOT = { has_modifier = ve_mex_idea_5 }
+		}
+		add_modifier = { name = ve_mex_idea_5 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 18
+			NOT = { has_modifier = ve_mex_idea_6 }
+		}
+		add_modifier = { name = ve_mex_idea_6 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 21
+			NOT = { has_modifier = ve_mex_idea_7 }
+		}
+		add_modifier = { name = ve_mex_idea_7 months = -1 }
+		add_modifier = { name = ve_mex_idea_bonus months = -1 }
+	}
+}
+
+ve_brazilian_ideas = {
+	if = {
+		limit = {
+			var:national_idea_pool >= 3
+			NOT = { has_modifier = ve_bra_idea_1 }
+		}
+		add_modifier = { name = ve_bra_idea_1 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 6
+			NOT = { has_modifier = ve_bra_idea_2 }
+		}
+		add_modifier = { name = ve_bra_idea_2 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 9
+			NOT = { has_modifier = ve_bra_idea_3 }
+		}
+		add_modifier = { name = ve_bra_idea_3 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 12
+			NOT = { has_modifier = ve_bra_idea_4 }
+		}
+		add_modifier = { name = ve_bra_idea_4 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 15
+			NOT = { has_modifier = ve_bra_idea_5 }
+		}
+		add_modifier = { name = ve_bra_idea_5 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 18
+			NOT = { has_modifier = ve_bra_idea_6 }
+		}
+		add_modifier = { name = ve_bra_idea_6 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 21
+			NOT = { has_modifier = ve_bra_idea_7 }
+		}
+		add_modifier = { name = ve_bra_idea_7 months = -1 }
+		add_modifier = { name = ve_bra_idea_bonus months = -1 }
+	}
+}
+
+ve_dutch_ideas = {
+	if = {
+		limit = {
+			var:national_idea_pool >= 3
+			NOT = { has_modifier = ve_net_idea_1 }
+		}
+		add_modifier = { name = ve_net_idea_1 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 6
+			NOT = { has_modifier = ve_net_idea_2 }
+		}
+		add_modifier = { name = ve_net_idea_2 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 9
+			NOT = { has_modifier = ve_net_idea_3 }
+		}
+		add_modifier = { name = ve_net_idea_3 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 12
+			NOT = { has_modifier = ve_net_idea_4 }
+		}
+		add_modifier = { name = ve_net_idea_4 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 15
+			NOT = { has_modifier = ve_net_idea_5 }
+		}
+		add_modifier = { name = ve_net_idea_5 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 18
+			NOT = { has_modifier = ve_net_idea_6 }
+		}
+		add_modifier = { name = ve_net_idea_6 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 21
+			NOT = { has_modifier = ve_net_idea_7 }
+		}
+		add_modifier = { name = ve_net_idea_7 months = -1 }
+		add_modifier = { name = ve_net_idea_bonus months = -1 }
+	}
+}
+
+ve_belgian_ideas = {
+	if = {
+		limit = {
+			var:national_idea_pool >= 3
+			NOT = { has_modifier = ve_bel_idea_1 }
+		}
+		add_modifier = { name = ve_bel_idea_1 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 6
+			NOT = { has_modifier = ve_bel_idea_2 }
+		}
+		add_modifier = { name = ve_bel_idea_2 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 9
+			NOT = { has_modifier = ve_bel_idea_3 }
+		}
+		add_modifier = { name = ve_bel_idea_3 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 12
+			NOT = { has_modifier = ve_bel_idea_4 }
+		}
+		add_modifier = { name = ve_bel_idea_4 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 15
+			NOT = { has_modifier = ve_bel_idea_5 }
+		}
+		add_modifier = { name = ve_bel_idea_5 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 18
+			NOT = { has_modifier = ve_bel_idea_6 }
+		}
+		add_modifier = { name = ve_bel_idea_6 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 21
+			NOT = { has_modifier = ve_bel_idea_7 }
+		}
+		add_modifier = { name = ve_bel_idea_7 months = -1 }
+		add_modifier = { name = ve_bel_idea_bonus months = -1 }
+	}
+}
+
+ve_persian_ideas = {
+	if = {
+		limit = {
+			var:national_idea_pool >= 3
+			NOT = { has_modifier = ve_per_idea_1 }
+		}
+		add_modifier = { name = ve_per_idea_1 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 6
+			NOT = { has_modifier = ve_per_idea_2 }
+		}
+		add_modifier = { name = ve_per_idea_2 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 9
+			NOT = { has_modifier = ve_per_idea_3 }
+		}
+		add_modifier = { name = ve_per_idea_3 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 12
+			NOT = { has_modifier = ve_per_idea_4 }
+		}
+		add_modifier = { name = ve_per_idea_4 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 15
+			NOT = { has_modifier = ve_per_idea_5 }
+		}
+		add_modifier = { name = ve_per_idea_5 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 18
+			NOT = { has_modifier = ve_per_idea_6 }
+		}
+		add_modifier = { name = ve_per_idea_6 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 21
+			NOT = { has_modifier = ve_per_idea_7 }
+		}
+		add_modifier = { name = ve_per_idea_7 months = -1 }
+		add_modifier = { name = ve_per_idea_bonus months = -1 }
+	}
+}
+
+ve_egyptian_ideas = {
+	if = {
+		limit = {
+			var:national_idea_pool >= 3
+			NOT = { has_modifier = ve_egy_idea_1 }
+		}
+		add_modifier = { name = ve_egy_idea_1 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 6
+			NOT = { has_modifier = ve_egy_idea_2 }
+		}
+		add_modifier = { name = ve_egy_idea_2 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 9
+			NOT = { has_modifier = ve_egy_idea_3 }
+		}
+		add_modifier = { name = ve_egy_idea_3 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 12
+			NOT = { has_modifier = ve_egy_idea_4 }
+		}
+		add_modifier = { name = ve_egy_idea_4 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 15
+			NOT = { has_modifier = ve_egy_idea_5 }
+		}
+		add_modifier = { name = ve_egy_idea_5 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 18
+			NOT = { has_modifier = ve_egy_idea_6 }
+		}
+		add_modifier = { name = ve_egy_idea_6 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 21
+			NOT = { has_modifier = ve_egy_idea_7 }
+		}
+		add_modifier = { name = ve_egy_idea_7 months = -1 }
+		add_modifier = { name = ve_egy_idea_bonus months = -1 }
+	}
+}
+
+ve_korean_ideas = {
+	if = {
+		limit = {
+			var:national_idea_pool >= 3
+			NOT = { has_modifier = ve_kor_idea_1 }
+		}
+		add_modifier = { name = ve_kor_idea_1 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 6
+			NOT = { has_modifier = ve_kor_idea_2 }
+		}
+		add_modifier = { name = ve_kor_idea_2 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 9
+			NOT = { has_modifier = ve_kor_idea_3 }
+		}
+		add_modifier = { name = ve_kor_idea_3 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 12
+			NOT = { has_modifier = ve_kor_idea_4 }
+		}
+		add_modifier = { name = ve_kor_idea_4 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 15
+			NOT = { has_modifier = ve_kor_idea_5 }
+		}
+		add_modifier = { name = ve_kor_idea_5 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 18
+			NOT = { has_modifier = ve_kor_idea_6 }
+		}
+		add_modifier = { name = ve_kor_idea_6 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 21
+			NOT = { has_modifier = ve_kor_idea_7 }
+		}
+		add_modifier = { name = ve_kor_idea_7 months = -1 }
+		add_modifier = { name = ve_kor_idea_bonus months = -1 }
+	}
+}
+
+ve_argentine_ideas = {
+	if = {
+		limit = {
+			var:national_idea_pool >= 3
+			NOT = { has_modifier = ve_arg_idea_1 }
+		}
+		add_modifier = { name = ve_arg_idea_1 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 6
+			NOT = { has_modifier = ve_arg_idea_2 }
+		}
+		add_modifier = { name = ve_arg_idea_2 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 9
+			NOT = { has_modifier = ve_arg_idea_3 }
+		}
+		add_modifier = { name = ve_arg_idea_3 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 12
+			NOT = { has_modifier = ve_arg_idea_4 }
+		}
+		add_modifier = { name = ve_arg_idea_4 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 15
+			NOT = { has_modifier = ve_arg_idea_5 }
+		}
+		add_modifier = { name = ve_arg_idea_5 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 18
+			NOT = { has_modifier = ve_arg_idea_6 }
+		}
+		add_modifier = { name = ve_arg_idea_6 months = -1 }
+	}
+	if = {
+		limit = {
+			var:national_idea_pool >= 21
+			NOT = { has_modifier = ve_arg_idea_7 }
+		}
+		add_modifier = { name = ve_arg_idea_7 months = -1 }
+		add_modifier = { name = ve_arg_idea_bonus months = -1 }
+	}
+}
+
+ve_cancel_spanish_ideas = {
+	if = {
+		limit = { var:national_idea_pool < 3 has_modifier = ve_spa_idea_1 }
+		remove_modifier = ve_spa_idea_1
+	}
+	if = {
+		limit = { var:national_idea_pool < 6 has_modifier = ve_spa_idea_2 }
+		remove_modifier = ve_spa_idea_2
+	}
+	if = {
+		limit = { var:national_idea_pool < 9 has_modifier = ve_spa_idea_3 }
+		remove_modifier = ve_spa_idea_3
+	}
+	if = {
+		limit = { var:national_idea_pool < 12 has_modifier = ve_spa_idea_4 }
+		remove_modifier = ve_spa_idea_4
+	}
+	if = {
+		limit = { var:national_idea_pool < 15 has_modifier = ve_spa_idea_5 }
+		remove_modifier = ve_spa_idea_5
+	}
+	if = {
+		limit = { var:national_idea_pool < 18 has_modifier = ve_spa_idea_6 }
+		remove_modifier = ve_spa_idea_6
+	}
+	if = {
+		limit = { var:national_idea_pool < 21 has_modifier = ve_spa_idea_7 }
+		remove_modifier = ve_spa_idea_7
+		remove_modifier = ve_spa_idea_bonus
+	}
+}
+
+ve_cancel_italian_ideas = {
+	if = {
+		limit = { var:national_idea_pool < 3 has_modifier = ve_ita_idea_1 }
+		remove_modifier = ve_ita_idea_1
+	}
+	if = {
+		limit = { var:national_idea_pool < 6 has_modifier = ve_ita_idea_2 }
+		remove_modifier = ve_ita_idea_2
+	}
+	if = {
+		limit = { var:national_idea_pool < 9 has_modifier = ve_ita_idea_3 }
+		remove_modifier = ve_ita_idea_3
+	}
+	if = {
+		limit = { var:national_idea_pool < 12 has_modifier = ve_ita_idea_4 }
+		remove_modifier = ve_ita_idea_4
+	}
+	if = {
+		limit = { var:national_idea_pool < 15 has_modifier = ve_ita_idea_5 }
+		remove_modifier = ve_ita_idea_5
+	}
+	if = {
+		limit = { var:national_idea_pool < 18 has_modifier = ve_ita_idea_6 }
+		remove_modifier = ve_ita_idea_6
+	}
+	if = {
+		limit = { var:national_idea_pool < 21 has_modifier = ve_ita_idea_7 }
+		remove_modifier = ve_ita_idea_7
+		remove_modifier = ve_ita_idea_bonus
+	}
+}
+
+ve_cancel_swedish_ideas = {
+	if = {
+		limit = { var:national_idea_pool < 3 has_modifier = ve_swe_idea_1 }
+		remove_modifier = ve_swe_idea_1
+	}
+	if = {
+		limit = { var:national_idea_pool < 6 has_modifier = ve_swe_idea_2 }
+		remove_modifier = ve_swe_idea_2
+	}
+	if = {
+		limit = { var:national_idea_pool < 9 has_modifier = ve_swe_idea_3 }
+		remove_modifier = ve_swe_idea_3
+	}
+	if = {
+		limit = { var:national_idea_pool < 12 has_modifier = ve_swe_idea_4 }
+		remove_modifier = ve_swe_idea_4
+	}
+	if = {
+		limit = { var:national_idea_pool < 15 has_modifier = ve_swe_idea_5 }
+		remove_modifier = ve_swe_idea_5
+	}
+	if = {
+		limit = { var:national_idea_pool < 18 has_modifier = ve_swe_idea_6 }
+		remove_modifier = ve_swe_idea_6
+	}
+	if = {
+		limit = { var:national_idea_pool < 21 has_modifier = ve_swe_idea_7 }
+		remove_modifier = ve_swe_idea_7
+		remove_modifier = ve_swe_idea_bonus
+	}
+}
+
+ve_cancel_indian_ideas = {
+	if = {
+		limit = { var:national_idea_pool < 3 has_modifier = ve_ind_idea_1 }
+		remove_modifier = ve_ind_idea_1
+	}
+	if = {
+		limit = { var:national_idea_pool < 6 has_modifier = ve_ind_idea_2 }
+		remove_modifier = ve_ind_idea_2
+	}
+	if = {
+		limit = { var:national_idea_pool < 9 has_modifier = ve_ind_idea_3 }
+		remove_modifier = ve_ind_idea_3
+	}
+	if = {
+		limit = { var:national_idea_pool < 12 has_modifier = ve_ind_idea_4 }
+		remove_modifier = ve_ind_idea_4
+	}
+	if = {
+		limit = { var:national_idea_pool < 15 has_modifier = ve_ind_idea_5 }
+		remove_modifier = ve_ind_idea_5
+	}
+	if = {
+		limit = { var:national_idea_pool < 18 has_modifier = ve_ind_idea_6 }
+		remove_modifier = ve_ind_idea_6
+	}
+	if = {
+		limit = { var:national_idea_pool < 21 has_modifier = ve_ind_idea_7 }
+		remove_modifier = ve_ind_idea_7
+		remove_modifier = ve_ind_idea_bonus
+	}
+}
+
+ve_cancel_mexican_ideas = {
+	if = {
+		limit = { var:national_idea_pool < 3 has_modifier = ve_mex_idea_1 }
+		remove_modifier = ve_mex_idea_1
+	}
+	if = {
+		limit = { var:national_idea_pool < 6 has_modifier = ve_mex_idea_2 }
+		remove_modifier = ve_mex_idea_2
+	}
+	if = {
+		limit = { var:national_idea_pool < 9 has_modifier = ve_mex_idea_3 }
+		remove_modifier = ve_mex_idea_3
+	}
+	if = {
+		limit = { var:national_idea_pool < 12 has_modifier = ve_mex_idea_4 }
+		remove_modifier = ve_mex_idea_4
+	}
+	if = {
+		limit = { var:national_idea_pool < 15 has_modifier = ve_mex_idea_5 }
+		remove_modifier = ve_mex_idea_5
+	}
+	if = {
+		limit = { var:national_idea_pool < 18 has_modifier = ve_mex_idea_6 }
+		remove_modifier = ve_mex_idea_6
+	}
+	if = {
+		limit = { var:national_idea_pool < 21 has_modifier = ve_mex_idea_7 }
+		remove_modifier = ve_mex_idea_7
+		remove_modifier = ve_mex_idea_bonus
+	}
+}
+
+ve_cancel_brazilian_ideas = {
+	if = {
+		limit = { var:national_idea_pool < 3 has_modifier = ve_bra_idea_1 }
+		remove_modifier = ve_bra_idea_1
+	}
+	if = {
+		limit = { var:national_idea_pool < 6 has_modifier = ve_bra_idea_2 }
+		remove_modifier = ve_bra_idea_2
+	}
+	if = {
+		limit = { var:national_idea_pool < 9 has_modifier = ve_bra_idea_3 }
+		remove_modifier = ve_bra_idea_3
+	}
+	if = {
+		limit = { var:national_idea_pool < 12 has_modifier = ve_bra_idea_4 }
+		remove_modifier = ve_bra_idea_4
+	}
+	if = {
+		limit = { var:national_idea_pool < 15 has_modifier = ve_bra_idea_5 }
+		remove_modifier = ve_bra_idea_5
+	}
+	if = {
+		limit = { var:national_idea_pool < 18 has_modifier = ve_bra_idea_6 }
+		remove_modifier = ve_bra_idea_6
+	}
+	if = {
+		limit = { var:national_idea_pool < 21 has_modifier = ve_bra_idea_7 }
+		remove_modifier = ve_bra_idea_7
+		remove_modifier = ve_bra_idea_bonus
+	}
+}
+
+ve_cancel_dutch_ideas = {
+	if = {
+		limit = { var:national_idea_pool < 3 has_modifier = ve_net_idea_1 }
+		remove_modifier = ve_net_idea_1
+	}
+	if = {
+		limit = { var:national_idea_pool < 6 has_modifier = ve_net_idea_2 }
+		remove_modifier = ve_net_idea_2
+	}
+	if = {
+		limit = { var:national_idea_pool < 9 has_modifier = ve_net_idea_3 }
+		remove_modifier = ve_net_idea_3
+	}
+	if = {
+		limit = { var:national_idea_pool < 12 has_modifier = ve_net_idea_4 }
+		remove_modifier = ve_net_idea_4
+	}
+	if = {
+		limit = { var:national_idea_pool < 15 has_modifier = ve_net_idea_5 }
+		remove_modifier = ve_net_idea_5
+	}
+	if = {
+		limit = { var:national_idea_pool < 18 has_modifier = ve_net_idea_6 }
+		remove_modifier = ve_net_idea_6
+	}
+	if = {
+		limit = { var:national_idea_pool < 21 has_modifier = ve_net_idea_7 }
+		remove_modifier = ve_net_idea_7
+		remove_modifier = ve_net_idea_bonus
+	}
+}
+
+ve_cancel_belgian_ideas = {
+	if = {
+		limit = { var:national_idea_pool < 3 has_modifier = ve_bel_idea_1 }
+		remove_modifier = ve_bel_idea_1
+	}
+	if = {
+		limit = { var:national_idea_pool < 6 has_modifier = ve_bel_idea_2 }
+		remove_modifier = ve_bel_idea_2
+	}
+	if = {
+		limit = { var:national_idea_pool < 9 has_modifier = ve_bel_idea_3 }
+		remove_modifier = ve_bel_idea_3
+	}
+	if = {
+		limit = { var:national_idea_pool < 12 has_modifier = ve_bel_idea_4 }
+		remove_modifier = ve_bel_idea_4
+	}
+	if = {
+		limit = { var:national_idea_pool < 15 has_modifier = ve_bel_idea_5 }
+		remove_modifier = ve_bel_idea_5
+	}
+	if = {
+		limit = { var:national_idea_pool < 18 has_modifier = ve_bel_idea_6 }
+		remove_modifier = ve_bel_idea_6
+	}
+	if = {
+		limit = { var:national_idea_pool < 21 has_modifier = ve_bel_idea_7 }
+		remove_modifier = ve_bel_idea_7
+		remove_modifier = ve_bel_idea_bonus
+	}
+}
+
+ve_cancel_persian_ideas = {
+	if = {
+		limit = { var:national_idea_pool < 3 has_modifier = ve_per_idea_1 }
+		remove_modifier = ve_per_idea_1
+	}
+	if = {
+		limit = { var:national_idea_pool < 6 has_modifier = ve_per_idea_2 }
+		remove_modifier = ve_per_idea_2
+	}
+	if = {
+		limit = { var:national_idea_pool < 9 has_modifier = ve_per_idea_3 }
+		remove_modifier = ve_per_idea_3
+	}
+	if = {
+		limit = { var:national_idea_pool < 12 has_modifier = ve_per_idea_4 }
+		remove_modifier = ve_per_idea_4
+	}
+	if = {
+		limit = { var:national_idea_pool < 15 has_modifier = ve_per_idea_5 }
+		remove_modifier = ve_per_idea_5
+	}
+	if = {
+		limit = { var:national_idea_pool < 18 has_modifier = ve_per_idea_6 }
+		remove_modifier = ve_per_idea_6
+	}
+	if = {
+		limit = { var:national_idea_pool < 21 has_modifier = ve_per_idea_7 }
+		remove_modifier = ve_per_idea_7
+		remove_modifier = ve_per_idea_bonus
+	}
+}
+
+ve_cancel_egyptian_ideas = {
+	if = {
+		limit = { var:national_idea_pool < 3 has_modifier = ve_egy_idea_1 }
+		remove_modifier = ve_egy_idea_1
+	}
+	if = {
+		limit = { var:national_idea_pool < 6 has_modifier = ve_egy_idea_2 }
+		remove_modifier = ve_egy_idea_2
+	}
+	if = {
+		limit = { var:national_idea_pool < 9 has_modifier = ve_egy_idea_3 }
+		remove_modifier = ve_egy_idea_3
+	}
+	if = {
+		limit = { var:national_idea_pool < 12 has_modifier = ve_egy_idea_4 }
+		remove_modifier = ve_egy_idea_4
+	}
+	if = {
+		limit = { var:national_idea_pool < 15 has_modifier = ve_egy_idea_5 }
+		remove_modifier = ve_egy_idea_5
+	}
+	if = {
+		limit = { var:national_idea_pool < 18 has_modifier = ve_egy_idea_6 }
+		remove_modifier = ve_egy_idea_6
+	}
+	if = {
+		limit = { var:national_idea_pool < 21 has_modifier = ve_egy_idea_7 }
+		remove_modifier = ve_egy_idea_7
+		remove_modifier = ve_egy_idea_bonus
+	}
+}
+
+ve_cancel_korean_ideas = {
+	if = {
+		limit = { var:national_idea_pool < 3 has_modifier = ve_kor_idea_1 }
+		remove_modifier = ve_kor_idea_1
+	}
+	if = {
+		limit = { var:national_idea_pool < 6 has_modifier = ve_kor_idea_2 }
+		remove_modifier = ve_kor_idea_2
+	}
+	if = {
+		limit = { var:national_idea_pool < 9 has_modifier = ve_kor_idea_3 }
+		remove_modifier = ve_kor_idea_3
+	}
+	if = {
+		limit = { var:national_idea_pool < 12 has_modifier = ve_kor_idea_4 }
+		remove_modifier = ve_kor_idea_4
+	}
+	if = {
+		limit = { var:national_idea_pool < 15 has_modifier = ve_kor_idea_5 }
+		remove_modifier = ve_kor_idea_5
+	}
+	if = {
+		limit = { var:national_idea_pool < 18 has_modifier = ve_kor_idea_6 }
+		remove_modifier = ve_kor_idea_6
+	}
+	if = {
+		limit = { var:national_idea_pool < 21 has_modifier = ve_kor_idea_7 }
+		remove_modifier = ve_kor_idea_7
+		remove_modifier = ve_kor_idea_bonus
+	}
+}
+
+ve_cancel_argentine_ideas = {
+	if = {
+		limit = { var:national_idea_pool < 3 has_modifier = ve_arg_idea_1 }
+		remove_modifier = ve_arg_idea_1
+	}
+	if = {
+		limit = { var:national_idea_pool < 6 has_modifier = ve_arg_idea_2 }
+		remove_modifier = ve_arg_idea_2
+	}
+	if = {
+		limit = { var:national_idea_pool < 9 has_modifier = ve_arg_idea_3 }
+		remove_modifier = ve_arg_idea_3
+	}
+	if = {
+		limit = { var:national_idea_pool < 12 has_modifier = ve_arg_idea_4 }
+		remove_modifier = ve_arg_idea_4
+	}
+	if = {
+		limit = { var:national_idea_pool < 15 has_modifier = ve_arg_idea_5 }
+		remove_modifier = ve_arg_idea_5
+	}
+	if = {
+		limit = { var:national_idea_pool < 18 has_modifier = ve_arg_idea_6 }
+		remove_modifier = ve_arg_idea_6
+	}
+	if = {
+		limit = { var:national_idea_pool < 21 has_modifier = ve_arg_idea_7 }
+		remove_modifier = ve_arg_idea_7
+		remove_modifier = ve_arg_idea_bonus
+	}
+}
+
+

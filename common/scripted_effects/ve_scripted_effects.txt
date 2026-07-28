@@ -83,6 +83,111 @@
 		}
 		american_ideas = yes
 	}
+	else_if = {
+		limit = {
+			exists = c:SPA
+			this = c:SPA
+		}
+		ve_spanish_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:IBE
+			this = c:IBE
+		}
+		ve_spanish_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:ITA
+			this = c:ITA
+		}
+		ve_italian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:SWE
+			this = c:SWE
+		}
+		ve_swedish_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:SCA
+			this = c:SCA
+		}
+		ve_swedish_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:BIC
+			this = c:BIC
+		}
+		ve_indian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:HND
+			this = c:HND
+		}
+		ve_indian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:MEX
+			this = c:MEX
+		}
+		ve_mexican_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:BRZ
+			this = c:BRZ
+		}
+		ve_brazilian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:NET
+			this = c:NET
+		}
+		ve_dutch_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:BEL
+			this = c:BEL
+		}
+		ve_belgian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:PER
+			this = c:PER
+		}
+		ve_persian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:EGY
+			this = c:EGY
+		}
+		ve_egyptian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:KOR
+			this = c:KOR
+		}
+		ve_korean_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:ARG
+			this = c:ARG
+		}
+		ve_argentine_ideas = yes
+	}
 	else = {
 		generic_ideas = yes
 	}
@@ -177,9 +282,197 @@ cancel_national_idea_mdf = {
 		}
 		cancel_american_ideas = yes
 	}
+	else_if = {
+		limit = {
+			exists = c:SPA
+			this = c:SPA
+		}
+		ve_cancel_spanish_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:IBE
+			this = c:IBE
+		}
+		ve_cancel_spanish_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:ITA
+			this = c:ITA
+		}
+		ve_cancel_italian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:SWE
+			this = c:SWE
+		}
+		ve_cancel_swedish_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:SCA
+			this = c:SCA
+		}
+		ve_cancel_swedish_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:BIC
+			this = c:BIC
+		}
+		ve_cancel_indian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:HND
+			this = c:HND
+		}
+		ve_cancel_indian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:MEX
+			this = c:MEX
+		}
+		ve_cancel_mexican_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:BRZ
+			this = c:BRZ
+		}
+		ve_cancel_brazilian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:NET
+			this = c:NET
+		}
+		ve_cancel_dutch_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:BEL
+			this = c:BEL
+		}
+		ve_cancel_belgian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:PER
+			this = c:PER
+		}
+		ve_cancel_persian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:EGY
+			this = c:EGY
+		}
+		ve_cancel_egyptian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:KOR
+			this = c:KOR
+		}
+		ve_cancel_korean_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:ARG
+			this = c:ARG
+		}
+		ve_cancel_argentine_ideas = yes
+	}
 	else = {
 		cancel_generic_ideas = yes
 	}
+}
+
+# A formed country can change tag after its VE systems are already initialized.
+# Clear every possible legacy national set before applying the profile for its
+# current tag, so generic or predecessor-country modifiers never stack.
+ve_refresh_national_idea_profile = {
+	set_variable = {
+		name = national_idea_pool
+		value = 0
+	}
+	cancel_british_ideas = yes
+	cancel_french_ideas = yes
+	cancel_german_ideas = yes
+	cancel_austrian_ideas = yes
+	cancel_russian_ideas = yes
+	cancel_turkish_ideas = yes
+	cancel_chinese_ideas = yes
+	cancel_japanese_ideas = yes
+	cancel_american_ideas = yes
+	cancel_generic_ideas = yes
+	ve_cancel_spanish_ideas = yes
+	ve_cancel_italian_ideas = yes
+	ve_cancel_swedish_ideas = yes
+	ve_cancel_indian_ideas = yes
+	ve_cancel_mexican_ideas = yes
+	ve_cancel_brazilian_ideas = yes
+	ve_cancel_dutch_ideas = yes
+	ve_cancel_belgian_ideas = yes
+	ve_cancel_persian_ideas = yes
+	ve_cancel_egyptian_ideas = yes
+	ve_cancel_korean_ideas = yes
+	ve_cancel_argentine_ideas = yes
+
+	remove_modifier = gbr_idea_tradition_1
+	remove_modifier = gbr_idea_tradition_2
+	remove_modifier = fra_idea_tradition_1
+	remove_modifier = fra_idea_tradition_2
+	remove_modifier = ger_idea_tradition_1
+	remove_modifier = ger_idea_tradition_2
+	remove_modifier = aus_idea_tradition_1
+	remove_modifier = aus_idea_tradition_2
+	remove_modifier = rus_idea_tradition_1
+	remove_modifier = rus_idea_tradition_2
+	remove_modifier = tur_idea_tradition_1
+	remove_modifier = tur_idea_tradition_2
+	remove_modifier = qng_idea_tradition_1
+	remove_modifier = qng_idea_tradition_2
+	remove_modifier = jap_idea_tradition_1
+	remove_modifier = jap_idea_tradition_2
+	remove_modifier = usa_idea_tradition_1
+	remove_modifier = usa_idea_tradition_2
+	remove_modifier = ve_spa_idea_tradition_1
+	remove_modifier = ve_spa_idea_tradition_2
+	remove_modifier = ve_ita_idea_tradition_1
+	remove_modifier = ve_ita_idea_tradition_2
+	remove_modifier = ve_swe_idea_tradition_1
+	remove_modifier = ve_swe_idea_tradition_2
+	remove_modifier = ve_ind_idea_tradition_1
+	remove_modifier = ve_ind_idea_tradition_2
+	remove_modifier = ve_mex_idea_tradition_1
+	remove_modifier = ve_mex_idea_tradition_2
+	remove_modifier = ve_bra_idea_tradition_1
+	remove_modifier = ve_bra_idea_tradition_2
+	remove_modifier = ve_net_idea_tradition_1
+	remove_modifier = ve_net_idea_tradition_2
+	remove_modifier = ve_bel_idea_tradition_1
+	remove_modifier = ve_bel_idea_tradition_2
+	remove_modifier = ve_per_idea_tradition_1
+	remove_modifier = ve_per_idea_tradition_2
+	remove_modifier = ve_egy_idea_tradition_1
+	remove_modifier = ve_egy_idea_tradition_2
+	remove_modifier = ve_kor_idea_tradition_1
+	remove_modifier = ve_kor_idea_tradition_2
+	remove_modifier = ve_arg_idea_tradition_1
+	remove_modifier = ve_arg_idea_tradition_2
+	remove_modifier = generic_idea_tradition_1
+	remove_modifier = generic_idea_tradition_2
+	remove_variable = generic_idea_country
+
+	set_national_idea = yes
+	national_idea_traditions = yes
+	ve_recalculate_national_idea_pool = yes
+	national_idea_mdf = yes
 }
 
 # One completed group is worth three national-idea progress points. National
