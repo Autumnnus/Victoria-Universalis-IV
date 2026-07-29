@@ -1,4 +1,4 @@
-ve_national_idea_1 = {
+﻿ve_national_idea_1 = {
 	scope = country
 	is_shown = {
 		var:national_idea_pool >= 3

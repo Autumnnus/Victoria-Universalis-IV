@@ -1,4 +1,4 @@
-# Phase 4/7: Religious State
+﻿# Phase 4/7: Religious State
 # The active model follows the lawgroup_church_and_state law directly, mirroring
 # the 4 real laws in that group (see common/laws/00_church_and_state.txt in the
 # vanilla game files):
@@ -189,6 +189,7 @@ ve_state_has_religious_project_target = {
 }
 
 ve_religious_project_is_targeted = {
+	has_variable = ve_religious_project_type
 	var:ve_religious_project_type > 0
 }
 

@@ -1,0 +1,50 @@
+﻿# Doctrine Ledger filters.
+#
+# ROOT contract: the only caller of ve_ledger_filter_pass is ve_ledger_rebuild,
+# which a scripted GUI executes with the viewing player's country as root. ROOT
+# is therefore "me", and the relative filter below depends on it. Do not call
+# this from another scope path - see the ve_state_has_cultural_project_target
+# lesson recorded in MECHANICS_REFERENCE.md 9.1.
+#
+# Countries without the VE initialization marker have no doctrine variables yet
+# (for example a country created between its creation hook and the next monthly
+# tick). Reading their variables would spam the error log, so they are excluded
+# from every filter.
+
+ve_ledger_filter_pass = {
+	has_variable = victoria_universalis_system_on
+	OR = {
+		global_var:ve_ledger_filter == 0
+		AND = {
+			global_var:ve_ledger_filter == 1
+			country_rank >= rank_value:great_power
+		}
+		AND = {
+			global_var:ve_ledger_filter == 2
+			country_rank >= rank_value:major_power
+		}
+		AND = {
+			global_var:ve_ledger_filter == 3
+			is_country_type = recognized
+		}
+		AND = {
+			global_var:ve_ledger_filter == 4
+			OR = {
+				this = ROOT
+				has_diplomatic_relevance = ROOT
+			}
+		}
+		AND = {
+			global_var:ve_ledger_filter == 5
+			has_variable = idea_group_unlocked
+			var:idea_group_unlocked >= 1
+		}
+	}
+}
+
+# Does this country have any embraced idea group at all? Drives the "-" hint in
+# the ledger's group column tooltip.
+ve_ledger_has_any_idea_group = {
+	has_variable = idea_group_unlocked
+	var:idea_group_unlocked >= 1
+}

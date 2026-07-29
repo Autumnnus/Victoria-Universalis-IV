@@ -1,4 +1,4 @@
-namespace = economic_flavor
+﻿namespace = economic_flavor
 economic_flavor.1 = {
 	type = country_event
 	event_image = {

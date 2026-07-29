@@ -124,7 +124,7 @@ types ve_gui_panel_types
 										textbox = {
 											text = "ve_age_of_victoria_desc"
 											default_format = "#tooltip_header"
-											using = fontsize_x
+											using = fontsize_xsmall
 											align = nobaseline
 											elide = left
 											minimumsize = {
@@ -272,7 +272,7 @@ types ve_gui_panel_types
 										textbox = {
 											text = "ve_imperialism_age_desc"
 											default_format = "#tooltip_header"
-											using = fontsize_x
+											using = fontsize_xsmall
 											align = nobaseline
 											elide = left
 											minimumsize = {
@@ -420,7 +420,7 @@ types ve_gui_panel_types
 										textbox = {
 											text = "ve_great_wars_age_desc"
 											default_format = "#tooltip_header"
-											using = fontsize_x
+											using = fontsize_xsmall
 											align = nobaseline
 											elide = left
 											minimumsize = {
@@ -503,7 +503,6 @@ types ve_gui_panel_types
 									100
 									100
 								}
-								position = { 0 15 }
 								blockoverride
 								"icon"
 								{
@@ -2348,7 +2347,7 @@ types ve_gui_panel_types
 									}
 									textbox = {
 										text = "ve_imperialism_age_obj_desc_1"
-										using = fontsize_x
+										using = fontsize_xsmall
 										align = left|nobaseline
 										parentanchor = left|hcenter
 									}
@@ -2398,7 +2397,7 @@ types ve_gui_panel_types
 									}
 									textbox = {
 										text = "ve_imperialism_age_obj_desc_2"
-										using = fontsize_x
+										using = fontsize_xsmall
 										align = left|nobaseline
 										parentanchor = left|hcenter
 									}
@@ -2448,7 +2447,7 @@ types ve_gui_panel_types
 									}
 									textbox = {
 										text = "ve_imperialism_age_obj_desc_3"
-										using = fontsize_x
+										using = fontsize_xsmall
 										align = left|nobaseline
 										parentanchor = left|hcenter
 									}
@@ -2498,7 +2497,7 @@ types ve_gui_panel_types
 									}
 									textbox = {
 										text = "ve_imperialism_age_obj_desc_4"
-										using = fontsize_x
+										using = fontsize_xsmall
 										align = left|nobaseline
 										parentanchor = left|hcenter
 									}
@@ -2548,7 +2547,7 @@ types ve_gui_panel_types
 									}
 									textbox = {
 										text = "ve_imperialism_age_obj_desc_5"
-										using = fontsize_x
+										using = fontsize_xsmall
 										align = left|nobaseline
 										parentanchor = left|hcenter
 									}
@@ -2598,7 +2597,7 @@ types ve_gui_panel_types
 									}
 									textbox = {
 										text = "ve_imperialism_age_obj_desc_6"
-										using = fontsize_x
+										using = fontsize_xsmall
 										align = left|nobaseline
 										parentanchor = left|hcenter
 									}
@@ -2648,7 +2647,7 @@ types ve_gui_panel_types
 									}
 									textbox = {
 										text = "ve_imperialism_age_obj_desc_7"
-										using = fontsize_x
+										using = fontsize_xsmall
 										align = left|nobaseline
 										parentanchor = left|hcenter
 									}
@@ -2719,7 +2718,7 @@ types ve_gui_panel_types
 									}
 									textbox = {
 										text = "ve_great_wars_age_obj_desc_1"
-										using = fontsize_x
+										using = fontsize_xsmall
 										align = left|nobaseline
 										parentanchor = left|hcenter
 									}
@@ -2769,7 +2768,7 @@ types ve_gui_panel_types
 									}
 									textbox = {
 										text = "ve_great_wars_age_obj_desc_2"
-										using = fontsize_x
+										using = fontsize_xsmall
 										align = left|nobaseline
 										parentanchor = left|hcenter
 									}
@@ -2819,7 +2818,7 @@ types ve_gui_panel_types
 									}
 									textbox = {
 										text = "ve_great_wars_age_obj_desc_3"
-										using = fontsize_x
+										using = fontsize_xsmall
 										align = left|nobaseline
 										parentanchor = left|hcenter
 									}
@@ -2869,7 +2868,7 @@ types ve_gui_panel_types
 									}
 									textbox = {
 										text = "ve_great_wars_age_obj_desc_4"
-										using = fontsize_x
+										using = fontsize_xsmall
 										align = left|nobaseline
 										parentanchor = left|hcenter
 									}
@@ -2919,7 +2918,7 @@ types ve_gui_panel_types
 									}
 									textbox = {
 										text = "ve_great_wars_age_obj_desc_5"
-										using = fontsize_x
+										using = fontsize_xsmall
 										align = left|nobaseline
 										parentanchor = left|hcenter
 									}
@@ -2969,7 +2968,7 @@ types ve_gui_panel_types
 									}
 									textbox = {
 										text = "ve_great_wars_age_obj_desc_6"
-										using = fontsize_x
+										using = fontsize_xsmall
 										align = left|nobaseline
 										parentanchor = left|hcenter
 									}
@@ -3019,7 +3018,7 @@ types ve_gui_panel_types
 									}
 									textbox = {
 										text = "ve_great_wars_age_obj_desc_7"
-										using = fontsize_x
+										using = fontsize_xsmall
 										align = left|nobaseline
 										parentanchor = left|hcenter
 									}

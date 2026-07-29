@@ -1,4 +1,4 @@
-ve_choose_ethnic_identity = {
+﻿ve_choose_ethnic_identity = {
 	scope = country
 	is_valid = {
 		custom_tooltip = {

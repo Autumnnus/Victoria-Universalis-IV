@@ -1,4 +1,4 @@
-# Dev-cheat repair tool (see events/developer_events.txt dev.1.l): recomputes
+﻿# Dev-cheat repair tool (see events/developer_events.txt dev.1.l): recomputes
 # idea_group_unlocked as the number of can_go_X flags actually set, instead of
 # trusting the stored counter - fixes saves inflated by the pre-fix
 # embrace_idea_group double-increment bug.

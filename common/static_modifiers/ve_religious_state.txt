@@ -1,4 +1,4 @@
-# Shared model settlements - one per lawgroup_church_and_state law (see
+﻿# Shared model settlements - one per lawgroup_church_and_state law (see
 # common/scripted_triggers/ve_religious_state_triggers.txt for the law mapping).
 ve_confessional_settlement_mdf = {
 	icon = gfx/interface/catholic.dds

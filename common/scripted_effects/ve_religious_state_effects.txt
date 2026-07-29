@@ -1,4 +1,4 @@
-# Phase 4/7: Religious State lifecycle, program purchases and the targeted
+﻿# Phase 4/7: Religious State lifecycle, program purchases and the targeted
 # religious project (replaces the old missionary system - see
 # common/scripted_triggers/ve_religious_state_triggers.txt for the 4-model
 # law mapping this all follows).
@@ -430,6 +430,74 @@ ve_sync_religious_settlement_modifiers = {
 	}
 }
 
+# Guarded wrapper for ve_sync_religious_settlement_modifiers. The monthly tick
+# and on_law_activated both call this name; it was never defined, which logged
+# "Unknown effect ve_sync_religious_state_if_needed" and left the model and
+# settlement-tier modifiers unapplied because nothing else calls the sync.
+# Structured like ve_sync_identity_if_needed: the missing-variable case is a
+# separate branch so no comparison ever reads an unset variable.
+ve_sync_religious_state_if_needed = {
+	if = {
+		limit = {
+			OR = {
+				NOT = { has_variable = ve_synced_religious_model }
+				NOT = { has_variable = ve_synced_settlement_tier }
+			}
+		}
+		ve_sync_religious_settlement_modifiers = yes
+		ve_mark_religious_state_synced = yes
+	}
+	else_if = {
+		limit = {
+			OR = {
+				var:ve_synced_religious_model != var:ve_religious_model
+				AND = {
+					var:piety_bar_point >= 75
+					var:ve_synced_settlement_tier != 1
+				}
+				AND = {
+					var:piety_bar_point <= 25
+					var:ve_synced_settlement_tier != 3
+				}
+				AND = {
+					var:piety_bar_point > 25
+					var:piety_bar_point < 75
+					var:ve_synced_settlement_tier != 2
+				}
+			}
+		}
+		ve_sync_religious_settlement_modifiers = yes
+		ve_mark_religious_state_synced = yes
+	}
+}
+
+ve_mark_religious_state_synced = {
+	set_variable = {
+		name = ve_synced_religious_model
+		value = var:ve_religious_model
+	}
+	if = {
+		limit = { var:piety_bar_point >= 75 }
+		set_variable = {
+			name = ve_synced_settlement_tier
+			value = 1
+		}
+	}
+	else_if = {
+		limit = { var:piety_bar_point <= 25 }
+		set_variable = {
+			name = ve_synced_settlement_tier
+			value = 3
+		}
+	}
+	else = {
+		set_variable = {
+			name = ve_synced_settlement_tier
+			value = 2
+		}
+	}
+}
+
 ve_clamp_religious_state = {
 	if = {
 		limit = { var:piety_bar_point < 0 }
@@ -832,33 +900,15 @@ ve_begin_targeted_religious_project = {
 	}
 }
 
-# Repoints the old missionary-power idea bonuses onto the Targeted Religious
-# Project's conversion effect: +0.03 for the group's 2nd-tier modifier, +0.03
-# for the 5th tier, +0.03 for the 7th (capstone) tier.
-ve_religious_conversion_bonus = {
-	value = 0
-	if = {
-		limit = { has_modifier = nationalist_idea_2_mdf }
-		add = 0.03
-	}
-	if = {
-		limit = { has_variable = nationalist_idea_5_var }
-		add = 0.03
-	}
-	if = {
-		limit = { has_variable = nationalist_idea_7_var }
-		add = 0.03
-	}
-}
+# The Nationalist idea conversion bonus lives in
+# common/script_values/ve_religious_project_values.txt as a script value
+# (ve_religious_project_conversion_amount), not here.
 
 ve_finish_confessional_conversion = {
 	var:ve_religious_project_target_state ?= {
 		convert_population = {
 			target = ROOT.religion
-			value = {
-				add = 0.05
-				add = ROOT.ve_religious_conversion_bonus
-			}
+			value = ve_religious_project_conversion_amount
 		}
 		add_radicals_in_state = {
 			value = small_radicals
@@ -894,10 +944,7 @@ ve_finish_secularization_campaign = {
 	var:ve_religious_project_target_state ?= {
 		convert_population = {
 			target = rel:atheist
-			value = {
-				add = 0.05
-				add = ROOT.ve_religious_conversion_bonus
-			}
+			value = ve_religious_project_conversion_amount
 		}
 		add_radicals_in_state = {
 			value = small_radicals

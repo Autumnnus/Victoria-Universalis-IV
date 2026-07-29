@@ -1,0 +1,59 @@
+﻿l_turkish:
+ # Ülke paneli doktrin bölümü - gui/ve_country_panel_doctrines.gui
+ VE_CP_HEADER:0 "Ulusal Doktrin"
+ VE_CP_COLLAPSE_TT:0 "Bu ülkenin Victoria Universalis özetini gizle"
+ VE_CP_EXPAND_TT:0 "Bu ülkenin Victoria Universalis özetini göster"
+
+ VE_CP_INSIGHT_LABEL:0 "Ulusal Kavrayış"
+ VE_CP_INSIGHT_TT:0 "#header Ulusal Kavrayış#!\nBirikim: #Y [Country.MakeScope.Var('idea_point_pool').GetValue|0] / 1000#!\n\nBenimsenen fikir gruplarındaki tek tek fikirler için harcanır."
+ VE_CP_PIETY_LABEL:0 "Dinî Reform"
+ VE_CP_PIETY_TT:0 "#header Dinî Reform#!\nBirikim: #Y [Country.MakeScope.Var('piety_reform_point').GetValue|0] / 500#!\n\nDinî Programlar ve Hedefli Dinî Proje için harcanır."
+ VE_CP_MANDATE_LABEL:0 "Kültürel Yetki"
+ VE_CP_MANDATE_TT:0 "#header Kültürel Yetki#!\nBirikim: #Y [Country.MakeScope.Var('culture_reform_point').GetValue|0] / 500#!\n\nKimlik Modeli değişimi ve Kültürel Projeler için harcanır."
+ VE_CP_MOMENTUM_LABEL:0 "Çağ İvmesi"
+ VE_CP_MOMENTUM_TT:0 "#header Çağ İvmesi#!\nBirikim: #Y [Country.MakeScope.Var('ve_splender_points').GetValue|0]#!\n\nSağlanan Çağ Hedeflerinden kazanılır, Çağ Ödülleri için harcanır. Yeni çağ başladığında sıfırlanır."
+ VE_CP_MOMENTUM_VALUE:0 "[Country.MakeScope.Var('ve_splender_points').GetValue|0]"
+
+ VE_CP_IDEAS_TITLE:0 "Fikirler"
+ VE_CP_GROUP_SLOTS:0 "[Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]"
+ VE_CP_GROUP_SLOTS_TT:0 "#header Fikir Grupları#!\nBenimsenen: #Y [Country.MakeScope.Var('idea_group_unlocked').GetValue|0]#!\nMevcut slot: #Y [Country.MakeScope.Var('idea_group_cap').GetValue|0]#!\n\nHer on yılda bir slot daha açılır, en fazla yedi olur."
+ VE_CP_NATIONAL_IDEAS_LABEL:0 "Ulusal Fikirler"
+ VE_CP_PROGRESS_LABEL:0 "Fikir İlerlemesi"
+ VE_CP_NATIONAL_IDEA_PROGRESS_TT:0 "#header Ulusal Fikir İlerlemesi#!\nSatın alınan grup fikri: #Y [Country.MakeScope.Var('national_idea_pool').GetValue|0] / 21#!\n\nHer üçüncü grup fikri bir sonraki Ulusal Fikri açar. Yirmi birinci fikir ayrıca Ulusal Bonusu verir."
+ VE_CP_NO_IDEA_GROUPS:0 "#lore Henüz hiçbir fikir grubu benimsenmedi.#!"
+ VE_CP_PROGRAMS_LABEL:0 "Dinî Programlar"
+ VE_CP_NONE_YET:0 "#lore Henüz yok#!"
+ VE_CP_PROJECT_LABEL:0 "Proje"
+ VE_CP_COHESION_LABEL:0 "Ulusal Bütünlük"
+ VE_CP_OBJECTIVES_LABEL:0 "Çağ Hedefleri"
+ VE_CP_OBJECTIVES_TT:0 "#header Çağ Hedefleri#!\nBu çağda tamamlanan: #Y [Country.MakeScope.Var('ve_triggered_objectives').GetValue|0] / 7#!\n\nSağlanan her hedef her ay Çağ İvmesi kazandırır. Dört tamamlanan hedef Altın Çağ'ı açar."
+ VE_CP_REWARDS_LABEL:0 "Çağ Ödülleri"
+ VE_CP_REWARDS_VALUE:0 "bu çağda [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0] alındı"
+ VE_CP_REWARDS_TT:0 "#header Çağ Ödülleri#!\nBu çağda alınan: #Y [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]#!\n\nHer ödül öncekinden pahalıdır ve çağ bitince ödül etkileri sona erer. 10-13 arası slotlar ülkeye özeldir."
+
+ # Özelleştirilebilir yerelleştirme hedefleri - common/customizable_localization/ve_country_panel_cl.txt
+ ve_cp_unknown_age:0 "Bilinmeyen Çağ"
+ ve_cp_golden_age_industrial_active:0 "#P Sanayi Altın Çağı#!"
+ ve_cp_golden_age_cultural_active:0 "#P Kültür Altın Çağı#!"
+ ve_cp_golden_age_strategic_active:0 "#P Stratejik Altın Çağ#!"
+ ve_cp_golden_age_spent:0 "#lore Altın Çağ kullanıldı#!"
+ ve_cp_golden_age_ready:0 "#Y Altın Çağ hazır#!"
+ ve_cp_golden_age_locked:0 "#lore Altın Çağ kilitli#!"
+ ve_cp_tier_high:0 "#P Güçlü#!"
+ ve_cp_tier_stable:0 "#lore Dengeli#!"
+ ve_cp_tier_low:0 "#N Zorlanıyor#!"
+
+ # Scripted GUI ipucu - common/scripted_guis/ve_country_panel.txt
+ ve_cp_group_no_idea_bought:0 "#lore Benimsendi, ancak bu grupta henüz fikir alınmadı.#!"
+
+ # Ülke kapsamlı ölçü ve proje ipuçları. Bunlar GetPlayer kullanmamalı:
+ # ülke paneli bu bilgileri yabancı ülkeler için de gösterir.
+ VE_CP_SETTLEMENT_TT:0 "#header Dinî Uzlaşı#!\nŞu an: #Y [Country.MakeScope.Var('piety_bar_point').GetValue|0] / 100#!\nDenge: #Y [Country.MakeScope.ScriptValue('ve_religious_state_equilibrium')|0]#!\nAylık hareket: [Country.MakeScope.ScriptValue('ve_monthly_religious_state')|+=0]\n\nÖlçü her ay dengeye olan mesafenin %20'si kadar, en fazla #Y 5#! puan hareket eder. #P 75#! ve üzerinde: [Country.GetCustom('ve_religious_high_settlement_effect')]\n#N 25#! ve altında: #N -5 Meşruiyet ve -5% Kanun Çıkarma Başarısı#!."
+ VE_CP_COHESION_TT:0 "#header Ulusal Bütünlük#!\nŞu an: #Y [Country.MakeScope.Var('ve_national_cohesion').GetValue|0] / 100#!\nDenge: #Y [Country.MakeScope.ScriptValue('ve_national_cohesion_equilibrium')|0]#!\nAylık hareket: [Country.MakeScope.ScriptValue('ve_monthly_national_cohesion')|+=0]\n\nBütünlük her ay dengeye olan mesafenin %20'si kadar, en fazla #Y 5#! puan hareket eder. #P 75#! ve üzerinde Kimlik Modeli ek fayda verir; #N 25#! ve altında ulusal istikrarsızlık uygulanır."
+ VE_CP_RELIGIOUS_PROJECT_TT:0 "#header Hedefli Dinî Proje#!\nDurum: #Y [Country.GetCustom('ve_religious_project_status')]#!\n[Country.GetCustom('ve_cp_religious_project_detail')]"
+ VE_CP_CULTURAL_PROJECT_TT:0 "#header Kültürel Proje#!\nDurum: #Y [Country.GetCustom('ve_cultural_project_name')]#!\nHedef: [Country.GetCustom('ve_cultural_project_target')]\n[Country.GetCustom('ve_cp_cultural_project_detail')]\n\n[Country.GetCustom('ve_cultural_project_description')]"
+
+ ve_cp_religious_project_detail_active:0 "İlerleme: #Y [Country.MakeScope.Var('ve_religious_project_progress').GetValue|0] / 100#!\nAylık ilerleme: [Country.MakeScope.ScriptValue('ve_monthly_religious_project_progress')|+=0]"
+ ve_cp_religious_project_detail_none:0 "#lore Yürüyen bir proje yok. Proje, sahip olunan bir eyaletin panelinden başlatılır; Tam Ayrılık modeli proje yürütemez.#!"
+ ve_cp_cultural_project_detail_active:0 "İlerleme: #Y [Country.MakeScope.Var('ve_cultural_project_progress').GetValue|0] / 100#!\nAylık ilerleme: [Country.MakeScope.ScriptValue('ve_monthly_cultural_project_progress')|+=0]"
+ ve_cp_cultural_project_detail_none:0 "#lore Yürüyen bir proje yok. Ülke çapındaki projeler Ulusal Kimlik panelinden, hedefli projeler sahip olunan bir eyaletin panelinden başlatılır.#!"

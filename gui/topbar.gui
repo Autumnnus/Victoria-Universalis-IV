@@ -11,6 +11,47 @@ template hud_visibility {
 
 types topbar_components
 {
+	### VICTORIA UNIVERSALIS RESOURCE CHIP
+	# One entry of the VE resource row. Geometry mirrors the vanilla secondary
+	# stat entries so both rows line up, and glow_button gives the same hover
+	# feedback the primary topbar buttons use without drawing a button frame.
+	type ve_topbar_chip = button {
+		using = glow_button
+		using = tooltip_below
+		block "chip_size" {
+			size = { 72 28 }
+		}
+		block "chip_visible" {}
+		block "chip_tooltip" {}
+		block "chip_onclick" {}
+
+		flowcontainer = {
+			parentanchor = vcenter
+			spacing = 3
+			margin_left = 4
+			alwaystransparent = yes
+
+			icon = {
+				parentanchor = vcenter
+				size = { 24 24 }
+				block "chip_icon" {
+					texture = "gfx/interface/icons/generic_icons/generic_concept_icon.dds"
+				}
+			}
+
+			textbox = {
+				parentanchor = vcenter
+				autoresize = yes
+				align = left|nobaseline
+				elide = right
+				fontsize_min = 12
+				block "chip_text" {
+					text = "ve_tb_insight_value"
+				}
+			}
+		}
+	}
+
 	### SECONDARY ICONS
 	type topbar_secondary_icons = container {
 		position = { 130 40 }
@@ -253,8 +294,10 @@ types topbar_components
 			flowcontainer = {
 				name = "extra_info"
 				layoutpolicy_vertical = expanding
-				# using = hide_ve_mod_topbar
-				visible = "[GetScriptedGui('ve_top_bar').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				# The toggle swaps this row with the VE resource row. Also shown
+				# when the VE country system is not initialized yet, so the third
+				# row is never blank.
+				visible = "[Or( GetScriptedGui('ve_top_bar').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End), Not(GetScriptedGui('ve_show_ve_topbar_row').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)) )]"
 
 				background = {
 					using = dark_area_rounded
@@ -457,22 +500,28 @@ types topbar_components
 					}
 				}
 
-				flowcontainer = {
-					using = zz_colonization_colonial_capacity
-				}
+				# Removed: 'using = zz_colonization_colonial_capacity' - that template
+				# comes from a third-party colonization mod and does not exist in this
+				# load order, so the engine logged a missing-template error plus a
+				# failed flowcontainer every time the topbar was built.
 			}
 			###VICTORIA UNIVERSALIS
+			# The v2 resource row. It is ordered by system - Ideas, Religion,
+			# National Identity, Era - so the two chips of each system sit next
+			# to each other, and every chip opens the panel tab that owns it.
+			# Icons are vanilla gfx/interface icons; the old EU4-style mod
+			# textures (icon_ideas, catholic, monarch_cultures_icon,
+			# icon_splendor_tiny, icon_envoy_missionary) are no longer used here.
 			flowcontainer = {
 				name = "victoria_universalis_topbar"
-				visible = "[Not(GetScriptedGui('ve_top_bar').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+				visible = "[And( Not(GetScriptedGui('ve_top_bar').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)), GetScriptedGui('ve_show_ve_topbar_row').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End) )]"
 				layoutpolicy_vertical = expanding
-				#using = hide_ve_mod_topbar
 				alwaystransparent = no
-				# position = { 130 40 }
+				spacing = 1
 				block "animation" {
 					position = { 0 0 }
 					alpha = 0
-					
+
 					state = {
 						name = show_topbar_secondary_stats
 						alpha = 1
@@ -493,124 +542,104 @@ types topbar_components
 					margin = { 0 -5 }
 					margin_left = 5
 				}
-				#Religious Project
-				flowcontainer = {
-						visible = "[GetScriptedGui('ve_show_religious_project_topbar').IsShown(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
-						minimumsize = { 90 28 }
-						maximumsize = { 90 28 }
-						spacing = 5
-						tooltip = "ve_religious_project_topbar_tt"
-						using = tooltip_below
-						onclick = "[GetVariableSystem.SetOrToggle('ve_tab_var', GetVariableSystem.Get('ve_last_tab'))]"
-						icon = {
-							size = { @secondary_icon_size @secondary_icon_size }
-							texture = "gfx/interface/icon_envoy_missionary.dds"
-							parentanchor = vcenter
-						}
 
-						textbox = {
-							parentanchor = vcenter
-							text = "religious_project_topbar"
-							default_format = "#tooltip_header"
-							autoresize = yes
-							align = left|nobaseline
-						}
-				}
-				#Idea Point
-				flowcontainer = {
-						minimumsize = { 90 28 }
-						maximumsize = { 90 28 }
-						spacing = 2
-						using = tooltip_below
-						margin_left = 3
-						tooltip = "ve_national_insight_tt"
-						icon = {
-							size = { @secondary_icon_size @secondary_icon_size }
-							texture = "gfx/interface/icon_ideas.dds"
-							parentanchor = vcenter
-						}
-
-						textbox = {
-							parentanchor = vcenter
-							text = "idea_point_topbar"
-							default_format = "#tooltip_header"
-							autoresize = yes
-							align = left|nobaseline
-							margin_left = 2
-						}
+				### IDEAS - National Insight (spendable, 0-1000)
+				ve_topbar_chip = {
+					name = "ve_topbar_insight"
+					blockoverride "chip_size" { size = { 74 28 } }
+					blockoverride "chip_tooltip" { tooltip = "ve_tb_insight_tt" }
+					blockoverride "chip_onclick" { onclick = "[GetVariableSystem.Set('ve_tab_var', 've_ideas')]" }
+					blockoverride "chip_icon" { texture = "gfx/interface/icons/generic_icons/innovation.dds" }
+					blockoverride "chip_text" { text = "ve_tb_insight_value" }
 				}
 
-				#Piety
-				flowcontainer = {
-						minimumsize = { 90 28 }
-						maximumsize = { 90 28 }
-						spacing = 2
-						datacontext = "[Country.GetGovernmentLegitimacyLevel]"
-						using = tooltip_below
-						tooltip = "ve_piety_tt"
-
-						icon = {
-							size = { @secondary_icon_size @secondary_icon_size }
-							texture = "gfx/interface/catholic.dds"
-							parentanchor = vcenter
-						}
-
-						textbox = {
-							parentanchor = vcenter
-							text = "piety_topbar"
-							default_format = "#tooltip_header"
-							autoresize = yes
-							align = left|nobaseline
-						}
+				### IDEAS - embraced idea groups out of the current capacity
+				ve_topbar_chip = {
+					name = "ve_topbar_idea_groups"
+					blockoverride "chip_size" { size = { 60 28 } }
+					blockoverride "chip_tooltip" { tooltip = "ve_tb_idea_groups_tt" }
+					blockoverride "chip_onclick" { onclick = "[GetVariableSystem.Set('ve_tab_var', 've_ideas')]" }
+					blockoverride "chip_icon" { texture = "gfx/interface/icons/institution_icons/schools.dds" }
+					blockoverride "chip_text" { text = "ve_tb_idea_groups_value" }
 				}
 
-				#Cultural Reform
-				flowcontainer = {
-						minimumsize = { 90 28 }
-						maximumsize = { 90 28 }
-						spacing = 2
-						using = tooltip_below
+				### RELIGION - Piety Reform (spendable, 0-500)
+				ve_topbar_chip = {
+					name = "ve_topbar_piety_reform"
+					blockoverride "chip_size" { size = { 70 28 } }
+					blockoverride "chip_tooltip" { tooltip = "ve_tb_piety_reform_tt" }
+					blockoverride "chip_onclick" { onclick = "[GetVariableSystem.Set('ve_tab_var', 've_religion')]" }
+					blockoverride "chip_icon" { texture = "gfx/interface/icons/central_identity_pillars_icons/religious.dds" }
+					blockoverride "chip_text" { text = "ve_tb_piety_reform_value" }
+				}
+
+				### RELIGION - Religious Settlement (equilibrium meter, 0-100)
+				ve_topbar_chip = {
+					name = "ve_topbar_settlement"
+					blockoverride "chip_size" { size = { 62 28 } }
+					blockoverride "chip_tooltip" { tooltip = "ve_tb_settlement_tt" }
+					blockoverride "chip_onclick" { onclick = "[GetVariableSystem.Set('ve_tab_var', 've_religion')]" }
+					blockoverride "chip_icon" { texture = "gfx/interface/icons/generic_icons/conversion.dds" }
+					blockoverride "chip_text" { text = "ve_tb_settlement_value" }
+				}
+
+				### RELIGION - Targeted Religious Project, only while one runs
+				ve_topbar_chip = {
+					name = "ve_topbar_religious_project"
+					blockoverride "chip_size" { size = { 62 28 } }
+					blockoverride "chip_visible" {
+						visible = "[GetScriptedGui('ve_show_religious_project_progress_topbar').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					blockoverride "chip_tooltip" { tooltip = "ve_tb_religious_project_tt" }
+					blockoverride "chip_onclick" { onclick = "[GetVariableSystem.Set('ve_tab_var', 've_religion')]" }
+					blockoverride "chip_icon" { texture = "gfx/interface/icons/generic_icons/national_awakening.dds" }
+					blockoverride "chip_text" { text = "ve_tb_religious_project_value" }
+				}
+
+				### NATIONAL IDENTITY - Cultural Mandate (spendable, 0-500)
+				ve_topbar_chip = {
+					name = "ve_topbar_mandate"
+					blockoverride "chip_size" { size = { 70 28 } }
+					blockoverride "chip_visible" {
 						visible = "[GetScriptedGui('ve_show_cultural_mandate_topbar').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-						tooltip = "ve_culture_reform_point_tt"
+					}
+					blockoverride "chip_tooltip" { tooltip = "ve_tb_mandate_tt" }
+					blockoverride "chip_onclick" { onclick = "[GetVariableSystem.Set('ve_tab_var', 've_culture')]" }
+					blockoverride "chip_icon" { texture = "gfx/interface/icons/generic_icons/mandate.dds" }
+					blockoverride "chip_text" { text = "ve_tb_mandate_value" }
+				}
 
-						icon = {
-							size = { @secondary_icon_size @secondary_icon_size }
-							texture = "gfx/interface/monarch_cultures_icon.dds"
-							parentanchor = vcenter
-						}
+				### NATIONAL IDENTITY - National Cohesion (equilibrium meter, 0-100)
+				ve_topbar_chip = {
+					name = "ve_topbar_cohesion"
+					blockoverride "chip_size" { size = { 62 28 } }
+					blockoverride "chip_tooltip" { tooltip = "ve_tb_cohesion_tt" }
+					blockoverride "chip_onclick" { onclick = "[GetVariableSystem.Set('ve_tab_var', 've_culture')]" }
+					blockoverride "chip_icon" { texture = "gfx/interface/icons/generic_icons/cohesion.dds" }
+					blockoverride "chip_text" { text = "ve_tb_cohesion_value" }
+				}
 
-						textbox = {
-							parentanchor = vcenter
-							text = "cultural_reform_topbar"
-							default_format = "#tooltip_header"
-							autoresize = yes
-							align = left|nobaseline
-						}
-				}			
-				
+				### NATIONAL IDENTITY - Cultural Project, only while one runs
+				ve_topbar_chip = {
+					name = "ve_topbar_cultural_project"
+					blockoverride "chip_size" { size = { 62 28 } }
+					blockoverride "chip_visible" {
+						visible = "[GetScriptedGui('ve_show_cultural_project_progress_topbar').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					blockoverride "chip_tooltip" { tooltip = "ve_tb_cultural_project_tt" }
+					blockoverride "chip_onclick" { onclick = "[GetVariableSystem.Set('ve_tab_var', 've_culture')]" }
+					blockoverride "chip_icon" { texture = "gfx/interface/icons/generic_icons/cultural_fervor.dds" }
+					blockoverride "chip_text" { text = "ve_tb_cultural_project_value" }
+				}
 
-				#Splendor
-				flowcontainer = {
-						minimumsize = { 90 28 }
-						maximumsize = { 90 28 }
-						spacing = 2
-						using = tooltip_below
-						tooltip = "ve_age_splendor_tt"
-
-						icon = {
-							size = { @secondary_icon_size @secondary_icon_size }
-							texture = "gfx/interface/icon_splendor_tiny.dds"
-							parentanchor = vcenter
-						}
-
-						textbox = {
-							parentanchor = vcenter
-							text = "splendor_topbar"
-							default_format = "#tooltip_header"
-							autoresize = yes
-							align = left|nobaseline
-							margin_left = -1
-						}
+				### ERA - Era Momentum
+				ve_topbar_chip = {
+					name = "ve_topbar_momentum"
+					blockoverride "chip_size" { size = { 68 28 } }
+					blockoverride "chip_tooltip" { tooltip = "ve_tb_momentum_tt" }
+					blockoverride "chip_onclick" { onclick = "[GetVariableSystem.Set('ve_tab_var', 've_age_bonusses')]" }
+					blockoverride "chip_icon" { texture = "gfx/interface/icons/generic_icons/age.dds" }
+					blockoverride "chip_text" { text = "ve_tb_momentum_value" }
 				}
 			}
 

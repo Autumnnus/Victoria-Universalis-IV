@@ -1,4 +1,4 @@
-ve_age_obj_1 = {
+﻿ve_age_obj_1 = {
 	scope = country
 	is_valid = { ve_age_objective_1_trigger = yes }
 	effect = { custom_tooltip = { text = ve_age_obj_efct_tt } }
@@ -398,7 +398,19 @@ ve_golden_age_industrial = {
 	is_valid = {
 		custom_tooltip = {
 			text = ve_golden_age_industrial_tt
-			ve_can_activate_golden_age = yes
+			always = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_unused
+			ve_golden_age_not_yet_used = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_year
+			ve_golden_age_year_reached = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_objectives
+			ve_golden_age_objective_requirement_met = yes
 		}
 	}
 	effect = { ve_activate_industrial_golden_age = yes }
@@ -409,7 +421,19 @@ ve_golden_age_cultural = {
 	is_valid = {
 		custom_tooltip = {
 			text = ve_golden_age_cultural_tt
-			ve_can_activate_golden_age = yes
+			always = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_unused
+			ve_golden_age_not_yet_used = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_year
+			ve_golden_age_year_reached = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_objectives
+			ve_golden_age_objective_requirement_met = yes
 		}
 	}
 	effect = { ve_activate_cultural_golden_age = yes }
@@ -420,7 +444,19 @@ ve_golden_age_strategic = {
 	is_valid = {
 		custom_tooltip = {
 			text = ve_golden_age_strategic_tt
-			ve_can_activate_golden_age = yes
+			always = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_unused
+			ve_golden_age_not_yet_used = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_year
+			ve_golden_age_year_reached = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_objectives
+			ve_golden_age_objective_requirement_met = yes
 		}
 	}
 	effect = { ve_activate_strategic_golden_age = yes }

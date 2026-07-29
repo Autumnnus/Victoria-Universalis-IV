@@ -1,4 +1,4 @@
-# Additional national idea application and cancellation profiles.
+﻿# Additional national idea application and cancellation profiles.
 # These are dispatched by ve_scripted_effects.txt and displayed by ve_national_ideas.txt.
 
 ve_spanish_ideas = {

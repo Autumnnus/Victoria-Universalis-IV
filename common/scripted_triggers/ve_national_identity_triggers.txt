@@ -1,4 +1,4 @@
-# Phase 5: National Identity
+﻿# Phase 5: National Identity
 
 ve_is_ethnic_identity = {
 	has_variable = ve_identity_model

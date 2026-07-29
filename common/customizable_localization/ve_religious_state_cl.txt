@@ -1,4 +1,4 @@
-ve_religious_model_name = {
+﻿ve_religious_model_name = {
 	type = country
 	random_valid = no
 	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_state_name }

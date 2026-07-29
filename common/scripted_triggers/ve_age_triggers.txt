@@ -1,4 +1,4 @@
-# Era Momentum objectives. These are intentionally country-relative: small
+﻿# Era Momentum objectives. These are intentionally country-relative: small
 # countries can qualify through structural progress while large powers can
 # qualify through scale.
 
@@ -7,7 +7,7 @@ ve_age_objective_1_trigger = {
 		limit = { has_global_variable = ve_age_1_started }
 		pop_type_percent_country = {
 			pop_type = peasants
-			percent < 0.60
+			percent < 0.40
 		}
 	}
 	trigger_else_if = {
@@ -79,7 +79,7 @@ ve_age_objective_2_trigger = {
 ve_age_objective_3_trigger = {
 	trigger_if = {
 		limit = { has_global_variable = ve_age_1_started }
-		government_legitimacy >= 60
+		government_legitimacy >= 70
 		bureaucracy >= 0
 		approaching_bureaucracy_shortage = no
 	}
@@ -115,10 +115,10 @@ ve_age_objective_4_trigger = {
 	trigger_if = {
 		limit = { has_global_variable = ve_age_1_started }
 		OR = {
-			literacy_rate >= 0.40
+			literacy_rate >= 0.50
 			institution_investment_level = {
 				institution = institution_schools
-				value >= 2
+				value >= 3
 			}
 		}
 	}
@@ -136,7 +136,9 @@ ve_age_objective_4_trigger = {
 				target = bt:building_port
 				value >= 10
 			}
-			num_declared_interests >= 5
+			any_scope_interest_marker = {
+				count >= 5
+			}
 		}
 	}
 	trigger_else_if = {
@@ -162,12 +164,12 @@ ve_age_objective_5_trigger = {
 				total_population < 5000000
 				country_has_building_type_levels = {
 					target = bt:building_railway
-					value >= 1
+					value >= 3
 				}
 			}
 			country_has_building_type_levels = {
 				target = bt:building_railway
-				value >= 3
+				value >= 6
 			}
 		}
 	}
@@ -199,8 +201,8 @@ ve_age_objective_6_trigger = {
 	trigger_if = {
 		limit = { has_global_variable = ve_age_1_started }
 		is_subject = no
-		country_turmoil < 0.10
-		government_legitimacy >= 50
+		country_turmoil < 0.05
+		government_legitimacy >= 65
 	}
 	trigger_else_if = {
 		limit = { has_global_variable = ve_age_2_started }
@@ -239,10 +241,11 @@ ve_age_objective_7_trigger = {
 	trigger_if = {
 		limit = { has_global_variable = ve_age_1_started }
 		OR = {
-			is_country_type = recognized
 			country_rank = rank_value:major_power
 			country_rank = rank_value:great_power
-			num_declared_interests >= 3
+			any_scope_interest_marker = {
+				count >= 5
+			}
 		}
 	}
 	trigger_else_if = {
@@ -268,7 +271,9 @@ ve_age_objective_7_trigger = {
 			country_rank = rank_value:great_power
 			country_rank = rank_value:major_power
 			is_power_bloc_leader = yes
-			num_declared_interests >= 6
+			any_scope_interest_marker = {
+				count >= 6
+			}
 		}
 	}
 }
@@ -389,7 +394,20 @@ ve_can_purchase_country_era_reward_13 = {
 	}
 }
 
-ve_can_activate_golden_age = {
+ve_golden_age_not_yet_used = {
 	NOT = { has_variable = ve_golden_age_used }
-	var:ve_triggered_objectives >= 4
+}
+
+ve_golden_age_year_reached = {
+	year >= 1845
+}
+
+ve_golden_age_objective_requirement_met = {
+	var:ve_triggered_objectives >= 5
+}
+
+ve_can_activate_golden_age = {
+	ve_golden_age_not_yet_used = yes
+	ve_golden_age_year_reached = yes
+	ve_golden_age_objective_requirement_met = yes
 }

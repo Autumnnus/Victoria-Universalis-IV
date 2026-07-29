@@ -1301,7 +1301,10 @@ types state_panel_types
 									tooltip = "[GetScriptedGui('ve_begin_targeted_religious_project_state').BuildTooltip( GuiScope.SetRoot( StatesPanel.GetState.MakeScope ).AddScope('country2',GetPlayer.MakeScope).End )]"
 									onclick = "[GetScriptedGui('ve_begin_targeted_religious_project_state').Execute( GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country2',GetPlayer.MakeScope).End )]"
 									enabled = "[GetScriptedGui('ve_begin_targeted_religious_project_state').IsValid( GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country2',GetPlayer.MakeScope).End )]"
-									visible = "[GetScriptedGui('ve_begin_targeted_religious_project_state').IsShown(GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country2',GetPlayer.MakeScope).End)]"
+									# Start and Cancel share this slot. The start action remains shown for an
+									# owned state even after it becomes the active target, so hide it while
+									# the target-state cancel action is shown.
+									visible = "[And(GetScriptedGui('ve_begin_targeted_religious_project_state').IsShown(GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country2',GetPlayer.MakeScope).End), Not(GetScriptedGui('ve_cancel_targeted_religious_project_state').IsShown(GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country4',GetPlayer.MakeScope).End)))]"
 									using = ui_close
 								}
 								button = {
@@ -1338,8 +1341,10 @@ types state_panel_types
 								white_progressbar_horizontal = {
 									size = { 210 12 }
 									blockoverride "values" {
+										min = 0
 										max = 100
-										value = "[GetPlayer.MakeScope.Var('ve_religious_project_progress').GetValue|0]"
+										# Progress bars require the raw numeric binding; |0 is a text formatter.
+										value = "[GetPlayer.MakeScope.Var('ve_religious_project_progress').GetValue]"
 									}
 								}
 							}
@@ -1372,7 +1377,9 @@ types state_panel_types
 									tooltip = "[GetScriptedGui('ve_begin_targeted_cultural_project_state').BuildTooltip( GuiScope.SetRoot( StatesPanel.GetState.MakeScope ).AddScope('country2',GetPlayer.MakeScope).End )]"
 									onclick = "[GetScriptedGui('ve_begin_targeted_cultural_project_state').Execute( GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country2',GetPlayer.MakeScope).End )]"
 									enabled = "[GetScriptedGui('ve_begin_targeted_cultural_project_state').IsValid( GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country2',GetPlayer.MakeScope).End )]"
-									visible = "[GetScriptedGui('ve_begin_targeted_cultural_project_state').IsShown(GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country2',GetPlayer.MakeScope).End)]"
+									# As above, retain the left-hand button slot for the active project's
+									# cancel action instead of rendering Start + Cancel side by side.
+									visible = "[And(GetScriptedGui('ve_begin_targeted_cultural_project_state').IsShown(GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country2',GetPlayer.MakeScope).End), Not(GetScriptedGui('ve_cancel_targeted_cultural_project_state').IsShown(GuiScope.SetRoot(StatesPanel.GetState.MakeScope).AddScope('country4',GetPlayer.MakeScope).End)))]"
 									using = ui_close
 								}
 								button = {
@@ -1409,8 +1416,9 @@ types state_panel_types
 								white_progressbar_horizontal = {
 									size = { 210 12 }
 									blockoverride "values" {
+										min = 0
 										max = 100
-										value = "[GetPlayer.MakeScope.Var('ve_cultural_project_progress').GetValue|0]"
+										value = "[GetPlayer.MakeScope.Var('ve_cultural_project_progress').GetValue]"
 									}
 								}
 							}

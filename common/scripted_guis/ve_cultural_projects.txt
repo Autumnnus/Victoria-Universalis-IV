@@ -1,4 +1,4 @@
-ve_begin_national_curriculum_gui = {
+﻿ve_begin_national_curriculum_gui = {
 	scope = country
 	is_valid = {
 		custom_tooltip = {

@@ -193,3 +193,23 @@ ve_monthly_piety_reform = {
 	multiply = ve_piety_reform_cap_multiplier
 	round = yes
 }
+
+
+# Scope: state (the project target). Share of the state's population converted
+# when a conversion project completes: 5% base, plus the old missionary-power
+# Nationalist idea bonuses (group ideas 2, 5 and 7) of the owning country.
+ve_religious_project_conversion_amount = {
+	value = 0.05
+	if = {
+		limit = { owner = { has_modifier = nationalist_idea_2_mdf } }
+		add = 0.03
+	}
+	if = {
+		limit = { owner = { has_variable = nationalist_idea_5_var } }
+		add = 0.03
+	}
+	if = {
+		limit = { owner = { has_variable = nationalist_idea_7_var } }
+		add = 0.03
+	}
+}

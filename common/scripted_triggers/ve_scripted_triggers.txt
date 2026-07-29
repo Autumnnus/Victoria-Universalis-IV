@@ -1,4 +1,4 @@
-# Compatibility names retained for old callers. Live age logic is centralized
+﻿# Compatibility names retained for old callers. Live age logic is centralized
 # in ve_age_triggers.txt.
 age_1_obj_triggers = {
 	ve_age_objective_1_trigger = yes

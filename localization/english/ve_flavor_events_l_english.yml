@@ -1,0 +1,11 @@
+﻿l_english:
+ # events/Economic_Idea.txt and events/InnovativeIdeaGroupEvents.txt reference
+ # only this one key set for all of their events, so the text is deliberately
+ # neutral: an event in either file may grant a positive or a negative modifier.
+ # Give each event its own keys when they are wired to an on_action.
+ economic_flavor.1.t:0 "Economic Developments"
+ economic_flavor.1.desc:0 "Our economic doctrine is bearing fruit in ways the ministries did not plan for. Whatever follows, the effects will be felt across the economy for years."
+ economic_flavor.1.a:0 "So be it"
+ innovative_flavor.1.t:0 "A Shift in Doctrine"
+ innovative_flavor.1.desc:0 "The ideas we have embraced are reshaping how our institutions work, and how the rest of the world judges us."
+ innovative_flavor.1.a:0 "Very well"

@@ -20,6 +20,24 @@
  cultural_reform_topbar_tt:0 "Piety Tooltip"
  idea_point_topbar_tt:0 "Idea Point Tooltip"
  splendor_topbar_tt:0 "Splendor Tooltip"
+
+ # VE kaynak satiri. Deger anahtarlari dile bagli degil; ipuclari Turkce.
+ ve_tb_insight_value:0 "#v [GetPlayer.MakeScope.Var('idea_point_pool').GetValue|0]#!"
+ ve_tb_idea_groups_value:0 "#v [GetPlayer.MakeScope.Var('idea_group_unlocked').GetValue|0]/[GetPlayer.MakeScope.Var('idea_group_cap').GetValue|0]#!"
+ ve_tb_piety_reform_value:0 "#v [GetPlayer.MakeScope.Var('piety_reform_point').GetValue|0]#!"
+ ve_tb_settlement_value:0 "#v [GetPlayer.MakeScope.Var('piety_bar_point').GetValue|0]#!"
+ ve_tb_mandate_value:0 "#v [GetPlayer.MakeScope.Var('culture_reform_point').GetValue|0]#!"
+ ve_tb_cohesion_value:0 "#v [GetPlayer.MakeScope.Var('ve_national_cohesion').GetValue|0]#!"
+ ve_tb_momentum_value:0 "#v [GetPlayer.MakeScope.Var('ve_splender_points').GetValue|0]#!"
+ ve_tb_religious_project_value:0 "#v [GetPlayer.MakeScope.Var('ve_religious_project_progress').GetValue|0]%#!"
+ ve_tb_cultural_project_value:0 "#v [GetPlayer.MakeScope.Var('ve_cultural_project_progress').GetValue|0]%#!"
+
+ ve_tb_click_ideas:0 "\n\n#Y Tıkla:#! Fikirler panelini açar."
+ ve_tb_click_religion:0 "\n\n#Y Tıkla:#! Din panelini açar."
+ ve_tb_click_culture:0 "\n\n#Y Tıkla:#! Ulusal Kimlik panelini açar."
+ ve_tb_click_era:0 "\n\n#Y Tıkla:#! Çağ panelini açar."
+
+ ve_tb_idea_groups_tt:0 "#title Fikir Grupları#!\nBenimsenen: #v [GetPlayer.MakeScope.Var('idea_group_unlocked').GetValue|0]#!/#v [GetPlayer.MakeScope.Var('idea_group_cap').GetValue|0]#! yuva\nSatın alınan grup fikri: #v [GetPlayer.MakeScope.Var('national_idea_pool').GetValue|0]#!/#v 21#!\n\nBir grubu benimsemek bedavadır ve bir yuva kaplar; yuvalar zamanla açılır: 1846, 1856, 1866, 1876, 1886 ve 1896 yıllarında birer tane.\n\nGrup içinde satın aldığın her fikir Ulusal Fikirlerine de sayılır; bunlar #v 3, 6, 9, 12, 15, 18#! ve #v 21#! satın alınan fikirde açılır - grubu tamamlamak gerekmez.$ve_tb_click_ideas$"
  ve_send_missionary:0 "#tooltippable_name Missionary"
  ve_send_cultural_missionary:0 "#tooltippable_name Bureaucrat"
  ve_send:0 "Send"

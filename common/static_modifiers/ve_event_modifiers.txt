@@ -1,4 +1,4 @@
-ve_bad_reputation = {
+﻿ve_bad_reputation = {
 	icon = gfx/interface/icon_splendor_tiny.dds
 	country_prestige_mult = -0.1
 }

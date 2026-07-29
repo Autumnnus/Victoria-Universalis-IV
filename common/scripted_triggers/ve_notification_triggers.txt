@@ -1,4 +1,4 @@
-# Notification policy for Victoria Universalis IV.
+﻿# Notification policy for Victoria Universalis IV.
 #
 # Alerts in this file deliberately answer one question only: "Can the player
 # take a meaningful action right now?" Stockpiling alone is not an alert. This

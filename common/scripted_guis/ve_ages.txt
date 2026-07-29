@@ -1,4 +1,4 @@
-# Age visibility bindings retained separately from the live objective, reward,
+﻿# Age visibility bindings retained separately from the live objective, reward,
 # and Golden Age actions in ve_era_momentum.txt.
 ve_age_1 = {
 	scope = country

@@ -12,16 +12,33 @@
  VE_AGE_BONUS_SELECTED:0 "#bold Era#!"
 
  #TOPBAR CONTENT
- religious_project_topbar:0 "[GetPlayer.MakeScope.Var('piety_reform_point').GetValue] / 500"
- piety_topbar:0 "[GetPlayer.MakeScope.Var('piety_bar_point').GetValue]"
- cultural_reform_topbar:0 "[GetPlayer.MakeScope.Var('culture_reform_point').GetValue]"
- idea_point_topbar:0 "[GetPlayer.MakeScope.Var('idea_point_pool').GetValue]"
- splendor_topbar:0 "[GetPlayer.MakeScope.Var('ve_splender_points').GetValue]"
- ve_religious_project_topbar_tt:0 "#header Piety Reform#!\nCurrent: #Y [GetPlayer.MakeScope.Var('piety_reform_point').GetValue|0] / 500#!\nMonthly income: [GetPlayer.MakeScope.ScriptValue('ve_monthly_piety_reform')|+=0]\n\nSpent on Doctrines and Programs and on the Targeted Religious Project. Total Separation cannot start a project - see the Religion panel."
- piety_topbar_tt:0 "#header Religious Settlement#!\nCurrent: #Y [GetPlayer.MakeScope.Var('piety_bar_point').GetValue|0] / 100#!\nEquilibrium: #Y [GetPlayer.MakeScope.ScriptValue('ve_religious_state_equilibrium')|0]#!\nMonthly movement: [GetPlayer.MakeScope.ScriptValue('ve_monthly_religious_state')|+=0]"
- cultural_reform_topbar_tt:0 "#header Cultural Mandate#!\nCurrent: #Y [GetPlayer.MakeScope.Var('culture_reform_point').GetValue|0] / 500#!\nMonthly change: [GetPlayer.MakeScope.ScriptValue('ve_monthly_national_identity')|+=0]\nCohesion: #Y [GetPlayer.MakeScope.Var('ve_national_cohesion').GetValue|0] / 100#!"
- idea_point_topbar_tt:0 "Idea Point Tooltip"
- splendor_topbar_tt:0 "Era Momentum"
+ # The VE resource row. Chip values stay short because a chip is only 60-74
+ # wide; the caps, breakdowns and rules live in the chip tooltips, which reuse
+ # the full panel tooltips and only add a scale line and the click hint.
+ ve_tb_insight_value:0 "#v [GetPlayer.MakeScope.Var('idea_point_pool').GetValue|0]#!"
+ ve_tb_idea_groups_value:0 "#v [GetPlayer.MakeScope.Var('idea_group_unlocked').GetValue|0]/[GetPlayer.MakeScope.Var('idea_group_cap').GetValue|0]#!"
+ ve_tb_piety_reform_value:0 "#v [GetPlayer.MakeScope.Var('piety_reform_point').GetValue|0]#!"
+ ve_tb_settlement_value:0 "#v [GetPlayer.MakeScope.Var('piety_bar_point').GetValue|0]#!"
+ ve_tb_mandate_value:0 "#v [GetPlayer.MakeScope.Var('culture_reform_point').GetValue|0]#!"
+ ve_tb_cohesion_value:0 "#v [GetPlayer.MakeScope.Var('ve_national_cohesion').GetValue|0]#!"
+ ve_tb_momentum_value:0 "#v [GetPlayer.MakeScope.Var('ve_splender_points').GetValue|0]#!"
+ ve_tb_religious_project_value:0 "#v [GetPlayer.MakeScope.Var('ve_religious_project_progress').GetValue|0]%#!"
+ ve_tb_cultural_project_value:0 "#v [GetPlayer.MakeScope.Var('ve_cultural_project_progress').GetValue|0]%#!"
+
+ ve_tb_click_ideas:0 "\n\n#Y Click#! to open the Ideas panel."
+ ve_tb_click_religion:0 "\n\n#Y Click#! to open the Religion panel."
+ ve_tb_click_culture:0 "\n\n#Y Click#! to open the National Identity panel."
+ ve_tb_click_era:0 "\n\n#Y Click#! to open the Era panel."
+
+ ve_tb_insight_tt:0 "$ve_national_insight_tt$$ve_tb_click_ideas$"
+ ve_tb_idea_groups_tt:0 "#title Idea Groups#!\nEmbraced: #v [GetPlayer.MakeScope.Var('idea_group_unlocked').GetValue|0]#!/#v [GetPlayer.MakeScope.Var('idea_group_cap').GetValue|0]#! slots\nPurchased group ideas: #v [GetPlayer.MakeScope.Var('national_idea_pool').GetValue|0]#!/#v 21#!\n\nEmbracing a group is free and occupies one slot; the slots themselves open up over time, one more in 1846, 1856, 1866, 1876, 1886 and 1896.\n\nEvery individual idea you buy inside a group also counts toward your National Ideas, which unlock at #v 3, 6, 9, 12, 15, 18#! and #v 21#! purchased ideas - completing a group is not required.$ve_tb_click_ideas$"
+ ve_tb_piety_reform_tt:0 "$ve_piety_reform_tt$$ve_tb_click_religion$"
+ ve_tb_settlement_tt:0 "$ve_piety_tt$$ve_tb_click_religion$"
+ ve_tb_religious_project_tt:0 "$ve_religious_project_progress_tt$$ve_tb_click_religion$"
+ ve_tb_mandate_tt:0 "$ve_culture_reform_point_tt$$ve_tb_click_culture$"
+ ve_tb_cohesion_tt:0 "$ve_national_cohesion_tt$$ve_tb_click_culture$"
+ ve_tb_cultural_project_tt:0 "$ve_cultural_project_progress_tt$$ve_tb_click_culture$"
+ ve_tb_momentum_tt:0 "$ve_age_splendor_tt$$ve_tb_click_era$"
  ve_targeted_religious_project_state_action:0 "#tooltippable_name Targeted Religious Project"
  ve_targeted_religious_project_state_action_tt:0 "#header Targeted Religious Project#!\nStarts the project associated with the current Religious Model against this state's religious makeup. Total Separation cannot start one. Open the Religion panel for exact costs, progress rules and outcomes."
  ve_targeted_cultural_project_state_action:0 "#tooltippable_name Targeted Cultural Project"

@@ -1,4 +1,4 @@
-gbr_idea_tradition_1 = {
+﻿gbr_idea_tradition_1 = {
 	icon = gfx/interface/icons/military_icons/navy_icons/accuracy.dds
 	ship_accuracy_add = 7
 }

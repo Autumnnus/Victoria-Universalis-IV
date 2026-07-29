@@ -1,4 +1,4 @@
-idea_1_tt_triggers = {
+﻿idea_1_tt_triggers = {
 	switch = {
 		trigger = scope:idea_group
 		flag:academic_idea = {

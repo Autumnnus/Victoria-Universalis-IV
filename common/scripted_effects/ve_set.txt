@@ -1,4 +1,4 @@
-#This file contains the effects of the mechanics that countries should have at the start of the game and after it starts
+﻿#This file contains the effects of the mechanics that countries should have at the start of the game and after it starts
 ve_initialize_country_system = {
 	if = {
 		limit = {
@@ -582,7 +582,7 @@ set_national_idea = {
 	if = {
 		limit = {
 			OR = {
-+				AND = {
+				AND = {
 					exists = c:SPA
 					this = c:SPA
 				}

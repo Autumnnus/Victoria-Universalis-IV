@@ -1073,6 +1073,13 @@ types country_panel_types
 			size = { 10 10 }
 		}
 
+		### VICTORIA UNIVERSALIS IV - doctrine readout (ideas, religion, identity, era)
+		### Types live in gui/ve_country_panel_doctrines.gui, bindings in
+		### common/scripted_guis/ve_country_panel.txt. Read-only for every country.
+		ve_country_panel_doctrines = {
+			visible = "[GetScriptedGui('ve_cp_system_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End)]"
+		}
+
 		attitude_info = {
 			visible = "[Country.IsColonizable]"
 		}

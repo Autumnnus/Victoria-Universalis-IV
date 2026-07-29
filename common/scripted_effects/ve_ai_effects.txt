@@ -1,4 +1,4 @@
-# AI idea spending is split into two layers:
+﻿# AI idea spending is split into two layers:
 # - a monthly execution tick that checks one focused group;
 # - a half-yearly strategy tick that chooses new groups and other programs.
 # Focus IDs are numeric to keep save data compact and comparisons cheap.

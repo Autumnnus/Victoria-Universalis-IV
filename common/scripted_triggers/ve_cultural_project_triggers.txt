@@ -1,8 +1,16 @@
-# Phase 6: Cultural Projects
+﻿# Phase 6: Cultural Projects
 
 ve_has_active_cultural_project = {
 	has_variable = ve_cultural_project_type
 	var:ve_cultural_project_type > 0
+}
+
+# Reading var:ve_cultural_project_type without this guard throws a script error
+# every time it is evaluated while no project runs, and the country panel
+# evaluates the project name/description for every country it draws.
+ve_cultural_project_type_is = {
+	has_variable = ve_cultural_project_type
+	var:ve_cultural_project_type == $TYPE$
 }
 
 ve_has_no_active_cultural_project = {
@@ -54,6 +62,10 @@ ve_can_begin_model_project = {
 }
 
 # Scope: state
+# Deliberately prev-relative, never ROOT-relative: the alert path reaches this
+# through a country-scope trigger's any_scope_state, where ROOT is still the
+# country. Reading culture_percent_state off that ROOT logged a "wrong scope"
+# script error for every state of every evaluation.
 ve_state_has_cultural_project_target = {
 	owner = {
 		OR = {
@@ -63,19 +75,22 @@ ve_state_has_cultural_project_target = {
 		}
 	}
 	any_scope_culture = {
-		NOT = { is_primary_culture_of = ROOT.owner }
-		ROOT = {
-			"culture_percent_state(prev)" >= 0.05
+		NOT = { is_primary_culture_of = prev.owner }
+		prev = {
+			culture_percent_state = {
+				target = prev
+				value >= 0.05
+			}
 		}
 		OR = {
-			ROOT.owner = {
+			prev.owner = {
 				NOT = { ve_is_composite_identity = yes }
 			}
-			ROOT.owner = {
+			prev.owner = {
 				NOT = {
 					is_target_in_variable_list = {
 						name = ve_recognized_constituent_cultures
-						target = PREV
+						target = prev
 					}
 				}
 			}
@@ -85,16 +100,16 @@ ve_state_has_cultural_project_target = {
 
 ve_project_is_countrywide = {
 	OR = {
-		var:ve_cultural_project_type == 1
-		var:ve_cultural_project_type == 2
+		ve_cultural_project_type_is = { TYPE = 1 }
+		ve_cultural_project_type_is = { TYPE = 2 }
 	}
 }
 
 ve_project_is_targeted = {
 	OR = {
-		var:ve_cultural_project_type == 3
-		var:ve_cultural_project_type == 4
-		var:ve_cultural_project_type == 5
+		ve_cultural_project_type_is = { TYPE = 3 }
+		ve_cultural_project_type_is = { TYPE = 4 }
+		ve_cultural_project_type_is = { TYPE = 5 }
 	}
 }
 
@@ -125,19 +140,22 @@ ve_country_meets_cultural_project_cost = {
 # affordability check - the itemized tooltip checks that separately.
 ve_state_has_eligible_target_culture = {
 	any_scope_culture = {
-		NOT = { is_primary_culture_of = ROOT.owner }
-		ROOT = {
-			"culture_percent_state(prev)" >= 0.05
+		NOT = { is_primary_culture_of = prev.owner }
+		prev = {
+			culture_percent_state = {
+				target = prev
+				value >= 0.05
+			}
 		}
 		OR = {
-			ROOT.owner = {
+			prev.owner = {
 				NOT = { ve_is_composite_identity = yes }
 			}
-			ROOT.owner = {
+			prev.owner = {
 				NOT = {
 					is_target_in_variable_list = {
 						name = ve_recognized_constituent_cultures
-						target = PREV
+						target = prev
 					}
 				}
 			}

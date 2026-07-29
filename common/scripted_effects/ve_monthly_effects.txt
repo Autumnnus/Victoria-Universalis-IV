@@ -1,4 +1,4 @@
-# Phase 1 compatibility bridge.
+﻿# Phase 1 compatibility bridge.
 # Each resource has its own monthly update entry point so later migrations can
 # replace one system without changing the dispatch or the other three systems.
 # The legacy variables and script values are intentionally preserved here.

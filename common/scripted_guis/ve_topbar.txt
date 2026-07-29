@@ -1,4 +1,4 @@
-# Shared topbar bindings. These are intentionally separate from individual
+﻿# Shared topbar bindings. These are intentionally separate from individual
 # resource panels because the topbar is active while every VE panel is closed.
 
 ve_top_bar = {
@@ -28,6 +28,33 @@ ve_show_cultural_mandate_topbar = {
 	scope = country
 	is_shown = {
 		has_variable = culture_reform_point
+	}
+}
+
+# The VE resource row only makes sense once the country has been initialized.
+# Every chip in it reads a variable that ve_initialize_country_system creates.
+ve_show_ve_topbar_row = {
+	scope = country
+	is_shown = {
+		has_variable = victoria_universalis_system_on
+	}
+}
+
+# Progress chips are only drawn while the matching project actually runs;
+# the progress variables are removed again on completion or cancellation.
+ve_show_religious_project_progress_topbar = {
+	scope = country
+	is_shown = {
+		ve_has_active_religious_project = yes
+		has_variable = ve_religious_project_progress
+	}
+}
+
+ve_show_cultural_project_progress_topbar = {
+	scope = country
+	is_shown = {
+		ve_has_active_cultural_project = yes
+		has_variable = ve_cultural_project_progress
 	}
 }
 

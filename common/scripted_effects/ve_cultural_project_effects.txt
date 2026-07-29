@@ -1,9 +1,10 @@
-ve_clear_cultural_project_state = {
+﻿ve_clear_cultural_project_state = {
 	every_scope_state = {
 		remove_modifier = ve_ethnic_campaign_active_mdf
 		remove_modifier = ve_civic_initiative_active_mdf
 		remove_modifier = ve_composite_compact_active_mdf
-		remove_variable = selected_state_culture
+		# 'selected_state_culture' is never set anywhere in the mod; removing it
+		# only produced a "variable is used but never set" warning each load.
 	}
 }
 

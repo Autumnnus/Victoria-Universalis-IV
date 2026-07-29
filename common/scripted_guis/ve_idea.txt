@@ -1,4 +1,4 @@
-cancel_idea = {
+﻿cancel_idea = {
 	scope = country
 	saved_scopes = {
 		idea_group

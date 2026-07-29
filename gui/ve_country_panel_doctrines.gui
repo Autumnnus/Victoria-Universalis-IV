@@ -1,0 +1,1429 @@
+# Victoria Universalis IV - doctrine readout for the country panel.
+#
+# gui/country_panel.gui inserts ve_country_panel_doctrines into the Information
+# tab. It is read-only: it works for the player and for any foreign country,
+# and it never exposes a purchase or cancel action - those stay in the mod's
+# own fullscreen panels (ve_panel_ideas / ve_panel_religion / ve_panel_culture /
+# ve_panel_age_bonusses).
+#
+# STRUCTURE RULES - both were learned from engine errors, do not break them:
+#  1. country_panel_information_content is a flowcontainer, and a (flow)container
+#     cannot have an hbox/vbox as a direct child. Doing so crashes the game with
+#     EXCEPTION_STACK_OVERFLOW during layout.
+#  2. Children of an hbox/vbox may not carry a position, and parentanchor counts
+#     as a position ("Widget cannot have a position in a layout"). flowcontainer
+#     children may use parentanchor.
+# Therefore this file uses no hbox/vbox at all: vertical stacks are
+# flowcontainers, and each row is a fixed-size widget holding a left-anchored
+# flowcontainer plus right-anchored trailing elements. A plain widget also does
+# not accept 'margin = { x y }' - use margin_left/right/top/bottom on containers.
+#
+# Layout contract: the section is 554 wide, cards are clamped to 530 and rows to
+# 510 with fixed heights. Long content (idea names, project names, model names)
+# is elided and the detail lives in tooltips, so a country with seven completed
+# idea groups cannot push the panel out of shape. Row widgets carry their own
+# visibility so the flowcontainer collapses hidden rows.
+#
+# Script bindings: common/scripted_guis/ve_country_panel.txt
+# Helper triggers: common/scripted_triggers/ve_country_panel_triggers.txt
+# Status strings: common/customizable_localization/ve_country_panel_cl.txt
+
+@ve_cp_section_width = 554
+@ve_cp_card_width = 530
+@ve_cp_row_width = 510
+
+types ve_country_panel_types
+{
+	### One slot in a fixed chip grid: National Idea, Religious Program, Era Reward.
+	### Owned slots are fully opaque, unowned ones are dimmed - the tooltip always
+	### describes the slot so a dimmed chip still explains what it would grant.
+	type ve_cp_chip = widget {
+		size = { 32 32 }
+
+		block "chip_tooltip" {}
+		using = tooltip_above
+
+		background = {
+			using = entry_bg_simple
+		}
+
+		widget = {
+			size = { 100% 100% }
+
+			block "chip_state" {
+				alpha = 1.0
+			}
+
+			icon = {
+				parentanchor = center
+				size = { 18 18 }
+
+				block "chip_icon" {
+					texture = "gfx/interface/icons/generic_icons/prestige.dds"
+				}
+			}
+
+			textbox = {
+				parentanchor = right|bottom
+				position = { -3 -1 }
+				autoresize = yes
+				align = nobaseline
+				using = fontsize_small
+				default_format = "#lore"
+
+				block "chip_label" {
+					raw_text = ""
+				}
+			}
+		}
+	}
+
+	### One purchased-level pip on an idea group row. The fixed width keeps the
+	### pip strip aligned across rows regardless of glyph metrics.
+	type ve_cp_idea_pip = textbox {
+		parentanchor = vcenter
+		minimumsize = { 12 -1 }
+		maximumsize = { 12 -1 }
+		autoresize = yes
+		align = nobaseline
+		using = fontsize_medium
+		raw_text = "#P ●#!"
+
+		block "pip_state" {
+			alpha = 1.0
+		}
+	}
+
+	### Compact resource cell used by the top strip.
+	type ve_cp_stat_cell = widget {
+		size = { 128 54 }
+
+		block "cell_tooltip" {}
+
+		background = {
+			using = entry_bg_simple
+		}
+
+		icon = {
+			position = { 6 5 }
+			size = { 20 20 }
+
+			block "cell_icon" {
+				texture = "gfx/interface/icons/generic_icons/innovation.dds"
+			}
+		}
+
+		textbox = {
+			position = { 30 3 }
+			autoresize = yes
+			max_width = 92
+			elide = right
+			fontsize_min = 10
+			align = nobaseline
+			using = fontsize_small
+			default_format = "#lore"
+
+			block "cell_label" {
+				raw_text = ""
+			}
+		}
+
+		textbox = {
+			position = { 30 19 }
+			autoresize = yes
+			max_width = 92
+			elide = right
+			fontsize_min = 10
+			align = nobaseline
+			default_format = "#v"
+
+			block "cell_value" {
+				raw_text = ""
+			}
+		}
+
+		white_progressbar_horizontal = {
+			position = { 8 41 }
+			size = { 112 8 }
+
+			blockoverride "values" {
+				block "cell_bar_values" {
+					min = 0
+					max = 100
+					value = 0
+				}
+			}
+		}
+	}
+
+	### Shared card frame. A flowcontainer, so the card height follows the rows
+	### that are actually visible.
+	type ve_cp_card = flowcontainer {
+		direction = vertical
+		minimumsize = { @ve_cp_card_width -1 }
+		maximumsize = { @ve_cp_card_width -1 }
+		margin_left = 10
+		margin_right = 10
+		margin_top = 8
+		margin_bottom = 8
+		spacing = 5
+
+		background = {
+			using = entry_bg_simple
+		}
+	}
+
+	### Card title row: icon, title, and a short right-aligned summary value.
+	type ve_cp_card_title = widget {
+		size = { @ve_cp_row_width 26 }
+
+		flowcontainer = {
+			parentanchor = left|vcenter
+			spacing = 6
+
+			icon = {
+				parentanchor = vcenter
+				size = { 22 22 }
+
+				block "title_icon" {
+					texture = "gfx/interface/icons/generic_icons/state.dds"
+				}
+			}
+
+			textbox = {
+				parentanchor = vcenter
+				autoresize = yes
+				max_width = 300
+				elide = right
+				fontsize_min = 11
+				align = nobaseline
+				default_format = "#title"
+				using = fontsize_large
+
+				block "title_text" {
+					raw_text = "INSERT_TITLE"
+				}
+			}
+		}
+
+		textbox = {
+			parentanchor = right|vcenter
+			autoresize = yes
+			max_width = 168
+			elide = right
+			fontsize_min = 10
+			align = right|nobaseline
+			default_format = "#v"
+
+			block "title_value" {
+				raw_text = ""
+			}
+
+			block "title_value_tooltip" {}
+		}
+	}
+
+	### Label + value + meter row: Religious Settlement, National Cohesion and
+	### the Era objective counter.
+	type ve_cp_meter_row = widget {
+		size = { @ve_cp_row_width 24 }
+
+		block "meter_tooltip" {}
+
+		flowcontainer = {
+			parentanchor = left|vcenter
+			spacing = 6
+
+			textbox = {
+				parentanchor = vcenter
+				autoresize = yes
+				minimumsize = { 138 -1 }
+				maximumsize = { 138 -1 }
+				elide = right
+				fontsize_min = 10
+				align = nobaseline
+				default_format = "#lore"
+
+				block "meter_label" {
+					raw_text = ""
+				}
+			}
+
+			textbox = {
+				parentanchor = vcenter
+				autoresize = yes
+				minimumsize = { 72 -1 }
+				maximumsize = { 72 -1 }
+				elide = right
+				fontsize_min = 10
+				align = nobaseline
+				default_format = "#v"
+
+				block "meter_value" {
+					raw_text = ""
+				}
+			}
+
+			white_progressbar_horizontal = {
+				parentanchor = vcenter
+				size = { 140 10 }
+
+				blockoverride "values" {
+					block "meter_bar_values" {
+						min = 0
+						max = 100
+						value = 0
+					}
+				}
+			}
+		}
+
+		textbox = {
+			parentanchor = right|vcenter
+			autoresize = yes
+			max_width = 136
+			elide = right
+			fontsize_min = 10
+			align = right|nobaseline
+			default_format = "#lore"
+
+			block "meter_note" {
+				raw_text = ""
+			}
+		}
+	}
+
+	### Label + status text row, with room for an optional trailing progress bar.
+	type ve_cp_text_row = widget {
+		size = { @ve_cp_row_width 26 }
+
+		block "row_tooltip" {}
+
+		flowcontainer = {
+			parentanchor = left|vcenter
+			spacing = 6
+
+			textbox = {
+				parentanchor = vcenter
+				autoresize = yes
+				minimumsize = { 138 -1 }
+				maximumsize = { 138 -1 }
+				elide = right
+				fontsize_min = 10
+				align = nobaseline
+				default_format = "#lore"
+
+				block "row_label" {
+					raw_text = ""
+				}
+			}
+
+			textbox = {
+				parentanchor = vcenter
+				autoresize = yes
+				max_width = 210
+				elide = right
+				fontsize_min = 10
+				align = nobaseline
+
+				block "row_value" {
+					raw_text = ""
+				}
+			}
+		}
+
+		block "row_extra" {}
+	}
+
+	### One embraced idea group: category icon, group name, seven purchase pips
+	### and the Ambition capstone marker. The row widget hides itself for groups
+	### this country never embraced, so the list can never exceed seven rows.
+	type ve_cp_idea_group_row = widget {
+		size = { @ve_cp_row_width 28 }
+
+		visible = "[GetScriptedGui('ve_cp_idea_group_embraced').IsShown(GuiScope.SetRoot(Country.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
+		tooltip = "[GetScriptedGui('ve_cp_idea_group_details').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
+		using = tooltip_above
+
+		flowcontainer = {
+			parentanchor = left|vcenter
+			spacing = 6
+
+			icon = {
+				parentanchor = vcenter
+				size = { 20 20 }
+
+				block "row_icon" {
+					texture = "gfx/interface/icons/generic_icons/state.dds"
+				}
+			}
+
+			textbox = {
+				parentanchor = vcenter
+				autoresize = yes
+				minimumsize = { 240 -1 }
+				maximumsize = { 240 -1 }
+				elide = right
+				fontsize_min = 11
+				align = nobaseline
+				raw_text = "[Localize(Concatenate(StateRegion.MakeScope.Var('idea_group').GetFlagName,'_name'))]"
+			}
+		}
+
+		flowcontainer = {
+			parentanchor = right|vcenter
+			spacing = 6
+
+			flowcontainer = {
+				parentanchor = vcenter
+				spacing = 2
+
+				ve_cp_idea_pip = {
+					blockoverride "pip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_idea_group_level_1').IsShown(GuiScope.SetRoot(Country.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End),'(float)1.0','(float)0.2')]"
+					}
+				}
+				ve_cp_idea_pip = {
+					blockoverride "pip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_idea_group_level_2').IsShown(GuiScope.SetRoot(Country.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End),'(float)1.0','(float)0.2')]"
+					}
+				}
+				ve_cp_idea_pip = {
+					blockoverride "pip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_idea_group_level_3').IsShown(GuiScope.SetRoot(Country.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End),'(float)1.0','(float)0.2')]"
+					}
+				}
+				ve_cp_idea_pip = {
+					blockoverride "pip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_idea_group_level_4').IsShown(GuiScope.SetRoot(Country.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End),'(float)1.0','(float)0.2')]"
+					}
+				}
+				ve_cp_idea_pip = {
+					blockoverride "pip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_idea_group_level_5').IsShown(GuiScope.SetRoot(Country.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End),'(float)1.0','(float)0.2')]"
+					}
+				}
+				ve_cp_idea_pip = {
+					blockoverride "pip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_idea_group_level_6').IsShown(GuiScope.SetRoot(Country.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End),'(float)1.0','(float)0.2')]"
+					}
+				}
+				ve_cp_idea_pip = {
+					blockoverride "pip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_idea_group_level_7').IsShown(GuiScope.SetRoot(Country.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End),'(float)1.0','(float)0.2')]"
+					}
+				}
+			}
+
+			icon = {
+				parentanchor = vcenter
+				size = { 20 20 }
+				texture = "gfx/interface/ve_ideas/great_project_upgrade_cost.dds"
+				alpha = "[Select_float(GetScriptedGui('ve_idea_group_ambition').IsValid(GuiScope.SetRoot(Country.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End),'(float)1.0','(float)0.2')]"
+				tooltip = "[GetScriptedGui('ve_idea_group_ambition').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
+				using = tooltip_above
+			}
+		}
+	}
+
+	##########################################################################
+	### SECTION ROOT
+	##########################################################################
+	type ve_country_panel_doctrines = flowcontainer {
+		direction = vertical
+		parentanchor = hcenter
+		minimumsize = { @ve_cp_section_width -1 }
+		maximumsize = { @ve_cp_section_width -1 }
+
+		default_header = {
+			blockoverride "text" {
+				text = "VE_CP_HEADER"
+			}
+
+			blockoverride "additional_items_right_of_text" {
+				button = {
+					parentanchor = vcenter
+					margin_left = 8
+					using = expand_arrow_expanded
+					visible = "[Not(GetVariableSystem.Exists('ve_cp_collapsed'))]"
+					onclick = "[GetVariableSystem.Set('ve_cp_collapsed', 'yes')]"
+					tooltip = "VE_CP_COLLAPSE_TT"
+				}
+
+				button = {
+					parentanchor = vcenter
+					margin_left = 8
+					using = expand_arrow
+					visible = "[GetVariableSystem.Exists('ve_cp_collapsed')]"
+					onclick = "[GetVariableSystem.Clear('ve_cp_collapsed')]"
+					tooltip = "VE_CP_EXPAND_TT"
+				}
+			}
+		}
+
+		flowcontainer = {
+			direction = vertical
+			visible = "[Not(GetVariableSystem.Exists('ve_cp_collapsed'))]"
+			parentanchor = hcenter
+			minimumsize = { @ve_cp_card_width -1 }
+			maximumsize = { @ve_cp_card_width -1 }
+			margin_top = 8
+			spacing = 6
+
+			ve_cp_resource_strip = {}
+			ve_cp_ideas_card = {}
+			ve_cp_religion_card = {}
+			ve_cp_identity_card = {}
+			ve_cp_era_card = {}
+		}
+
+		widget = {
+			size = { 10 10 }
+		}
+	}
+
+	##########################################################################
+	### RESOURCE STRIP
+	##########################################################################
+	type ve_cp_resource_strip = widget {
+		size = { @ve_cp_card_width 54 }
+
+		flowcontainer = {
+			parentanchor = left|vcenter
+			spacing = 6
+
+			### NATIONAL INSIGHT
+			ve_cp_stat_cell = {
+				blockoverride "cell_tooltip" {
+					tooltip = "VE_CP_INSIGHT_TT"
+				}
+				blockoverride "cell_icon" {
+					texture = "gfx/interface/icons/generic_icons/innovation.dds"
+				}
+				blockoverride "cell_label" {
+					text = "VE_CP_INSIGHT_LABEL"
+				}
+				blockoverride "cell_value" {
+					raw_text = "[Country.MakeScope.Var('idea_point_pool').GetValue|0]"
+				}
+				blockoverride "cell_bar_values" {
+					min = 0
+					max = 1000
+					value = "[Country.MakeScope.Var('idea_point_pool').GetValue]"
+				}
+			}
+
+			### PIETY REFORM
+			ve_cp_stat_cell = {
+				blockoverride "cell_tooltip" {
+					tooltip = "VE_CP_PIETY_TT"
+				}
+				blockoverride "cell_icon" {
+					texture = "gfx/interface/icons/generic_icons/conversion.dds"
+				}
+				blockoverride "cell_label" {
+					text = "VE_CP_PIETY_LABEL"
+				}
+				blockoverride "cell_value" {
+					raw_text = "[Country.MakeScope.Var('piety_reform_point').GetValue|0]"
+				}
+				blockoverride "cell_bar_values" {
+					min = 0
+					max = 500
+					value = "[Country.MakeScope.Var('piety_reform_point').GetValue]"
+				}
+			}
+
+			### CULTURAL MANDATE
+			ve_cp_stat_cell = {
+				blockoverride "cell_tooltip" {
+					tooltip = "VE_CP_MANDATE_TT"
+				}
+				blockoverride "cell_icon" {
+					texture = "gfx/interface/icons/generic_icons/mandate.dds"
+				}
+				blockoverride "cell_label" {
+					text = "VE_CP_MANDATE_LABEL"
+				}
+				blockoverride "cell_value" {
+					raw_text = "[Country.MakeScope.Var('culture_reform_point').GetValue|0]"
+				}
+				blockoverride "cell_bar_values" {
+					min = 0
+					max = 500
+					value = "[Country.MakeScope.Var('culture_reform_point').GetValue]"
+				}
+			}
+
+			### ERA MOMENTUM
+			ve_cp_stat_cell = {
+				blockoverride "cell_tooltip" {
+					tooltip = "VE_CP_MOMENTUM_TT"
+				}
+				blockoverride "cell_icon" {
+					texture = "gfx/interface/icons/generic_icons/age.dds"
+				}
+				blockoverride "cell_label" {
+					text = "VE_CP_MOMENTUM_LABEL"
+				}
+				blockoverride "cell_value" {
+					raw_text = "[Country.MakeScope.Var('ve_splender_points').GetValue|0]"
+				}
+				blockoverride "cell_bar_values" {
+					min = 0
+					max = 600
+					value = "[Country.MakeScope.Var('ve_splender_points').GetValue]"
+				}
+			}
+		}
+	}
+
+	##########################################################################
+	### IDEAS
+	##########################################################################
+	type ve_cp_ideas_card = ve_cp_card {
+
+		ve_cp_card_title = {
+			blockoverride "title_icon" {
+				texture = "gfx/interface/icon_ideas.dds"
+			}
+			blockoverride "title_text" {
+				text = "VE_CP_IDEAS_TITLE"
+			}
+			blockoverride "title_value" {
+				text = "VE_CP_GROUP_SLOTS"
+			}
+			blockoverride "title_value_tooltip" {
+				tooltip = "VE_CP_GROUP_SLOTS_TT"
+			}
+		}
+
+		### NATIONAL IDEA SLOTS
+		widget = {
+			size = { @ve_cp_row_width 34 }
+
+			flowcontainer = {
+				parentanchor = left|vcenter
+				spacing = 4
+
+				textbox = {
+					parentanchor = vcenter
+					autoresize = yes
+					minimumsize = { 122 -1 }
+					maximumsize = { 122 -1 }
+					elide = right
+					fontsize_min = 10
+					align = nobaseline
+					default_format = "#lore"
+					text = "VE_CP_NATIONAL_IDEAS_LABEL"
+				}
+
+				ve_cp_chip = {
+					blockoverride "chip_label" {
+						raw_text = "1"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_national_idea_1_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_national_idea_1').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_label" {
+						raw_text = "2"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_national_idea_2_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_national_idea_2').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_label" {
+						raw_text = "3"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_national_idea_3_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_national_idea_3').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_label" {
+						raw_text = "4"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_national_idea_4_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_national_idea_4').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_label" {
+						raw_text = "5"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_national_idea_5_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_national_idea_5').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_label" {
+						raw_text = "6"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_national_idea_6_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_national_idea_6').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_label" {
+						raw_text = "7"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_national_idea_7_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_national_idea_7').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+			}
+
+			### TRADITIONS AND NATIONAL BONUS
+			flowcontainer = {
+				parentanchor = right|vcenter
+				spacing = 4
+
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/legitimacy.dds"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_national_idea_tradition').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/prestige.dds"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_national_bonus_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_national_idea_bonus').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+			}
+		}
+
+		### NATIONAL IDEA PROGRESS
+		widget = {
+			size = { @ve_cp_row_width 20 }
+			tooltip = "VE_CP_NATIONAL_IDEA_PROGRESS_TT"
+
+			flowcontainer = {
+				parentanchor = left|vcenter
+				spacing = 6
+
+				textbox = {
+					parentanchor = vcenter
+					autoresize = yes
+					minimumsize = { 122 -1 }
+					maximumsize = { 122 -1 }
+					elide = right
+					fontsize_min = 10
+					align = nobaseline
+					default_format = "#lore"
+					text = "VE_CP_PROGRESS_LABEL"
+				}
+
+				textbox = {
+					parentanchor = vcenter
+					autoresize = yes
+					minimumsize = { 72 -1 }
+					maximumsize = { 72 -1 }
+					elide = right
+					fontsize_min = 10
+					align = nobaseline
+					default_format = "#v"
+					raw_text = "[Country.MakeScope.Var('national_idea_pool').GetValue|0] / 21"
+				}
+
+				white_progressbar_horizontal = {
+					parentanchor = vcenter
+					size = { 250 10 }
+
+					blockoverride "values" {
+						min = 0
+						max = 21
+						value = "[Country.MakeScope.Var('national_idea_pool').GetValue]"
+					}
+				}
+			}
+		}
+
+		divider_clean = {
+			blockoverride "size" {
+				size = { @ve_cp_row_width 2 }
+			}
+		}
+
+		### EMBRACED IDEA GROUPS
+		textbox = {
+			autoresize = yes
+			max_width = @ve_cp_row_width
+			multiline = yes
+			align = nobaseline
+			fontsize_min = 10
+			default_format = "#lore"
+			text = "VE_CP_NO_IDEA_GROUPS"
+			visible = "[EqualTo_CFixedPoint(Country.MakeScope.Var('idea_group_unlocked').GetValue,'(CFixedPoint)0')]"
+		}
+
+		flowcontainer = {
+			direction = vertical
+			datamodel = "[GetGlobalList('prod_ideas')]"
+
+			item = {
+				ve_cp_idea_group_row = {
+					datacontext = "[Scope.GetStateRegion]"
+
+					blockoverride "row_icon" {
+						texture = "gfx/interface/icons/generic_icons/gdp.dds"
+					}
+				}
+			}
+		}
+
+		flowcontainer = {
+			direction = vertical
+			datamodel = "[GetGlobalList('soc_ideas')]"
+
+			item = {
+				ve_cp_idea_group_row = {
+					datacontext = "[Scope.GetStateRegion]"
+
+					blockoverride "row_icon" {
+						texture = "gfx/interface/icons/generic_icons/population.dds"
+					}
+				}
+			}
+		}
+
+		flowcontainer = {
+			direction = vertical
+			datamodel = "[GetGlobalList('mil_ideas')]"
+
+			item = {
+				ve_cp_idea_group_row = {
+					datacontext = "[Scope.GetStateRegion]"
+
+					blockoverride "row_icon" {
+						texture = "gfx/interface/icons/generic_icons/battalions.dds"
+					}
+				}
+			}
+		}
+	}
+
+	##########################################################################
+	### RELIGION
+	##########################################################################
+	type ve_cp_religion_card = ve_cp_card {
+
+		ve_cp_card_title = {
+			blockoverride "title_icon" {
+				texture = "[Country.GetStateReligion.GetTexture]"
+			}
+			blockoverride "title_text" {
+				raw_text = "[Country.GetCustom('ve_religious_model_name')]"
+			}
+			blockoverride "title_value" {
+				raw_text = "[Country.GetStateReligion.GetNameNoIcon]"
+			}
+			blockoverride "title_value_tooltip" {
+				tooltip = "[GetScriptedGui('ve_passive_bonus_tooltip').BuildTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+			}
+		}
+
+		### RELIGIOUS SETTLEMENT
+		ve_cp_meter_row = {
+			blockoverride "meter_tooltip" {
+				tooltip = "VE_CP_SETTLEMENT_TT"
+			}
+			blockoverride "meter_label" {
+				raw_text = "[Country.GetCustom('ve_religious_resource_name')]"
+			}
+			blockoverride "meter_value" {
+				raw_text = "[Country.MakeScope.Var('piety_bar_point').GetValue|0] / 100"
+			}
+			blockoverride "meter_bar_values" {
+				min = 0
+				max = 100
+				value = "[Country.MakeScope.Var('piety_bar_point').GetValue]"
+			}
+			blockoverride "meter_note" {
+				raw_text = "[Country.GetCustom('ve_cp_settlement_tier')]"
+			}
+		}
+
+		### ADOPTED RELIGIOUS PROGRAMS
+		widget = {
+			size = { @ve_cp_row_width 34 }
+
+			flowcontainer = {
+				parentanchor = left|vcenter
+				spacing = 4
+
+				textbox = {
+					parentanchor = vcenter
+					autoresize = yes
+					minimumsize = { 118 -1 }
+					maximumsize = { 118 -1 }
+					elide = right
+					fontsize_min = 10
+					align = nobaseline
+					default_format = "#lore"
+					text = "VE_CP_PROGRAMS_LABEL"
+				}
+
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/conversion.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "1"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_religious_program_1').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[Country.GetCustom('ve_religious_program_1_effect')]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/conversion.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "2"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_religious_program_2').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[Country.GetCustom('ve_religious_program_2_effect')]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/conversion.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "3"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_religious_program_3').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[Country.GetCustom('ve_religious_program_3_effect')]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/conversion.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "4"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_religious_program_4').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[Country.GetCustom('ve_religious_program_4_effect')]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/conversion.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "5"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_religious_program_5').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[Country.GetCustom('ve_religious_program_5_effect')]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/conversion.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "6"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_religious_program_6').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[Country.GetCustom('ve_religious_program_6_effect')]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/conversion.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "7"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_religious_program_7').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[Country.GetCustom('ve_religious_program_7_effect')]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/conversion.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "8"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_religious_program_8').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[Country.GetCustom('ve_religious_program_8_effect')]"
+					}
+				}
+			}
+
+			textbox = {
+				parentanchor = right|vcenter
+				autoresize = yes
+				max_width = 92
+				elide = right
+				fontsize_min = 10
+				align = right|nobaseline
+				default_format = "#lore"
+				text = "VE_CP_NONE_YET"
+				visible = "[GetScriptedGui('ve_cp_no_religious_program').IsShown(GuiScope.SetRoot(Country.MakeScope).End)]"
+			}
+		}
+
+		### TARGETED RELIGIOUS PROJECT
+		ve_cp_text_row = {
+			blockoverride "row_tooltip" {
+				tooltip = "VE_CP_RELIGIOUS_PROJECT_TT"
+			}
+			blockoverride "row_label" {
+				text = "VE_CP_PROJECT_LABEL"
+			}
+			blockoverride "row_value" {
+				raw_text = "[Country.GetCustom('ve_religious_project_status')]"
+			}
+			blockoverride "row_extra" {
+				white_progressbar_horizontal = {
+					parentanchor = right|vcenter
+					size = { 140 10 }
+					visible = "[GetScriptedGui('ve_cp_religious_project_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End)]"
+
+					blockoverride "values" {
+						min = 0
+						max = 100
+						value = "[Country.MakeScope.Var('ve_religious_project_progress').GetValue]"
+					}
+				}
+			}
+		}
+	}
+
+	##########################################################################
+	### NATIONAL IDENTITY
+	##########################################################################
+	type ve_cp_identity_card = ve_cp_card {
+
+		### ACTIVE IDENTITY MODEL
+		widget = {
+			size = { @ve_cp_row_width 26 }
+			tooltip = "[GetScriptedGui('ve_identity_model_tooltip').BuildTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+
+			flowcontainer = {
+				parentanchor = left|vcenter
+				spacing = 6
+
+				widget = {
+					parentanchor = vcenter
+					size = { 22 22 }
+
+					icon = {
+						size = { 100% 100% }
+						texture = "gfx/interface/icons/ideology_icons/ethno_nationalist.dds"
+						visible = "[EqualTo_CFixedPoint(Country.MakeScope.Var('ve_identity_model').GetValue,'(CFixedPoint)1')]"
+					}
+					icon = {
+						size = { 100% 100% }
+						texture = "gfx/interface/icons/ideology_icons/egalitarian.dds"
+						visible = "[EqualTo_CFixedPoint(Country.MakeScope.Var('ve_identity_model').GetValue,'(CFixedPoint)2')]"
+					}
+					icon = {
+						size = { 100% 100% }
+						texture = "gfx/interface/icons/ideology_icons/particularist.dds"
+						visible = "[EqualTo_CFixedPoint(Country.MakeScope.Var('ve_identity_model').GetValue,'(CFixedPoint)3')]"
+					}
+				}
+
+				textbox = {
+					parentanchor = vcenter
+					autoresize = yes
+					max_width = 300
+					elide = right
+					fontsize_min = 11
+					align = nobaseline
+					default_format = "#title"
+					using = fontsize_large
+					raw_text = "[Country.GetCustom('ve_identity_model_name')]"
+				}
+			}
+
+			textbox = {
+				parentanchor = right|vcenter
+				autoresize = yes
+				max_width = 168
+				elide = right
+				fontsize_min = 10
+				align = right|nobaseline
+				default_format = "#v"
+				raw_text = "[Country.GetPrimaryCulturesDesc]"
+				tooltip = "[Country.GetPrimaryCulturesDesc]"
+			}
+		}
+
+		### NATIONAL COHESION
+		ve_cp_meter_row = {
+			blockoverride "meter_tooltip" {
+				tooltip = "VE_CP_COHESION_TT"
+			}
+			blockoverride "meter_label" {
+				text = "VE_CP_COHESION_LABEL"
+			}
+			blockoverride "meter_value" {
+				raw_text = "[Country.MakeScope.Var('ve_national_cohesion').GetValue|0] / 100"
+			}
+			blockoverride "meter_bar_values" {
+				min = 0
+				max = 100
+				value = "[Country.MakeScope.Var('ve_national_cohesion').GetValue]"
+			}
+			blockoverride "meter_note" {
+				raw_text = "[Country.GetCustom('ve_cp_cohesion_tier')]"
+			}
+		}
+
+		### CULTURAL PROJECT
+		ve_cp_text_row = {
+			blockoverride "row_tooltip" {
+				tooltip = "VE_CP_CULTURAL_PROJECT_TT"
+			}
+			blockoverride "row_label" {
+				text = "VE_CP_PROJECT_LABEL"
+			}
+			blockoverride "row_value" {
+				raw_text = "[Country.GetCustom('ve_cultural_project_name')]"
+			}
+			blockoverride "row_extra" {
+				white_progressbar_horizontal = {
+					parentanchor = right|vcenter
+					size = { 140 10 }
+					visible = "[GetScriptedGui('ve_cp_cultural_project_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End)]"
+
+					blockoverride "values" {
+						min = 0
+						max = 100
+						value = "[Country.MakeScope.Var('ve_cultural_project_progress').GetValue]"
+					}
+				}
+			}
+		}
+	}
+
+	##########################################################################
+	### ERA
+	##########################################################################
+	type ve_cp_era_card = ve_cp_card {
+
+		ve_cp_card_title = {
+			blockoverride "title_icon" {
+				texture = "gfx/interface/icons/generic_icons/age.dds"
+			}
+			blockoverride "title_text" {
+				raw_text = "[Country.GetCustom('ve_cp_age_name')]"
+			}
+			blockoverride "title_value" {
+				text = "VE_CP_MOMENTUM_VALUE"
+			}
+			blockoverride "title_value_tooltip" {
+				tooltip = "VE_CP_MOMENTUM_TT"
+			}
+		}
+
+		### AGE OBJECTIVES
+		ve_cp_meter_row = {
+			blockoverride "meter_tooltip" {
+				tooltip = "VE_CP_OBJECTIVES_TT"
+			}
+			blockoverride "meter_label" {
+				text = "VE_CP_OBJECTIVES_LABEL"
+			}
+			blockoverride "meter_value" {
+				raw_text = "[Country.MakeScope.Var('ve_triggered_objectives').GetValue|0] / 7"
+			}
+			blockoverride "meter_bar_values" {
+				min = 0
+				max = 7
+				value = "[Country.MakeScope.Var('ve_triggered_objectives').GetValue]"
+			}
+			blockoverride "meter_note" {
+				raw_text = "[Country.GetCustom('ve_cp_golden_age_status')]"
+			}
+		}
+
+		### PURCHASED ERA REWARDS
+		widget = {
+			size = { @ve_cp_row_width 22 }
+			tooltip = "VE_CP_REWARDS_TT"
+
+			flowcontainer = {
+				parentanchor = left|vcenter
+				spacing = 6
+
+				textbox = {
+					parentanchor = vcenter
+					autoresize = yes
+					minimumsize = { 138 -1 }
+					maximumsize = { 138 -1 }
+					elide = right
+					fontsize_min = 10
+					align = nobaseline
+					default_format = "#lore"
+					text = "VE_CP_REWARDS_LABEL"
+				}
+
+				textbox = {
+					parentanchor = vcenter
+					autoresize = yes
+					max_width = 210
+					elide = right
+					fontsize_min = 10
+					align = nobaseline
+					default_format = "#v"
+					text = "VE_CP_REWARDS_VALUE"
+				}
+			}
+		}
+
+		widget = {
+			size = { @ve_cp_row_width 34 }
+
+			flowcontainer = {
+				parentanchor = left|vcenter
+				spacing = 3
+
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/age.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "1"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_era_reward_1').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_age_bonus_1').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/age.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "2"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_era_reward_2').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_age_bonus_2').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/age.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "3"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_era_reward_3').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_age_bonus_3').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/age.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "4"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_era_reward_4').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_age_bonus_4').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/age.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "5"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_era_reward_5').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_age_bonus_5').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/age.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "6"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_era_reward_6').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_age_bonus_6').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/age.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "7"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_era_reward_7').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_age_bonus_7').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/age.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "8"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_era_reward_8').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_age_bonus_8').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/age.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "9"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_era_reward_9').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_age_bonus_9').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/prestige.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "10"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_era_reward_10').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_age_bonus_10').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/prestige.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "11"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_era_reward_11').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_age_bonus_11').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/prestige.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "12"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_era_reward_12').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_age_bonus_12').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+				ve_cp_chip = {
+					blockoverride "chip_icon" {
+						texture = "gfx/interface/icons/generic_icons/prestige.dds"
+					}
+					blockoverride "chip_label" {
+						raw_text = "13"
+					}
+					blockoverride "chip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_cp_era_reward_13').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.25')]"
+					}
+					blockoverride "chip_tooltip" {
+						tooltip = "[GetScriptedGui('ve_age_bonus_13').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+					}
+				}
+			}
+		}
+	}
+}

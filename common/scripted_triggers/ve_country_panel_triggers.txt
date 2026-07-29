@@ -1,0 +1,93 @@
+﻿# Readout helpers for the country panel doctrine section.
+# Consumed by common/scripted_guis/ve_country_panel.txt, which is bound from
+# gui/ve_country_panel_doctrines.gui. These only inspect existing state; they
+# never mutate anything, so they are safe to evaluate for foreign countries.
+
+# Is this idea group currently embraced by the scoped country?
+# scope:idea_group carries the same group flags the idea panel uses.
+ve_cp_group_embraced = {
+	switch = {
+		trigger = scope:idea_group
+		flag:industrialist_idea = { has_variable = can_go_industrialist }
+		flag:mercantile_idea = { has_variable = can_go_mercantile }
+		flag:financial_idea = { has_variable = can_go_financial }
+		flag:infrastructure_idea = { has_variable = can_go_infrastructure }
+		flag:extraction_idea = { has_variable = can_go_extraction }
+		flag:labour_idea = { has_variable = can_go_labour }
+		flag:agrarian_idea = { has_variable = can_go_agrarian }
+		flag:academic_idea = { has_variable = can_go_academic }
+		flag:bureaucratic_idea = { has_variable = can_go_bureaucratic }
+		flag:parliamentary_idea = { has_variable = can_go_parliamentary }
+		flag:welfare_idea = { has_variable = can_go_welfare }
+		flag:diplomatic_idea = { has_variable = can_go_diplomatic }
+		flag:nationalist_idea = { has_variable = can_go_nationalist }
+		flag:reformist_idea = { has_variable = can_go_reformist }
+		flag:offensive_idea = { has_variable = can_go_offensive }
+		flag:defensive_idea = { has_variable = can_go_defensive }
+		flag:naval_idea = { has_variable = can_go_naval }
+		flag:professional_army_idea = { has_variable = can_go_professional_army }
+		flag:mass_conscription_idea = { has_variable = can_go_mass_conscription }
+		flag:colonial_idea = { has_variable = can_go_colonial }
+		flag:war_economy_idea = { has_variable = can_go_war_economy }
+	}
+}
+
+# Has the scoped country purchased at least $LEVEL$ ideas in scope:idea_group?
+# LEVEL is always a literal 1-7 supplied by the calling scripted GUI.
+ve_cp_group_level_reached = {
+	switch = {
+		trigger = scope:idea_group
+		flag:industrialist_idea = { var:industrialist_idea >= $LEVEL$ }
+		flag:mercantile_idea = { var:mercantile_idea >= $LEVEL$ }
+		flag:financial_idea = { var:financial_idea >= $LEVEL$ }
+		flag:infrastructure_idea = { var:infrastructure_idea >= $LEVEL$ }
+		flag:extraction_idea = { var:extraction_idea >= $LEVEL$ }
+		flag:labour_idea = { var:labour_idea >= $LEVEL$ }
+		flag:agrarian_idea = { var:agrarian_idea >= $LEVEL$ }
+		flag:academic_idea = { var:academic_idea >= $LEVEL$ }
+		flag:bureaucratic_idea = { var:bureaucratic_idea >= $LEVEL$ }
+		flag:parliamentary_idea = { var:parliamentary_idea >= $LEVEL$ }
+		flag:welfare_idea = { var:welfare_idea >= $LEVEL$ }
+		flag:diplomatic_idea = { var:diplomatic_idea >= $LEVEL$ }
+		flag:nationalist_idea = { var:nationalist_idea >= $LEVEL$ }
+		flag:reformist_idea = { var:reformist_idea >= $LEVEL$ }
+		flag:offensive_idea = { var:offensive_idea >= $LEVEL$ }
+		flag:defensive_idea = { var:defensive_idea >= $LEVEL$ }
+		flag:naval_idea = { var:naval_idea >= $LEVEL$ }
+		flag:professional_army_idea = { var:professional_army_idea >= $LEVEL$ }
+		flag:mass_conscription_idea = { var:mass_conscription_idea >= $LEVEL$ }
+		flag:colonial_idea = { var:colonial_idea >= $LEVEL$ }
+		flag:war_economy_idea = { var:war_economy_idea >= $LEVEL$ }
+	}
+}
+
+# Any Religious Program adopted at all - drives the 'none yet' hint.
+ve_cp_has_any_religious_program = {
+	OR = {
+		ve_has_religious_program_1 = yes
+		ve_has_religious_program_2 = yes
+		ve_has_religious_program_3 = yes
+		ve_has_religious_program_4 = yes
+		ve_has_religious_program_5 = yes
+		ve_has_religious_program_6 = yes
+		ve_has_religious_program_7 = yes
+		ve_has_religious_program_8 = yes
+	}
+}
+
+# Era reward slot ownership, independent of which age granted it.
+ve_cp_has_era_reward = {
+	OR = {
+		has_modifier = age_1_bonus_$SLOT$
+		has_modifier = age_2_bonus_$SLOT$
+		has_modifier = age_3_bonus_$SLOT$
+	}
+}
+
+ve_cp_golden_age_active = {
+	OR = {
+		has_modifier = ve_golden_age_industrial_mdf
+		has_modifier = ve_golden_age_cultural_mdf
+		has_modifier = ve_golden_age_strategic_mdf
+	}
+}

@@ -1,4 +1,4 @@
-namespace = innovative_flavor
+﻿namespace = innovative_flavor
 innovative_flavor.1 = {
 	type = country_event
 	event_image = {

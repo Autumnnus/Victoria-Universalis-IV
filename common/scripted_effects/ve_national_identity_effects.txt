@@ -1,4 +1,4 @@
-
+﻿
 ve_clear_identity_modifiers = {
 	if = {
 		limit = { has_modifier = ve_ethnic_identity_mdf }

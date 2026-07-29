@@ -1,4 +1,4 @@
-namespace = ve_ages
+﻿namespace = ve_ages
 
 # Player-facing age transition notifications.
 # The actual age state change (globals, splendor reset, previous age bonus removal)

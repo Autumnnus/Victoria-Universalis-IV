@@ -1,4 +1,4 @@
-# Records the first time each objective is completed in the current age.
+﻿# Records the first time each objective is completed in the current age.
 # Losing an objective stops its monthly income, but never grants the +50 again.
 ve_initialize_era_momentum = {
 	if = {

@@ -1,4 +1,4 @@
-ve_cultural_project_administration_mdf = {
+﻿ve_cultural_project_administration_mdf = {
 	icon = gfx/interface/monarch_cultures_icon.dds
 	country_bureaucracy_add = -75
 	country_authority_add = -25

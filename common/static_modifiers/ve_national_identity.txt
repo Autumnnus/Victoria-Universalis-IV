@@ -1,4 +1,4 @@
-ve_ethnic_identity_mdf = {
+﻿ve_ethnic_identity_mdf = {
 	icon = gfx/interface/monarch_cultures_icon.dds
 	state_assimilation_mult = 0.15
 	country_authority_mult = 0.05

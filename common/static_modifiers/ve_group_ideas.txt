@@ -1,4 +1,4 @@
-# Group idea modifiers. One modifier per idea, added permanently by boost_<group>_idea_effect
+﻿# Group idea modifiers. One modifier per idea, added permanently by boost_<group>_idea_effect
 # in common/scripted_effects/ve_idea_effects.txt. Tooltips are auto-derived from these
 # definitions by idea_N_tt_effects in common/scripted_effects/ve_idea_tooltip_effects.txt.
 #

@@ -53,18 +53,18 @@ The vanilla game also contains many applicable `common/` categories, including `
 
 ## Where to implement things
 
-| Need | Primary location(s) |
-| --- | --- |
-| A recurring or externally triggered outcome | `events/`, dispatched from `common/on_actions/` or a scripted effect |
-| Reusable condition | `common/scripted_triggers/` |
-| Reusable mutation/workflow | `common/scripted_effects/` |
-| Reusable number/calculation | `common/script_values/` |
-| Player-facing mechanical bonus | `common/static_modifiers/` (or another vanilla-supported modifier mechanism) |
-| Data/actions displayed in a custom panel | `common/scripted_guis/` plus `gui/` |
-| Custom alert | `common/alert_types/` and, where needed, `common/alert_groups/` |
-| New texture/icon | `gfx/` with a mod-local path, then reference it from GUI/script |
-| Text visible to players | `localization/<language>/` |
-| Initial save/start setup | the appropriate `common/history/` location |
+| Need                                        | Primary location(s)                                                          |
+| ------------------------------------------- | ---------------------------------------------------------------------------- |
+| A recurring or externally triggered outcome | `events/`, dispatched from `common/on_actions/` or a scripted effect         |
+| Reusable condition                          | `common/scripted_triggers/`                                                  |
+| Reusable mutation/workflow                  | `common/scripted_effects/`                                                   |
+| Reusable number/calculation                 | `common/script_values/`                                                      |
+| Player-facing mechanical bonus              | `common/static_modifiers/` (or another vanilla-supported modifier mechanism) |
+| Data/actions displayed in a custom panel    | `common/scripted_guis/` plus `gui/`                                          |
+| Custom alert                                | `common/alert_types/` and, where needed, `common/alert_groups/`              |
+| New texture/icon                            | `gfx/` with a mod-local path, then reference it from GUI/script              |
+| Text visible to players                     | `localization/<language>/`                                                   |
+| Initial save/start setup                    | the appropriate `common/history/` location                                   |
 
 ## Events and scripting conventions
 
@@ -121,3 +121,9 @@ After an implementation, before reporting the task done:
 Translate requested EU4 concepts into a Victoria 3-compatible design before coding. State any necessary adaptation (for example, a mechanic that needs country variables, modifiers, scripted GUI, and pulse events rather than a native EU4 subsystem). Use the installed game's source files whenever syntax, available triggers/effects, GUI hierarchy, assets, or localization conventions are uncertain — always read-only.
 
 Do not create planning or summary documents in the repository unless explicitly requested; report progress directly in chat instead.
+
+## Mechanics reference
+
+- Before answering, designing, debugging, or implementing anything related to religion, culture/National Identity, Cultural or Religious Projects, idea groups, National Ideas, ages/Era Momentum, or the culture/religion actions in the state panel, read `MECHANICS_REFERENCE.md`.
+- Treat that document as the durable system map and vocabulary reference. The implementation files linked from it remain the final source of truth when exact syntax or a recently changed value matters.
+- When one of those mechanics changes, update `MECHANICS_REFERENCE.md` in the same task so the documented rules, variables, thresholds, state actions, and source map do not drift from the code.

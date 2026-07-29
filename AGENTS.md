@@ -117,3 +117,9 @@ After an implementation:
 ## Working style for future requests
 
 Translate requested EU4 concepts into a Victoria 3-compatible design before coding. State any necessary adaptation (for example, a mechanic that needs country variables, modifiers, scripted GUI, and pulse events rather than a native EU4 subsystem). Use the installed game's source files whenever syntax, available triggers/effects, GUI hierarchy, assets, or localization conventions are uncertain—always read-only.
+
+## Mechanics reference
+
+- Before answering, designing, debugging, or implementing anything related to religion, culture/National Identity, Cultural or Religious Projects, idea groups, National Ideas, ages/Era Momentum, or the culture/religion actions in the state panel, read `MECHANICS_REFERENCE.md`.
+- Treat that document as the durable system map and vocabulary reference. The implementation files linked from it remain the final source of truth when exact syntax or a recently changed value matters.
+- When one of those mechanics changes, update `MECHANICS_REFERENCE.md` in the same task so the documented rules, variables, thresholds, state actions, and source map do not drift from the code.

@@ -1,0 +1,10 @@
+﻿l_turkish:
+ # events/Economic_Idea.txt ve events/InnovativeIdeaGroupEvents.txt tüm
+ # olaylarında yalnızca bu anahtar setini kullanıyor; bu yüzden metin bilinçli
+ # olarak nötr: iki dosyadaki olaylar olumlu da olumsuz da etki verebiliyor.
+ economic_flavor.1.t:0 "Ekonomik Gelişmeler"
+ economic_flavor.1.desc:0 "Ekonomik doktrinimiz, bakanlıkların öngörmediği biçimlerde meyve veriyor. Sonuç ne olursa olsun, etkileri yıllarca ekonomide duyulacak."
+ economic_flavor.1.a:0 "Öyle olsun"
+ innovative_flavor.1.t:0 "Doktrinde Değişim"
+ innovative_flavor.1.desc:0 "Benimsediğimiz fikirler kurumlarımızın işleyişini ve dünyanın bize bakışını yeniden şekillendiriyor."
+ innovative_flavor.1.a:0 "Pekâlâ"

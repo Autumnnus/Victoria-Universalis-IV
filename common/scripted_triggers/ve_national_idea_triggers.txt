@@ -1,4 +1,4 @@
-# A national idea is complete when this country has received its matching
+﻿# A national idea is complete when this country has received its matching
 # profile modifier. Keeping this as a modifier check also makes existing saves
 # immediately show the correct UI state.
 ve_national_idea_1_completed = {
