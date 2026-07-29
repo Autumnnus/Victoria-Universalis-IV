@@ -164,7 +164,7 @@ Each model has eight permanent programs. Purchasing one:
 | 7 | Ecclesiastical Diplomacy | Plural Administration | Civic Trust | Anti-Clerical Campaign |
 | 8 | Orthodoxy and Law | Rights Arbitration | Constitutional Guarantee | Public Ethics Commission |
 
-Known discrepancy: the live affordability trigger requires **25 Piety Reform**, while some English tooltips still say “at least 50.” Treat 25 as the implemented behavior until code or localization is deliberately changed.
+The affordability trigger requires **25 Piety Reform**. `ve_religious_program_cost_tt` said “at least 50” until 2026-07-29 and now states 25; the Turkish file already said 25. 25 is the implemented behavior.
 
 Exact program modifier values:
 
@@ -207,7 +207,7 @@ Completion:
 | Freedom Outreach | No forced conversion; add state loyalists, refund 20 Piety Reform, add 7 Settlement |
 | Secularization Campaign | Convert 5% to `rel:atheist`, add small radicals, refund 25 Piety Reform, add 8 Settlement |
 
-Nationalist group ideas 2, 5, and 7 each add 3 percentage points to conversion projects, for up to +9 percentage points. The total converted share is the state-scope script value `ve_religious_project_conversion_amount` (5% base plus the owner's bonuses) in `common/script_values/ve_religious_project_values.txt`. It used to live in the effects file as `ve_religious_conversion_bonus`, where the parser rejected it, so no bonus was ever applied.
+Nationalist idea VII alone adds 2 percentage points to coercive conversion projects. The total converted share is the state-scope script value `ve_religious_project_conversion_amount` (5% base, 7% with Nationalist VII) in `common/script_values/ve_religious_project_values.txt`. Nationalist II remains a passive +15% Conversion/+15% Assimilation modifier; it does not alter project outcomes.
 
 Normal cancellation:
 
@@ -322,7 +322,7 @@ State targeting rules:
 
 | Model | Project | Cost/additional gate | Completion |
 | --- | --- | --- | --- |
-| Ethnic | Ethnic Integration Campaign | 125 Mandate | Convert 5% of target culture pops to the stored primary culture; +25 Mandate, +8 Cohesion, radicals, and a 10-year assimilation result |
+| Ethnic | Ethnic Integration Campaign | 125 Mandate | Convert 5% of target culture pops to the stored primary culture (7% with Nationalist VII); +25 Mandate, +8 Cohesion, radicals, and a 10-year assimilation result |
 | Civic | Equal Citizenship Initiative | 100 Mandate | +15 Acceptance for 10 years, state loyalists, +25 Mandate, +10 Cohesion, and a 10-year qualifications/migration result |
 | Composite | Constituent Compact | 150 Mandate and at least 40 Cohesion | Permanent +15 Acceptance, add culture to the constituent list, state loyalists, +30 Mandate, +12 Cohesion |
 
@@ -504,6 +504,36 @@ Cancelling the chosen side reopens the opposing path.
 
 Exact group modifiers: `common/static_modifiers/ve_group_ideas.txt`.
 
+Balance contract after the 2026-07-29 review:
+
+- high-leverage completed-group totals are kept near 20–30%, with narrower building, trade, colony, and terrain bonuses allowed to reach higher conditional totals;
+- Parliamentary totals are +20% Law Enactment Speed and +10 percentage points of Law Enactment Success;
+- Labour totals +3 percentage points of Working Adult Ratio;
+- Bureaucratic totals +25% Bureaucracy;
+- Infrastructure totals +25% Infrastructure;
+- Welfare totals -6% Mortality and +30% Migration Pull;
+- Diplomatic totals +25% Infamy Decay, -10% Infamy Generation, and +20% Influence;
+- Offensive and Defensive each total +20% to their principal army multiplier;
+- Mass Conscription totals +40% Conscription Rate and +3 Conscription Center maximum levels;
+- Nationalist totals +25% passive Conversion and Assimilation; its VII capstone raises coercive religious and ethnic project outcomes from 5% to 7%;
+- flat coal, iron, sulfur, explosives, and steel output bonuses were replaced with building throughput so they scale with production methods;
+- bonuses that unintentionally reduced urbanization, government or military wages, welfare payments, or commercial arable land were replaced with positive infrastructure, administration, health, doctrine-spread, or subsistence-production effects.
+
+### 6.6 Idea-group integration with reform systems
+
+Ideas retain their indirect effects through bureaucracy, legitimacy, literacy and social support. Direct bonuses are reserved for doctrines that match the active model, and are visible in the relevant resource/project breakdowns.
+
+| System | Direct contributions | Cap |
+| --- | --- | ---: |
+| Piety Reform income | Nationalist V in Confessional/State Atheism; Reformist V in Freedom/Total Separation | +1/month |
+| Cultural Mandate income | Nationalist V in Ethnic; Reformist V in Civic/Composite; Academic V in Civic | +2/month |
+| Religious Project progress | Nationalist VII in Confessional/State Atheism; Reformist VII in Freedom; Academic VII in State Atheism | +2/month |
+| Cultural Project progress | Nationalist VII in Ethnic; Reformist VII in Civic/Composite; Academic VII and Welfare VI in Civic; Diplomatic VI in Composite | +2/month |
+
+Level-IV groups also give +1 Era Momentum per month while their assigned age is current, capped at +2 from idea groups: Age 1 uses Industrialist, Mercantile, Financial, Infrastructure, Academic, Bureaucratic and Parliamentary; Age 2 uses Extraction, Agrarian, Labour, Welfare, Diplomatic, Nationalist, Reformist and Colonial; Age 3 uses Offensive, Defensive, Naval, Professional Army, Mass Conscription and War Economy.
+
+Ideas do not directly alter Religious Settlement, National Cohesion, age-objective satisfaction, or the one-time +50 objective completion reward.
+
 Primary sources:
 
 - `common/script_values/ve_script_values.txt`
@@ -618,8 +648,11 @@ An age transition:
 Momentum rules:
 
 - each currently satisfied objective grants +1 Era Momentum per month;
+- each matching level-IV Idea Group grants +1 Era Momentum per month, capped at +2 from idea groups;
 - the first completion of each objective in the current age grants +50 once;
 - losing the condition stops monthly income but never allows the +50 to trigger again in that age.
+
+The ledger separates the two readings: **currently met** objectives are evaluated live, while **secured this Age** counts the one-time completion flags used for Golden Age eligibility. The persistent count is reconciled from those flags each monthly tick, so older saves and delayed initialization cannot leave the ledger at an incorrect value.
 
 ### 8.3 Era rewards
 
@@ -768,7 +801,47 @@ Sources:
 - `common/scripted_guis/ve_topbar.txt`
 - `gui/topbar.gui`
 
-### 9.2 Doctrine Ledger
+### 9.2 Religion and National Identity pages
+
+Both pages share one layout contract. Keep them symmetric when either changes:
+
+1. A card shows an icon, a name and at most one short line. The full modifier list lives in that card's tooltip (`*_desc` / `*_tt`).
+2. Current state is stated twice: in the summary strip, and on the card as a checkmark plus a footer label that replaces the action button.
+3. Each meter is `value / max`, a signed monthly delta from its script value, a progress bar, and an optional status line - a tier badge at the 75+/25- bands, a project target, or a live blocking timer.
+4. A blocking timer is never silent: an active strain or backlash prints a red notice both next to the meter it caps and in the section label it blocks.
+
+Neither page scrolls, and neither uses tabs. Each is one screen: a summary strip, then one row per section, every row packed horizontally so its height is fixed. Rules that keep it that way:
+
+- A section is one label line plus an information icon; the icon's tooltip is that section's help paragraph. Nothing explanatory is printed on the page - only conditional red notices (strain, backlash), and only while they are live.
+- A full-width row must not cluster its content on the left with a dead gap in the middle. Split it into `layoutpolicy_horizontal = expanding` columns separated by vanilla `vertical_divider` (`blockoverride "size" { size = { 16 100% } }`), and centre the action cluster with the same expand-wrapped vbox used for icons. Both project rows follow this.
+- A fixed-width control inside an expanding card floats in the frame and looks unfinished. Give the action `layoutpolicy_horizontal = expanding` with `size = { 0 h }` (the vanilla pattern) so it hugs the card margins at every resolution, and keep the button label to one verb - costs and conditions belong on their own line or in the tooltip.
+- Never give a box child `parentanchor`. An anchored child is positioned by the anchor instead of flowing, so its parent reserves no room for it and it spills out of the `main_bg` plate - this is what pushed every leading icon outside its card on 2026-07-29. To centre an icon in a row, wrap it in `vbox = { layoutpolicy_vertical = expanding  expand = {} <icon> expand = {} }`; mutually exclusive icon variants share one wrapper, since a hidden child takes no height and the row then pays its spacing once.
+- Cards in a row must be equalised, or a longer body overflows its `main_bg` plate while its neighbours stay short. Give every card in the row `layoutpolicy_vertical = expanding`, a `minimumsize` height that fits the tallest body (identity 146, religion model 116, culture project 132), and an `expand = {}` above the cost/action pair so the actions land on the bottom margin and line up. Card bodies are authored to wrap to a fixed number of lines - if a string grows, the cap and the minimum height both have to grow with it.
+- Width first, then height. A card in a four-across row has ~250 px of body at 1366 and one in a three-across row ~330 px; a `maximumsize` wider than that clips at the card edge instead of wrapping. Set the width to the real column, then give the height the number of lines the string actually wraps to (a two-line body needs ~36 px, a three-line one ~50).
+- No widget may grow vertically with its content. Long text is `elide = right` or capped by `maximumsize = { w h }`; one uncapped multiline textbox brings the scrollbar back.
+- Where a row has no width for a full sentence, the page uses a `*_short` localization variant and keeps the long form in the tooltip (`ve_adopt_program_button_short`, `ve_switch_identity_button_short`, `ve_*_backlash_notice_short`, `ve_*_start_instruction_short`).
+- Strings the page stopped printing were folded into the tooltip that replaced them with `$key$` nesting (the five meter hints, both project start instructions), so no information was dropped.
+
+Budget at 1366x768, where the fullscreen content area is about 630 px: Religion needs ~580 (strip 100, models 90, eight program cards in one row 150, project 110, three section labels and spacing ~130) and National Identity ~470.
+
+Page composition:
+
+| Section | Religion (`ve_panel_religion.gui`) | National Identity (`ve_panel_culture.gui`) |
+| --- | --- | --- |
+| Summary strip | state religion, model name, and meters for Settlement, Piety Reform, Religious Project | primary cultures, Identity Model, and meters for Cultural Mandate, National Cohesion, Cultural Project |
+| Model section | four models, read-only - the model follows the Church and State law | three models, each with a cost line and a full-width `Switch` button (`ve_choose_*_identity`) |
+| Middle section | eight Programs in one row (`ve_religion_program_card` type, one `ve_aspect_button_N` each). Card contents stretch with the frame: `layoutpolicy_horizontal = expanding` action, cost on its own line, `Adopt` as the only button word | - |
+| Project section | one wide card: the running project with a country-scope cancel + confirm, or the model's project and how to start it from a state | same shape when one runs; otherwise the two countrywide projects and the model project side by side |
+
+Religion page bindings added on 2026-07-29:
+
+- `ve_has_active_religious_project_gui`, `ve_has_no_active_religious_project_gui`, `ve_cancel_religious_project_gui`, `ve_religious_program_strain_gui`, `ve_religious_project_backlash_gui` in `common/scripted_guis/ve_religious_state.txt`; `ve_identity_transition_backlash_gui` and `ve_cultural_project_backlash_gui` on the identity side.
+- `ve_religious_project_type_is = { TYPE = n }` (1 Confessional Conversion, 2 Freedom Outreach, 3 Secularization Campaign).
+- `ve_religious_project_name` / `_description` / `_target` and `ve_religion_model_project_name` / `_cost` / `_short` / `_description`, mirroring the cultural set; `ve_identity_high_cohesion_effect` mirrors `ve_religious_high_settlement_effect`.
+- Per-card "hover for details" lines, per-section help paragraphs and the per-section `header_pattern` headers were removed on 2026-07-29 for vertical space; the tab row replaced the headers and carries the help text. Fixed sizes were reduced in the same pass (strip icons 84 -> 64, card icons 64 -> 48 and 56 -> 44, program texticons 45 -> 36, buttons 300/260x40 -> 260/240x32, bars 150x12 -> 140x10).
+- The old round `button_icon_round_big_map_interaction` program grid, and its duplicated shown/not-shown label pair, are gone.
+
+### 9.3 Doctrine Ledger
 
 The fifth tab of the mod panel (`ve_tab_var = ve_ledger`) is a sortable, filterable, paged table of every country's doctrine state: rank, National Insight, embraced idea groups, purchased group ideas with the seven National Idea markers, Religious Model with Settlement, Identity Model with Cohesion, and Era standing. It is read-only, and the player's own country is pinned above the page as the comparison baseline. Clicking a country closes the panel and opens that country's panel, whose National Doctrine section (9.1) carries the per-group detail.
 
@@ -797,6 +870,8 @@ Sources:
 - `ve_splender_points` and `splender_points_value` are misspelled but stable save/script identifiers. Do not rename them without a migration.
 - `piety_bar_point` is the Religious Settlement meter in the active design, not spendable Piety.
 - `culture_reform_point` is Cultural Mandate in the active design.
+- Religion customizable-localization keys were normalized to the `ve_` prefix on 2026-07-29: `religion_aspect_N` -> `ve_religion_aspect_N`, `religion_aspect_text_N` -> `ve_religion_program_name_N`, `religion_aspect_9` -> `ve_religion_model_icon`. The texticon names they resolve to (`catholic_aspect_N`, `protestant_aspect_N`, `separation_aspect_N`, `atheist_aspect_N`) are unchanged.
+- Turkish covers the Religion page labels and tooltips but not the model, program, or project card text on either page; the National Identity page has almost no Turkish. English is the complete set.
 - The old missionary system is retired. New religion work belongs in `ve_religious_project_*`.
 - The old ±7 culture reform bar is retired. New culture work belongs in National Identity/Cultural Projects.
 - The live idea system contains 21 groups, including Agrarian.

@@ -29,6 +29,43 @@
 	}
 }
 
+# Idea groups contribute to momentum only in the age whose concerns they share.
+# This does not alter objective satisfaction or the first-completion reward.
+ve_era_momentum_idea_bonus = {
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		if = { limit = { has_modifier = industrialist_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = mercantile_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = financial_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = infrastructure_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = academic_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = bureaucratic_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = parliamentary_idea_4_mdf } add = 1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		if = { limit = { has_modifier = extraction_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = agrarian_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = labour_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = welfare_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = diplomatic_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = nationalist_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = reformist_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = colonial_idea_4_mdf } add = 1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		if = { limit = { has_modifier = offensive_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = defensive_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = naval_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = professional_army_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = mass_conscription_idea_4_mdf } add = 1 }
+		if = { limit = { has_modifier = war_economy_idea_4_mdf } add = 1 }
+	}
+	min = 0
+	max = 2
+}
+
 ve_era_reward_cost = {
 	if = {
 		limit = { var:ve_age_rewards_purchased <= 0 }

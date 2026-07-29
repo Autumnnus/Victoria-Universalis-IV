@@ -135,6 +135,37 @@ ve_cultural_mandate_cap_multiplier = {
 	}
 }
 
+# Direct idea-group contribution to Cultural Mandate income. Each doctrine is
+# useful only with the identity model it represents; total contribution is 2.
+ve_cultural_mandate_idea_bonus = {
+	if = {
+		limit = {
+			has_variable = nationalist_idea_5_var
+			ve_is_ethnic_identity = yes
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_modifier = reformist_idea_5_mdf
+			OR = {
+				ve_is_civic_identity = yes
+				ve_is_composite_identity = yes
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_modifier = academic_idea_5_mdf
+			ve_is_civic_identity = yes
+		}
+		add = 1
+	}
+	min = 0
+	max = 2
+}
+
 ve_monthly_national_identity = {
 	add = ve_cultural_mandate_base
 	add = ve_cultural_mandate_legitimacy
@@ -142,6 +173,7 @@ ve_monthly_national_identity = {
 	add = ve_cultural_mandate_education
 	add = ve_cultural_mandate_stability
 	add = ve_cultural_mandate_alignment
+	add = ve_cultural_mandate_idea_bonus
 	min = 1
 	max = 8
 	multiply = ve_cultural_mandate_cap_multiplier

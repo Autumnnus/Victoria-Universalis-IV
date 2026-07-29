@@ -29,6 +29,43 @@ ve_initialize_era_momentum = {
 	}
 }
 
+# Rebuild the displayed/persistent objective count from the current Age's
+# completion flags. This is save-safe: it repairs a stale counter without
+# replaying the one-time +50 Momentum awards.
+ve_reconcile_era_objective_count = {
+	set_variable = { name = ve_triggered_objectives value = 0 }
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		if = { limit = { has_variable = ve_age_1_objective_1_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_1_objective_2_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_1_objective_3_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_1_objective_4_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_1_objective_5_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_1_objective_6_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_1_objective_7_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		if = { limit = { has_variable = ve_age_2_objective_1_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_2_objective_2_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_2_objective_3_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_2_objective_4_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_2_objective_5_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_2_objective_6_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_2_objective_7_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		if = { limit = { has_variable = ve_age_3_objective_1_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_3_objective_2_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_3_objective_3_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_3_objective_4_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_3_objective_5_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_3_objective_6_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_3_objective_7_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+	}
+}
+
 ve_update_era_objective_completions = {
 	if = {
 		limit = { ve_age_objective_1_trigger = yes }

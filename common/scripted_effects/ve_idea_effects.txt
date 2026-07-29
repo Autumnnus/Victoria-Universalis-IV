@@ -700,8 +700,8 @@ boost_nationalist_idea_effect = {
 					has_variable = nationalist_idea_7_var
 				}
 			}
-			# Adds +0.03 more to ve_religious_conversion_bonus for the Targeted
-			# Religious Project (see ve_religious_state_effects.txt).
+			# Adds +0.02 to coercive religious and ethnic project outcomes, and
+			# enables the Nationalist project-progress bonuses (see project values).
 			set_variable = nationalist_idea_7_var
 			add_modifier = {
 				name = nationalist_idea_7_mdf

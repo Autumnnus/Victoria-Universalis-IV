@@ -161,6 +161,58 @@ ve_cancel_targeted_religious_project_state = {
 	}
 }
 
+# Country-scope readouts for gui/ve_panel_religion.gui. These mirror the
+# cultural-project pair in common/scripted_guis/ve_cultural_projects.txt so both
+# pages can branch between an "active project" card and a "no project" card, and
+# can warn about the two blocking timers.
+ve_has_active_religious_project_gui = {
+	scope = country
+	is_shown = {
+		ve_has_active_religious_project = yes
+	}
+}
+
+ve_has_no_active_religious_project_gui = {
+	scope = country
+	is_shown = {
+		ve_has_no_active_religious_project = yes
+	}
+}
+
+# Cancel from the Religion page instead of the target state's panel. The state
+# scoped ve_cancel_targeted_religious_project_state stays as it is for the state
+# panel button.
+ve_cancel_religious_project_gui = {
+	scope = country
+	is_shown = {
+		ve_has_active_religious_project = yes
+	}
+	is_valid = {
+		ve_has_active_religious_project = yes
+		custom_tooltip = {
+			text = ve_religious_project_cancel_warning
+			always = yes
+		}
+	}
+	effect = {
+		ve_cancel_religious_project = yes
+	}
+}
+
+ve_religious_program_strain_gui = {
+	scope = country
+	is_shown = {
+		has_modifier = ve_religious_program_strain_mdf
+	}
+}
+
+ve_religious_project_backlash_gui = {
+	scope = country
+	is_shown = {
+		has_modifier = ve_religious_project_backlash_mdf
+	}
+}
+
 # Phase 7 UI: is THIS state the owner's active project target? Drives the
 # per-state progress bar in states_panel.gui.
 ve_state_active_religious_project_gui = {

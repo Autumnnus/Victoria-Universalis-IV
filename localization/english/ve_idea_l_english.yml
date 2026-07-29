@@ -46,8 +46,8 @@
 
 
  ve_max_idea_text:0 "[GetPlayer.MakeScope.Var('idea_group_unlocked').GetValue|0] / 7"
- nationalist_idea_5_tt:0 "#positive_value +0.7% Missionary Conversion Power"
- nationalist_idea_7_tt:0 "#P +2 Missionaries"
+ nationalist_idea_5_tt:0 "#P +1 Piety Reform/month#! in Confessional or State Atheism, and #P +1 Cultural Mandate/month#! in Ethnic Nation."
+ nationalist_idea_7_tt:0 "#P +1 Religious Project progress/month#! in Confessional or State Atheism; #P +1 Cultural Project progress/month#! in Ethnic Nation; coercive Religious and Ethnic Integration outcomes improve from #Y 5%#! to #Y 7%#!."
  embrace_idea_tt:0 "#header Idea Group Capacity#!\nUsed slots: #Y [GetPlayer.MakeScope.Var('idea_group_unlocked').GetValue|0] / [GetPlayer.MakeScope.Var('idea_group_cap').GetValue|0]#!\nFree slots now: #Y [GetPlayer.MakeScope.ScriptValue('ve_idea_group_free_slots')|0]#!\nCurrent Doctrine Investment: #Y [GetPlayer.MakeScope.Var('ve_idea_capacity_progress').GetValue|0]#! active purchased ideas\n\n[GetPlayer.GetCustom('ve_idea_capacity_player_detail')]\n\n#title How capacity works#!\nEach active purchased group idea supplies #P +1#! Doctrine Investment. Reaching #Y 4, 8, 13, 19, 26#! or #Y 34#! permanently adds one group slot. Slots 5–6 also require Age 2; slot 7 requires Age 3.\n\n#title Embracing and cancelling#!\nEmbracing a group costs no Insight but occupies one free slot. Cancelling frees that slot, removes the group's modifiers, and lowers current Doctrine Investment; spent Insight is not refunded. Any capacity slot already earned remains permanently available."
  ve_idea_capacity_player_progress:0 "#title Next permanent slot#!\nSlot: #Y [GetPlayer.MakeScope.ScriptValue('ve_next_idea_group_slot')|0]#!\nProgress: #Y [GetPlayer.MakeScope.Var('ve_idea_capacity_progress').GetValue|0] / [GetPlayer.MakeScope.ScriptValue('ve_next_idea_group_capacity_threshold')|0]#! purchased ideas\nStill needed: #Y [GetPlayer.MakeScope.ScriptValue('ve_idea_group_capacity_remaining')|0]#!"
  ve_idea_capacity_player_age_2:0 "#title Next permanent slot#!\nSlot: #Y 5#!\nProgress: #Y [GetPlayer.MakeScope.Var('ve_idea_capacity_progress').GetValue|0] / 19#! purchased ideas\nStill needed: #Y [GetPlayer.MakeScope.ScriptValue('ve_idea_group_capacity_remaining')|0]#!\nAge requirement: #N Waiting for Age 2#!"
@@ -59,3 +59,12 @@
  ve_idea_capacity_country_max:0 "#P Maximum capacity reached: all 7 permanent group slots are available.#!"
  ve_idea_implementation_player_ready:0 "#P Ready — another idea may be adopted when enough Insight is available.#!"
  ve_idea_implementation_player_locked:0 "#N Implementation in progress — [GetPlayer.GetTimedModifierDurationRemaining('ve_national_insight_implementation_strain')] remaining before another idea can be adopted.#!"
+ ve_idea_era_momentum_age_1_tt:0 "#P During Age 1: +1 Era Momentum/month#! from this level-IV Idea Group. Idea Group contribution is capped at #Y +2#!."
+ ve_idea_era_momentum_age_2_tt:0 "#P During Age 2: +1 Era Momentum/month#! from this level-IV Idea Group. Idea Group contribution is capped at #Y +2#!."
+ ve_idea_era_momentum_age_3_tt:0 "#P During Age 3: +1 Era Momentum/month#! from this level-IV Idea Group. Idea Group contribution is capped at #Y +2#!."
+ reformist_idea_5_system_tt:0 "#P +1 Piety Reform/month#! in Freedom of Conscience or Total Separation, and #P +1 Cultural Mandate/month#! in Civic Nation or Composite State."
+ reformist_idea_7_system_tt:0 "#P +1 Religious Project progress/month#! in Freedom of Conscience and #P +1 Cultural Project progress/month#! in Civic Nation or Composite State."
+ academic_idea_5_system_tt:0 "#P +1 Cultural Mandate/month#! in Civic Nation."
+ academic_idea_7_system_tt:0 "#P +1 Religious Project progress/month#! in State Atheism and #P +1 Cultural Project progress/month#! in Civic Nation."
+ welfare_idea_6_system_tt:0 "#P +1 Cultural Project progress/month#! in Civic Nation."
+ diplomatic_idea_6_system_tt:0 "#P +1 Cultural Project progress/month#! in Composite State."

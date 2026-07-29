@@ -53,3 +53,13 @@ ve_identity_model_tooltip = {
 		}
 	}
 }
+
+# Blocking-timer readout for gui/ve_panel_culture.gui. Mirrors
+# ve_religious_program_strain_gui / ve_religious_project_backlash_gui on the
+# Religion page so both pages can explain why an action is unavailable.
+ve_identity_transition_backlash_gui = {
+	scope = country
+	is_shown = {
+		has_modifier = ve_identity_transition_backlash_mdf
+	}
+}

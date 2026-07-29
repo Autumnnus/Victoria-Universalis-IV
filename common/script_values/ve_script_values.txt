@@ -322,6 +322,7 @@ ve_monthly_national_insight = {
 
 ve_monthly_era_momentum = {
 	add = ve_era_objectives_satisfied
+	add = ve_era_momentum_idea_bonus
 }
 
 

@@ -418,7 +418,7 @@ types ve_country_panel_types
 			icon = {
 				parentanchor = vcenter
 				size = { 20 20 }
-				texture = "gfx/interface/ve_ideas/great_project_upgrade_cost.dds"
+				texture = "gfx/interface/icons/generic_icons/prestige.dds"
 				alpha = "[Select_float(GetScriptedGui('ve_idea_group_ambition').IsValid(GuiScope.SetRoot(Country.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End),'(float)1.0','(float)0.2')]"
 				tooltip = "[GetScriptedGui('ve_idea_group_ambition').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
 				using = tooltip_above
@@ -585,7 +585,7 @@ types ve_country_panel_types
 
 		ve_cp_card_title = {
 			blockoverride "title_icon" {
-				texture = "gfx/interface/icon_ideas.dds"
+				texture = "gfx/interface/icons/institution_icons/schools.dds"
 			}
 			blockoverride "title_text" {
 				text = "VE_CP_IDEAS_TITLE"

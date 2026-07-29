@@ -1,613 +1,1455 @@
-types
-ve_gui_panel_types
+types ve_gui_panel_types
 {
-	type
-	ve_panel_religion = vbox
-	{
+	# Religion page. One screen: no tabs, no scrolling. Every section is packed
+	# horizontally instead of stacked, so the page fits the fullscreen content area
+	# down to 1366x768 (~630 px usable; this page needs ~580).
+	#
+	# Layout contract, shared with gui/ve_panel_culture.gui - keep both in step:
+	#   1. A card shows an icon, a name and at most one short line. Every full
+	#      modifier list lives in that card's tooltip (*_desc / *_tt localization).
+	#   2. Current state is stated twice: in the summary strip, and on the card as a
+	#      checkmark plus a footer that replaces the action button.
+	#   3. A section is one label line with an information icon whose tooltip is that
+	#      section's help paragraph. Nothing explanatory is printed on the page; only
+	#      conditional red notices (strain, backlash), and only while they are live.
+	#   4. Nothing may grow vertically with its content: long text is elided or
+	#      capped with maximumsize, because one tall card brings back the scrollbar.
+	#
+	# Religious Model is law-driven (lawgroup_church_and_state), so the model row is a
+	# read-only comparison, not a set of buttons. The only actions on this page are
+	# adopting a Program and cancelling a running Religious Project; a project is
+	# *started* from an owned state's panel.
+
+	# One meter in the summary strip: label, value / max, signed monthly delta, bar,
+	# and an optional status line.
+	type ve_religion_meter = vbox {
+		spacing = 2
+		block "meter_tooltip" {}
+		using = tooltip_below
+
+		block "meter_label" {}
+		hbox = {
+			spacing = 6
+			block "meter_value" {}
+		}
+		block "meter_bar" {}
+		block "meter_extra" {}
+	}
+
+	# One Doctrine/Program slot. Eight sit in a single row, so a card is ~150 px wide
+	# at 1366 and ~215 px at 1920. Everything inside stretches with the frame: the
+	# action is layout-expanding rather than a fixed width, and the cost sits on its
+	# own line so the button label stays a single verb.
+	type ve_religion_program_card = vbox {
+		using = main_bg
 		layoutpolicy_horizontal = expanding
 		layoutpolicy_vertical = expanding
+		minimumsize = { 150 134 }
+
 		vbox = {
 			layoutpolicy_horizontal = expanding
 			layoutpolicy_vertical = expanding
-			hbox = {	#Top Section
+			margin = { 10 8 }
+			spacing = 4
+			block "card_tooltip" {
+				tooltip = "ve_religious_program_1_tt"
+			}
+			using = tooltip_below
+
+			block "card_icon" {}
+			block "card_name" {}
+			block "card_cost" {}
+			expand = {}
+			block "card_action" {}
+		}
+	}
+
+	type ve_panel_religion = vbox {
+		layoutpolicy_horizontal = expanding
+		layoutpolicy_vertical = expanding
+
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			spacing = 8
+
+			hbox = { # Summary strip: state religion, then the three meters
 				layoutpolicy_horizontal = expanding
-				margin = {
-					0
-					20
-				}
-				hbox = {	#Top-Left
+				margin = { 0 12 }
+				spacing = 10
+
+				hbox = {
 					using = main_bg
 					layoutpolicy_horizontal = preferred
-					layoutpolicy_vertical = expanding
-					vbox = {
+					hbox = {
+						margin = { 14 8 }
 						spacing = 10
-						margin = {
-							30
-							10
-						}
-						icon = {
-							texture = "[GetPlayer.GetStateReligion.GetTexture]"
-							size = {
-								120
-								120
+						vbox = { # centred, and still contributes its size to the row
+							layoutpolicy_vertical = expanding
+							expand = {}
+							icon = {
+								texture = "[GetPlayer.GetStateReligion.GetTexture]"
+								size = { 52 52 }
 							}
+							expand = {}
 						}
-						textbox = {
-							# text = "#v [GetPlayer.GetStateReligion.GetName]#!"
-							raw_text = "[GetPlayer.GetCustom('ve_religious_model_name')]"
-							using = fontsize_xxl
-							align = nobaseline
-							elide = left
-							autoresize = yes
+						vbox = {
+							spacing = 2
+							textbox = {
+								text = "ve_state_religion_label"
+								default_format = "#instruction"
+								using = fontsize_small
+								align = nobaseline
+								autoresize = yes
+							}
+							textbox = {
+								raw_text = "#v [GetPlayer.GetStateReligion.GetName]#!"
+								using = fontsize_xl
+								align = nobaseline
+								maximumsize = { 260 -1 }
+								elide = right
+								autoresize = yes
+							}
+							hbox = {
+								spacing = 6
+								icon = {
+									size = { 20 20 }
+									texture = "gfx/interface/icons/law_icons/state_religion.dds"
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)1')]"
+								}
+								icon = {
+									size = { 20 20 }
+									texture = "gfx/interface/icons/law_icons/freedom_of_conscience.dds"
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)2')]"
+								}
+								icon = {
+									size = { 20 20 }
+									texture = "gfx/interface/icons/law_icons/total_separation.dds"
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)3')]"
+								}
+								icon = {
+									size = { 20 20 }
+									texture = "gfx/interface/icons/law_icons/state_atheism.dds"
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)4')]"
+								}
+								textbox = {
+									raw_text = "#P [GetPlayer.GetCustom('ve_religious_model_name')]#!"
+									using = fontsize_large
+									align = vcenter|nobaseline
+									maximumsize = { 234 -1 }
+									elide = right
+									autoresize = yes
+								}
+							}
 						}
 					}
 				}
+
 				hbox = {
-					#Religion Info
 					using = main_bg
-					 layoutpolicy_horizontal = expanding
+					layoutpolicy_horizontal = expanding
 					hbox = {
-						margin = {
-							0
-							20
+						layoutpolicy_horizontal = expanding
+						margin = { 16 8 }
+						spacing = 24
+
+						ve_religion_meter = { # Religious Settlement
+							blockoverride "meter_tooltip" { tooltip = "ve_piety_tt" }
+							blockoverride "meter_label" {
+								textbox = {
+									raw_text = "[GetPlayer.GetCustom('ve_religious_resource_name')]"
+									default_format = "#tooltippable_name"
+									using = fontsize_large
+									align = nobaseline
+									autoresize = yes
+								}
+							}
+							blockoverride "meter_value" {
+								textbox = {
+									raw_text = "[GetPlayer.MakeScope.Var('piety_bar_point').GetValue|0] / 100"
+									default_format = "#instruction"
+									using = fontsize_xl
+									align = nobaseline
+									autoresize = yes
+								}
+								textbox = {
+									raw_text = "([GetPlayer.MakeScope.ScriptValue('ve_monthly_religious_state')|+=0])"
+									using = fontsize_small
+									align = vcenter|nobaseline
+									autoresize = yes
+								}
+							}
+							blockoverride "meter_bar" {
+								white_progressbar_horizontal = {
+									size = { 150 8 }
+									blockoverride "values" {
+										max = 100
+										value = "[GetPlayer.MakeScope.Var('piety_bar_point').GetValue]"
+									}
+								}
+							}
+							blockoverride "meter_extra" { # tier badge; the middle band shows nothing
+								textbox = {
+									text = "ve_settlement_tier_high"
+									default_format = "#P"
+									using = fontsize_small
+									align = nobaseline
+									maximumsize = { 240 -1 }
+									elide = right
+									autoresize = yes
+									visible = "[GreaterThanOrEqualTo_CFixedPoint(GetPlayer.MakeScope.Var('piety_bar_point').GetValue, '(CFixedPoint)75')]"
+								}
+								textbox = {
+									text = "ve_settlement_tier_low"
+									default_format = "#N"
+									using = fontsize_small
+									align = nobaseline
+									maximumsize = { 240 -1 }
+									elide = right
+									autoresize = yes
+									visible = "[LessThanOrEqualTo_CFixedPoint(GetPlayer.MakeScope.Var('piety_bar_point').GetValue, '(CFixedPoint)25')]"
+								}
+							}
 						}
-						spacing = 10
-						 layoutpolicy_horizontal = expanding
+
+						ve_religion_meter = { # Piety Reform
+							blockoverride "meter_tooltip" { tooltip = "ve_piety_reform_tt" }
+							blockoverride "meter_label" {
+								textbox = {
+									text = "ve_piety_reform"
+									default_format = "#tooltippable_name"
+									using = fontsize_large
+									align = nobaseline
+									autoresize = yes
+								}
+							}
+							blockoverride "meter_value" {
+								textbox = {
+									raw_text = "[GetPlayer.MakeScope.Var('piety_reform_point').GetValue|0] / 500"
+									default_format = "#instruction"
+									using = fontsize_xl
+									align = nobaseline
+									autoresize = yes
+								}
+								textbox = {
+									raw_text = "([GetPlayer.MakeScope.ScriptValue('ve_monthly_piety_reform')|+=0])"
+									using = fontsize_small
+									align = vcenter|nobaseline
+									autoresize = yes
+								}
+							}
+							blockoverride "meter_bar" {
+								white_progressbar_horizontal = {
+									size = { 150 8 }
+									blockoverride "values" {
+										max = 500
+										value = "[GetPlayer.MakeScope.Var('piety_reform_point').GetValue]"
+									}
+								}
+							}
+							blockoverride "meter_extra" {
+								textbox = { # only while a program is still being implemented
+									text = "ve_religious_program_strain_notice_short"
+									default_format = "#N"
+									using = fontsize_small
+									align = nobaseline
+									maximumsize = { 240 -1 }
+									elide = right
+									autoresize = yes
+									visible = "[GetScriptedGui('ve_religious_program_strain_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+							}
+						}
+
+						ve_religion_meter = { # Religious Project
+							blockoverride "meter_tooltip" { tooltip = "ve_religious_project_progress_tt" }
+							blockoverride "meter_label" {
+								textbox = {
+									text = "ve_religious_project_progress"
+									default_format = "#tooltippable_name"
+									using = fontsize_large
+									align = nobaseline
+									autoresize = yes
+								}
+							}
+							blockoverride "meter_value" {
+								textbox = {
+									raw_text = "[GetPlayer.MakeScope.Var('ve_religious_project_progress').GetValue|0] / 100"
+									default_format = "#instruction"
+									using = fontsize_xl
+									align = nobaseline
+									autoresize = yes
+									visible = "[GetScriptedGui('ve_has_active_religious_project_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+								textbox = {
+									raw_text = "([GetPlayer.MakeScope.ScriptValue('ve_monthly_religious_project_progress')|+=0])"
+									using = fontsize_small
+									align = vcenter|nobaseline
+									autoresize = yes
+									visible = "[GetScriptedGui('ve_has_active_religious_project_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+								textbox = {
+									raw_text = "[GetPlayer.GetCustom('ve_religious_project_status')]"
+									default_format = "#instruction"
+									using = fontsize_xl
+									align = nobaseline
+									autoresize = yes
+									visible = "[GetScriptedGui('ve_has_no_active_religious_project_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+							}
+							blockoverride "meter_bar" {
+								white_progressbar_horizontal = {
+									size = { 150 8 }
+									blockoverride "values" {
+										max = 100
+										value = "[GetPlayer.MakeScope.Var('ve_religious_project_progress').GetValue]"
+									}
+								}
+							}
+							blockoverride "meter_extra" {
+								textbox = {
+									raw_text = "[GetPlayer.GetCustom('ve_religious_project_target')]"
+									using = fontsize_small
+									align = nobaseline
+									maximumsize = { 240 -1 }
+									elide = right
+									autoresize = yes
+									visible = "[GetScriptedGui('ve_has_active_religious_project_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+								textbox = { # only while a cancellation backlash blocks a new project
+									text = "ve_religious_project_backlash_notice_short"
+									default_format = "#N"
+									using = fontsize_small
+									align = nobaseline
+									maximumsize = { 240 -1 }
+									elide = right
+									autoresize = yes
+									visible = "[GetScriptedGui('ve_religious_project_backlash_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+							}
+						}
+					}
+				}
+			}
+
+			hbox = { # Section label: Religious Models
+				layoutpolicy_horizontal = expanding
+				margin = { 2 15 }
+				spacing = 6
+				textbox = {
+					text = "ve_religious_models"
+					default_format = "#tooltip_header"
+					using = fontsize_large
+					align = nobaseline
+					autoresize = yes
+				}
+				icon = {
+					texture = "gfx/interface/icons/generic_icons/information.dds"
+					size = { 20 20 }
+					tooltip = "ve_religious_models_help"
+					using = tooltip_below
+				}
+				expand = {}
+			}
+
+			hbox = { # Four models side by side, read-only
+				layoutpolicy_horizontal = expanding
+				margin = { 0 15 }
+				spacing = 10
+
+				vbox = { # Confessional State
+					using = main_bg
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					minimumsize = { 0 116 }
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						margin = { 12 8 }
+						spacing = 8
+						tooltip = "ve_confessional_state_desc"
+						using = tooltip_below
+						vbox = { # centred, and still contributes its size to the row
+							layoutpolicy_vertical = expanding
+							expand = {}
+							icon = {
+								texture = "gfx/interface/icons/law_icons/state_religion.dds"
+								size = { 40 40 }
+							}
+							expand = {}
+						}
 						vbox = {
-							spacing = 10
-							visible = "[GetScriptedGui('ve_show_religious_project_topbar').IsShown(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
-							tooltip = "ve_piety_reform_tt"
-							textbox = {
-								text = "ve_piety_reform"
-								default_format = "#tooltippable_name"
-								using = fontsize_xxl
-								align = nobaseline
-								elide = left
-								autoresize = yes
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							spacing = 2
+							hbox = {
+								spacing = 4
+								icon = {
+									texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
+									size = { 16 16 }
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)1')]"
+								}
+								textbox = {
+									text = "ve_confessional_state_name"
+									default_format = "#tooltip_header"
+									using = fontsize_large
+									align = nobaseline
+									autoresize = yes
+								}
+								expand = {}
 							}
 							textbox = {
-								text = "[GetPlayer.MakeScope.Var('piety_reform_point').GetValue]"
+								text = "ve_confessional_state_short"
+								using = fontsize_small
+								align = nobaseline
+								maximumsize = { 240 52 }
+								multiline = yes
+								autoresize = yes
+							}
+							expand = {}
+							textbox = {
+								text = "ve_religious_model_active_footer"
+								default_format = "#P"
+								using = fontsize_small
+								align = nobaseline
+								autoresize = yes
+								visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)1')]"
+							}
+							textbox = {
+								text = "ve_confessional_state_unlocks"
 								default_format = "#instruction"
-								using = fontsize_xxl
+								using = fontsize_small
 								align = nobaseline
-								elide = left
+								maximumsize = { 240 -1 }
+								elide = right
 								autoresize = yes
-							}
-							white_progressbar_horizontal = {
-								size = {
-									130
-									15
-								}
-								tooltip = "ve_piety_reform_tt"
-								blockoverride
-								"values"
-								{
-									min = 0
-									max = 500
-									value = "[GetPlayer.MakeScope.Var('piety_reform_point').GetValue]"
-								}
+								visible = "[Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)1'))]"
 							}
 						}
+					}
+				}
+
+				vbox = { # Freedom of Conscience
+					using = main_bg
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					minimumsize = { 0 116 }
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						margin = { 12 8 }
+						spacing = 8
+						tooltip = "ve_freedom_state_desc"
+						using = tooltip_below
+						vbox = { # centred, and still contributes its size to the row
+							layoutpolicy_vertical = expanding
+							expand = {}
+							icon = {
+								texture = "gfx/interface/icons/law_icons/freedom_of_conscience.dds"
+								size = { 40 40 }
+							}
+							expand = {}
+						}
 						vbox = {
-							spacing = 10							
-							tooltip = "ve_piety_tt"
-							textbox = {
-								raw_text = "[GetPlayer.GetCustom('ve_religious_resource_name')]"
-								default_format = "#tooltippable_name"
-								using = fontsize_xxl
-								align = nobaseline
-								elide = left
-								autoresize = yes
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							spacing = 2
+							hbox = {
+								spacing = 4
+								icon = {
+									texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
+									size = { 16 16 }
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)2')]"
+								}
+								textbox = {
+									text = "ve_freedom_state_name"
+									default_format = "#tooltip_header"
+									using = fontsize_large
+									align = nobaseline
+									autoresize = yes
+								}
+								expand = {}
 							}
 							textbox = {
-								text = "[GetPlayer.MakeScope.Var('piety_bar_point').GetValue]"
+								text = "ve_freedom_state_short"
+								using = fontsize_small
+								align = nobaseline
+								maximumsize = { 240 52 }
+								multiline = yes
+								autoresize = yes
+							}
+							expand = {}
+							textbox = {
+								text = "ve_religious_model_active_footer"
+								default_format = "#P"
+								using = fontsize_small
+								align = nobaseline
+								autoresize = yes
+								visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)2')]"
+							}
+							textbox = {
+								text = "ve_freedom_state_unlocks"
 								default_format = "#instruction"
-								using = fontsize_xxl
+								using = fontsize_small
 								align = nobaseline
-								elide = left
+								maximumsize = { 240 -1 }
+								elide = right
 								autoresize = yes
-							}
-							white_progressbar_horizontal = {
-								size = {
-									80
-									15
-								}
-								tooltip = "ve_piety_tt"
-								blockoverride
-								"values"
-								{
-									min = 0
-									max = 100
-									value = "[GetPlayer.MakeScope.Var('piety_bar_point').GetValue]"
-								}
+								visible = "[Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)2'))]"
 							}
 						}
+					}
+				}
+
+				vbox = { # Total Separation
+					using = main_bg
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					minimumsize = { 0 116 }
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						margin = { 12 8 }
+						spacing = 8
+						tooltip = "ve_separation_state_desc"
+						using = tooltip_below
+						vbox = { # centred, and still contributes its size to the row
+							layoutpolicy_vertical = expanding
+							expand = {}
+							icon = {
+								texture = "gfx/interface/icons/law_icons/total_separation.dds"
+								size = { 40 40 }
+							}
+							expand = {}
+						}
 						vbox = {
-							spacing = 10
-							visible = "[GetScriptedGui('ve_show_religious_project_topbar').IsShown(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							spacing = 2
+							hbox = {
+								spacing = 4
+								icon = {
+									texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
+									size = { 16 16 }
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)3')]"
+								}
+								textbox = {
+									text = "ve_separation_state_name"
+									default_format = "#tooltip_header"
+									using = fontsize_large
+									align = nobaseline
+									autoresize = yes
+								}
+								expand = {}
+							}
+							textbox = {
+								text = "ve_separation_state_short"
+								using = fontsize_small
+								align = nobaseline
+								maximumsize = { 240 52 }
+								multiline = yes
+								autoresize = yes
+							}
+							expand = {}
+							textbox = {
+								text = "ve_religious_model_active_footer"
+								default_format = "#P"
+								using = fontsize_small
+								align = nobaseline
+								autoresize = yes
+								visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)3')]"
+							}
+							textbox = {
+								text = "ve_separation_state_unlocks"
+								default_format = "#instruction"
+								using = fontsize_small
+								align = nobaseline
+								maximumsize = { 240 -1 }
+								elide = right
+								autoresize = yes
+								visible = "[Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)3'))]"
+							}
+						}
+					}
+				}
+
+				vbox = { # State Atheism
+					using = main_bg
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					minimumsize = { 0 116 }
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						margin = { 12 8 }
+						spacing = 8
+						tooltip = "ve_atheism_state_desc"
+						using = tooltip_below
+						vbox = { # centred, and still contributes its size to the row
+							layoutpolicy_vertical = expanding
+							expand = {}
+							icon = {
+								texture = "gfx/interface/icons/law_icons/state_atheism.dds"
+								size = { 40 40 }
+							}
+							expand = {}
+						}
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							spacing = 2
+							hbox = {
+								spacing = 4
+								icon = {
+									texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
+									size = { 16 16 }
+									visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)4')]"
+								}
+								textbox = {
+									text = "ve_atheism_state_name"
+									default_format = "#tooltip_header"
+									using = fontsize_large
+									align = nobaseline
+									autoresize = yes
+								}
+								expand = {}
+							}
+							textbox = {
+								text = "ve_atheism_state_short"
+								using = fontsize_small
+								align = nobaseline
+								maximumsize = { 240 52 }
+								multiline = yes
+								autoresize = yes
+							}
+							expand = {}
+							textbox = {
+								text = "ve_religious_model_active_footer"
+								default_format = "#P"
+								using = fontsize_small
+								align = nobaseline
+								autoresize = yes
+								visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)4')]"
+							}
+							textbox = {
+								text = "ve_atheism_state_unlocks"
+								default_format = "#instruction"
+								using = fontsize_small
+								align = nobaseline
+								maximumsize = { 240 -1 }
+								elide = right
+								autoresize = yes
+								visible = "[Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)4'))]"
+							}
+						}
+					}
+				}
+			}
+
+			hbox = { # Section label: Doctrines and Programs
+				layoutpolicy_horizontal = expanding
+				margin = { 2 15 }
+				spacing = 6
+				textbox = {
+					text = "ve_aspects"
+					default_format = "#tooltip_header"
+					using = fontsize_large
+					align = nobaseline
+					autoresize = yes
+				}
+				icon = {
+					texture = "gfx/interface/icons/generic_icons/information.dds"
+					size = { 20 20 }
+					tooltip = "ve_religious_programs_help"
+					using = tooltip_below
+				}
+				textbox = { # only while another program is still being implemented
+					text = "ve_religious_program_strain_notice_short"
+					default_format = "#N"
+					tooltip = "ve_religious_program_strain_notice"
+					using = tooltip_below
+					using = fontsize_small
+					align = vcenter|nobaseline
+					autoresize = yes
+					visible = "[GetScriptedGui('ve_religious_program_strain_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+				expand = {}
+			}
+
+			hbox = { # All eight programs in one row
+				layoutpolicy_horizontal = expanding
+				margin = { 0 15 }
+				spacing = 8
+
+				ve_religion_program_card = {
+					blockoverride "card_tooltip" { tooltip = "ve_religious_program_1_tt" }
+					blockoverride "card_icon" {
+						textbox = {
+							raw_text = "@[GetPlayer.GetCustom('ve_religion_aspect_1')]!"
+							fontsize = 30
+							align = center|nobaseline
+							size = { 100% 34 }
+						}
+					}
+					blockoverride "card_name" {
+						textbox = {
+							raw_text = "[GetPlayer.GetCustom('ve_religion_program_name_1')]"
+							default_format = "#tooltip_header"
+							using = fontsize_large
+							align = center|nobaseline
+							maximumsize = { 190 40 }
+							multiline = yes
+							autoresize = yes
+						}
+					}
+					blockoverride "card_cost" {
+						textbox = {
+							text = "ve_religious_program_cost_label"
+							default_format = "#instruction"
+							using = fontsize_small
+							align = center|nobaseline
+							autoresize = yes
+							visible = "[GetScriptedGui('ve_aspect_button_1').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						}
+					}
+					blockoverride "card_action" {
+						button = {
+							using = default_button_action
+							layoutpolicy_horizontal = expanding
+							size = { 0 28 }
+							text = "ve_adopt_program_button"
+							onclick = "[GetScriptedGui('ve_aspect_button_1').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							enabled = "[GetScriptedGui('ve_aspect_button_1').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = "[GetScriptedGui('ve_aspect_button_1').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							using = tooltip_below
+							visible = "[GetScriptedGui('ve_aspect_button_1').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						}
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							minimumsize = { 0 28 }
+							spacing = 4
+							visible = "[Not(GetScriptedGui('ve_aspect_button_1').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							expand = {}
+							icon = {
+								texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
+								size = { 16 16 }
+							}
+							textbox = {
+								text = "ve_religious_program_adopted_badge"
+								default_format = "#P"
+								using = fontsize_small
+								align = vcenter|nobaseline
+								autoresize = yes
+							}
+							expand = {}
+						}
+					}
+				}
+
+				ve_religion_program_card = {
+					blockoverride "card_tooltip" { tooltip = "ve_religious_program_2_tt" }
+					blockoverride "card_icon" {
+						textbox = {
+							raw_text = "@[GetPlayer.GetCustom('ve_religion_aspect_2')]!"
+							fontsize = 30
+							align = center|nobaseline
+							size = { 100% 34 }
+						}
+					}
+					blockoverride "card_name" {
+						textbox = {
+							raw_text = "[GetPlayer.GetCustom('ve_religion_program_name_2')]"
+							default_format = "#tooltip_header"
+							using = fontsize_large
+							align = center|nobaseline
+							maximumsize = { 190 40 }
+							multiline = yes
+							autoresize = yes
+						}
+					}
+					blockoverride "card_cost" {
+						textbox = {
+							text = "ve_religious_program_cost_label"
+							default_format = "#instruction"
+							using = fontsize_small
+							align = center|nobaseline
+							autoresize = yes
+							visible = "[GetScriptedGui('ve_aspect_button_2').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						}
+					}
+					blockoverride "card_action" {
+						button = {
+							using = default_button_action
+							layoutpolicy_horizontal = expanding
+							size = { 0 28 }
+							text = "ve_adopt_program_button"
+							onclick = "[GetScriptedGui('ve_aspect_button_2').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							enabled = "[GetScriptedGui('ve_aspect_button_2').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = "[GetScriptedGui('ve_aspect_button_2').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							using = tooltip_below
+							visible = "[GetScriptedGui('ve_aspect_button_2').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						}
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							minimumsize = { 0 28 }
+							spacing = 4
+							visible = "[Not(GetScriptedGui('ve_aspect_button_2').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							expand = {}
+							icon = {
+								texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
+								size = { 16 16 }
+							}
+							textbox = {
+								text = "ve_religious_program_adopted_badge"
+								default_format = "#P"
+								using = fontsize_small
+								align = vcenter|nobaseline
+								autoresize = yes
+							}
+							expand = {}
+						}
+					}
+				}
+
+				ve_religion_program_card = {
+					blockoverride "card_tooltip" { tooltip = "ve_religious_program_3_tt" }
+					blockoverride "card_icon" {
+						textbox = {
+							raw_text = "@[GetPlayer.GetCustom('ve_religion_aspect_3')]!"
+							fontsize = 30
+							align = center|nobaseline
+							size = { 100% 34 }
+						}
+					}
+					blockoverride "card_name" {
+						textbox = {
+							raw_text = "[GetPlayer.GetCustom('ve_religion_program_name_3')]"
+							default_format = "#tooltip_header"
+							using = fontsize_large
+							align = center|nobaseline
+							maximumsize = { 190 40 }
+							multiline = yes
+							autoresize = yes
+						}
+					}
+					blockoverride "card_cost" {
+						textbox = {
+							text = "ve_religious_program_cost_label"
+							default_format = "#instruction"
+							using = fontsize_small
+							align = center|nobaseline
+							autoresize = yes
+							visible = "[GetScriptedGui('ve_aspect_button_3').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						}
+					}
+					blockoverride "card_action" {
+						button = {
+							using = default_button_action
+							layoutpolicy_horizontal = expanding
+							size = { 0 28 }
+							text = "ve_adopt_program_button"
+							onclick = "[GetScriptedGui('ve_aspect_button_3').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							enabled = "[GetScriptedGui('ve_aspect_button_3').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = "[GetScriptedGui('ve_aspect_button_3').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							using = tooltip_below
+							visible = "[GetScriptedGui('ve_aspect_button_3').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						}
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							minimumsize = { 0 28 }
+							spacing = 4
+							visible = "[Not(GetScriptedGui('ve_aspect_button_3').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							expand = {}
+							icon = {
+								texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
+								size = { 16 16 }
+							}
+							textbox = {
+								text = "ve_religious_program_adopted_badge"
+								default_format = "#P"
+								using = fontsize_small
+								align = vcenter|nobaseline
+								autoresize = yes
+							}
+							expand = {}
+						}
+					}
+				}
+
+				ve_religion_program_card = {
+					blockoverride "card_tooltip" { tooltip = "ve_religious_program_4_tt" }
+					blockoverride "card_icon" {
+						textbox = {
+							raw_text = "@[GetPlayer.GetCustom('ve_religion_aspect_4')]!"
+							fontsize = 30
+							align = center|nobaseline
+							size = { 100% 34 }
+						}
+					}
+					blockoverride "card_name" {
+						textbox = {
+							raw_text = "[GetPlayer.GetCustom('ve_religion_program_name_4')]"
+							default_format = "#tooltip_header"
+							using = fontsize_large
+							align = center|nobaseline
+							maximumsize = { 190 40 }
+							multiline = yes
+							autoresize = yes
+						}
+					}
+					blockoverride "card_cost" {
+						textbox = {
+							text = "ve_religious_program_cost_label"
+							default_format = "#instruction"
+							using = fontsize_small
+							align = center|nobaseline
+							autoresize = yes
+							visible = "[GetScriptedGui('ve_aspect_button_4').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						}
+					}
+					blockoverride "card_action" {
+						button = {
+							using = default_button_action
+							layoutpolicy_horizontal = expanding
+							size = { 0 28 }
+							text = "ve_adopt_program_button"
+							onclick = "[GetScriptedGui('ve_aspect_button_4').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							enabled = "[GetScriptedGui('ve_aspect_button_4').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = "[GetScriptedGui('ve_aspect_button_4').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							using = tooltip_below
+							visible = "[GetScriptedGui('ve_aspect_button_4').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						}
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							minimumsize = { 0 28 }
+							spacing = 4
+							visible = "[Not(GetScriptedGui('ve_aspect_button_4').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							expand = {}
+							icon = {
+								texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
+								size = { 16 16 }
+							}
+							textbox = {
+								text = "ve_religious_program_adopted_badge"
+								default_format = "#P"
+								using = fontsize_small
+								align = vcenter|nobaseline
+								autoresize = yes
+							}
+							expand = {}
+						}
+					}
+				}
+
+				ve_religion_program_card = {
+					blockoverride "card_tooltip" { tooltip = "ve_religious_program_5_tt" }
+					blockoverride "card_icon" {
+						textbox = {
+							raw_text = "@[GetPlayer.GetCustom('ve_religion_aspect_5')]!"
+							fontsize = 30
+							align = center|nobaseline
+							size = { 100% 34 }
+						}
+					}
+					blockoverride "card_name" {
+						textbox = {
+							raw_text = "[GetPlayer.GetCustom('ve_religion_program_name_5')]"
+							default_format = "#tooltip_header"
+							using = fontsize_large
+							align = center|nobaseline
+							maximumsize = { 190 40 }
+							multiline = yes
+							autoresize = yes
+						}
+					}
+					blockoverride "card_cost" {
+						textbox = {
+							text = "ve_religious_program_cost_label"
+							default_format = "#instruction"
+							using = fontsize_small
+							align = center|nobaseline
+							autoresize = yes
+							visible = "[GetScriptedGui('ve_aspect_button_5').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						}
+					}
+					blockoverride "card_action" {
+						button = {
+							using = default_button_action
+							layoutpolicy_horizontal = expanding
+							size = { 0 28 }
+							text = "ve_adopt_program_button"
+							onclick = "[GetScriptedGui('ve_aspect_button_5').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							enabled = "[GetScriptedGui('ve_aspect_button_5').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = "[GetScriptedGui('ve_aspect_button_5').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							using = tooltip_below
+							visible = "[GetScriptedGui('ve_aspect_button_5').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						}
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							minimumsize = { 0 28 }
+							spacing = 4
+							visible = "[Not(GetScriptedGui('ve_aspect_button_5').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							expand = {}
+							icon = {
+								texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
+								size = { 16 16 }
+							}
+							textbox = {
+								text = "ve_religious_program_adopted_badge"
+								default_format = "#P"
+								using = fontsize_small
+								align = vcenter|nobaseline
+								autoresize = yes
+							}
+							expand = {}
+						}
+					}
+				}
+
+				ve_religion_program_card = {
+					blockoverride "card_tooltip" { tooltip = "ve_religious_program_6_tt" }
+					blockoverride "card_icon" {
+						textbox = {
+							raw_text = "@[GetPlayer.GetCustom('ve_religion_aspect_6')]!"
+							fontsize = 30
+							align = center|nobaseline
+							size = { 100% 34 }
+						}
+					}
+					blockoverride "card_name" {
+						textbox = {
+							raw_text = "[GetPlayer.GetCustom('ve_religion_program_name_6')]"
+							default_format = "#tooltip_header"
+							using = fontsize_large
+							align = center|nobaseline
+							maximumsize = { 190 40 }
+							multiline = yes
+							autoresize = yes
+						}
+					}
+					blockoverride "card_cost" {
+						textbox = {
+							text = "ve_religious_program_cost_label"
+							default_format = "#instruction"
+							using = fontsize_small
+							align = center|nobaseline
+							autoresize = yes
+							visible = "[GetScriptedGui('ve_aspect_button_6').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						}
+					}
+					blockoverride "card_action" {
+						button = {
+							using = default_button_action
+							layoutpolicy_horizontal = expanding
+							size = { 0 28 }
+							text = "ve_adopt_program_button"
+							onclick = "[GetScriptedGui('ve_aspect_button_6').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							enabled = "[GetScriptedGui('ve_aspect_button_6').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = "[GetScriptedGui('ve_aspect_button_6').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							using = tooltip_below
+							visible = "[GetScriptedGui('ve_aspect_button_6').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						}
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							minimumsize = { 0 28 }
+							spacing = 4
+							visible = "[Not(GetScriptedGui('ve_aspect_button_6').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							expand = {}
+							icon = {
+								texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
+								size = { 16 16 }
+							}
+							textbox = {
+								text = "ve_religious_program_adopted_badge"
+								default_format = "#P"
+								using = fontsize_small
+								align = vcenter|nobaseline
+								autoresize = yes
+							}
+							expand = {}
+						}
+					}
+				}
+
+				ve_religion_program_card = {
+					blockoverride "card_tooltip" { tooltip = "ve_religious_program_7_tt" }
+					blockoverride "card_icon" {
+						textbox = {
+							raw_text = "@[GetPlayer.GetCustom('ve_religion_aspect_7')]!"
+							fontsize = 30
+							align = center|nobaseline
+							size = { 100% 34 }
+						}
+					}
+					blockoverride "card_name" {
+						textbox = {
+							raw_text = "[GetPlayer.GetCustom('ve_religion_program_name_7')]"
+							default_format = "#tooltip_header"
+							using = fontsize_large
+							align = center|nobaseline
+							maximumsize = { 190 40 }
+							multiline = yes
+							autoresize = yes
+						}
+					}
+					blockoverride "card_cost" {
+						textbox = {
+							text = "ve_religious_program_cost_label"
+							default_format = "#instruction"
+							using = fontsize_small
+							align = center|nobaseline
+							autoresize = yes
+							visible = "[GetScriptedGui('ve_aspect_button_7').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						}
+					}
+					blockoverride "card_action" {
+						button = {
+							using = default_button_action
+							layoutpolicy_horizontal = expanding
+							size = { 0 28 }
+							text = "ve_adopt_program_button"
+							onclick = "[GetScriptedGui('ve_aspect_button_7').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							enabled = "[GetScriptedGui('ve_aspect_button_7').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = "[GetScriptedGui('ve_aspect_button_7').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							using = tooltip_below
+							visible = "[GetScriptedGui('ve_aspect_button_7').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						}
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							minimumsize = { 0 28 }
+							spacing = 4
+							visible = "[Not(GetScriptedGui('ve_aspect_button_7').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							expand = {}
+							icon = {
+								texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
+								size = { 16 16 }
+							}
+							textbox = {
+								text = "ve_religious_program_adopted_badge"
+								default_format = "#P"
+								using = fontsize_small
+								align = vcenter|nobaseline
+								autoresize = yes
+							}
+							expand = {}
+						}
+					}
+				}
+
+				ve_religion_program_card = {
+					blockoverride "card_tooltip" { tooltip = "ve_religious_program_8_tt" }
+					blockoverride "card_icon" {
+						textbox = {
+							raw_text = "@[GetPlayer.GetCustom('ve_religion_aspect_8')]!"
+							fontsize = 30
+							align = center|nobaseline
+							size = { 100% 34 }
+						}
+					}
+					blockoverride "card_name" {
+						textbox = {
+							raw_text = "[GetPlayer.GetCustom('ve_religion_program_name_8')]"
+							default_format = "#tooltip_header"
+							using = fontsize_large
+							align = center|nobaseline
+							maximumsize = { 190 40 }
+							multiline = yes
+							autoresize = yes
+						}
+					}
+					blockoverride "card_cost" {
+						textbox = {
+							text = "ve_religious_program_cost_label"
+							default_format = "#instruction"
+							using = fontsize_small
+							align = center|nobaseline
+							autoresize = yes
+							visible = "[GetScriptedGui('ve_aspect_button_8').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						}
+					}
+					blockoverride "card_action" {
+						button = {
+							using = default_button_action
+							layoutpolicy_horizontal = expanding
+							size = { 0 28 }
+							text = "ve_adopt_program_button"
+							onclick = "[GetScriptedGui('ve_aspect_button_8').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							enabled = "[GetScriptedGui('ve_aspect_button_8').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = "[GetScriptedGui('ve_aspect_button_8').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							using = tooltip_below
+							visible = "[GetScriptedGui('ve_aspect_button_8').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						}
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							minimumsize = { 0 28 }
+							spacing = 4
+							visible = "[Not(GetScriptedGui('ve_aspect_button_8').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+							expand = {}
+							icon = {
+								texture = "gfx/interface/icons/generic_icons/green_checkmark.dds"
+								size = { 16 16 }
+							}
+							textbox = {
+								text = "ve_religious_program_adopted_badge"
+								default_format = "#P"
+								using = fontsize_small
+								align = vcenter|nobaseline
+								autoresize = yes
+							}
+							expand = {}
+						}
+					}
+				}
+			}
+
+			hbox = { # Section label: Targeted Religious Project
+				layoutpolicy_horizontal = expanding
+				margin = { 2 15 }
+				spacing = 6
+				textbox = {
+					text = "ve_religious_project_section"
+					default_format = "#tooltip_header"
+					using = fontsize_large
+					align = nobaseline
+					autoresize = yes
+				}
+				icon = {
+					texture = "gfx/interface/icons/generic_icons/information.dds"
+					size = { 20 20 }
+					tooltip = "ve_religious_projects_intro"
+					using = tooltip_below
+				}
+				textbox = { # only while a cancellation backlash blocks a new project
+					text = "ve_religious_project_backlash_notice_short"
+					default_format = "#N"
+					tooltip = "ve_religious_project_backlash_notice"
+					using = tooltip_below
+					using = fontsize_small
+					align = vcenter|nobaseline
+					autoresize = yes
+					visible = "[GetScriptedGui('ve_religious_project_backlash_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+				expand = {}
+			}
+
+			hbox = { # A project is running
+				layoutpolicy_horizontal = expanding
+				margin = { 0 15 }
+				visible = "[GetScriptedGui('ve_has_active_religious_project_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				hbox = {
+					using = main_bg
+					layoutpolicy_horizontal = expanding
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						margin = { 20 12 }
+						spacing = 20
+
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							spacing = 2
+							tooltip = "[GetPlayer.GetCustom('ve_religious_project_description')]"
+							using = tooltip_below
+							textbox = {
+								text = "ve_religious_project_active_label"
+								default_format = "#instruction"
+								using = fontsize_small
+								align = nobaseline
+								autoresize = yes
+							}
+							textbox = {
+								raw_text = "[GetPlayer.GetCustom('ve_religious_project_name')]"
+								default_format = "#tooltip_header"
+								using = fontsize_xl
+								align = nobaseline
+								autoresize = yes
+							}
+							textbox = {
+								raw_text = "[GetPlayer.GetCustom('ve_religious_project_target')]"
+								using = fontsize_small
+								align = nobaseline
+								maximumsize = { 400 -1 }
+								elide = right
+								autoresize = yes
+							}
+						}
+
+						vertical_divider = {
+							blockoverride "size" {
+								size = { 16 100% }
+							}
+						}
+
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							spacing = 2
 							tooltip = "ve_religious_project_progress_tt"
+							using = tooltip_below
 							textbox = {
 								text = "ve_religious_project_progress"
 								default_format = "#tooltippable_name"
-								using = fontsize_xxl
+								using = fontsize_small
 								align = nobaseline
-								elide = left
 								autoresize = yes
 							}
-							textbox = {
-								raw_text = "[GetPlayer.GetCustom('ve_religious_project_status')]"
-								default_format = "#instruction"
-								using = fontsize_xxl
-								align = nobaseline
-								elide = left
-								autoresize = yes
+							hbox = {
+								spacing = 6
+								textbox = {
+									raw_text = "[GetPlayer.MakeScope.Var('ve_religious_project_progress').GetValue|0] / 100"
+									default_format = "#instruction"
+									using = fontsize_xl
+									align = nobaseline
+									autoresize = yes
+								}
+								textbox = {
+									raw_text = "([GetPlayer.MakeScope.ScriptValue('ve_monthly_religious_project_progress')|+=0])"
+									using = fontsize_small
+									align = vcenter|nobaseline
+									autoresize = yes
+								}
 							}
 							white_progressbar_horizontal = {
-								size = {
-									130
-									15
-								}
-								tooltip = "ve_religious_project_progress_tt"
-								blockoverride
-								"values"
-								{
-									min = 0
+								size = { 320 10 }
+								blockoverride "values" {
 									max = 100
 									value = "[GetPlayer.MakeScope.Var('ve_religious_project_progress').GetValue]"
 								}
 							}
 						}
-						vbox = {
+
+						vertical_divider = {
+							blockoverride "size" {
+								size = { 16 100% }
+							}
+						}
+
+						vbox = { # centred against the taller text column
 							layoutpolicy_vertical = expanding
-							spacing = 20
-							tooltip = "[GetScriptedGui('ve_passive_bonus_tooltip').BuildTooltip(GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
-							margin = {
-								30
-								10
-							}
-							textbox = {
-								text = "ve_religion_passive_text"
-								default_format = "#tooltippable_name"
-								using = fontsize_xxl
-								align = nobaseline
-								elide = left
-								autoresize = yes
-							}
-							hbox = {
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('religion_aspect_9')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									size = {
-										100%
-										100%
-									}
+							expand = {}
+							hbox = { # cancel, then confirm / keep in the same footprint
+								spacing = 6
+								button = {
+									using = default_button_action
+									size = { 200 28 }
+									text = "ve_cancel_religious_project_button"
+									onclick = "[GetVariableSystem.Set('confirm_cancel_religious_project', 'yes')]"
+									enabled = "[GetScriptedGui('ve_cancel_religious_project_gui').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									visible = "[Not(GetVariableSystem.Exists('confirm_cancel_religious_project'))]"
+									tooltip = "ve_religious_project_cancel_warning"
+									using = tooltip_below
+								}
+								button = {
+									using = default_button_action
+									size = { 200 28 }
+									text = "ve_confirm_cancel_button"
+									onclick = "[GetVariableSystem.Clear('confirm_cancel_religious_project')]"
+									onclick = "[GetScriptedGui('ve_cancel_religious_project_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									visible = "[GetVariableSystem.Exists('confirm_cancel_religious_project')]"
+									tooltip = "ve_religious_project_cancel_warning"
+									using = tooltip_below
+								}
+								button = {
+									using = default_button_action
+									size = { 140 28 }
+									text = "ve_keep_project_button"
+									onclick = "[GetVariableSystem.Clear('confirm_cancel_religious_project')]"
+									visible = "[GetVariableSystem.Exists('confirm_cancel_religious_project')]"
 								}
 							}
+							expand = {}
 						}
 					}
 				}
 			}
-			vbox = {
-				#Aspects
-				spacing = 15
+
+			hbox = { # No project running: what this model may start, and how
 				layoutpolicy_horizontal = expanding
-				header_pattern = {
-					layoutpolicy_horizontal = expanding
-					blockoverride
-					"header_text"
-					{
-						text = "ve_aspects"
-						default_format = "#tooltip_header"
-					}
-					blockoverride
-					"button_close"
-					{
-						visible = no
-					}
-				}
-				vbox = {
-					#Aspect Modifiers
+				margin = { 0 15 }
+				visible = "[GetScriptedGui('ve_has_no_active_religious_project_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				hbox = {
 					using = main_bg
 					layoutpolicy_horizontal = expanding
 					hbox = {
 						layoutpolicy_horizontal = expanding
-						margin = {
-							0
-							20
-						}
-						vbox = {
-							#Aspect 1
-							layoutpolicy_horizontal = expanding
-							spacing = 10
-							
-							margin = {
-								15
-								15
+						margin = { 16 10 }
+						spacing = 16
+						tooltip = "[GetPlayer.GetCustom('ve_religion_model_project_description')]"
+						using = tooltip_below
+
+						vbox = { # one wrapper for all four variants: the hidden ones take no
+							# height, so the row pays its spacing once, not four times
+							layoutpolicy_vertical = expanding
+							expand = {}
+							icon = {
+								texture = "gfx/interface/icons/generic_icons/conversion.dds"
+								size = { 44 44 }
+								visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)1')]"
 							}
-							button_icon_round_big_map_interaction = {
-								size = {
-									100
-									100
-								}
-								textbox = { raw_text = "#P ●#!" fontsize = 18 position = { 72 -4 } visible = "[Not(GetScriptedGui('ve_aspect_button_1').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
-								onclick = "[GetScriptedGui('ve_aspect_button_1').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								enabled = "[GetScriptedGui('ve_aspect_button_1').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_aspect_button_1').BuildTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								using = tooltip_above
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('ve_religion_aspect_1')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									visible = "[GetScriptedGui('ve_aspect_button_1').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									size = {
-										100%
-										100%
-									}
-								}
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('ve_religion_aspect_1')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									visible = "[Not(GetScriptedGui('ve_aspect_button_1').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
-									size = {
-										100%
-										100%
-									}
-								}
+							icon = {
+								texture = "gfx/interface/icons/generic_icons/population_loyalist.dds"
+								size = { 44 44 }
+								visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)2')]"
+							}
+							icon = {
+								texture = "gfx/interface/icons/map_mode_icons/religions.dds"
+								size = { 44 44 }
+								visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)3')]"
+							}
+							icon = {
+								texture = "gfx/interface/icons/invention_icons/analytical_philosophy.dds"
+								size = { 44 44 }
+								visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)4')]"
+							}
+							expand = {}
+						}
+
+						vbox = {
+							spacing = 2
+							textbox = {
+								raw_text = "[GetPlayer.GetCustom('ve_religion_model_project_name')]"
+								default_format = "#tooltip_header"
+								using = fontsize_xl
+								align = nobaseline
+								autoresize = yes
 							}
 							textbox = {
-								raw_text = "[GetPlayer.GetCustom('religion_aspect_text_1')]"
-								using = fontsize_xxl
-								align = center|nobaseline
-								#elide = left
-								#autoresize = yes
+								raw_text = "[GetPlayer.GetCustom('ve_religion_model_project_cost')]"
+								using = fontsize_small
+								align = nobaseline
+								autoresize = yes
 							}
 						}
-						vbox = {
-							#Aspect 2
+
+						textbox = {
 							layoutpolicy_horizontal = expanding
-							spacing = 10
-							margin = {
-								15
-								15
-							}
-							button_icon_round_big_map_interaction = {
-								size = {
-									100
-									100
-								}
-								textbox = { raw_text = "#P ●#!" fontsize = 18 position = { 72 -4 } visible = "[Not(GetScriptedGui('ve_aspect_button_2').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
-								onclick = "[GetScriptedGui('ve_aspect_button_2').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								enabled = "[GetScriptedGui('ve_aspect_button_2').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_aspect_button_2').BuildTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								using = tooltip_above
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('religion_aspect_2')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									visible = "[GetScriptedGui('ve_aspect_button_2').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									size = {
-										100%
-										100%
-									}
-								}
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('religion_aspect_2')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									visible = "[Not(GetScriptedGui('ve_aspect_button_2').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
-									size = {
-										100%
-										100%
-									}
-								}
-							}
-							textbox = {
-								raw_text = "[GetPlayer.GetCustom('religion_aspect_text_2')]"
-								using = fontsize_xxl
-								align = center|nobaseline
+							raw_text = "[GetPlayer.GetCustom('ve_religion_model_project_short')]"
+							using = fontsize_small
+							align = nobaseline
+							maximumsize = { 520 54 }
+							multiline = yes
+							autoresize = yes
+						}
+
+						vertical_divider = {
+							blockoverride "size" {
+								size = { 16 100% }
 							}
 						}
-						vbox = {
-							#Aspect 3
-							layoutpolicy_horizontal = expanding
-							spacing = 10
-							margin = {
-								15
-								15
-							}
-							button_icon_round_big_map_interaction = {
-								size = {
-									100
-									100
-								}
-								textbox = { raw_text = "#P ●#!" fontsize = 18 position = { 72 -4 } visible = "[Not(GetScriptedGui('ve_aspect_button_3').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
-								onclick = "[GetScriptedGui('ve_aspect_button_3').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								enabled = "[GetScriptedGui('ve_aspect_button_3').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_aspect_button_3').BuildTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								using = tooltip_above
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('religion_aspect_3')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									visible = "[GetScriptedGui('ve_aspect_button_3').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									size = {
-										100%
-										100%
-									}
-								}
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('religion_aspect_3')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									visible = "[Not(GetScriptedGui('ve_aspect_button_3').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
-									size = {
-										100%
-										100%
-									}
-								}
-							}
-							textbox = {
-								raw_text = "[GetPlayer.GetCustom('religion_aspect_text_3')]"
-								using = fontsize_xxl
-								align = center|nobaseline
-							}
-						}
-						vbox = {
-							#Aspect 4
-							layoutpolicy_horizontal = expanding
-							spacing = 10
-							margin = {
-								15
-								15
-							}
-							button_icon_round_big_map_interaction = {
-								size = {
-									100
-									100
-								}
-								textbox = { raw_text = "#P ●#!" fontsize = 18 position = { 72 -4 } visible = "[Not(GetScriptedGui('ve_aspect_button_4').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
-								onclick = "[GetScriptedGui('ve_aspect_button_4').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								enabled = "[GetScriptedGui('ve_aspect_button_4').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_aspect_button_4').BuildTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								using = tooltip_above
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('religion_aspect_4')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									visible = "[GetScriptedGui('ve_aspect_button_4').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									size = {
-										100%
-										100%
-									}
-								}
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('religion_aspect_4')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									visible = "[Not(GetScriptedGui('ve_aspect_button_4').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
-									size = {
-										100%
-										100%
-									}
-								}
-							}
-							textbox = {
-								raw_text = "[GetPlayer.GetCustom('religion_aspect_text_4')]"
-								using = fontsize_xxl
-								align = center|nobaseline
-							}
-						}
-					}
-					hbox = {
-						layoutpolicy_horizontal = expanding
-						margin = {
-							0
-							20
-						}
-						vbox = {
-							#Aspect 5
-							layoutpolicy_horizontal = expanding
-							spacing = 10
-							margin = {
-								15
-								15
-							}
-							button_icon_round_big_map_interaction = {
-								size = {
-									100
-									100
-								}
-								textbox = { raw_text = "#P ●#!" fontsize = 18 position = { 72 -4 } visible = "[Not(GetScriptedGui('ve_aspect_button_5').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
-								onclick = "[GetScriptedGui('ve_aspect_button_5').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								enabled = "[GetScriptedGui('ve_aspect_button_5').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_aspect_button_5').BuildTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								using = tooltip_above
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('religion_aspect_5')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									visible = "[GetScriptedGui('ve_aspect_button_5').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									size = {
-										100%
-										100%
-									}
-								}
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('religion_aspect_5')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									visible = "[Not(GetScriptedGui('ve_aspect_button_5').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
-									size = {
-										100%
-										100%
-									}
-								}
-							}
-							textbox = {
-								raw_text = "[GetPlayer.GetCustom('religion_aspect_text_5')]"
-								using = fontsize_xxl
-								align = center|nobaseline
-							}
-						}						
-						vbox = {
-							#Aspect 6
-							layoutpolicy_horizontal = expanding
-							spacing = 10
-							margin = {
-								15
-								15
-							}
-							button_icon_round_big_map_interaction = {
-								size = {
-									100
-									100
-								}
-								textbox = { raw_text = "#P ●#!" fontsize = 18 position = { 72 -4 } visible = "[Not(GetScriptedGui('ve_aspect_button_6').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
-								onclick = "[GetScriptedGui('ve_aspect_button_6').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								enabled = "[GetScriptedGui('ve_aspect_button_6').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_aspect_button_6').BuildTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								using = tooltip_above
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('religion_aspect_6')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									visible = "[GetScriptedGui('ve_aspect_button_6').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									size = {
-										100%
-										100%
-									}
-								}
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('religion_aspect_6')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									visible = "[Not(GetScriptedGui('ve_aspect_button_6').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
-									size = {
-										100%
-										100%
-									}
-								}
-							}
-							textbox = {
-								raw_text = "[GetPlayer.GetCustom('religion_aspect_text_6')]"
-								using = fontsize_xxl
-								align = center|nobaseline
-							}
-						}
-						vbox = {
-							#Aspect 7
-							layoutpolicy_horizontal = expanding
-							spacing = 10
-							margin = {
-								15
-								15
-							}
-							button_icon_round_big_map_interaction = {
-								size = {
-									100
-									100
-								}
-								textbox = { raw_text = "#P ●#!" fontsize = 18 position = { 72 -4 } visible = "[Not(GetScriptedGui('ve_aspect_button_7').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
-								onclick = "[GetScriptedGui('ve_aspect_button_7').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								enabled = "[GetScriptedGui('ve_aspect_button_7').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_aspect_button_7').BuildTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								using = tooltip_above
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('religion_aspect_7')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									visible = "[GetScriptedGui('ve_aspect_button_7').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									size = {
-										100%
-										100%
-									}
-								}
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('religion_aspect_7')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									visible = "[Not(GetScriptedGui('ve_aspect_button_7').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
-									size = {
-										100%
-										100%
-									}
-								}
-							}
-							textbox = {
-								raw_text = "[GetPlayer.GetCustom('religion_aspect_text_7')]"
-								using = fontsize_xxl
-								align = center|nobaseline
-							}
-						}
-						vbox = {
-							#Aspect 8
-							layoutpolicy_horizontal = expanding
-							spacing = 10
-							margin = {
-								15
-								15
-							}
-							button_icon_round_big_map_interaction = {
-								size = {
-									100
-									100
-								}
-								textbox = { raw_text = "#P ●#!" fontsize = 18 position = { 72 -4 } visible = "[Not(GetScriptedGui('ve_aspect_button_8').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]" }
-								onclick = "[GetScriptedGui('ve_aspect_button_8').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								enabled = "[GetScriptedGui('ve_aspect_button_8').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui('ve_aspect_button_8').BuildTooltip( GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								using = tooltip_above
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('religion_aspect_8')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									visible = "[GetScriptedGui('ve_aspect_button_8').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									size = {
-										100%
-										100%
-									}
-								}
-								textbox = {
-									raw_text = "@[GetPlayer.GetCustom('religion_aspect_8')]!"
-									fontsize = 60
-									align = center|nobaseline
-									parentanchor = vcenter
-									visible = "[Not(GetScriptedGui('ve_aspect_button_8').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
-									size = {
-										100%
-										100%
-									}
-								}
-							}
-							textbox = {
-								raw_text = "[GetPlayer.GetCustom('religion_aspect_text_8')]"
-								using = fontsize_xxl
-								align = center|nobaseline
-							}
+
+						textbox = {
+							text = "ve_religious_project_start_instruction_short"
+							default_format = "#instruction"
+							using = fontsize_small
+							align = nobaseline
+							maximumsize = { 400 54 }
+							multiline = yes
+							autoresize = yes
+							visible = "[Not(EqualTo_CFixedPoint(GetPlayer.MakeScope.Var('ve_religious_model').GetValue, '(CFixedPoint)3'))]"
 						}
 					}
 				}
 			}
-			expand = {
-			}
+
+			expand = {}
 		}
 	}
 }

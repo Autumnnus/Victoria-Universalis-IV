@@ -208,7 +208,7 @@ ve_finish_ethnic_campaign = {
 			}
 			change_pop_culture = {
 				target = ROOT.var:ve_cultural_project_primary_culture
-				value = 0.05
+				value = ve_ethnic_campaign_conversion_amount
 			}
 		}
 		add_modifier = {

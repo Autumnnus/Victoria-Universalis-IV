@@ -65,6 +65,7 @@ ve_update_national_identity = {
 
 ve_update_era_momentum = {
 	ve_initialize_era_momentum = yes
+	ve_reconcile_era_objective_count = yes
 	ve_update_era_objective_completions = yes
 	change_variable = {
 		name = ve_splender_points

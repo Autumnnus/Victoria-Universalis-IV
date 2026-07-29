@@ -118,6 +118,7 @@ ve_monthly_religious_project_progress = {
 	add = ve_religious_project_progress_equilibrium
 	add = ve_religious_project_progress_movement
 	add = ve_religious_project_progress_target
+	add = ve_religious_project_progress_idea_bonus
 	min = 1
 	max = 7
 	round = yes
@@ -169,6 +170,33 @@ ve_piety_reform_devout_support = {
 	}
 }
 
+# Direct doctrine contribution to Piety Reform income. The traditions are
+# alternatives, so a country can receive at most one point from idea groups.
+ve_piety_reform_idea_bonus = {
+	if = {
+		limit = {
+			has_variable = nationalist_idea_5_var
+			OR = {
+				ve_is_confessional_state = yes
+				ve_is_atheism_state = yes
+			}
+		}
+		add = 1
+	}
+	else_if = {
+		limit = {
+			has_modifier = reformist_idea_5_mdf
+			OR = {
+				ve_is_freedom_state = yes
+				ve_is_separation_state = yes
+			}
+		}
+		add = 1
+	}
+	min = 0
+	max = 1
+}
+
 ve_piety_reform_cap_multiplier = {
 	if = {
 		limit = { var:piety_reform_point >= 500 }
@@ -188,6 +216,7 @@ ve_monthly_piety_reform = {
 	add = ve_piety_reform_legitimacy
 	add = ve_piety_reform_administration
 	add = ve_piety_reform_devout_support
+	add = ve_piety_reform_idea_bonus
 	min = 1
 	max = 8
 	multiply = ve_piety_reform_cap_multiplier
@@ -196,20 +225,43 @@ ve_monthly_piety_reform = {
 
 
 # Scope: state (the project target). Share of the state's population converted
-# when a conversion project completes: 5% base, plus the old missionary-power
-# Nationalist idea bonuses (group ideas 2, 5 and 7) of the owning country.
+# When a conversion project completes: 5% base, plus 2 percentage points from
+# Nationalist idea VII. The same capstone improves the ethnic project result.
 ve_religious_project_conversion_amount = {
 	value = 0.05
 	if = {
-		limit = { owner = { has_modifier = nationalist_idea_2_mdf } }
-		add = 0.03
-	}
-	if = {
-		limit = { owner = { has_variable = nationalist_idea_5_var } }
-		add = 0.03
-	}
-	if = {
 		limit = { owner = { has_variable = nationalist_idea_7_var } }
-		add = 0.03
+		add = 0.02
 	}
+}
+
+# Direct idea-group contribution to active Religious Project progress.
+# These model-specific bonuses are capped so social conditions stay relevant.
+ve_religious_project_progress_idea_bonus = {
+	if = {
+		limit = {
+			has_variable = nationalist_idea_7_var
+			OR = {
+				ve_is_confessional_state = yes
+				ve_is_atheism_state = yes
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_modifier = reformist_idea_7_mdf
+			ve_is_freedom_state = yes
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_modifier = academic_idea_7_mdf
+			ve_is_atheism_state = yes
+		}
+		add = 1
+	}
+	min = 0
+	max = 2
 }

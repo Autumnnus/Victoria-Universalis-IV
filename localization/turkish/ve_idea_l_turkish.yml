@@ -45,8 +45,8 @@
 
 
  ve_max_idea_text:0 "[GetPlayer.MakeScope.Var('idea_group_unlocked').GetValue|0] / 7"
- nationalist_idea_5_tt:0 "#positive_value +0.7% Missionary and Bureaucrat Power"
- nationalist_idea_7_tt:0 "#P +2 Missionaries and +2 Cultural Missionaries"
+ nationalist_idea_5_tt:0 "Confessional veya State Atheism'de aylık #P +1 Piety Reform#!; Etnik Ulus'ta aylık #P +1 Kültürel Yetki#! verir."
+ nationalist_idea_7_tt:0 "Confessional veya State Atheism'de aylık #P +1 Dini Proje ilerlemesi#!; Etnik Ulus'ta aylık #P +1 Kültürel Proje ilerlemesi#! verir; zorlayıcı Dini Proje ve Etnik Entegrasyon sonucu #Y %5#!'ten #Y %7#!'ye çıkar."
  embrace_idea_tt:0 "#header Fikir Grubu Kapasitesi#!\nKullanılan yuva: #Y [GetPlayer.MakeScope.Var('idea_group_unlocked').GetValue|0] / [GetPlayer.MakeScope.Var('idea_group_cap').GetValue|0]#!\nŞu an boş yuva: #Y [GetPlayer.MakeScope.ScriptValue('ve_idea_group_free_slots')|0]#!\nMevcut Doktrin Yatırımı: #Y [GetPlayer.MakeScope.Var('ve_idea_capacity_progress').GetValue|0]#! etkin satın alınmış fikir\n\n[GetPlayer.GetCustom('ve_idea_capacity_player_detail')]\n\n#title Kapasite nasıl işler?#!\nEtkin olan her satın alınmış grup fikri #P +1#! Doktrin Yatırımı sağlar. #Y 4, 8, 13, 19, 26#! veya #Y 34#! eşiğine ulaşmak kalıcı olarak bir grup yuvası ekler. 5–6. yuvalar ayrıca 2. Çağı, 7. yuva 3. Çağı gerektirir.\n\n#title Benimseme ve iptal#!\nGrup benimsemek Kavrayış harcamaz fakat bir boş yuva kaplar. İptal; yuvayı boşaltır, grubun değiştiricilerini kaldırır ve mevcut Doktrin Yatırımını düşürür. Harcanan Kavrayış iade edilmez; daha önce kazanılmış kapasite yuvası kalıcı olarak korunur."
  ve_idea_capacity_player_progress:0 "#title Sıradaki kalıcı yuva#!\nYuva: #Y [GetPlayer.MakeScope.ScriptValue('ve_next_idea_group_slot')|0]#!\nİlerleme: #Y [GetPlayer.MakeScope.Var('ve_idea_capacity_progress').GetValue|0] / [GetPlayer.MakeScope.ScriptValue('ve_next_idea_group_capacity_threshold')|0]#! satın alınmış fikir\nEksik: #Y [GetPlayer.MakeScope.ScriptValue('ve_idea_group_capacity_remaining')|0]#!"
  ve_idea_capacity_player_age_2:0 "#title Sıradaki kalıcı yuva#!\nYuva: #Y 5#!\nİlerleme: #Y [GetPlayer.MakeScope.Var('ve_idea_capacity_progress').GetValue|0] / 19#! satın alınmış fikir\nEksik: #Y [GetPlayer.MakeScope.ScriptValue('ve_idea_group_capacity_remaining')|0]#!\nÇağ şartı: #N 2. Çağ bekleniyor#!"
@@ -58,3 +58,12 @@
  ve_idea_capacity_country_max:0 "#P Azami kapasiteye ulaşıldı: 7 kalıcı grup yuvasının tamamı kullanılabilir.#!"
  ve_idea_implementation_player_ready:0 "#P Hazır — yeterli Kavrayış varsa yeni bir fikir benimsenebilir.#!"
  ve_idea_implementation_player_locked:0 "#N Uygulama sürüyor — başka bir fikir benimsenebilmesi için [GetPlayer.GetTimedModifierDurationRemaining('ve_national_insight_implementation_strain')] kaldı.#!"
+ ve_idea_era_momentum_age_1_tt:0 "#P 1. Çağ boyunca: aylık +1 Çağ Momentumu#! bu IV. seviye Fikir Grubundan gelir. Fikir Grubu katkısı en fazla #Y +2#! olabilir."
+ ve_idea_era_momentum_age_2_tt:0 "#P 2. Çağ boyunca: aylık +1 Çağ Momentumu#! bu IV. seviye Fikir Grubundan gelir. Fikir Grubu katkısı en fazla #Y +2#! olabilir."
+ ve_idea_era_momentum_age_3_tt:0 "#P 3. Çağ boyunca: aylık +1 Çağ Momentumu#! bu IV. seviye Fikir Grubundan gelir. Fikir Grubu katkısı en fazla #Y +2#! olabilir."
+ reformist_idea_5_system_tt:0 "Freedom of Conscience veya Total Separation'da aylık #P +1 Piety Reform#!; Sivil Ulus veya Bileşik Devlet'te aylık #P +1 Kültürel Yetki#! verir."
+ reformist_idea_7_system_tt:0 "Freedom of Conscience'da aylık #P +1 Dini Proje ilerlemesi#!; Sivil Ulus veya Bileşik Devlet'te aylık #P +1 Kültürel Proje ilerlemesi#! verir."
+ academic_idea_5_system_tt:0 "Sivil Ulus'ta aylık #P +1 Kültürel Yetki#! verir."
+ academic_idea_7_system_tt:0 "State Atheism'de aylık #P +1 Dini Proje ilerlemesi#! ve Sivil Ulus'ta aylık #P +1 Kültürel Proje ilerlemesi#! verir."
+ welfare_idea_6_system_tt:0 "Sivil Ulus'ta aylık #P +1 Kültürel Proje ilerlemesi#! verir."
+ diplomatic_idea_6_system_tt:0 "Bileşik Devlet'te aylık #P +1 Kültürel Proje ilerlemesi#! verir."

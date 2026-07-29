@@ -304,6 +304,34 @@ idea_2_tt_effects = {
 	}
 }
 
+# Show the age-specific momentum gain on every level-IV idea card.
+ve_idea_4_era_momentum_tooltip = {
+	switch = {
+		trigger = scope:idea_group
+		flag:industrialist_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_1_tt } }
+		flag:mercantile_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_1_tt } }
+		flag:financial_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_1_tt } }
+		flag:infrastructure_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_1_tt } }
+		flag:academic_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_1_tt } }
+		flag:bureaucratic_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_1_tt } }
+		flag:parliamentary_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_1_tt } }
+		flag:extraction_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_2_tt } }
+		flag:agrarian_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_2_tt } }
+		flag:labour_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_2_tt } }
+		flag:welfare_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_2_tt } }
+		flag:diplomatic_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_2_tt } }
+		flag:nationalist_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_2_tt } }
+		flag:reformist_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_2_tt } }
+		flag:colonial_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_2_tt } }
+		flag:offensive_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_3_tt } }
+		flag:defensive_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_3_tt } }
+		flag:naval_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_3_tt } }
+		flag:professional_army_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_3_tt } }
+		flag:mass_conscription_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_3_tt } }
+		flag:war_economy_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_3_tt } }
+	}
+}
+
 idea_3_tt_effects = {
 	switch = {
 		trigger = scope:idea_group
@@ -608,6 +636,7 @@ idea_4_tt_effects = {
 			}
 		}
 	}
+	ve_idea_4_era_momentum_tooltip = yes
 }
 
 idea_5_tt_effects = {
@@ -619,6 +648,7 @@ idea_5_tt_effects = {
 				name = academic_idea_5_mdf
 				months = -1
 			}
+			custom_tooltip = { text = academic_idea_5_system_tt }
 		}
 		flag:agrarian_idea = {
 			#custom_label = ve_gecici_9
@@ -716,6 +746,7 @@ idea_5_tt_effects = {
 				name = reformist_idea_5_mdf
 				months = -1
 			}
+			custom_tooltip = { text = reformist_idea_5_system_tt }
 		}
 		flag:labour_idea = {
 			#custom_label = ve_gecici_9
@@ -848,6 +879,7 @@ idea_6_tt_effects = {
 				name = diplomatic_idea_6_mdf
 				months = -1
 			}
+			custom_tooltip = { text = diplomatic_idea_6_system_tt }
 		}
 		flag:mercantile_idea = {
 			#custom_label = ve_gecici_9
@@ -862,6 +894,7 @@ idea_6_tt_effects = {
 				name = welfare_idea_6_mdf
 				months = -1
 			}
+			custom_tooltip = { text = welfare_idea_6_system_tt }
 		}
 		flag:reformist_idea = {
 			#custom_label = ve_gecici_9
@@ -924,6 +957,7 @@ idea_7_tt_effects = {
 				name = academic_idea_7_mdf
 				months = -1
 			}
+			custom_tooltip = { text = academic_idea_7_system_tt }
 		}
 		flag:agrarian_idea = {
 			#custom_label = ve_gecici_9
@@ -1021,6 +1055,7 @@ idea_7_tt_effects = {
 				name = reformist_idea_7_mdf
 				months = -1
 			}
+			custom_tooltip = { text = reformist_idea_7_system_tt }
 		}
 		flag:labour_idea = {
 			#custom_label = ve_gecici_9

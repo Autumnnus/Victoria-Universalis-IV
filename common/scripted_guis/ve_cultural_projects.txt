@@ -114,3 +114,11 @@ ve_state_active_cultural_project_gui = {
 		ve_state_is_active_cultural_project_target = yes
 	}
 }
+
+# Cancellation backlash readout for gui/ve_panel_culture.gui.
+ve_cultural_project_backlash_gui = {
+	scope = country
+	is_shown = {
+		has_modifier = ve_cultural_project_backlash_mdf
+	}
+}
