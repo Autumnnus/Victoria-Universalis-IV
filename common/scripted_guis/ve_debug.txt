@@ -1,0 +1,13 @@
+﻿# Diagnostic-only scripted GUIs. Nothing here affects gameplay.
+
+# Shows the raw Alert.GetTooltipTag string under every alert icon, so the exact
+# tag spelling used by the engine can be read in game. Used by the alert hooks
+# in gui/ve_alert_hooks.gui.
+# Enable:  effect set_global_variable = ve_debug_alert_tags
+# Disable: effect remove_global_variable = ve_debug_alert_tags
+ve_debug_alert_tags = {
+	scope = country
+	is_shown = {
+		has_global_variable = ve_debug_alert_tags
+	}
+}

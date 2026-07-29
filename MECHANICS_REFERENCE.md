@@ -20,9 +20,9 @@ Last verified against the implementation: **2026-07-29**
 
 | Cadence/hook | Entry point | Responsibilities |
 | --- | --- | --- |
-| Monthly | `ve_monthly_country_tick` | Update Religious Settlement, Piety Reform, Religious Project, National Insight, Cultural Mandate, National Cohesion, Cultural Project, Era Momentum, and objective completion. AI tries to buy the next idea in its current focus. |
+| Monthly | `ve_monthly_country_tick` | Update Religious Settlement, Piety Reform, Religious Project, National Insight, Cultural Mandate, National Cohesion, Cultural Project, Era Momentum, objective completion, and age-gated idea capacity. AI tries to buy the next idea in its current focus. |
 | Half-yearly | `ve_half_yearly_country_tick` | AI chooses idea groups, religious programs/projects, identity/cultural projects, era rewards, and Golden Ages. |
-| Yearly | `ve_yearly_country_tick` | Update the year-based idea-group capacity. Hidden age-transition events are also checked yearly. |
+| Yearly | `ve_yearly_country_tick` | Compatibility reconciliation for progression-based idea-group capacity. Hidden age-transition events are also checked yearly. |
 | Church-and-State law activation | `on_law_activated` | Re-evaluate and synchronize the Religious Model immediately. |
 | State owner change | `on_state_owner_change` | Remove the active Religious Project modifier from the captured target state. |
 | Country formation | `on_country_formed` | Initialize systems and replace the old National Idea profile with the current tag's profile. |
@@ -46,6 +46,7 @@ Primary dispatch sources:
 | `ve_splender_points` | Era Momentum stock. The misspelling is part of the script/save contract. |
 | `idea_group_cap` | Maximum number of currently embraced idea groups. |
 | `idea_group_unlocked` | Number of currently embraced idea groups. |
+| `ve_idea_capacity_progress` | Current uncapped sum of purchased individual group-idea levels, 0–49. It earns permanent idea-group capacity. |
 | `national_idea_pool` | Sum of purchased individual group-idea levels, capped at 21 for National Idea progression. |
 
 ## 3. Religion
@@ -410,23 +411,31 @@ Monthly generation:
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Insight cost | 200 | 250 | 300 | 375 | 450 | 550 | 675 |
 
-A completed group costs 2800 total Insight. Every level purchase applies 24 months of Doctrine Implementation Strain.
+A completed group costs 2800 total Insight. Every level purchase applies 24 months of Doctrine Implementation Strain. While that modifier is active, no other group idea can be purchased; it therefore acts as both the income penalty and the global implementation cadence.
 
 ### 6.2 Group capacity
 
-Countries start with one group slot. The yearly update raises capacity:
+Countries start with one group slot. Capacity is earned permanently from current doctrine investment (`ve_idea_capacity_progress`):
 
-| Year | Capacity |
-| ---: | ---: |
-| 1836 | 1 |
-| 1846 | 2 |
-| 1856 | 3 |
-| 1866 | 4 |
-| 1876 | 5 |
-| 1886 | 6 |
-| 1896 | 7 |
+| Capacity | Required purchased group-idea levels | Additional gate |
+| ---: | ---: | --- |
+| 1 | Starting capacity | — |
+| 2 | 4 | — |
+| 3 | 8 | — |
+| 4 | 13 | — |
+| 5 | 19 | Age 2 |
+| 6 | 26 | Age 2 |
+| 7 | 34 | Age 3 |
 
 Embracing a group costs no Insight. It occupies one slot and enables purchases in that group.
+
+Capacity is raised immediately after an idea purchase and reconciled monthly/yearly for age transitions and save compatibility. It never decreases. Cancelling ideas can lower current doctrine investment but does not revoke capacity already institutionalized. Existing saves retain a higher capacity earned under the retired calendar system; fresh or late-created countries do not receive calendar catch-up slots.
+
+The threshold gaps and the 24-month implementation cadence prevent a full 1000-point Insight bank from granting several capacity tiers in one burst. Concentrating purchases in one group reaches Ambition sooner but pays the expensive high-level costs; spreading purchases reaches capacity thresholds sooner but delays group capstones.
+
+Player-facing capacity tooltips are dynamic rather than a bare threshold list. They show used and free slots, current investment, the next slot number, its threshold, remaining purchases, any Age gate, maximum-capacity state, and whether Doctrine Implementation currently blocks another purchase. Readout helpers live in `common/script_values/ve_script_values.txt` and `common/customizable_localization/ve_idea_capacity_cl.txt`.
+
+The Ideas-panel overview bar and its `ve_max_idea_text` label track embraced groups against the campaign maximum of 7 (`0/7` through `7/7`). Current usable capacity remains a separate `used / idea_group_cap` readout in its tooltip and in the topbar.
 
 ### 6.3 Group catalog and state data carriers
 
@@ -490,13 +499,15 @@ Cancelling the chosen side reopens the opposing path.
 - Level 7 sets `*_idea_completed` and grants the permanent `*_ambition_mdf` capstone.
 - Cancellation removes the group's modifiers, Ambition, completion marker, and access variable.
 - Spent National Insight is never refunded.
-- Group count and National Idea progress are recalculated; falling below a National Idea threshold may revoke that National Idea.
+- Group count, current doctrine investment, and National Idea progress are recalculated; falling below a National Idea threshold may revoke that National Idea.
+- Earned idea-group capacity is permanent and is not revoked by cancellation.
 
 Exact group modifiers: `common/static_modifiers/ve_group_ideas.txt`.
 
 Primary sources:
 
 - `common/script_values/ve_script_values.txt`
+- `common/customizable_localization/ve_idea_capacity_cl.txt`
 - `common/scripted_effects/ve_idea_effects.txt`
 - `common/scripted_effects/ve_scripted_effects.txt`
 - `common/scripted_guis/ve_idea.txt`
@@ -790,6 +801,8 @@ Sources:
 - The old ±7 culture reform bar is retired. New culture work belongs in National Identity/Cultural Projects.
 - The live idea system contains 21 groups, including Agrarian.
 - National Idea progress comes from purchased individual group-idea levels, not completed-group count.
+- Idea-group capacity no longer opens every ten years. It is earned permanently at 4/8/13/19/26/34 current purchased group-idea levels, with Age 2 gates on slots 5–6 and an Age 3 gate on slot 7.
+- Doctrine Implementation Strain blocks another group-idea purchase for its full 24-month duration as well as reducing National Insight income.
 - `IDEA_GROUP_BALANCE.md` does not fully reflect the previous two live rules.
 - `events/Economic_Idea.txt` and `events/InnovativeIdeaGroupEvents.txt` (13 flavor events) are not dispatched from any `on_action` or effect, and every event in a file shares one localization key set (`economic_flavor.1.*` / `innovative_flavor.1.*`). The shared keys now exist so the load no longer errors; wiring the events up requires per-event keys and a deliberate hook.
 

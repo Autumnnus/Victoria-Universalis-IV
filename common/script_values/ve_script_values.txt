@@ -10,6 +10,58 @@ ve_national_insight_value = {
 	add = var:idea_point_pool
 }
 
+# Player-facing doctrine-capacity readouts. Capacity itself is mutated by
+# ve_update_idea_group_capacity; these values only explain the next milestone.
+ve_idea_group_free_slots = {
+	add = var:idea_group_cap
+	subtract = var:idea_group_unlocked
+	min = 0
+	max = 7
+	round = yes
+}
+
+ve_next_idea_group_slot = {
+	add = var:idea_group_cap
+	add = 1
+	min = 2
+	max = 7
+	round = yes
+}
+
+ve_next_idea_group_capacity_threshold = {
+	if = {
+		limit = { var:idea_group_cap < 2 }
+		value = 4
+	}
+	else_if = {
+		limit = { var:idea_group_cap < 3 }
+		value = 8
+	}
+	else_if = {
+		limit = { var:idea_group_cap < 4 }
+		value = 13
+	}
+	else_if = {
+		limit = { var:idea_group_cap < 5 }
+		value = 19
+	}
+	else_if = {
+		limit = { var:idea_group_cap < 6 }
+		value = 26
+	}
+	else = {
+		value = 34
+	}
+}
+
+ve_idea_group_capacity_remaining = {
+	add = ve_next_idea_group_capacity_threshold
+	subtract = var:ve_idea_capacity_progress
+	min = 0
+	max = 34
+	round = yes
+}
+
 culture_reform_point_value = {
 	add = var:culture_reform_point
 }

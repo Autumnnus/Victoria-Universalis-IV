@@ -60,6 +60,7 @@ ve_gui_panel_types
 						vbox = {
 							layoutpolicy_horizontal = expanding
 								spacing = 2
+								tooltip = "embrace_idea_tt"
 								white_progressbar_horizontal = {
 									size = {
 										50

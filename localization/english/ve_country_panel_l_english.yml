@@ -16,7 +16,7 @@
 
  VE_CP_IDEAS_TITLE:0 "Ideas"
  VE_CP_GROUP_SLOTS:0 "[Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]"
- VE_CP_GROUP_SLOTS_TT:0 "#header Idea Groups#!\nEmbraced: #Y [Country.MakeScope.Var('idea_group_unlocked').GetValue|0]#!\nSlots available: #Y [Country.MakeScope.Var('idea_group_cap').GetValue|0]#!\n\nOne more slot opens every ten years, up to seven."
+ VE_CP_GROUP_SLOTS_TT:0 "#header Idea Groups#!\nUsed slots: #Y [Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]#!\nFree slots: #Y [Country.MakeScope.ScriptValue('ve_idea_group_free_slots')|0]#!\nCurrent Doctrine Investment: #Y [Country.MakeScope.Var('ve_idea_capacity_progress').GetValue|0]#! active purchased ideas\n\n[Country.GetCustom('ve_idea_capacity_country_detail')]\n\nActive group ideas earn permanent capacity at #Y 4, 8, 13, 19, 26#! and #Y 34#!. Slots 5–6 also require Age 2 and slot 7 requires Age 3. Cancelling a group lowers current investment and never refunds Insight, but capacity already earned is retained."
  VE_CP_NATIONAL_IDEAS_LABEL:0 "National Ideas"
  VE_CP_PROGRESS_LABEL:0 "Idea Progress"
  VE_CP_NATIONAL_IDEA_PROGRESS_TT:0 "#header National Idea Progress#!\nPurchased group ideas: #Y [Country.MakeScope.Var('national_idea_pool').GetValue|0] / 21#!\n\nEvery third purchased group idea unlocks the next National Idea. The twenty-first also grants the National Bonus."

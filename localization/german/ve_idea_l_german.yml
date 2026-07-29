@@ -40,7 +40,7 @@
  colonial_idea_name:0 "#b Colonial Idea"
 
 
- ve_max_idea_text:0 "[GetPlayer.MakeScope.Var('idea_group_unlocked').GetValue] / 7"
+ ve_max_idea_text:0 "[GetPlayer.MakeScope.Var('idea_group_unlocked').GetValue|0] / 7"
  nationalist_idea_5_tt:0 "#positive_value +0.7% Missionary and Bureaucrat Power"
  nationalist_idea_7_tt:0 "#P +2 Missionaries and +2 Cultural Missionaries"
- embrace_idea_tt:0 "#Y An idea group slot will be activated every 10 years. The maximum idea group limit is 7."
+ embrace_idea_tt:0 "#header Idea Group Capacity#!\nEmbraced groups: #Y [GetPlayer.MakeScope.Var('idea_group_unlocked').GetValue|0]#!/#Y [GetPlayer.MakeScope.Var('idea_group_cap').GetValue|0]#!\nDoctrine investment: #Y [GetPlayer.MakeScope.Var('ve_idea_capacity_progress').GetValue|0]#! purchased group ideas\n\nPermanent slots are earned at #Y 4, 8, 13, 19, 26#! and #Y 34#! purchased group ideas. Slots 5-6 also require Age 2; slot 7 requires Age 3. Embracing a group is free; cancelling one does not refund spent Insight."

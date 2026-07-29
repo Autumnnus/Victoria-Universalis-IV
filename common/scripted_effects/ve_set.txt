@@ -9,6 +9,8 @@ ve_initialize_country_system = {
 		set_ideas = yes
 		set_national_idea = yes
 		national_idea_traditions = yes
+		# Fresh and late-created countries begin with one slot. Capacity is
+		# rebuilt from purchased idea levels below, never from the calendar.
 		ve_idea_cap_effects = yes
 		set_variable = ve_1936_countries
 	}
@@ -16,8 +18,8 @@ ve_initialize_country_system = {
 	# this outside the legacy-system guard so loading an older save initializes
 	# its model and cohesion before the culture panel is evaluated.
 	ve_initialize_national_identity = yes
-	# Rebuild national-idea progress outside the legacy setup guard. This keeps
-	# existing saves in sync when the national-idea progression rules change.
+	# Rebuild both idea progress tracks outside the legacy setup guard. Existing
+	# saves keep any slot already earned because capacity only ever increases.
 	ve_recalculate_national_idea_pool = yes
 	national_idea_mdf = yes
 }
@@ -1383,83 +1385,72 @@ national_idea_traditions = {
 	}
 }
 
+# Permanent doctrine capacity. Threshold gaps are deliberately wide enough
+# that a full 1000-point Insight bank cannot normally grant two slots at once.
+# Slots 5-6 belong to Age 2 and slot 7 to Age 3. Cancelling a group can reduce
+# current investment but never revokes institutional capacity already earned.
+ve_update_idea_group_capacity = {
+	if = {
+		limit = {
+			NOT = { has_variable = ve_idea_capacity_progress }
+		}
+		set_variable = { name = ve_idea_capacity_progress value = 0 }
+	}
+	if = {
+		limit = {
+			NOT = { has_variable = idea_group_cap }
+		}
+		set_variable = { name = idea_group_cap value = 1 }
+	}
+	if = {
+		limit = {
+			var:idea_group_cap < 2
+			var:ve_idea_capacity_progress >= 4
+		}
+		set_variable = { name = idea_group_cap value = 2 }
+	}
+	if = {
+		limit = {
+			var:idea_group_cap < 3
+			var:ve_idea_capacity_progress >= 8
+		}
+		set_variable = { name = idea_group_cap value = 3 }
+	}
+	if = {
+		limit = {
+			var:idea_group_cap < 4
+			var:ve_idea_capacity_progress >= 13
+		}
+		set_variable = { name = idea_group_cap value = 4 }
+	}
+	if = {
+		limit = {
+			var:idea_group_cap < 5
+			var:ve_idea_capacity_progress >= 19
+			has_global_variable = age_2_started_trigger
+		}
+		set_variable = { name = idea_group_cap value = 5 }
+	}
+	if = {
+		limit = {
+			var:idea_group_cap < 6
+			var:ve_idea_capacity_progress >= 26
+			has_global_variable = age_2_started_trigger
+		}
+		set_variable = { name = idea_group_cap value = 6 }
+	}
+	if = {
+		limit = {
+			var:idea_group_cap < 7
+			var:ve_idea_capacity_progress >= 34
+			has_global_variable = age_3_started_trigger
+		}
+		set_variable = { name = idea_group_cap value = 7 }
+	}
+}
+
+# Compatibility name retained for yearly pulses and older scripted callers.
+# Unlike the retired implementation, it contains no year-based catch-up.
 ve_idea_cap_effects = {
-	if = {
-		limit = {
-			year >= 1846
-			NOT = {
-				has_variable = idea_cap_2_setted
-			}
-		}
-		set_variable = idea_cap_2_setted
-		change_variable = {
-			name = idea_group_cap
-			add = 1
-		}
-	}
-	if = {
-		limit = {
-			year >= 1856
-			NOT = {
-				has_variable = idea_cap_3_setted
-			}
-		}
-		set_variable = idea_cap_3_setted
-		change_variable = {
-			name = idea_group_cap
-			add = 1
-		}
-	}
-	if = {
-		limit = {
-			year >= 1866
-			NOT = {
-				has_variable = idea_cap_4_setted
-			}
-		}
-		set_variable = idea_cap_4_setted
-		change_variable = {
-			name = idea_group_cap
-			add = 1
-		}
-	}
-	if = {
-		limit = {
-			year >= 1876
-			NOT = {
-				has_variable = idea_cap_5_setted
-			}
-		}
-		set_variable = idea_cap_5_setted
-		change_variable = {
-			name = idea_group_cap
-			add = 1
-		}
-	}
-	if = {
-		limit = {
-			year >= 1886
-			NOT = {
-				has_variable = idea_cap_6_setted
-			}
-		}
-		set_variable = idea_cap_6_setted
-		change_variable = {
-			name = idea_group_cap
-			add = 1
-		}
-	}
-	if = {
-		limit = {
-			year >= 1896
-			NOT = {
-				has_variable = idea_cap_7_setted
-			}
-		}
-		set_variable = idea_cap_7_setted
-		change_variable = {
-			name = idea_group_cap
-			add = 1
-		}
-	}
+	ve_update_idea_group_capacity = yes
 }

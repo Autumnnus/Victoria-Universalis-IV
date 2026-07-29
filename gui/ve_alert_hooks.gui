@@ -1,0 +1,143 @@
+### Victoria Universalis IV - clickable alert hooks
+###
+### Why this exists:
+### The engine's alert click handler is PopupManager.OpenAlert( Alert.AccessSelf ),
+### which performs only the alert type's "open_panel" / "open_popup" field.
+### Those fields accept ONLY engine-registered InformationPanelBar panels
+### (budget, tech_tree, politics, states_panel, ...). Our panels are not engine
+### panels: gui/ve_gui_panel.gui is gated on the GUI variable 've_tab_var'.
+### Therefore no native path exists from an alert to our panel.
+###
+### The hook below is a transparent button laid on top of the vanilla alert
+### widget. It is visible only for our own alert types, so it consumes the click
+### for VU4 alerts and leaves every vanilla alert untouched. Instantiated from:
+###   gui/topfrontend.gui               (alert bar, type = alert)
+###   gui/important_actions_list.gui    (important actions, both row types)
+###
+### Alert identity:
+### The Alert data type has no GetKey accessor (see logs/data_types). The alert
+### type is therefore identified by comparing Alert.GetName against the same
+### localization key the engine itself resolves for that alert:
+### Localize( 'alert_<key>_name' ). Both sides are resolved in the active
+### language, so this is exact and language-independent. Alert.GetTooltipTag is
+### kept as a secondary check in case the engine ever stops resolving the name.
+
+types ve_alert_hook_types
+{
+	### Transparent click-catcher. Requires an "Alert" data context.
+	type ve_alert_panel_hook_button = button
+	{
+		size = { 100% 100% }
+		parentanchor = center
+		texture = "gfx/interface/icons/generic_icons/transparent.dds"
+		effectname = "NoHighlight"
+		tooltip = "[Alert.GetToolTip]"
+		using = tooltip_below
+		using = select_button_sound
+		onrightclick = "[Alert.MarkAsHidden]"
+		onmousehierarchyenter = "[Alert.MarkAsRead]"
+		### No-op in the alert bar; closes the list when clicked from important actions.
+		onclick = "[RightClickMenuManager.Close]"
+
+		block "hook_visible" {}
+		block "hook_onclick" {}
+	}
+
+	### Drop this into any widget that has an "Alert" data context.
+	### One overlay per VU4 alert type -> its own tab in ve_gui_panel.
+	type ve_alert_panel_hook = widget
+	{
+		size = { 100% 100% }
+		parentanchor = center
+
+		### Insight / idea points -> Ideas tab
+		ve_alert_panel_hook_button = {
+			name = "ve_alert_hook_can_unlock_ideas"
+			blockoverride "hook_visible" {
+				visible = "[Or( EqualTo_string( Alert.GetName, Localize( 'alert_can_unlock_ideas_name' ) ), EqualTo_string( Alert.GetTooltipTag, 'can_unlock_ideas' ) )]"
+			}
+			blockoverride "hook_onclick" {
+				onclick = "[GetVariableSystem.Set('ve_last_tab', 've_ideas')]"
+				onclick = "[GetVariableSystem.Set('ve_tab_var', 've_ideas')]"
+			}
+		}
+
+		### Piety Reform program -> Religion tab
+		ve_alert_panel_hook_button = {
+			name = "ve_alert_hook_max_piety"
+			blockoverride "hook_visible" {
+				visible = "[Or( EqualTo_string( Alert.GetName, Localize( 'alert_max_piety_name' ) ), EqualTo_string( Alert.GetTooltipTag, 'max_piety' ) )]"
+			}
+			blockoverride "hook_onclick" {
+				onclick = "[GetVariableSystem.Set('ve_last_tab', 've_religion')]"
+				onclick = "[GetVariableSystem.Set('ve_tab_var', 've_religion')]"
+			}
+		}
+
+		### Targeted Religious Project -> Religion tab
+		ve_alert_panel_hook_button = {
+			name = "ve_alert_hook_targeted_religious_project"
+			blockoverride "hook_visible" {
+				visible = "[Or( EqualTo_string( Alert.GetName, Localize( 'alert_ve_can_begin_targeted_religious_project_name' ) ), EqualTo_string( Alert.GetTooltipTag, 've_can_begin_targeted_religious_project' ) )]"
+			}
+			blockoverride "hook_onclick" {
+				onclick = "[GetVariableSystem.Set('ve_last_tab', 've_religion')]"
+				onclick = "[GetVariableSystem.Set('ve_tab_var', 've_religion')]"
+			}
+		}
+
+		### Cultural Mandate surplus -> Culture tab
+		ve_alert_panel_hook_button = {
+			name = "ve_alert_hook_cultural_project"
+			blockoverride "hook_visible" {
+				visible = "[Or( EqualTo_string( Alert.GetName, Localize( 'alert_ve_can_begin_cultural_project_name' ) ), EqualTo_string( Alert.GetTooltipTag, 've_can_begin_cultural_project' ) )]"
+			}
+			blockoverride "hook_onclick" {
+				onclick = "[GetVariableSystem.Set('ve_last_tab', 've_culture')]"
+				onclick = "[GetVariableSystem.Set('ve_tab_var', 've_culture')]"
+			}
+		}
+
+		### Targeted Cultural Project -> Culture tab
+		ve_alert_panel_hook_button = {
+			name = "ve_alert_hook_targeted_cultural_project"
+			blockoverride "hook_visible" {
+				visible = "[Or( EqualTo_string( Alert.GetName, Localize( 'alert_ve_can_begin_targeted_cultural_project_name' ) ), EqualTo_string( Alert.GetTooltipTag, 've_can_begin_targeted_cultural_project' ) )]"
+			}
+			blockoverride "hook_onclick" {
+				onclick = "[GetVariableSystem.Set('ve_last_tab', 've_culture')]"
+				onclick = "[GetVariableSystem.Set('ve_tab_var', 've_culture')]"
+			}
+		}
+
+		### Era Momentum reward -> Era tab
+		ve_alert_panel_hook_button = {
+			name = "ve_alert_hook_can_unlock_age_bonus"
+			blockoverride "hook_visible" {
+				visible = "[Or( EqualTo_string( Alert.GetName, Localize( 'alert_can_unlock_age_bonus_name' ) ), EqualTo_string( Alert.GetTooltipTag, 'can_unlock_age_bonus' ) )]"
+			}
+			blockoverride "hook_onclick" {
+				onclick = "[GetVariableSystem.Set('ve_last_tab', 've_age_bonusses')]"
+				onclick = "[GetVariableSystem.Set('ve_tab_var', 've_age_bonusses')]"
+			}
+		}
+
+		### Diagnostic readout. Shows, for every alert: whether our hook matched,
+		### the raw tooltip tag, and the resolved name. Enable in game with:
+		###   effect set_global_variable = ve_debug_alert_tags
+		### Disable with:
+		###   effect remove_global_variable = ve_debug_alert_tags
+		textbox = {
+			visible = "[GetScriptedGui('ve_debug_alert_tags').IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+			raw_text = "tag=[Alert.GetTooltipTag] name=[Alert.GetName]"
+			parentanchor = bottom|hcenter
+			position = { 0 26 }
+			autoresize = yes
+			max_width = 300
+			multiline = yes
+			using = fontsize_small
+			default_format = "#Y"
+			alwaystransparent = yes
+		}
+	}
+}

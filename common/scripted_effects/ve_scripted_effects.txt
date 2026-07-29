@@ -475,10 +475,13 @@ ve_refresh_national_idea_profile = {
 	national_idea_mdf = yes
 }
 
-# Every purchased group idea contributes one national-idea progress point.
-# National ideas unlock at 3/6/9/.../21 total points. The cap keeps the
-# national profile at its seven intended ideas even if more groups are opened.
-# Recalculation also makes group cancellation deterministic.
+# Every purchased group idea contributes to two progress tracks:
+# - ve_idea_capacity_progress is the uncapped 0-49 doctrine-investment total
+#   used to earn permanent idea-group slots;
+# - national_idea_pool mirrors that total but remains capped at 21 for the
+#   seven National Ideas and National Bonus.
+# Recalculation also makes group cancellation deterministic. Capacity never
+# decreases: ve_update_idea_group_capacity only raises idea_group_cap.
 ve_recalculate_national_idea_pool = {
 	# Nationalist ideas 5 and 7 use variables for their mechanical effects.
 	# Mirror existing saves into permanent ownership modifiers so every group
@@ -498,34 +501,39 @@ ve_recalculate_national_idea_pool = {
 		add_modifier = { name = nationalist_idea_7_mdf months = -1 }
 	}
 	set_variable = {
-		name = national_idea_pool
+		name = ve_idea_capacity_progress
 		value = 0
 	}
-	change_variable = { name = national_idea_pool add = var:academic_idea }
-	change_variable = { name = national_idea_pool add = var:agrarian_idea }
-	change_variable = { name = national_idea_pool add = var:financial_idea }
-	change_variable = { name = national_idea_pool add = var:infrastructure_idea }
-	change_variable = { name = national_idea_pool add = var:extraction_idea }
-	change_variable = { name = national_idea_pool add = var:mass_conscription_idea }
-	change_variable = { name = national_idea_pool add = var:war_economy_idea }
-	change_variable = { name = national_idea_pool add = var:industrialist_idea }
-	change_variable = { name = national_idea_pool add = var:bureaucratic_idea }
-	change_variable = { name = national_idea_pool add = var:nationalist_idea }
-	change_variable = { name = national_idea_pool add = var:parliamentary_idea }
-	change_variable = { name = national_idea_pool add = var:diplomatic_idea }
-	change_variable = { name = national_idea_pool add = var:mercantile_idea }
-	change_variable = { name = national_idea_pool add = var:welfare_idea }
-	change_variable = { name = national_idea_pool add = var:reformist_idea }
-	change_variable = { name = national_idea_pool add = var:labour_idea }
-	change_variable = { name = national_idea_pool add = var:offensive_idea }
-	change_variable = { name = national_idea_pool add = var:defensive_idea }
-	change_variable = { name = national_idea_pool add = var:naval_idea }
-	change_variable = { name = national_idea_pool add = var:professional_army_idea }
-	change_variable = { name = national_idea_pool add = var:colonial_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:academic_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:agrarian_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:financial_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:infrastructure_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:extraction_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:mass_conscription_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:war_economy_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:industrialist_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:bureaucratic_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:nationalist_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:parliamentary_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:diplomatic_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:mercantile_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:welfare_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:reformist_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:labour_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:offensive_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:defensive_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:naval_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:professional_army_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:colonial_idea }
+	set_variable = {
+		name = national_idea_pool
+		value = var:ve_idea_capacity_progress
+	}
 	if = {
 		limit = { var:national_idea_pool > 21 }
 		set_variable = { name = national_idea_pool value = 21 }
 	}
+	ve_update_idea_group_capacity = yes
 }
 
 splendor_cost = {
@@ -543,9 +551,10 @@ splendor_cost = {
 # was retired in favor of the Targeted Religious Project - see
 # common/scripted_effects/ve_religious_state_effects.txt.
 
-# Faz 5c - tiered cost. One per idea level; called from the matching branch of
+# Tiered cost. One per idea level; called from the matching branch of
 # boost_<group>_idea_effect, which is the only place that knows the level.
-# Rebuilds progress from completed groups, then charges that level's cost.
+# Rebuilds both progress tracks, charges that level's cost, then starts the
+# 24-month implementation window that blocks another group-idea purchase.
 ve_apply_national_insight_strain = {
 	add_modifier = {
 		name = ve_national_insight_implementation_strain

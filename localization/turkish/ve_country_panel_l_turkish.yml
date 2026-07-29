@@ -16,7 +16,7 @@
 
  VE_CP_IDEAS_TITLE:0 "Fikirler"
  VE_CP_GROUP_SLOTS:0 "[Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]"
- VE_CP_GROUP_SLOTS_TT:0 "#header Fikir Grupları#!\nBenimsenen: #Y [Country.MakeScope.Var('idea_group_unlocked').GetValue|0]#!\nMevcut slot: #Y [Country.MakeScope.Var('idea_group_cap').GetValue|0]#!\n\nHer on yılda bir slot daha açılır, en fazla yedi olur."
+ VE_CP_GROUP_SLOTS_TT:0 "#header Fikir Grupları#!\nKullanılan yuva: #Y [Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]#!\nBoş yuva: #Y [Country.MakeScope.ScriptValue('ve_idea_group_free_slots')|0]#!\nMevcut Doktrin Yatırımı: #Y [Country.MakeScope.Var('ve_idea_capacity_progress').GetValue|0]#! etkin satın alınmış fikir\n\n[Country.GetCustom('ve_idea_capacity_country_detail')]\n\nEtkin grup fikirleri #Y 4, 8, 13, 19, 26#! ve #Y 34#! eşiklerinde kalıcı kapasite kazandırır. 5–6. yuvalar ayrıca 2. Çağı, 7. yuva 3. Çağı gerektirir. Grup iptali mevcut yatırımı düşürür ve Kavrayış iade etmez; fakat kazanılmış kapasite korunur."
  VE_CP_NATIONAL_IDEAS_LABEL:0 "Ulusal Fikirler"
  VE_CP_PROGRESS_LABEL:0 "Fikir İlerlemesi"
  VE_CP_NATIONAL_IDEA_PROGRESS_TT:0 "#header Ulusal Fikir İlerlemesi#!\nSatın alınan grup fikri: #Y [Country.MakeScope.Var('national_idea_pool').GetValue|0] / 21#!\n\nHer üçüncü grup fikri bir sonraki Ulusal Fikri açar. Yirmi birinci fikir ayrıca Ulusal Bonusu verir."

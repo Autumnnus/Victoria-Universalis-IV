@@ -102,6 +102,17 @@ ve_monthly_country_tick = {
 		}
 	}
 	ve_monthly_points = yes
+	# Save-compatible fallback if a loaded country somehow missed the lobby
+	# initializer that creates the uncapped doctrine-investment total.
+	if = {
+		limit = {
+			NOT = { has_variable = ve_idea_capacity_progress }
+		}
+		ve_recalculate_national_idea_pool = yes
+	}
+	# Cheap reconciliation for age-gated doctrine capacity. Purchases update
+	# capacity immediately; this catches an Age transition within one month.
+	ve_update_idea_group_capacity = yes
 	if = {
 		limit = { is_ai = yes }
 		ve_ai_monthly_idea_tick = yes

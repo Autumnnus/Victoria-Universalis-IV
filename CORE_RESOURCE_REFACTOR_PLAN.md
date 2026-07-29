@@ -1230,8 +1230,9 @@ known one-time changes use a shared hard clamp of 0-1000.
 
 Buying any idea applies `ve_national_insight_implementation_strain` for 24
 months. It costs 25 Bureaucracy and 25 Authority and reduces Insight generation
-by 2 per month while active. Repeated rapid purchases refresh the duration
-rather than creating an unbounded stack.
+by 2 per month while active. The strain now also blocks another group-idea
+purchase for its full duration, so rapid purchases cannot compress several
+doctrines into one implementation window.
 
 ### Migration changes
 
@@ -1464,7 +1465,8 @@ and old-save initialization.
 
 - one complete Idea Group costs 2,800 National Insight. Before purchase strain
   and soft-cap pressure, sustained monthly income of 8–16 completes a group in
-  roughly 15–29 years; repeated purchases add 24-month implementation strain;
+  roughly 15–29 years; every purchase starts a 24-month implementation window
+  during which another group idea cannot be adopted;
 - Era Momentum grants one point per currently satisfied objective each month
   and 50 once per distinct objective. In a 35-year age, maintaining roughly
   four objectives supports about five of the nine rewards, while six objectives

@@ -125,9 +125,15 @@ culture_cost_trigger = {
 	ve_can_change_identity_model = yes
 }
 
-# Faz 5c - can this country afford the NEXT idea of $GROUP$?
-# var:$GROUP$_idea holds how many are already bought, so level N+1 costs IDEA_COST[N+1].
+# Can this country implement and afford the NEXT idea of $GROUP$?
+# var:$GROUP$_idea holds how many are already bought, so level N+1 costs
+# IDEA_COST[N+1]. Doctrine Implementation Strain is also the global purchase
+# cadence: only one group idea may be adopted in each 24-month implementation
+# window.
 ve_idea_affordable = {
+	NOT = {
+		has_modifier = ve_national_insight_implementation_strain
+	}
 	OR = {
 		AND = {
 			var:$GROUP$_idea == 0
