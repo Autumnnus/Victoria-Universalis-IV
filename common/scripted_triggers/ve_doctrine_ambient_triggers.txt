@@ -1,0 +1,179 @@
+# Shared eligibility guards for Phase 4 Idea Group ambient events.
+
+ve_has_production_doctrine_ambient_candidate = {
+	OR = {
+		ve_has_industrialist_doctrine_ambient_candidate = yes
+		ve_has_agrarian_doctrine_ambient_candidate = yes
+	}
+}
+
+ve_has_society_doctrine_ambient_candidate = {
+	OR = {
+		ve_has_academic_doctrine_ambient_candidate = yes
+		ve_has_nationalist_doctrine_ambient_candidate = yes
+		ve_has_reformist_doctrine_ambient_candidate = yes
+	}
+}
+
+ve_has_military_doctrine_ambient_candidate = {
+	ve_has_professional_army_doctrine_ambient_candidate = yes
+}
+
+ve_can_fire_doctrine_ambient_industrialist_10 = {
+	has_modifier = industrialist_idea_2_mdf
+	NOT = { has_variable = ve_idea_evt_10_dispatch_cooldown }
+}
+
+ve_can_fire_doctrine_ambient_industrialist_11 = {
+	has_modifier = industrialist_idea_4_mdf
+	NOT = { has_variable = ve_idea_evt_11_dispatch_cooldown }
+}
+
+ve_can_fire_doctrine_ambient_industrialist_12 = {
+	has_modifier = industrialist_idea_2_mdf
+	NOT = { has_variable = ve_idea_evt_12_dispatch_cooldown }
+}
+
+ve_has_industrialist_doctrine_ambient_candidate = {
+	OR = {
+		ve_can_fire_doctrine_ambient_industrialist_10 = yes
+		ve_can_fire_doctrine_ambient_industrialist_11 = yes
+		ve_can_fire_doctrine_ambient_industrialist_12 = yes
+	}
+}
+
+ve_can_fire_doctrine_ambient_agrarian_60 = {
+	has_modifier = agrarian_idea_2_mdf
+	NOT = { has_variable = ve_idea_evt_60_dispatch_cooldown }
+}
+
+ve_can_fire_doctrine_ambient_agrarian_61 = {
+	has_modifier = agrarian_idea_4_mdf
+	NOT = { has_variable = ve_idea_evt_61_dispatch_cooldown }
+}
+
+ve_can_fire_doctrine_ambient_agrarian_62 = {
+	has_modifier = agrarian_idea_2_mdf
+	NOT = { has_variable = ve_idea_evt_62_dispatch_cooldown }
+}
+
+ve_has_agrarian_doctrine_ambient_candidate = {
+	OR = {
+		ve_can_fire_doctrine_ambient_agrarian_60 = yes
+		ve_can_fire_doctrine_ambient_agrarian_61 = yes
+		ve_can_fire_doctrine_ambient_agrarian_62 = yes
+	}
+}
+
+ve_can_fire_doctrine_ambient_academic_20 = {
+	has_modifier = academic_idea_2_mdf
+	NOT = { has_variable = ve_idea_evt_20_dispatch_cooldown }
+}
+
+ve_can_fire_doctrine_ambient_academic_21 = {
+	has_modifier = academic_idea_4_mdf
+	NOT = { has_variable = ve_idea_evt_21_dispatch_cooldown }
+}
+
+ve_can_fire_doctrine_ambient_academic_22 = {
+	has_modifier = academic_idea_2_mdf
+	NOT = { has_variable = ve_idea_evt_22_dispatch_cooldown }
+}
+
+ve_has_academic_doctrine_ambient_candidate = {
+	OR = {
+		ve_can_fire_doctrine_ambient_academic_20 = yes
+		ve_can_fire_doctrine_ambient_academic_21 = yes
+		ve_can_fire_doctrine_ambient_academic_22 = yes
+	}
+}
+
+ve_can_fire_doctrine_ambient_nationalist_30 = {
+	has_modifier = nationalist_idea_2_mdf
+	NOT = { has_variable = ve_idea_evt_30_dispatch_cooldown }
+}
+
+ve_can_fire_doctrine_ambient_nationalist_31 = {
+	has_modifier = nationalist_idea_4_mdf
+	NOT = { has_variable = ve_idea_evt_31_dispatch_cooldown }
+}
+
+ve_can_fire_doctrine_ambient_nationalist_32 = {
+	has_modifier = nationalist_idea_2_mdf
+	NOT = { has_variable = ve_idea_evt_32_dispatch_cooldown }
+}
+
+ve_has_nationalist_doctrine_ambient_candidate = {
+	OR = {
+		ve_can_fire_doctrine_ambient_nationalist_30 = yes
+		ve_can_fire_doctrine_ambient_nationalist_31 = yes
+		ve_can_fire_doctrine_ambient_nationalist_32 = yes
+	}
+}
+
+ve_can_fire_doctrine_ambient_reformist_40 = {
+	has_modifier = reformist_idea_2_mdf
+	NOT = { has_variable = ve_idea_evt_40_dispatch_cooldown }
+}
+
+ve_can_fire_doctrine_ambient_reformist_41 = {
+	has_modifier = reformist_idea_4_mdf
+	NOT = { has_variable = ve_idea_evt_41_dispatch_cooldown }
+}
+
+ve_can_fire_doctrine_ambient_reformist_42 = {
+	has_modifier = reformist_idea_2_mdf
+	NOT = { has_variable = ve_idea_evt_42_dispatch_cooldown }
+}
+
+ve_has_reformist_doctrine_ambient_candidate = {
+	OR = {
+		ve_can_fire_doctrine_ambient_reformist_40 = yes
+		ve_can_fire_doctrine_ambient_reformist_41 = yes
+		ve_can_fire_doctrine_ambient_reformist_42 = yes
+	}
+}
+
+ve_can_fire_doctrine_ambient_professional_army_50 = {
+	has_modifier = professional_army_idea_2_mdf
+	NOT = { has_variable = ve_idea_evt_50_dispatch_cooldown }
+}
+
+ve_can_fire_doctrine_ambient_professional_army_51 = {
+	has_modifier = professional_army_idea_4_mdf
+	NOT = { has_variable = ve_idea_evt_51_dispatch_cooldown }
+}
+
+ve_can_fire_doctrine_ambient_professional_army_52 = {
+	has_modifier = professional_army_idea_2_mdf
+	NOT = { has_variable = ve_idea_evt_52_dispatch_cooldown }
+}
+
+ve_has_professional_army_doctrine_ambient_candidate = {
+	OR = {
+		ve_can_fire_doctrine_ambient_professional_army_50 = yes
+		ve_can_fire_doctrine_ambient_professional_army_51 = yes
+		ve_can_fire_doctrine_ambient_professional_army_52 = yes
+	}
+}
+
+ve_has_any_doctrine_ambient_candidate = {
+	OR = {
+		ve_has_production_doctrine_ambient_candidate = yes
+		ve_has_society_doctrine_ambient_candidate = yes
+		ve_has_military_doctrine_ambient_candidate = yes
+	}
+}
+
+ve_can_roll_doctrine_ambient_event = {
+	has_variable = victoria_universalis_system_on
+	NOT = { has_modifier = ve_doctrine_ambient_cooldown_mdf }
+	ve_has_any_doctrine_ambient_candidate = yes
+}
+
+# Option affordability gate. Event options pass the positive absolute cost, for
+# example: ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+ve_can_afford_doctrine_ambient_insight = {
+	has_variable = idea_point_pool
+	var:idea_point_pool >= $COST$
+}

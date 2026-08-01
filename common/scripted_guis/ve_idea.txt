@@ -2794,7 +2794,7 @@ boost_idea_group = {
 				has_variable = can_go_extraction
 				OR = {
 					var:extraction_idea < 6
-					has_global_variable = age_3_started_trigger
+					has_technology_researched = dynamite
 				}
 			}
 			flag:mass_conscription_idea = {
@@ -3026,7 +3026,7 @@ embrace_idea_group = {
 				}
 			}
 			flag:mass_conscription_idea = {
-				has_global_variable = age_2_started_trigger
+				has_technology_researched = enlistment_offices
 				NOT = {
 					has_variable = can_go_mass_conscription
 				}
@@ -3035,7 +3035,7 @@ embrace_idea_group = {
 				}
 			}
 			flag:war_economy_idea = {
-				has_global_variable = age_3_started_trigger
+				has_technology_researched = war_propaganda
 				NOT = {
 					has_variable = can_go_war_economy
 				}
@@ -3051,7 +3051,7 @@ embrace_idea_group = {
 				}
 			}
 			flag:nationalist_idea = {
-				has_global_variable = age_2_started_trigger
+				has_technology_researched = nationalism
 				NOT = {
 					has_variable = can_go_nationalist
 				}
@@ -3075,13 +3075,13 @@ embrace_idea_group = {
 				}
 			}
 			flag:welfare_idea = {
-				has_global_variable = age_2_started_trigger
+				has_technology_researched = human_rights
 				NOT = {
 					has_variable = can_go_welfare
 				}
 			}
 			flag:reformist_idea = {
-				has_global_variable = age_2_started_trigger
+				has_technology_researched = egalitarianism
 				NOT = {
 					has_variable = can_go_reformist
 				}
@@ -3090,7 +3090,7 @@ embrace_idea_group = {
 				}
 			}
 			flag:labour_idea = {
-				has_global_variable = age_2_started_trigger
+				has_technology_researched = labor_movement
 				NOT = {
 					has_variable = can_go_labour
 				}
@@ -3119,7 +3119,7 @@ embrace_idea_group = {
 				}
 			}
 			flag:colonial_idea = {
-				has_global_variable = age_2_started_trigger
+				has_technology_researched = quinine
 				NOT = {
 					has_variable = can_go_colonial
 				}
@@ -3743,9 +3743,8 @@ flag:agrarian_idea = {
 }
 
 
-# Age gate (Faz 5b). True when this group's age has not begun and the group is not
-# embraced, so the panel can show 'not yet available' instead of a Cancel button.
-# Uses age_N_started_trigger, which is never removed - ve_age_N_started is.
+# Technology gate. True when the group's required vanilla technology has not been
+# researched and the group is not embraced, so the panel can show its requirement.
 ve_idea_group_age_locked = {
 	scope = country
 	saved_scopes = {
@@ -3773,9 +3772,7 @@ flag:agrarian_idea = {
 	always = no
 }
 			flag:labour_idea = {
-				NOT = {
-					has_global_variable = age_2_started_trigger
-				}
+					NOT = { has_technology_researched = labor_movement }
 				NOT = {
 					has_variable = can_go_labour
 				}
@@ -3790,9 +3787,7 @@ flag:agrarian_idea = {
 				always = no
 			}
 			flag:welfare_idea = {
-				NOT = {
-					has_global_variable = age_2_started_trigger
-				}
+					NOT = { has_technology_researched = human_rights }
 				NOT = {
 					has_variable = can_go_welfare
 				}
@@ -3801,17 +3796,13 @@ flag:agrarian_idea = {
 				always = no
 			}
 			flag:nationalist_idea = {
-				NOT = {
-					has_global_variable = age_2_started_trigger
-				}
+					NOT = { has_technology_researched = nationalism }
 				NOT = {
 					has_variable = can_go_nationalist
 				}
 			}
 			flag:reformist_idea = {
-				NOT = {
-					has_global_variable = age_2_started_trigger
-				}
+					NOT = { has_technology_researched = egalitarianism }
 				NOT = {
 					has_variable = can_go_reformist
 				}
@@ -3829,29 +3820,35 @@ flag:agrarian_idea = {
 				always = no
 			}
 			flag:mass_conscription_idea = {
-				NOT = {
-					has_global_variable = age_2_started_trigger
-				}
+					NOT = { has_technology_researched = enlistment_offices }
 				NOT = {
 					has_variable = can_go_mass_conscription
 				}
 			}
 			flag:colonial_idea = {
-				NOT = {
-					has_global_variable = age_2_started_trigger
-				}
+					NOT = { has_technology_researched = quinine }
 				NOT = {
 					has_variable = can_go_colonial
 				}
 			}
 			flag:war_economy_idea = {
-				NOT = {
-					has_global_variable = age_3_started_trigger
-				}
+					NOT = { has_technology_researched = war_propaganda }
 				NOT = {
 					has_variable = can_go_war_economy
 				}
 			}
+		}
+	}
+	is_valid = {
+		switch = {
+			trigger = scope:idea_group
+			flag:labour_idea = { custom_tooltip = { text = ve_idea_labour_technology_locked_tt has_technology_researched = labor_movement } }
+			flag:welfare_idea = { custom_tooltip = { text = ve_idea_welfare_technology_locked_tt has_technology_researched = human_rights } }
+			flag:nationalist_idea = { custom_tooltip = { text = ve_idea_nationalist_technology_locked_tt has_technology_researched = nationalism } }
+			flag:reformist_idea = { custom_tooltip = { text = ve_idea_reformist_technology_locked_tt has_technology_researched = egalitarianism } }
+			flag:mass_conscription_idea = { custom_tooltip = { text = ve_idea_mass_conscription_technology_locked_tt has_technology_researched = enlistment_offices } }
+			flag:colonial_idea = { custom_tooltip = { text = ve_idea_colonial_technology_locked_tt has_technology_researched = quinine } }
+			flag:war_economy_idea = { custom_tooltip = { text = ve_idea_war_economy_technology_locked_tt has_technology_researched = war_propaganda } }
 		}
 	}
 }

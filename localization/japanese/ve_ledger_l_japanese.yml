@@ -1,0 +1,56 @@
+﻿l_japanese:
+ # Doctrine Ledger - gui/ve_panel_ledger.gui
+ VE_LEDGER:0 "元帳"
+ VE_LEDGER_SELECTED:0 "#bold 元帳#!"
+ VE_LG_TITLE:0 "教義台帳"
+ VE_LG_HINT:0 "各国の教義の立場。列ヘッダーをクリックして並べ替え、フィルタをクリックしてリストを絞り込み、国をクリックするとグループごとの完全な詳細を表示するパネルが開きます。"
+
+ # Columns
+ VE_LG_COL_RANK:0 "#"
+ VE_LG_COL_COUNTRY:0 "国"
+ VE_LG_COL_INSIGHT:0 "インサイト"
+ VE_LG_COL_GROUPS:0 "グループ"
+ VE_LG_COL_IDEAS:0 "グループ アイデア"
+ VE_LG_COL_NATIONAL_IDEAS:0 "国家アイデア"
+ VE_LG_COL_NATIONAL_IDEAS_TT:0 "#header 国家アイデア#!\n国家アイデア スロットごとに 1 つのマーカーと、右側の国家ボーナス。国は、グループのアイデアを 3 つ購入するごとに、次のスロットのロックを解除します。"
+ VE_LG_COL_RELIGION:0 "宗教モデル"
+ VE_LG_COL_IDENTITY:0 "アイデンティティ モデル"
+ VE_LG_COL_ERA:0 "時代"
+
+ # Cell values
+ VE_LG_GROUPS_VALUE:0 "[Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]"
+ VE_LG_IDEAS_VALUE:0 "[Country.MakeScope.Var('national_idea_pool').GetValue|0] / 21"
+ VE_LG_REWARDS_VALUE:0 "R [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]"
+ VE_LG_ERA_TT:0 "#header [Country.GetCustom('ve_cp_age_name')]#!\n時代の勢い: #Y [Country.MakeScope.Var('ve_splender_points').GetValue|0]#!\nこの時代に購入した時代の報酬: #Y [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]#!\n現在達成されている目標: #Y [Country.MakeScope.ScriptValue('ve_era_objectives_satisfied')|0] / 7#!\nこの時代で確保された目標: #Y [Country.MakeScope.Var('ve_triggered_objectives').GetValue|0] / 7#!\n黄金時代: [Country.GetCustom('ve_cp_golden_age_status')]"
+ VE_LG_OPEN_COUNTRY_TT:0 "この国のパネルを開いてください。その思想、宗教、アイデンティティ、時代の詳細については、 #Y 国家主義#! セクションがあります。"
+
+ # Sort tooltips
+ VE_LG_SORT_PRESTIGE_TT:0 "並べ替え #Y プレステージ#! - デフォルトの順序、最も高いものが最初です。"
+ VE_LG_SORT_INSIGHT_TT:0 "在庫順に並べ替える #Y National Insight#!、最も高いものが最初です。"
+ VE_LG_SORT_GROUPS_TT:0 "並べ替え #Y 受け入れられたアイデアグループ#!、最も多い順。"
+ VE_LG_SORT_IDEAS_TT:0 "並べ替え順 #Y 購入したグループのアイデア#! （国家理念の進捗）、一番最初。"
+ VE_LG_SORT_SETTLEMENT_TT:0 "並べ替え #Y 宗教的居住地#!、高い順。"
+ VE_LG_SORT_COHESION_TT:0 "並べ替え順 #Y 国民の団結#!、一番高いものが最初です。"
+ VE_LG_SORT_MOMENTUM_TT:0 " #Y 時代の勢い#!、高い順に並べ替えます。"
+
+ # Filters
+ VE_LG_F_ALL:0 "すべて"
+ VE_LG_F_GREAT_POWERS:0 "大国"
+ VE_LG_F_MAJOR_POWERS:0 "主要な権限+"
+ VE_LG_F_RECOGNIZED:0 "認識されている"
+ VE_LG_F_RELEVANT:0 "自分に関連する"
+ VE_LG_F_WITH_GROUPS:0 "アイデアグループがある"
+
+ # Paging
+ VE_LG_PAGE_INFO:0 "ページ [GetGlobalVariable('ve_ledger_page_number').GetValue|0] / [GetGlobalVariable('ve_ledger_page_count').GetValue|0]  ([GetGlobalVariable('ve_ledger_total').GetValue|0])"
+ VE_LG_REFRESH:0 "更新"
+ VE_LG_REFRESH_TT:0 "リストを再構築します。行の値は常にライブです。リストの作成時に設定されるのは、ページの順序とメンバーシップだけです。"
+ VE_LG_FIRST_TT:0 "最初のページ"
+ VE_LG_PREV_TT:0 "前のページ"
+ VE_LG_NEXT_TT:0 "次のページ"
+ VE_LG_YOU:0 "#lore あなたの国#!"
+ VE_LG_EMPTY:0 "#lore このフィルタに一致する国はありません。 「更新」を押すか、より幅広いフィルタを選択します。#!"
+
+ # Scripted GUI tooltip - common/scripted_guis/ve_ledger.txt
+ ve_ledger_groups_tt_header:0 "#header 採用されたアイデア グループ#!"
+ ve_ledger_groups_tt_none:0 "#lore まだ採用されているアイデア グループはありません。#!"

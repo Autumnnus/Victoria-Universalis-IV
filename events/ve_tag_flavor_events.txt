@@ -1,0 +1,343 @@
+namespace = ve_tag_flavor
+
+# TUR — The Language of Reform
+
+ve_tag_flavor.1 = {
+	type = country_event
+	title = ve_tag_flavor.1.t
+	desc = ve_tag_flavor.1.d
+	event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	trigger = { ve_can_accept_tag_flavor_tur_offer = yes }
+	cancellation_trigger = {
+		NOT = { ve_can_accept_tag_flavor_tur_offer = yes }
+	}
+	immediate = {
+		set_variable = ve_tag_flavor_tur_offered
+		ve_record_tag_flavor_offer = { TAG = TUR }
+	}
+	option = {
+		name = ve_tag_flavor.1.a
+		trigger = {
+			ve_can_accept_tag_flavor_tur_offer = yes
+			ve_tag_flavor_tur_civic_lexicon_fit = yes
+			ve_can_afford_tag_flavor_cultural_mandate = { COST = 20 }
+		}
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:culture_reform_point >= 100 } add = 20 }
+			modifier = { trigger = { var:culture_reform_point < 40 } factor = 0.25 }
+			modifier = { trigger = { var:ve_national_cohesion < 35 } add = 20 }
+		}
+		custom_tooltip = { text = ve_tag_flavor.1.a.tt }
+		custom_tooltip = { text = ve_tag_flavor_delayed_result_tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_can_accept_tag_flavor_tur_offer = yes
+					ve_tag_flavor_tur_civic_lexicon_fit = yes
+					ve_can_afford_tag_flavor_cultural_mandate = { COST = 20 }
+				}
+				ve_begin_tag_flavor_tur_civic_lexicon = yes
+			}
+		}
+	}
+	option = {
+		name = ve_tag_flavor.1.b
+		trigger = {
+			ve_can_accept_tag_flavor_tur_offer = yes
+			ve_tag_flavor_tur_sacred_continuity_fit = yes
+			ve_can_afford_tag_flavor_piety_reform = { COST = 20 }
+		}
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:piety_reform_point >= 100 } add = 20 }
+			modifier = { trigger = { var:piety_reform_point < 40 } factor = 0.25 }
+			modifier = { trigger = { var:piety_bar_point < 35 } add = 20 }
+		}
+		custom_tooltip = { text = ve_tag_flavor.1.b.tt }
+		custom_tooltip = { text = ve_tag_flavor_delayed_result_tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_can_accept_tag_flavor_tur_offer = yes
+					ve_tag_flavor_tur_sacred_continuity_fit = yes
+					ve_can_afford_tag_flavor_piety_reform = { COST = 20 }
+				}
+				ve_begin_tag_flavor_tur_sacred_continuity = yes
+			}
+		}
+	}
+	option = {
+		name = ve_tag_flavor.1.c
+		default_option = yes
+		trigger = { ve_can_accept_tag_flavor_tur_offer = yes }
+		ai_chance = { base = 40 }
+		custom_tooltip = { text = ve_tag_flavor.1.c.tt }
+		custom_tooltip = { text = ve_tag_flavor_free_route_tt }
+		custom_tooltip = { text = ve_tag_flavor_delayed_result_tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_tag_flavor_tur_offer = yes }
+				ve_begin_tag_flavor_tur_administrative_translation = yes
+			}
+		}
+	}
+}
+
+ve_tag_flavor.2 = {
+	type = country_event
+	title = ve_tag_flavor.2.t
+	desc = ve_tag_flavor.2.d
+	event_image = { video = "gfx/event_pictures/europenorthamerica_capitalists_meeting.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	trigger = { ve_has_valid_tag_flavor_tur_closure_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_valid_tag_flavor_tur_closure_context = yes }
+	}
+	option = {
+		name = ve_tag_flavor.2.a
+		default_option = yes
+		trigger = { ve_has_valid_tag_flavor_tur_closure_context = yes }
+		ai_chance = { base = 100 }
+		custom_tooltip = { text = ve_tag_flavor.2.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_tag_flavor_tur_closure_context = yes }
+				ve_resolve_tag_flavor_tur = yes
+			}
+		}
+	}
+}
+
+# JAP — Borrowed Methods, Native Authority
+
+ve_tag_flavor.10 = {
+	type = country_event
+	title = ve_tag_flavor.10.t
+	desc = ve_tag_flavor.10.d
+	event_image = { video = "gfx/event_pictures/asia_westerners_arriving.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	trigger = { ve_can_accept_tag_flavor_jap_offer = yes }
+	cancellation_trigger = {
+		NOT = { ve_can_accept_tag_flavor_jap_offer = yes }
+	}
+	immediate = {
+		set_variable = ve_tag_flavor_jap_offered
+		ve_record_tag_flavor_offer = { TAG = JAP }
+	}
+	option = {
+		name = ve_tag_flavor.10.a
+		trigger = {
+			ve_can_accept_tag_flavor_jap_offer = yes
+			ve_tag_flavor_jap_translation_bureaus_fit = yes
+			ve_can_afford_tag_flavor_insight = { COST = 15 }
+		}
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:idea_point_pool < 30 } factor = 0.25 }
+			modifier = { trigger = { var:ve_splender_points < 35 } add = 20 }
+		}
+		custom_tooltip = { text = ve_tag_flavor.10.a.tt }
+		custom_tooltip = { text = ve_tag_flavor_delayed_result_tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_can_accept_tag_flavor_jap_offer = yes
+					ve_tag_flavor_jap_translation_bureaus_fit = yes
+					ve_can_afford_tag_flavor_insight = { COST = 15 }
+				}
+				ve_begin_tag_flavor_jap_translation_bureaus = yes
+			}
+		}
+	}
+	option = {
+		name = ve_tag_flavor.10.b
+		trigger = {
+			ve_can_accept_tag_flavor_jap_offer = yes
+			ve_tag_flavor_jap_directed_borrowing_fit = yes
+			ve_can_afford_tag_flavor_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:idea_point_pool < 20 } factor = 0.25 }
+			modifier = { trigger = { var:ve_splender_points < 35 } add = 20 }
+		}
+		custom_tooltip = { text = ve_tag_flavor.10.b.tt }
+		custom_tooltip = { text = ve_tag_flavor_delayed_result_tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_can_accept_tag_flavor_jap_offer = yes
+					ve_tag_flavor_jap_directed_borrowing_fit = yes
+					ve_can_afford_tag_flavor_insight = { COST = 10 }
+				}
+				ve_begin_tag_flavor_jap_directed_borrowing = yes
+			}
+		}
+	}
+	option = {
+		name = ve_tag_flavor.10.c
+		default_option = yes
+		trigger = { ve_can_accept_tag_flavor_jap_offer = yes }
+		ai_chance = { base = 40 }
+		custom_tooltip = { text = ve_tag_flavor.10.c.tt }
+		custom_tooltip = { text = ve_tag_flavor_free_route_tt }
+		custom_tooltip = { text = ve_tag_flavor_delayed_result_tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_tag_flavor_jap_offer = yes }
+				ve_begin_tag_flavor_jap_selective_adoption = yes
+			}
+		}
+	}
+}
+
+ve_tag_flavor.11 = {
+	type = country_event
+	title = ve_tag_flavor.11.t
+	desc = ve_tag_flavor.11.d
+	event_image = { video = "gfx/event_pictures/asia_politician_parliament_motion.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	trigger = { ve_has_valid_tag_flavor_jap_closure_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_valid_tag_flavor_jap_closure_context = yes }
+	}
+	option = {
+		name = ve_tag_flavor.11.a
+		default_option = yes
+		trigger = { ve_has_valid_tag_flavor_jap_closure_context = yes }
+		ai_chance = { base = 100 }
+		custom_tooltip = { text = ve_tag_flavor.11.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_tag_flavor_jap_closure_context = yes }
+				ve_resolve_tag_flavor_jap = yes
+			}
+		}
+	}
+}
+
+# USA — The Meaning of the Union
+
+ve_tag_flavor.20 = {
+	type = country_event
+	title = ve_tag_flavor.20.t
+	desc = ve_tag_flavor.20.d
+	event_image = { video = "gfx/event_pictures/europenorthamerica_sufferage.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	trigger = { ve_can_accept_tag_flavor_usa_offer = yes }
+	cancellation_trigger = {
+		NOT = { ve_can_accept_tag_flavor_usa_offer = yes }
+	}
+	immediate = {
+		set_variable = ve_tag_flavor_usa_offered
+		ve_record_tag_flavor_offer = { TAG = USA }
+	}
+	option = {
+		name = ve_tag_flavor.20.a
+		trigger = {
+			ve_can_accept_tag_flavor_usa_offer = yes
+			ve_tag_flavor_usa_citizenship_compact_fit = yes
+			ve_can_afford_tag_flavor_cultural_mandate = { COST = 20 }
+		}
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:culture_reform_point >= 100 } add = 20 }
+			modifier = { trigger = { var:culture_reform_point < 40 } factor = 0.25 }
+			modifier = { trigger = { var:ve_national_cohesion < 35 } add = 20 }
+		}
+		custom_tooltip = { text = ve_tag_flavor.20.a.tt }
+		custom_tooltip = { text = ve_tag_flavor_delayed_result_tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_can_accept_tag_flavor_usa_offer = yes
+					ve_tag_flavor_usa_citizenship_compact_fit = yes
+					ve_can_afford_tag_flavor_cultural_mandate = { COST = 20 }
+				}
+				ve_begin_tag_flavor_usa_citizenship_compact = yes
+			}
+		}
+	}
+	option = {
+		name = ve_tag_flavor.20.b
+		trigger = {
+			ve_can_accept_tag_flavor_usa_offer = yes
+			ve_tag_flavor_usa_composite_bargain_fit = yes
+			ve_can_afford_tag_flavor_cultural_mandate = { COST = 20 }
+		}
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:culture_reform_point >= 100 } add = 20 }
+			modifier = { trigger = { var:culture_reform_point < 40 } factor = 0.25 }
+			modifier = { trigger = { var:ve_national_cohesion < 35 } add = 20 }
+		}
+		custom_tooltip = { text = ve_tag_flavor.20.b.tt }
+		custom_tooltip = { text = ve_tag_flavor_delayed_result_tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_can_accept_tag_flavor_usa_offer = yes
+					ve_tag_flavor_usa_composite_bargain_fit = yes
+					ve_can_afford_tag_flavor_cultural_mandate = { COST = 20 }
+				}
+				ve_begin_tag_flavor_usa_composite_bargain = yes
+			}
+		}
+	}
+	option = {
+		name = ve_tag_flavor.20.c
+		default_option = yes
+		trigger = { ve_can_accept_tag_flavor_usa_offer = yes }
+		ai_chance = { base = 40 }
+		custom_tooltip = { text = ve_tag_flavor.20.c.tt }
+		custom_tooltip = { text = ve_tag_flavor_free_route_tt }
+		custom_tooltip = { text = ve_tag_flavor_delayed_result_tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_tag_flavor_usa_offer = yes }
+				ve_begin_tag_flavor_usa_federal_ambiguity = yes
+			}
+		}
+	}
+}
+
+ve_tag_flavor.21 = {
+	type = country_event
+	title = ve_tag_flavor.21.t
+	desc = ve_tag_flavor.21.d
+	event_image = { video = "gfx/event_pictures/southamerica_election.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	trigger = { ve_has_valid_tag_flavor_usa_closure_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_valid_tag_flavor_usa_closure_context = yes }
+	}
+	option = {
+		name = ve_tag_flavor.21.a
+		default_option = yes
+		trigger = { ve_has_valid_tag_flavor_usa_closure_context = yes }
+		ai_chance = { base = 100 }
+		custom_tooltip = { text = ve_tag_flavor.21.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_tag_flavor_usa_closure_context = yes }
+				ve_resolve_tag_flavor_usa = yes
+			}
+		}
+	}
+}

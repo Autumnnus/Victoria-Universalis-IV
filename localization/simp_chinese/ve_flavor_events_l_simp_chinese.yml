@@ -1,0 +1,16 @@
+﻿l_simp_chinese:
+ # events/Economic_Idea.txt and events/InnovativeIdeaGroupEvents.txt reference
+ # only this one key set for all of their events, so the text is deliberately
+ # neutral: an event in either file may grant a positive or a negative modifier.
+ # Give each event its own keys when they are wired to an on_action.
+ economic_flavor.1.t:0 "经济发展"
+ economic_flavor.1.desc:0 "我们的经济学说正在以各部委未曾计划的方式结出硕果。无论发生什么，其影响将持续数年影响到整个经济。"
+ economic_flavor.1.a:0 "就这样吧"
+ innovative_flavor.1.t:0 "学说的转变"
+ innovative_flavor.1.desc:0 "我们所接受的想法正在重塑我们机构的运作方式以及世界其他国家如何评价我们。"
+ innovative_flavor.1.a:0 "很好"
+
+ dev.2.t:0 "开发者测试活动"
+ dev.2.d:0 "这是Victoria Universalis IV的开发者测试活动。"
+ dev.2.a:0 "授予测试资源"
+ dev.2.b:0 "关闭"

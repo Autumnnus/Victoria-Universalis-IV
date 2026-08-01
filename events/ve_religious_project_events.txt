@@ -1,0 +1,2560 @@
+namespace = ve_rel_evt
+
+# The Petition of the Local Notables
+ve_rel_evt.1 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.1.t
+	desc = ve_rel_evt.1.d
+	flavor = ve_rel_evt.1.f
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_christianity.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		ve_religious_project_type_is = { TYPE = 1 }
+		var:ve_religious_project_progress >= 10
+		var:ve_religious_project_progress <= 60
+		NOT = { has_variable = ve_evt_rel_1_fired }
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_1 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_religious_project_type_is = { TYPE = 1 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.1.a
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.1:a"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:piety_bar_point <= 35 }
+				add = 50
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.10
+					}
+				}
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.1.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = 3 }
+				ve_evt_change_religious_project_progress = { DELTA = -4 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.1.b
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.1:b"
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:piety_bar_point >= 55 }
+				add = 30
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.25
+					}
+				}
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.1.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = -2 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.005
+					}
+				}
+				ve_evt_change_religious_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.1.c
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.1:c"
+		trigger = {
+			var:piety_reform_point >= 10
+			OR = {
+				has_modifier = reformist_idea_5_mdf
+				has_modifier = ve_confessional_program_4_mdf
+			}
+		}
+		ai_chance = {
+			base = 25
+			modifier = {
+				trigger = { var:piety_reform_point >= 75 }
+				add = 50
+			}
+			modifier = {
+				trigger = { var:piety_bar_point <= 25 }
+				add = 25
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.1.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -10 }
+				ve_evt_change_religious_settlement = { DELTA = 1 }
+				ve_evt_change_religious_project_progress = { DELTA = 3 }
+			}
+		}
+	}
+}
+
+# A Shortage of Field Officers
+ve_rel_evt.2 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.2.t
+	desc = ve_rel_evt.2.d
+	flavor = ve_rel_evt.2.f
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_capitalists_meeting.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		ve_religious_project_type_is = { TYPE = 1 }
+		var:ve_religious_project_progress >= 5
+		var:ve_religious_project_progress <= 70
+		NOT = { has_variable = ve_evt_rel_2_fired }
+		OR = {
+			bureaucracy < 0
+			approaching_bureaucracy_shortage = yes
+			legitimacy < 50
+		}
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_2 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_religious_project_type_is = { TYPE = 1 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.2.a
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.2:a"
+		trigger = {
+			var:piety_reform_point >= 15
+		}
+		ai_chance = {
+			base = 40
+			modifier = {
+				trigger = { var:piety_reform_point >= 75 }
+				add = 40
+			}
+			modifier = {
+				trigger = { bureaucracy < 0 }
+				factor = 0.5
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 40 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.2.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -15 }
+				ve_evt_change_religious_project_progress = { DELTA = 4 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.2.b
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.2:b"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:piety_reform_point < 40 }
+				add = 50
+			}
+			modifier = {
+				trigger = { var:piety_bar_point <= 35 }
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.2.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = 2 }
+				ve_evt_change_religious_project_progress = { DELTA = -6 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.2.c
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.2:c"
+		trigger = {
+			var:piety_reform_point >= 10
+			has_modifier = bureaucratic_idea_5_mdf
+		}
+		ai_chance = {
+			base = 30
+			modifier = {
+				trigger = { var:piety_reform_point >= 60 }
+				add = 50
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.2.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -10 }
+				ve_evt_change_religious_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+}
+
+# Conflicting Registers
+ve_rel_evt.3 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.3.t
+	desc = ve_rel_evt.3.d
+	flavor = ve_rel_evt.3.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_signed_contract.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		ve_religious_project_type_is = { TYPE = 1 }
+		var:ve_religious_project_progress >= 20
+		var:ve_religious_project_progress <= 70
+		NOT = { has_variable = ve_evt_rel_3_fired }
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_3 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_religious_project_type_is = { TYPE = 1 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.3.a
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.3:a"
+		default_option = yes
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:piety_reform_point < 40 }
+				add = 50
+			}
+			modifier = {
+				trigger = { var:ve_religious_project_progress >= 60 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.3.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = 8 }
+				ve_evt_change_religious_project_progress = { DELTA = -6 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.3.b
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.3:b"
+		trigger = {
+			var:piety_reform_point >= 8
+		}
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:ve_religious_project_progress >= 55 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point >= 60 }
+				add = 30
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 33 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.3.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -8 }
+				ve_evt_change_religious_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.3.c
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.3:c"
+		trigger = {
+			has_modifier = ve_confessional_program_1_mdf
+		}
+		ai_chance = {
+			base = 30
+			modifier = {
+				trigger = { always = yes }
+				add = 30
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 35 }
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.3.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_religious_project_progress = { DELTA = 3 }
+			}
+		}
+	}
+}
+
+# Rumors and Counter-Preaching
+ve_rel_evt.4 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.4.t
+	desc = ve_rel_evt.4.d
+	flavor = ve_rel_evt.4.f
+
+	event_image = {
+		video = "gfx/event_pictures/africa_public_protest.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		ve_religious_project_type_is = { TYPE = 1 }
+		var:ve_religious_project_progress >= 15
+		var:ve_religious_project_progress <= 80
+		NOT = { has_variable = ve_evt_rel_4_fired }
+		OR = {
+			ve_religious_project_target_state_check = { CHECK = { turmoil >= 0.10 } }
+			ve_has_religious_movement_pressure = yes
+		}
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_4 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_religious_project_type_is = { TYPE = 1 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.4.a
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.4:a"
+		default_option = yes
+		ai_chance = {
+			base = 55
+			modifier = {
+				trigger = { var:piety_bar_point <= 35 }
+				add = 40
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.25
+					}
+				}
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.4.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				scope:ve_evt_target_state ?= {
+					add_loyalists_in_state = {
+						value = 0.005
+					}
+				}
+				ve_evt_change_religious_settlement = { DELTA = 3 }
+				ve_evt_change_religious_project_progress = { DELTA = -3 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.4.b
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.4:b"
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:piety_bar_point >= 60 }
+				add = 30
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.25
+					}
+				}
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.4.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.01
+					}
+				}
+				ve_evt_change_religious_settlement = { DELTA = -3 }
+				ve_evt_change_religious_project_progress = { DELTA = 4 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.4.c
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.4:c"
+		trigger = {
+			var:piety_reform_point >= 10
+			OR = {
+				has_modifier = academic_idea_3_mdf
+				has_modifier = reformist_idea_5_mdf
+			}
+		}
+		ai_chance = {
+			base = 25
+			modifier = {
+				trigger = { var:piety_reform_point >= 75 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.4.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -10 }
+				ve_evt_change_religious_settlement = { DELTA = 1 }
+				ve_evt_change_religious_project_progress = { DELTA = 2 }
+			}
+		}
+	}
+}
+
+# The Language of the Sermon
+ve_rel_evt.5 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.5.t
+	desc = ve_rel_evt.5.d
+	flavor = ve_rel_evt.5.f
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_christianity.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		ve_religious_project_type_is = { TYPE = 1 }
+		var:ve_religious_project_progress >= 25
+		var:ve_religious_project_progress <= 70
+		NOT = { has_variable = ve_evt_rel_5_fired }
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_5 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_religious_project_type_is = { TYPE = 1 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.5.a
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.5:a"
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:ve_religious_project_progress >= 55 }
+				add = 30
+			}
+			modifier = {
+				trigger = {
+					ig:ig_devout = {
+						ig_approval <= -5
+					}
+				}
+				factor = 0.25
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.5.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ig:ig_devout = {
+					add_modifier = {
+						name = ve_evt_central_clergy_slighted_mdf
+						months = 30
+					}
+				}
+				ve_evt_change_religious_project_progress = { DELTA = 6 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.5.b
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.5:b"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = {
+					ig:ig_devout = {
+						is_powerful = yes
+					}
+				}
+				add = 30
+			}
+			modifier = {
+				trigger = { var:piety_bar_point <= 35 }
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.5.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ig:ig_devout = {
+					add_modifier = {
+						name = ve_evt_central_clergy_supported_mdf
+						months = 30
+					}
+				}
+				ve_evt_change_religious_settlement = { DELTA = 3 }
+				ve_evt_change_religious_project_progress = { DELTA = -3 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.5.c
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.5:c"
+		trigger = {
+			var:piety_reform_point >= 10
+			OR = {
+				has_modifier = ve_confessional_program_2_mdf
+				has_modifier = academic_idea_3_mdf
+			}
+		}
+		ai_chance = {
+			base = 30
+			modifier = {
+				trigger = { var:piety_reform_point >= 75 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.5.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -10 }
+				ve_evt_change_religious_settlement = { DELTA = 1 }
+				ve_evt_change_religious_project_progress = { DELTA = 4 }
+			}
+		}
+	}
+}
+
+# Rival Ecclesiastical Authorities
+ve_rel_evt.6 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.6.t
+	desc = ve_rel_evt.6.d
+	flavor = ve_rel_evt.6.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_politicians_arguing.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		ve_religious_project_type_is = { TYPE = 1 }
+		var:ve_religious_project_progress >= 20
+		var:ve_religious_project_progress <= 75
+		NOT = { has_variable = ve_evt_rel_6_fired }
+		ig:ig_devout = {
+			is_marginal = no
+		}
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_6 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_religious_project_type_is = { TYPE = 1 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.6.a
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.6:a"
+		ai_chance = {
+			base = 40
+			modifier = {
+				trigger = {
+					ig:ig_devout = {
+						ig_approval <= 0
+					}
+				}
+				add = 30
+			}
+			modifier = {
+				trigger = { var:piety_bar_point <= 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.6.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ig:ig_devout = {
+					add_modifier = {
+						name = ve_evt_central_clergy_supported_mdf
+						months = 30
+					}
+				}
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.005
+					}
+				}
+				ve_evt_change_religious_settlement = { DELTA = -3 }
+				ve_evt_change_religious_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.6.b
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.6:b"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:piety_bar_point <= 35 }
+				add = 50
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.10
+					}
+				}
+				add = 20
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.6.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ig:ig_devout = {
+					add_modifier = {
+						name = ve_evt_central_clergy_slighted_mdf
+						months = 30
+					}
+				}
+				ve_evt_change_religious_settlement = { DELTA = 3 }
+				ve_evt_change_religious_project_progress = { DELTA = -4 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.6.c
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.6:c"
+		trigger = {
+			var:piety_reform_point >= 10
+			has_modifier = ve_confessional_program_1_mdf
+		}
+		ai_chance = {
+			base = 30
+			modifier = {
+				trigger = { var:piety_reform_point >= 60 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.6.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -10 }
+				ve_evt_change_religious_settlement = { DELTA = 1 }
+				ve_evt_change_religious_project_progress = { DELTA = 3 }
+			}
+		}
+	}
+}
+
+# The Mission at Breaking Point
+ve_rel_evt.7 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.7.t
+	desc = ve_rel_evt.7.d
+	flavor = ve_rel_evt.7.f
+
+	event_image = {
+		video = "gfx/event_pictures/africa_soldiers_breaking_protest.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		ve_religious_project_type_is = { TYPE = 1 }
+		var:ve_religious_project_progress < 70
+		var:piety_bar_point <= 25
+		NOT = { has_variable = ve_evt_rel_7_fired }
+		ve_religious_project_target_state_check = { CHECK = { turmoil >= 0.25 } }
+		OR = {
+			bureaucracy < 0
+			approaching_bureaucracy_shortage = yes
+			government_legitimacy < 25
+			ve_has_religious_movement_pressure = yes
+		}
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_7 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_religious_project_type_is = { TYPE = 1 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.7.a
+		ve_evt_tm_record_religious_option = yes
+		ve_evt_tm_record_religious_crisis_cancel = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.7:a"
+		ai_chance = {
+			base = 25
+			modifier = {
+				trigger = { var:piety_reform_point < 15 }
+				add = 100
+			}
+			modifier = {
+				trigger = { var:piety_bar_point <= 15 }
+				add = 50
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.40
+					}
+				}
+				add = 50
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.7.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_cancel_religious_project = yes
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.7.b
+		ve_evt_tm_record_religious_option = yes
+		ve_evt_tm_record_religious_crisis_rescue = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.7:b"
+		trigger = {
+			var:piety_reform_point >= 25
+		}
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:piety_reform_point >= 75 }
+				add = 50
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.40
+					}
+				}
+				factor = 0.5
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 50 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.7.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -25 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.01
+					}
+				}
+				ve_evt_change_religious_project_progress = { DELTA = -5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.7.c
+		ve_evt_tm_record_religious_option = yes
+		ve_evt_tm_record_religious_crisis_limp = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.7:c"
+		default_option = yes
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:piety_reform_point < 25 }
+				add = 60
+			}
+			modifier = {
+				trigger = { var:ve_religious_project_progress >= 55 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.7.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = -2 }
+				ve_evt_change_religious_project_progress = { DELTA = -10 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.7.e
+		ve_evt_tm_record_religious_option = yes
+		ve_evt_tm_record_religious_crisis_rescue = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.7:e"
+		trigger = {
+			var:piety_reform_point >= 15
+			OR = {
+				has_modifier = reformist_idea_5_mdf
+				has_modifier = bureaucratic_idea_5_mdf
+			}
+		}
+		ai_chance = {
+			base = 60
+			modifier = {
+				trigger = { always = yes }
+				add = 60
+			}
+			modifier = {
+				trigger = { var:piety_bar_point <= 15 }
+				add = 30
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 40 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.7.e.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -15 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.005
+					}
+				}
+				ve_evt_change_religious_settlement = { DELTA = 2 }
+				ve_evt_change_religious_project_progress = { DELTA = -3 }
+			}
+		}
+	}
+}
+
+# An Unexpected Local Concord
+ve_rel_evt.8 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.8.t
+	desc = ve_rel_evt.8.d
+	flavor = ve_rel_evt.8.f
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_christianity.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 10 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		ve_religious_project_type_is = { TYPE = 1 }
+		var:ve_religious_project_progress >= 70
+		var:piety_bar_point >= 75
+		government_legitimacy >= 75
+		bureaucracy >= 0
+		approaching_bureaucracy_shortage = no
+		has_variable = nationalist_idea_7_var
+		NOT = { has_variable = ve_evt_rel_8_fired }
+		ve_religious_project_target_state_check = { CHECK = { turmoil < 0.05 } }
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_8 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_religious_project_type_is = { TYPE = 1 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.8.a
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.8:a"
+		ai_chance = {
+			base = 65
+			modifier = {
+				trigger = { var:ve_religious_project_progress <= 80 }
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.8.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = 1 }
+				# Keep progress last: reaching 100 invokes the authoritative finish effect.
+				ve_evt_change_religious_project_progress = { DELTA = 25 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.8.b
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.8:b"
+		default_option = yes
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:piety_bar_point < 80 }
+				add = 50
+			}
+			modifier = {
+				trigger = { var:ve_religious_project_progress > 90 }
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.8.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_confessional_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = 4 }
+				# Keep progress last: reaching 100 invokes the authoritative finish effect.
+				ve_evt_change_religious_project_progress = { DELTA = 10 }
+			}
+		}
+	}
+}
+
+# Records Out of Step
+ve_rel_evt.40 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.40.t
+	desc = ve_rel_evt.40.d
+	flavor = ve_rel_evt.40.f
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_capitalists_meeting.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		OR = {
+			ve_religious_project_type_is = { TYPE = 2 }
+			ve_religious_project_type_is = { TYPE = 3 }
+		}
+		var:ve_religious_project_progress >= 10
+		var:ve_religious_project_progress <= 60
+		NOT = { has_variable = ve_evt_rel_40_fired }
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_40 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = {
+				OR = {
+					ve_religious_project_type_is = { TYPE = 2 }
+					ve_religious_project_type_is = { TYPE = 3 }
+				}
+			}
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.40.a
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.40:a"
+		trigger = {
+			var:piety_reform_point >= 10
+		}
+		ai_chance = {
+			base = 40
+			modifier = {
+				trigger = { var:piety_reform_point >= 75 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 30 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.40.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_plural_or_secular_religious_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -10 }
+				ve_evt_change_religious_settlement = { DELTA = 1 }
+				ve_evt_change_religious_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.40.b
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.40:b"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:piety_bar_point <= 40 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 30 }
+				add = 20
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.40.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_plural_or_secular_religious_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = 2 }
+				ve_evt_change_religious_project_progress = { DELTA = -3 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.40.c
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.40:c"
+		trigger = {
+			var:piety_reform_point >= 5
+			has_modifier = bureaucratic_idea_4_mdf
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:piety_reform_point >= 50 }
+				add = 30
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 25 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.40.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_plural_or_secular_religious_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -5 }
+				ve_evt_change_religious_settlement = { DELTA = 1 }
+				ve_evt_change_religious_project_progress = { DELTA = 4 }
+			}
+		}
+	}
+}
+
+# A Shortage of Provincial Staff
+ve_rel_evt.41 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.41.t
+	desc = ve_rel_evt.41.d
+	flavor = ve_rel_evt.41.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_politicians_arguing.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		OR = {
+			ve_religious_project_type_is = { TYPE = 2 }
+			ve_religious_project_type_is = { TYPE = 3 }
+		}
+		var:ve_religious_project_progress >= 15
+		var:ve_religious_project_progress <= 65
+		NOT = { has_variable = ve_evt_rel_41_fired }
+		OR = {
+			literacy_rate < 0.65
+			approaching_bureaucracy_shortage = yes
+		}
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_41 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = {
+				OR = {
+					ve_religious_project_type_is = { TYPE = 2 }
+					ve_religious_project_type_is = { TYPE = 3 }
+				}
+			}
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.41.a
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.41:a"
+		trigger = {
+			var:piety_reform_point >= 15
+		}
+		ai_chance = {
+			base = 40
+			modifier = {
+				trigger = { var:piety_reform_point >= 75 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 40 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.41.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_plural_or_secular_religious_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -15 }
+				ve_evt_change_religious_project_progress = { DELTA = 6 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.41.b
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.41:b"
+		default_option = yes
+		ai_chance = {
+			base = 55
+			modifier = {
+				trigger = { var:piety_reform_point < 40 }
+				add = 50
+			}
+			modifier = {
+				trigger = { var:piety_bar_point <= 35 }
+				add = 20
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.41.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_plural_or_secular_religious_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = 2 }
+				ve_evt_change_religious_project_progress = { DELTA = -6 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.41.c
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.41:c"
+		trigger = {
+			var:piety_reform_point >= 10
+			OR = {
+				has_modifier = academic_idea_3_mdf
+				AND = {
+					ve_religious_project_type_is = { TYPE = 2 }
+					has_modifier = ve_freedom_program_3_mdf
+				}
+				AND = {
+					ve_religious_project_type_is = { TYPE = 3 }
+					has_modifier = ve_atheism_program_3_mdf
+				}
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:piety_reform_point >= 60 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.41.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_plural_or_secular_religious_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -10 }
+				ve_evt_change_religious_settlement = { DELTA = 1 }
+				ve_evt_change_religious_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+}
+
+# Rumours Across the District
+ve_rel_evt.42 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.42.t
+	desc = ve_rel_evt.42.d
+	flavor = ve_rel_evt.42.f
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_christianity.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		OR = {
+			ve_religious_project_type_is = { TYPE = 2 }
+			ve_religious_project_type_is = { TYPE = 3 }
+		}
+		var:ve_religious_project_progress >= 25
+		var:ve_religious_project_progress <= 75
+		NOT = { has_variable = ve_evt_rel_42_fired }
+		OR = {
+			ve_has_religious_movement_pressure = yes
+			ve_religious_project_target_state_check = { CHECK = { turmoil >= 0.10 } }
+		}
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_42 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = {
+				OR = {
+					ve_religious_project_type_is = { TYPE = 2 }
+					ve_religious_project_type_is = { TYPE = 3 }
+				}
+			}
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.42.a
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.42:a"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:piety_bar_point <= 40 }
+				add = 50
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.42.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_plural_or_secular_religious_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = 4 }
+				ve_evt_change_religious_project_progress = { DELTA = -3 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.42.b
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.42:b"
+		ai_chance = {
+			base = 40
+			modifier = {
+				trigger = { var:piety_bar_point >= 60 }
+				add = 30
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.25
+					}
+				}
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.42.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_plural_or_secular_religious_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = -3 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.01
+					}
+				}
+				ve_evt_change_religious_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.42.c
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.42:c"
+		trigger = {
+			var:piety_reform_point >= 10
+			OR = {
+				has_modifier = reformist_idea_5_mdf
+				has_modifier = academic_idea_5_mdf
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:piety_reform_point >= 60 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.42.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_plural_or_secular_religious_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -10 }
+				ve_evt_change_religious_settlement = { DELTA = 2 }
+				scope:ve_evt_target_state ?= {
+					add_loyalists_in_state = {
+						value = 0.005
+					}
+				}
+				ve_evt_change_religious_project_progress = { DELTA = 4 }
+			}
+		}
+	}
+}
+
+# The Administration at Breaking Point
+ve_rel_evt.43 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.43.t
+	desc = ve_rel_evt.43.d
+	flavor = ve_rel_evt.43.f
+
+	event_image = {
+		video = "gfx/event_pictures/africa_soldiers_breaking_protest.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		OR = {
+			ve_religious_project_type_is = { TYPE = 2 }
+			ve_religious_project_type_is = { TYPE = 3 }
+		}
+		var:ve_religious_project_progress < 70
+		var:piety_bar_point <= 25
+		NOT = { has_variable = ve_evt_rel_43_fired }
+		ve_religious_project_target_state_check = { CHECK = { turmoil >= 0.25 } }
+		OR = {
+			bureaucracy < 0
+			approaching_bureaucracy_shortage = yes
+			government_legitimacy < 25
+			ve_has_religious_movement_pressure = yes
+		}
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_43 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = {
+				OR = {
+					ve_religious_project_type_is = { TYPE = 2 }
+					ve_religious_project_type_is = { TYPE = 3 }
+				}
+			}
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.43.a
+		ve_evt_tm_record_religious_option = yes
+		ve_evt_tm_record_religious_crisis_cancel = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.43:a"
+		ai_chance = {
+			base = 25
+			modifier = {
+				trigger = { var:piety_reform_point < 15 }
+				add = 100
+			}
+			modifier = {
+				trigger = { var:piety_bar_point <= 15 }
+				add = 50
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.40
+					}
+				}
+				add = 50
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.43.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_plural_or_secular_religious_project_event_context = yes }
+				ve_cancel_religious_project = yes
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.43.b
+		ve_evt_tm_record_religious_option = yes
+		ve_evt_tm_record_religious_crisis_rescue = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.43:b"
+		trigger = {
+			var:piety_reform_point >= 25
+		}
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:piety_reform_point >= 75 }
+				add = 50
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.40
+					}
+				}
+				factor = 0.5
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 50 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.43.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_plural_or_secular_religious_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -25 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.01
+					}
+				}
+				ve_evt_change_religious_project_progress = { DELTA = -5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.43.c
+		ve_evt_tm_record_religious_option = yes
+		ve_evt_tm_record_religious_crisis_limp = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.43:c"
+		default_option = yes
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:piety_reform_point < 25 }
+				add = 60
+			}
+			modifier = {
+				trigger = { var:ve_religious_project_progress >= 55 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.43.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_plural_or_secular_religious_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = -2 }
+				ve_evt_change_religious_project_progress = { DELTA = -10 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.43.e
+		ve_evt_tm_record_religious_option = yes
+		ve_evt_tm_record_religious_crisis_rescue = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.43:e"
+		trigger = {
+			var:piety_reform_point >= 15
+			OR = {
+				AND = {
+					ve_religious_project_type_is = { TYPE = 2 }
+					OR = {
+						has_modifier = reformist_idea_5_mdf
+						has_modifier = bureaucratic_idea_5_mdf
+					}
+				}
+				AND = {
+					ve_religious_project_type_is = { TYPE = 3 }
+					OR = {
+						has_modifier = academic_idea_5_mdf
+						has_modifier = bureaucratic_idea_5_mdf
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 60
+			modifier = {
+				trigger = { always = yes }
+				add = 60
+			}
+			modifier = {
+				trigger = { var:piety_bar_point <= 15 }
+				add = 30
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 40 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.43.e.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_plural_or_secular_religious_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -15 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.005
+					}
+				}
+				ve_evt_change_religious_settlement = { DELTA = 2 }
+				ve_evt_change_religious_project_progress = { DELTA = -3 }
+			}
+		}
+	}
+}
+
+# Seats on the Interfaith Council
+ve_rel_evt.100 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.100.t
+	desc = ve_rel_evt.100.d
+	flavor = ve_rel_evt.100.f
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_capitalists_meeting.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		ve_religious_project_type_is = { TYPE = 2 }
+		var:ve_religious_project_progress >= 10
+		var:ve_religious_project_progress <= 65
+		NOT = { has_variable = ve_evt_rel_100_fired }
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_100 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_religious_project_type_is = { TYPE = 2 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.100.a
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.100:a"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:piety_bar_point <= 45 }
+				add = 40
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.100.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_freedom_religious_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = 4 }
+				ve_evt_change_religious_project_progress = { DELTA = -3 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.100.b
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.100:b"
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:piety_bar_point >= 60 }
+				add = 30
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.25
+					}
+				}
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.100.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_freedom_religious_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = -2 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.005
+					}
+				}
+				ve_evt_change_religious_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.100.c
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.100:c"
+		trigger = {
+			var:piety_reform_point >= 10
+			has_modifier = ve_freedom_program_1_mdf
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:piety_reform_point >= 60 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.100.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_freedom_religious_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -10 }
+				ve_evt_change_religious_settlement = { DELTA = 2 }
+				ve_evt_change_religious_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+}
+
+# A Shared School Curriculum
+ve_rel_evt.101 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.101.t
+	desc = ve_rel_evt.101.d
+	flavor = ve_rel_evt.101.f
+
+	event_image = {
+		video = "gfx/event_pictures/southamerica_christianity.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		ve_religious_project_type_is = { TYPE = 2 }
+		var:ve_religious_project_progress >= 20
+		var:ve_religious_project_progress <= 75
+		NOT = { has_variable = ve_evt_rel_101_fired }
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_101 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_religious_project_type_is = { TYPE = 2 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.101.a
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.101:a"
+		trigger = {
+			var:piety_reform_point >= 15
+		}
+		ai_chance = {
+			base = 40
+			modifier = {
+				trigger = { var:piety_reform_point >= 75 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 40 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.101.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_freedom_religious_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -15 }
+				ve_evt_change_religious_settlement = { DELTA = 1 }
+				ve_evt_change_religious_project_progress = { DELTA = 6 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.101.b
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.101:b"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:piety_bar_point <= 40 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 35 }
+				add = 20
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.101.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_freedom_religious_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = 3 }
+				ve_evt_change_religious_project_progress = { DELTA = -4 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.101.c
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.101:c"
+		trigger = {
+			var:piety_reform_point >= 10
+			OR = {
+				has_modifier = academic_idea_4_mdf
+				has_modifier = reformist_idea_5_mdf
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:piety_reform_point >= 60 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.101.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_freedom_religious_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -10 }
+				ve_evt_change_religious_settlement = { DELTA = 2 }
+				scope:ve_evt_target_state ?= {
+					add_loyalists_in_state = {
+						value = 0.005
+					}
+				}
+				ve_evt_change_religious_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+}
+
+# A Charter of Mutual Guarantees
+ve_rel_evt.102 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.102.t
+	desc = ve_rel_evt.102.d
+	flavor = ve_rel_evt.102.f
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_capitalists_meeting.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 10 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		ve_religious_project_type_is = { TYPE = 2 }
+		var:ve_religious_project_progress >= 70
+		var:piety_bar_point >= 75
+		government_legitimacy >= 75
+		bureaucracy >= 0
+		approaching_bureaucracy_shortage = no
+		has_modifier = reformist_idea_7_mdf
+		NOT = { has_variable = ve_evt_rel_102_fired }
+		ve_religious_project_target_state_check = { CHECK = { turmoil < 0.05 } }
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_102 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_religious_project_type_is = { TYPE = 2 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.102.a
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.102:a"
+		ai_chance = {
+			base = 65
+			modifier = {
+				trigger = { var:ve_religious_project_progress <= 80 }
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.102.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_freedom_religious_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = 2 }
+				# Keep progress last: reaching 100 invokes the authoritative finish effect.
+				ve_evt_change_religious_project_progress = { DELTA = 20 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.102.b
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.102:b"
+		default_option = yes
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:piety_bar_point < 80 }
+				add = 50
+			}
+			modifier = {
+				trigger = { var:ve_religious_project_progress > 90 }
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.102.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_freedom_religious_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = 4 }
+				scope:ve_evt_target_state ?= {
+					add_loyalists_in_state = {
+						value = 0.005
+					}
+				}
+				# Keep progress last: reaching 100 invokes the authoritative finish effect.
+				ve_evt_change_religious_project_progress = { DELTA = 10 }
+			}
+		}
+	}
+}
+
+# Teachers or Inspectors?
+ve_rel_evt.150 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.150.t
+	desc = ve_rel_evt.150.d
+	flavor = ve_rel_evt.150.f
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_capitalists_meeting.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		ve_religious_project_type_is = { TYPE = 3 }
+		var:ve_religious_project_progress >= 10
+		var:ve_religious_project_progress <= 65
+		literacy_rate < 0.65
+		NOT = { has_variable = ve_evt_rel_150_fired }
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_150 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_religious_project_type_is = { TYPE = 3 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.150.a
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.150:a"
+		trigger = {
+			var:piety_reform_point >= 15
+		}
+		ai_chance = {
+			base = 40
+			modifier = {
+				trigger = { var:piety_reform_point >= 75 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 40 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.150.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_secularization_religious_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -15 }
+				ve_evt_change_religious_project_progress = { DELTA = 6 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.150.b
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.150:b"
+		default_option = yes
+		ai_chance = {
+			base = 55
+			modifier = {
+				trigger = { var:piety_reform_point < 40 }
+				add = 50
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.150.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_secularization_religious_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = 2 }
+				ve_evt_change_religious_project_progress = { DELTA = -5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.150.c
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.150:c"
+		trigger = {
+			var:piety_reform_point >= 10
+			OR = {
+				has_modifier = academic_idea_3_mdf
+				has_modifier = ve_atheism_program_3_mdf
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:piety_reform_point >= 60 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.150.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_secularization_religious_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -10 }
+				ve_evt_change_religious_settlement = { DELTA = 1 }
+				ve_evt_change_religious_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+}
+
+# The Seized Properties
+ve_rel_evt.151 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.151.t
+	desc = ve_rel_evt.151.d
+	flavor = ve_rel_evt.151.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_politicians_arguing.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		ve_religious_project_type_is = { TYPE = 3 }
+		var:ve_religious_project_progress >= 20
+		var:ve_religious_project_progress <= 70
+		NOT = { has_variable = ve_evt_rel_151_fired }
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_151 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_religious_project_type_is = { TYPE = 3 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.151.a
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.151:a"
+		trigger = {
+			var:piety_reform_point >= 15
+		}
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:piety_bar_point <= 40 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point >= 60 }
+				add = 20
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 40 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.151.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_secularization_religious_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -15 }
+				ve_evt_change_religious_settlement = { DELTA = 3 }
+				ve_evt_change_religious_project_progress = { DELTA = 3 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.151.b
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.151:b"
+		default_option = yes
+		ai_chance = {
+			base = 40
+			modifier = {
+				trigger = { var:piety_bar_point >= 60 }
+				add = 30
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.25
+					}
+				}
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.151.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_secularization_religious_project_event_context = yes }
+				ig:ig_devout = {
+					add_modifier = {
+						name = ve_evt_central_clergy_slighted_mdf
+						months = 30
+					}
+				}
+				ve_evt_change_religious_settlement = { DELTA = -4 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.01
+					}
+				}
+				ve_evt_change_religious_project_progress = { DELTA = 7 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.151.c
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.151:c"
+		trigger = {
+			var:piety_reform_point >= 10
+			OR = {
+				has_modifier = welfare_idea_5_mdf
+				has_modifier = ve_atheism_program_4_mdf
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:piety_reform_point >= 60 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:piety_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.151.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_secularization_religious_project_event_context = yes }
+				ve_evt_change_piety_reform = { DELTA = -10 }
+				ve_evt_change_religious_settlement = { DELTA = 2 }
+				scope:ve_evt_target_state ?= {
+					add_loyalists_in_state = {
+						value = 0.005
+					}
+				}
+				ve_evt_change_religious_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+}
+
+# Civic Associations Take Root
+ve_rel_evt.152 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_rel_evt.152.t
+	desc = ve_rel_evt.152.d
+	flavor = ve_rel_evt.152.f
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_capitalists_meeting.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 10 }
+
+	trigger = {
+		ve_can_fire_religious_project_incident = yes
+		ve_religious_project_type_is = { TYPE = 3 }
+		var:ve_religious_project_progress >= 70
+		var:piety_bar_point >= 70
+		government_legitimacy >= 75
+		bureaucracy >= 0
+		approaching_bureaucracy_shortage = no
+		has_modifier = academic_idea_7_mdf
+		NOT = { has_variable = ve_evt_rel_152_fired }
+		ve_religious_project_target_state_check = { CHECK = { turmoil < 0.05 } }
+	}
+
+	immediate = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		ve_evt_record_religious_incident_152 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_religious_project_type_is = { TYPE = 3 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.152.a
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.152:a"
+		ai_chance = {
+			base = 65
+			modifier = {
+				trigger = { var:ve_religious_project_progress <= 80 }
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.152.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_secularization_religious_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = 2 }
+				# Keep progress last: reaching 100 invokes the authoritative finish effect.
+				ve_evt_change_religious_project_progress = { DELTA = 20 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_rel_evt.152.b
+		ve_evt_tm_record_religious_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.152:b"
+		default_option = yes
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:piety_bar_point < 75 }
+				add = 50
+			}
+			modifier = {
+				trigger = { var:ve_religious_project_progress > 90 }
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_rel_evt.152.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_secularization_religious_project_event_context = yes }
+				ve_evt_change_religious_settlement = { DELTA = 4 }
+				# Keep progress last: reaching 100 invokes the authoritative finish effect.
+				ve_evt_change_religious_project_progress = { DELTA = 10 }
+			}
+		}
+	}
+}

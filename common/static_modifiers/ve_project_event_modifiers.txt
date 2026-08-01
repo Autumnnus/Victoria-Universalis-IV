@@ -1,0 +1,26 @@
+# Marker-only modifiers. Their duration controls the shared project incident
+# grace period and cooldown; they deliberately have no mechanical modifier.
+
+ve_evt_religious_incident_cooldown_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+}
+
+ve_evt_cultural_incident_cooldown_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+}
+
+# Gameplay outcomes for the normal Phase 1 incidents.
+ve_evt_central_clergy_supported_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	interest_group_approval_add = 1
+}
+
+ve_evt_central_clergy_slighted_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	interest_group_approval_add = -1
+}
+
+ve_evt_municipal_patronage_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	state_tax_capacity_mult = -0.05
+}

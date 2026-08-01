@@ -2,7 +2,8 @@
 # The active model follows the lawgroup_church_and_state law directly, mirroring
 # the 4 real laws in that group (see common/laws/00_church_and_state.txt in the
 # vanilla game files):
-#   law_state_religion (+ millet/people_of_book variants) -> Confessional
+#   law_state_religion and its parent-based Millet / People of the Book laws
+#                                                     -> Confessional
 #   law_freedom_of_conscience                             -> Freedom of Conscience
 #   law_total_separation                                  -> Total Separation (true neutral)
 #   law_state_atheism                                     -> State Atheism (aggressive secularization)
@@ -14,7 +15,14 @@
 # that is the truly neutral/tolerant model.
 
 ve_is_confessional_state = {
-	has_law_or_variant = law_type:law_state_religion
+	# `law_millet_system` and `law_people_of_the_book` inherit from
+	# `law_state_religion` through `parent`, rather than being law variants.
+	# They therefore need explicit checks; TUR starts with the former.
+	OR = {
+		has_law_or_variant = law_type:law_state_religion
+		has_law = law_type:law_millet_system
+		has_law = law_type:law_people_of_the_book
+	}
 }
 
 ve_is_freedom_state = {
@@ -150,10 +158,33 @@ ve_has_no_active_religious_project = {
 	NOT = { ve_has_active_religious_project = yes }
 }
 
+# `var:ve_religious_project_target_state ?= { <state-only trigger> }` fails
+# Jomini's static scope validation (logged as "Wrong scope for trigger: country,
+# expected state") for triggers that require state scope specifically, such as
+# turmoil or is_incorporated, even though the variable holds a valid state at
+# runtime: the compiler cannot infer a bare variable's scope type ahead of time
+# and falls back to the surrounding (country) type. Routing through a saved
+# scope sidesteps this because save_scope_as is scope-type agnostic and the
+# resulting scope: reference carries the runtime type correctly. Pass the
+# state-only check as CHECK.
+ve_religious_project_target_state_check = {
+	AND = {
+		var:ve_religious_project_target_state ?= {
+			save_scope_as = ve_religious_project_target_state_check_scope
+		}
+		scope:ve_religious_project_target_state_check_scope ?= {
+			$CHECK$
+		}
+	}
+}
+
 ve_can_begin_religious_project = {
 	ve_has_no_active_religious_project = yes
 	ve_religious_project_enabled = yes
 	NOT = { has_modifier = ve_religious_project_backlash_mdf }
+	# The core project clears immediately, while its JE resolves on the next
+	# journal update. Prevent a new project from inheriting that pending JE.
+	NOT = { has_journal_entry = ve_je_religious_project }
 }
 
 ve_can_begin_confessional_conversion = {
@@ -222,13 +253,12 @@ ve_country_meets_religious_project_cost = {
 }
 
 # Scope: state. Is this state the one the owner's active project is running
-# against? Used to show a live progress bar directly on the state panel.
+# against? The state modifier is applied only by project start and removed on
+# every project-clear path, so it is the authoritative state-side marker. Used
+# to show a live progress bar directly on the state panel.
 ve_state_is_active_religious_project_target = {
-	save_temporary_scope_as = ve_check_state
+	has_modifier = ve_religious_project_active_mdf
 	owner = {
 		ve_has_active_religious_project = yes
-		var:ve_religious_project_target_state ?= {
-			this = scope:ve_check_state
-		}
 	}
 }

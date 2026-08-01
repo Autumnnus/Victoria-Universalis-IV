@@ -1,0 +1,562 @@
+# Phase 6 Era Crossroads lifecycle, offer windows, and completed Age gates.
+
+ve_has_active_era_crossroads = {
+	has_variable = ve_era_crossroads_active_age
+}
+
+ve_has_pending_era_crossroads_offer = {
+	has_variable = ve_era_crossroads_offer_pending
+}
+
+ve_era_crossroads_offer_window_open = {
+	has_variable = victoria_universalis_system_on
+	NOT = { ve_has_active_era_crossroads = yes }
+	NOT = { ve_has_pending_era_crossroads_offer = yes }
+}
+
+# An Age becomes live only after its route anchors, milestone events, AI,
+# closure, telemetry, and localization are complete.
+ve_era_crossroads_age_1_pack_live = { always = yes }
+ve_era_crossroads_age_2_pack_live = { always = yes }
+ve_era_crossroads_age_3_pack_live = { always = yes }
+
+ve_era_crossroads_age_1_available = {
+	ve_era_crossroads_age_1_pack_live = yes
+	has_global_variable = ve_age_1_started
+	year < 1866
+	NOT = { has_variable = ve_era_crossroads_age_1_offered }
+	NOT = { has_variable = ve_era_crossroads_age_1_completed }
+	NOT = { has_variable = ve_era_crossroads_age_1_failed }
+	NOT = { has_variable = ve_era_crossroads_age_1_declined }
+}
+
+ve_era_crossroads_age_2_available = {
+	ve_era_crossroads_age_2_pack_live = yes
+	has_global_variable = ve_age_2_started
+	year < 1901
+	NOT = { has_variable = ve_era_crossroads_age_2_offered }
+	NOT = { has_variable = ve_era_crossroads_age_2_completed }
+	NOT = { has_variable = ve_era_crossroads_age_2_failed }
+	NOT = { has_variable = ve_era_crossroads_age_2_declined }
+}
+
+ve_era_crossroads_age_3_available = {
+	ve_era_crossroads_age_3_pack_live = yes
+	has_global_variable = ve_age_3_started
+	year < 1932
+	NOT = { has_variable = ve_era_crossroads_age_3_offered }
+	NOT = { has_variable = ve_era_crossroads_age_3_completed }
+	NOT = { has_variable = ve_era_crossroads_age_3_failed }
+	NOT = { has_variable = ve_era_crossroads_age_3_declined }
+}
+
+ve_can_offer_era_crossroads_age_1 = {
+	ve_era_crossroads_offer_window_open = yes
+	ve_era_crossroads_age_1_available = yes
+}
+
+ve_can_offer_era_crossroads_age_2 = {
+	ve_era_crossroads_offer_window_open = yes
+	ve_era_crossroads_age_2_available = yes
+}
+
+ve_can_offer_era_crossroads_age_3 = {
+	ve_era_crossroads_offer_window_open = yes
+	ve_era_crossroads_age_3_available = yes
+}
+
+ve_can_dispatch_era_crossroads_offer = {
+	OR = {
+		ve_can_offer_era_crossroads_age_1 = yes
+		ve_can_offer_era_crossroads_age_2 = yes
+		ve_can_offer_era_crossroads_age_3 = yes
+	}
+}
+
+# Offer popups set their offered flag in immediate, so acceptance checks use
+# the pending reservation and current Age rather than the available trigger.
+ve_can_accept_era_crossroads_age_1_offer = {
+	ve_era_crossroads_age_1_pack_live = yes
+	ve_has_pending_era_crossroads_offer = yes
+	var:ve_era_crossroads_offer_age = 1
+	NOT = { ve_has_active_era_crossroads = yes }
+	has_global_variable = ve_age_1_started
+	year < 1866
+	NOT = { has_variable = ve_era_crossroads_age_1_completed }
+	NOT = { has_variable = ve_era_crossroads_age_1_failed }
+	NOT = { has_variable = ve_era_crossroads_age_1_declined }
+}
+
+ve_can_accept_era_crossroads_age_2_offer = {
+	ve_era_crossroads_age_2_pack_live = yes
+	ve_has_pending_era_crossroads_offer = yes
+	var:ve_era_crossroads_offer_age = 2
+	NOT = { ve_has_active_era_crossroads = yes }
+	has_global_variable = ve_age_2_started
+	year < 1901
+	NOT = { has_variable = ve_era_crossroads_age_2_completed }
+	NOT = { has_variable = ve_era_crossroads_age_2_failed }
+	NOT = { has_variable = ve_era_crossroads_age_2_declined }
+}
+
+ve_can_accept_era_crossroads_age_3_offer = {
+	ve_era_crossroads_age_3_pack_live = yes
+	ve_has_pending_era_crossroads_offer = yes
+	var:ve_era_crossroads_offer_age = 3
+	NOT = { ve_has_active_era_crossroads = yes }
+	has_global_variable = ve_age_3_started
+	year < 1932
+	NOT = { has_variable = ve_era_crossroads_age_3_completed }
+	NOT = { has_variable = ve_era_crossroads_age_3_failed }
+	NOT = { has_variable = ve_era_crossroads_age_3_declined }
+}
+
+ve_has_valid_era_crossroads_context = {
+	has_variable = ve_era_crossroads_active_age
+	has_variable = ve_era_crossroads_route
+	has_variable = ve_era_crossroads_progress
+	has_variable = ve_era_crossroads_months
+	OR = {
+		AND = {
+			var:ve_era_crossroads_active_age = 1
+			has_global_variable = ve_age_1_started
+			has_journal_entry = ve_je_era_crossroads_age_1
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 2
+			has_global_variable = ve_age_2_started
+			has_journal_entry = ve_je_era_crossroads_age_2
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 3
+			has_global_variable = ve_age_3_started
+			has_journal_entry = ve_je_era_crossroads_age_3
+		}
+	}
+}
+
+# Age 1 route anchors read only the persistent objective-completion ledger.
+ve_era_crossroads_age_1_route_1_anchor_1_secured = {
+	has_variable = ve_age_1_objective_1_completed
+}
+
+ve_era_crossroads_age_1_route_1_anchor_2_secured = {
+	has_variable = ve_age_1_objective_5_completed
+}
+
+ve_era_crossroads_age_1_route_2_anchor_1_secured = {
+	has_variable = ve_age_1_objective_2_completed
+}
+
+ve_era_crossroads_age_1_route_2_anchor_2_secured = {
+	has_variable = ve_age_1_objective_4_completed
+}
+
+ve_era_crossroads_age_1_route_3_anchor_1_secured = {
+	has_variable = ve_age_1_objective_3_completed
+}
+
+ve_era_crossroads_age_1_route_3_anchor_2_secured = {
+	has_variable = ve_age_1_objective_6_completed
+}
+
+ve_era_crossroads_age_1_route_1_doctrine_fit = {
+	OR = {
+		has_modifier = industrialist_idea_4_mdf
+		has_modifier = infrastructure_idea_4_mdf
+	}
+}
+
+ve_era_crossroads_age_1_route_2_doctrine_fit = {
+	OR = {
+		has_modifier = academic_idea_4_mdf
+		has_modifier = reformist_idea_4_mdf
+	}
+}
+
+ve_era_crossroads_age_1_route_3_doctrine_fit = {
+	OR = {
+		has_modifier = bureaucratic_idea_4_mdf
+		has_modifier = parliamentary_idea_4_mdf
+	}
+}
+
+ve_era_crossroads_age_1_any_anchor_secured = {
+	OR = {
+		ve_era_crossroads_age_1_route_1_anchor_1_secured = yes
+		ve_era_crossroads_age_1_route_1_anchor_2_secured = yes
+		ve_era_crossroads_age_1_route_2_anchor_1_secured = yes
+		ve_era_crossroads_age_1_route_2_anchor_2_secured = yes
+		ve_era_crossroads_age_1_route_3_anchor_1_secured = yes
+		ve_era_crossroads_age_1_route_3_anchor_2_secured = yes
+	}
+}
+
+ve_era_crossroads_age_1_any_doctrine_fit = {
+	OR = {
+		ve_era_crossroads_age_1_route_1_doctrine_fit = yes
+		ve_era_crossroads_age_1_route_2_doctrine_fit = yes
+		ve_era_crossroads_age_1_route_3_doctrine_fit = yes
+	}
+}
+
+# Age 2 route anchors use only secured objective flags from the current Age.
+ve_era_crossroads_age_2_route_1_anchor_1_secured = {
+	has_variable = ve_age_2_objective_3_completed
+}
+
+ve_era_crossroads_age_2_route_1_anchor_2_secured = {
+	has_variable = ve_age_2_objective_4_completed
+}
+
+ve_era_crossroads_age_2_route_2_anchor_1_secured = {
+	has_variable = ve_age_2_objective_2_completed
+}
+
+ve_era_crossroads_age_2_route_2_anchor_2_secured = {
+	has_variable = ve_age_2_objective_6_completed
+}
+
+ve_era_crossroads_age_2_route_3_anchor_1_secured = {
+	has_variable = ve_age_2_objective_1_completed
+}
+
+ve_era_crossroads_age_2_route_3_anchor_2_secured = {
+	has_variable = ve_age_2_objective_5_completed
+}
+
+ve_era_crossroads_age_2_route_1_doctrine_fit = {
+	OR = {
+		has_modifier = diplomatic_idea_4_mdf
+		has_modifier = colonial_idea_4_mdf
+	}
+}
+
+ve_era_crossroads_age_2_route_2_doctrine_fit = {
+	OR = {
+		has_modifier = welfare_idea_4_mdf
+		has_modifier = reformist_idea_4_mdf
+	}
+}
+
+ve_era_crossroads_age_2_route_3_doctrine_fit = {
+	OR = {
+		has_modifier = nationalist_idea_4_mdf
+		has_modifier = labour_idea_4_mdf
+	}
+}
+
+ve_era_crossroads_age_2_any_anchor_secured = {
+	OR = {
+		ve_era_crossroads_age_2_route_1_anchor_1_secured = yes
+		ve_era_crossroads_age_2_route_1_anchor_2_secured = yes
+		ve_era_crossroads_age_2_route_2_anchor_1_secured = yes
+		ve_era_crossroads_age_2_route_2_anchor_2_secured = yes
+		ve_era_crossroads_age_2_route_3_anchor_1_secured = yes
+		ve_era_crossroads_age_2_route_3_anchor_2_secured = yes
+	}
+}
+
+ve_era_crossroads_age_2_any_doctrine_fit = {
+	OR = {
+		ve_era_crossroads_age_2_route_1_doctrine_fit = yes
+		ve_era_crossroads_age_2_route_2_doctrine_fit = yes
+		ve_era_crossroads_age_2_route_3_doctrine_fit = yes
+	}
+}
+
+# Age 3 route anchors remain independent of wars, casualties, and conquest.
+ve_era_crossroads_age_3_route_1_anchor_1_secured = {
+	has_variable = ve_age_3_objective_1_completed
+}
+
+ve_era_crossroads_age_3_route_1_anchor_2_secured = {
+	has_variable = ve_age_3_objective_2_completed
+}
+
+ve_era_crossroads_age_3_route_2_anchor_1_secured = {
+	has_variable = ve_age_3_objective_5_completed
+}
+
+ve_era_crossroads_age_3_route_2_anchor_2_secured = {
+	has_variable = ve_age_3_objective_7_completed
+}
+
+ve_era_crossroads_age_3_route_3_anchor_1_secured = {
+	has_variable = ve_age_3_objective_3_completed
+}
+
+ve_era_crossroads_age_3_route_3_anchor_2_secured = {
+	has_variable = ve_age_3_objective_6_completed
+}
+
+ve_era_crossroads_age_3_route_1_doctrine_fit = {
+	OR = {
+		has_modifier = parliamentary_idea_4_mdf
+		has_modifier = welfare_idea_4_mdf
+	}
+}
+
+ve_era_crossroads_age_3_route_2_doctrine_fit = {
+	OR = {
+		has_modifier = professional_army_idea_4_mdf
+		has_modifier = defensive_idea_4_mdf
+	}
+}
+
+ve_era_crossroads_age_3_route_3_doctrine_fit = {
+	OR = {
+		has_modifier = war_economy_idea_4_mdf
+		has_modifier = mass_conscription_idea_4_mdf
+	}
+}
+
+ve_era_crossroads_age_3_any_anchor_secured = {
+	OR = {
+		ve_era_crossroads_age_3_route_1_anchor_1_secured = yes
+		ve_era_crossroads_age_3_route_1_anchor_2_secured = yes
+		ve_era_crossroads_age_3_route_2_anchor_1_secured = yes
+		ve_era_crossroads_age_3_route_2_anchor_2_secured = yes
+		ve_era_crossroads_age_3_route_3_anchor_1_secured = yes
+		ve_era_crossroads_age_3_route_3_anchor_2_secured = yes
+	}
+}
+
+ve_era_crossroads_age_3_any_doctrine_fit = {
+	OR = {
+		ve_era_crossroads_age_3_route_1_doctrine_fit = yes
+		ve_era_crossroads_age_3_route_2_doctrine_fit = yes
+		ve_era_crossroads_age_3_route_3_doctrine_fit = yes
+	}
+}
+
+ve_era_crossroads_active_anchor_1_secured = {
+	OR = {
+		AND = {
+			var:ve_era_crossroads_active_age = 1
+			var:ve_era_crossroads_route = 1
+			ve_era_crossroads_age_1_route_1_anchor_1_secured = yes
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 1
+			var:ve_era_crossroads_route = 2
+			ve_era_crossroads_age_1_route_2_anchor_1_secured = yes
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 1
+			var:ve_era_crossroads_route = 3
+			ve_era_crossroads_age_1_route_3_anchor_1_secured = yes
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 2
+			var:ve_era_crossroads_route = 1
+			ve_era_crossroads_age_2_route_1_anchor_1_secured = yes
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 2
+			var:ve_era_crossroads_route = 2
+			ve_era_crossroads_age_2_route_2_anchor_1_secured = yes
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 2
+			var:ve_era_crossroads_route = 3
+			ve_era_crossroads_age_2_route_3_anchor_1_secured = yes
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 3
+			var:ve_era_crossroads_route = 1
+			ve_era_crossroads_age_3_route_1_anchor_1_secured = yes
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 3
+			var:ve_era_crossroads_route = 2
+			ve_era_crossroads_age_3_route_2_anchor_1_secured = yes
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 3
+			var:ve_era_crossroads_route = 3
+			ve_era_crossroads_age_3_route_3_anchor_1_secured = yes
+		}
+	}
+}
+
+ve_era_crossroads_active_anchor_2_secured = {
+	OR = {
+		AND = {
+			var:ve_era_crossroads_active_age = 1
+			var:ve_era_crossroads_route = 1
+			ve_era_crossroads_age_1_route_1_anchor_2_secured = yes
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 1
+			var:ve_era_crossroads_route = 2
+			ve_era_crossroads_age_1_route_2_anchor_2_secured = yes
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 1
+			var:ve_era_crossroads_route = 3
+			ve_era_crossroads_age_1_route_3_anchor_2_secured = yes
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 2
+			var:ve_era_crossroads_route = 1
+			ve_era_crossroads_age_2_route_1_anchor_2_secured = yes
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 2
+			var:ve_era_crossroads_route = 2
+			ve_era_crossroads_age_2_route_2_anchor_2_secured = yes
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 2
+			var:ve_era_crossroads_route = 3
+			ve_era_crossroads_age_2_route_3_anchor_2_secured = yes
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 3
+			var:ve_era_crossroads_route = 1
+			ve_era_crossroads_age_3_route_1_anchor_2_secured = yes
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 3
+			var:ve_era_crossroads_route = 2
+			ve_era_crossroads_age_3_route_2_anchor_2_secured = yes
+		}
+		AND = {
+			var:ve_era_crossroads_active_age = 3
+			var:ve_era_crossroads_route = 3
+			ve_era_crossroads_age_3_route_3_anchor_2_secured = yes
+		}
+	}
+}
+
+ve_era_crossroads_age_1_route_doctrine_fit = {
+	OR = {
+		AND = {
+			var:ve_era_crossroads_route = 1
+			ve_era_crossroads_age_1_route_1_doctrine_fit = yes
+		}
+		AND = {
+			var:ve_era_crossroads_route = 2
+			ve_era_crossroads_age_1_route_2_doctrine_fit = yes
+		}
+		AND = {
+			var:ve_era_crossroads_route = 3
+			ve_era_crossroads_age_1_route_3_doctrine_fit = yes
+		}
+	}
+}
+
+ve_era_crossroads_age_2_route_doctrine_fit = {
+	OR = {
+		AND = {
+			var:ve_era_crossroads_route = 1
+			ve_era_crossroads_age_2_route_1_doctrine_fit = yes
+		}
+		AND = {
+			var:ve_era_crossroads_route = 2
+			ve_era_crossroads_age_2_route_2_doctrine_fit = yes
+		}
+		AND = {
+			var:ve_era_crossroads_route = 3
+			ve_era_crossroads_age_2_route_3_doctrine_fit = yes
+		}
+	}
+}
+
+ve_era_crossroads_age_3_route_doctrine_fit = {
+	OR = {
+		AND = {
+			var:ve_era_crossroads_route = 1
+			ve_era_crossroads_age_3_route_1_doctrine_fit = yes
+		}
+		AND = {
+			var:ve_era_crossroads_route = 2
+			ve_era_crossroads_age_3_route_2_doctrine_fit = yes
+		}
+		AND = {
+			var:ve_era_crossroads_route = 3
+			ve_era_crossroads_age_3_route_3_doctrine_fit = yes
+		}
+	}
+}
+
+ve_era_crossroads_age_1_milestone_1_due = {
+	ve_has_valid_era_crossroads_context = yes
+	var:ve_era_crossroads_active_age = 1
+	NOT = { has_variable = ve_era_crossroads_milestone_1_fired }
+	var:ve_era_crossroads_progress >= 20
+}
+
+ve_era_crossroads_age_1_milestone_2_due = {
+	ve_has_valid_era_crossroads_context = yes
+	var:ve_era_crossroads_active_age = 1
+	has_variable = ve_era_crossroads_milestone_1_fired
+	NOT = { has_variable = ve_era_crossroads_milestone_2_fired }
+	var:ve_era_crossroads_progress >= 40
+}
+
+ve_has_valid_era_crossroads_age_1_milestone_context = {
+	ve_has_valid_era_crossroads_context = yes
+	var:ve_era_crossroads_active_age = 1
+}
+
+ve_era_crossroads_age_2_milestone_1_due = {
+	ve_has_valid_era_crossroads_context = yes
+	var:ve_era_crossroads_active_age = 2
+	NOT = { has_variable = ve_era_crossroads_milestone_1_fired }
+	var:ve_era_crossroads_progress >= 20
+}
+
+ve_era_crossroads_age_2_milestone_2_due = {
+	ve_has_valid_era_crossroads_context = yes
+	var:ve_era_crossroads_active_age = 2
+	has_variable = ve_era_crossroads_milestone_1_fired
+	NOT = { has_variable = ve_era_crossroads_milestone_2_fired }
+	var:ve_era_crossroads_progress >= 40
+}
+
+ve_has_valid_era_crossroads_age_2_milestone_context = {
+	ve_has_valid_era_crossroads_context = yes
+	var:ve_era_crossroads_active_age = 2
+}
+
+ve_era_crossroads_age_3_milestone_1_due = {
+	ve_has_valid_era_crossroads_context = yes
+	var:ve_era_crossroads_active_age = 3
+	NOT = { has_variable = ve_era_crossroads_milestone_1_fired }
+	var:ve_era_crossroads_progress >= 20
+}
+
+ve_era_crossroads_age_3_milestone_2_due = {
+	ve_has_valid_era_crossroads_context = yes
+	var:ve_era_crossroads_active_age = 3
+	has_variable = ve_era_crossroads_milestone_1_fired
+	NOT = { has_variable = ve_era_crossroads_milestone_2_fired }
+	var:ve_era_crossroads_progress >= 40
+}
+
+ve_has_valid_era_crossroads_age_3_milestone_context = {
+	ve_has_valid_era_crossroads_context = yes
+	var:ve_era_crossroads_active_age = 3
+}
+
+ve_can_afford_era_crossroads_insight = {
+	has_variable = idea_point_pool
+	var:idea_point_pool >= $COST$
+}
+
+ve_can_show_era_crossroads_age_1_success = {
+	has_global_variable = ve_age_1_started
+	has_variable = ve_era_crossroads_age_1_completed
+}
+
+ve_can_show_era_crossroads_age_2_success = {
+	has_global_variable = ve_age_2_started
+	has_variable = ve_era_crossroads_age_2_completed
+}
+
+ve_can_show_era_crossroads_age_3_success = {
+	has_global_variable = ve_age_3_started
+	has_variable = ve_era_crossroads_age_3_completed
+}

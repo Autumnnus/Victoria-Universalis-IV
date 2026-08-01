@@ -1,0 +1,16 @@
+﻿l_russian:
+ # events/Economic_Idea.txt and events/InnovativeIdeaGroupEvents.txt reference
+ # only this one key set for all of their events, so the text is deliberately
+ # neutral: an event in either file may grant a positive or a negative modifier.
+ # Give each event its own keys when they are wired to an on_action.
+ economic_flavor.1.t:0 "Экономическое развитие"
+ economic_flavor.1.desc:0 "Наша экономическая доктрина приносит плоды так, как не планировали министерства. Что бы ни последовало, последствия будут ощущаться во всей экономике в течение многих лет."
+ economic_flavor.1.a:0 "Да будет так"
+ innovative_flavor.1.t:0 "Сдвиг в доктрине"
+ innovative_flavor.1.desc:0 "Идеи, которые мы приняли, меняют то, как работают наши институты и как нас судит остальной мир."
+ innovative_flavor.1.a:0 "Очень хорошо"
+
+ dev.2.t:0 "Событие по тестированию для разработчиков"
+ dev.2.d:0 "Это мероприятие по тестированию разработчиков для Victoria Universalis IV."
+ dev.2.a:0 "Предоставить ресурсы для тестирования"
+ dev.2.b:0 "Закрыть"

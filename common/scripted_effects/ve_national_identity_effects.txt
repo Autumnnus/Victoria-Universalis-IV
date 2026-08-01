@@ -231,6 +231,8 @@ ve_change_to_ethnic_identity = {
 		value = 1
 	}
 	ve_sync_identity_modifiers = yes
+	# Begin only after the destination model and core backlash are established.
+	ve_begin_identity_transition_journey = yes
 }
 
 ve_change_to_civic_identity = {
@@ -241,6 +243,8 @@ ve_change_to_civic_identity = {
 		value = 2
 	}
 	ve_sync_identity_modifiers = yes
+	# Begin only after the destination model and core backlash are established.
+	ve_begin_identity_transition_journey = yes
 }
 
 ve_change_to_composite_identity = {
@@ -251,6 +255,8 @@ ve_change_to_composite_identity = {
 		value = 3
 	}
 	ve_sync_identity_modifiers = yes
+	# Begin only after the destination model and core backlash are established.
+	ve_begin_identity_transition_journey = yes
 }
 
 ve_ai_uses_culture = {

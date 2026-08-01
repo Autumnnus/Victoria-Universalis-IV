@@ -1,0 +1,56 @@
+﻿l_french:
+ # Doctrine Ledger - gui/ve_panel_ledger.gui
+ VE_LEDGER:0 "Grand livre"
+ VE_LEDGER_SELECTED:0 "#bold Grand livre#!"
+ VE_LG_TITLE:0 "Grand livre de doctrine"
+ VE_LG_HINT:0 "La doctrine de chaque pays. Cliquez sur un en-tête de colonne pour trier, sur un filtre pour affiner la liste et sur un pays pour ouvrir son panneau et obtenir des détails complets par groupe."
+
+ # Columns
+ VE_LG_COL_RANK:0 "#"
+ VE_LG_COL_COUNTRY:0 "Pays"
+ VE_LG_COL_INSIGHT:0 "Aperçu"
+ VE_LG_COL_GROUPS:0 "Groupes"
+ VE_LG_COL_IDEAS:0 "Idées de groupe"
+ VE_LG_COL_NATIONAL_IDEAS:0 "Idées nationales"
+ VE_LG_COL_NATIONAL_IDEAS_TT:0 "#header Idées nationales#!\nUn marqueur par emplacement d'idée nationale, plus le bonus national sur la droite. Un pays débloque l'emplacement suivant pour chaque troisième idée de groupe qu'il achète."
+ VE_LG_COL_RELIGION:0 "Modèle religieux"
+ VE_LG_COL_IDENTITY:0 "Modèle d'identité"
+ VE_LG_COL_ERA:0 "Ère"
+
+ # Cell values
+ VE_LG_GROUPS_VALUE:0 "[Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]"
+ VE_LG_IDEAS_VALUE:0 "[Country.MakeScope.Var('national_idea_pool').GetValue|0] / 21"
+ VE_LG_REWARDS_VALUE:0 "R. [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]"
+ VE_LG_ERA_TT:0 "#header [Country.GetCustom('ve_cp_age_name')]#!\nEra Momentum : #Y [Country.MakeScope.Var('ve_splender_points').GetValue|0]#!\nEra Rewards achetés à cet âge : #Y [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]#!\nObjectifs actuellement atteints : #Y [Country.MakeScope.ScriptValue('ve_era_objectives_satisfied')|0] / 7#!\nObjectifs obtenus à cet âge : #Y [Country.MakeScope.Var('ve_triggered_objectives').GetValue|0] / 7#!\nÂge d'or : [Country.GetCustom('ve_cp_golden_age_status')]"
+ VE_LG_OPEN_COUNTRY_TT:0 "Ouvrez le panneau de ce pays. Ses idées, sa religion, son identité et son époque sont dans le détail. #Y Doctrine nationale#! section ici."
+
+ # Sort tooltips
+ VE_LG_SORT_PRESTIGE_TT:0 "Trier par #Y Prestige#! - l'ordre par défaut, le plus élevé en premier."
+ VE_LG_SORT_INSIGHT_TT:0 "Trier par stock #Y National Insight#!, le plus élevé en premier."
+ VE_LG_SORT_GROUPS_TT:0 "Trier par #Y groupes d'idées adoptés#!, la plupart en premier."
+ VE_LG_SORT_IDEAS_TT:0 "Trier par #Y idées de groupe achetées#!  (Progrès des idées nationales), la plupart en premier."
+ VE_LG_SORT_SETTLEMENT_TT:0 "Trier par #Y Établissement religieux#!, le plus élevé en premier."
+ VE_LG_SORT_COHESION_TT:0 "Trier par #Y Cohésion nationale#!, le plus élevé en premier."
+ VE_LG_SORT_MOMENTUM_TT:0 "Trier par #Y Era Momentum#!, le plus élevé en premier."
+
+ # Filters
+ VE_LG_F_ALL:0 "Toutes"
+ VE_LG_F_GREAT_POWERS:0 "Grandes puissances"
+ VE_LG_F_MAJOR_POWERS:0 "Pouvoirs majeurs+"
+ VE_LG_F_RECOGNIZED:0 "Reconnus"
+ VE_LG_F_RELEVANT:0 "Pertinents pour moi"
+ VE_LG_F_WITH_GROUPS:0 "A des groupes d'idées"
+
+ # Paging
+ VE_LG_PAGE_INFO:0 "Page [GetGlobalVariable('ve_ledger_page_number').GetValue|0] / [GetGlobalVariable('ve_ledger_page_count').GetValue|0]  ([GetGlobalVariable('ve_ledger_total').GetValue|0])"
+ VE_LG_REFRESH:0 "Actualiser"
+ VE_LG_REFRESH_TT:0 "Reconstruire la liste. Les valeurs des lignes sont toujours actives ; seuls l'ordre et l'appartenance à la page sont définis lors de la construction de la liste."
+ VE_LG_FIRST_TT:0 "Première page"
+ VE_LG_PREV_TT:0 "Page précédente"
+ VE_LG_NEXT_TT:0 "Page suivante"
+ VE_LG_YOU:0 "#lore Votre pays#!"
+ VE_LG_EMPTY:0 "#lore Aucun pays ne correspond à ce filtre. Appuyez sur Actualiser ou choisissez un filtre plus large.#!"
+
+ # Scripted GUI tooltip - common/scripted_guis/ve_ledger.txt
+ ve_ledger_groups_tt_header:0 "#header Groupes d'idées adoptés#!"
+ ve_ledger_groups_tt_none:0 "#lore Aucun groupe d'idées adopté pour l'instant.#!"

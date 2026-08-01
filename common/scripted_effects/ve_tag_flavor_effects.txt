@@ -1,0 +1,402 @@
+# Phase 7 shared tag-flavor dispatch, lifecycle, resource accounting, and
+# telemetry. Pilot event dispatch branches are added only when that pilot's
+# complete pack is ready to open its pack-live gate.
+
+ve_clear_tag_flavor_pending_offer = {
+	if = {
+		limit = { has_variable = ve_tag_flavor_offer_pending }
+		remove_variable = ve_tag_flavor_offer_pending
+	}
+	if = {
+		limit = { has_variable = ve_tag_flavor_offer_chain }
+		remove_variable = ve_tag_flavor_offer_chain
+	}
+}
+
+ve_clear_tag_flavor_session = {
+	ve_clear_tag_flavor_pending_offer = yes
+	if = {
+		limit = { has_variable = ve_tag_flavor_active_chain }
+		remove_variable = ve_tag_flavor_active_chain
+	}
+	if = {
+		limit = { has_variable = ve_tag_flavor_route }
+		remove_variable = ve_tag_flavor_route
+	}
+}
+
+# All three branches are deliberately inert while their pack-live gates are
+# false. Each pilot step replaces its reservation-only branch with its opener
+# event dispatch before enabling the corresponding gate.
+ve_dispatch_tag_flavor_offer = {
+	if = {
+		limit = { ve_can_offer_tag_flavor_tur = yes }
+		set_variable = { name = ve_tag_flavor_offer_pending days = 14 }
+		set_variable = { name = ve_tag_flavor_offer_chain value = 1 days = 14 }
+		trigger_event = { id = ve_tag_flavor.1 popup = yes }
+	}
+	else_if = {
+		limit = { ve_can_offer_tag_flavor_jap = yes }
+		set_variable = { name = ve_tag_flavor_offer_pending days = 14 }
+		set_variable = { name = ve_tag_flavor_offer_chain value = 2 days = 14 }
+		trigger_event = { id = ve_tag_flavor.10 popup = yes }
+	}
+	else_if = {
+		limit = { ve_can_offer_tag_flavor_usa = yes }
+		set_variable = { name = ve_tag_flavor_offer_pending days = 14 }
+		set_variable = { name = ve_tag_flavor_offer_chain value = 3 days = 14 }
+		trigger_event = { id = ve_tag_flavor.20 popup = yes }
+	}
+}
+
+ve_record_tag_flavor_offer = {
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_offers DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_$TAG$_offers DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TAG_FLAVOR_OFFER:[THIS.GetCountry.GetNameNoFormatting]:$TAG$"
+}
+
+ve_begin_tag_flavor_session = {
+	ve_clear_tag_flavor_session = yes
+	set_variable = { name = ve_tag_flavor_active_chain value = $CHAIN$ days = 450 }
+	set_variable = { name = ve_tag_flavor_route value = $ROUTE$ days = 450 }
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_starts DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_$TAG$_starts DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_route_$ROUTE$_starts DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TAG_FLAVOR_START:[THIS.GetCountry.GetNameNoFormatting]:$TAG$:$ROUTE$"
+}
+
+ve_record_tag_flavor_option = {
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_options DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_$TAG$_options DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_$CLASS$_options DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TAG_FLAVOR_OPTION:[THIS.GetCountry.GetNameNoFormatting]:$TAG$:$ROUTE$:$CLASS$"
+}
+
+ve_complete_tag_flavor_session = {
+	set_variable = { name = ve_tag_flavor_cooldown days = 2920 }
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_completions DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_$TAG$_completions DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TAG_FLAVOR_RESOLUTION:[THIS.GetCountry.GetNameNoFormatting]:$TAG$:$ROUTE$"
+	ve_clear_tag_flavor_session = yes
+}
+
+ve_cancel_tag_flavor_session = {
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_cancellations DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_$TAG$_cancellations DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TAG_FLAVOR_CANCELLED:[THIS.GetCountry.GetNameNoFormatting]:$TAG$:$REASON$"
+	ve_clear_tag_flavor_session = yes
+}
+
+ve_begin_tag_flavor_tur_civic_lexicon = {
+	if = {
+		limit = {
+			ve_can_accept_tag_flavor_tur_offer = yes
+			ve_tag_flavor_tur_civic_lexicon_fit = yes
+			ve_can_afford_tag_flavor_cultural_mandate = { COST = 20 }
+		}
+		ve_tag_flavor_change_cultural_mandate = { DELTA = -20 }
+		ve_begin_tag_flavor_session = { CHAIN = 1 ROUTE = 1 TAG = TUR }
+		ve_record_tag_flavor_option = { TAG = TUR ROUTE = 1 CLASS = paid }
+		trigger_event = { id = ve_tag_flavor.2 days = 365 popup = yes }
+	}
+}
+
+ve_begin_tag_flavor_tur_sacred_continuity = {
+	if = {
+		limit = {
+			ve_can_accept_tag_flavor_tur_offer = yes
+			ve_tag_flavor_tur_sacred_continuity_fit = yes
+			ve_can_afford_tag_flavor_piety_reform = { COST = 20 }
+		}
+		ve_tag_flavor_change_piety_reform = { DELTA = -20 }
+		ve_begin_tag_flavor_session = { CHAIN = 1 ROUTE = 2 TAG = TUR }
+		ve_record_tag_flavor_option = { TAG = TUR ROUTE = 2 CLASS = paid }
+		trigger_event = { id = ve_tag_flavor.2 days = 365 popup = yes }
+	}
+}
+
+ve_begin_tag_flavor_tur_administrative_translation = {
+	if = {
+		limit = { ve_can_accept_tag_flavor_tur_offer = yes }
+		ve_begin_tag_flavor_session = { CHAIN = 1 ROUTE = 3 TAG = TUR }
+		ve_record_tag_flavor_option = { TAG = TUR ROUTE = 3 CLASS = free }
+		trigger_event = { id = ve_tag_flavor.2 days = 365 popup = yes }
+	}
+}
+
+ve_resolve_tag_flavor_tur = {
+	if = {
+		limit = {
+			ve_has_valid_tag_flavor_tur_closure_context = yes
+			var:ve_tag_flavor_route = 1
+		}
+		ve_tag_flavor_change_national_insight = { DELTA = 8 }
+		ve_tag_flavor_change_national_cohesion = { DELTA = 3 }
+		add_modifier = {
+			name = ve_tag_flavor_tur_civic_lexicon_mdf
+			months = 24
+		}
+		set_variable = ve_tag_flavor_tur_completed
+		ve_complete_tag_flavor_session = { TAG = TUR ROUTE = 1 }
+	}
+	else_if = {
+		limit = {
+			ve_has_valid_tag_flavor_tur_closure_context = yes
+			var:ve_tag_flavor_route = 2
+		}
+		ve_tag_flavor_change_national_insight = { DELTA = 8 }
+		ve_tag_flavor_change_religious_settlement = { DELTA = 3 }
+		add_modifier = {
+			name = ve_tag_flavor_tur_sacred_continuity_mdf
+			months = 24
+		}
+		set_variable = ve_tag_flavor_tur_completed
+		ve_complete_tag_flavor_session = { TAG = TUR ROUTE = 2 }
+	}
+	else_if = {
+		limit = {
+			ve_has_valid_tag_flavor_tur_closure_context = yes
+			var:ve_tag_flavor_route = 3
+		}
+		ve_tag_flavor_change_national_insight = { DELTA = 4 }
+		add_modifier = {
+			name = ve_tag_flavor_tur_administrative_translation_mdf
+			months = 24
+		}
+		set_variable = ve_tag_flavor_tur_completed
+		ve_complete_tag_flavor_session = { TAG = TUR ROUTE = 3 }
+	}
+}
+
+ve_begin_tag_flavor_jap_translation_bureaus = {
+	if = {
+		limit = {
+			ve_can_accept_tag_flavor_jap_offer = yes
+			ve_tag_flavor_jap_translation_bureaus_fit = yes
+			ve_can_afford_tag_flavor_insight = { COST = 15 }
+		}
+		ve_tag_flavor_change_national_insight = { DELTA = -15 }
+		ve_begin_tag_flavor_session = { CHAIN = 2 ROUTE = 1 TAG = JAP }
+		ve_record_tag_flavor_option = { TAG = JAP ROUTE = 1 CLASS = paid }
+		trigger_event = { id = ve_tag_flavor.11 days = 365 popup = yes }
+	}
+}
+
+ve_begin_tag_flavor_jap_directed_borrowing = {
+	if = {
+		limit = {
+			ve_can_accept_tag_flavor_jap_offer = yes
+			ve_tag_flavor_jap_directed_borrowing_fit = yes
+			ve_can_afford_tag_flavor_insight = { COST = 10 }
+		}
+		ve_tag_flavor_change_national_insight = { DELTA = -10 }
+		ve_begin_tag_flavor_session = { CHAIN = 2 ROUTE = 2 TAG = JAP }
+		ve_record_tag_flavor_option = { TAG = JAP ROUTE = 2 CLASS = paid }
+		trigger_event = { id = ve_tag_flavor.11 days = 365 popup = yes }
+	}
+}
+
+ve_begin_tag_flavor_jap_selective_adoption = {
+	if = {
+		limit = { ve_can_accept_tag_flavor_jap_offer = yes }
+		ve_begin_tag_flavor_session = { CHAIN = 2 ROUTE = 3 TAG = JAP }
+		ve_record_tag_flavor_option = { TAG = JAP ROUTE = 3 CLASS = free }
+		trigger_event = { id = ve_tag_flavor.11 days = 365 popup = yes }
+	}
+}
+
+ve_resolve_tag_flavor_jap = {
+	if = {
+		limit = {
+			ve_has_valid_tag_flavor_jap_closure_context = yes
+			var:ve_tag_flavor_route = 1
+		}
+		ve_tag_flavor_change_era_momentum = { DELTA = 10 }
+		add_modifier = {
+			name = ve_tag_flavor_jap_translation_bureaus_mdf
+			months = 24
+		}
+		set_variable = ve_tag_flavor_jap_completed
+		ve_complete_tag_flavor_session = { TAG = JAP ROUTE = 1 }
+	}
+	else_if = {
+		limit = {
+			ve_has_valid_tag_flavor_jap_closure_context = yes
+			var:ve_tag_flavor_route = 2
+		}
+		ve_tag_flavor_change_era_momentum = { DELTA = 7 }
+		add_modifier = {
+			name = ve_tag_flavor_jap_directed_borrowing_mdf
+			months = 24
+		}
+		set_variable = ve_tag_flavor_jap_completed
+		ve_complete_tag_flavor_session = { TAG = JAP ROUTE = 2 }
+	}
+	else_if = {
+		limit = {
+			ve_has_valid_tag_flavor_jap_closure_context = yes
+			var:ve_tag_flavor_route = 3
+		}
+		ve_tag_flavor_change_era_momentum = { DELTA = 3 }
+		add_modifier = {
+			name = ve_tag_flavor_jap_selective_adoption_mdf
+			months = 24
+		}
+		set_variable = ve_tag_flavor_jap_completed
+		ve_complete_tag_flavor_session = { TAG = JAP ROUTE = 3 }
+	}
+}
+
+ve_begin_tag_flavor_usa_citizenship_compact = {
+	if = {
+		limit = {
+			ve_can_accept_tag_flavor_usa_offer = yes
+			ve_tag_flavor_usa_citizenship_compact_fit = yes
+			ve_can_afford_tag_flavor_cultural_mandate = { COST = 20 }
+		}
+		ve_tag_flavor_change_cultural_mandate = { DELTA = -20 }
+		ve_begin_tag_flavor_session = { CHAIN = 3 ROUTE = 1 TAG = USA }
+		ve_record_tag_flavor_option = { TAG = USA ROUTE = 1 CLASS = paid }
+		trigger_event = { id = ve_tag_flavor.21 days = 365 popup = yes }
+	}
+}
+
+ve_begin_tag_flavor_usa_composite_bargain = {
+	if = {
+		limit = {
+			ve_can_accept_tag_flavor_usa_offer = yes
+			ve_tag_flavor_usa_composite_bargain_fit = yes
+			ve_can_afford_tag_flavor_cultural_mandate = { COST = 20 }
+		}
+		ve_tag_flavor_change_cultural_mandate = { DELTA = -20 }
+		ve_begin_tag_flavor_session = { CHAIN = 3 ROUTE = 2 TAG = USA }
+		ve_record_tag_flavor_option = { TAG = USA ROUTE = 2 CLASS = paid }
+		trigger_event = { id = ve_tag_flavor.21 days = 365 popup = yes }
+	}
+}
+
+ve_begin_tag_flavor_usa_federal_ambiguity = {
+	if = {
+		limit = { ve_can_accept_tag_flavor_usa_offer = yes }
+		ve_begin_tag_flavor_session = { CHAIN = 3 ROUTE = 3 TAG = USA }
+		ve_record_tag_flavor_option = { TAG = USA ROUTE = 3 CLASS = free }
+		trigger_event = { id = ve_tag_flavor.21 days = 365 popup = yes }
+	}
+}
+
+ve_resolve_tag_flavor_usa = {
+	if = {
+		limit = {
+			ve_has_valid_tag_flavor_usa_closure_context = yes
+			var:ve_tag_flavor_route = 1
+		}
+		ve_tag_flavor_change_national_insight = { DELTA = 8 }
+		ve_tag_flavor_change_national_cohesion = { DELTA = 3 }
+		add_modifier = {
+			name = ve_tag_flavor_usa_citizenship_compact_mdf
+			months = 24
+		}
+		set_variable = ve_tag_flavor_usa_completed
+		ve_complete_tag_flavor_session = { TAG = USA ROUTE = 1 }
+	}
+	else_if = {
+		limit = {
+			ve_has_valid_tag_flavor_usa_closure_context = yes
+			var:ve_tag_flavor_route = 2
+		}
+		ve_tag_flavor_change_national_insight = { DELTA = 8 }
+		ve_tag_flavor_change_national_cohesion = { DELTA = 3 }
+		add_modifier = {
+			name = ve_tag_flavor_usa_composite_bargain_mdf
+			months = 24
+		}
+		set_variable = ve_tag_flavor_usa_completed
+		ve_complete_tag_flavor_session = { TAG = USA ROUTE = 2 }
+	}
+	else_if = {
+		limit = {
+			ve_has_valid_tag_flavor_usa_closure_context = yes
+			var:ve_tag_flavor_route = 3
+		}
+		ve_tag_flavor_change_national_insight = { DELTA = 4 }
+		add_modifier = {
+			name = ve_tag_flavor_usa_federal_ambiguity_mdf
+			months = 24
+		}
+		set_variable = ve_tag_flavor_usa_completed
+		ve_complete_tag_flavor_session = { TAG = USA ROUTE = 3 }
+	}
+}
+
+ve_tag_flavor_change_national_insight = {
+	set_variable = { name = ve_tag_flavor_tm_insight_before value = var:idea_point_pool }
+	change_variable = { name = idea_point_pool add = $DELTA$ }
+	ve_clamp_national_insight = yes
+	set_variable = { name = ve_tag_flavor_tm_insight_actual value = var:idea_point_pool }
+	change_variable = { name = ve_tag_flavor_tm_insight_actual subtract = var:ve_tag_flavor_tm_insight_before }
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_insight_net_total DELTA = var:ve_tag_flavor_tm_insight_actual }
+	remove_variable = ve_tag_flavor_tm_insight_before
+	remove_variable = ve_tag_flavor_tm_insight_actual
+}
+
+ve_tag_flavor_change_cultural_mandate = {
+	set_variable = { name = ve_tag_flavor_tm_mandate_before value = var:culture_reform_point }
+	change_variable = { name = culture_reform_point add = $DELTA$ }
+	ve_clamp_cultural_mandate = yes
+	set_variable = { name = ve_tag_flavor_tm_mandate_actual value = var:culture_reform_point }
+	change_variable = { name = ve_tag_flavor_tm_mandate_actual subtract = var:ve_tag_flavor_tm_mandate_before }
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_mandate_net_total DELTA = var:ve_tag_flavor_tm_mandate_actual }
+	remove_variable = ve_tag_flavor_tm_mandate_before
+	remove_variable = ve_tag_flavor_tm_mandate_actual
+}
+
+ve_tag_flavor_change_piety_reform = {
+	set_variable = { name = ve_tag_flavor_tm_piety_before value = var:piety_reform_point }
+	change_variable = { name = piety_reform_point add = $DELTA$ }
+	ve_clamp_piety_reform = yes
+	set_variable = { name = ve_tag_flavor_tm_piety_actual value = var:piety_reform_point }
+	change_variable = { name = ve_tag_flavor_tm_piety_actual subtract = var:ve_tag_flavor_tm_piety_before }
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_piety_net_total DELTA = var:ve_tag_flavor_tm_piety_actual }
+	remove_variable = ve_tag_flavor_tm_piety_before
+	remove_variable = ve_tag_flavor_tm_piety_actual
+}
+
+ve_tag_flavor_change_era_momentum = {
+	if = {
+		limit = { NOT = { has_variable = ve_splender_points } }
+		set_variable = { name = ve_splender_points value = 0 }
+	}
+	set_variable = { name = ve_tag_flavor_tm_momentum_before value = var:ve_splender_points }
+	change_variable = { name = ve_splender_points add = $DELTA$ }
+	if = {
+		limit = { var:ve_splender_points < 0 }
+		set_variable = { name = ve_splender_points value = 0 }
+	}
+	set_variable = { name = ve_tag_flavor_tm_momentum_actual value = var:ve_splender_points }
+	change_variable = { name = ve_tag_flavor_tm_momentum_actual subtract = var:ve_tag_flavor_tm_momentum_before }
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_momentum_net_total DELTA = var:ve_tag_flavor_tm_momentum_actual }
+	remove_variable = ve_tag_flavor_tm_momentum_before
+	remove_variable = ve_tag_flavor_tm_momentum_actual
+}
+
+ve_tag_flavor_change_national_cohesion = {
+	set_variable = { name = ve_tag_flavor_tm_cohesion_before value = var:ve_national_cohesion }
+	change_variable = { name = ve_national_cohesion add = $DELTA$ }
+	ve_clamp_national_cohesion = yes
+	set_variable = { name = ve_tag_flavor_tm_cohesion_actual value = var:ve_national_cohesion }
+	change_variable = { name = ve_tag_flavor_tm_cohesion_actual subtract = var:ve_tag_flavor_tm_cohesion_before }
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_cohesion_net_total DELTA = var:ve_tag_flavor_tm_cohesion_actual }
+	remove_variable = ve_tag_flavor_tm_cohesion_before
+	remove_variable = ve_tag_flavor_tm_cohesion_actual
+}
+
+ve_tag_flavor_change_religious_settlement = {
+	set_variable = { name = ve_tag_flavor_tm_settlement_before value = var:piety_bar_point }
+	change_variable = { name = piety_bar_point add = $DELTA$ }
+	ve_clamp_religious_state = yes
+	set_variable = { name = ve_tag_flavor_tm_settlement_actual value = var:piety_bar_point }
+	change_variable = { name = ve_tag_flavor_tm_settlement_actual subtract = var:ve_tag_flavor_tm_settlement_before }
+	ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_settlement_net_total DELTA = var:ve_tag_flavor_tm_settlement_actual }
+	remove_variable = ve_tag_flavor_tm_settlement_before
+	remove_variable = ve_tag_flavor_tm_settlement_actual
+}

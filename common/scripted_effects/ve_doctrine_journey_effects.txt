@@ -1,0 +1,424 @@
+# Phase 5 shared Doctrine Journey lifecycle.
+# Shared Phase 5 Doctrine Journey lifecycle and pilot dispatch effects.
+
+ve_clear_doctrine_journey_pending_offer = {
+	if = {
+		limit = { has_variable = ve_doctrine_journey_offer_pending }
+		remove_variable = ve_doctrine_journey_offer_pending
+	}
+	if = {
+		limit = { has_variable = ve_doctrine_journey_offer_group }
+		remove_variable = ve_doctrine_journey_offer_group
+	}
+}
+
+ve_clear_doctrine_journey_session = {
+	ve_clear_doctrine_journey_pending_offer = yes
+	if = {
+		limit = { has_variable = ve_doctrine_journey_active_group }
+		remove_variable = ve_doctrine_journey_active_group
+	}
+	if = {
+		limit = { has_variable = ve_doctrine_journey_start_age }
+		remove_variable = ve_doctrine_journey_start_age
+	}
+	if = {
+		limit = { has_variable = ve_doctrine_journey_progress }
+		remove_variable = ve_doctrine_journey_progress
+	}
+	if = {
+		limit = { has_variable = ve_doctrine_journey_months }
+		remove_variable = ve_doctrine_journey_months
+	}
+	if = {
+		limit = { has_variable = ve_doctrine_journey_milestone_1_fired }
+		remove_variable = ve_doctrine_journey_milestone_1_fired
+	}
+	if = {
+		limit = { has_variable = ve_doctrine_journey_milestone_2_fired }
+		remove_variable = ve_doctrine_journey_milestone_2_fired
+	}
+	if = {
+		limit = { has_variable = ve_doctrine_journey_start_literacy }
+		remove_variable = ve_doctrine_journey_start_literacy
+	}
+	if = {
+		limit = { has_variable = ve_doctrine_journey_literacy_target }
+		remove_variable = ve_doctrine_journey_literacy_target
+	}
+}
+
+ve_set_doctrine_journey_start_age = {
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		set_variable = { name = ve_doctrine_journey_start_age value = 1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		set_variable = { name = ve_doctrine_journey_start_age value = 2 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		set_variable = { name = ve_doctrine_journey_start_age value = 3 }
+	}
+}
+
+ve_dispatch_doctrine_journey_offer = {
+	random_list = {
+		1 = {
+			trigger = { ve_can_offer_doctrine_journey_industrialist = yes }
+			set_variable = { name = ve_doctrine_journey_offer_pending days = 14 }
+			set_variable = { name = ve_doctrine_journey_offer_group value = 1 days = 14 }
+			trigger_event = { id = ve_doctrine_journey.1 popup = yes }
+		}
+		1 = {
+			trigger = { ve_can_offer_doctrine_journey_academic = yes }
+			set_variable = { name = ve_doctrine_journey_offer_pending days = 14 }
+			set_variable = { name = ve_doctrine_journey_offer_group value = 2 days = 14 }
+			trigger_event = { id = ve_doctrine_journey.2 popup = yes }
+		}
+		1 = {
+			trigger = { ve_can_offer_doctrine_journey_professional_army = yes }
+			set_variable = { name = ve_doctrine_journey_offer_pending days = 14 }
+			set_variable = { name = ve_doctrine_journey_offer_group value = 3 days = 14 }
+			trigger_event = { id = ve_doctrine_journey.3 popup = yes }
+		}
+	}
+}
+
+ve_begin_doctrine_journey_session = {
+	ve_clear_doctrine_journey_session = yes
+	set_variable = { name = ve_doctrine_journey_active_group value = $GROUP$ }
+	set_variable = { name = ve_doctrine_journey_progress value = 0 }
+	set_variable = { name = ve_doctrine_journey_months value = 0 }
+	ve_set_doctrine_journey_start_age = yes
+	ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_starts DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_DOCTRINE_JOURNEY_START:[THIS.GetCountry.GetNameNoFormatting]:$GROUP$"
+}
+
+ve_begin_doctrine_journey_industrialist = {
+	if = {
+		limit = { ve_can_accept_doctrine_journey_industrialist_offer = yes }
+		ve_begin_doctrine_journey_session = { GROUP = 1 }
+		add_journal_entry = { type = ve_je_doctrine_journey_industrialist }
+	}
+}
+
+ve_begin_doctrine_journey_academic = {
+	if = {
+		limit = { ve_can_accept_doctrine_journey_academic_offer = yes }
+		ve_begin_doctrine_journey_session = { GROUP = 2 }
+		set_variable = {
+			name = ve_doctrine_journey_start_literacy
+			value = literacy_rate
+		}
+		set_variable = {
+			name = ve_doctrine_journey_literacy_target
+			value = literacy_rate
+		}
+		change_variable = {
+			name = ve_doctrine_journey_literacy_target
+			add = 0.05
+		}
+		if = {
+			limit = { var:ve_doctrine_journey_literacy_target > 1 }
+			set_variable = { name = ve_doctrine_journey_literacy_target value = 1 }
+		}
+		add_journal_entry = { type = ve_je_doctrine_journey_academic }
+	}
+}
+
+ve_begin_doctrine_journey_professional_army = {
+	if = {
+		limit = { ve_can_accept_doctrine_journey_professional_army_offer = yes }
+		ve_begin_doctrine_journey_session = { GROUP = 3 }
+		add_journal_entry = { type = ve_je_doctrine_journey_professional_army }
+	}
+}
+
+ve_tick_doctrine_journey = {
+	if = {
+		limit = { ve_has_valid_doctrine_journey_context = yes }
+		change_variable = { name = ve_doctrine_journey_months add = 1 }
+		change_variable = {
+			name = ve_doctrine_journey_progress
+			add = ve_doctrine_journey_monthly_progress
+		}
+		if = {
+			limit = { var:ve_doctrine_journey_months > 60 }
+			set_variable = { name = ve_doctrine_journey_months value = 60 }
+		}
+		if = {
+			limit = { var:ve_doctrine_journey_progress > 60 }
+			set_variable = { name = ve_doctrine_journey_progress value = 60 }
+		}
+		if = {
+			limit = { var:ve_doctrine_journey_progress < 0 }
+			set_variable = { name = ve_doctrine_journey_progress value = 0 }
+		}
+		ve_dispatch_doctrine_journey_milestone = yes
+	}
+}
+
+ve_dispatch_doctrine_journey_milestone = {
+	if = {
+		limit = { ve_doctrine_journey_industrialist_milestone_1_due = yes }
+		set_variable = ve_doctrine_journey_milestone_1_fired
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_industrialist_milestones DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_DOCTRINE_JOURNEY_MILESTONE:[THIS.GetCountry.GetNameNoFormatting]:INDUSTRIALIST:1"
+		trigger_event = { id = ve_doctrine_journey.10 popup = yes }
+	}
+	else_if = {
+		limit = { ve_doctrine_journey_industrialist_milestone_2_due = yes }
+		set_variable = ve_doctrine_journey_milestone_2_fired
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_industrialist_milestones DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_DOCTRINE_JOURNEY_MILESTONE:[THIS.GetCountry.GetNameNoFormatting]:INDUSTRIALIST:2"
+		trigger_event = { id = ve_doctrine_journey.11 popup = yes }
+	}
+	else_if = {
+		limit = { ve_doctrine_journey_academic_milestone_1_due = yes }
+		set_variable = ve_doctrine_journey_milestone_1_fired
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_academic_milestones DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_DOCTRINE_JOURNEY_MILESTONE:[THIS.GetCountry.GetNameNoFormatting]:ACADEMIC:1"
+		trigger_event = { id = ve_doctrine_journey.20 popup = yes }
+	}
+	else_if = {
+		limit = { ve_doctrine_journey_academic_milestone_2_due = yes }
+		set_variable = ve_doctrine_journey_milestone_2_fired
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_academic_milestones DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_DOCTRINE_JOURNEY_MILESTONE:[THIS.GetCountry.GetNameNoFormatting]:ACADEMIC:2"
+		trigger_event = { id = ve_doctrine_journey.21 popup = yes }
+	}
+	else_if = {
+		limit = { ve_doctrine_journey_professional_army_milestone_1_due = yes }
+		set_variable = ve_doctrine_journey_milestone_1_fired
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_professional_army_milestones DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_DOCTRINE_JOURNEY_MILESTONE:[THIS.GetCountry.GetNameNoFormatting]:PROFESSIONAL_ARMY:1"
+		trigger_event = { id = ve_doctrine_journey.30 popup = yes }
+	}
+	else_if = {
+		limit = { ve_doctrine_journey_professional_army_milestone_2_due = yes }
+		set_variable = ve_doctrine_journey_milestone_2_fired
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_professional_army_milestones DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_DOCTRINE_JOURNEY_MILESTONE:[THIS.GetCountry.GetNameNoFormatting]:PROFESSIONAL_ARMY:2"
+		trigger_event = { id = ve_doctrine_journey.31 popup = yes }
+	}
+}
+
+ve_doctrine_journey_change_progress = {
+	set_variable = {
+		name = ve_doctrine_journey_tm_progress_before
+		value = var:ve_doctrine_journey_progress
+	}
+	change_variable = {
+		name = ve_doctrine_journey_progress
+		add = $DELTA$
+	}
+	if = {
+		limit = { var:ve_doctrine_journey_progress > 60 }
+		set_variable = { name = ve_doctrine_journey_progress value = 60 }
+	}
+	if = {
+		limit = { var:ve_doctrine_journey_progress < 0 }
+		set_variable = { name = ve_doctrine_journey_progress value = 0 }
+	}
+	set_variable = {
+		name = ve_doctrine_journey_tm_progress_actual
+		value = var:ve_doctrine_journey_progress
+	}
+	change_variable = {
+		name = ve_doctrine_journey_tm_progress_actual
+		subtract = var:ve_doctrine_journey_tm_progress_before
+	}
+	ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_progress_net_total DELTA = var:ve_doctrine_journey_tm_progress_actual }
+	remove_variable = ve_doctrine_journey_tm_progress_before
+	remove_variable = ve_doctrine_journey_tm_progress_actual
+}
+
+ve_doctrine_journey_change_national_insight = {
+	set_variable = {
+		name = ve_doctrine_journey_tm_insight_before
+		value = var:idea_point_pool
+	}
+	change_variable = {
+		name = idea_point_pool
+		add = $DELTA$
+	}
+	ve_clamp_national_insight = yes
+	set_variable = {
+		name = ve_doctrine_journey_tm_insight_actual
+		value = var:idea_point_pool
+	}
+	change_variable = {
+		name = ve_doctrine_journey_tm_insight_actual
+		subtract = var:ve_doctrine_journey_tm_insight_before
+	}
+	ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_insight_net_total DELTA = var:ve_doctrine_journey_tm_insight_actual }
+	remove_variable = ve_doctrine_journey_tm_insight_before
+	remove_variable = ve_doctrine_journey_tm_insight_actual
+}
+
+ve_record_doctrine_journey_option = {
+	ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_options DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_$GROUP$_options DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_$CLASS$_options DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_DOCTRINE_JOURNEY_OPTION:[THIS.GetCountry.GetNameNoFormatting]:$GROUP$:$MILESTONE$:$CLASS$"
+}
+
+ve_complete_industrialist_doctrine_journey_reward = {
+	ve_doctrine_journey_change_national_insight = { DELTA = 40 }
+	ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_industrialist_successes DELTA = 1 }
+}
+
+ve_doctrine_journey_change_era_momentum = {
+	if = {
+		limit = {
+			NOT = { has_variable = ve_splender_points }
+		}
+		set_variable = { name = ve_splender_points value = 0 }
+	}
+	set_variable = {
+		name = ve_doctrine_journey_tm_momentum_before
+		value = var:ve_splender_points
+	}
+	change_variable = {
+		name = ve_splender_points
+		add = $DELTA$
+	}
+	if = {
+		limit = { var:ve_splender_points < 0 }
+		set_variable = { name = ve_splender_points value = 0 }
+	}
+	set_variable = {
+		name = ve_doctrine_journey_tm_momentum_actual
+		value = var:ve_splender_points
+	}
+	change_variable = {
+		name = ve_doctrine_journey_tm_momentum_actual
+		subtract = var:ve_doctrine_journey_tm_momentum_before
+	}
+	ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_momentum_net_total DELTA = var:ve_doctrine_journey_tm_momentum_actual }
+	remove_variable = ve_doctrine_journey_tm_momentum_before
+	remove_variable = ve_doctrine_journey_tm_momentum_actual
+}
+
+ve_complete_academic_doctrine_journey_reward = {
+	ve_doctrine_journey_change_era_momentum = { DELTA = 15 }
+	ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_academic_successes DELTA = 1 }
+}
+
+ve_complete_professional_army_doctrine_journey_reward = {
+	add_modifier = {
+		name = ve_doctrine_journey_general_staff_reform_mdf
+		months = 36
+	}
+	ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_professional_army_successes DELTA = 1 }
+}
+
+ve_increment_doctrine_journey_start_age_completion = {
+	if = {
+		limit = { var:ve_doctrine_journey_start_age = 1 }
+		change_variable = { name = ve_doctrine_journeys_completed_age_1 add = 1 }
+		if = {
+			limit = { var:ve_doctrine_journeys_completed_age_1 > 2 }
+			set_variable = { name = ve_doctrine_journeys_completed_age_1 value = 2 }
+		}
+	}
+	else_if = {
+		limit = { var:ve_doctrine_journey_start_age = 2 }
+		change_variable = { name = ve_doctrine_journeys_completed_age_2 add = 1 }
+		if = {
+			limit = { var:ve_doctrine_journeys_completed_age_2 > 2 }
+			set_variable = { name = ve_doctrine_journeys_completed_age_2 value = 2 }
+		}
+	}
+	else_if = {
+		limit = { var:ve_doctrine_journey_start_age = 3 }
+		change_variable = { name = ve_doctrine_journeys_completed_age_3 add = 1 }
+		if = {
+			limit = { var:ve_doctrine_journeys_completed_age_3 > 2 }
+			set_variable = { name = ve_doctrine_journeys_completed_age_3 value = 2 }
+		}
+	}
+}
+
+ve_complete_doctrine_journey = {
+	ve_increment_doctrine_journey_start_age_completion = yes
+	if = {
+		limit = { var:ve_doctrine_journey_active_group = 1 }
+		ve_complete_industrialist_doctrine_journey_reward = yes
+		set_variable = ve_doctrine_journey_industrialist_completed
+	}
+	else_if = {
+		limit = { var:ve_doctrine_journey_active_group = 2 }
+		ve_complete_academic_doctrine_journey_reward = yes
+		set_variable = ve_doctrine_journey_academic_completed
+	}
+	else_if = {
+		limit = { var:ve_doctrine_journey_active_group = 3 }
+		ve_complete_professional_army_doctrine_journey_reward = yes
+		set_variable = ve_doctrine_journey_professional_army_completed
+	}
+	ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_successes DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_completion_months_total DELTA = var:ve_doctrine_journey_months }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_DOCTRINE_JOURNEY_RESOLUTION:[THIS.GetCountry.GetNameNoFormatting]:SUCCESS"
+	ve_clear_doctrine_journey_session = yes
+}
+
+ve_fail_doctrine_journey = {
+	if = {
+		limit = { var:ve_doctrine_journey_active_group = 1 }
+		set_variable = ve_doctrine_journey_industrialist_failed
+	}
+	else_if = {
+		limit = { var:ve_doctrine_journey_active_group = 2 }
+		set_variable = ve_doctrine_journey_academic_failed
+	}
+	else_if = {
+		limit = { var:ve_doctrine_journey_active_group = 3 }
+		set_variable = ve_doctrine_journey_professional_army_failed
+	}
+	ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_failures DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_DOCTRINE_JOURNEY_RESOLUTION:[THIS.GetCountry.GetNameNoFormatting]:FAILURE"
+	ve_clear_doctrine_journey_session = yes
+}
+
+ve_defer_doctrine_journey_offer = {
+	if = {
+		limit = { var:ve_doctrine_journey_offer_group = 1 }
+		set_variable = { name = ve_doctrine_journey_industrialist_deferred years = 5 }
+	}
+	else_if = {
+		limit = { var:ve_doctrine_journey_offer_group = 2 }
+		set_variable = { name = ve_doctrine_journey_academic_deferred years = 5 }
+	}
+	else_if = {
+		limit = { var:ve_doctrine_journey_offer_group = 3 }
+		set_variable = { name = ve_doctrine_journey_professional_army_deferred years = 5 }
+	}
+	ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_defers DELTA = 1 }
+	ve_clear_doctrine_journey_pending_offer = yes
+}
+
+ve_decline_doctrine_journey_offer = {
+	if = {
+		limit = { var:ve_doctrine_journey_offer_group = 1 }
+		set_variable = ve_doctrine_journey_industrialist_declined
+	}
+	else_if = {
+		limit = { var:ve_doctrine_journey_offer_group = 2 }
+		set_variable = ve_doctrine_journey_academic_declined
+	}
+	else_if = {
+		limit = { var:ve_doctrine_journey_offer_group = 3 }
+		set_variable = ve_doctrine_journey_professional_army_declined
+	}
+	ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_declines DELTA = 1 }
+	ve_clear_doctrine_journey_pending_offer = yes
+}

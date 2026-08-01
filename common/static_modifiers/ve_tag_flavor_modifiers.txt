@@ -1,0 +1,48 @@
+# Phase 7 tag-flavor outcomes. Each modifier is applied for exactly 24 months
+# by its pilot closure event.
+
+ve_tag_flavor_tur_civic_lexicon_mdf = {
+	state_education_access_add = 0.01
+	country_authority_add = -25
+}
+
+ve_tag_flavor_tur_sacred_continuity_mdf = {
+	country_authority_add = 25
+	country_tech_spread_mult = -0.025
+}
+
+ve_tag_flavor_tur_administrative_translation_mdf = {
+	country_bureaucracy_add = 25
+	country_law_enactment_speed_mult = -0.025
+}
+
+ve_tag_flavor_jap_translation_bureaus_mdf = {
+	country_tech_spread_mult = 0.025
+	country_authority_add = -25
+}
+
+ve_tag_flavor_jap_directed_borrowing_mdf = {
+	country_authority_add = 25
+	country_law_enactment_speed_mult = -0.025
+}
+
+ve_tag_flavor_jap_selective_adoption_mdf = {
+	country_authority_add = 25
+	country_tech_spread_mult = -0.025
+}
+
+ve_tag_flavor_usa_citizenship_compact_mdf = {
+	state_migration_pull_mult = 0.025
+	country_authority_add = -25
+}
+
+ve_tag_flavor_usa_composite_bargain_mdf = {
+	country_bureaucracy_add = 25
+	state_assimilation_mult = -0.025
+}
+
+# The -2 National Cohesion equilibrium pressure is read by
+# ve_common_national_cohesion while this modifier is active.
+ve_tag_flavor_usa_federal_ambiguity_mdf = {
+	country_influence_add = 25
+}

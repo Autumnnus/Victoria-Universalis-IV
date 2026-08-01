@@ -1,8 +1,17 @@
 ﻿ve_clear_cultural_project_state = {
 	every_scope_state = {
-		remove_modifier = ve_ethnic_campaign_active_mdf
-		remove_modifier = ve_civic_initiative_active_mdf
-		remove_modifier = ve_composite_compact_active_mdf
+		if = {
+			limit = { has_modifier = ve_ethnic_campaign_active_mdf }
+			remove_modifier = ve_ethnic_campaign_active_mdf
+		}
+		if = {
+			limit = { has_modifier = ve_civic_initiative_active_mdf }
+			remove_modifier = ve_civic_initiative_active_mdf
+		}
+		if = {
+			limit = { has_modifier = ve_composite_compact_active_mdf }
+			remove_modifier = ve_composite_compact_active_mdf
+		}
 		# 'selected_state_culture' is never set anywhere in the mod; removing it
 		# only produced a "variable is used but never set" warning each load.
 	}
@@ -11,6 +20,7 @@
 ve_clear_active_cultural_project = {
 	remove_modifier = ve_cultural_project_administration_mdf
 	ve_clear_cultural_project_state = yes
+	ve_evt_clear_cultural_incident_session = yes
 	remove_variable = ve_cultural_project_type
 	remove_variable = ve_cultural_project_progress
 	remove_variable = ve_cultural_project_target_state
@@ -37,6 +47,8 @@ ve_begin_cultural_project_common = {
 		name = ve_cultural_project_administration_mdf
 		months = -1
 	}
+	ve_evt_begin_cultural_incident_session = yes
+	ve_evt_tm_begin_cultural_project = yes
 }
 
 ve_begin_national_curriculum = {
@@ -72,6 +84,14 @@ ve_begin_targeted_cultural_project = {
 		limit = {
 			NOT = { is_primary_culture_of = ROOT.owner }
 			ROOT = {
+				NOT = {
+					is_target_in_variable_list = {
+						name = ve_completed_cultural_project_cultures
+						target = PREV
+					}
+				}
+			}
+			ROOT = {
 				"culture_percent_state(prev)" >= 0.05
 			}
 			OR = {
@@ -97,7 +117,9 @@ ve_begin_targeted_cultural_project = {
 	owner = {
 		set_variable = {
 			name = ve_cultural_project_target_state
-			value = ROOT
+			# PREV is the selected state for both the player GUI and the AI's
+			# ordered_owned_state path; THIS is already reassigned to owner here.
+			value = PREV
 		}
 		set_variable = {
 			name = ve_cultural_project_target_culture
@@ -200,7 +222,20 @@ ve_finish_shared_symbols = {
 	}
 }
 
+# A completed targeted project is a durable state/culture relationship. Keep
+# the culture on the state rather than a country-wide list, so the same culture
+# can still be addressed in another state.
+ve_mark_cultural_project_target_completed = {
+	var:ve_cultural_project_target_state ?= {
+		add_to_variable_list = {
+			name = ve_completed_cultural_project_cultures
+			target = ROOT.var:ve_cultural_project_target_culture
+		}
+	}
+}
+
 ve_finish_ethnic_campaign = {
+	ve_mark_cultural_project_target_completed = yes
 	var:ve_cultural_project_target_state ?= {
 		every_scope_pop = {
 			limit = {
@@ -231,6 +266,7 @@ ve_finish_ethnic_campaign = {
 }
 
 ve_finish_civic_initiative = {
+	ve_mark_cultural_project_target_completed = yes
 	add_culture_acceptance_modifier = {
 		culture = var:ve_cultural_project_target_culture
 		days = 3650
@@ -257,6 +293,7 @@ ve_finish_civic_initiative = {
 }
 
 ve_finish_composite_compact = {
+	ve_mark_cultural_project_target_completed = yes
 	add_culture_acceptance_modifier = {
 		culture = var:ve_cultural_project_target_culture
 		multiplier = 15
@@ -306,6 +343,11 @@ ve_finish_cultural_project = {
 		limit = { var:ve_cultural_project_type == 5 }
 		ve_finish_composite_compact = yes
 	}
+	if = {
+		limit = { has_journal_entry = ve_je_cultural_project }
+		set_variable = ve_evt_cultural_je_success
+	}
+	ve_evt_tm_resolve_cultural_success = yes
 	ve_clear_active_cultural_project = yes
 	ve_clamp_cultural_mandate = yes
 	ve_clamp_national_cohesion = yes
@@ -314,6 +356,11 @@ ve_finish_cultural_project = {
 ve_cancel_cultural_project = {
 	if = {
 		limit = { ve_has_active_cultural_project = yes }
+		if = {
+			limit = { has_journal_entry = ve_je_cultural_project }
+			set_variable = ve_evt_cultural_je_failure
+		}
+		ve_evt_tm_resolve_cultural_failure = yes
 		ve_clear_active_cultural_project = yes
 		change_variable = {
 			name = ve_national_cohesion
@@ -330,6 +377,11 @@ ve_cancel_cultural_project = {
 ve_cancel_cultural_project_for_identity_change = {
 	if = {
 		limit = { ve_has_active_cultural_project = yes }
+		if = {
+			limit = { has_journal_entry = ve_je_cultural_project }
+			set_variable = ve_evt_cultural_je_invalid
+		}
+		ve_evt_tm_resolve_cultural_invalid = yes
 		ve_clear_active_cultural_project = yes
 	}
 }
@@ -338,6 +390,7 @@ ve_update_cultural_project = {
 	ve_initialize_cultural_projects = yes
 	if = {
 		limit = { ve_has_active_cultural_project = yes }
+		ve_evt_tm_tick_cultural_project = yes
 		if = {
 			limit = {
 				ve_project_is_targeted = yes

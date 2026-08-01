@@ -1,0 +1,1660 @@
+namespace = ve_idea_evt
+
+# Phase 4 Production pilot: Industrialist and Agrarian ambient doctrine events.
+# Every event has both an engine cooldown and a timed dispatch variable so the
+# scripted weighted pool can exclude unavailable entries before choosing one.
+
+ve_idea_evt.10 = {
+	type = country_event
+	title = ve_idea_evt.10.t
+	desc = ve_idea_evt.10.d
+	event_image = { video = "gfx/event_pictures/asia_factory_accident.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	cooldown = { years = 10 }
+
+	trigger = {
+		ve_can_fire_doctrine_ambient_industrialist_10 = yes
+	}
+	cancellation_trigger = {
+		NOT = { has_modifier = industrialist_idea_2_mdf }
+	}
+	immediate = {
+		set_variable = {
+			name = ve_idea_evt_10_dispatch_cooldown
+			years = 10
+		}
+		ve_doctrine_ambient_record_event = {
+			GROUP = industrialist
+			CLASS = dilemma
+		}
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.10:industrialist:dilemma"
+	}
+
+	option = {
+		name = ve_idea_evt.10.a
+		trigger = {
+			ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+		}
+		ai_chance = {
+			base = 40
+			modifier = { trigger = { var:idea_point_pool >= 300 } add = 25 }
+			modifier = { trigger = { var:idea_point_pool < 100 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.10.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = industrialist_idea_2_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -25 }
+				ig:ig_trade_unions ?= {
+					ve_doctrine_ambient_support_interest_group = yes
+				}
+				ig:ig_industrialists ?= {
+					ve_doctrine_ambient_slight_interest_group = yes
+				}
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.10:industrialist:dilemma:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.10.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 100 } add = 30 }
+			modifier = {
+				trigger = {
+					ig:ig_trade_unions = { is_powerful = yes }
+				}
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_idea_evt.10.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = industrialist_idea_2_mdf }
+				ve_doctrine_ambient_record_option = yes
+				ig:ig_industrialists ?= {
+					ve_doctrine_ambient_support_interest_group = yes
+				}
+				ig:ig_trade_unions ?= {
+					ve_doctrine_ambient_slight_interest_group = yes
+				}
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.10:industrialist:dilemma:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.10.c
+		trigger = {
+			has_modifier = industrialist_idea_5_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 55
+			modifier = { trigger = { var:idea_point_pool >= 150 } add = 20 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.10.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = industrialist_idea_5_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -10 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.10:industrialist:dilemma:c"
+			}
+		}
+	}
+}
+
+ve_idea_evt.11 = {
+	type = country_event
+	title = ve_idea_evt.11.t
+	desc = ve_idea_evt.11.d
+	event_image = { video = "gfx/event_pictures/southamerica_factory_opening.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	cooldown = { years = 10 }
+
+	trigger = {
+		ve_can_fire_doctrine_ambient_industrialist_11 = yes
+	}
+	cancellation_trigger = {
+		NOT = { has_modifier = industrialist_idea_4_mdf }
+	}
+	immediate = {
+		set_variable = {
+			name = ve_idea_evt_11_dispatch_cooldown
+			years = 10
+		}
+		ve_doctrine_ambient_record_event = {
+			GROUP = industrialist
+			CLASS = opportunity
+		}
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.11:industrialist:opportunity"
+	}
+
+	option = {
+		name = ve_idea_evt.11.a
+		trigger = {
+			ve_can_afford_doctrine_ambient_insight = { COST = 40 }
+		}
+		ai_chance = {
+			base = 40
+			modifier = { trigger = { var:idea_point_pool >= 400 } add = 35 }
+			modifier = { trigger = { var:idea_point_pool < 150 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.11.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = industrialist_idea_4_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 40 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -40 }
+				add_modifier = {
+					name = ve_doctrine_industrialist_positive_mdf
+					months = 36
+				}
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.11:industrialist:opportunity:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.11.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool <= 250 } add = 40 }
+			modifier = { trigger = { var:idea_point_pool >= 750 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_idea_evt.11.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = industrialist_idea_4_mdf }
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = 15 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.11:industrialist:opportunity:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.11.c
+		trigger = {
+			has_modifier = industrialist_idea_7_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 20 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 250 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 100 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.11.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = industrialist_idea_7_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 20 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -20 }
+				add_modifier = {
+					name = ve_doctrine_industrialist_positive_mdf
+					months = 36
+				}
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.11:industrialist:opportunity:c"
+			}
+		}
+	}
+}
+
+ve_idea_evt.12 = {
+	type = country_event
+	title = ve_idea_evt.12.t
+	desc = ve_idea_evt.12.d
+	event_image = { video = "gfx/event_pictures/unspecific_factory_closed.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	cooldown = { years = 10 }
+
+	trigger = {
+		ve_can_fire_doctrine_ambient_industrialist_12 = yes
+	}
+	cancellation_trigger = {
+		NOT = { has_modifier = industrialist_idea_2_mdf }
+	}
+	immediate = {
+		set_variable = {
+			name = ve_idea_evt_12_dispatch_cooldown
+			years = 10
+		}
+		ve_doctrine_ambient_record_event = {
+			GROUP = industrialist
+			CLASS = setback
+		}
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.12:industrialist:setback"
+	}
+
+	option = {
+		name = ve_idea_evt.12.a
+		trigger = {
+			ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+		}
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:idea_point_pool >= 300 } add = 35 }
+			modifier = {
+				trigger = {
+					OR = {
+						is_at_war = yes
+						bureaucracy < 0
+						approaching_bureaucracy_shortage = yes
+					}
+				}
+				add = 15
+			}
+		}
+		custom_tooltip = { text = ve_idea_evt.12.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = industrialist_idea_2_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -25 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.12:industrialist:setback:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.12.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 100 } add = 50 }
+			modifier = { trigger = { var:idea_point_pool >= 500 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_idea_evt.12.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = industrialist_idea_2_mdf }
+				ve_doctrine_ambient_record_option = yes
+				add_modifier = {
+					name = ve_doctrine_industrialist_negative_mdf
+					months = 24
+				}
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.12:industrialist:setback:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.12.c
+		trigger = {
+			has_modifier = industrialist_idea_5_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 150 } add = 25 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.12.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = industrialist_idea_5_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -10 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.12:industrialist:setback:c"
+			}
+		}
+	}
+}
+
+ve_idea_evt.60 = {
+	type = country_event
+	title = ve_idea_evt.60.t
+	desc = ve_idea_evt.60.d
+	event_image = { video = "gfx/event_pictures/asia_farmers_market.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	cooldown = { years = 10 }
+
+	trigger = {
+		ve_can_fire_doctrine_ambient_agrarian_60 = yes
+	}
+	cancellation_trigger = {
+		NOT = { has_modifier = agrarian_idea_2_mdf }
+	}
+	immediate = {
+		set_variable = {
+			name = ve_idea_evt_60_dispatch_cooldown
+			years = 10
+		}
+		ve_doctrine_ambient_record_event = {
+			GROUP = agrarian
+			CLASS = dilemma
+		}
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.60:agrarian:dilemma"
+	}
+
+	option = {
+		name = ve_idea_evt.60.a
+		trigger = {
+			ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+		}
+		ai_chance = {
+			base = 40
+			modifier = { trigger = { var:idea_point_pool >= 300 } add = 25 }
+			modifier = { trigger = { var:idea_point_pool < 100 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.60.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = agrarian_idea_2_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -25 }
+				add_modifier = {
+					name = ve_doctrine_agrarian_positive_mdf
+					months = 24
+				}
+				ig:ig_industrialists ?= {
+					ve_doctrine_ambient_support_interest_group = yes
+				}
+				ig:ig_rural_folk ?= {
+					ve_doctrine_ambient_slight_interest_group = yes
+				}
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.60:agrarian:dilemma:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.60.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 100 } add = 30 }
+			modifier = {
+				trigger = {
+					ig:ig_landowners = { is_powerful = yes }
+				}
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_idea_evt.60.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = agrarian_idea_2_mdf }
+				ve_doctrine_ambient_record_option = yes
+				ig:ig_rural_folk ?= {
+					ve_doctrine_ambient_support_interest_group = yes
+				}
+				ig:ig_landowners ?= {
+					ve_doctrine_ambient_slight_interest_group = yes
+				}
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.60:agrarian:dilemma:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.60.c
+		trigger = {
+			has_modifier = agrarian_idea_5_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 55
+			modifier = { trigger = { var:idea_point_pool >= 150 } add = 20 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.60.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = agrarian_idea_5_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -10 }
+				add_modifier = {
+					name = ve_doctrine_agrarian_positive_mdf
+					months = 24
+				}
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.60:agrarian:dilemma:c"
+			}
+		}
+	}
+}
+
+ve_idea_evt.61 = {
+	type = country_event
+	title = ve_idea_evt.61.t
+	desc = ve_idea_evt.61.d
+	event_image = { video = "gfx/event_pictures/africa_prosperous_farm.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	cooldown = { years = 10 }
+
+	trigger = {
+		ve_can_fire_doctrine_ambient_agrarian_61 = yes
+	}
+	cancellation_trigger = {
+		NOT = { has_modifier = agrarian_idea_4_mdf }
+	}
+	immediate = {
+		set_variable = {
+			name = ve_idea_evt_61_dispatch_cooldown
+			years = 10
+		}
+		ve_doctrine_ambient_record_event = {
+			GROUP = agrarian
+			CLASS = opportunity
+		}
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.61:agrarian:opportunity"
+	}
+
+	option = {
+		name = ve_idea_evt.61.a
+		trigger = {
+			ve_can_afford_doctrine_ambient_insight = { COST = 40 }
+		}
+		ai_chance = {
+			base = 40
+			modifier = { trigger = { var:idea_point_pool >= 400 } add = 35 }
+			modifier = { trigger = { var:idea_point_pool < 150 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.61.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = agrarian_idea_4_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 40 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -40 }
+				add_modifier = {
+					name = ve_doctrine_agrarian_positive_mdf
+					months = 36
+				}
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.61:agrarian:opportunity:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.61.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool <= 250 } add = 40 }
+			modifier = { trigger = { var:idea_point_pool >= 750 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_idea_evt.61.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = agrarian_idea_4_mdf }
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = 15 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.61:agrarian:opportunity:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.61.c
+		trigger = {
+			has_modifier = agrarian_idea_7_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 20 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 250 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 100 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.61.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = agrarian_idea_7_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 20 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -20 }
+				add_modifier = {
+					name = ve_doctrine_agrarian_positive_mdf
+					months = 36
+				}
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.61:agrarian:opportunity:c"
+			}
+		}
+	}
+}
+
+ve_idea_evt.62 = {
+	type = country_event
+	title = ve_idea_evt.62.t
+	desc = ve_idea_evt.62.d
+	event_image = { video = "gfx/event_pictures/asia_dead_cattle_poor_harvest.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	cooldown = { years = 10 }
+
+	trigger = {
+		ve_can_fire_doctrine_ambient_agrarian_62 = yes
+	}
+	cancellation_trigger = {
+		NOT = { has_modifier = agrarian_idea_2_mdf }
+	}
+	immediate = {
+		set_variable = {
+			name = ve_idea_evt_62_dispatch_cooldown
+			years = 10
+		}
+		ve_doctrine_ambient_record_event = {
+			GROUP = agrarian
+			CLASS = setback
+		}
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.62:agrarian:setback"
+	}
+
+	option = {
+		name = ve_idea_evt.62.a
+		trigger = {
+			ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+		}
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:idea_point_pool >= 300 } add = 35 }
+			modifier = {
+				trigger = {
+					OR = {
+						is_at_war = yes
+						bureaucracy < 0
+						approaching_bureaucracy_shortage = yes
+					}
+				}
+				add = 15
+			}
+		}
+		custom_tooltip = { text = ve_idea_evt.62.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = agrarian_idea_2_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -25 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.62:agrarian:setback:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.62.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 100 } add = 50 }
+			modifier = { trigger = { var:idea_point_pool >= 500 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_idea_evt.62.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = agrarian_idea_2_mdf }
+				ve_doctrine_ambient_record_option = yes
+				add_modifier = {
+					name = ve_doctrine_agrarian_negative_mdf
+					months = 24
+				}
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.62:agrarian:setback:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.62.c
+		trigger = {
+			has_modifier = agrarian_idea_5_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 150 } add = 25 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.62.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = agrarian_idea_5_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -10 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.62:agrarian:setback:c"
+			}
+		}
+	}
+}
+
+# Society pilot: Academic
+
+ve_idea_evt.20 = {
+	type = country_event
+	title = ve_idea_evt.20.t
+	desc = ve_idea_evt.20.d
+	event_image = { video = "gfx/event_pictures/middleeast_engineer_blueprint.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	cooldown = { years = 10 }
+	trigger = { ve_can_fire_doctrine_ambient_academic_20 = yes }
+	cancellation_trigger = { NOT = { has_modifier = academic_idea_2_mdf } }
+	immediate = {
+		set_variable = { name = ve_idea_evt_20_dispatch_cooldown years = 10 }
+		ve_doctrine_ambient_record_event = { GROUP = academic CLASS = dilemma }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.20:academic:dilemma"
+	}
+	option = {
+		name = ve_idea_evt.20.a
+		trigger = { ve_can_afford_doctrine_ambient_insight = { COST = 25 } }
+		ai_chance = {
+			base = 40
+			modifier = { trigger = { var:idea_point_pool >= 300 } add = 25 }
+			modifier = { trigger = { var:idea_point_pool < 100 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.20.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = academic_idea_2_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -25 }
+				ig:ig_intelligentsia ?= { ve_doctrine_ambient_support_interest_group = yes }
+				ig:ig_petty_bourgeoisie ?= { ve_doctrine_ambient_slight_interest_group = yes }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.20:academic:dilemma:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.20.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 100 } add = 30 }
+			modifier = { trigger = { ig:ig_intelligentsia = { is_powerful = yes } } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_idea_evt.20.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = academic_idea_2_mdf }
+				ve_doctrine_ambient_record_option = yes
+				ig:ig_petty_bourgeoisie ?= { ve_doctrine_ambient_support_interest_group = yes }
+				ig:ig_intelligentsia ?= { ve_doctrine_ambient_slight_interest_group = yes }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.20:academic:dilemma:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.20.c
+		trigger = {
+			has_modifier = academic_idea_5_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 55
+			modifier = { trigger = { var:idea_point_pool >= 150 } add = 20 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.20.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = academic_idea_5_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -10 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.20:academic:dilemma:c"
+			}
+		}
+	}
+}
+
+ve_idea_evt.21 = {
+	type = country_event
+	title = ve_idea_evt.21.t
+	desc = ve_idea_evt.21.d
+	event_image = { video = "gfx/event_pictures/unspecific_world_fair.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	cooldown = { years = 10 }
+	trigger = { ve_can_fire_doctrine_ambient_academic_21 = yes }
+	cancellation_trigger = { NOT = { has_modifier = academic_idea_4_mdf } }
+	immediate = {
+		set_variable = { name = ve_idea_evt_21_dispatch_cooldown years = 10 }
+		ve_doctrine_ambient_record_event = { GROUP = academic CLASS = opportunity }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.21:academic:opportunity"
+	}
+	option = {
+		name = ve_idea_evt.21.a
+		trigger = { ve_can_afford_doctrine_ambient_insight = { COST = 40 } }
+		ai_chance = {
+			base = 40
+			modifier = { trigger = { var:idea_point_pool >= 400 } add = 35 }
+			modifier = { trigger = { var:idea_point_pool < 150 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.21.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = academic_idea_4_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 40 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -40 }
+				add_modifier = { name = ve_doctrine_academic_positive_mdf months = 36 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.21:academic:opportunity:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.21.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool <= 250 } add = 40 }
+			modifier = { trigger = { var:idea_point_pool >= 750 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_idea_evt.21.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = academic_idea_4_mdf }
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = 15 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.21:academic:opportunity:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.21.c
+		trigger = {
+			has_modifier = academic_idea_7_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 20 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 250 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 100 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.21.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = academic_idea_7_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 20 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -20 }
+				add_modifier = { name = ve_doctrine_academic_positive_mdf months = 36 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.21:academic:opportunity:c"
+			}
+		}
+	}
+}
+
+ve_idea_evt.22 = {
+	type = country_event
+	title = ve_idea_evt.22.t
+	desc = ve_idea_evt.22.d
+	event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	cooldown = { years = 10 }
+	trigger = { ve_can_fire_doctrine_ambient_academic_22 = yes }
+	cancellation_trigger = { NOT = { has_modifier = academic_idea_2_mdf } }
+	immediate = {
+		set_variable = { name = ve_idea_evt_22_dispatch_cooldown years = 10 }
+		ve_doctrine_ambient_record_event = { GROUP = academic CLASS = setback }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.22:academic:setback"
+	}
+	option = {
+		name = ve_idea_evt.22.a
+		trigger = { ve_can_afford_doctrine_ambient_insight = { COST = 25 } }
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:idea_point_pool >= 300 } add = 35 }
+			modifier = {
+				trigger = {
+					OR = { is_at_war = yes bureaucracy < 0 approaching_bureaucracy_shortage = yes }
+				}
+				add = 15
+			}
+		}
+		custom_tooltip = { text = ve_idea_evt.22.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = academic_idea_2_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -25 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.22:academic:setback:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.22.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 100 } add = 50 }
+			modifier = { trigger = { var:idea_point_pool >= 500 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_idea_evt.22.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = academic_idea_2_mdf }
+				ve_doctrine_ambient_record_option = yes
+				add_modifier = { name = ve_doctrine_academic_negative_mdf months = 24 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.22:academic:setback:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.22.c
+		trigger = {
+			has_modifier = academic_idea_5_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 150 } add = 25 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.22.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = academic_idea_5_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -10 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.22:academic:setback:c"
+			}
+		}
+	}
+}
+
+# Society pilot: Nationalist
+
+ve_idea_evt.30 = {
+	type = country_event
+	title = ve_idea_evt.30.t
+	desc = ve_idea_evt.30.d
+	event_image = { video = "gfx/event_pictures/unspecific_ruler_speaking_to_people.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	cooldown = { years = 10 }
+	trigger = { ve_can_fire_doctrine_ambient_nationalist_30 = yes }
+	cancellation_trigger = { NOT = { has_modifier = nationalist_idea_2_mdf } }
+	immediate = {
+		set_variable = { name = ve_idea_evt_30_dispatch_cooldown years = 10 }
+		ve_doctrine_ambient_record_event = { GROUP = nationalist CLASS = dilemma }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.30:nationalist:dilemma"
+	}
+	option = {
+		name = ve_idea_evt.30.a
+		trigger = { ve_can_afford_doctrine_ambient_insight = { COST = 25 } }
+		ai_chance = {
+			base = 40
+			modifier = { trigger = { var:idea_point_pool >= 300 } add = 25 }
+			modifier = { trigger = { var:idea_point_pool < 100 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.30.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = nationalist_idea_2_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -25 }
+				ig:ig_rural_folk ?= { ve_doctrine_ambient_support_interest_group = yes }
+				ig:ig_petty_bourgeoisie ?= { ve_doctrine_ambient_slight_interest_group = yes }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.30:nationalist:dilemma:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.30.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 100 } add = 30 }
+			modifier = { trigger = { ig:ig_rural_folk = { is_powerful = yes } } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_idea_evt.30.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = nationalist_idea_2_mdf }
+				ve_doctrine_ambient_record_option = yes
+				ig:ig_petty_bourgeoisie ?= { ve_doctrine_ambient_support_interest_group = yes }
+				ig:ig_rural_folk ?= { ve_doctrine_ambient_slight_interest_group = yes }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.30:nationalist:dilemma:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.30.c
+		trigger = {
+			has_modifier = nationalist_idea_5_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 55
+			modifier = { trigger = { var:idea_point_pool >= 150 } add = 20 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.30.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = nationalist_idea_5_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -10 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.30:nationalist:dilemma:c"
+			}
+		}
+	}
+}
+
+ve_idea_evt.31 = {
+	type = country_event
+	title = ve_idea_evt.31.t
+	desc = ve_idea_evt.31.d
+	event_image = { video = "gfx/event_pictures/unspecific_military_parade.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	cooldown = { years = 10 }
+	trigger = { ve_can_fire_doctrine_ambient_nationalist_31 = yes }
+	cancellation_trigger = { NOT = { has_modifier = nationalist_idea_4_mdf } }
+	immediate = {
+		set_variable = { name = ve_idea_evt_31_dispatch_cooldown years = 10 }
+		ve_doctrine_ambient_record_event = { GROUP = nationalist CLASS = opportunity }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.31:nationalist:opportunity"
+	}
+	option = {
+		name = ve_idea_evt.31.a
+		trigger = { ve_can_afford_doctrine_ambient_insight = { COST = 40 } }
+		ai_chance = {
+			base = 40
+			modifier = { trigger = { var:idea_point_pool >= 400 } add = 35 }
+			modifier = { trigger = { var:idea_point_pool < 150 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.31.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = nationalist_idea_4_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 40 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -40 }
+				add_modifier = { name = ve_doctrine_nationalist_positive_mdf months = 36 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.31:nationalist:opportunity:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.31.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool <= 250 } add = 40 }
+			modifier = { trigger = { var:idea_point_pool >= 750 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_idea_evt.31.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = nationalist_idea_4_mdf }
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = 15 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.31:nationalist:opportunity:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.31.c
+		trigger = {
+			has_modifier = nationalist_idea_7_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 20 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 250 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 100 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.31.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = nationalist_idea_7_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 20 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -20 }
+				add_modifier = { name = ve_doctrine_nationalist_positive_mdf months = 36 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.31:nationalist:opportunity:c"
+			}
+		}
+	}
+}
+
+ve_idea_evt.32 = {
+	type = country_event
+	title = ve_idea_evt.32.t
+	desc = ve_idea_evt.32.d
+	event_image = { video = "gfx/event_pictures/europenorthamerica_political_extremism.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	cooldown = { years = 10 }
+	trigger = { ve_can_fire_doctrine_ambient_nationalist_32 = yes }
+	cancellation_trigger = { NOT = { has_modifier = nationalist_idea_2_mdf } }
+	immediate = {
+		set_variable = { name = ve_idea_evt_32_dispatch_cooldown years = 10 }
+		ve_doctrine_ambient_record_event = { GROUP = nationalist CLASS = setback }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.32:nationalist:setback"
+	}
+	option = {
+		name = ve_idea_evt.32.a
+		trigger = { ve_can_afford_doctrine_ambient_insight = { COST = 25 } }
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:idea_point_pool >= 300 } add = 35 }
+			modifier = { trigger = { OR = { is_at_war = yes bureaucracy < 0 approaching_bureaucracy_shortage = yes } } add = 15 }
+		}
+		custom_tooltip = { text = ve_idea_evt.32.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = nationalist_idea_2_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -25 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.32:nationalist:setback:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.32.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 100 } add = 50 }
+			modifier = { trigger = { var:idea_point_pool >= 500 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_idea_evt.32.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = nationalist_idea_2_mdf }
+				ve_doctrine_ambient_record_option = yes
+				add_modifier = { name = ve_doctrine_nationalist_negative_mdf months = 24 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.32:nationalist:setback:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.32.c
+		trigger = {
+			has_modifier = nationalist_idea_5_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 150 } add = 25 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.32.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = nationalist_idea_5_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -10 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.32:nationalist:setback:c"
+			}
+		}
+	}
+}
+
+# Society pilot: Reformist
+
+ve_idea_evt.40 = {
+	type = country_event
+	title = ve_idea_evt.40.t
+	desc = ve_idea_evt.40.d
+	event_image = { video = "gfx/event_pictures/unspecific_politicians_arguing.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	cooldown = { years = 10 }
+	trigger = { ve_can_fire_doctrine_ambient_reformist_40 = yes }
+	cancellation_trigger = { NOT = { has_modifier = reformist_idea_2_mdf } }
+	immediate = {
+		set_variable = { name = ve_idea_evt_40_dispatch_cooldown years = 10 }
+		ve_doctrine_ambient_record_event = { GROUP = reformist CLASS = dilemma }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.40:reformist:dilemma"
+	}
+	option = {
+		name = ve_idea_evt.40.a
+		trigger = { ve_can_afford_doctrine_ambient_insight = { COST = 25 } }
+		ai_chance = {
+			base = 40
+			modifier = { trigger = { var:idea_point_pool >= 300 } add = 25 }
+			modifier = { trigger = { var:idea_point_pool < 100 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.40.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = reformist_idea_2_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -25 }
+				ig:ig_intelligentsia ?= { ve_doctrine_ambient_support_interest_group = yes }
+				ig:ig_trade_unions ?= { ve_doctrine_ambient_slight_interest_group = yes }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.40:reformist:dilemma:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.40.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 100 } add = 30 }
+			modifier = { trigger = { ig:ig_industrialists = { is_powerful = yes } } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_idea_evt.40.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = reformist_idea_2_mdf }
+				ve_doctrine_ambient_record_option = yes
+				ig:ig_trade_unions ?= { ve_doctrine_ambient_support_interest_group = yes }
+				ig:ig_industrialists ?= { ve_doctrine_ambient_slight_interest_group = yes }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.40:reformist:dilemma:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.40.c
+		trigger = {
+			has_modifier = reformist_idea_5_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 55
+			modifier = { trigger = { var:idea_point_pool >= 150 } add = 20 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.40.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = reformist_idea_5_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -10 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.40:reformist:dilemma:c"
+			}
+		}
+	}
+}
+
+ve_idea_evt.41 = {
+	type = country_event
+	title = ve_idea_evt.41.t
+	desc = ve_idea_evt.41.d
+	event_image = { video = "gfx/event_pictures/europenorthamerica_sufferage.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	cooldown = { years = 10 }
+	trigger = { ve_can_fire_doctrine_ambient_reformist_41 = yes }
+	cancellation_trigger = { NOT = { has_modifier = reformist_idea_4_mdf } }
+	immediate = {
+		set_variable = { name = ve_idea_evt_41_dispatch_cooldown years = 10 }
+		ve_doctrine_ambient_record_event = { GROUP = reformist CLASS = opportunity }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.41:reformist:opportunity"
+	}
+	option = {
+		name = ve_idea_evt.41.a
+		trigger = { ve_can_afford_doctrine_ambient_insight = { COST = 40 } }
+		ai_chance = {
+			base = 40
+			modifier = { trigger = { var:idea_point_pool >= 400 } add = 35 }
+			modifier = { trigger = { var:idea_point_pool < 150 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.41.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = reformist_idea_4_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 40 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -40 }
+				add_modifier = { name = ve_doctrine_reformist_positive_mdf months = 36 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.41:reformist:opportunity:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.41.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool <= 250 } add = 40 }
+			modifier = { trigger = { var:idea_point_pool >= 750 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_idea_evt.41.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = reformist_idea_4_mdf }
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = 15 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.41:reformist:opportunity:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.41.c
+		trigger = {
+			has_modifier = reformist_idea_7_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 20 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 250 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 100 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.41.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = reformist_idea_7_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 20 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -20 }
+				add_modifier = { name = ve_doctrine_reformist_positive_mdf months = 36 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.41:reformist:opportunity:c"
+			}
+		}
+	}
+}
+
+ve_idea_evt.42 = {
+	type = country_event
+	title = ve_idea_evt.42.t
+	desc = ve_idea_evt.42.d
+	event_image = { video = "gfx/event_pictures/africa_public_protest.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	cooldown = { years = 10 }
+	trigger = { ve_can_fire_doctrine_ambient_reformist_42 = yes }
+	cancellation_trigger = { NOT = { has_modifier = reformist_idea_2_mdf } }
+	immediate = {
+		set_variable = { name = ve_idea_evt_42_dispatch_cooldown years = 10 }
+		ve_doctrine_ambient_record_event = { GROUP = reformist CLASS = setback }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.42:reformist:setback"
+	}
+	option = {
+		name = ve_idea_evt.42.a
+		trigger = { ve_can_afford_doctrine_ambient_insight = { COST = 25 } }
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:idea_point_pool >= 300 } add = 35 }
+			modifier = { trigger = { OR = { is_at_war = yes bureaucracy < 0 approaching_bureaucracy_shortage = yes } } add = 15 }
+		}
+		custom_tooltip = { text = ve_idea_evt.42.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = reformist_idea_2_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -25 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.42:reformist:setback:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.42.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 100 } add = 50 }
+			modifier = { trigger = { var:idea_point_pool >= 500 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_idea_evt.42.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = reformist_idea_2_mdf }
+				ve_doctrine_ambient_record_option = yes
+				add_modifier = { name = ve_doctrine_reformist_negative_mdf months = 24 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.42:reformist:setback:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.42.c
+		trigger = {
+			has_modifier = reformist_idea_5_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 150 } add = 25 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.42.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = reformist_idea_5_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -10 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.42:reformist:setback:c"
+			}
+		}
+	}
+}
+
+# Military pilot: Professional Army
+
+ve_idea_evt.50 = {
+	type = country_event
+	title = ve_idea_evt.50.t
+	desc = ve_idea_evt.50.d
+	event_image = { video = "gfx/event_pictures/southamerica_aristocrats.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	cooldown = { years = 10 }
+	trigger = { ve_can_fire_doctrine_ambient_professional_army_50 = yes }
+	cancellation_trigger = { NOT = { has_modifier = professional_army_idea_2_mdf } }
+	immediate = {
+		set_variable = { name = ve_idea_evt_50_dispatch_cooldown years = 10 }
+		ve_doctrine_ambient_record_event = { GROUP = professional_army CLASS = dilemma }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.50:professional_army:dilemma"
+	}
+	option = {
+		name = ve_idea_evt.50.a
+		trigger = { ve_can_afford_doctrine_ambient_insight = { COST = 25 } }
+		ai_chance = {
+			base = 40
+			modifier = { trigger = { var:idea_point_pool >= 300 } add = 25 }
+			modifier = { trigger = { var:idea_point_pool < 100 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.50.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = professional_army_idea_2_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -25 }
+				add_modifier = { name = ve_doctrine_professional_army_positive_mdf months = 24 }
+				ig:ig_armed_forces ?= { ve_doctrine_ambient_slight_interest_group = yes }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.50:professional_army:dilemma:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.50.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 100 } add = 30 }
+		}
+		custom_tooltip = { text = ve_idea_evt.50.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = professional_army_idea_2_mdf }
+				ve_doctrine_ambient_record_option = yes
+				ig:ig_armed_forces ?= { ve_doctrine_ambient_support_interest_group = yes }
+				add_modifier = { name = ve_doctrine_professional_army_negative_mdf months = 12 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.50:professional_army:dilemma:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.50.c
+		trigger = {
+			has_modifier = professional_army_idea_5_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 55
+			modifier = { trigger = { var:idea_point_pool >= 150 } add = 20 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.50.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = professional_army_idea_5_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -10 }
+				add_modifier = { name = ve_doctrine_professional_army_positive_mdf months = 24 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.50:professional_army:dilemma:c"
+			}
+		}
+	}
+}
+
+ve_idea_evt.51 = {
+	type = country_event
+	title = ve_idea_evt.51.t
+	desc = ve_idea_evt.51.d
+	event_image = { video = "gfx/event_pictures/europenorthamerica_before_the_battle.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	cooldown = { years = 10 }
+	trigger = { ve_can_fire_doctrine_ambient_professional_army_51 = yes }
+	cancellation_trigger = { NOT = { has_modifier = professional_army_idea_4_mdf } }
+	immediate = {
+		set_variable = { name = ve_idea_evt_51_dispatch_cooldown years = 10 }
+		ve_doctrine_ambient_record_event = { GROUP = professional_army CLASS = opportunity }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.51:professional_army:opportunity"
+	}
+	option = {
+		name = ve_idea_evt.51.a
+		trigger = { ve_can_afford_doctrine_ambient_insight = { COST = 40 } }
+		ai_chance = {
+			base = 40
+			modifier = { trigger = { var:idea_point_pool >= 400 } add = 35 }
+			modifier = { trigger = { var:idea_point_pool < 150 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.51.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = professional_army_idea_4_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 40 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -40 }
+				add_modifier = { name = ve_doctrine_professional_army_positive_mdf months = 36 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.51:professional_army:opportunity:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.51.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool <= 250 } add = 40 }
+			modifier = { trigger = { var:idea_point_pool >= 750 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_idea_evt.51.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = professional_army_idea_4_mdf }
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = 15 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.51:professional_army:opportunity:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.51.c
+		trigger = {
+			has_modifier = professional_army_idea_7_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 20 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 250 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 100 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.51.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = professional_army_idea_7_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 20 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -20 }
+				add_modifier = { name = ve_doctrine_professional_army_positive_mdf months = 36 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.51:professional_army:opportunity:c"
+			}
+		}
+	}
+}
+
+ve_idea_evt.52 = {
+	type = country_event
+	title = ve_idea_evt.52.t
+	desc = ve_idea_evt.52.d
+	event_image = { video = "gfx/event_pictures/middleeast_battlefield_trenches.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	cooldown = { years = 10 }
+	trigger = { ve_can_fire_doctrine_ambient_professional_army_52 = yes }
+	cancellation_trigger = { NOT = { has_modifier = professional_army_idea_2_mdf } }
+	immediate = {
+		set_variable = { name = ve_idea_evt_52_dispatch_cooldown years = 10 }
+		ve_doctrine_ambient_record_event = { GROUP = professional_army CLASS = setback }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.52:professional_army:setback"
+	}
+	option = {
+		name = ve_idea_evt.52.a
+		trigger = { ve_can_afford_doctrine_ambient_insight = { COST = 25 } }
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:idea_point_pool >= 300 } add = 35 }
+			modifier = { trigger = { OR = { is_at_war = yes bureaucracy < 0 approaching_bureaucracy_shortage = yes } } add = 15 }
+		}
+		custom_tooltip = { text = ve_idea_evt.52.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = professional_army_idea_2_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 25 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -25 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.52:professional_army:setback:a"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.52.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 100 } add = 50 }
+			modifier = { trigger = { var:idea_point_pool >= 500 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_idea_evt.52.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = professional_army_idea_2_mdf }
+				ve_doctrine_ambient_record_option = yes
+				add_modifier = { name = ve_doctrine_professional_army_negative_mdf months = 24 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.52:professional_army:setback:b"
+			}
+		}
+	}
+	option = {
+		name = ve_idea_evt.52.c
+		trigger = {
+			has_modifier = professional_army_idea_5_mdf
+			ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 150 } add = 25 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_idea_evt.52.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_modifier = professional_army_idea_5_mdf
+					ve_can_afford_doctrine_ambient_insight = { COST = 10 }
+				}
+				ve_doctrine_ambient_record_option = yes
+				ve_doctrine_ambient_change_national_insight = { DELTA = -10 }
+				debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_IDEA_AMBIENT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_idea_evt.52:professional_army:setback:c"
+			}
+		}
+	}
+}

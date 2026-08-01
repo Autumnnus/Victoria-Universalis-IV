@@ -1,0 +1,56 @@
+﻿l_korean:
+ # Doctrine Ledger - gui/ve_panel_ledger.gui
+ VE_LEDGER:0 "원장"
+ VE_LEDGER_SELECTED:0 "#bold 원장#!"
+ VE_LG_TITLE:0 "교리 원장"
+ VE_LG_HINT:0 "모든 나라의 교리가 서있습니다. 정렬하려면 열 머리글을 클릭하고, 목록 범위를 좁히려면 필터를 클릭하고, 그룹별 전체 세부 정보를 보려면 패널을 열려면 국가를 클릭하세요."
+
+ # Columns
+ VE_LG_COL_RANK:0 "#"
+ VE_LG_COL_COUNTRY:0 "국가"
+ VE_LG_COL_INSIGHT:0 "통찰력"
+ VE_LG_COL_GROUPS:0 "여러 떼"
+ VE_LG_COL_IDEAS:0 "그룹 아이디어"
+ VE_LG_COL_NATIONAL_IDEAS:0 "국가적 이념"
+ VE_LG_COL_NATIONAL_IDEAS_TT:0 "#header National Ideas#!\n국가 아이디어 슬롯당 하나의 마커와 오른쪽에 국가 보너스가 있습니다. 국가는 세 번째 그룹 아이디어를 구매할 때마다 다음 슬롯을 잠금 해제합니다."
+ VE_LG_COL_RELIGION:0 "종교 모델"
+ VE_LG_COL_IDENTITY:0 "정체성 모델"
+ VE_LG_COL_ERA:0 "시대"
+
+ # Cell values
+ VE_LG_GROUPS_VALUE:0 "[Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]"
+ VE_LG_IDEAS_VALUE:0 "[Country.MakeScope.Var('national_idea_pool').GetValue|0] / 21"
+ VE_LG_REWARDS_VALUE:0 "아르 자형 [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]"
+ VE_LG_ERA_TT:0 "#header [Country.GetCustom('ve_cp_age_name')]#!\n시대 추진력: #Y [Country.MakeScope.Var('ve_splender_points').GetValue|0]#!\n이 시대에 구입한 시대 보상: #Y [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]#!\n현재 달성한 목표: #Y [Country.MakeScope.ScriptValue('ve_era_objectives_satisfied')|0] / 7#!\n이 시대를 확보한 목표: #Y [Country.MakeScope.Var('ve_triggered_objectives').GetValue|0] / 7#!\n황금 시대: [Country.GetCustom('ve_cp_golden_age_status')]"
+ VE_LG_OPEN_COUNTRY_TT:0 "이 국가의 패널을 엽니다. 아이디어, 종교, 정체성 및 시대 세부 사항은 #Y 국가 교리#! 섹션이 있습니다."
+
+ # Sort tooltips
+ VE_LG_SORT_PRESTIGE_TT:0 "정렬 기준 #Y 명성#! - 기본 순서, 가장 높은 것부터."
+ VE_LG_SORT_INSIGHT_TT:0 "재고순으로 정렬 #Y National Insight#!, 가장 높은 것부터."
+ VE_LG_SORT_GROUPS_TT:0 "정렬 기준 #Y 수용된 아이디어 그룹#!, 가장 먼저."
+ VE_LG_SORT_IDEAS_TT:0 "정렬 기준 #Y 구매한 그룹 아이디어#! (National Idea 진행), 가장 먼저."
+ VE_LG_SORT_SETTLEMENT_TT:0 "정렬 기준 #Y 종교적 합의#!, 가장 높은 것부터."
+ VE_LG_SORT_COHESION_TT:0 "정렬 기준 #Y National Cohesion#!, 가장 높은 것부터."
+ VE_LG_SORT_MOMENTUM_TT:0 "정렬 기준 #Y Era Momentum#!, 가장 높은 것부터."
+
+ # Filters
+ VE_LG_F_ALL:0 "모든"
+ VE_LG_F_GREAT_POWERS:0 "강대국"
+ VE_LG_F_MAJOR_POWERS:0 "주요 권력+"
+ VE_LG_F_RECOGNIZED:0 "인식됨"
+ VE_LG_F_RELEVANT:0 "나와 관련됨"
+ VE_LG_F_WITH_GROUPS:0 "아이디어 그룹 있음"
+
+ # Paging
+ VE_LG_PAGE_INFO:0 "페이지 [GetGlobalVariable('ve_ledger_page_number').GetValue|0] / [GetGlobalVariable('ve_ledger_page_count').GetValue|0]  ([GetGlobalVariable('ve_ledger_total').GetValue|0])"
+ VE_LG_REFRESH:0 "새로고침"
+ VE_LG_REFRESH_TT:0 "목록을 재구성합니다. 행 값은 항상 활성 상태입니다. 목록이 생성될 때 페이지의 순서와 멤버십만 설정됩니다."
+ VE_LG_FIRST_TT:0 "첫 번째 페이지"
+ VE_LG_PREV_TT:0 "이전 페이지"
+ VE_LG_NEXT_TT:0 "다음 페이지"
+ VE_LG_YOU:0 "#lore 국가#!"
+ VE_LG_EMPTY:0 "#lore 이 필터와 일치하는 국가가 없습니다. 새로고침을 누르거나 더 넓은 필터를 선택하세요.#!"
+
+ # Scripted GUI tooltip - common/scripted_guis/ve_ledger.txt
+ ve_ledger_groups_tt_header:0 "#header 포용된 아이디어 그룹#!"
+ ve_ledger_groups_tt_none:0 "#lore 아직 포용된 아이디어 그룹이 없습니다.#!"

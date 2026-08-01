@@ -45,12 +45,12 @@ ve_ai_clear_finished_idea_focus = {
 				AND = { var:ve_ai_idea_focus == 19 has_variable = naval_idea_completed }
 				AND = { var:ve_ai_idea_focus == 20 has_variable = professional_army_idea_completed }
 				AND = { var:ve_ai_idea_focus == 21 has_variable = colonial_idea_completed }
-				# Extraction VII is age-3 gated. Release the focus while waiting
+				# Extraction VII requires Dynamite. Release the focus while waiting
 				# so the AI can advance another adopted group.
 				AND = {
 					var:ve_ai_idea_focus == 5
 					var:extraction_idea >= 6
-					NOT = { has_global_variable = age_3_started_trigger }
+					NOT = { has_technology_researched = dynamite }
 				}
 			}
 		}
@@ -72,7 +72,7 @@ ve_ai_select_existing_idea_focus = {
 					NOT = { has_variable = extraction_idea_completed }
 					OR = {
 						var:extraction_idea < 6
-						has_global_variable = age_3_started_trigger
+						has_technology_researched = dynamite
 					}
 				}
 				AND = { has_variable = can_go_mass_conscription NOT = { has_variable = mass_conscription_idea_completed } }
@@ -139,7 +139,7 @@ ve_ai_select_existing_idea_focus = {
 					NOT = { has_variable = extraction_idea_completed }
 					OR = {
 						var:extraction_idea < 6
-						has_global_variable = age_3_started_trigger
+						has_technology_researched = dynamite
 					}
 				}
 				modifier = {
@@ -365,7 +365,7 @@ ve_ai_choose_idea = {
 			}
 			15 = {
 				trigger = {
-					has_global_variable = age_2_started_trigger
+					has_technology_researched = enlistment_offices
 					NOT = { has_variable = can_go_mass_conscription }
 					NOT = { has_variable = can_go_professional_army }
 				}
@@ -384,7 +384,7 @@ ve_ai_choose_idea = {
 			}
 			20 = {
 				trigger = {
-					has_global_variable = age_3_started_trigger
+					has_technology_researched = war_propaganda
 					NOT = { has_variable = can_go_war_economy }
 				}
 				modifier = {
@@ -422,7 +422,7 @@ ve_ai_choose_idea = {
 			}
 			15 = {
 				trigger = {
-					has_global_variable = age_2_started_trigger
+					has_technology_researched = nationalism
 					NOT = { has_variable = can_go_nationalist }
 					NOT = { has_variable = can_go_reformist }
 				}
@@ -481,7 +481,7 @@ ve_ai_choose_idea = {
 			}
 			20 = {
 				trigger = {
-					has_global_variable = age_2_started_trigger
+					has_technology_researched = human_rights
 					NOT = { has_variable = can_go_welfare }
 				}
 				modifier = {
@@ -494,7 +494,7 @@ ve_ai_choose_idea = {
 			}
 			20 = {
 				trigger = {
-					has_global_variable = age_2_started_trigger
+					has_technology_researched = egalitarianism
 					NOT = { has_variable = can_go_reformist }
 					NOT = { has_variable = can_go_nationalist }
 				}
@@ -513,7 +513,7 @@ ve_ai_choose_idea = {
 			}
 			20 = {
 				trigger = {
-					has_global_variable = age_2_started_trigger
+					has_technology_researched = labor_movement
 					NOT = { has_variable = can_go_labour }
 				}
 				modifier = {
@@ -582,7 +582,7 @@ ve_ai_choose_idea = {
 			}
 			15 = {
 				trigger = {
-					has_global_variable = age_2_started_trigger
+					has_technology_researched = quinine
 					NOT = { has_variable = can_go_colonial }
 					any_scope_state = { is_coastal = yes }
 				}
@@ -651,7 +651,7 @@ ve_ai_boost_idea = {
 			NOT = { has_variable = extraction_idea_completed }
 			OR = {
 				var:extraction_idea < 6
-				has_global_variable = age_3_started_trigger
+				has_technology_researched = dynamite
 			}
 		}
 		boost_extraction_idea_effect = yes

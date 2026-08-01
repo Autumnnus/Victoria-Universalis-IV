@@ -27,12 +27,35 @@ on_monthly_pulse_country = {
 }
 
 on_half_yearly_pulse_country = {
+	on_actions = {
+		# Keep doctrine ambient popups away from the vanilla half-yearly event
+		# batch. The child on-action owns its own 25% roll and eligibility.
+		delay = { days = 31 }
+		ve_doctrine_ambient_half_yearly
+
+		# Doctrine Journey offers use a second offset so they do not stack with
+		# either vanilla half-yearly content or the ambient doctrine carrier.
+		delay = { days = 62 }
+		ve_doctrine_journey_half_yearly
+
+		# Era Crossroads offers use a third offset. Their pack-live gates remain
+		# closed until each Age's anchors and milestone content are complete.
+		delay = { days = 93 }
+		ve_era_crossroads_half_yearly
+	}
 	effect = {
 		ve_half_yearly_country_tick = yes
 	}
 }
 
 on_yearly_pulse_country = {
+	on_actions = {
+		# Tag-flavor offers are separated from the vanilla yearly batch. The
+		# child on-action owns the 25% roll; its pilot pack-live gates are the
+		# final authority on whether any offer can enter the queue.
+		delay = { days = 45 }
+		ve_tag_flavor_yearly
+	}
 	events = {
 		dev.5
 		dev.6

@@ -340,6 +340,10 @@ ve_common_national_cohesion = {
 		limit = { ve_has_cultural_movement_pressure = yes }
 		subtract = 10
 	}
+	if = {
+		limit = { has_modifier = ve_tag_flavor_usa_federal_ambiguity_mdf }
+		subtract = 2
+	}
 }
 
 ve_national_cohesion_equilibrium = {

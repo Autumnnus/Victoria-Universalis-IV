@@ -1591,7 +1591,7 @@ ve_gui_panel_types
 										text = "ve_idea_age_locked"
 										visible = "[GetScriptedGui('ve_idea_group_age_locked').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
 										enabled = no
-										tooltip = "ve_idea_age_locked_tt"
+										tooltip = "[GetScriptedGui('ve_idea_group_age_locked').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
 										using = tooltip_above
 									}
 									button = {
@@ -2471,7 +2471,7 @@ ve_gui_panel_types
 										text = "ve_idea_age_locked"
 										visible = "[GetScriptedGui('ve_idea_group_age_locked').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
 										enabled = no
-										tooltip = "ve_idea_age_locked_tt"
+										tooltip = "[GetScriptedGui('ve_idea_group_age_locked').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
 										using = tooltip_above
 									}
 									button = {
@@ -3351,7 +3351,7 @@ ve_gui_panel_types
 										text = "ve_idea_age_locked"
 										visible = "[GetScriptedGui('ve_idea_group_age_locked').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
 										enabled = no
-										tooltip = "ve_idea_age_locked_tt"
+										tooltip = "[GetScriptedGui('ve_idea_group_age_locked').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('idea_group',MakeScopeFlag(StateRegion.MakeScope.Var('idea_group').GetFlagName)).End)]"
 										using = tooltip_above
 									}
 									button = {

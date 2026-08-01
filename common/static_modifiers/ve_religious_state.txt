@@ -1,4 +1,4 @@
-﻿# Shared model settlements - one per lawgroup_church_and_state law (see
+# Shared model settlements - one per lawgroup_church_and_state law (see
 # common/scripted_triggers/ve_religious_state_triggers.txt for the law mapping).
 ve_confessional_settlement_mdf = {
 	icon = gfx/interface/catholic.dds
@@ -125,13 +125,13 @@ ve_religious_program_strain_mdf = {
 # Phase 7: Targeted Religious Project (replaces the old missionary system).
 # Mirrors common/static_modifiers/ve_cultural_projects.txt.
 ve_religious_project_administration_mdf = {
-	icon = gfx/interface/catholic.dds
+	icon = gfx/interface/icons/generic_icons/national_awakening.dds
 	country_bureaucracy_add = -50
 	country_authority_add = -25
 }
 
 ve_religious_project_backlash_mdf = {
-	icon = gfx/interface/catholic.dds
+	icon = gfx/interface/icons/generic_icons/national_awakening.dds
 	country_bureaucracy_add = -50
 	country_authority_add = -50
 	country_law_enactment_success_add = -0.03
@@ -139,7 +139,7 @@ ve_religious_project_backlash_mdf = {
 
 # Applied to the targeted state while a project is active.
 ve_religious_project_active_mdf = {
-	icon = gfx/interface/catholic.dds
+	icon = gfx/interface/icons/generic_icons/national_awakening.dds
 	state_conversion_mult = 0.20
 	state_radicalism_increases_violent_hostility_mult = 0.2
 	state_radicalism_increases_cultural_erasure_mult = 0.2

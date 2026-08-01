@@ -1,0 +1,59 @@
+﻿l_japanese:
+ # Country panel doctrine section - gui/ve_country_panel_doctrines.gui
+ VE_CP_HEADER:0 "国家教義"
+ VE_CP_COLLAPSE_TT:0 "この国のビクトリア ユニバーサリスの概要を非表示にする"
+ VE_CP_EXPAND_TT:0 "この国のビクトリア ユニバーサリスの概要を表示する"
+
+ VE_CP_INSIGHT_LABEL:0 "国家洞察"
+ VE_CP_INSIGHT_TT:0 "#header National Insight#!\nストック: #Y [Country.MakeScope.Var('idea_point_pool').GetValue|0] / 1000#!\n\n採用されたアイデア グループ内の個々のアイデアに費やされます。"
+ VE_CP_PIETY_LABEL:0 "敬虔の改革"
+ VE_CP_PIETY_TT:0 "#header 敬虔の改革#!\n在庫: #Y [Country.MakeScope.Var('piety_reform_point').GetValue|0] / 500#!\n\n宗教プログラムと対象の宗教プロジェクトに支出。"
+ VE_CP_MANDATE_LABEL:0 "文化的使命"
+ VE_CP_MANDATE_TT:0 "#header 文化的使命#!\n在庫: #Y [Country.MakeScope.Var('culture_reform_point').GetValue|0] / 500#!\n\nアイデンティティ モデルの変更と文化プロジェクトに支出。"
+ VE_CP_MOMENTUM_LABEL:0 "時代の勢い"
+ VE_CP_MOMENTUM_TT:0 "#header 時代の勢い#!\n在庫: #Y [Country.MakeScope.Var('ve_splender_points').GetValue|0]#!\n\nから獲得時代の目標を達成し、時代の報酬に費やしました。新しい時代が始まると勢いはリセットされます。"
+ VE_CP_MOMENTUM_VALUE:0 "[Country.MakeScope.Var('ve_splender_points').GetValue|0]"
+
+ VE_CP_IDEAS_TITLE:0 "アイデア"
+ VE_CP_GROUP_SLOTS:0 "[Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]"
+ VE_CP_GROUP_SLOTS_TT:0 "#header アイデア グループ#!\n使用スロット: #Y [Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]#!\n無料スロット: #Y [Country.MakeScope.ScriptValue('ve_idea_group_free_slots')|0]#!\n現在のドクトリン投資: #Y [Country.MakeScope.Var('ve_idea_capacity_progress').GetValue|0]#! アクティブな購入済みアイデア\n\n[Country.GetCustom('ve_idea_capacity_country_detail')]\n\nアクティブなグループのアイデアは、永続的な容量を獲得します #Y 4、8、13、19、26#! そして #Y 34#!。スロット 5 ～ 6 には年齢 2 が必要で、スロット 7 には年齢 3 が必要です。グループをキャンセルすると、現在の投資が減り、インサイトは返金されませんが、すでに獲得した容量は保持されます。"
+ VE_CP_NATIONAL_IDEAS_LABEL:0 "国家アイデア"
+ VE_CP_PROGRESS_LABEL:0 "アイデアの進行状況"
+ VE_CP_NATIONAL_IDEA_PROGRESS_TT:0 "#header 国家アイデアの進行状況#!\n購入したグループ アイデア: #Y [Country.MakeScope.Var('national_idea_pool').GetValue|0] / 21#!\n\nグループ アイデアを 3 つ購入するごとに、次の国家アイデアのロックが解除されます。 21 番目には国家ボーナスも付与されます。"
+ VE_CP_NO_IDEA_GROUPS:0 "#lore 受け入れているアイデアグループはまだありません。#!"
+ VE_CP_PROGRAMS_LABEL:0 "宗教プログラム"
+ VE_CP_NONE_YET:0 "#lore まだありません#!"
+ VE_CP_PROJECT_LABEL:0 "プロジェクト"
+ VE_CP_COHESION_LABEL:0 "国家凝集"
+ VE_CP_OBJECTIVES_LABEL:0 "時代の目標"
+ VE_CP_OBJECTIVES_TT:0 "#header 時代の目標#!\nこの時代に完了しました: #Y [Country.MakeScope.Var('ve_triggered_objectives').GetValue|0] / 7#!\n\n各目標を達成すると、毎月時代の勢いが支払われます。 4 つの目標を完了すると、黄金時代のロックが解除されます。"
+ VE_CP_REWARDS_LABEL:0 "時代リワード"
+ VE_CP_REWARDS_VALUE:0 "[Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0] この時代に購入しました"
+ VE_CP_REWARDS_TT:0 "#header 時代リワード#!\nこの時代に購入したもの: #Y [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]#!\n\n各報酬は最後の報酬よりもコストが高く、報酬の効果は年齢とともに終了します。スロット 10 ～ 13 は国ごとに異なります。"
+
+ # Customizable localization targets - common/customizable_localization/ve_country_panel_cl.txt
+ ve_cp_unknown_age:0 "不明な時代"
+ ve_cp_golden_age_industrial_active:0 "#P 産業の黄金時代#!"
+ ve_cp_golden_age_cultural_active:0 "#P 文化的黄金時代#!"
+ ve_cp_golden_age_strategic_active:0 "#P 戦略的黄金時代#!"
+ ve_cp_golden_age_spent:0 "#lore 使用された黄金時代#!"
+ ve_cp_golden_age_ready:0 "#Y 黄金時代が利用可能#!"
+ ve_cp_golden_age_locked:0 "#lore 黄金時代はロックされている#!"
+ ve_cp_tier_high:0 "#P 繁栄している#!"
+ ve_cp_tier_stable:0 "#lore 安定している#!"
+ ve_cp_tier_low:0 "#N 緊張している#!"
+
+ # Scripted GUI tooltip - common/scripted_guis/ve_country_panel.txt
+ ve_cp_group_no_idea_bought:0 "#lore 受け入れられているが、このグループで購入されたアイデアはまだありません#!"
+
+ # Country-scoped meter and project tooltips. These must never use GetPlayer:
+ # the country panel shows them for foreign countries too.
+ VE_CP_SETTLEMENT_TT:0 "#header 宗教的居住地#!\n現在: #Y [Country.MakeScope.Var('piety_bar_point').GetValue|0] / 100#!\n平衡: #Y [Country.MakeScope.ScriptValue('ve_religious_state_equilibrium')|0]#!\n月ごとの動き: [Country.MakeScope.ScriptValue('ve_monthly_religious_state')|+=0]\n\nメーターは毎月、平衡に向けて 20% 動きます。 #Y 5#! ポイント。で #P 75#!: [Country.GetCustom('ve_religious_high_settlement_effect')]\n時 #N 25#! 以下: #N 正当性 -5 および法律制定の成功 -5%#!。"
+ VE_CP_COHESION_TT:0 "#header 国家の団結度#!\n現在: #Y [Country.MakeScope.Var('ve_national_cohesion').GetValue|0] / 100#!\n均衡:  #Y [Country.MakeScope.ScriptValue('ve_national_cohesion_equilibrium')|0]#!\n月ごとの動き: [Country.MakeScope.ScriptValue('ve_monthly_national_cohesion')|+=0]\n\n凝集力は毎月 20% ずつ均衡に向かって進みます。 #Y 5#! ポイント。で #P 75#! アイデンティティ モデルには追加の利点が与えられます。で #N 25#! またはそれ以下の国家的不安定が適用されます。"
+ VE_CP_RELIGIOUS_PROJECT_TT:0 "#header 対象となる宗教プロジェクト#!\nステータス: #Y [Country.GetCustom('ve_religious_project_status')]#!\n[Country.GetCustom('ve_cp_religious_project_detail')]"
+ VE_CP_CULTURAL_PROJECT_TT:0 "#header 文化プロジェクト#!\nステータス: #Y [Country.GetCustom('ve_cultural_project_name')]#!\n目標: [Country.GetCustom('ve_cultural_project_target')]\n[Country.GetCustom('ve_cp_cultural_project_detail')]\n\n[Country.GetCustom('ve_cultural_project_description')]"
+
+ ve_cp_religious_project_detail_active:0 "進捗状況: #Y [Country.MakeScope.Var('ve_religious_project_progress').GetValue|0] / 100#!\n月次進捗: [Country.MakeScope.ScriptValue('ve_monthly_religious_project_progress')|+=0]"
+ ve_cp_religious_project_detail_none:0 "#lore 実行中のプロジェクトはありません。プロジェクトは所有州のパネルから開始されますが、Total Separation ではプロジェクトを実行できません。#!"
+ ve_cp_cultural_project_detail_active:0 "進捗状況: #Y [Country.MakeScope.Var('ve_cultural_project_progress').GetValue|0] / 100#!\n月次進捗: [Country.MakeScope.ScriptValue('ve_monthly_cultural_project_progress')|+=0]"
+ ve_cp_cultural_project_detail_none:0 "#lore 実行中のプロジェクトはありません。全国規模のプロジェクトはナショナル・アイデンティティ・パネルから始まり、対象を絞ったプロジェクトは所有国のパネルから始まります。#!"

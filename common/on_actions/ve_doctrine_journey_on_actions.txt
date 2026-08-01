@@ -1,0 +1,12 @@
+# Half-yearly carrier for Phase 5 Doctrine Journey offers.
+# There is no frequency roll: an eligible implemented pack receives one offer
+# within a half-year window. Pack-live triggers gate future pack expansions.
+ve_doctrine_journey_half_yearly = {
+	trigger = {
+		ve_can_dispatch_doctrine_journey_offer = yes
+	}
+
+	effect = {
+		ve_dispatch_doctrine_journey_offer = yes
+	}
+}

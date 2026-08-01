@@ -1,56 +1,56 @@
 ﻿l_turkish:
- # Doktrin Defteri - gui/ve_panel_ledger.gui
+ # Doctrine Ledger - gui/ve_panel_ledger.gui
  VE_LEDGER:0 "Defter"
  VE_LEDGER_SELECTED:0 "#bold Defter#!"
- VE_LG_TITLE:0 "Doktrin Defteri"
- VE_LG_HINT:0 "Bütün ülkelerin doktrin durumu. Sıralamak için kolon başlığına, listeyi daraltmak için filtreye, tüm grup ayrıntısı için ülkeye tıkla."
+ VE_LG_TITLE:0 "Doktrin Defter"
+ VE_LG_HINT:0 "Her ülkenin doktrini ayaktadır. Sıralamak için bir sütun başlığına, listeyi daraltmak için bir filtreye ve grup bazında tüm ayrıntılar için panelini açmak üzere bir ülkeye tıklayın."
 
- # Kolonlar
+ # Columns
  VE_LG_COL_RANK:0 "#"
  VE_LG_COL_COUNTRY:0 "Ülke"
- VE_LG_COL_INSIGHT:0 "Kavrayış"
- VE_LG_COL_GROUPS:0 "Grup"
- VE_LG_COL_IDEAS:0 "Grup Fikri"
+ VE_LG_COL_INSIGHT:0 "İç yüzü"
+ VE_LG_COL_GROUPS:0 "Gruplar"
+ VE_LG_COL_IDEAS:0 "Grup Fikirleri"
  VE_LG_COL_NATIONAL_IDEAS:0 "Ulusal Fikirler"
- VE_LG_COL_NATIONAL_IDEAS_TT:0 "#header Ulusal Fikirler#!\nHer Ulusal Fikir slotu için bir işaret, sağda Ulusal Bonus. Ülke, satın aldığı her üçüncü grup fikriyle bir sonraki slotu açar."
- VE_LG_COL_RELIGION:0 "Dinî Model"
+ VE_LG_COL_NATIONAL_IDEAS_TT:0 "#header Ulusal Fikirler#!\nUlusal Fikir yuvası başına bir işaret ve sağda Ulusal Bonus. Bir ülke, satın aldığı her üçüncü grup fikri için bir sonraki slotun kilidini açar."
+ VE_LG_COL_RELIGION:0 "Dini Model"
  VE_LG_COL_IDENTITY:0 "Kimlik Modeli"
- VE_LG_COL_ERA:0 "Çağ"
+ VE_LG_COL_ERA:0 "Era"
 
- # Hücre değerleri
+ # Cell values
  VE_LG_GROUPS_VALUE:0 "[Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]"
  VE_LG_IDEAS_VALUE:0 "[Country.MakeScope.Var('national_idea_pool').GetValue|0] / 21"
- VE_LG_REWARDS_VALUE:0 "Ö [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]"
- VE_LG_ERA_TT:0 "#header [Country.GetCustom('ve_cp_age_name')]#!\nÇağ İvmesi: #Y [Country.MakeScope.Var('ve_splender_points').GetValue|0]#!\nBu çağda alınan Çağ Ödülü: #Y [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]#!\nŞu an karşılanan hedef: #Y [Country.MakeScope.ScriptValue('ve_era_objectives_satisfied')|0] / 7#!\nBu çağda güvenceye alınan hedef: #Y [Country.MakeScope.Var('ve_triggered_objectives').GetValue|0] / 7#!\nAltın Çağ: [Country.GetCustom('ve_cp_golden_age_status')]"
- VE_LG_OPEN_COUNTRY_TT:0 "Bu ülkenin panelini aç. Fikir, Din, Kimlik ve Çağ ayrıntısı oradaki #Y Ulusal Doktrin#! bölümünde."
+ VE_LG_REWARDS_VALUE:0 "R [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]"
+ VE_LG_ERA_TT:0 "#header [Country.GetCustom('ve_cp_age_name')]#!\nÇağ İvmesi: #Y [Country.MakeScope.Var('ve_splender_points').GetValue|0]#!\nEra Ödülleri bu Çağı satın aldı: #Y [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]#!\nŞu anda ulaşılan hedefler: #Y [Country.MakeScope.ScriptValue('ve_era_objectives_satisfied')|0] / 7#!\nHedefler bu Çağı güvence altına aldı: #Y [Country.MakeScope.Var('ve_triggered_objectives').GetValue|0] / 7#!\nAltın Çağ: [Country.GetCustom('ve_cp_golden_age_status')]"
+ VE_LG_OPEN_COUNTRY_TT:0 "Bu ülkenin panelini açın. Fikirleri, Dinleri, Kimlikleri ve Dönemi detayı şuradadır. #Y Milli Doktrin#! bölümüne bakın."
 
- # Sıralama ipuçları
- VE_LG_SORT_PRESTIGE_TT:0 "#Y Prestij#!e göre sırala - varsayılan düzen, en yüksek üstte."
- VE_LG_SORT_INSIGHT_TT:0 "Biriken #Y Ulusal Kavrayış#!a göre sırala, en yüksek üstte."
- VE_LG_SORT_GROUPS_TT:0 "#Y Benimsenen fikir grubu#! sayısına göre sırala, en çok üstte."
- VE_LG_SORT_IDEAS_TT:0 "#Y Satın alınan grup fikri#! sayısına göre sırala (Ulusal Fikir ilerlemesi), en çok üstte."
- VE_LG_SORT_SETTLEMENT_TT:0 "#Y Dinî Uzlaşı#!ya göre sırala, en yüksek üstte."
- VE_LG_SORT_COHESION_TT:0 "#Y Ulusal Bütünlük#!e göre sırala, en yüksek üstte."
- VE_LG_SORT_MOMENTUM_TT:0 "#Y Çağ İvmesi#!ne göre sırala, en yüksek üstte."
+ # Sort tooltips
+ VE_LG_SORT_PRESTIGE_TT:0 "Sıralama ölçütü #Y Prestij#! - varsayılan sıra, en yüksek önce gelir."
+ VE_LG_SORT_INSIGHT_TT:0 "Stoklu #Y Ulusal Analize#! göre sıralayın, en yüksek ilk sırada olsun."
+ VE_LG_SORT_GROUPS_TT:0 "Göre sırala #Y fikir gruplarını benimsedi#!, en başta."
+ VE_LG_SORT_IDEAS_TT:0 "Sıralama ölçütü #Y satın alınan grup fikirleri#! (Ulusal Fikir ilerlemesi), çoğu ilk sırada."
+ VE_LG_SORT_SETTLEMENT_TT:0 "Göre sırala #Y Dini Yerleşim#!, en yüksek önce."
+ VE_LG_SORT_COHESION_TT:0 "Sıralama ölçütü #Y Ulusal Uyum#!, önce en yüksek."
+ VE_LG_SORT_MOMENTUM_TT:0 " #Y Era Momentum#!'a göre sıralayın, en yüksek ilk sırada."
 
- # Filtreler
- VE_LG_F_ALL:0 "Tümü"
+ # Filters
+ VE_LG_F_ALL:0 "Tüm"
  VE_LG_F_GREAT_POWERS:0 "Büyük Güçler"
- VE_LG_F_MAJOR_POWERS:0 "Önemli Güç+"
- VE_LG_F_RECOGNIZED:0 "Tanınmış"
+ VE_LG_F_MAJOR_POWERS:0 "Büyük Güçler+"
+ VE_LG_F_RECOGNIZED:0 "Tanındı"
  VE_LG_F_RELEVANT:0 "Benimle İlgili"
- VE_LG_F_WITH_GROUPS:0 "Fikir Grubu Olanlar"
+ VE_LG_F_WITH_GROUPS:0 "Fikir Grupları Var"
 
- # Sayfalama
+ # Paging
  VE_LG_PAGE_INFO:0 "Sayfa [GetGlobalVariable('ve_ledger_page_number').GetValue|0] / [GetGlobalVariable('ve_ledger_page_count').GetValue|0]  ([GetGlobalVariable('ve_ledger_total').GetValue|0])"
  VE_LG_REFRESH:0 "Yenile"
- VE_LG_REFRESH_TT:0 "Listeyi yeniden kur. Satır değerleri her zaman canlıdır; yalnızca sıra ve sayfadaki ülkeler liste kurulduğunda belirlenir."
+ VE_LG_REFRESH_TT:0 "Listeyi yeniden oluştur. Satır değerleri her zaman yayındadır; liste oluşturulurken yalnızca sayfanın sırası ve üyeliği ayarlanır."
  VE_LG_FIRST_TT:0 "İlk sayfa"
  VE_LG_PREV_TT:0 "Önceki sayfa"
  VE_LG_NEXT_TT:0 "Sonraki sayfa"
- VE_LG_YOU:0 "#lore Senin ülken#!"
- VE_LG_EMPTY:0 "#lore Bu filtreye uyan ülke yok. Yenile'ye bas veya daha geniş bir filtre seç.#!"
+ VE_LG_YOU:0 "#lore Ülkeniz#!"
+ VE_LG_EMPTY:0 "#lore Bu filtreyle eşleşen ülke yok. Yenile'ye basın veya daha geniş bir filtre seçin.#!"
 
- # Scripted GUI ipucu - common/scripted_guis/ve_ledger.txt
+ # Scripted GUI tooltip - common/scripted_guis/ve_ledger.txt
  ve_ledger_groups_tt_header:0 "#header Benimsenen fikir grupları#!"
- ve_ledger_groups_tt_none:0 "#lore Henüz hiçbir fikir grubu benimsenmedi.#!"
+ ve_ledger_groups_tt_none:0 "#lore Henüz benimsenen bir fikir grubu yok.#!"

@@ -1,4 +1,4 @@
-﻿l_english:
+l_english:
  ve_piety:0 "Piety"
  ve_piety_reform:0 "Piety Reform"
  ve_piety_reform_tt:0 "#header Piety Reform#!\nCurrent: #Y [GetPlayer.MakeScope.Var('piety_reform_point').GetValue|0] / 500#!\nMonthly income: [GetPlayer.MakeScope.ScriptValue('ve_monthly_piety_reform')|+=0]\n\n#Y Monthly breakdown#!\nBase: [GetPlayer.MakeScope.ScriptValue('ve_piety_reform_base')|+=0]\nLegitimacy: [GetPlayer.MakeScope.ScriptValue('ve_piety_reform_legitimacy')|+=0]\nAdministration: [GetPlayer.MakeScope.ScriptValue('ve_piety_reform_administration')|+=0]\nDevout support: [GetPlayer.MakeScope.ScriptValue('ve_piety_reform_devout_support')|+=0]\nIdea doctrine: [GetPlayer.MakeScope.ScriptValue('ve_piety_reform_idea_bonus')|+=0]\n\n#Y Idea doctrine — only your current Religious Model counts#!\n#P Confessional State / State Atheism#!: Nationalist V #P +1#!\n#P Freedom of Conscience / Total Separation#!: Reformist V #P +1#!\nThe active total above is capped at #Y +1#!, so the two paths cannot stack.\n\nSpent on Doctrines and Programs (#Y 25#! each) and on the Targeted Religious Project (#Y 100-150#!, model-dependent). Income slows past #Y 400#! and stops at #Y 500#!.\n\n$ve_piety_reform_hint$"
@@ -171,3 +171,42 @@
  ve_religious_program_strain_notice_short:0 "Program strain active"
  ve_religious_project_backlash_notice_short:0 "Cancellation backlash active"
  ve_religious_project_start_instruction_short:0 "Start it from one of your own States: open the State and press #Y Start Project#!."
+
+ #Religious State & Program Static Modifiers
+ ve_freedom_settlement_mdf:0 "Freedom of Conscience Settlement"
+ ve_freedom_high_settlement_mdf:0 "Harmonious Freedom Settlement"
+ ve_separation_settlement_mdf:0 "Total Separation Settlement"
+ ve_separation_high_settlement_mdf:0 "Neutral Separation Settlement"
+ ve_atheism_settlement_mdf:0 "State Atheism Settlement"
+ ve_atheism_high_settlement_mdf:0 "Secular State Settlement"
+
+ ve_religious_project_active_mdf:0 "Active Religious Project"
+ ve_religious_project_administration_mdf:0 "Religious Project Administration"
+ ve_religious_project_backlash_mdf:0 "Religious Project Backlash"
+
+ ve_freedom_program_1_mdf:0 "Interfaith Councils"
+ ve_freedom_program_2_mdf:0 "Sanctuary Charter"
+ ve_freedom_program_3_mdf:0 "Shared Schools"
+ ve_freedom_program_4_mdf:0 "Equal Civic Rituals"
+ ve_freedom_program_5_mdf:0 "Open Public Service"
+ ve_freedom_program_6_mdf:0 "Diplomatic Toleration"
+ ve_freedom_program_7_mdf:0 "Plural Administration"
+ ve_freedom_program_8_mdf:0 "Rights Arbitration"
+
+ ve_separation_program_1_mdf:0 "Civil Code"
+ ve_separation_program_2_mdf:0 "Open Registry"
+ ve_separation_program_3_mdf:0 "Neutral Administration"
+ ve_separation_program_4_mdf:0 "Common Ceremony"
+ ve_separation_program_5_mdf:0 "Public Schooling"
+ ve_separation_program_6_mdf:0 "Even-Handed Diplomacy"
+ ve_separation_program_7_mdf:0 "Civic Trust"
+ ve_separation_program_8_mdf:0 "Constitutional Guarantee"
+
+ ve_atheism_program_1_mdf:0 "Scientific Administration"
+ ve_atheism_program_2_mdf:0 "Civil Registry"
+ ve_atheism_program_3_mdf:0 "Public Education Campaign"
+ ve_atheism_program_4_mdf:0 "Secular Welfare"
+ ve_atheism_program_5_mdf:0 "Civic Morality"
+ ve_atheism_program_6_mdf:0 "Academic Freedom"
+ ve_atheism_program_7_mdf:0 "Anti-Clerical Campaign"
+ ve_atheism_program_8_mdf:0 "Public Ethics Commission"

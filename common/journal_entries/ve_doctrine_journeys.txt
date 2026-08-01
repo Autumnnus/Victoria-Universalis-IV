@@ -1,0 +1,146 @@
+# Phase 5 Doctrine Journey JE shells.
+# Pack-live gates prevent these entries from opening before pilot content exists.
+
+ve_je_doctrine_journey_industrialist = {
+	icon = "gfx/interface/icons/goods_icons/tools.dds"
+	group = je_group_internal_affairs
+	on_monthly_pulse = { effect = { ve_tick_doctrine_journey = yes } }
+	complete = { var:ve_doctrine_journey_progress >= 60 }
+	on_complete = { ve_complete_doctrine_journey = yes }
+	invalid = { NOT = { ve_has_valid_doctrine_journey_context = yes } }
+	on_invalid = { ve_fail_doctrine_journey = yes }
+	timeout = 1825
+	on_timeout = { ve_fail_doctrine_journey = yes }
+	current_value = { value = root.var:ve_doctrine_journey_progress }
+	goal_add_value = { add = 60 }
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = ve_je_doctrine_journey_industrialist_status_both
+				trigger = {
+					ve_doctrine_journey_industrialist_core_met = yes
+					ve_doctrine_journey_industrialist_support_met = yes
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_doctrine_journey_industrialist_status_core
+				trigger = {
+					ve_doctrine_journey_industrialist_core_met = yes
+					NOT = { ve_doctrine_journey_industrialist_support_met = yes }
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_doctrine_journey_industrialist_status_support
+				trigger = {
+					NOT = { ve_doctrine_journey_industrialist_core_met = yes }
+					ve_doctrine_journey_industrialist_support_met = yes
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_doctrine_journey_industrialist_status_neither
+				trigger = { always = yes }
+			}
+		}
+	}
+	progressbar = yes
+	weight = 100
+	transferable = no
+	can_revolution_inherit = no
+	should_be_pinned_by_default_uninvolved_or_context = yes
+}
+
+ve_je_doctrine_journey_academic = {
+	icon = "gfx/interface/icons/invention_icons/academia.dds"
+	group = je_group_internal_affairs
+	on_monthly_pulse = { effect = { ve_tick_doctrine_journey = yes } }
+	complete = { var:ve_doctrine_journey_progress >= 60 }
+	on_complete = { ve_complete_doctrine_journey = yes }
+	invalid = { NOT = { ve_has_valid_doctrine_journey_context = yes } }
+	on_invalid = { ve_fail_doctrine_journey = yes }
+	timeout = 1825
+	on_timeout = { ve_fail_doctrine_journey = yes }
+	current_value = { value = root.var:ve_doctrine_journey_progress }
+	goal_add_value = { add = 60 }
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = ve_je_doctrine_journey_academic_status_both
+				trigger = {
+					ve_doctrine_journey_academic_core_met = yes
+					ve_doctrine_journey_academic_support_met = yes
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_doctrine_journey_academic_status_core
+				trigger = {
+					ve_doctrine_journey_academic_core_met = yes
+					NOT = { ve_doctrine_journey_academic_support_met = yes }
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_doctrine_journey_academic_status_support
+				trigger = {
+					NOT = { ve_doctrine_journey_academic_core_met = yes }
+					ve_doctrine_journey_academic_support_met = yes
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_doctrine_journey_academic_status_neither
+				trigger = { always = yes }
+			}
+		}
+	}
+	progressbar = yes
+	weight = 100
+	transferable = no
+	can_revolution_inherit = no
+	should_be_pinned_by_default_uninvolved_or_context = yes
+}
+
+ve_je_doctrine_journey_professional_army = {
+	icon = "gfx/interface/icons/invention_icons/general_staff.dds"
+	group = je_group_internal_affairs
+	on_monthly_pulse = { effect = { ve_tick_doctrine_journey = yes } }
+	complete = { var:ve_doctrine_journey_progress >= 60 }
+	on_complete = { ve_complete_doctrine_journey = yes }
+	invalid = { NOT = { ve_has_valid_doctrine_journey_context = yes } }
+	on_invalid = { ve_fail_doctrine_journey = yes }
+	timeout = 1825
+	on_timeout = { ve_fail_doctrine_journey = yes }
+	current_value = { value = root.var:ve_doctrine_journey_progress }
+	goal_add_value = { add = 60 }
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = ve_je_doctrine_journey_professional_army_status_both
+				trigger = {
+					ve_doctrine_journey_professional_army_core_met = yes
+					ve_doctrine_journey_professional_army_support_met = yes
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_doctrine_journey_professional_army_status_core
+				trigger = {
+					ve_doctrine_journey_professional_army_core_met = yes
+					NOT = { ve_doctrine_journey_professional_army_support_met = yes }
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_doctrine_journey_professional_army_status_support
+				trigger = {
+					NOT = { ve_doctrine_journey_professional_army_core_met = yes }
+					ve_doctrine_journey_professional_army_support_met = yes
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_doctrine_journey_professional_army_status_neither
+				trigger = { always = yes }
+			}
+		}
+	}
+	progressbar = yes
+	weight = 100
+	transferable = no
+	can_revolution_inherit = no
+	should_be_pinned_by_default_uninvolved_or_context = yes
+}

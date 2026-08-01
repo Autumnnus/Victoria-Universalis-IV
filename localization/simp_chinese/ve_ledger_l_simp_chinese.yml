@@ -1,0 +1,56 @@
+﻿l_simp_chinese:
+ # Doctrine Ledger - gui/ve_panel_ledger.gui
+ VE_LEDGER:0 "分类帐"
+ VE_LEDGER_SELECTED:0 "#bold 分类帐#!"
+ VE_LG_TITLE:0 "主义 Ledger"
+ VE_LG_HINT:0 "每个国家的主义立场。单击列标题进行排序，单击筛选器缩小列表范围，然后单击国家/地区以打开其面板以获取每个组的完整详细信息。"
+
+ # Columns
+ VE_LG_COL_RANK:0 "#"
+ VE_LG_COL_COUNTRY:0 "国家/地区"
+ VE_LG_COL_INSIGHT:0 "洞察"
+ VE_LG_COL_GROUPS:0 "组"
+ VE_LG_COL_IDEAS:0 "组创意"
+ VE_LG_COL_NATIONAL_IDEAS:0 "国家创意"
+ VE_LG_COL_NATIONAL_IDEAS_TT:0 "#header 国家创意#!\n每个国家创意槽位有一个标记，加上右侧的国家奖金。一个国家每购买三个团体创意就会解锁下一个位置。"
+ VE_LG_COL_RELIGION:0 "宗教模型"
+ VE_LG_COL_IDENTITY:0 "身份模型"
+ VE_LG_COL_ERA:0 "时代"
+
+ # Cell values
+ VE_LG_GROUPS_VALUE:0 "[Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]"
+ VE_LG_IDEAS_VALUE:0 "[Country.MakeScope.Var('national_idea_pool').GetValue|0] / 21"
+ VE_LG_REWARDS_VALUE:0 "右 [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]"
+ VE_LG_ERA_TT:0 "#header [Country.GetCustom('ve_cp_age_name')]#!\n时代动力： #Y [Country.MakeScope.Var('ve_splender_points').GetValue|0]#!\n时代奖励购买了这个时代： #Y [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]#!\n目前达到的目标： #Y [Country.MakeScope.ScriptValue('ve_era_objectives_satisfied')|0] / 7#!\n这个时代实现的目标： #Y [Country.MakeScope.Var('ve_triggered_objectives').GetValue|0] / 7#!\n黄金时代： [Country.GetCustom('ve_cp_golden_age_status')]"
+ VE_LG_OPEN_COUNTRY_TT:0 "打开这个国家的面板。它的思想、宗教、身份和时代细节在 #Y 民族主义#! 那里的部分。"
+
+ # Sort tooltips
+ VE_LG_SORT_PRESTIGE_TT:0 "排序依据 #Y 声望#! -默认顺序，从高到低。"
+ VE_LG_SORT_INSIGHT_TT:0 "按库存排序 #Y 国家洞察力#!，从高到低。"
+ VE_LG_SORT_GROUPS_TT:0 "排序方式 #Y 拥抱理念组#!，最先。"
+ VE_LG_SORT_IDEAS_TT:0 "排序依据 #Y 购买团体理念#! （国家理念进展），最多第一。"
+ VE_LG_SORT_SETTLEMENT_TT:0 "排序 #Y 宗教聚居地#!"
+ VE_LG_SORT_COHESION_TT:0 "按 #Y 民族凝聚力#!排序，最高在前。"
+ VE_LG_SORT_MOMENTUM_TT:0 "按 #Y 时代气势#!排序，最高在前。"
+
+ # Filters
+ VE_LG_F_ALL:0 "全部"
+ VE_LG_F_GREAT_POWERS:0 "大国"
+ VE_LG_F_MAJOR_POWERS:0 "主要权力+"
+ VE_LG_F_RECOGNIZED:0 "认可"
+ VE_LG_F_RELEVANT:0 "与我相关"
+ VE_LG_F_WITH_GROUPS:0 "有想法组"
+
+ # Paging
+ VE_LG_PAGE_INFO:0 "页 [GetGlobalVariable('ve_ledger_page_number').GetValue|0] / [GetGlobalVariable('ve_ledger_page_count').GetValue|0]  ([GetGlobalVariable('ve_ledger_total').GetValue|0])"
+ VE_LG_REFRESH:0 "刷新"
+ VE_LG_REFRESH_TT:0 "重建列表。行值始终是活动的；构建列表时仅设置页面的顺序和成员资格。"
+ VE_LG_FIRST_TT:0 "首页"
+ VE_LG_PREV_TT:0 "上一页"
+ VE_LG_NEXT_TT:0 "下一页"
+ VE_LG_YOU:0 "#lore 您所在的国家/地区#!"
+ VE_LG_EMPTY:0 "#lore 没有国家/地区与此过滤器匹配。按“刷新”，或选择更广泛的过滤器。#!"
+
+ # Scripted GUI tooltip - common/scripted_guis/ve_ledger.txt
+ ve_ledger_groups_tt_header:0 "#header 已采用的想法组#!"
+ ve_ledger_groups_tt_none:0 "#lore 尚未采用任何想法组。#!"

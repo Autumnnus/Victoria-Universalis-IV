@@ -274,6 +274,9 @@ ve_initialize_or_transition_religious_model = {
 			value = 35
 		}
 		ve_add_religious_transition_crisis = yes
+		# The model variable and authoritative crisis modifier now exist.
+		# Initial setup uses the branch above and deliberately skips the Journey.
+		ve_begin_religious_transition_journey = yes
 	}
 }
 
@@ -442,6 +445,12 @@ ve_sync_religious_state_if_needed = {
 			OR = {
 				NOT = { has_variable = ve_synced_religious_model }
 				NOT = { has_variable = ve_synced_settlement_tier }
+				# Reconcile saves created before parent-based Confessional laws
+				# (notably TUR's Millet System) were classified correctly.
+				AND = {
+					ve_is_confessional_state = yes
+					NOT = { has_modifier = ve_confessional_settlement_mdf }
+				}
 			}
 		}
 		ve_sync_religious_settlement_modifiers = yes
@@ -821,6 +830,7 @@ ve_clear_religious_project_state = {
 ve_clear_active_religious_project = {
 	remove_modifier = ve_religious_project_administration_mdf
 	ve_clear_religious_project_state = yes
+	ve_evt_clear_religious_incident_session = yes
 	remove_variable = ve_religious_project_type
 	remove_variable = ve_religious_project_progress
 	remove_variable = ve_religious_project_target_state
@@ -846,6 +856,8 @@ ve_begin_religious_project_common = {
 		name = ve_religious_project_administration_mdf
 		months = -1
 	}
+	ve_evt_begin_religious_incident_session = yes
+	ve_evt_tm_begin_religious_project = yes
 }
 
 # Scope: state. Called by the scripted GUI once the state target is chosen.
@@ -853,7 +865,9 @@ ve_begin_targeted_religious_project = {
 	owner = {
 		set_variable = {
 			name = ve_religious_project_target_state
-			value = ROOT
+			# PREV is the selected state for both the player GUI and the AI's
+			# ordered_owned_state path; THIS is already reassigned to owner here.
+			value = PREV
 		}
 		set_variable = {
 			name = ve_religious_project_target_religion
@@ -973,6 +987,11 @@ ve_finish_religious_project = {
 		limit = { var:ve_religious_project_type == 3 }
 		ve_finish_secularization_campaign = yes
 	}
+	if = {
+		limit = { has_journal_entry = ve_je_religious_project }
+		set_variable = ve_evt_religious_je_success
+	}
+	ve_evt_tm_resolve_religious_success = yes
 	ve_clear_active_religious_project = yes
 	ve_clamp_piety_reform = yes
 	ve_clamp_religious_state = yes
@@ -981,6 +1000,11 @@ ve_finish_religious_project = {
 ve_cancel_religious_project = {
 	if = {
 		limit = { ve_has_active_religious_project = yes }
+		if = {
+			limit = { has_journal_entry = ve_je_religious_project }
+			set_variable = ve_evt_religious_je_failure
+		}
+		ve_evt_tm_resolve_religious_failure = yes
 		ve_clear_active_religious_project = yes
 		change_variable = {
 			name = piety_bar_point
@@ -997,6 +1021,11 @@ ve_cancel_religious_project = {
 ve_cancel_religious_project_for_model_change = {
 	if = {
 		limit = { ve_has_active_religious_project = yes }
+		if = {
+			limit = { has_journal_entry = ve_je_religious_project }
+			set_variable = ve_evt_religious_je_invalid
+		}
+		ve_evt_tm_resolve_religious_invalid = yes
 		ve_clear_active_religious_project = yes
 	}
 }
@@ -1005,6 +1034,7 @@ ve_update_religious_project = {
 	ve_initialize_religious_projects = yes
 	if = {
 		limit = { ve_has_active_religious_project = yes }
+		ve_evt_tm_tick_religious_project = yes
 		if = {
 			limit = {
 				OR = {

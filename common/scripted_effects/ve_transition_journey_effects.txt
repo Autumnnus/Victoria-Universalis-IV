@@ -1,0 +1,479 @@
+# Model Transition Journey lifecycle and telemetry.
+# This layer never adds, removes, shortens, or extends the authoritative core
+# transition modifiers.
+
+ve_clear_religious_transition_journey_session = {
+	if = {
+		limit = { has_variable = ve_rel_transition_elapsed_months }
+		remove_variable = ve_rel_transition_elapsed_months
+	}
+	if = {
+		limit = { has_variable = ve_rel_transition_total_months }
+		remove_variable = ve_rel_transition_total_months
+	}
+	if = {
+		limit = { has_variable = ve_rel_transition_remaining_months }
+		remove_variable = ve_rel_transition_remaining_months
+	}
+	if = {
+		limit = { has_variable = ve_rel_transition_milestone_1_at }
+		remove_variable = ve_rel_transition_milestone_1_at
+	}
+	if = {
+		limit = { has_variable = ve_rel_transition_milestone_2_at }
+		remove_variable = ve_rel_transition_milestone_2_at
+	}
+	if = {
+		limit = { has_variable = ve_rel_transition_milestone_1_fired }
+		remove_variable = ve_rel_transition_milestone_1_fired
+	}
+	if = {
+		limit = { has_variable = ve_rel_transition_milestone_2_fired }
+		remove_variable = ve_rel_transition_milestone_2_fired
+	}
+	if = {
+		limit = { has_variable = ve_rel_transition_milestones_completed }
+		remove_variable = ve_rel_transition_milestones_completed
+	}
+	if = {
+		limit = { has_variable = ve_rel_transition_target_model }
+		remove_variable = ve_rel_transition_target_model
+	}
+	if = {
+		limit = { has_variable = ve_rel_transition_closure_pending }
+		remove_variable = ve_rel_transition_closure_pending
+	}
+}
+
+ve_clear_identity_transition_journey_session = {
+	if = {
+		limit = { has_variable = ve_identity_transition_elapsed_months }
+		remove_variable = ve_identity_transition_elapsed_months
+	}
+	if = {
+		limit = { has_variable = ve_identity_transition_total_months }
+		remove_variable = ve_identity_transition_total_months
+	}
+	if = {
+		limit = { has_variable = ve_identity_transition_remaining_months }
+		remove_variable = ve_identity_transition_remaining_months
+	}
+	if = {
+		limit = { has_variable = ve_identity_transition_milestone_1_at }
+		remove_variable = ve_identity_transition_milestone_1_at
+	}
+	if = {
+		limit = { has_variable = ve_identity_transition_milestone_2_at }
+		remove_variable = ve_identity_transition_milestone_2_at
+	}
+	if = {
+		limit = { has_variable = ve_identity_transition_milestone_1_fired }
+		remove_variable = ve_identity_transition_milestone_1_fired
+	}
+	if = {
+		limit = { has_variable = ve_identity_transition_milestone_2_fired }
+		remove_variable = ve_identity_transition_milestone_2_fired
+	}
+	if = {
+		limit = { has_variable = ve_identity_transition_milestones_completed }
+		remove_variable = ve_identity_transition_milestones_completed
+	}
+	if = {
+		limit = { has_variable = ve_identity_transition_target_model }
+		remove_variable = ve_identity_transition_target_model
+	}
+	if = {
+		limit = { has_variable = ve_identity_transition_closure_pending }
+		remove_variable = ve_identity_transition_closure_pending
+	}
+}
+
+ve_set_religious_transition_journey_duration = {
+	if = {
+		limit = { var:ve_religious_model = 1 }
+		set_variable = { name = ve_rel_transition_total_months value = 48 }
+		set_variable = { name = ve_rel_transition_remaining_months value = 48 }
+		set_variable = { name = ve_rel_transition_milestone_1_at value = 16 }
+		set_variable = { name = ve_rel_transition_milestone_2_at value = 32 }
+	}
+	else_if = {
+		limit = {
+			var:ve_religious_model = 4
+			OR = {
+				literacy_rate < 0.50
+				ig:ig_devout = { ig_clout >= 0.20 }
+			}
+		}
+		set_variable = { name = ve_rel_transition_total_months value = 60 }
+		set_variable = { name = ve_rel_transition_remaining_months value = 60 }
+		set_variable = { name = ve_rel_transition_milestone_1_at value = 20 }
+		set_variable = { name = ve_rel_transition_milestone_2_at value = 40 }
+	}
+	else = {
+		set_variable = { name = ve_rel_transition_total_months value = 36 }
+		set_variable = { name = ve_rel_transition_remaining_months value = 36 }
+		set_variable = { name = ve_rel_transition_milestone_1_at value = 12 }
+		set_variable = { name = ve_rel_transition_milestone_2_at value = 24 }
+	}
+}
+
+ve_begin_religious_transition_journey = {
+	ve_clear_religious_transition_journey_session = yes
+	set_variable = { name = ve_rel_transition_elapsed_months value = 0 }
+	set_variable = { name = ve_rel_transition_milestones_completed value = 0 }
+	set_variable = {
+		name = ve_rel_transition_target_model
+		value = var:ve_religious_model
+	}
+	ve_set_religious_transition_journey_duration = yes
+	ve_tm_change_country_variable = { NAME = ve_transition_tm_rel_starts DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TRANSITION_BEGIN:[THIS.GetCountry.GetNameNoFormatting]:RELIGIOUS"
+	if = {
+		limit = { NOT = { has_journal_entry = ve_je_religious_settlement_transition } }
+		add_journal_entry = { type = ve_je_religious_settlement_transition }
+	}
+}
+
+ve_begin_identity_transition_journey = {
+	ve_clear_identity_transition_journey_session = yes
+	set_variable = { name = ve_identity_transition_elapsed_months value = 0 }
+	set_variable = { name = ve_identity_transition_total_months value = 60 }
+	set_variable = { name = ve_identity_transition_remaining_months value = 60 }
+	set_variable = { name = ve_identity_transition_milestone_1_at value = 20 }
+	set_variable = { name = ve_identity_transition_milestone_2_at value = 40 }
+	set_variable = { name = ve_identity_transition_milestones_completed value = 0 }
+	set_variable = {
+		name = ve_identity_transition_target_model
+		value = var:ve_identity_model
+	}
+	ve_tm_change_country_variable = { NAME = ve_transition_tm_identity_starts DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TRANSITION_BEGIN:[THIS.GetCountry.GetNameNoFormatting]:IDENTITY"
+	if = {
+		limit = { NOT = { has_journal_entry = ve_je_national_compact_transition } }
+		add_journal_entry = { type = ve_je_national_compact_transition }
+	}
+}
+
+ve_tick_religious_transition_journey = {
+	if = {
+		limit = { ve_has_valid_religious_transition_journey_context = yes }
+		change_variable = { name = ve_rel_transition_elapsed_months add = 1 }
+		change_variable = { name = ve_rel_transition_remaining_months subtract = 1 }
+		if = {
+			limit = {
+				var:ve_rel_transition_elapsed_months > var:ve_rel_transition_total_months
+			}
+			set_variable = {
+				name = ve_rel_transition_elapsed_months
+				value = var:ve_rel_transition_total_months
+			}
+		}
+		if = {
+			limit = { var:ve_rel_transition_remaining_months < 0 }
+			set_variable = { name = ve_rel_transition_remaining_months value = 0 }
+		}
+		ve_dispatch_religious_transition_milestone = yes
+	}
+}
+
+ve_tick_identity_transition_journey = {
+	if = {
+		limit = { ve_has_valid_identity_transition_journey_context = yes }
+		change_variable = { name = ve_identity_transition_elapsed_months add = 1 }
+		change_variable = { name = ve_identity_transition_remaining_months subtract = 1 }
+		if = {
+			limit = {
+				var:ve_identity_transition_elapsed_months > var:ve_identity_transition_total_months
+			}
+			set_variable = {
+				name = ve_identity_transition_elapsed_months
+				value = var:ve_identity_transition_total_months
+			}
+		}
+		if = {
+			limit = { var:ve_identity_transition_remaining_months < 0 }
+			set_variable = { name = ve_identity_transition_remaining_months value = 0 }
+		}
+		ve_dispatch_identity_transition_milestone = yes
+	}
+}
+
+ve_transition_tm_record_religious_option = {
+	ve_tm_change_country_variable = { NAME = ve_transition_tm_rel_options DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TRANSITION_OPTION:[THIS.GetCountry.GetNameNoFormatting]:RELIGIOUS"
+}
+
+ve_transition_tm_record_identity_option = {
+	ve_tm_change_country_variable = { NAME = ve_transition_tm_identity_options DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TRANSITION_OPTION:[THIS.GetCountry.GetNameNoFormatting]:IDENTITY"
+}
+
+ve_transition_tm_record_religious_resolution = {
+	ve_tm_change_country_variable = { NAME = ve_transition_tm_rel_resolutions DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TRANSITION_RESOLUTION:[THIS.GetCountry.GetNameNoFormatting]:RELIGIOUS"
+}
+
+ve_transition_tm_record_identity_resolution = {
+	ve_tm_change_country_variable = { NAME = ve_transition_tm_identity_resolutions DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TRANSITION_RESOLUTION:[THIS.GetCountry.GetNameNoFormatting]:IDENTITY"
+}
+
+ve_transition_change_piety_reform = {
+	set_variable = {
+		name = ve_transition_tm_rel_mana_before
+		value = var:piety_reform_point
+	}
+	change_variable = {
+		name = piety_reform_point
+		add = $DELTA$
+	}
+	ve_clamp_piety_reform = yes
+	set_variable = {
+		name = ve_transition_tm_rel_mana_actual
+		value = var:piety_reform_point
+	}
+	change_variable = {
+		name = ve_transition_tm_rel_mana_actual
+		subtract = var:ve_transition_tm_rel_mana_before
+	}
+	ve_tm_change_country_variable = { NAME = ve_transition_tm_rel_mana_net_total DELTA = var:ve_transition_tm_rel_mana_actual }
+	remove_variable = ve_transition_tm_rel_mana_before
+	remove_variable = ve_transition_tm_rel_mana_actual
+}
+
+ve_transition_change_religious_settlement = {
+	change_variable = {
+		name = piety_bar_point
+		add = $DELTA$
+	}
+	ve_clamp_religious_state = yes
+}
+
+ve_transition_religious_conciliatory_choice = {
+	ve_transition_tm_record_religious_option = yes
+	ve_transition_change_piety_reform = { DELTA = -10 }
+	ve_transition_change_religious_settlement = { DELTA = 3 }
+}
+
+ve_transition_religious_central_choice = {
+	ve_transition_tm_record_religious_option = yes
+	ve_transition_change_piety_reform = { DELTA = 5 }
+	ve_transition_change_religious_settlement = { DELTA = -3 }
+}
+
+ve_transition_religious_doctrine_choice = {
+	ve_transition_tm_record_religious_option = yes
+	ve_transition_change_piety_reform = { DELTA = -5 }
+	ve_transition_change_religious_settlement = { DELTA = 2 }
+}
+
+ve_dispatch_religious_transition_milestone = {
+	if = {
+		limit = { ve_religious_transition_milestone_1_due = yes }
+		set_variable = ve_rel_transition_milestone_1_fired
+		change_variable = {
+			name = ve_rel_transition_milestones_completed
+			add = 1
+		}
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TRANSITION_MILESTONE:[THIS.GetCountry.GetNameNoFormatting]:RELIGIOUS:1"
+		if = {
+			limit = { var:ve_rel_transition_target_model = 1 }
+			trigger_event = { id = ve_rel_evt.210 popup = yes }
+		}
+		else_if = {
+			limit = { var:ve_rel_transition_target_model = 2 }
+			trigger_event = { id = ve_rel_evt.220 popup = yes }
+		}
+		else_if = {
+			limit = { var:ve_rel_transition_target_model = 3 }
+			trigger_event = { id = ve_rel_evt.230 popup = yes }
+		}
+		else_if = {
+			limit = { var:ve_rel_transition_target_model = 4 }
+			trigger_event = { id = ve_rel_evt.240 popup = yes }
+		}
+	}
+	else_if = {
+		limit = { ve_religious_transition_milestone_2_due = yes }
+		set_variable = ve_rel_transition_milestone_2_fired
+		change_variable = {
+			name = ve_rel_transition_milestones_completed
+			add = 1
+		}
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TRANSITION_MILESTONE:[THIS.GetCountry.GetNameNoFormatting]:RELIGIOUS:2"
+		if = {
+			limit = { var:ve_rel_transition_target_model = 1 }
+			trigger_event = { id = ve_rel_evt.211 popup = yes }
+		}
+		else_if = {
+			limit = { var:ve_rel_transition_target_model = 2 }
+			trigger_event = { id = ve_rel_evt.221 popup = yes }
+		}
+		else_if = {
+			limit = { var:ve_rel_transition_target_model = 3 }
+			trigger_event = { id = ve_rel_evt.231 popup = yes }
+		}
+		else_if = {
+			limit = { var:ve_rel_transition_target_model = 4 }
+			trigger_event = { id = ve_rel_evt.241 popup = yes }
+		}
+	}
+}
+
+ve_complete_religious_transition_journey = {
+	set_variable = ve_rel_transition_closure_pending
+	ve_transition_tm_record_religious_resolution = yes
+	if = {
+		limit = { var:piety_bar_point >= 60 }
+		ve_tm_change_country_variable = { NAME = ve_transition_tm_rel_success DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TRANSITION_CLOSE:[THIS.GetCountry.GetNameNoFormatting]:RELIGIOUS:SUCCESS"
+		trigger_event = { id = ve_rel_evt.290 popup = yes }
+	}
+	else_if = {
+		limit = { var:piety_bar_point >= 26 }
+		ve_tm_change_country_variable = { NAME = ve_transition_tm_rel_neutral DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TRANSITION_CLOSE:[THIS.GetCountry.GetNameNoFormatting]:RELIGIOUS:NEUTRAL"
+		trigger_event = { id = ve_rel_evt.291 popup = yes }
+	}
+	else = {
+		ve_tm_change_country_variable = { NAME = ve_transition_tm_rel_crisis DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TRANSITION_CLOSE:[THIS.GetCountry.GetNameNoFormatting]:RELIGIOUS:CRISIS"
+		trigger_event = { id = ve_rel_evt.292 popup = yes }
+	}
+}
+
+ve_resolve_religious_transition_closure = {
+	ve_clear_religious_transition_journey_session = yes
+}
+
+ve_transition_add_religious_crisis_radicals = {
+	add_radicals = {
+		value = 0.0025
+	}
+}
+
+ve_transition_change_cultural_mandate = {
+	set_variable = {
+		name = ve_transition_tm_identity_mana_before
+		value = var:culture_reform_point
+	}
+	change_variable = {
+		name = culture_reform_point
+		add = $DELTA$
+	}
+	ve_clamp_cultural_mandate = yes
+	set_variable = {
+		name = ve_transition_tm_identity_mana_actual
+		value = var:culture_reform_point
+	}
+	change_variable = {
+		name = ve_transition_tm_identity_mana_actual
+		subtract = var:ve_transition_tm_identity_mana_before
+	}
+	ve_tm_change_country_variable = { NAME = ve_transition_tm_identity_mana_net_total DELTA = var:ve_transition_tm_identity_mana_actual }
+	remove_variable = ve_transition_tm_identity_mana_before
+	remove_variable = ve_transition_tm_identity_mana_actual
+}
+
+ve_transition_change_national_cohesion = {
+	change_variable = {
+		name = ve_national_cohesion
+		add = $DELTA$
+	}
+	ve_clamp_national_cohesion = yes
+}
+
+ve_transition_identity_conciliatory_choice = {
+	ve_transition_tm_record_identity_option = yes
+	ve_transition_change_cultural_mandate = { DELTA = -10 }
+	ve_transition_change_national_cohesion = { DELTA = 3 }
+}
+
+ve_transition_identity_central_choice = {
+	ve_transition_tm_record_identity_option = yes
+	ve_transition_change_cultural_mandate = { DELTA = 5 }
+	ve_transition_change_national_cohesion = { DELTA = -3 }
+}
+
+ve_transition_identity_doctrine_choice = {
+	ve_transition_tm_record_identity_option = yes
+	ve_transition_change_cultural_mandate = { DELTA = -5 }
+	ve_transition_change_national_cohesion = { DELTA = 2 }
+}
+
+ve_dispatch_identity_transition_milestone = {
+	if = {
+		limit = { ve_identity_transition_milestone_1_due = yes }
+		set_variable = ve_identity_transition_milestone_1_fired
+		change_variable = {
+			name = ve_identity_transition_milestones_completed
+			add = 1
+		}
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TRANSITION_MILESTONE:[THIS.GetCountry.GetNameNoFormatting]:IDENTITY:1"
+		if = {
+			limit = { var:ve_identity_transition_target_model = 1 }
+			trigger_event = { id = ve_cul_evt.210 popup = yes }
+		}
+		else_if = {
+			limit = { var:ve_identity_transition_target_model = 2 }
+			trigger_event = { id = ve_cul_evt.220 popup = yes }
+		}
+		else_if = {
+			limit = { var:ve_identity_transition_target_model = 3 }
+			trigger_event = { id = ve_cul_evt.230 popup = yes }
+		}
+	}
+	else_if = {
+		limit = { ve_identity_transition_milestone_2_due = yes }
+		set_variable = ve_identity_transition_milestone_2_fired
+		change_variable = {
+			name = ve_identity_transition_milestones_completed
+			add = 1
+		}
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TRANSITION_MILESTONE:[THIS.GetCountry.GetNameNoFormatting]:IDENTITY:2"
+		if = {
+			limit = { var:ve_identity_transition_target_model = 1 }
+			trigger_event = { id = ve_cul_evt.211 popup = yes }
+		}
+		else_if = {
+			limit = { var:ve_identity_transition_target_model = 2 }
+			trigger_event = { id = ve_cul_evt.221 popup = yes }
+		}
+		else_if = {
+			limit = { var:ve_identity_transition_target_model = 3 }
+			trigger_event = { id = ve_cul_evt.231 popup = yes }
+		}
+	}
+}
+
+ve_complete_identity_transition_journey = {
+	set_variable = ve_identity_transition_closure_pending
+	ve_transition_tm_record_identity_resolution = yes
+	if = {
+		limit = { var:ve_national_cohesion >= 60 }
+		ve_tm_change_country_variable = { NAME = ve_transition_tm_identity_success DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TRANSITION_CLOSE:[THIS.GetCountry.GetNameNoFormatting]:IDENTITY:SUCCESS"
+		trigger_event = { id = ve_cul_evt.290 popup = yes }
+	}
+	else_if = {
+		limit = { var:ve_national_cohesion >= 26 }
+		ve_tm_change_country_variable = { NAME = ve_transition_tm_identity_neutral DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TRANSITION_CLOSE:[THIS.GetCountry.GetNameNoFormatting]:IDENTITY:NEUTRAL"
+		trigger_event = { id = ve_cul_evt.291 popup = yes }
+	}
+	else = {
+		ve_tm_change_country_variable = { NAME = ve_transition_tm_identity_crisis DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_TRANSITION_CLOSE:[THIS.GetCountry.GetNameNoFormatting]:IDENTITY:CRISIS"
+		trigger_event = { id = ve_cul_evt.292 popup = yes }
+	}
+}
+
+ve_resolve_identity_transition_closure = {
+	ve_clear_identity_transition_journey_session = yes
+}
+
+ve_transition_add_identity_crisis_radicals = {
+	add_radicals = {
+		value = 0.0025
+	}
+}

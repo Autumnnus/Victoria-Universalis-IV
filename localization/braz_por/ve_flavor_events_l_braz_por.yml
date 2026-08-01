@@ -1,0 +1,16 @@
+﻿l_braz_por:
+ # events/Economic_Idea.txt and events/InnovativeIdeaGroupEvents.txt reference
+ # only this one key set for all of their events, so the text is deliberately
+ # neutral: an event in either file may grant a positive or a negative modifier.
+ # Give each event its own keys when they are wired to an on_action.
+ economic_flavor.1.t:0 "Desenvolvimentos Econômicos"
+ economic_flavor.1.desc:0 "A nossa doutrina económica está a dar frutos de uma forma que os ministérios não planearam. Aconteça o que acontecer, os efeitos serão sentidos em toda a economia durante anos."
+ economic_flavor.1.a:0 "Assim seja"
+ innovative_flavor.1.t:0 "Uma mudança na doutrina"
+ innovative_flavor.1.desc:0 "As ideias que adoptámos estão a remodelar a forma como as nossas instituições funcionam e como o resto do mundo nos julga."
+ innovative_flavor.1.a:0 "Muito bem"
+
+ dev.2.t:0 "Evento de testes para desenvolvedores"
+ dev.2.d:0 "Este é um evento de testes para desenvolvedores do Victoria Universalis IV."
+ dev.2.a:0 "Conceder recursos de teste"
+ dev.2.b:0 "Fechar"

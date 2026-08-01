@@ -93,17 +93,13 @@ ve_religious_project_progress_target = {
 		}
 		if = {
 			limit = {
-				var:ve_religious_project_target_state ?= {
-					turmoil >= 0.25
-				}
+				ve_religious_project_target_state_check = { CHECK = { turmoil >= 0.25 } }
 			}
 			subtract = 2
 		}
 		else_if = {
 			limit = {
-				var:ve_religious_project_target_state ?= {
-					turmoil >= 0.10
-				}
+				ve_religious_project_target_state_check = { CHECK = { turmoil >= 0.10 } }
 			}
 			subtract = 1
 		}

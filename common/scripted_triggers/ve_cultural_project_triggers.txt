@@ -17,13 +17,34 @@ ve_has_no_active_cultural_project = {
 	NOT = { ve_has_active_cultural_project = yes }
 }
 
+# Mirrors ve_religious_project_target_state_check in ve_religious_state_triggers.txt.
+# `var:ve_cultural_project_target_state ?= { <state-only trigger> }` fails
+# Jomini's static scope validation (logged as "Wrong scope for trigger: country,
+# expected state") even though the variable holds a valid state at runtime;
+# routing through a saved scope sidesteps it. Pass the state-only check as CHECK.
+ve_cultural_project_target_state_check = {
+	AND = {
+		var:ve_cultural_project_target_state ?= {
+			save_scope_as = ve_cultural_project_target_state_check_scope
+		}
+		scope:ve_cultural_project_target_state_check_scope ?= {
+			$CHECK$
+		}
+	}
+}
+
 ve_can_begin_cultural_project = {
 	ve_has_no_active_cultural_project = yes
 	NOT = { has_modifier = ve_cultural_project_backlash_mdf }
+	# Avoid rebinding a JE that is still resolving the previous project.
+	NOT = { has_journal_entry = ve_je_cultural_project }
 }
 
 ve_can_begin_national_curriculum = {
 	ve_can_begin_cultural_project = yes
+	# A completed countrywide project cannot be renewed while its existing
+	# implementation benefit is still in force.
+	NOT = { has_modifier = ve_national_curriculum_result_mdf }
 	# Use the actual spendable stock so the project button and alerts cannot
 	# disagree because of a derived script-value evaluation.
 	var:culture_reform_point >= 100
@@ -31,6 +52,7 @@ ve_can_begin_national_curriculum = {
 
 ve_can_begin_shared_symbols = {
 	ve_can_begin_cultural_project = yes
+	NOT = { has_modifier = ve_shared_symbols_result_mdf }
 	var:culture_reform_point >= 75
 }
 
@@ -76,6 +98,14 @@ ve_state_has_cultural_project_target = {
 	}
 	any_scope_culture = {
 		NOT = { is_primary_culture_of = prev.owner }
+		prev = {
+			NOT = {
+				is_target_in_variable_list = {
+					name = ve_completed_cultural_project_cultures
+					target = prev
+				}
+			}
+		}
 		prev = {
 			culture_percent_state = {
 				target = prev
@@ -141,6 +171,14 @@ ve_country_meets_cultural_project_cost = {
 ve_state_has_eligible_target_culture = {
 	any_scope_culture = {
 		NOT = { is_primary_culture_of = prev.owner }
+		prev = {
+			NOT = {
+				is_target_in_variable_list = {
+					name = ve_completed_cultural_project_cultures
+					target = prev
+				}
+			}
+		}
 		prev = {
 			culture_percent_state = {
 				target = prev

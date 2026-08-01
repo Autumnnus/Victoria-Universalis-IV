@@ -1,0 +1,251 @@
+# Project Journal Entries are presentation and incident-dispatch layers. The
+# core project variables/effects remain the sole authority for progress and
+# outcomes.
+
+ve_je_religious_project = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	group = je_group_internal_affairs
+
+	on_monthly_pulse = {
+		random_events = {
+			1000 = 0
+			35 = ve_rel_evt.1
+			35 = ve_rel_evt.2
+			35 = ve_rel_evt.3
+			35 = ve_rel_evt.4
+			35 = ve_rel_evt.5
+			35 = ve_rel_evt.6
+			20 = ve_rel_evt.7
+			2 = ve_rel_evt.8
+			35 = ve_rel_evt.40
+			35 = ve_rel_evt.41
+			35 = ve_rel_evt.42
+			20 = ve_rel_evt.43
+			35 = ve_rel_evt.100
+			35 = ve_rel_evt.101
+			2 = ve_rel_evt.102
+			35 = ve_rel_evt.150
+			35 = ve_rel_evt.151
+			2 = ve_rel_evt.152
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = ve_je_religious_project_complete_tt
+			has_variable = ve_evt_religious_je_success
+		}
+	}
+
+	on_complete = {
+		ve_evt_clear_religious_je_resolution = yes
+	}
+
+	fail = {
+		custom_tooltip = {
+			text = ve_je_religious_project_fail_tt
+			has_variable = ve_evt_religious_je_failure
+		}
+	}
+
+	on_fail = {
+		ve_evt_clear_religious_je_resolution = yes
+	}
+
+	invalid = {
+		OR = {
+			has_variable = ve_evt_religious_je_invalid
+			AND = {
+				NOT = { ve_has_active_religious_project = yes }
+				NOT = { has_variable = ve_evt_religious_je_success }
+				NOT = { has_variable = ve_evt_religious_je_failure }
+			}
+		}
+	}
+
+	on_invalid = {
+		ve_evt_clear_religious_je_resolution = yes
+	}
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = ve_je_religious_project_status_confessional
+				trigger = {
+					ve_religious_project_type_is = { TYPE = 1 }
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_religious_project_status_freedom
+				trigger = {
+					ve_religious_project_type_is = { TYPE = 2 }
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_religious_project_status_secularization
+				trigger = {
+					ve_religious_project_type_is = { TYPE = 3 }
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_project_resolving_status
+				trigger = { always = yes }
+			}
+		}
+	}
+
+	current_value = {
+		if = {
+			limit = { has_variable = ve_religious_project_progress }
+			value = var:ve_religious_project_progress
+		}
+		else_if = {
+			limit = { has_variable = ve_evt_religious_je_success }
+			value = 100
+		}
+		else = {
+			value = 0
+		}
+	}
+
+	goal_add_value = {
+		value = 100
+	}
+
+	progressbar = yes
+	progress_desc = ve_je_religious_project_progress
+	weight = 100
+	transferable = no
+	can_revolution_inherit = no
+	should_be_pinned_by_default_uninvolved_or_context = yes
+}
+
+ve_je_cultural_project = {
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	group = je_group_internal_affairs
+
+	on_monthly_pulse = {
+		random_events = {
+			1000 = 0
+			35 = ve_cul_evt.1
+			35 = ve_cul_evt.2
+			35 = ve_cul_evt.3
+			35 = ve_cul_evt.4
+			35 = ve_cul_evt.5
+			35 = ve_cul_evt.6
+			20 = ve_cul_evt.7
+			2 = ve_cul_evt.8
+			35 = ve_cul_evt.40
+			35 = ve_cul_evt.41
+			20 = ve_cul_evt.42
+			35 = ve_cul_evt.50
+			35 = ve_cul_evt.51
+			35 = ve_cul_evt.100
+			35 = ve_cul_evt.101
+			35 = ve_cul_evt.150
+			35 = ve_cul_evt.151
+			35 = ve_cul_evt.160
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = ve_je_cultural_project_complete_tt
+			has_variable = ve_evt_cultural_je_success
+		}
+	}
+
+	on_complete = {
+		ve_evt_clear_cultural_je_resolution = yes
+	}
+
+	fail = {
+		custom_tooltip = {
+			text = ve_je_cultural_project_fail_tt
+			has_variable = ve_evt_cultural_je_failure
+		}
+	}
+
+	on_fail = {
+		ve_evt_clear_cultural_je_resolution = yes
+	}
+
+	invalid = {
+		OR = {
+			has_variable = ve_evt_cultural_je_invalid
+			AND = {
+				NOT = { ve_has_active_cultural_project = yes }
+				NOT = { has_variable = ve_evt_cultural_je_success }
+				NOT = { has_variable = ve_evt_cultural_je_failure }
+			}
+		}
+	}
+
+	on_invalid = {
+		ve_evt_clear_cultural_je_resolution = yes
+	}
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = ve_je_cultural_project_status_curriculum
+				trigger = {
+					ve_cultural_project_type_is = { TYPE = 1 }
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_cultural_project_status_symbols
+				trigger = {
+					ve_cultural_project_type_is = { TYPE = 2 }
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_cultural_project_status_ethnic
+				trigger = {
+					ve_cultural_project_type_is = { TYPE = 3 }
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_cultural_project_status_civic
+				trigger = {
+					ve_cultural_project_type_is = { TYPE = 4 }
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_cultural_project_status_composite
+				trigger = {
+					ve_cultural_project_type_is = { TYPE = 5 }
+				}
+			}
+			triggered_desc = {
+				desc = ve_je_project_resolving_status
+				trigger = { always = yes }
+			}
+		}
+	}
+
+	current_value = {
+		if = {
+			limit = { has_variable = ve_cultural_project_progress }
+			value = var:ve_cultural_project_progress
+		}
+		else_if = {
+			limit = { has_variable = ve_evt_cultural_je_success }
+			value = 100
+		}
+		else = {
+			value = 0
+		}
+	}
+
+	goal_add_value = {
+		value = 100
+	}
+
+	progressbar = yes
+	progress_desc = ve_je_cultural_project_progress
+	weight = 100
+	transferable = no
+	can_revolution_inherit = no
+	should_be_pinned_by_default_uninvolved_or_context = yes
+}
