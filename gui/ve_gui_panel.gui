@@ -9,6 +9,26 @@ types ve_gui_panel_types
 			trigger_on_create = yes
 			on_start = "[GetVariableSystem.Set('ve_last_tab', 've_ideas')]"
 		}
+		### VU4: auto-close watcher.
+		# The sidebar stays clickable while this panel is up and this panel is drawn
+		# under it, so opening a vanilla panel used to leave politics/market/etc.
+		# beneath our fullscreen. This widget is invisible until any vanilla panel or
+		# the map list opens; that visibility flip fires _show, which clears
+		# ve_tab_var and closes us.
+		# Kept here instead of patching onclicks into gui/information_panel_bar.gui:
+		# no vanilla file is overridden (mod compatible) and it catches every entry
+		# point - sidebar, hotkeys, map clicks and other mods' buttons alike.
+		widget = {
+			name = "ve_close_on_vanilla_panel"
+			size = { 0 0 }
+			alwaystransparent = yes
+			visible = "[Or( InformationPanelBar.IsAnyPanelOpen, MapListPanelManager.IsVisible )]"
+
+			state = {
+				name = _show
+				on_start = "[GetVariableSystem.Clear('ve_tab_var')]"
+			}
+		}
 		blockoverride
 		"animation_state_block"
 		{

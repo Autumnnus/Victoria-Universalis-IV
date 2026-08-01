@@ -156,12 +156,19 @@ types ve_gui_panel_types
 						ve_religion_meter = { # Religious Settlement
 							blockoverride "meter_tooltip" { tooltip = "ve_piety_tt" }
 							blockoverride "meter_label" {
-								textbox = {
-									raw_text = "[GetPlayer.GetCustom('ve_religious_resource_name')]"
-									default_format = "#tooltippable_name"
-									using = fontsize_large
-									align = nobaseline
-									autoresize = yes
+								hbox = {
+									spacing = 4
+									icon = {
+										texture = "gfx/interface/icons/generic_icons/conversion.dds"
+										size = { 20 20 }
+									}
+									textbox = {
+										raw_text = "[GetPlayer.GetCustom('ve_religious_resource_name')]"
+										default_format = "#tooltippable_name"
+										using = fontsize_large
+										align = vcenter|nobaseline
+										autoresize = yes
+									}
 								}
 							}
 							blockoverride "meter_value" {
@@ -215,12 +222,19 @@ types ve_gui_panel_types
 						ve_religion_meter = { # Piety Reform
 							blockoverride "meter_tooltip" { tooltip = "ve_piety_reform_tt" }
 							blockoverride "meter_label" {
-								textbox = {
-									text = "ve_piety_reform"
-									default_format = "#tooltippable_name"
-									using = fontsize_large
-									align = nobaseline
-									autoresize = yes
+								hbox = {
+									spacing = 4
+									icon = {
+										texture = "gfx/interface/icons/central_identity_pillars_icons/religious.dds"
+										size = { 20 20 }
+									}
+									textbox = {
+										text = "ve_piety_reform"
+										default_format = "#tooltippable_name"
+										using = fontsize_large
+										align = vcenter|nobaseline
+										autoresize = yes
+									}
 								}
 							}
 							blockoverride "meter_value" {
@@ -264,12 +278,19 @@ types ve_gui_panel_types
 						ve_religion_meter = { # Religious Project
 							blockoverride "meter_tooltip" { tooltip = "ve_religious_project_progress_tt" }
 							blockoverride "meter_label" {
-								textbox = {
-									text = "ve_religious_project_progress"
-									default_format = "#tooltippable_name"
-									using = fontsize_large
-									align = nobaseline
-									autoresize = yes
+								hbox = {
+									spacing = 4
+									icon = {
+										texture = "gfx/interface/icons/generic_icons/national_awakening.dds"
+										size = { 20 20 }
+									}
+									textbox = {
+										text = "ve_religious_project_progress"
+										default_format = "#tooltippable_name"
+										using = fontsize_large
+										align = vcenter|nobaseline
+										autoresize = yes
+									}
 								}
 							}
 							blockoverride "meter_value" {

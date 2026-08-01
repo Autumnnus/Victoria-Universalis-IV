@@ -290,6 +290,39 @@ types topbar_components
 						}
 					}
 				}
+
+				### VICTORIA UNIVERSALIS PANEL BUTTON
+				# Sits right next to the row toggle and opens the VE fullscreen panel
+				# with the same entry point the sidebar button in
+				# gui/information_panel_bar.gui uses (ve_tab_var + enable_ve_system).
+				flowcontainer = {
+					name = "ve_topbar_panel_button"
+					minimumsize = { 28 28 }
+					maximumsize = { 28 28 }
+					tooltip = "VE_TOOLTIP"
+					using = tooltip_below
+					margin_left = 2
+
+					button_icon_round = {
+						using = glow_button
+						size = { 28 28 }
+
+						blockoverride "icon" {
+							texture = "gfx/interface/ve_logo.dds"
+						}
+						blockoverride "icon_size" {
+							size = { 22 22 }
+						}
+						blockoverride "button_selected" {
+							visible = "[GetVariableSystem.Exists('ve_tab_var')]"
+						}
+
+						onclick = "[InformationPanelBar.ClosePanel]"
+						onclick = "[MapListPanelManager.CloseCurrentPanel]"
+						onclick = "[GetVariableSystem.SetOrToggle('ve_tab_var', GetVariableSystem.Get('ve_last_tab'))]"
+						onclick = "[GetScriptedGui('enable_ve_system').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+					}
+				}
 			}
 			### EXTRA INFO
 			flowcontainer = {
@@ -480,37 +513,11 @@ types topbar_components
 				### IDEAS - National Insight (spendable, 0-1000)
 				ve_topbar_chip = {
 					name = "ve_topbar_insight"
-					blockoverride "chip_size" { size = { 100 28 } }
+					blockoverride "chip_size" { size = { 76 28 } }
 					blockoverride "chip_tooltip" { tooltip = "ve_tb_insight_tt" }
 					blockoverride "chip_onclick" { onclick = "[GetVariableSystem.Set('ve_tab_var', 've_ideas')]" }
 					blockoverride "chip_icon" { texture = "gfx/interface/icons/generic_icons/innovation.dds" }
 					blockoverride "chip_text" { text = "ve_tb_insight_value" }
-					blockoverride "chip_delta" {
-						textbox = {
-							parentanchor = vcenter
-							raw_text = "#P ([GetPlayer.MakeScope.ScriptValue('ve_monthly_national_insight')|+0])#!"
-							autoresize = yes
-							align = left|nobaseline
-							fontsize_min = 12
-							visible = "[GreaterThan_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ve_monthly_national_insight'), '(CFixedPoint)0')]"
-						}
-						textbox = {
-							parentanchor = vcenter
-							raw_text = "#R ([GetPlayer.MakeScope.ScriptValue('ve_monthly_national_insight')|+0])#!"
-							autoresize = yes
-							align = left|nobaseline
-							fontsize_min = 12
-							visible = "[LessThan_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ve_monthly_national_insight'), '(CFixedPoint)0')]"
-						}
-						textbox = {
-							parentanchor = vcenter
-							raw_text = "#Z ([GetPlayer.MakeScope.ScriptValue('ve_monthly_national_insight')|+0])#!"
-							autoresize = yes
-							align = left|nobaseline
-							fontsize_min = 12
-							visible = "[EqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('ve_monthly_national_insight'), '(CFixedPoint)0')]"
-						}
-					}
 				}
 
 				### RELIGION - Piety Reform (spendable, 0-500)

@@ -519,7 +519,7 @@ types ve_country_panel_types
 					tooltip = "VE_CP_PIETY_TT"
 				}
 				blockoverride "cell_icon" {
-					texture = "gfx/interface/icons/generic_icons/conversion.dds"
+					texture = "gfx/interface/icons/central_identity_pillars_icons/religious.dds"
 				}
 				blockoverride "cell_label" {
 					text = "VE_CP_PIETY_LABEL"

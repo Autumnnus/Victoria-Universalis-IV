@@ -61,7 +61,7 @@
  ve_cultural_project_req_target:0 "Bu eyaletin en azından ilkokul dışı uygun bir kültüre sahip olması #Y %5#! nüfusu "
  ve_cultural_project_cancel_warning:0 "#header Kültür Projesi İptal Edilsin mi?#!\n\nŞu ana kadar kaydedilen ilerleme kaybedildi. #N -5 Ulusal Uyum#! ve bir #N 24 ay#! başka bir proje başlatılmadan önce bekleme süresi değiştiricisi uygulanır."
  alert_can_unlock_ideas_name:0 "Bir Fikri Benimseyebilir"
- alert_can_unlock_ideas_hint:0 "En az bir grubun benimsediği bir sonraki fikir için yeterli Ulusal İçgörüye sahibiz ve şu anda satın almayı engelleyen hiçbir Doktrin Uygulama döngüsü yok."
+ alert_can_unlock_ideas_hint:0 "En az bir grubun benimsediği bir sonraki fikir için yeterli Ulusal Fikirye sahibiz ve şu anda satın almayı engelleyen hiçbir Doktrin Uygulama döngüsü yok."
  alert_max_piety_name:0 "Bir Dini Devlet Programı Benimseyebilir"
  alert_max_piety_hint:0 "Dindarlık Reformumuz başka bir Dini Programı kabul edecek kadar yüksektir."
  alert_ve_can_begin_cultural_project_name:0 "Kültürel Görev Birikiyor"
@@ -197,7 +197,7 @@
  innovative_flavor.1.icon: "yes"
 
  # Alert Descriptions
- alert_can_unlock_ideas_desc:0 "Yeni bir Ulusal Fikir düzeyini benimsemek için yeterli Ulusal İçgörü biriktirdiniz."
+ alert_can_unlock_ideas_desc:0 "Yeni bir Ulusal Fikir düzeyini benimsemek için yeterli Ulusal Fikir biriktirdiniz."
  alert_max_piety_desc:0 "Bir Dini Program yürürlüğe koymak için yeterli Dindarlık Reformuna sahipsiniz."
  alert_ve_can_begin_cultural_project_desc:0 "Ülke çapında bir Kültür Projesi başlatmak için yeterli Kültürel Yetkiye sahipsiniz."
  alert_can_unlock_age_bonus_desc:0 "Yeterince sahipsiniz Bir Çağ Ödülü almak için Era Momentum'a sahipsiniz."

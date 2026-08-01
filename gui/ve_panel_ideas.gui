@@ -31,10 +31,18 @@ ve_gui_panel_types
 							vbox = {
 								spacing = 8
 								tooltip = "ve_national_insight_tt"
-								textbox = {
-									text = "ve_idea_points"	
-									using = fontsize_xxl
-									autoresize = yes
+								hbox = {
+									spacing = 4
+									icon = {
+										texture = "gfx/interface/icons/generic_icons/innovation.dds"
+										size = { 20 20 }
+									}
+									textbox = {
+										text = "ve_idea_points"
+										using = fontsize_xxl
+										align = vcenter|nobaseline
+										autoresize = yes
+									}
 								}
 								textbox = {
 									text = "[GetPlayer.MakeScope.Var('idea_point_pool').GetValue]"

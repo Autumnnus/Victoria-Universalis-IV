@@ -1,6 +1,6 @@
 can_unlock_ideas = {
 	script_context = player_country
-	texture = "gfx/interface/intelligensia.dds"
+	texture = "gfx/interface/icons/generic_icons/innovation.dds"
 	color = red
 	valid = {
 		ve_can_purchase_any_idea = yes
@@ -10,7 +10,7 @@ can_unlock_ideas = {
 
 max_piety = {
 	script_context = player_country
-	texture = "gfx/interface/catholic.dds"
+	texture = "gfx/interface/icons/central_identity_pillars_icons/religious.dds"
 	color = red
 	valid = {
 		ve_can_adopt_any_religious_program = yes
@@ -35,7 +35,7 @@ ve_can_begin_cultural_project = {
 
 can_unlock_age_bonus = {
 	script_context = player_country
-	texture = "gfx/interface/icon_splendor_tiny.dds"
+	texture = "gfx/interface/icons/generic_icons/age.dds"
 	color = red
 	valid = {
 		splendor_cost_trigger = yes

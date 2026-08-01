@@ -4,8 +4,8 @@
  VE_CP_COLLAPSE_TT:0 "Bu ülke için Victoria Universalis genel bakışını gizleyin"
  VE_CP_EXPAND_TT:0 "Bu ülke için Victoria Universalis genel bakışını göster"
 
- VE_CP_INSIGHT_LABEL:0 "Ulusal İçgörü"
- VE_CP_INSIGHT_TT:0 "#header Ulusal İçgörü#!\nStok: #Y [Country.MakeScope.Var('idea_point_pool').GetValue|0] / 1000#!\n\nBenimsemiş bir fikir grubu içindeki bireysel fikirlere harcanmıştır."
+ VE_CP_INSIGHT_LABEL:0 "Ulusal Fikir"
+ VE_CP_INSIGHT_TT:0 "#header Ulusal Fikir#!\nStok: #Y [Country.MakeScope.Var('idea_point_pool').GetValue|0] / 1000#!\n\nBenimsemiş bir fikir grubu içindeki bireysel fikirlere harcanmıştır."
  VE_CP_PIETY_LABEL:0 "Dindarlık Reformu"
  VE_CP_PIETY_TT:0 "#header Dindarlık Reformu#!\nStok: #Y [Country.MakeScope.Var('piety_reform_point').GetValue|0] / 500#!\n\nDini Programlara ve Hedeflenen Dini Projeye Harcama."
  VE_CP_MANDATE_LABEL:0 "Kültürel Manda"
@@ -44,7 +44,7 @@
  ve_cp_tier_low:0 "#N Gergin#!"
 
  # Scripted GUI tooltip - common/scripted_guis/ve_country_panel.txt
- ve_cp_group_no_idea_bought:0 "#lore Kucaklanmış, ancak bu grupta henüz bir fikir satın alınmamış.#!"
+ ve_cp_group_no_idea_bought:0 "#lore Benimsenmiş, ancak bu grupta henüz bir fikir satın alınmamış.#!"
 
  # Country-scoped meter and project tooltips. These must never use GetPlayer:
  # the country panel shows them for foreign countries too.

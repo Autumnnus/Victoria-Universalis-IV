@@ -34,11 +34,20 @@ ve_initialize_cultural_projects = {
 			NOT = { has_variable = ve_cultural_projects_initialized }
 		}
 		set_variable = ve_cultural_projects_initialized
-		ve_clear_active_cultural_project = yes
+		# This migration must never erase a project started between the lobby
+		# initializer and the first monthly pulse. Only remove stale state when
+		# there is no active project to preserve.
+		if = {
+			limit = { ve_has_no_active_cultural_project = yes }
+			ve_clear_active_cultural_project = yes
+		}
 	}
 }
 
 ve_begin_cultural_project_common = {
+	# Set this at project creation as well as in the migration above so the
+	# first monthly compatibility pass cannot mistake this for legacy debris.
+	set_variable = ve_cultural_projects_initialized
 	set_variable = {
 		name = ve_cultural_project_progress
 		value = 0

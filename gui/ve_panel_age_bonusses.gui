@@ -145,6 +145,10 @@ types ve_gui_panel_types
 												15 5
 											}
 											using = main_bg
+											icon = {
+												texture = "gfx/interface/icons/generic_icons/age.dds"
+												size = { 20 20 }
+											}
 											textbox = {
 												text = "ve_splendor"
 												using = fontsize_xxl
@@ -293,6 +297,10 @@ types ve_gui_panel_types
 											}
 											using = main_bg
 											tooltip = "ve_age_splendor_tt"
+											icon = {
+												texture = "gfx/interface/icons/generic_icons/age.dds"
+												size = { 20 20 }
+											}
 											textbox = {
 												text = "ve_splendor"
 												using = fontsize_xxl
@@ -440,6 +448,10 @@ types ve_gui_panel_types
 												15 5
 											}
 											using = main_bg
+											icon = {
+												texture = "gfx/interface/icons/generic_icons/age.dds"
+												size = { 20 20 }
+											}
 											textbox = {
 												text = "ve_splendor"
 												using = fontsize_xxl

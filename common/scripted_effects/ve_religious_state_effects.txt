@@ -843,11 +843,18 @@ ve_initialize_religious_projects = {
 			NOT = { has_variable = ve_religious_projects_initialized }
 		}
 		set_variable = ve_religious_projects_initialized
-		ve_clear_active_religious_project = yes
+		# Preserve a project started before the first monthly pulse. The cleanup
+		# is solely for inactive stale state carried by older saves.
+		if = {
+			limit = { ve_has_no_active_religious_project = yes }
+			ve_clear_active_religious_project = yes
+		}
 	}
 }
 
 ve_begin_religious_project_common = {
+	# Mark initialization at creation time to make the monthly migration inert.
+	set_variable = ve_religious_projects_initialized
 	set_variable = {
 		name = ve_religious_project_progress
 		value = 0

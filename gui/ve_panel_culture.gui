@@ -120,12 +120,19 @@ types ve_gui_panel_types
 						ve_culture_meter = { # Cultural Mandate
 							blockoverride "meter_tooltip" { tooltip = "ve_culture_reform_point_tt" }
 							blockoverride "meter_label" {
-								textbox = {
-									text = "ve_cultural_mandate"
-									default_format = "#tooltippable_name"
-									using = fontsize_large
-									align = nobaseline
-									autoresize = yes
+								hbox = {
+									spacing = 4
+									icon = {
+										texture = "gfx/interface/icons/generic_icons/mandate.dds"
+										size = { 20 20 }
+									}
+									textbox = {
+										text = "ve_cultural_mandate"
+										default_format = "#tooltippable_name"
+										using = fontsize_large
+										align = vcenter|nobaseline
+										autoresize = yes
+									}
 								}
 							}
 							blockoverride "meter_value" {
@@ -169,12 +176,19 @@ types ve_gui_panel_types
 						ve_culture_meter = { # National Cohesion
 							blockoverride "meter_tooltip" { tooltip = "ve_national_cohesion_tt" }
 							blockoverride "meter_label" {
-								textbox = {
-									text = "ve_national_cohesion"
-									default_format = "#tooltippable_name"
-									using = fontsize_large
-									align = nobaseline
-									autoresize = yes
+								hbox = {
+									spacing = 4
+									icon = {
+										texture = "gfx/interface/icons/generic_icons/cohesion.dds"
+										size = { 20 20 }
+									}
+									textbox = {
+										text = "ve_national_cohesion"
+										default_format = "#tooltippable_name"
+										using = fontsize_large
+										align = vcenter|nobaseline
+										autoresize = yes
+									}
 								}
 							}
 							blockoverride "meter_value" {
@@ -228,12 +242,19 @@ types ve_gui_panel_types
 						ve_culture_meter = { # Cultural Project
 							blockoverride "meter_tooltip" { tooltip = "ve_cultural_project_progress_tt" }
 							blockoverride "meter_label" {
-								textbox = {
-									text = "ve_cultural_project_progress"
-									default_format = "#tooltippable_name"
-									using = fontsize_large
-									align = nobaseline
-									autoresize = yes
+								hbox = {
+									spacing = 4
+									icon = {
+										texture = "gfx/interface/icons/generic_icons/cultural_fervor.dds"
+										size = { 20 20 }
+									}
+									textbox = {
+										text = "ve_cultural_project_progress"
+										default_format = "#tooltippable_name"
+										using = fontsize_large
+										align = vcenter|nobaseline
+										autoresize = yes
+									}
 								}
 							}
 							blockoverride "meter_value" {
