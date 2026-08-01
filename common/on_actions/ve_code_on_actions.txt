@@ -17,6 +17,17 @@ on_game_started_after_lobby = {
 				popup = yes
 			}
 		}
+		# Version 2.0 welcome popup. Every human player gets it once; the event
+		# itself guards on the country variable ve_welcome_2_0_shown.
+		every_country = {
+			limit = {
+				is_player = yes
+			}
+			trigger_event = {
+				id = ve_welcome.1
+				popup = yes
+			}
+		}
 	}
 }
 
