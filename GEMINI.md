@@ -51,18 +51,18 @@ The vanilla game also contains many applicable `common/` categories, including `
 
 ## Where to implement things
 
-| Need | Primary location(s) |
-| --- | --- |
-| A recurring or externally triggered outcome | `events/`, dispatched from `common/on_actions/` or a scripted effect |
-| Reusable condition | `common/scripted_triggers/` |
-| Reusable mutation/workflow | `common/scripted_effects/` |
-| Reusable number/calculation | `common/script_values/` |
-| Player-facing mechanical bonus | `common/static_modifiers/` (or another vanilla-supported modifier mechanism) |
-| Data/actions displayed in a custom panel | `common/scripted_guis/` plus `gui/` |
-| Custom alert | `common/alert_types/` and, where needed, `common/alert_groups/` |
-| New texture/icon | `gfx/` with a mod-local path, then reference it from GUI/script |
-| Text visible to players | `localization/<language>/` |
-| Initial save/start setup | the appropriate `common/history/` location |
+| Need                                        | Primary location(s)                                                          |
+| ------------------------------------------- | ---------------------------------------------------------------------------- |
+| A recurring or externally triggered outcome | `events/`, dispatched from `common/on_actions/` or a scripted effect         |
+| Reusable condition                          | `common/scripted_triggers/`                                                  |
+| Reusable mutation/workflow                  | `common/scripted_effects/`                                                   |
+| Reusable number/calculation                 | `common/script_values/`                                                      |
+| Player-facing mechanical bonus              | `common/static_modifiers/` (or another vanilla-supported modifier mechanism) |
+| Data/actions displayed in a custom panel    | `common/scripted_guis/` plus `gui/`                                          |
+| Custom alert                                | `common/alert_types/` and, where needed, `common/alert_groups/`              |
+| New texture/icon                            | `gfx/` with a mod-local path, then reference it from GUI/script              |
+| Text visible to players                     | `localization/<language>/`                                                   |
+| Initial save/start setup                    | the appropriate `common/history/` location                                   |
 
 ## Events and scripting conventions
 
@@ -99,7 +99,7 @@ The vanilla game also contains many applicable `common/` categories, including `
 - When the user mentions errors, debugging, crashes, warnings, or logs—or when diagnosis requires game output—inspect the Victoria 3 logs at:
 
 ```text
-C:\Users\prost\OneDrive\Documents\Paradox Interactive\Victoria 3\logs
+C:\Users\<username>\OneDrive\Documents\Paradox Interactive\Victoria 3\logs
 ```
 
 - Treat the logs directory as a diagnostic, read-only source. Inspect relevant files such as `error.log`, `debug.log`, `game.log`, and `system.log` when present; do not modify, delete, truncate, or clear them.

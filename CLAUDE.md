@@ -101,7 +101,7 @@ The vanilla game also contains many applicable `common/` categories, including `
 - When the user mentions errors, debugging, crashes, warnings, or logs—or when diagnosis requires game output—inspect the Victoria 3 logs at:
 
 ```text
-C:\Users\prost\OneDrive\Documents\Paradox Interactive\Victoria 3\logs
+C:\Users\<username>\OneDrive\Documents\Paradox Interactive\Victoria 3\logs
 ```
 
 - Treat the logs directory as a diagnostic, read-only source. Inspect relevant files such as `error.log`, `debug.log`, `game.log`, and `system.log` when present; do not modify, delete, truncate, or clear them.
