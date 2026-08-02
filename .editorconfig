@@ -1,0 +1,26 @@
+root = true
+
+# Paradox reads localization as UTF-8 *with* a BOM. Saved as plain UTF-8 the game
+# falls back to the system code page and every accented character becomes mojibake.
+[localization/**.yml]
+charset = utf-8-bom
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = false
+
+# Game script and GUI files: the mod's existing convention.
+[*.{txt,gui}]
+charset = utf-8-bom
+end_of_line = crlf
+indent_style = tab
+
+[*.py]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+
+[*.{md,tsv,json}]
+charset = utf-8
+insert_final_newline = true

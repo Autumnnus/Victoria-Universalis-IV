@@ -111,6 +111,57 @@ def build_target(source: LocFile, language: str, values: dict[str, str]) -> list
     return out
 
 
+BOM = b"\xef\xbb\xbf"
+
+
+def encoding_problems(path: Path) -> list[str]:
+    """Byte-level defects the game's parser cares about, without rewriting anything.
+
+    A localization file must be UTF-8 with a BOM: saved as plain UTF-8, Victoria 3
+    falls back to the system code page and every accented character in the file
+    turns to mojibake. Line endings must be CRLF, and a file that mixes both is a
+    sign it was written by two different tools.
+    """
+    raw = path.read_bytes()
+    problems: list[str] = []
+    body = raw[len(BOM) :] if raw.startswith(BOM) else raw
+    if not raw.startswith(BOM):
+        problems.append("missing UTF-8 BOM")
+    try:
+        body.decode("utf-8")
+    except UnicodeDecodeError as error:
+        problems.append(f"not valid UTF-8 ({error.reason} at byte {error.start})")
+        return problems
+    crlf = body.count(b"\r\n")
+    bare_lf = body.count(b"\n") - crlf
+    if bare_lf and crlf:
+        problems.append(f"mixed line endings ({crlf} CRLF, {bare_lf} bare LF)")
+    elif bare_lf:
+        problems.append(f"LF line endings ({bare_lf} lines), expected CRLF")
+    if body and not body.endswith(b"\n"):
+        problems.append("no newline at end of file")
+    return problems
+
+
+def fix_encoding(path: Path) -> list[str]:
+    """Repair those defects in place. Only bytes, never content.
+
+    Returns what was changed; an empty list means the file was already correct.
+    Refuses to touch a file that is not valid UTF-8, because guessing its real
+    encoding would corrupt it.
+    """
+    problems = encoding_problems(path)
+    if not problems or any(problem.startswith("not valid UTF-8") for problem in problems):
+        return [] if not problems else problems
+    raw = path.read_bytes()
+    body = raw[len(BOM) :] if raw.startswith(BOM) else raw
+    body = body.replace(b"\r\n", b"\n").replace(b"\r", b"\n").replace(b"\n", b"\r\n")
+    if body and not body.endswith(b"\r\n"):
+        body += b"\r\n"
+    path.write_bytes(BOM + body)
+    return problems
+
+
 def english_files(english_dir: Path) -> list[Path]:
     return sorted(english_dir.glob("*_l_english.yml"))
 

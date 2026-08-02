@@ -1,4 +1,4 @@
-l_english:
+﻿l_english:
  # events/Economic_Idea.txt and events/InnovativeIdeaGroupEvents.txt reference
  # only this one key set for all of their events, so the text is deliberately
  # neutral: an event in either file may grant a positive or a negative modifier.

@@ -9,6 +9,7 @@ Nothing here reaches out to the network; the Gemini client keeps its own module.
 from __future__ import annotations
 
 import os
+import re
 from pathlib import Path
 
 # --- paths -------------------------------------------------------------------
@@ -23,13 +24,62 @@ STATE_FILE = LOC_DIR / ".translation_state.json"
 # API keys, their names, usage and cooldowns live OUTSIDE the repository - see
 # tools/loc/keys.py registry_path(). Nothing key-related is stored here.
 
-# Read-only reference. Override with VICTORIA3_GAME_DIR when the install moves.
-VANILLA_GAME_DIR = Path(
-    os.environ.get(
-        "VICTORIA3_GAME_DIR",
-        r"C:\Program Files (x86)\Steam\steamapps\common\Victoria 3\game",
-    )
-)
+WINDOWS_DEFAULT = Path(r"C:\Program Files (x86)\Steam\steamapps\common\Victoria 3\game")
+
+
+def _steam_libraries() -> list[Path]:
+    """Extra Steam library folders, read from Steam's own libraryfolders.vdf."""
+    candidates = [
+        Path(r"C:\Program Files (x86)\Steam\steamapps\libraryfolders.vdf"),
+        Path(r"C:\Program Files\Steam\steamapps\libraryfolders.vdf"),
+        Path.home() / ".steam/steam/steamapps/libraryfolders.vdf",
+        Path.home() / ".local/share/Steam/steamapps/libraryfolders.vdf",
+        Path.home() / "Library/Application Support/Steam/steamapps/libraryfolders.vdf",
+    ]
+    libraries: list[Path] = []
+    for vdf in candidates:
+        if not vdf.is_file():
+            continue
+        try:
+            text = vdf.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        for match in re.finditer(r'"path"\s*"([^"]+)"', text):
+            libraries.append(Path(match.group(1).replace("\\\\", "\\")))
+    return libraries
+
+
+def find_game_dir() -> Path:
+    """Locate the Victoria 3 installation. Read-only reference, never written to.
+
+    VICTORIA3_GAME_DIR wins. Otherwise the usual Steam locations on Windows, macOS
+    and Linux are tried, including extra Steam libraries on other drives.
+    """
+    override = os.environ.get("VICTORIA3_GAME_DIR", "").strip()
+    if override:
+        return Path(override)
+
+    home = Path.home()
+    candidates = [
+        WINDOWS_DEFAULT,
+        Path(r"C:\Program Files\Steam\steamapps\common\Victoria 3\game"),
+        home / "Library/Application Support/Steam/steamapps/common/Victoria 3/game",
+        home / ".steam/steam/steamapps/common/Victoria 3/game",
+        home / ".local/share/Steam/steamapps/common/Victoria 3/game",
+    ]
+    for drive in "DEFGH":
+        candidates.append(Path(f"{drive}:/SteamLibrary/steamapps/common/Victoria 3/game"))
+        candidates.append(Path(f"{drive}:/Steam/steamapps/common/Victoria 3/game"))
+    for library in _steam_libraries():
+        candidates.append(library / "steamapps/common/Victoria 3/game")
+
+    for candidate in candidates:
+        if (candidate / "localization" / "english").is_dir():
+            return candidate
+    return WINDOWS_DEFAULT
+
+
+VANILLA_GAME_DIR = find_game_dir()
 
 # --- languages ---------------------------------------------------------------
 

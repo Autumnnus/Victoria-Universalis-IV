@@ -1,4 +1,4 @@
-l_english:
+﻿l_english:
  ve_je_era_crossroads_age_1:0 "Steam and the State"
  ve_je_era_crossroads_age_1_reason:0 "Industry and Nations has opened several paths to modern statehood. The chosen course must become more than a collection of isolated achievements."
  ve_je_era_crossroads_age_1_status:0 "Progress: #Y [ROOT.GetCountry.MakeScope.Var('ve_era_crossroads_progress').GetValue|0]#!/60\nTime remaining: #Y [ROOT.GetCountry.MakeScope.ScriptValue('ve_era_crossroads_remaining_months')|0] months#!\nMonthly progress: #P [ROOT.GetCountry.MakeScope.ScriptValue('ve_era_crossroads_monthly_progress')|0]#!\n\nGoal: reach 60 Progress for #P +50 Era Momentum#!. Milestones at 20 and 40 Progress offer a National Insight-funded boost."

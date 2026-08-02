@@ -2,6 +2,7 @@
 """One entry point for the whole localization pipeline.
 
     python -m tools.loc                 interactive menu (nothing to memorise)
+    python -m tools.loc doctor          check the setup and say what to do next
     python -m tools.loc status
     python -m tools.loc sync turkish
     python -m tools.loc sync all
@@ -24,8 +25,8 @@ from pathlib import Path
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from tools.loc import config, glossary, keys, propose_terms, review, state as state_module, translate, verify
-from tools.loc import vanilla_terms
+from tools.loc import config, doctor, glossary, keys, propose_terms, review, state as state_module, translate, verify
+from tools.loc import vanilla_terms, yml
 
 STEPS = """\
 The pipeline, in order:
@@ -37,6 +38,7 @@ The pipeline, in order:
   4  review      native reviewer over the interface text (tier A)
   5  verify      quality gate: markup, whitespace, locked terms  (no API key needed)
 
+  doctor         is everything set up? what should I do next?
   status         what is done and what is pending, per file and language
   keys           the API key pool: how many keys, which are resting
   sync           1-5 in order, skipping whatever has nothing to do\
@@ -88,6 +90,23 @@ def sync(languages: list[str], extra: list[str], dry_run: bool = False) -> int:
     terms = glossary.load_terms()
     worst = 0
 
+    # Step 0: the encoding of the *source*. Everything this pipeline writes is
+    # UTF-8 with a BOM by construction, but the English files are edited by hand,
+    # and an editor that drops the BOM turns every accent into mojibake in game.
+    # The repair is byte-safe and idempotent, so it runs before every sync.
+    if not dry_run:
+        repaired = [
+            (path, changes)
+            for path, changes in (
+                (path, yml.fix_encoding(path)) for path in sorted(config.LOC_DIR.glob("*/*.yml"))
+            )
+            if changes
+        ]
+        if repaired:
+            print(f"\n-- encoding: repaired {len(repaired)} file(s)")
+            for path, changes in repaired[:10]:
+                print(f"   {path.relative_to(config.MOD_ROOT)}: {', '.join(changes)}")
+
     for language in languages:
         print(f"\n{'=' * 72}\n{language}\n{'=' * 72}")
 
@@ -132,9 +151,9 @@ def menu() -> int:
         print("=" * 72)
         print(STEPS)
         print(
-            "\n  s) status        t) terms        x) translate        r) review"
-            "\n  v) verify        y) sync         g) game vocabulary  k) keys"
-            "\n  q) quit"
+            "\n  d) doctor        s) status       t) terms            x) translate"
+            "\n  r) review        v) verify       y) sync             g) game vocabulary"
+            "\n  k) keys          q) quit"
         )
         try:
             choice = input("\n> ").strip().lower()
@@ -156,6 +175,9 @@ def menu() -> int:
             continue
         if choice in ("k", "keys"):
             call(keys, [])
+            continue
+        if choice in ("d", "doctor"):
+            call(doctor, [])
             continue
 
         actions = {"t": propose_terms, "x": translate, "r": review, "y": None}
@@ -220,6 +242,9 @@ def main() -> int:
 
     if command == "keys":
         return call(keys, rest)
+
+    if command in ("doctor", "check", "setup"):
+        return call(doctor, rest)
 
     if command in ("terms", "translate", "review", "sync"):
         if not rest:

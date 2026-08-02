@@ -44,9 +44,14 @@ ALLOWED_EQUAL_KEYS = {
 }
 
 
-def check_source(source: Path) -> list[str]:
-    """English-side hygiene: a key defined twice means one definition is dead."""
+def check_source(source: Path) -> tuple[list[str], list[str]]:
+    """English-side hygiene: encoding (blocking), and keys defined twice (warning)."""
+    problems: list[str] = []
     warnings: list[str] = []
+    # A source file without a BOM ships mojibake to every player, and one command
+    # repairs it, so it blocks rather than warns.
+    for problem in yml.encoding_problems(source):
+        problems.append(f"english/{source.name}: {problem}  (fix with `loc verify --fix-encoding`)")
     lines = source.read_text(encoding="utf-8-sig").splitlines()
     keys = [match.group("key") for match in (yml.ENTRY.match(line) for line in lines) if match]
     duplicates = {key: count for key, count in Counter(keys).items() if count > 1}
@@ -56,7 +61,7 @@ def check_source(source: Path) -> list[str]:
             f"english/{source.name}: {len(duplicates)} key(s) defined more than once "
             f"({total} dead line(s)), e.g. {', '.join(list(duplicates)[:4])}"
         )
-    return warnings
+    return problems, warnings
 
 
 def check_state(source: Path, language: str, state: state_module.State) -> list[str]:
@@ -99,8 +104,8 @@ def check_language(
 
     if translated.language != language:
         problems.append(f"{label}: header is l_{translated.language or '?'}, expected l_{language}")
-    if not target.read_bytes().startswith(b"\xef\xbb\xbf"):
-        problems.append(f"{label}: missing UTF-8 BOM")
+    for problem in yml.encoding_problems(target):
+        problems.append(f"{label}: {problem}  (fix with `loc verify --fix-encoding`)")
 
     missing = [key for key in english.entries if key not in translated.entries]
     extra = [key for key in translated.entries if key not in english.entries]
@@ -133,7 +138,28 @@ def main() -> int:
     parser.add_argument("--language", choices=sorted(config.LANGUAGES), action="append")
     parser.add_argument("--file", action="append", help="English filename, e.g. ve_gui_l_english.yml")
     parser.add_argument("--strict", action="store_true", help="Fail on warnings as well.")
+    parser.add_argument(
+        "--fix-encoding",
+        action="store_true",
+        help="Rewrite files that lack the UTF-8 BOM or use the wrong line endings.",
+    )
     args = parser.parse_args()
+
+    if args.fix_encoding:
+        fixed = 0
+        for path in sorted(config.LOC_DIR.glob("*/*.yml")):
+            changes = yml.fix_encoding(path)
+            if not changes:
+                continue
+            fixed += 1
+            refused = any(change.startswith("not valid UTF-8") for change in changes)
+            print(f"{'SKIP ' if refused else 'fixed'} {path.relative_to(config.MOD_ROOT)}: {', '.join(changes)}")
+        print(
+            f"\n{fixed} file(s) needed repair."
+            if fixed
+            else "\nEvery localization file is UTF-8 with a BOM and CRLF line endings."
+        )
+        return 0
 
     sources = yml.english_files(config.ENGLISH_DIR)
     if args.file:
@@ -148,7 +174,9 @@ def main() -> int:
     problems: list[str] = []
     warnings: list[str] = []
     for source in sources:
-        warnings += check_source(source)
+        source_problems, source_warnings = check_source(source)
+        problems += source_problems
+        warnings += source_warnings
         for language in args.language or sorted(config.LANGUAGES):
             file_problems, file_warnings = check_language(source, language, terms)
             problems += file_problems
