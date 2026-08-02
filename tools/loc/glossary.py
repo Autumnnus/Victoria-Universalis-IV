@@ -29,7 +29,7 @@ from pathlib import Path
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from tools.loc import config
+from tools.loc import config, fs
 
 TERMS_HEADER = ("id", "english", "category", "definition", "avoid")
 LANG_HEADER = ("id", "translation", "status", "note")
@@ -98,7 +98,7 @@ def save_decisions(language: str, terms: dict[str, Term], decisions: dict[str, D
         decision = decisions.get(term_id, Decision(id=term_id, translation="", status="todo"))
         lines.append("\t".join((term_id, decision.translation, decision.status, decision.note)))
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    fs.write_text(path, "\n".join(lines) + "\n")
     return path
 
 

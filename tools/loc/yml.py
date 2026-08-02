@@ -15,6 +15,8 @@ import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from tools.loc import fs
+
 ENTRY = re.compile(
     r'^(?P<indent>[ \t]*)(?P<key>[A-Za-z0-9_.\-]+):(?P<version>\d*)[ \t]+"(?P<value>.*)"[ \t]*$'
 )
@@ -84,8 +86,7 @@ def write(path: Path, language: str, lines: list[str]) -> None:
     body = "\r\n".join(lines)
     if not body.endswith("\r\n"):
         body += "\r\n"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_bytes("﻿".encode("utf-8") + body.encode("utf-8"))
+    fs.write_bytes(path, "﻿".encode("utf-8") + body.encode("utf-8"))
 
 
 def build_target(source: LocFile, language: str, values: dict[str, str]) -> list[str]:
@@ -158,7 +159,7 @@ def fix_encoding(path: Path) -> list[str]:
     body = body.replace(b"\r\n", b"\n").replace(b"\r", b"\n").replace(b"\n", b"\r\n")
     if body and not body.endswith(b"\r\n"):
         body += b"\r\n"
-    path.write_bytes(BOM + body)
+    fs.write_bytes(path, BOM + body)
     return problems
 
 

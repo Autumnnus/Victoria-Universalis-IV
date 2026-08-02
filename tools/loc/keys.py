@@ -52,6 +52,8 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 
+from tools.loc import fs
+
 MAX_SLEEP = 300.0  # never block a run longer than this waiting for a key
 DEFAULT_DAY_COOLDOWN = 6 * 3600.0
 FLUSH_EVERY = 10  # write usage back to disk after this many calls
@@ -187,14 +189,13 @@ class Registry:
         self.entries = [Entry.from_json(item) for item in data.get("keys", [])]
 
     def save(self) -> None:
-        self.path.parent.mkdir(parents=True, exist_ok=True)
         payload = {
             "version": 1,
             "note": "Victoria Universalis IV localization keys. Environment keys are "
             "tracked by fingerprint only; their value is never stored.",
             "keys": [entry.to_json() for entry in self.entries],
         }
-        self.path.write_text(json.dumps(payload, indent=1) + "\n", encoding="utf-8")
+        fs.write_text(self.path, json.dumps(payload, indent=1) + "\n")
 
     # -- lookup ---------------------------------------------------------------
 

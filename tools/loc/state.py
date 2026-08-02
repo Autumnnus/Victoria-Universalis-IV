@@ -30,7 +30,7 @@ from pathlib import Path
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from tools.loc import config, glossary, prompts, yml
+from tools.loc import config, fs, glossary, prompts, yml
 
 VERSION = 2
 
@@ -63,10 +63,16 @@ class State:
 
     def save(self) -> None:
         self.data["version"] = VERSION
-        config.STATE_FILE.write_text(
-            json.dumps(self.data, ensure_ascii=False, indent=1, sort_keys=True) + "\n",
-            encoding="utf-8",
-        )
+        try:
+            fs.write_text(
+                config.STATE_FILE,
+                json.dumps(self.data, ensure_ascii=False, indent=1, sort_keys=True) + "\n",
+            )
+        except fs.WriteFailed as error:
+            # Losing the bookkeeping means some keys get retranslated later; it is
+            # not worth killing a ten-language run over.
+            print(f"    ! could not save progress: {error}")
+            print(f"      the data is in {error.kept.name}; rename it over the original")
 
     # -- per-key records ------------------------------------------------------
 

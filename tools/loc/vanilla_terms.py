@@ -27,7 +27,7 @@ from pathlib import Path
 if __package__ in (None, ""):  # allow `python tools/loc/vanilla_terms.py`
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from tools.loc import config, yml
+from tools.loc import config, fs, yml
 from tools.loc.tokens import TOKEN
 
 # Concept keys carry the player-facing name of a game concept. The variants
@@ -189,7 +189,7 @@ def main() -> int:
     for language in args.language or sorted(config.LANGUAGES):
         data = build(language, selected)
         path = config.VANILLA_GLOSSARY_DIR / f"{language}.json"
-        path.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        fs.write_text(path, json.dumps(data, ensure_ascii=False, indent=1) + "\n")
         print(f"{language}: {len(data['terms'])} vanilla terms -> {path.relative_to(config.MOD_ROOT)}")
     return 0
 
