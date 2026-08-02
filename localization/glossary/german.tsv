@@ -1,0 +1,93 @@
+### Victoria Universalis IV - German termbase.
+### Tab-separated: id, translation, status, note
+### status: locked (human-approved, never re-translated) | candidate (model proposal in use) | todo (undecided)
+### Term ids and their English source live in localization/glossary/terms.tsv.
+id	translation	status	note
+national_insight	Nationaleinsicht	candidate	Combines national scale with intellectual insight, distinct from Innovation. | alternatives: Staatsdringlichkeit, Wissenskapital
+piety_reform	Frömmigkeitsfonds	candidate	Represents the spendable state currency for religious reform. | alternatives: Religionsbudget, Kirchenfonds
+cultural_mandate	Kulturmandat	candidate	Authorisation and currency for cultural statecraft. | alternatives: Kulturkapital, Kulturressource
+era_momentum	Epochenschwung	candidate	Captures the political and historical momentum of an age. | alternatives: Zeitalterdynamik, Epochendynamik
+religious_settlement	Religiöser Ausgleich	candidate	Uses the historical 19th-century political term Ausgleich for arrangement. | alternatives: Konfessioneller Modus vivendi, Kirchenfrieden
+national_cohesion	Nationaler Zusammenhalt	candidate	Standard German administrative term for social and national cohesion. | alternatives: Nationale Kohäsion, Volksverbundenheit
+religious_model	Religionsmodell	candidate	Direct translation matching the requested family of terms. | alternatives: Kirchenmodell, Konfessionsmodell
+confessional_state	Konfessioneller Staat	candidate	Reflects a state tied to a specific confession of faith. | alternatives: Staatskonfession, Kirchenstaat
+freedom_of_conscience	Gewissensfreiheit	candidate	The standard historical 19th-century civil liberty term. | alternatives: Glaubens- und Gewissensfreiheit
+total_separation	Vollständige Trennung	candidate	Reflects the absolute separation of church and state. | alternatives: Radikale Trennung, Gänzliche Trennung
+state_atheism	Staatsatheismus	candidate	Standard political term for state-mandated secularism or atheism. | alternatives: Militanter Atheismus, Säkularistischer Staat
+identity_model	Identitätsmodell	candidate	Direct translation keeping the model word family intact. | alternatives: Nationsmodell, Staatsethos
+ethnic_nation	Ethnische Nation	candidate	Matches the concept of a nation built on primary culture and heritage. | alternatives: Volksnation, Abstammungsnation
+civic_nation	Staatsbürgernation	candidate	Standard political science term for a nation founded on citizenship. | alternatives: Zivile Nation, Bürgernahme
+composite_state	Gesamtstaat	candidate	Historical administrative term for a state comprising multiple distinct realms or cultures. | alternatives: Verbundstaat, Kompaginationsstaat
+religious_program	Religiöses Programm	candidate	Follows the required word family for administrative reforms. | alternatives: Kirchenprogramm, Konfessionsprogramm
+religious_project	Religiöses Projekt	candidate	Direct and unambiguous system term. | alternatives: Kirchliches Vorhaben, Kirchenprojekt
+confessional_conversion	Konfessionelle Bekehrung	candidate	Combines confessional policy with the existing conversion term. | alternatives: Glaubenslenkung, Bekenntniswechsel
+freedom_outreach	Öffentlichkeitsarbeit für Gewissensfreiheit	candidate	Captures the proactive outreach meaning in state policy. | alternatives: Toleranzpropaganda, Freiheitsmission
+secularization_campaign	Säkularisierungskampagne	candidate	Direct translation of an active state campaign. | alternatives: Entkirchlichungskampagne, Säkularisationsfeldzug
+cultural_project	Kulturprojekt	candidate	Fits the project system family cleanly. | alternatives: Kulturvorhaben, Kulturkampagne
+national_curriculum	Nationaler Lehrplan	candidate	Standard historical and modern term for a unified educational syllabus. | alternatives: Reichslehrplan, Einheitsschulplan
+shared_symbols	Gemeinsame Symbole	candidate	Direct translation fitting 19th-century state terminology for cultural ceremonies. | alternatives: Nationale Symbole
+ethnic_integration_campaign	Eingliederungskampagne	candidate	Captures the administrative campaign nature of cultural assimilation. | alternatives: Kampagne zur ethnischen Integration
+equal_citizenship_initiative	Gleichberechtigungsinitiative	candidate	Standard 19th-century administrative vocabulary for civic equality. | alternatives: Initiative für gleiche Staatsbürgerschaft
+constituent_compact	Staatspakt	candidate	Compact as a fundamental political covenant forming a composite state. | alternatives: Verfassungspakt
+idea_group	Doktrinengruppe	candidate	Reflects a school of doctrine rather than a committee or people. | alternatives: Lehrgruppe
+embrace	Annehmen	candidate	Standard state verb for officially adopting a policy or doctrine. | alternatives: Übernehmen
+idea	Doktrin	candidate	Keeps the doctrinal family consistent across the idea system. | alternatives: Grundsatz
+ambition	Krönung	candidate	Represents the crowning effect of a completed doctrine tree. | alternatives: Vollendung
+doctrine	Doktrin	candidate	Unified umbrella term for the mod's entire doctrine system. | alternatives: Lehre
+doctrine_implementation_strain	Doktrinenumsetzungslast	candidate	Denotes administrative overload rather than physical tension. | alternatives: Verwaltungsbelastung
+idea_group_capacity	Doktrinengruppenkapazität	candidate	Clear mechanical term indicating slots available for doctrine groups. | alternatives: Doktrinenkapazität
+national_idea	Nationale Doktrin	candidate	Keeps it distinct from Idea Group and Idea while using the family word. | alternatives: Landesdoktrin
+tradition	Tradition	candidate	Direct period-appropriate term for starting country bonuses. | alternatives: Hergebrachte Eigenschaft
+national_bonus	Nationaler Bonus	candidate	Standard paradox-style UI term for final campaign completion bonuses. | alternatives: Staatsbonus
+category_production	Produktion	candidate	Matches vanilla Victoria 3 production category terminology. | alternatives: Wirtschaft
+category_society	Gesellschaft	candidate	Matches vanilla Victoria 3 society category terminology. | alternatives: Staat und Gesellschaft
+category_military	Militär	candidate	Matches vanilla Victoria 3 military category terminology. | alternatives: Streitkräfte
+group_industrialist	Industrielle	candidate	Names the economic doctrine of the industrialist class. | alternatives: Industrielehre
+group_mercantile	Merkantile	candidate	Reflects trade and merchant capital doctrines of the period. | alternatives: Merkantilismus
+group_financial	Finanzwesen	candidate	Covers banking, credit, and monetary policies. | alternatives: Finanzlehre
+group_infrastructure	Infrastruktur	candidate	Standard term for railways, ports, and construction doctrines. | alternatives: Verkehrswesen
+group_extraction	Rohstoffgewinnung	candidate	Explicitly means mining and raw resource extraction, avoiding removal. | alternatives: Extraktion
+group_labour	Arbeit	candidate	Standard 19th-century terminology for the labour doctrine without implying individual physical work. | alternatives: Arbeiter, Gewerkschaftswesen
+group_agrarian	Agrar	candidate	Compact prefix-style noun matching idea group conventions. | alternatives: Landwirtschaft
+group_academic	Akademisch	candidate	Captures the sense of scholarly inquiry and higher learning. | alternatives: Gelehrt
+group_bureaucratic	Bürokratisch	candidate	Directly links to the established administration terminology. | alternatives: Verwaltung
+group_parliamentary	Parlamentarisch	candidate	Reflects the doctrine of law-making and representation. | alternatives: Repräsentativ
+group_welfare	Wohlfahrt	candidate	Period-appropriate term for social security and public health. | alternatives: Sozialfürsorge
+group_diplomatic	Diplomatisch	candidate	Standard descriptor for influence and international relations. | alternatives: Außenpolitik
+group_nationalist	Nationalistisch	candidate	Denotes the doctrine of national homogeneity. | alternatives: National
+group_reformist	Reformistisch	candidate	Denotes the doctrine of egalitarian reform. | alternatives: Reform
+group_offensive	Offensive	candidate	Established military doctrine term for attack. | alternatives: Angriff
+group_defensive	Defensive	candidate	Established military doctrine term for defense and fortification. | alternatives: Verteidigung
+group_naval	Marine	candidate	Standard 19th-century term for naval affairs and fleets. | alternatives: Seemacht
+group_professional_army	Berufsheer	candidate	Period term for a trained standing army. | alternatives: Stehendes Heer
+group_mass_conscription	Massenaushebung	candidate	Historical term for the conscript nation system. | alternatives: Wehrpflicht
+group_colonial	Kolonial	candidate	Standard descriptor for colonial expansion. | alternatives: Übersee
+group_war_economy	Kriegswirtschaft	candidate	Reflects total mobilization of industry for war. | alternatives: Wehrwirtschaft
+age	Zeitalter	candidate	Standard historical term for an era of the campaign. | alternatives: Ära
+age_1	Industrie und Nationen	candidate	Direct translation of the first campaign age.
+age_2	Imperium und Massengesellschaft	candidate	Direct translation of the second campaign age.
+age_3	Massenpolitik und totaler Krieg	candidate	Direct translation of the third campaign age.
+objective	Ziel	candidate	Clear term for a goal within an Age. | alternatives: Auftrag
+era_reward	Zeitalterbelohnung	candidate	Compound term linking reward to the current Age. | alternatives: Ärenbonus
+golden_age	Goldenes Zeitalter	candidate	The standard historical German term for a golden age. | alternatives: Blütezeit
+golden_age_industrial	Industrielles goldenes Zeitalter	candidate	Maintains the family while highlighting industrial focus. | alternatives: Industrielle Blütezeit
+golden_age_cultural	Kulturelles goldenes Zeitalter	candidate	Maintains the family while focusing on culture and education. | alternatives: Kulturelle Blütezeit
+golden_age_strategic	Strategisches goldenes Zeitalter	candidate	Maintains the family while emphasizing military strength. | alternatives: Strategische Blütezeit
+doctrine_journey	Doktrinen-Weg	candidate	Captures the sense of a sustained undertaking and process. | alternatives: Doktrinen-Pfad
+era_crossroads	Epochen-Scheideweg	candidate	Denotes a critical strategic decision point for an era. | alternatives: Zeitalter-Scheideweg
+route	Kurs	candidate	Represents a strategic course of action rather than a physical road. | alternatives: Weg, Pfad
+milestone	Meilenstein	candidate	Direct and standard translation for a significant project point.
+transition_journey	Übergangs-Weg	candidate	Keeps the 'journey' word family while denoting change. | alternatives: Transformations-Pfad
+journey_steam_and_the_state	Dampf und Staat	candidate	Translates steam correctly in a 19th-century statecraft context. | alternatives: Dampfkraft und Staat
+journey_empire_and_mass_society	Weltreich und Massengesellschaft	candidate	Matches the Age 2 title accurately. | alternatives: Imperium und Massengesellschaft
+journey_mobilized_society	Die mobilisierte Gesellschaft	candidate	Reflects the societal mobilization of Age 3. | alternatives: Mobilisierung der Gesellschaft
+journey_factory_system	Standardisierung des Fabriksystems	candidate	Reflects the industrial order of the factory system. | alternatives: Normierung der Fabrikarbeit
+journey_republic_of_scholars	Gelehrtenrepublik	candidate	Established historical term for a community of scholars. | alternatives: Republik der Gelehrten
+journey_general_staff	Reform des Generalstabs	candidate	Uses the correct historical military institution name. | alternatives: Generalstabsreform
+doctrine_ledger	Doktrinenübersicht	candidate	Avoids leaving ledger untranslated and fits UI tables. | alternatives: Doktrinenregister
+national_doctrine	Nationale Doktrin	candidate	Clear, direct, and matches national policy terminology.
+backlash	Rückschlag	candidate	Reflects the political and social blowback from a change. | alternatives: Politische Reaktion
+strain	Belastung	candidate	Denotes the temporary implementation burden. | alternatives: Beanspruchung
+tier	Stufe	candidate	Standard term for meter bands and incremental levels. | alternatives: Klasse, Bereich
+equilibrium	Gleichgewicht	candidate	The standard physical and economic term for drift targets. | alternatives: Equilibrium
+progress	Fortschritt	candidate	Used strictly as a measured completion value in UI contexts. | alternatives: Fortgang

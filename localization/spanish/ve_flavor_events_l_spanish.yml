@@ -4,13 +4,13 @@
  # neutral: an event in either file may grant a positive or a negative modifier.
  # Give each event its own keys when they are wired to an on_action.
  economic_flavor.1.t:0 "Desarrollos económicos"
- economic_flavor.1.desc:0 "Nuestra doctrina económica está dando frutos en formas que los ministerios no planearon. Pase lo que pase, los efectos se sentirán en toda la economía durante años."
+ economic_flavor.1.desc:0 "Nuestra doctrina económica está dando frutos de maneras que los ministerios no planificaron. Pase lo que pase, los efectos se sentirán en toda la economía durante años."
  economic_flavor.1.a:0 "Que así sea"
- innovative_flavor.1.t:0 "Un cambio de doctrina"
- innovative_flavor.1.desc:0 "Las ideas que hemos adoptado están remodelando la forma en que funcionan nuestras instituciones y cómo nos juzga el resto del mundo."
+ innovative_flavor.1.t:0 "Un cambio en la doctrina"
+ innovative_flavor.1.desc:0 "Las ideas que hemos adoptado están remodelando el funcionamiento de nuestras Instituciones y la forma en que el resto del mundo nos juzga."
  innovative_flavor.1.a:0 "Muy bien"
 
  dev.2.t:0 "Evento de prueba para desarrolladores"
- dev.2.d:0 "Este es un evento de prueba para desarrolladores para Victoria Universalis IV."
- dev.2.a:0 "Otorgar recursos de prueba"
+ dev.2.d:0 "Este es un evento de prueba para desarrolladores de Victoria Universalis IV."
+ dev.2.a:0 "Conceder recursos de prueba"
  dev.2.b:0 "Cerrar"

@@ -1,0 +1,1214 @@
+{
+ "language": "korean",
+ "source": "Victoria 3 game localization (read-only reference)",
+ "terms": {
+  "bg_agriculture": {
+   "en": "Agriculture",
+   "target": "농업"
+  },
+  "bg_coffee_plantations": {
+   "en": "Coffee Plantations",
+   "target": "커피 플랜테이션"
+  },
+  "bg_construction": {
+   "en": "Construction",
+   "target": "건설"
+  },
+  "bg_extraction": {
+   "en": "Extraction",
+   "target": "채굴"
+  },
+  "bg_infrastructure": {
+   "en": "Infrastructure",
+   "target": "기반 시설"
+  },
+  "bg_mining": {
+   "en": "Mines",
+   "target": "광산"
+  },
+  "bg_monuments": {
+   "en": "Monuments",
+   "target": "기념비"
+  },
+  "bg_monuments_hidden": {
+   "en": "Monuments",
+   "target": "기념비"
+  },
+  "bg_plantations": {
+   "en": "Plantations",
+   "target": "플랜테이션"
+  },
+  "bg_shipyards": {
+   "en": "Shipyards",
+   "target": "조선소"
+  },
+  "building_barrack": {
+   "en": "Barracks",
+   "target": "병영"
+  },
+  "building_clerks_shares_add": {
+   "en": "Clerks",
+   "target": "직원"
+  },
+  "building_clerks_shares_mult": {
+   "en": "Clerks",
+   "target": "직원"
+  },
+  "building_coffee_plantation": {
+   "en": "Coffee Plantations",
+   "target": "커피 플랜테이션"
+  },
+  "building_engineers_shares_add": {
+   "en": "Engineers",
+   "target": "공학자"
+  },
+  "building_engineers_shares_mult": {
+   "en": "Engineers",
+   "target": "공학자"
+  },
+  "building_gold_field_discovered_resource": {
+   "en": "Gold",
+   "target": "금"
+  },
+  "building_group_bg_agriculture_throughput_add": {
+   "en": "Agriculture Throughput",
+   "target": "농업 처리율"
+  },
+  "building_mobilization_cost_mult": {
+   "en": "Requirements",
+   "target": "요구 조건"
+  },
+  "building_officers_shares_add": {
+   "en": "Officers",
+   "target": "장교"
+  },
+  "building_officers_shares_mult": {
+   "en": "Officers",
+   "target": "장교"
+  },
+  "building_oil_rig_discovered_resource": {
+   "en": "Oil",
+   "target": "기름"
+  },
+  "building_port": {
+   "en": "Port",
+   "target": "항구"
+  },
+  "building_port_lens_option": {
+   "en": "Port",
+   "target": "항구"
+  },
+  "building_railway": {
+   "en": "Railway",
+   "target": "철로"
+  },
+  "building_railway_lens_option": {
+   "en": "Railway",
+   "target": "철로"
+  },
+  "building_shipyard": {
+   "en": "Shipyards",
+   "target": "조선소"
+  },
+  "building_smallholders_fertility_mult": {
+   "en": "of",
+   "target": "의"
+  },
+  "building_throughput_add": {
+   "en": "Throughput",
+   "target": "처리율"
+  },
+  "building_training_rate_add": {
+   "en": "Training Rate",
+   "target": "훈련 속도"
+  },
+  "building_training_rate_mult": {
+   "en": "Training Rate",
+   "target": "훈련 속도"
+  },
+  "building_tropical_wood_lodge_lens_option": {
+   "en": "Expand",
+   "target": "열대 목재 벌목장 확장"
+  },
+  "building_university": {
+   "en": "University",
+   "target": "대학"
+  },
+  "concept_acceptance": {
+   "en": "Acceptance",
+   "target": "수용도"
+  },
+  "concept_accepted": {
+   "en": "Accepted",
+   "target": "수용"
+  },
+  "concept_agitators": {
+   "en": "Agitators",
+   "target": "선동가"
+  },
+  "concept_approval": {
+   "en": "Approval",
+   "target": "찬성"
+  },
+  "concept_armies": {
+   "en": "Armies",
+   "target": "육군"
+  },
+  "concept_army": {
+   "en": "Army",
+   "target": "육군"
+  },
+  "concept_assimilate": {
+   "en": "Assimilate",
+   "target": "융화"
+  },
+  "concept_assimilation": {
+   "en": "Assimilation",
+   "target": "융화"
+  },
+  "concept_authority": {
+   "en": "Authority",
+   "target": "권위"
+  },
+  "concept_autonomy": {
+   "en": "Autonomy",
+   "target": "자율성"
+  },
+  "concept_budget_interest": {
+   "en": "Interest",
+   "target": "이자"
+  },
+  "concept_building": {
+   "en": "Building",
+   "target": "건물"
+  },
+  "concept_building_balance": {
+   "en": "Balance",
+   "target": "수지"
+  },
+  "concept_building_industries": {
+   "en": "Industries",
+   "target": "산업"
+  },
+  "concept_building_industry": {
+   "en": "Industry",
+   "target": "산업"
+  },
+  "concept_building_levels": {
+   "en": "Building Levels",
+   "target": "건물 단계"
+  },
+  "concept_building_workplace": {
+   "en": "Workplace",
+   "target": "직장"
+  },
+  "concept_bureaucracy": {
+   "en": "Bureaucracy",
+   "target": "행정력"
+  },
+  "concept_buy_orders_demand": {
+   "en": "Demand",
+   "target": "수요"
+  },
+  "concept_capacity": {
+   "en": "Capacity",
+   "target": "역량"
+  },
+  "concept_casualties": {
+   "en": "Casualties",
+   "target": "사상자"
+  },
+  "concept_character_role": {
+   "en": "Role",
+   "target": "직무"
+  },
+  "concept_claim": {
+   "en": "Claim",
+   "target": "명분"
+  },
+  "concept_claims": {
+   "en": "Claims",
+   "target": "명분"
+  },
+  "concept_clout": {
+   "en": "Clout",
+   "target": "정치력"
+  },
+  "concept_colonial": {
+   "en": "Colonial",
+   "target": "식민"
+  },
+  "concept_command": {
+   "en": "Command",
+   "target": "지휘"
+  },
+  "concept_commanders": {
+   "en": "Commanders",
+   "target": "지휘관"
+  },
+  "concept_confidence": {
+   "en": "Confidence",
+   "target": "자신감"
+  },
+  "concept_conscription": {
+   "en": "Conscription",
+   "target": "징병"
+  },
+  "concept_conscription_center_conscription": {
+   "en": "Conscription",
+   "target": "징병제"
+  },
+  "concept_construct": {
+   "en": "Construct",
+   "target": "건설"
+  },
+  "concept_construction": {
+   "en": "Construction",
+   "target": "건설"
+  },
+  "concept_conversion": {
+   "en": "Conversion",
+   "target": "개종"
+  },
+  "concept_convert": {
+   "en": "Convert",
+   "target": "개종"
+  },
+  "concept_converting": {
+   "en": "Converting",
+   "target": "개종"
+  },
+  "concept_country_nation": {
+   "en": "Nation",
+   "target": "민족국가"
+  },
+  "concept_coup_resist": {
+   "en": "Resist",
+   "target": "저항"
+  },
+  "concept_credit": {
+   "en": "Credit",
+   "target": "신용"
+  },
+  "concept_cultural": {
+   "en": "Cultural",
+   "target": "문화"
+  },
+  "concept_cultural_movements": {
+   "en": "Cultural Movements",
+   "target": "문화 운동"
+  },
+  "concept_culture": {
+   "en": "Culture",
+   "target": "문화"
+  },
+  "concept_cultures": {
+   "en": "Cultures",
+   "target": "문화"
+  },
+  "concept_decay": {
+   "en": "Decay",
+   "target": "감쇠"
+  },
+  "concept_decisions": {
+   "en": "Decisions",
+   "target": "결단"
+  },
+  "concept_decree": {
+   "en": "Decree",
+   "target": "칙령"
+  },
+  "concept_defense": {
+   "en": "Defense",
+   "target": "방어력"
+  },
+  "concept_dependent": {
+   "en": "Dependent",
+   "target": "피부양 인구"
+  },
+  "concept_diplomatic_play_negotiated": {
+   "en": "Negotiated",
+   "target": "협상"
+  },
+  "concept_education_access": {
+   "en": "Education Access",
+   "target": "교육 접근성"
+  },
+  "concept_enactment_of_laws_enact": {
+   "en": "Enact",
+   "target": "제정"
+  },
+  "concept_enactment_of_laws_enactment": {
+   "en": "Enactment",
+   "target": "제정"
+  },
+  "concept_enactment_success": {
+   "en": "Enactment Success",
+   "target": "제정 성공"
+  },
+  "concept_escalate": {
+   "en": "Escalate",
+   "target": "단계적 확대"
+  },
+  "concept_experience": {
+   "en": "Experience",
+   "target": "경험치"
+  },
+  "concept_export": {
+   "en": "Export",
+   "target": "수출"
+  },
+  "concept_fleet": {
+   "en": "Fleet",
+   "target": "함대"
+  },
+  "concept_front": {
+   "en": "Front",
+   "target": "전선"
+  },
+  "concept_general": {
+   "en": "General",
+   "target": "장군"
+  },
+  "concept_good_consumes": {
+   "en": "Consumes",
+   "target": "소비"
+  },
+  "concept_good_produce": {
+   "en": "Produce",
+   "target": "생산"
+  },
+  "concept_good_produced": {
+   "en": "Produced",
+   "target": "생산"
+  },
+  "concept_good_produces": {
+   "en": "Produces",
+   "target": "생산"
+  },
+  "concept_good_production": {
+   "en": "Production",
+   "target": "생산"
+  },
+  "concept_government": {
+   "en": "Government",
+   "target": "정부"
+  },
+  "concept_great_power": {
+   "en": "Great Power",
+   "target": "열강"
+  },
+  "concept_great_powers": {
+   "en": "Great Powers",
+   "target": "열강"
+  },
+  "concept_holding": {
+   "en": "Holding",
+   "target": "소유지"
+  },
+  "concept_imported": {
+   "en": "Imported",
+   "target": "수입"
+  },
+  "concept_individual": {
+   "en": "Individual",
+   "target": "개인"
+  },
+  "concept_influence": {
+   "en": "Influence",
+   "target": "영향력"
+  },
+  "concept_infrastructure": {
+   "en": "Infrastructure",
+   "target": "기반 시설"
+  },
+  "concept_innovation": {
+   "en": "Innovation",
+   "target": "혁신"
+  },
+  "concept_institution": {
+   "en": "Institution",
+   "target": "기관"
+  },
+  "concept_institutions": {
+   "en": "Institutions",
+   "target": "기관"
+  },
+  "concept_integrated_culture_present": {
+   "en": "Integrate",
+   "target": "통합"
+  },
+  "concept_integrated_culture_process": {
+   "en": "Integration",
+   "target": "통합"
+  },
+  "concept_interest": {
+   "en": "Interest",
+   "target": "이해"
+  },
+  "concept_interest_group": {
+   "en": "Interest Group",
+   "target": "이해 집단"
+  },
+  "concept_interests": {
+   "en": "Interests",
+   "target": "이해"
+  },
+  "concept_invasion": {
+   "en": "Invasion",
+   "target": "침공"
+  },
+  "concept_job_satisfaction_satisfied": {
+   "en": "Satisfied",
+   "target": "만족"
+  },
+  "concept_journal": {
+   "en": "Journal",
+   "target": "일지"
+  },
+  "concept_journal_entry": {
+   "en": "Journal Entry",
+   "target": "일지 항목"
+  },
+  "concept_law": {
+   "en": "Law",
+   "target": "법"
+  },
+  "concept_leaders": {
+   "en": "Leaders",
+   "target": "지도자"
+  },
+  "concept_legitimacy": {
+   "en": "Legitimacy",
+   "target": "정통성"
+  },
+  "concept_legitimate": {
+   "en": "Legitimate",
+   "target": "정통성"
+  },
+  "concept_literacy": {
+   "en": "Literacy",
+   "target": "식자"
+  },
+  "concept_literate": {
+   "en": "Literate",
+   "target": "식자 인구"
+  },
+  "concept_loyalist": {
+   "en": "Loyalist",
+   "target": "충성파"
+  },
+  "concept_loyalists": {
+   "en": "Loyalists",
+   "target": "충성파"
+  },
+  "concept_loyalty": {
+   "en": "Loyalty",
+   "target": "충성도"
+  },
+  "concept_major_powers": {
+   "en": "Major Powers",
+   "target": "강대국"
+  },
+  "concept_market": {
+   "en": "Market",
+   "target": "시장"
+  },
+  "concept_markets": {
+   "en": "Markets",
+   "target": "시장"
+  },
+  "concept_mass_migration_eligible": {
+   "en": "Eligible",
+   "target": "적합"
+  },
+  "concept_migration": {
+   "en": "Migration",
+   "target": "이주"
+  },
+  "concept_migration_pull": {
+   "en": "Migration Attraction",
+   "target": "이주 유치"
+  },
+  "concept_mobilize_army_mobilization": {
+   "en": "Mobilization",
+   "target": "동원"
+  },
+  "concept_mobilize_army_mobilize": {
+   "en": "Mobilize",
+   "target": "동원"
+  },
+  "concept_mobilize_army_mobilized": {
+   "en": "Mobilized",
+   "target": "동원"
+  },
+  "concept_mobilize_army_mobilizing": {
+   "en": "Mobilizing",
+   "target": "동원"
+  },
+  "concept_mobilize_battalion_mobilization": {
+   "en": "Mobilization",
+   "target": "동원"
+  },
+  "concept_mobilize_battalion_mobilize": {
+   "en": "Mobilize",
+   "target": "동원"
+  },
+  "concept_mobilize_battalion_mobilized": {
+   "en": "Mobilized",
+   "target": "동원"
+  },
+  "concept_mobilize_battalion_mobilizing": {
+   "en": "Mobilizing",
+   "target": "동원"
+  },
+  "concept_modifier": {
+   "en": "Modifier",
+   "target": "변화 요인"
+  },
+  "concept_modifiers": {
+   "en": "Modifiers",
+   "target": "변화 요인"
+  },
+  "concept_momentum": {
+   "en": "Momentum",
+   "target": "대세"
+  },
+  "concept_money": {
+   "en": "Money",
+   "target": "자금"
+  },
+  "concept_monuments": {
+   "en": "Monuments",
+   "target": "기념비"
+  },
+  "concept_nation_formation_short_past": {
+   "en": "Formed",
+   "target": "형성"
+  },
+  "concept_nation_formation_short_present": {
+   "en": "Form",
+   "target": "형성"
+  },
+  "concept_national_awakening": {
+   "en": "National Awakening",
+   "target": "민족 각성"
+  },
+  "concept_nationalize": {
+   "en": "Nationalize",
+   "target": "국유화"
+  },
+  "concept_naval_invasion": {
+   "en": "Naval Invasion",
+   "target": "해상 침공"
+  },
+  "concept_negotiate": {
+   "en": "Negotiate",
+   "target": "협상"
+  },
+  "concept_negotiated": {
+   "en": "Negotiated",
+   "target": "협상"
+  },
+  "concept_negotiating": {
+   "en": "Negotiating",
+   "target": "협상"
+  },
+  "concept_negotiation": {
+   "en": "Negotiation",
+   "target": "협상"
+  },
+  "concept_negotiations": {
+   "en": "Negotiations",
+   "target": "협상"
+  },
+  "concept_neutral": {
+   "en": "Neutral",
+   "target": "중립"
+  },
+  "concept_neutrality": {
+   "en": "Neutrality",
+   "target": "중립성"
+  },
+  "concept_obligation": {
+   "en": "Obligation",
+   "target": "특약"
+  },
+  "concept_obligations": {
+   "en": "Obligations",
+   "target": "특약"
+  },
+  "concept_occupies": {
+   "en": "Occupies",
+   "target": "점유"
+  },
+  "concept_offense": {
+   "en": "Offense",
+   "target": "공격력"
+  },
+  "concept_opposition": {
+   "en": "Opposition",
+   "target": "반발"
+  },
+  "concept_orders": {
+   "en": "Orders",
+   "target": "명령"
+  },
+  "concept_organization": {
+   "en": "Organization",
+   "target": "조직력"
+  },
+  "concept_organization_organized": {
+   "en": "Organized",
+   "target": "조직"
+  },
+  "concept_party": {
+   "en": "Party",
+   "target": "정당"
+  },
+  "concept_political_movement_supporting": {
+   "en": "Supporting",
+   "target": "지지"
+  },
+  "concept_political_movements": {
+   "en": "Political Movements",
+   "target": "정치 운동"
+  },
+  "concept_political_strength": {
+   "en": "Political Strength",
+   "target": "정치적 힘"
+  },
+  "concept_pop_growth_mortality": {
+   "en": "Mortality",
+   "target": "사망률"
+  },
+  "concept_pop_qualifications": {
+   "en": "Qualifications",
+   "target": "자격"
+  },
+  "concept_pops": {
+   "en": "Pops",
+   "target": "인구층"
+  },
+  "concept_popular": {
+   "en": "Popular",
+   "target": "인기"
+  },
+  "concept_population": {
+   "en": "Population",
+   "target": "인구"
+  },
+  "concept_power_bloc": {
+   "en": "Power Bloc",
+   "target": "세력 블록"
+  },
+  "concept_power_bloc_cohesion": {
+   "en": "Cohesion",
+   "target": "결속력"
+  },
+  "concept_power_bloc_mandate": {
+   "en": "Mandate",
+   "target": "직권"
+  },
+  "concept_power_bloc_principle": {
+   "en": "Principle",
+   "target": "원칙"
+  },
+  "concept_powerful": {
+   "en": "Powerful",
+   "target": "권세"
+  },
+  "concept_presence": {
+   "en": "Presence",
+   "target": "주도권"
+  },
+  "concept_prestige": {
+   "en": "Prestige",
+   "target": "위신"
+  },
+  "concept_primary_culture": {
+   "en": "Primary Culture",
+   "target": "주류 문화"
+  },
+  "concept_primary_cultures": {
+   "en": "Primary Cultures",
+   "target": "주류 문화"
+  },
+  "concept_private": {
+   "en": "Private",
+   "target": "민간"
+  },
+  "concept_province_land": {
+   "en": "Land",
+   "target": "토지"
+  },
+  "concept_provinces": {
+   "en": "Provinces",
+   "target": "지방"
+  },
+  "concept_qualified": {
+   "en": "Qualified",
+   "target": "자격"
+  },
+  "concept_radical": {
+   "en": "Radical",
+   "target": "급진파"
+  },
+  "concept_radicalism": {
+   "en": "Radicalism",
+   "target": "급진주의"
+  },
+  "concept_radicalization": {
+   "en": "Radicalization",
+   "target": "급진화"
+  },
+  "concept_radicalize": {
+   "en": "Radicalize",
+   "target": "급진화"
+  },
+  "concept_radicals": {
+   "en": "Radicals",
+   "target": "급진파"
+  },
+  "concept_rank": {
+   "en": "Rank",
+   "target": "순위"
+  },
+  "concept_readiness": {
+   "en": "Readiness",
+   "target": "대비"
+  },
+  "concept_recognition": {
+   "en": "Recognition",
+   "target": "승인"
+  },
+  "concept_religion": {
+   "en": "Religion",
+   "target": "종교"
+  },
+  "concept_religious": {
+   "en": "Religious",
+   "target": "종교"
+  },
+  "concept_risk": {
+   "en": "Risk",
+   "target": "위험"
+  },
+  "concept_rival": {
+   "en": "Rival",
+   "target": "경쟁 구도"
+  },
+  "concept_ruler": {
+   "en": "Ruler",
+   "target": "통치자"
+  },
+  "concept_sell_orders_supply": {
+   "en": "Supply",
+   "target": "공급"
+  },
+  "concept_ship_construct": {
+   "en": "Construct",
+   "target": "건조"
+  },
+  "concept_shortage": {
+   "en": "Shortage",
+   "target": "품귀"
+  },
+  "concept_shortages": {
+   "en": "Shortages",
+   "target": "품귀"
+  },
+  "concept_slavery": {
+   "en": "Slavery",
+   "target": "노예제"
+  },
+  "concept_sovereignty": {
+   "en": "Sovereignty",
+   "target": "주권"
+  },
+  "concept_state": {
+   "en": "State",
+   "target": "주"
+  },
+  "concept_state_religion": {
+   "en": "State Religion",
+   "target": "국교"
+  },
+  "concept_states": {
+   "en": "States",
+   "target": "주"
+  },
+  "concept_subject": {
+   "en": "Subject",
+   "target": "종속국"
+  },
+  "concept_subjects": {
+   "en": "Subjects",
+   "target": "종속국"
+  },
+  "concept_supplies": {
+   "en": "Supplies",
+   "target": "보급"
+  },
+  "concept_supply": {
+   "en": "Supply",
+   "target": "보급"
+  },
+  "concept_target": {
+   "en": "Target",
+   "target": "대상"
+  },
+  "concept_tax": {
+   "en": "Tax",
+   "target": "세금"
+  },
+  "concept_taxes": {
+   "en": "Taxes",
+   "target": "세금"
+  },
+  "concept_technology": {
+   "en": "Technology",
+   "target": "기술"
+  },
+  "concept_technology_spread": {
+   "en": "Technology Spread",
+   "target": "기술 전파"
+  },
+  "concept_tensions": {
+   "en": "Tensions",
+   "target": "긴장"
+  },
+  "concept_throughput": {
+   "en": "Throughput",
+   "target": "처리율"
+  },
+  "concept_trade": {
+   "en": "Trade",
+   "target": "무역"
+  },
+  "concept_trading": {
+   "en": "Trading",
+   "target": "무역"
+  },
+  "concept_training_rate": {
+   "en": "Training Rate",
+   "target": "훈련 속도"
+  },
+  "concept_turmoil": {
+   "en": "Turmoil",
+   "target": "갈등"
+  },
+  "concept_unification_support": {
+   "en": "Support",
+   "target": "통일 지지"
+  },
+  "concept_unification_supporting": {
+   "en": "Supporting",
+   "target": "통일 지지"
+  },
+  "concept_unify": {
+   "en": "Unify",
+   "target": "통일"
+  },
+  "concept_unit_experience": {
+   "en": "Experience",
+   "target": "경험치"
+  },
+  "concept_war": {
+   "en": "War",
+   "target": "전쟁"
+  },
+  "concept_war_exhaustion": {
+   "en": "War Exhaustion",
+   "target": "전쟁 피로"
+  },
+  "concept_war_exhaustion_exhausted": {
+   "en": "Exhausted",
+   "target": "피로"
+  },
+  "concept_wars": {
+   "en": "Wars",
+   "target": "전쟁"
+  },
+  "concept_workforce": {
+   "en": "Workforce",
+   "target": "노동 종사자"
+  },
+  "country_authority_add": {
+   "en": "Authority",
+   "target": "권위"
+  },
+  "country_authority_mult": {
+   "en": "Authority",
+   "target": "권위"
+  },
+  "country_bureaucracy_add": {
+   "en": "Bureaucracy",
+   "target": "행정력"
+  },
+  "country_bureaucracy_mult": {
+   "en": "Bureaucracy",
+   "target": "행정력"
+  },
+  "country_influence_add": {
+   "en": "Influence",
+   "target": "영향력"
+  },
+  "country_influence_mult": {
+   "en": "Influence",
+   "target": "영향력"
+  },
+  "country_law_enactment_speed_mult": {
+   "en": "Enactment Speed",
+   "target": "제정 속도"
+  },
+  "country_legitimacy_base_add": {
+   "en": "Legitimacy",
+   "target": "정통성"
+  },
+  "country_prestige_add": {
+   "en": "Prestige",
+   "target": "위신"
+  },
+  "country_prestige_mult": {
+   "en": "Prestige",
+   "target": "위신"
+  },
+  "country_resource_discovery_chance_mult": {
+   "en": "Resource Discovery Chance",
+   "target": "자원 발견 확률"
+  },
+  "country_tech_spread_add": {
+   "en": "Technology Spread",
+   "target": "기술 전파"
+  },
+  "country_tech_spread_mult": {
+   "en": "Technology Spread",
+   "target": "기술 전파"
+  },
+  "country_war_exhaustion_casualties_mult": {
+   "en": "War Exhaustion from Casualties",
+   "target": "사상자로 인해 발생한 전쟁 피로"
+  },
+  "country_weekly_innovation_add": {
+   "en": "Innovation",
+   "target": "혁신"
+  },
+  "country_weekly_innovation_mult": {
+   "en": "Innovation",
+   "target": "혁신"
+  },
+  "ig_approval_neutral": {
+   "en": "Neutral",
+   "target": "중립"
+  },
+  "ig_armed_forces": {
+   "en": "Armed Forces",
+   "target": "군부"
+  },
+  "ig_civil_servants": {
+   "en": "Civil Servants",
+   "target": "공무원"
+  },
+  "ig_devout": {
+   "en": "Devout",
+   "target": "종교인"
+  },
+  "ig_industrialists": {
+   "en": "Industrialists",
+   "target": "기업가"
+  },
+  "ig_intelligentsia": {
+   "en": "Intelligentsia",
+   "target": "지식인"
+  },
+  "ig_landowners": {
+   "en": "Landowners",
+   "target": "지주"
+  },
+  "ig_petty_bourgeoisie": {
+   "en": "Petite Bourgeoisie",
+   "target": "소시민"
+  },
+  "ig_rural_folk": {
+   "en": "Rural Folk",
+   "target": "전원 주민"
+  },
+  "ig_trade_unions": {
+   "en": "Trade Unions",
+   "target": "노동조합"
+  },
+  "ig_trait_civil_service": {
+   "en": "Civil Service",
+   "target": "공무원 조직"
+  },
+  "ig_trait_self_strengthening": {
+   "en": "Self-Strengthening",
+   "target": "자기 강화"
+  },
+  "institution_health_system": {
+   "en": "Health System",
+   "target": "보건부"
+  },
+  "institution_schools": {
+   "en": "Education",
+   "target": "교육부"
+  },
+  "institution_social_security": {
+   "en": "Social Security",
+   "target": "사회보장부"
+  },
+  "interest_group_approval_add": {
+   "en": "Interest Group Approval",
+   "target": "이해 집단 찬성"
+  },
+  "interest_group_ig_armed_forces_pol_str_mult": {
+   "en": "Political Strength",
+   "target": "정치적 힘"
+  },
+  "interest_group_ig_devout_pol_str_mult": {
+   "en": "Political Strength",
+   "target": "정치적 힘"
+  },
+  "interest_group_ig_intelligentsia_pol_str_mult": {
+   "en": "Political Strength",
+   "target": "정치적 힘"
+  },
+  "interest_group_ig_trade_unions_approval_add": {
+   "en": "Approval",
+   "target": "찬성"
+  },
+  "interest_group_ig_trade_unions_pol_str_mult": {
+   "en": "Political Strength",
+   "target": "정치적 힘"
+  },
+  "law_colonial_administration": {
+   "en": "Colonial Administration",
+   "target": "식민지 행정"
+  },
+  "law_council_republic": {
+   "en": "Council Republic",
+   "target": "평의회 공화국"
+  },
+  "law_cultural_exclusion": {
+   "en": "Cultural Exclusion",
+   "target": "문화 배척"
+  },
+  "law_ethnostate": {
+   "en": "Ethnostate",
+   "target": "민족 국가"
+  },
+  "law_freedom_of_conscience": {
+   "en": "Freedom of Conscience",
+   "target": "신앙의 자유"
+  },
+  "law_mass_conscription": {
+   "en": "Mass Conscription",
+   "target": "대규모 징병"
+  },
+  "law_national_supremacy": {
+   "en": "National Supremacy",
+   "target": "자문화중심주의"
+  },
+  "law_presidential_republic": {
+   "en": "Presidential Republic",
+   "target": "대통령제"
+  },
+  "law_professional_army": {
+   "en": "Professional Army",
+   "target": "전문직업군"
+  },
+  "law_proportional_representation": {
+   "en": "Proportional Representation",
+   "target": "비례대표제"
+  },
+  "law_public_schools": {
+   "en": "Public Schools",
+   "target": "공립학교"
+  },
+  "law_racial_segregation": {
+   "en": "Racial Segregation",
+   "target": "인종 분리"
+  },
+  "law_serfdom": {
+   "en": "Serfdom",
+   "target": "농노제"
+  },
+  "law_state_atheism": {
+   "en": "State Atheism",
+   "target": "국가 무신론주의"
+  },
+  "law_state_religion": {
+   "en": "State Religion",
+   "target": "국교"
+  },
+  "law_total_separation": {
+   "en": "Total Separation",
+   "target": "완전 분리"
+  },
+  "law_universal_suffrage": {
+   "en": "Universal Suffrage",
+   "target": "보통선거권"
+  },
+  "state_assimilation_mult": {
+   "en": "Assimilation",
+   "target": "융화"
+  },
+  "state_conscription_rate_add": {
+   "en": "Conscription Rate",
+   "target": "징병률"
+  },
+  "state_conversion_mult": {
+   "en": "Conversion",
+   "target": "개종"
+  },
+  "state_education_access_add": {
+   "en": "Education Access",
+   "target": "교육 접근성"
+  },
+  "state_infrastructure_mult": {
+   "en": "Infrastructure",
+   "target": "기반 시설"
+  },
+  "state_loyalists_from_political_movements_mult": {
+   "en": "Loyalists from Political Movements",
+   "target": "정치 운동에 의한 충성파"
+  },
+  "state_migration_pull_mult": {
+   "en": "Migration Attraction",
+   "target": "이주 유치"
+  },
+  "state_mortality_mult": {
+   "en": "Mortality",
+   "target": "사망률"
+  },
+  "state_pop_qualifications_mult": {
+   "en": "Qualifications",
+   "target": "자격"
+  },
+  "state_radicals_from_political_movements_mult": {
+   "en": "Radicals from Political Movements",
+   "target": "정치 운동에 의한 급진파"
+  },
+  "state_tax_collection_mult": {
+   "en": "Tax Collection",
+   "target": "세금 징수"
+  },
+  "unit_army_offense_add": {
+   "en": "Army Offense",
+   "target": "육군 공격력"
+  },
+  "unit_army_offense_mult": {
+   "en": "Army Offense",
+   "target": "육군 공격력"
+  },
+  "unit_offense_add": {
+   "en": "Offense",
+   "target": "공격력"
+  },
+  "unit_provinces_lost_mult": {
+   "en": "Lost",
+   "target": "상실한"
+  }
+ }
+}

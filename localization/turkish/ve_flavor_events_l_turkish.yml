@@ -4,13 +4,13 @@
  # neutral: an event in either file may grant a positive or a negative modifier.
  # Give each event its own keys when they are wired to an on_action.
  economic_flavor.1.t:0 "Ekonomik Gelişmeler"
- economic_flavor.1.desc:0 "Ekonomi doktrinimiz, bakanlıkların planlamadığı şekillerde meyvelerini veriyor. Bundan sonra ne olursa olsun, etkileri ekonomi genelinde yıllarca hissedilecek."
+ economic_flavor.1.desc:0 "Ekonomik doktrinimiz, bakanlıkların planlamadığı biçimlerde meyvesini veriyor. Sonucu ne olursa olsun, etkileri yıllar boyunca tüm ekonomide hissedilecektir."
  economic_flavor.1.a:0 "Öyle olsun"
  innovative_flavor.1.t:0 "Doktrinde Bir Değişim"
- innovative_flavor.1.desc:0 "Benimsediğimiz fikirler, kurumlarımızın çalışma şeklini ve dünyanın geri kalanının bizi nasıl yargıladığını yeniden şekillendiriyor."
- innovative_flavor.1.a:0 "Çok iyi"
+ innovative_flavor.1.desc:0 "Benimsediğimiz fikirler kurumlarımızın işleyişini ve dünyanın geri kalanının bizi nasıl değerlendirdiğini yeniden şekillendiriyor."
+ innovative_flavor.1.a:0 "Pekâlâ"
 
  dev.2.t:0 "Geliştirici Test Etkinliği"
  dev.2.d:0 "Bu, Victoria Universalis IV için bir geliştirici test etkinliğidir."
- dev.2.a:0 "Test Kaynaklarını Hibe Edin"
+ dev.2.a:0 "Test Kaynakları Sağla"
  dev.2.b:0 "Kapat"

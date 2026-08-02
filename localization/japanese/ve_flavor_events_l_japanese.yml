@@ -3,14 +3,14 @@
  # only this one key set for all of their events, so the text is deliberately
  # neutral: an event in either file may grant a positive or a negative modifier.
  # Give each event its own keys when they are wired to an on_action.
- economic_flavor.1.t:0 "経済発展"
- economic_flavor.1.desc:0 "私たちの経済原則は、省庁が計画していなかった形で実を結んでいます。今後何が起ころうとも、その影響は何年にもわたって経済全体に影響を与えることになるでしょう。"
- economic_flavor.1.a:0 "それでいいよ"
- innovative_flavor.1.t:0 "教義の変化"
- innovative_flavor.1.desc:0 "私たちが受け入れてきたアイデアは、私たちの制度がどのように機能するか、そして世界の他の国々が私たちをどのように評価するかを再構築しています。"
- innovative_flavor.1.a:0 "非常に良いです"
+ economic_flavor.1.t:0 "経済的発展"
+ economic_flavor.1.desc:0 "我々の経済国策は諸官庁の予期せぬ形で成果を上げつつある。今後どのような事態が起ころうとも、その影響は数年にわたり経済全体に及び続けるであろう。"
+ economic_flavor.1.a:0 "やむを得まい"
+ innovative_flavor.1.t:0 "国策の転換"
+ innovative_flavor.1.desc:0 "我が国が受け入れた理念は、諸制度のあり方、そして世界各国からの評価を形作り変えつつある。"
+ innovative_flavor.1.a:0 "よろしい"
 
- dev.2.t:0 "開発者テスト イベント"
- dev.2.d:0 "これは Victoria Universalis IV の開発者テスト イベントです。"
- dev.2.a:0 "テスト リソースの付与"
+ dev.2.t:0 "開発者テストイベント"
+ dev.2.d:0 "これはVictoria Universalis IVの開発者テストイベントである。"
+ dev.2.a:0 "テスト用リソースを付与する"
  dev.2.b:0 "閉じる"

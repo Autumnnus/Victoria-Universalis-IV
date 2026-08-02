@@ -2,49 +2,49 @@
  # Doctrine Ledger - gui/ve_panel_ledger.gui
  VE_LEDGER:0 "Defter"
  VE_LEDGER_SELECTED:0 "#bold Defter#!"
- VE_LG_TITLE:0 "Doktrin Defter"
- VE_LG_HINT:0 "Her ülkenin doktrini ayaktadır. Sıralamak için bir sütun başlığına, listeyi daraltmak için bir filtreye ve grup bazında tüm ayrıntılar için panelini açmak üzere bir ülkeye tıklayın."
+ VE_LG_TITLE:0 "Doktrin Defteri"
+ VE_LG_HINT:0 "Her ülkenin doktrin durumu. Listeyi sıralamak için bir sütun başlığına, daraltmak için bir filtreye ve grubun tamamına yönelik ayrıntılar için panosunu açmak üzere bir ülkeye tıklayın."
 
  # Columns
  VE_LG_COL_RANK:0 "#"
  VE_LG_COL_COUNTRY:0 "Ülke"
- VE_LG_COL_INSIGHT:0 "İç yüzü"
+ VE_LG_COL_INSIGHT:0 "Kavrayış"
  VE_LG_COL_GROUPS:0 "Gruplar"
  VE_LG_COL_IDEAS:0 "Grup Fikirleri"
  VE_LG_COL_NATIONAL_IDEAS:0 "Ulusal Fikirler"
- VE_LG_COL_NATIONAL_IDEAS_TT:0 "#header Ulusal Fikirler#!\nUlusal Fikir yuvası başına bir işaret ve sağda Ulusal Bonus. Bir ülke, satın aldığı her üçüncü grup fikri için bir sonraki slotun kilidini açar."
- VE_LG_COL_RELIGION:0 "Dini Model"
+ VE_LG_COL_NATIONAL_IDEAS_TT:0 "#header Ulusal Fikirler#!\nHer Ulusal Fikir yuvası için bir işaretleyici ve sağda Ulusal Bonus. Bir ülke, satın aldığı her üçüncü grup fikri için bir sonraki yuvayı açar."
+ VE_LG_COL_RELIGION:0 "Dinî Model"
  VE_LG_COL_IDENTITY:0 "Kimlik Modeli"
- VE_LG_COL_ERA:0 "Era"
+ VE_LG_COL_ERA:0 "Çağ"
 
  # Cell values
  VE_LG_GROUPS_VALUE:0 "[Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]"
  VE_LG_IDEAS_VALUE:0 "[Country.MakeScope.Var('national_idea_pool').GetValue|0] / 21"
  VE_LG_REWARDS_VALUE:0 "R [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]"
- VE_LG_ERA_TT:0 "#header [Country.GetCustom('ve_cp_age_name')]#!\nÇağ İvmesi: #Y [Country.MakeScope.Var('ve_splender_points').GetValue|0]#!\nEra Ödülleri bu Çağı satın aldı: #Y [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]#!\nŞu anda ulaşılan hedefler: #Y [Country.MakeScope.ScriptValue('ve_era_objectives_satisfied')|0] / 7#!\nHedefler bu Çağı güvence altına aldı: #Y [Country.MakeScope.Var('ve_triggered_objectives').GetValue|0] / 7#!\nAltın Çağ: [Country.GetCustom('ve_cp_golden_age_status')]"
- VE_LG_OPEN_COUNTRY_TT:0 "Bu ülkenin panelini açın. Fikirleri, Dinleri, Kimlikleri ve Dönemi detayı şuradadır. #Y Milli Doktrin#! bölümüne bakın."
+ VE_LG_ERA_TT:0 "#header [Country.GetCustom('ve_cp_age_name')]#!\nÇağ İvmesi: #Y [Country.MakeScope.Var('ve_splender_points').GetValue|0]#!\nBu Çağ'da Satın Alınan Çağ Ödülleri: #Y [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]#!\nŞu Anda Karşılanan Hedefler: #Y [Country.MakeScope.ScriptValue('ve_era_objectives_satisfied')|0] / 7#!\nBu Çağ'da Güvenceye Alınan Hedefler: #Y [Country.MakeScope.Var('ve_triggered_objectives').GetValue|0] / 7#!\nAltın Çağ: [Country.GetCustom('ve_cp_golden_age_status')]"
+ VE_LG_OPEN_COUNTRY_TT:0 "Bu ülkenin panelini açın. Fikirler, Din, Kimlik ve Çağ ayrıntıları buradaki #Y Ulusal Doktrin#! bölümünde yer alır."
 
  # Sort tooltips
- VE_LG_SORT_PRESTIGE_TT:0 "Sıralama ölçütü #Y Prestij#! - varsayılan sıra, en yüksek önce gelir."
- VE_LG_SORT_INSIGHT_TT:0 "Stoklu #Y Ulusal Analize#! göre sıralayın, en yüksek ilk sırada olsun."
- VE_LG_SORT_GROUPS_TT:0 "Göre sırala #Y fikir gruplarını benimsedi#!, en başta."
- VE_LG_SORT_IDEAS_TT:0 "Sıralama ölçütü #Y satın alınan grup fikirleri#! (Ulusal Fikir ilerlemesi), çoğu ilk sırada."
- VE_LG_SORT_SETTLEMENT_TT:0 "Göre sırala #Y Dini Yerleşim#!, en yüksek önce."
- VE_LG_SORT_COHESION_TT:0 "Sıralama ölçütü #Y Ulusal Uyum#!, önce en yüksek."
- VE_LG_SORT_MOMENTUM_TT:0 " #Y Era Momentum#!'a göre sıralayın, en yüksek ilk sırada."
+ VE_LG_SORT_PRESTIGE_TT:0 "#Y Prestij#! değerine göre sırala - varsayılan düzen, en yüksek olan önce."
+ VE_LG_SORT_INSIGHT_TT:0 "Stoklanan #Y Ulusal Kavrayış#! değerine göre sırala, en yüksek olan önce."
+ VE_LG_SORT_GROUPS_TT:0 "Benimsenen #Y fikir gruplarına#! göre sırala, en çok olan önce."
+ VE_LG_SORT_IDEAS_TT:0 "Satın alınan #Y grup fikirlerine#! göre sırala (Ulusal Fikir ilerlemesi), en çok olan önce."
+ VE_LG_SORT_SETTLEMENT_TT:0 "#Y Dinî Uzlaşı#! değerine göre sırala, en yüksek olan önce."
+ VE_LG_SORT_COHESION_TT:0 "#Y Ulusal Uyum#! değerine göre sırala, en yüksek olan önce."
+ VE_LG_SORT_MOMENTUM_TT:0 "#Y Çağ İvmesi#! değerine göre sırala, en yüksek olan önce."
 
  # Filters
- VE_LG_F_ALL:0 "Tüm"
- VE_LG_F_GREAT_POWERS:0 "Büyük Güçler"
+ VE_LG_F_ALL:0 "Tümü"
+ VE_LG_F_GREAT_POWERS:0 "Üstün Güçler"
  VE_LG_F_MAJOR_POWERS:0 "Büyük Güçler+"
- VE_LG_F_RECOGNIZED:0 "Tanındı"
- VE_LG_F_RELEVANT:0 "Benimle İlgili"
- VE_LG_F_WITH_GROUPS:0 "Fikir Grupları Var"
+ VE_LG_F_RECOGNIZED:0 "Tanınanlar"
+ VE_LG_F_RELEVANT:0 "Benimle İlgili Olanlar"
+ VE_LG_F_WITH_GROUPS:0 "Fikir Grupları Olanlar"
 
  # Paging
  VE_LG_PAGE_INFO:0 "Sayfa [GetGlobalVariable('ve_ledger_page_number').GetValue|0] / [GetGlobalVariable('ve_ledger_page_count').GetValue|0]  ([GetGlobalVariable('ve_ledger_total').GetValue|0])"
  VE_LG_REFRESH:0 "Yenile"
- VE_LG_REFRESH_TT:0 "Listeyi yeniden oluştur. Satır değerleri her zaman yayındadır; liste oluşturulurken yalnızca sayfanın sırası ve üyeliği ayarlanır."
+ VE_LG_REFRESH_TT:0 "Listeyi yeniden oluştur. Satır değerleri her zaman günceldir; yalnızca listenin düzeni ve sayfanın üyeliği liste oluşturulduğunda belirlenir."
  VE_LG_FIRST_TT:0 "İlk sayfa"
  VE_LG_PREV_TT:0 "Önceki sayfa"
  VE_LG_NEXT_TT:0 "Sonraki sayfa"
@@ -53,4 +53,4 @@
 
  # Scripted GUI tooltip - common/scripted_guis/ve_ledger.txt
  ve_ledger_groups_tt_header:0 "#header Benimsenen fikir grupları#!"
- ve_ledger_groups_tt_none:0 "#lore Henüz benimsenen bir fikir grubu yok.#!"
+ ve_ledger_groups_tt_none:0 "#lore Henüz hiçbir fikir grubu benimsenmedi.#!"

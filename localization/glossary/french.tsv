@@ -1,0 +1,93 @@
+### Victoria Universalis IV - French termbase.
+### Tab-separated: id, translation, status, note
+### status: locked (human-approved, never re-translated) | candidate (model proposal in use) | todo (undecided)
+### Term ids and their English source live in localization/glossary/terms.tsv.
+id	translation	status	note
+national_insight	Perspicacité nationale	candidate	Administrative and scholarly point resource representing intellectual preparedness. | alternatives: Savoir national, Érudition nationale
+piety_reform	Fonds de réforme pieuse	candidate	Names a state reform budget spent on religious systems rather than personal virtue. | alternatives: Réserve de piété, Crédit pieux
+cultural_mandate	Mandat culturel	candidate	Political authorisation for cultural policy and identity changes. | alternatives: Autorité culturelle
+era_momentum	Élan de l’époque	candidate	Age-scoped progression currency representing historical momentum. | alternatives: Dynamisme de l’ère
+religious_settlement	Arrangement religieux	candidate	Refers to the modus vivendi or accord between state and faith, avoiding physical settlements. | alternatives: Modus vivendi religieux, Concordat tacite
+national_cohesion	Cohésion nationale	candidate	Measures how well the identity model fits the social fabric of the population. | alternatives: Unité nationale
+religious_model	Modèle religieux	candidate	Constitutional framework governing church and state relations. | alternatives: Régime religieux
+confessional_state	État confessionnel	candidate	Standard historical term for a state with an official confession of faith. | alternatives: État confessionnalisé
+freedom_of_conscience	Liberté de conscience	candidate	Established 19th-century civil-liberty phrase. | alternatives: Liberté des cultes
+total_separation	Séparation totale	candidate	Full separation of religion and state. | alternatives: Laïcité intégrale
+state_atheism	Athéisme d’État	candidate	Active state policy of secularisation and state atheism. | alternatives: Sécularisation militante
+identity_model	Modèle identitaire	candidate	The constitutional framework defining nationhood. | alternatives: Modèle national
+ethnic_nation	Nation ethnique	candidate	Identity model built primarily on common ancestry and culture. | alternatives: État-nation ethnique
+civic_nation	Nation civique	candidate	Identity model built on shared citizenship and civic participation. | alternatives: République civique
+composite_state	État composite	candidate	Historical political term for a state comprising multiple distinct constituent cultures. | alternatives: Monarchie composite, État pluriel
+religious_program	Programme religieux	candidate	State reform program under a religious model. | alternatives: Plan religieux
+religious_project	Projet religieux	candidate	Targeted state campaign under a religious model. | alternatives: Entreprise religieuse
+confessional_conversion	Conversion confessionnelle	candidate	Religious project aimed at shifting the population's faith confession. | alternatives: Prosélytisme d’État
+freedom_outreach	Rayonnement tolérant	candidate	Public engagement and social provision under freedom of conscience. | alternatives: Œuvre de concorde
+secularization_campaign	Campagne de laïcisation	candidate	Project representing active state secularization. | alternatives: Campagne de sécularisation
+cultural_project	Projet culturel	candidate	Countrywide or state-targeted campaign under an identity model. | alternatives: Campagne culturelle
+national_curriculum	Programme d’enseignement national	candidate	Shared state-mandated school syllabus. | alternatives: Curriculum national, Programme scolaire national
+shared_symbols	Symboles communs	candidate	Standard cultural project terminology for state-sponsored national symbols. | alternatives: Symboles partagés
+ethnic_integration_campaign	Campagne d’intégration ethnique	candidate	Fits the cultural campaign naming convention and uses 19th-century state administrative language. | alternatives: Campagne d’assimilation ethnique
+equal_citizenship_initiative	Initiative d’égalité civique	candidate	Captures the civic nation focus on raising acceptance legally and socially. | alternatives: Initiative de citoyenneté égale
+constituent_compact	Pacte constituant	candidate	Translates compact as pact/covenant in a state-founding constitutional context. | alternatives: Accord constitutif
+idea_group	Groupe de doctrines	candidate	Avoids confusing administrative ideas with thoughts while keeping the tree structure clear. | alternatives: Ensemble de doctrines
+embrace	Adopter	candidate	The standard state verb for officially taking up a doctrine or policy. | alternatives: Intégrer
+idea	Doctrine	candidate	Maintains family consistency with doctrine systems while representing individual progression levels. | alternatives: Principe
+ambition	Aboutissement	candidate	Conveys the capstone bonus of a fully completed doctrine tree without implying personal ambition. | alternatives: Couronnement
+doctrine	Doctrine	candidate	Unified umbrella term for the mod's idea system across UI and Journeys. | alternatives: Ligne directrice
+doctrine_implementation_strain	Surcharge de mise en œuvre	candidate	Reflects administrative overload rather than physical tension. | alternatives: Tension d’application des doctrines
+idea_group_capacity	Capacité en groupes de doctrines	candidate	Clear mechanical indicator for how many doctrine slots a country can hold. | alternatives: Limite de groupes de doctrines
+national_idea	Idée nationale	candidate	Distinct from Idea Group and regular ideas, maintaining traditional Europa-derived phrasing adapted to Victoria. | alternatives: Principe national
+tradition	Tradition	candidate	Standard historical framing for initial country bonuses. | alternatives: Héritage
+national_bonus	Bonus national	candidate	Clear mechanical term for the final reward at max idea levels. | alternatives: Avantage national
+category_production	Production	candidate	Matches the vanilla production category wording. | alternatives: Économie
+category_society	Société	candidate	Clean umbrella header for social and political doctrines. | alternatives: Institutions sociales
+category_military	Militaire	candidate	Standard military category descriptor. | alternatives: Forces armées
+group_industrialist	Doctrine industrielle	candidate	Denotes the specific class doctrine of factory owners and capital. | alternatives: Industrialisme
+group_mercantile	Doctrine mercantile	candidate	Represents trade policy and merchant capital doctrine. | alternatives: Mercantilisme
+group_financial	Doctrine financière	candidate	Covers banking, credit, and monetary policy doctrine. | alternatives: Finances
+group_infrastructure	Doctrine des infrastructures	candidate	Covers railways, communications, and state construction doctrines. | alternatives: Infrastructures
+group_extraction	Doctrine extractive	candidate	Refers strictly to resource extraction and mining doctrine, avoiding removal meanings. | alternatives: Extraction
+group_labour	Travail	candidate	Captures the political economy focus of the labour movement within the 19th-century doctrine framework. | alternatives: Mouvement ouvrier, Syndicalisme
+group_agrarian	Agriculture	candidate	Standard official administrative term for farming and rural doctrine. | alternatives: Agraire, Rural
+group_academic	Académique	candidate	Denotes the scholarly doctrine without confusing it with the physical university building. | alternatives: Scolaire, Universitaire
+group_bureaucratic	Bureaucratique	candidate	Direct adjective form keeping the same word family as Bureaucratie. | alternatives: Administratif
+group_parliamentary	Parlementaire	candidate	Standard 19th-century political doctrine term. | alternatives: Représentatif
+group_welfare	Bien-être	candidate	Reflects social security and state care institutions of the period. | alternatives: Assistance sociale, Prévoyance
+group_diplomatic	Diplomatique	candidate	Standard administrative adjective for foreign affairs and influence. | alternatives: Relations extérieures
+group_nationalist	Nationaliste	candidate	Matches the ideological doctrine of national homogeneity. | alternatives: National
+group_reformist	Réformiste	candidate	Standard political descriptor for egalitarian systemic reform. | alternatives: Égalitaire
+group_offensive	Offensive	candidate	Military doctrine term strictly denoting attack and initiative. | alternatives: Doctrine offensive
+group_defensive	Défensive	candidate	Military doctrine term strictly denoting defence and fortifications. | alternatives: Fortification
+group_naval	Naval	candidate	Standard naval affairs doctrine term. | alternatives: Maritime
+group_professional_army	Armée professionnelle	candidate	Accurate 19th-century military term for a standing professional force. | alternatives: Armée de métier
+group_mass_conscription	Conscription de masse	candidate	Standard military terminology for universal conscription systems. | alternatives: Levée en masse
+group_colonial	Colonial	candidate	Standard administrative and military doctrine term for colonies. | alternatives: Expansion coloniale
+group_war_economy	Économie de guerre	candidate	Classical historical term for mobilised industrial production during wartime. | alternatives: Mobilisation totale
+age	Ère	candidate	Fits the historical periodisation of the campaign better than a person's age. | alternatives: Époque, Âge
+age_1	Industrie et Nations	candidate	Official title of the first historical era of the mod. | alternatives: L’Industrie et les Nations
+age_2	Empire et Société de masse	candidate	Official title of the second historical era of the mod. | alternatives: Empires et Sociétés de masse
+age_3	Politique de masse et Guerre totale	candidate	Official title of the third historical era of the mod. | alternatives: Politiques de masse et Guerres totales
+objective	Objectif	candidate	State goal to achieve during an era, avoiding confusion with military map targets. | alternatives: But
+era_reward	Récompense d’ère	candidate	Maintains the 'era' word family while clearly denoting a temporary bonus. | alternatives: Avantage d’ère, Bonus d’ère
+golden_age	Âge d’or	candidate	Standard historical term matching the EU4/V3 cultural register. | alternatives: Période faste
+golden_age_industrial	Âge d’or industriel	candidate	Maintains family with golden_age while specifying the industrial variant. | alternatives: Période faste industrielle
+golden_age_cultural	Âge d’or culturel	candidate	Maintains family with golden_age while specifying the cultural variant. | alternatives: Période faste culturelle
+golden_age_strategic	Âge d’or stratégique	candidate	Maintains family with golden_age while specifying the strategic variant. | alternatives: Période faste stratégique
+doctrine_journey	Parcours de doctrine	candidate	Parcours captures the sense of a sustained undertaking over time. | alternatives: Cheminement de doctrine
+era_crossroads	Carrefour d’ère	candidate	Carrefour captures the strategic decision point of a crossroads. | alternatives: Tournant d’ère
+route	Voie	candidate	Voie is appropriate for a strategic course of action without implying a physical road. | alternatives: Trajectoire, Chemin
+milestone	Jalon	candidate	Jalon is the standard 19th-century administrative metaphor for key progress points. | alternatives: Étape clé
+transition_journey	Parcours de transition	candidate	Keeps the journey word family consistent across different Journal Entries. | alternatives: Cheminement de transition
+journey_steam_and_the_state	La vapeur et l’État	candidate	Steam is translated as vapeur (steam power/engine), perfectly integrated with État. | alternatives: De la vapeur et de l’État
+journey_empire_and_mass_society	Empire et société de masse	candidate	Exact match for the Age 2 Era Crossroads and Age name. | alternatives: L’empire et la société de masse
+journey_mobilized_society	La société mobilisée	candidate	Accurate period phrasing for a thoroughly mobilized nation. | alternatives: Société mobilisée
+journey_factory_system	Standardisation du système fabril	candidate	Système fabril captures the industrial order of the factory system. | alternatives: Uniformisation du système de fabrique
+journey_republic_of_scholars	Une république des savants	candidate	République des savants correctly denotes the scholarly community without implying a state form. | alternatives: Une république lettrée
+journey_general_staff	Réforme de l’état-major général	candidate	État-major général is the exact historical military term. | alternatives: Réformer l’état-major
+doctrine_ledger	Registre des doctrines	candidate	Registre fits the ledger accounting register function while avoiding English retention. | alternatives: Tableau des doctrines
+national_doctrine	Doctrine nationale	candidate	Direct and formal UI title matching the country panel context. | alternatives: Doctrine du pays
+backlash	Retour de bâton	candidate	Retour de bâton captures the political reaction penalty effectively. | alternatives: Réaction politique, Velléité d’opposition
+strain	Tension	candidate	Tension fits the timed implementation penalty and blocking mechanism. | alternatives: Contrainte, Pression
+tier	Palier	candidate	Palier is the standard French UI term for meter bands and thresholds. | alternatives: Degré, Tranche
+equilibrium	Équilibre	candidate	Équilibre is the exact mechanical term for drift targets. | alternatives: Point d’équilibre
+progress	Progression	candidate	Progression refers strictly to the measured completion value, avoiding the ideology of progress. | alternatives: Avancement

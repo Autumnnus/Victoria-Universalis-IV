@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+
+localization/.api_pool_state.json

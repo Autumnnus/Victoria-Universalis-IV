@@ -1,0 +1,93 @@
+### Victoria Universalis IV - Turkish termbase.
+### Tab-separated: id, translation, status, note
+### status: locked (human-approved, never re-translated) | candidate (model proposal in use) | todo (undecided)
+### Term ids and their English source live in localization/glossary/terms.tsv.
+id	translation	status	note
+national_insight	Ulusal Kavrayış	candidate	Vanilla TR uses Buluş for Innovation, so there is no collision.
+piety_reform	Dindarlık Reformu	candidate	Already shipped in ve_religion_l_turkish.yml.
+cultural_mandate	Kültürel Yetki	candidate	Replaces the shipped "Kültürel Görev"; mandate is authorisation, not a duty.
+era_momentum	Çağ İvmesi	candidate
+religious_settlement	Dinî Uzlaşı	candidate	Uzlaşı = accord. The shipped text reads it as a settlement of people.
+national_cohesion	Ulusal Uyum	candidate	Already shipped.
+religious_model	Dinî Model	candidate
+confessional_state	Devlet Dini Düzeni	candidate	Already shipped.
+freedom_of_conscience	Vicdan Özgürlüğü	candidate	Already shipped.
+total_separation	Tam Ayrılık	candidate	Already shipped.
+state_atheism	Devlet Ateizmi	candidate	Already shipped.
+identity_model	Kimlik Modeli	candidate
+ethnic_nation	Etnik Ulus	candidate	Already shipped.
+civic_nation	Sivil Ulus	candidate	Already shipped.
+composite_state	Bileşik Devlet	candidate	Already shipped.
+religious_program	Dinî Program	candidate
+religious_project	Dinî Proje	candidate
+confessional_conversion	Devlet Dini Dönüşümü	candidate
+freedom_outreach	Özgürlük Girişimi	candidate	Outreach as public provision; deliberately avoids any conversion wording.
+secularization_campaign	Laikleştirme Kampanyası	candidate
+cultural_project	Kültürel Proje	candidate
+national_curriculum	Ulusal Müfredat	candidate
+shared_symbols	Ortak Simgeler	candidate
+ethnic_integration_campaign	Etnik Bütünleşme Kampanyası	candidate
+equal_citizenship_initiative	Eşit Yurttaşlık Girişimi	candidate
+constituent_compact	Bileşen Uzlaşması	candidate	Matches "bileşen kültür" for constituent culture.
+idea_group	Fikir Grubu	candidate	Already shipped in the plural as Fikir Grupları.
+embrace	Benimsemek	candidate
+idea	Fikir	candidate	Roman numerals stay: Fikir IV.
+ambition	Nihai Hedef	candidate	Replaces the shipped "Hırs", which reads as greed.
+doctrine	Doktrin	candidate
+doctrine_implementation_strain	Doktrin Uygulama Yükü	candidate
+idea_group_capacity	Fikir Grubu Kapasitesi	candidate
+national_idea	Ulusal Fikir	candidate
+tradition	Gelenek	candidate
+national_bonus	Ulusal Bonus	candidate
+category_production	Üretim	candidate
+category_society	Toplum	candidate
+category_military	Ordu	candidate
+group_industrialist	Sanayici	candidate
+group_mercantile	Tüccar	candidate
+group_financial	Mali	candidate
+group_infrastructure	Altyapı	candidate
+group_extraction	Madencilik	candidate	Extraction covers mining and raw resources; Madencilik is the readable fit.
+group_labour	İşçi Hareketi	candidate	Names the movement, not work in general.
+group_agrarian	Tarımcı	candidate
+group_academic	Akademik	candidate
+group_bureaucratic	Bürokratik	candidate	Vanilla TR uses Bürokrasi for the concept.
+group_parliamentary	Parlamenter	candidate
+group_welfare	Refah	candidate
+group_diplomatic	Diplomatik	candidate
+group_nationalist	Milliyetçi	candidate
+group_reformist	Reformcu	candidate
+group_offensive	Taarruz	candidate	Military offence. Never "saldırgan" in the sense of insulting.
+group_defensive	Savunma	candidate
+group_naval	Donanma	candidate	Bahriye is the period term, but Donanma matches the vanilla interface.
+group_professional_army	Muvazzaf Ordu	candidate	Period-correct name for a trained standing army.
+group_mass_conscription	Kitlesel Askerlik	candidate
+group_colonial	Sömürge	candidate
+group_war_economy	Savaş Ekonomisi	candidate
+age	Çağ	candidate
+age_1	Sanayi ve Uluslar	candidate
+age_2	İmparatorluk ve Kitle Toplumu	candidate
+age_3	Kitle Siyaseti ve Topyekûn Harp	candidate
+objective	Hedef	candidate
+era_reward	Çağ Ödülü	candidate
+golden_age	Altın Çağ	candidate	Already shipped.
+golden_age_industrial	Sanayi Altın Çağı	candidate
+golden_age_cultural	Kültürel Altın Çağ	candidate
+golden_age_strategic	Stratejik Altın Çağ	candidate
+doctrine_journey	Doktrin Yolculuğu	candidate
+era_crossroads	Çağ Kavşağı	candidate
+route	Yol	candidate
+milestone	Dönüm Noktası	candidate
+transition_journey	Geçiş Yolculuğu	candidate
+journey_steam_and_the_state	Buhar ve Devlet	candidate	Steam is steam power; several shipped files left it as "Steam".
+journey_empire_and_mass_society	İmparatorluk ve Kitle Toplumu	candidate	Same string as the Age 2 name, deliberately.
+journey_mobilized_society	Seferber Toplum	candidate
+journey_factory_system	Fabrika Düzenini Standartlaştırmak	candidate
+journey_republic_of_scholars	Bir Âlimler Cumhuriyeti	candidate
+journey_general_staff	Genelkurmayı Yeniden Düzenlemek	candidate
+doctrine_ledger	Doktrin Defteri	candidate	The shipped tab label is already Defter.
+national_doctrine	Ulusal Doktrin	candidate
+backlash	Tepki	candidate
+strain	Yük	candidate
+tier	Kademe	candidate
+equilibrium	Denge	candidate
+progress	İlerleme	candidate

@@ -1,0 +1,94 @@
+### Victoria Universalis IV - canonical mod terminology.
+### Tab-separated: id, english, category, definition, avoid
+### `english` is the exact string used in localization/english. `avoid` records the
+### mistranslation we have already seen or expect. Per-language decisions live in
+### localization/glossary/<language>.tsv and, once locked, are never re-translated.
+id	english	category	definition	avoid
+national_insight	National Insight	resource	Spendable currency (0-1000) used to buy idea levels; earned monthly from literacy, schools, universities, administration and legitimacy.	Not "insight" as personal perception or intuition. It is an administrative and scholarly point resource. Do not reuse the vanilla word for Innovation.
+piety_reform	Piety Reform	resource	Spendable religious currency (0-500) spent on Religious Programs and Religious Projects.	Not piety as a personal virtue; this names a reform budget the state spends.
+cultural_mandate	Cultural Mandate	resource	Spendable cultural currency (0-500) spent on Identity Model changes and Cultural Projects.	Mandate here is political authorisation, not an order or a command given to someone.
+era_momentum	Era Momentum	resource	Age-scoped currency earned from satisfied Age objectives and spent on Era Rewards; resets at each Age change.	Not physical momentum and not "a moment in time".
+religious_settlement	Religious Settlement	meter	0-100 equilibrium meter measuring how settled the relationship between state and faith is.	CRITICAL: settlement means accord, arrangement, modus vivendi. It is NOT a place of habitation, a colony, a village, or "solving a problem". Every existing translation got this wrong.
+national_cohesion	National Cohesion	meter	0-100 equilibrium meter measuring how well the Identity Model fits the population.	Social cohesion of the nation, not administrative unity of the state apparatus.
+religious_model	Religious Model	model	The framework set by the Church and State law; one of four.	Not "religious template". Model here is a constitutional arrangement.
+confessional_state	Confessional State	model	Religious Model privileging one state religion.	Confessional refers to a confession of faith, not to confession as a sacrament.
+freedom_of_conscience	Freedom of Conscience	model	Tolerant Religious Model with weak conversion and higher migration.	Use the established 19th-century civil-liberty phrase in the target language.
+total_separation	Total Separation	model	Neutral Religious Model with full separation of religion and state.	Not the separation or partition of the country itself.
+state_atheism	State Atheism	model	Religious Model of active secularisation.	Names a state policy, not the beliefs of the population.
+identity_model	Identity Model	model	The nationhood framework: Ethnic, Civic or Composite.	Not "identity card" or personal identity.
+ethnic_nation	Ethnic Nation	model	Identity Model built on one primary culture; strong assimilation.
+civic_nation	Civic Nation	model	Identity Model built on shared citizenship; strong migration and education.
+composite_state	Composite State	model	Identity Model recognising constituent cultures under one crown or constitution.	Composite is a political term (a state of several parts), not a material or "compound".
+religious_program	Religious Program	mechanic	One of eight permanent reforms available under a Religious Model, bought for 25 Piety Reform.	A state programme of reform, not a broadcast schedule or computer program.
+religious_project	Religious Project	mechanic	State-targeted campaign running 0-100 progress under a Religious Model.
+confessional_conversion	Confessional Conversion	project	Religious Project of the Confessional State: converts part of a state's population.
+freedom_outreach	Freedom Outreach	project	Religious Project of Freedom of Conscience; never forces conversion.	Outreach means public engagement and provision, not extension or expansion.
+secularization_campaign	Secularization Campaign	project	Religious Project of State Atheism.
+cultural_project	Cultural Project	mechanic	Countrywide or state-targeted campaign running 0-100 progress under an Identity Model.
+national_curriculum	National Curriculum	project	Countrywide Cultural Project; a shared school syllabus.
+shared_symbols	Shared Symbols	project	Countrywide Cultural Project; common national symbols and ceremonies.
+ethnic_integration_campaign	Ethnic Integration Campaign	project	Cultural Project of the Ethnic Nation; assimilates a target culture.
+equal_citizenship_initiative	Equal Citizenship Initiative	project	Cultural Project of the Civic Nation; raises acceptance.
+constituent_compact	Constituent Compact	project	Cultural Project of the Composite State; permanently recognises a culture.	Compact means pact or covenant here, never "small" or "compressed".
+idea_group	Idea Group	mechanic	One of 21 doctrine trees; a country may embrace up to seven over a campaign.	Not a committee or a group of people, and not "group of thoughts". It is a school of doctrine.
+embrace	Embrace	action	Taking an Idea Group into one of the country's slots; costs no National Insight.	Not a physical embrace. Use the verb a state would use for adopting a doctrine.
+idea	Idea	mechanic	One of seven levels inside an Idea Group, written with a roman numeral, e.g. Idea IV.	Keep the roman numeral exactly as in English. Do not convert it to a digit.
+ambition	Ambition	mechanic	The capstone bonus granted when an Idea Group reaches level VII.	Not personal ambition; it is the completed doctrine's crowning effect.
+doctrine	Doctrine	mechanic	Umbrella word for the mod's idea system, used in UI headers and Journeys.	Keep one word across the whole mod; do not alternate between synonyms.
+doctrine_implementation_strain	Doctrine Implementation Strain	modifier	24-month modifier applied by every idea purchase; it blocks the next purchase and cuts National Insight income.	Strain here is administrative overload, not physical tension.
+idea_group_capacity	Idea Group Capacity	mechanic	The number of Idea Group slots a country has, earned permanently by total purchased idea levels.
+national_idea	National Idea	mechanic	One of seven country-specific bonuses unlocked at 3/6/9/12/15/18/21 purchased idea levels.	Distinct from Idea Group and from Idea. Keep the three terms clearly different.
+tradition	Tradition	mechanic	One of two country bonuses granted at the start of the campaign.
+national_bonus	National Bonus	mechanic	The final country bonus, granted at 21 purchased idea levels.
+category_production	Production	category	Idea Group category header covering the economic doctrines.
+category_society	Society	category	Idea Group category header covering the social and political doctrines.
+category_military	Military	category	Idea Group category header covering the army and navy doctrines.
+group_industrialist	Industrialist	idea_group	Production doctrine of factory owners and manufacturing scale.	Not "industrious" and not "industrial" as a generic adjective; it names the industrialist class doctrine.
+group_mercantile	Mercantile	idea_group	Production doctrine of trade and merchant capital.
+group_financial	Financial	idea_group	Production doctrine of banking, credit and minting.
+group_infrastructure	Infrastructure	idea_group	Production doctrine of railways, ports and construction.
+group_extraction	Extraction	idea_group	Production doctrine of mining and raw resources; mutually exclusive with Agrarian.	Resource extraction, not "removal" or "excerpt".
+group_labour	Labour	idea_group	Production doctrine of the organised labour movement.	The workers' movement, not work or labour as an activity.
+group_agrarian	Agrarian	idea_group	Production doctrine of farming and rural society; mutually exclusive with Extraction.
+group_academic	Academic	idea_group	Society doctrine of universities and learned inquiry.	Not the building named University; this is the scholarly doctrine.
+group_bureaucratic	Bureaucratic	idea_group	Society doctrine of administration and records.
+group_parliamentary	Parliamentary	idea_group	Society doctrine of law-making and representation.
+group_welfare	Welfare	idea_group	Society doctrine of health, insurance and social security.
+group_diplomatic	Diplomatic	idea_group	Society doctrine of influence, infamy and relations.
+group_nationalist	Nationalist	idea_group	Society doctrine of national homogeneity; mutually exclusive with Reformist.
+group_reformist	Reformist	idea_group	Society doctrine of egalitarian reform; mutually exclusive with Nationalist.
+group_offensive	Offensive	idea_group	Military doctrine of attack.	Military offence, never "offensive" in the sense of insulting or unpleasant.
+group_defensive	Defensive	idea_group	Military doctrine of defence and fortification.
+group_naval	Naval	idea_group	Military doctrine of fleets and shipbuilding.
+group_professional_army	Professional Army	idea_group	Military doctrine of a trained standing army; mutually exclusive with Mass Conscription.
+group_mass_conscription	Mass Conscription	idea_group	Military doctrine of the conscript nation; mutually exclusive with Professional Army.
+group_colonial	Colonial	idea_group	Military doctrine of colonial expansion and tropical medicine.
+group_war_economy	War Economy	idea_group	Military doctrine of mobilised industry and propaganda.
+age	Age	mechanic	One of the campaign's three eras.	The historical era sense. Never a person's age or a duration.
+age_1	Industry and Nations	age	Age 1, 1836-1870.
+age_2	Empire and Mass Society	age	Age 2, 1871-1905.
+age_3	Mass Politics and Total War	age	Age 3, 1906-1936.
+objective	Objective	mechanic	One of seven goals per Age; each satisfied objective pays Era Momentum every month.	Not a military objective on a map.
+era_reward	Era Reward	mechanic	Bonus bought with Era Momentum; lasts only for the current Age.
+golden_age	Golden Age	mechanic	A 15-year bonus, available once per campaign after securing five objectives in an Age.	Use the established historical phrase.
+golden_age_industrial	Industrial Golden Age	mechanic	Golden Age variant favouring manufacturing and resource discovery.
+golden_age_cultural	Cultural Golden Age	mechanic	Golden Age variant favouring education and prestige.
+golden_age_strategic	Strategic Golden Age	mechanic	Golden Age variant favouring offence and war exhaustion.
+doctrine_journey	Doctrine Journey	mechanic	Multi-year Journal Entry attached to an Idea Group, measuring real country conditions.	Journey here is a sustained undertaking, not travel.
+era_crossroads	Era Crossroads	mechanic	One strategic Journey per Age offering three routes.	Crossroads is a decision point; keep the singular sense even if the word is plural in form.
+route	Route	mechanic	One of the three paths chosen at an Era Crossroads.	A strategic course of action, not a road or an itinerary.
+milestone	Milestone	mechanic	A decision event fired at fixed Journey progress.
+transition_journey	Transition Journey	mechanic	Journal Entry that runs while a Religious or Identity Model change is absorbed.
+journey_steam_and_the_state	Steam and the State	journey	Age 1 Era Crossroads.	CRITICAL: Steam is steam power and the steam engine. It is never the Valve platform, and it must not be left in English.
+journey_empire_and_mass_society	Empire and Mass Society	journey	Age 2 Era Crossroads. Shares its name with Age 2 itself.	Translate identically to the Age 2 name.
+journey_mobilized_society	The Mobilized Society	journey	Age 3 Era Crossroads.
+journey_factory_system	Standardizing the Factory System	journey	Industrialist Doctrine Journey.	The factory system as an industrial order, not a single factory's machinery.
+journey_republic_of_scholars	A Republic of Scholars	journey	Academic Doctrine Journey.	A community of learning; not a state named a republic.
+journey_general_staff	Reforming the General Staff	journey	Professional Army Doctrine Journey.	Use the military institution's established name in the target language.
+doctrine_ledger	Doctrine Ledger	ui	Panel tab: a sortable, filterable, paged table of every country's doctrine standing.	Ledger is an accounting register or comparison table. Do not leave the English word untranslated; current files say "Doutrina Ledger", "Доктрина Леджер" and "主义 Ledger".
+national_doctrine	National Doctrine	ui	Read-only doctrine section on the country panel, shown for any country.
+backlash	Backlash	modifier	Timed penalty after a cancelled project or a model change.	Political reaction against a policy, not a physical recoil.
+strain	Strain	modifier	Timed implementation penalty that blocks a repeat action.
+tier	Tier	ui	A meter band: 75 and above, 26-74, or 25 and below.	Not a rank or a league.
+equilibrium	Equilibrium	mechanic	The value a meter drifts toward each month, 20% of the remaining distance.
+progress	Progress	ui	The 0-100 or 0-60 completion value of a project or Journey.	Progress as a measured value, not progress as an ideology.

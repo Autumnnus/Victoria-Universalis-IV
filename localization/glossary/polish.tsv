@@ -1,0 +1,93 @@
+### Victoria Universalis IV - Polish termbase.
+### Tab-separated: id, translation, status, note
+### status: locked (human-approved, never re-translated) | candidate (model proposal in use) | todo (undecided)
+### Term ids and their English source live in localization/glossary/terms.tsv.
+id	translation	status	note
+national_insight	Rozpoznanie narodowe	candidate	Reflects a scholarly and administrative resource without colliding with Innovation. | alternatives: Inspiracja narodowa, Doktryna państwowa
+piety_reform	Fundusz religijny	candidate	Represents a state budget/currency for religious reforms rather than personal virtue. | alternatives: Kapitał pobożności, Budżet wyznaniowy
+cultural_mandate	Mandat kulturowy	candidate	Captures the political authorization sense of mandate. | alternatives: Upoważnienie narodowe
+era_momentum	Rozpęd epoki	candidate	Denotes age-scoped currency earned from objectives without physical physics connotations. | alternatives: Duch epoki, Impuls dziejowy
+religious_settlement	Ugoda wyznaniowa	candidate	Avoids spatial meanings of settlement and correctly refers to an accord between state and faith. | alternatives: Modus vivendi, Porozumienie kościelne
+national_cohesion	Spójność narodowa	candidate	Measures how well the identity model fits the social fabric. | alternatives: Zwartość narodowa
+religious_model	Model wyznaniowy	candidate	Standard 19th-century terminology for a constitutional religious framework. | alternatives: Uststrój wyznaniowy
+confessional_state	Państwo wyznaniowe	candidate	Refers to a state privileging a specific confession. | alternatives: Państwo konfesyjne
+freedom_of_conscience	Wolność sumienia	candidate	The standard historical civil-liberty phrase in Polish. | alternatives: Swoboda sumienia
+total_separation	Całkowity podział	candidate	Reflects the total separation of religion and state. | alternatives: Rozdział Kościoła od państwa, Całkowita separacja
+state_atheism	Ateizm państwowy	candidate	Established state policy descriptor. | alternatives: Państwowy ateizm
+identity_model	Model tożsamościowy	candidate	The framework governing nationhood and culture. | alternatives: Model narodowościowy
+ethnic_nation	Państwo etniczne	candidate	Built on one primary culture. | alternatives: Naród etniczny
+civic_nation	Państwo obywatelskie	candidate	Built on shared citizenship. | alternatives: Naród obywatelski
+composite_state	Państwo złożone	candidate	Political term for a state of several constituent parts. | alternatives: Państwo kompozytowe
+religious_program	Program wyznaniowy	candidate	Keeps the word family and denotes a state reform programme. | alternatives: Ustawa wyznaniowa
+religious_project	Projekt wyznaniowy	candidate	State-targeted campaign under a religious model. | alternatives: Kampania wyznaniowa
+confessional_conversion	Konwersja konfesyjna	candidate	Project of the confessional state. | alternatives: Nawrócenie wyznaniowe
+freedom_outreach	Działalność misyjna	candidate	Public engagement and provision under freedom of conscience. | alternatives: Akcja społeczna
+secularization_campaign	Kampania sekularyzacyjna	candidate	Project of state atheism. | alternatives: Akcja sekularyzacji
+cultural_project	Projekt kulturowy	candidate	Campaign running progress under an identity model. | alternatives: Kampania kulturowa
+national_curriculum	Program szkolny	candidate	A shared school syllabus within the education system. | alternatives: Program nauczania
+shared_symbols	Wspólne symbole	candidate	Direct and clear cultural project title in 19th-century state administration style. | alternatives: Tożsame symbole
+ethnic_integration_campaign	Kampania integracji etnicznej	candidate	Standard administrative phrasing for assimilation-focused state projects. | alternatives: Akcja scalania etnicznego
+equal_citizenship_initiative	Inicjatywa równego obywatelstwa	candidate	Captures the civic nation project raising cultural acceptance cleanly. | alternatives: Projekt równych praw obywatelskich
+constituent_compact	Pakt założycielski	candidate	Refers to a foundational political covenant/pact rather than size. | alternatives: Ugoda konstytutywna
+idea_group	Katalog doktryn	candidate	Keeps the word family on 'doktryna' while reflecting a structured school of thought. | alternatives: Grupa doktryn
+embrace	Przyjąć	candidate	Standard bureaucratic verb for adopting a formal state doctrine. | alternatives: Uznać
+idea	Doktryna	candidate	Maintains the doctrine word family across idea levels. | alternatives: Zasada
+ambition	Wieńcząca doktryna	candidate	Denotes the capstone completion bonus of a doctrine tree. | alternatives: Koronacja doktryn
+doctrine	Doktryna	candidate	The anchor term for the entire mod idea system. | alternatives: Zasada państwowa
+doctrine_implementation_strain	Napięcie wdrażania doktryny	candidate	Refers to administrative stress and overload caused by rapid institutional adoption. | alternatives: Obciążenie reformą doktrynalną
+idea_group_capacity	Pojemność katalogu doktryn	candidate	Clearly states the slots limit available for doctrine trees. | alternatives: Limit doktryn
+national_idea	Doktryna narodowa	candidate	Keeps the doctrine family consistent while identifying country-specific milestones. | alternatives: Idea narodowa
+tradition	Tradycja	candidate	Vanilla-friendly starting bonus term. | alternatives: Spuścizna
+national_bonus	Premia narodowa	candidate	Represents the final completion reward clearly. | alternatives: Dziedzictwo narodowe
+category_production	Produkcja	candidate	Matches the standard economic category header. | alternatives: Gospodarka
+category_society	Społeczeństwo	candidate	Standard category header for social and political doctrines. | alternatives: Struktura społeczna
+category_military	Wojskowość	candidate	Standard category header for army and navy doctrines. | alternatives: Siły zbrojne
+group_industrialist	Doktryny industrialistów	candidate	Refers specifically to the factory owners' class doctrine tree. | alternatives: Przemysł
+group_mercantile	Doktryny merkantylne	candidate	Covers trade and merchant capital doctrines. | alternatives: Handel i kapitał
+group_financial	Doktryny finansowe	candidate	Covers banking, credit, and monetary policies. | alternatives: Bankowość i kredyt
+group_infrastructure	Doktryny infrastrukturalne	candidate	Covers railways, ports, and construction doctrines. | alternatives: Infrastruktura i transport
+group_extraction	Doktryny wydobywcze	candidate	Covers mining and raw resource extraction doctrines. | alternatives: Górnictwo i surowce
+group_labour	Praca	candidate	Short noun fitting an idea group name for organized labour. | alternatives: Ruch robotniczy
+group_agrarian	Agraryzm	candidate	Period term for rural and farming economic doctrines. | alternatives: Rolnictwo
+group_academic	Akademizm	candidate	Denotes scholarly doctrine rather than physical buildings. | alternatives: Nauka
+group_bureaucratic	Biurokracja	candidate	Consistent with existing administration vocabulary. | alternatives: Administracja
+group_parliamentary	Parlamentaryzm	candidate	Standard 19th-century political doctrine term. | alternatives: Reprezentacja
+group_welfare	Opieka społeczna	candidate	Standard state vocabulary for social security and welfare. | alternatives: Socjalne
+group_diplomatic	Dyplomacja	candidate	Clear and standard term for foreign influence doctrine. | alternatives: Stosunki międzynarodowe
+group_nationalist	Nacjonalizm	candidate	Fits the period's ideological framework. | alternatives: Narodowa doktryna
+group_reformist	Reformizm	candidate	Matches the opposing ideological doctrine group. | alternatives: Reformatorstwo
+group_offensive	Ofensywa	candidate	Military doctrine term distinct from emotional insult. | alternatives: Doktryna ofensywna
+group_defensive	Defensywa	candidate	Standard military doctrine for defence. | alternatives: Doktryna defensywna
+group_naval	Marynarka	candidate	Refers cleanly to fleets and naval matters. | alternatives: Doktryna morska
+group_professional_army	Armia zawodowa	candidate	Standard military concept for a standing professional force. | alternatives: Wojsko zawodowe
+group_mass_conscription	Powszechny pobór	candidate	Period-appropriate term for universal conscription. | alternatives: Pobór masowy
+group_colonial	Kolonializm	candidate	Captures colonial expansion and tropical medicine doctrine. | alternatives: Doktryna kolonialna
+group_war_economy	Gospodarka wojenna	candidate	Standard term for a fully mobilised wartime economy. | alternatives: Przemysł wojenny
+age	Epoka	candidate	Represents a campaign era without implying a person's age. | alternatives: Wiek
+age_1	Przemysł i narody	candidate	Accurate title for Age 1 (1836-1870). | alternatives: Wiek przemysłu i narodów
+age_2	Imperium i społeczeństwo masowe	candidate	Accurate title for Age 2 (1871-1905). | alternatives: Imperium i masy
+age_3	Polityka masowa i wojna totalna	candidate	Accurate title for Age 3 (1906-1936). | alternatives: Masy w polityce i wojna totalna
+objective	Cel	candidate	Refers to campaign goals distinct from tactical map objectives. | alternatives: Zadanie
+era_reward	Premia epoki	candidate	Denotes the bonus bought with Era Momentum. | alternatives: Nagroda epoki
+golden_age	Złoty wiek	candidate	Standard historical and literary term for a period of supreme cultural and political flourishing. | alternatives: Wiek pomnażania chwały
+golden_age_industrial	Przemysłowy złoty wiek	candidate	Direct adjectival modifier keeping the golden age word family. | alternatives: Gospodarczy złoty wiek
+golden_age_cultural	Kulturowy złoty wiek	candidate	Direct adjectival modifier for the cultural variant. | alternatives: Oświatowy złoty wiek
+golden_age_strategic	Strategiczny złoty wiek	candidate	Direct adjectival modifier for the military-strategic variant. | alternatives: Wojenny złoty wiek
+doctrine_journey	Pochód doktryny	candidate	Pochód conveys a sustained, historic process of realization rather than physical travel. | alternatives: Droga doktryny
+era_crossroads	Rozdroże epoki	candidate	Rozdroże precisely captures the literal and figurative crossroads choice point. | alternatives: Przełom epoki
+route	Kierunek	candidate	Kierunek best expresses a strategic course of action chosen by a state. | alternatives: Ścieżka, Trakt
+milestone	Kamień milowy	candidate	Traditional and unambiguous term for a significant progressive stage. | alternatives: Próg
+transition_journey	Pochód przemian	candidate	Keeps the journey word family (pochód) while denoting structural transition. | alternatives: Droga transformacji
+journey_steam_and_the_state	Para i państwo	candidate	Concise period formulation matching historical titles of the industrial era. | alternatives: Maszyna parowa a państwo
+journey_empire_and_mass_society	Imperium i społeczeństwo masowe	candidate	Direct translation sharing the exact name of Age 2. | alternatives: Mocarstwo i społeczeństwo masowe
+journey_mobilized_society	Społeczeństwo zmobilizowane	candidate	Standard sociological term in Polish historical literature. | alternatives: Mobilizacja społeczeństwa
+journey_factory_system	Standaryzacja systemu fabrycznego	candidate	Refers to the macro industrial order of the factory system. | alternatives: Ujednolicenie systemów fabrycznych
+journey_republic_of_scholars	Rzeczpospolita uczonych	candidate	Standard Polish idiom for the international community of scholars. | alternatives: Respublica literaria
+journey_general_staff	Reformowanie Sztabu Generalnego	candidate	Uses the official historical name for the military institution. | alternatives: Przebudowa Sztabu Generalnego
+doctrine_ledger	Księga doktryn	candidate	Księga captures the bureaucratic ledger register register concept of the 19th century. | alternatives: Rejestr doktryn, Tabela doktryn
+national_doctrine	Doktryna narodowa	candidate	Direct, clear UI section header for country doctrines. | alternatives: Doktryna państwowa
+backlash	Reakcja zwrotna	candidate	Captures the political counter-movement without resorting to literal physical recoil. | alternatives: Odwet polityczny, Sprzeciw
+strain	Obciążenie	candidate	Denotes the institutional fatigue or penalty following an intense action. | alternatives: Napięcie, Przeciążenie
+tier	Poziom	candidate	Standard Victoria UI term for scale bands and meter thresholds. | alternatives: Przedział, Klasa
+equilibrium	Równowaga	candidate	Standard economic and systemic term for a drifting target value. | alternatives: Stan równowagi
+progress	Postęp	candidate	Matches the vanilla interface value reporting while keeping the established root. | alternatives: Zaawansowanie, Ukończenie

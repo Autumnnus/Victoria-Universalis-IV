@@ -1,0 +1,93 @@
+### Victoria Universalis IV - Simplified Chinese termbase.
+### Tab-separated: id, translation, status, note
+### status: locked (human-approved, never re-translated) | candidate (model proposal in use) | todo (undecided)
+### Term ids and their English source live in localization/glossary/terms.tsv.
+id	translation	status	note
+national_insight	国策力	candidate	Captures the point resource for buying ideas and national planning without colliding with Innovation. | alternatives: 国家洞察, 远见力
+piety_reform	虔修点	candidate	Fits the state budget/currency model for spending on religious reforms. | alternatives: 虔信度, 宗教改革点
+cultural_mandate	文化赋权	candidate	Denotes political authorisation and capacity for cultural policy. | alternatives: 文化委任, 文化令
+era_momentum	时代势头	candidate	Maintains the mechanical sense of momentum that resets at each Age. | alternatives: 时代动力, 时代趋势
+religious_settlement	宗教协定	candidate	Avoids physical habitation entirely, denoting the political modus vivendi between state and faith. | alternatives: 宗教妥协, 政教默契
+national_cohesion	民族凝聚力	candidate	Reflects how well the Identity Model fits the nation's population. | alternatives: 国民向心力, 国家凝聚度
+religious_model	宗教体制	candidate	Standard 19th-century state terminology for constitutional religious frameworks. | alternatives: 宗教模式, 信仰体制
+confessional_state	确信国教制	candidate	Privileges one state religion based on confession of faith. | alternatives: 专宗国体制, 定教国体制
+freedom_of_conscience	良心自由	candidate	Standard historical civil-liberty phrase for tolerant religious models. | alternatives: 信仰自由, 思想自由
+total_separation	完全分离	candidate	Denotes the strict separation of church and state. | alternatives: 政教彻底分离, 全面割离
+state_atheism	国家无神论	candidate	Standard term for active state-sponsored secularisation and atheism. | alternatives: 世俗无神论, 政权无神论
+identity_model	认同体制	candidate	The framework governing nationhood and citizenship. | alternatives: 国民模式, 族群体制
+ethnic_nation	族群国家	candidate	Nationhood built primarily on a single core culture. | alternatives: 单一民族国家, 血统国族
+civic_nation	公民国家	candidate	Nationhood built upon shared citizenship and civic participation. | alternatives: 契约国族, 公民国体制
+composite_state	复合国家	candidate	Political term for a state composed of multiple constituent cultures/realms. | alternatives: 多宗主国, 联合王国制
+religious_program	宗教纲领	candidate	Permanent state reform program under a religious model. | alternatives: 信仰规划, 宗教项目
+religious_project	宗教工程	candidate	State-targeted campaign running progress under a religious model. | alternatives: 宗教议程, 信仰企划
+confessional_conversion	国教化运动	candidate	The specific project of converting populations in a Confessional State. | alternatives: 信仰归宗, 强制归信
+freedom_outreach	自由宣抚	candidate	Public engagement and religious provision under Freedom of Conscience. | alternatives: 开放外展, 社会宣导
+secularization_campaign	世俗化运动	candidate	State Atheism project aimed at sweeping secularisation. | alternatives: 去宗教化运动, 世俗化工程
+cultural_project	文化工程	candidate	Countrywide or state campaign under an Identity Model. | alternatives: 文化企划, 文化议程
+national_curriculum	国民教育大纲	candidate	A shared school syllabus implemented as a cultural project. | alternatives: 国家课程, 全国学制大纲
+shared_symbols	共同象征	candidate	Matches 19th-century state terminology for common national emblems and ceremonies. | alternatives: 共享标志
+ethnic_integration_campaign	族群一体化运动	candidate	Reflects state-led cultural assimilation projects in the period vocabulary. | alternatives: 民族融合运动
+equal_citizenship_initiative	平等公民倡议	candidate	Direct and formal translation matching civic nation concepts. | alternatives: 同等公民权倡议
+constituent_compact	立宪协定	candidate	Compact implies a fundamental political pact or covenant rather than a physical size. | alternatives: 建国契约
+idea_group	理念群	candidate	Matches EU4-derived doctrine trees while avoiding confusion with people or committees. | alternatives: 思想流派
+embrace	采纳	candidate	Standard administrative verb for adopting a doctrine or policy. | alternatives: 接纳
+idea	理念	candidate	Consistent with Idea Group and retains the structural hierarchy. | alternatives: 思想
+ambition	宏愿	candidate	Classical EU4 term for the capstone bonus of a completed doctrine group. | alternatives: 抱负
+doctrine	学说	candidate	Unifying umbrella term for the mod's idea system in UI and journals. | alternatives: 主义
+doctrine_implementation_strain	学说推行压力	candidate	Represents administrative overload rather than physical tension. | alternatives: 学说实施负担
+idea_group_capacity	理念群容量	candidate	Clear mechanical term for the number of available doctrine slots. | alternatives: 理念群栏位上限
+national_idea	国家理念	candidate	Distinct from Idea Group and Idea to prevent conceptual overlap. | alternatives: 民族理念
+tradition	传统	candidate	Standard state bonus granted at campaign start. | alternatives: 祖传
+national_bonus	国家加成	candidate	Final capstone bonus for fully completed progression. | alternatives: 国家奖励
+category_production	生产	candidate	Matches vanilla Victoria 3 category terminology. | alternatives: 经济
+category_society	社会	candidate	Matches vanilla Victoria 3 category terminology. | alternatives: 内政
+category_military	军事	candidate	Matches vanilla Victoria 3 category terminology. | alternatives: 武备
+group_industrialist	实业派	candidate	Names the industrialist class doctrine without sounding like a generic adjective. | alternatives: 工业主义
+group_mercantile	重商主义	candidate	Historical economic doctrine of trade and merchant capital. | alternatives: 商业派
+group_financial	金融主义	candidate	Refers to banking, credit, and monetary policy doctrines. | alternatives: 财政派
+group_infrastructure	基础设施	candidate	Covers railways, ports, and construction doctrines. | alternatives: 基建派
+group_extraction	资源采掘	candidate	Refers strictly to mining and raw resource extraction, avoiding confusion with removal. | alternatives: 开采主义
+group_labour	劳工	candidate	Fits the 19th-century state vocabulary for the organised labour movement doctrine. | alternatives: 工人运动
+group_agrarian	农业	candidate	Standard production doctrine term for farming and rural society. | alternatives: 农本
+group_academic	学术	candidate	Reflects the scholarly doctrine of universities and inquiry. | alternatives: 高等教育
+group_bureaucratic	官僚	candidate	Matches the governance doctrine of administration and records. | alternatives: 行政
+group_parliamentary	议会	candidate	Conveys the doctrine of law-making and political representation. | alternatives: 代议
+group_welfare	福利	candidate	Directly corresponds to state-level social security and health doctrines. | alternatives: 社会保障
+group_diplomatic	外交	candidate	Standard term for influence and international relations doctrine. | alternatives: 纵横
+group_nationalist	民族主义	candidate	Accurately represents the doctrine of national homogeneity. | alternatives: 国家主义
+group_reformist	改良主义	candidate	Denotes the doctrine of egalitarian reform. | alternatives: 革新
+group_offensive	进攻	candidate	Standard military doctrine term for attack. | alternatives: 攻势
+group_defensive	防御	candidate	Standard military doctrine term for defense and fortification. | alternatives: 守势
+group_naval	海军	candidate	Reflects doctrine concerning fleets and shipbuilding. | alternatives: 海防
+group_professional_army	职业军队	candidate	Reflects a trained standing army doctrine. | alternatives: 常备军
+group_mass_conscription	普遍征兵	candidate	Standard term for the conscript nation doctrine. | alternatives: 全民征兵
+group_colonial	殖民	candidate	Covers colonial expansion and tropical medicine doctrine. | alternatives: 开拓
+group_war_economy	战时经济	candidate	Captures the doctrine of mobilised industry and wartime production. | alternatives: 总体战经济
+age	时代	candidate	Represents one of the campaign's major historical eras. | alternatives: 纪元
+age_1	工业与民族	candidate	Title for Age 1 (1836-1870). | alternatives: 工业与国家
+age_2	帝国与大众社会	candidate	Title for Age 2 (1871-1905). | alternatives: 帝国与群众社会
+age_3	大众政治与总体战	candidate	Title for Age 3 (1906-1936). | alternatives: 群众政治与全面战争
+objective	目标	candidate	Designates an era goal that generates Era Momentum. | alternatives: 成就目标
+era_reward	时代奖励	candidate	Reflects bonuses bought with Era Momentum lasting for the current Age. | alternatives: 纪元奖赏
+golden_age	黄金时代	candidate	Standard historical period term well-known in strategy games. | alternatives: 盛世
+golden_age_industrial	工业黄金时代	candidate	Direct modifier variant of Golden Age focusing on industry. | alternatives: 工业盛世
+golden_age_cultural	文化黄金时代	candidate	Direct modifier variant of Golden Age focusing on culture. | alternatives: 文化盛世
+golden_age_strategic	战略黄金时代	candidate	Direct modifier variant of Golden Age focusing on military and strategy. | alternatives: 军事黄金时代
+doctrine_journey	主义历程	candidate	Matches the sustained undertaking sense of a national journey. | alternatives: 学说历程
+era_crossroads	时代十字路口	candidate	Captures the strategic decision point for each age. | alternatives: 时代分水岭
+route	路线	candidate	Standard political and strategic path term. | alternatives: 途径
+milestone	里程碑	candidate	Standard translation for significant checkpoints in progress. | alternatives: 阶段成果
+transition_journey	转型历程	candidate	Denotes the Journal Entry running during reforms. | alternatives: 过渡历程
+journey_steam_and_the_state	蒸汽与国家	candidate	Literal translation avoiding any reference to the digital platform. | alternatives: 蒸汽与邦国
+journey_empire_and_mass_society	帝国与大众社会	candidate	Consistent with Age 2 naming conventions. | alternatives: 帝国与群众社会
+journey_mobilized_society	动员社会	candidate	Captures the mass mobilization aspect of Age 3. | alternatives: 被动员的社会
+journey_factory_system	工厂制度标准化	candidate	Reflects the industrial order of the factory system. | alternatives: 规范工厂体系
+journey_republic_of_scholars	学者共和国	candidate	Translates the historical intellectual concept 'Republic of Letters/Scholars'. | alternatives: 学术共同体
+journey_general_staff	总参谋部改革	candidate	Uses the established military institution term 总参谋部. | alternatives: 整顿总参谋部
+doctrine_ledger	主义总表	candidate	Ledger used as a data table or tab panel. | alternatives: 学说总览
+national_doctrine	国家主义	candidate	Read-only country panel section for doctrines. | alternatives: 国家学说
+backlash	强烈反弹	candidate	Captures the political reaction against a cancelled policy. | alternatives: 政治反扑
+strain	阵痛	candidate	Denotes implementation penalty and reform friction. | alternatives: 压力
+tier	阶层	candidate	Represents meter bands and thresholds. | alternatives: 档次, 等级
+equilibrium	平衡点	candidate	Standard simulation term for target drift values. | alternatives: 均衡值
+progress	进度	candidate	Measured completion value rather than ideological progress. | alternatives: 进展

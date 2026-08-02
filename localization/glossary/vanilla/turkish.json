@@ -1,0 +1,1194 @@
+{
+ "language": "turkish",
+ "source": "Victoria 3 game localization (read-only reference)",
+ "terms": {
+  "bg_agriculture": {
+   "en": "Agriculture",
+   "target": "Tarım"
+  },
+  "bg_coffee_plantations": {
+   "en": "Coffee Plantations",
+   "target": "Kahve Plantasyonları"
+  },
+  "bg_construction": {
+   "en": "Construction",
+   "target": "İnşaat"
+  },
+  "bg_extraction": {
+   "en": "Extraction",
+   "target": "Kaynak Çıkarma"
+  },
+  "bg_infrastructure": {
+   "en": "Infrastructure",
+   "target": "Altyapı"
+  },
+  "bg_mining": {
+   "en": "Mines",
+   "target": "Madenler"
+  },
+  "bg_monuments": {
+   "en": "Monuments",
+   "target": "Anıtlar"
+  },
+  "bg_monuments_hidden": {
+   "en": "Monuments",
+   "target": "Anıtlar"
+  },
+  "bg_plantations": {
+   "en": "Plantations",
+   "target": "Plantasyonlar"
+  },
+  "bg_shipyards": {
+   "en": "Shipyards",
+   "target": "Tersaneler"
+  },
+  "building_barrack": {
+   "en": "Barracks",
+   "target": "Kışlalar"
+  },
+  "building_clerks_shares_add": {
+   "en": "Clerks",
+   "target": "Kâtiplerin"
+  },
+  "building_clerks_shares_mult": {
+   "en": "Clerks",
+   "target": "Kâtiplerin"
+  },
+  "building_coffee_plantation": {
+   "en": "Coffee Plantations",
+   "target": "Kahve Plantasyonları"
+  },
+  "building_engineers_shares_add": {
+   "en": "Engineers",
+   "target": "Mühendislerin"
+  },
+  "building_engineers_shares_mult": {
+   "en": "Engineers",
+   "target": "Mühendislerin"
+  },
+  "building_gold_field_discovered_resource": {
+   "en": "Gold",
+   "target": "Altın"
+  },
+  "building_group_bg_agriculture_throughput_add": {
+   "en": "Agriculture Throughput",
+   "target": "Tarım Üretim Hacmi"
+  },
+  "building_mobilization_cost_mult": {
+   "en": "Requirements",
+   "target": "Gereksinimleri"
+  },
+  "building_officers_shares_add": {
+   "en": "Officers",
+   "target": "Subayların"
+  },
+  "building_officers_shares_mult": {
+   "en": "Officers",
+   "target": "Subayların"
+  },
+  "building_oil_rig_discovered_resource": {
+   "en": "Oil",
+   "target": "Petrol"
+  },
+  "building_port": {
+   "en": "Port",
+   "target": "Liman"
+  },
+  "building_port_lens_option": {
+   "en": "Port",
+   "target": "Liman"
+  },
+  "building_railway": {
+   "en": "Railway",
+   "target": "Demiryolu"
+  },
+  "building_railway_lens_option": {
+   "en": "Railway",
+   "target": "Demiryolu"
+  },
+  "building_shipyard": {
+   "en": "Shipyards",
+   "target": "Tersane"
+  },
+  "building_smallholders_fertility_mult": {
+   "en": "of",
+   "target": "nin"
+  },
+  "building_throughput_add": {
+   "en": "Throughput",
+   "target": "Üretim Hacmi"
+  },
+  "building_training_rate_add": {
+   "en": "Training Rate",
+   "target": "Eğitim Oranı"
+  },
+  "building_training_rate_mult": {
+   "en": "Training Rate",
+   "target": "Eğitim Oranı"
+  },
+  "building_tropical_wood_lodge_lens_option": {
+   "en": "Expand",
+   "target": "nı Genişlet"
+  },
+  "building_university": {
+   "en": "University",
+   "target": "Üniversite"
+  },
+  "concept_acceptance": {
+   "en": "Acceptance",
+   "target": "Kabul"
+  },
+  "concept_accepted": {
+   "en": "Accepted",
+   "target": "Kabul Gören"
+  },
+  "concept_agitators": {
+   "en": "Agitators",
+   "target": "Kışkırtıcılar"
+  },
+  "concept_approval": {
+   "en": "Approval",
+   "target": "Onay"
+  },
+  "concept_armies": {
+   "en": "Armies",
+   "target": "Ordular"
+  },
+  "concept_army": {
+   "en": "Army",
+   "target": "Ordu"
+  },
+  "concept_assimilate": {
+   "en": "Assimilate",
+   "target": "Asimile"
+  },
+  "concept_assimilation": {
+   "en": "Assimilation",
+   "target": "Asimilasyon"
+  },
+  "concept_authority": {
+   "en": "Authority",
+   "target": "Otorite"
+  },
+  "concept_autonomy": {
+   "en": "Autonomy",
+   "target": "Otonomi"
+  },
+  "concept_budget_interest": {
+   "en": "Interest",
+   "target": "Faiz"
+  },
+  "concept_building": {
+   "en": "Building",
+   "target": "Bina"
+  },
+  "concept_building_balance": {
+   "en": "Balance",
+   "target": "Bilanço"
+  },
+  "concept_building_industries": {
+   "en": "Industries",
+   "target": "Sanayiler"
+  },
+  "concept_building_industry": {
+   "en": "Industry",
+   "target": "Sanayi"
+  },
+  "concept_building_levels": {
+   "en": "Building Levels",
+   "target": "Bina Seviyeleri"
+  },
+  "concept_building_workplace": {
+   "en": "Workplace",
+   "target": "İşyeri"
+  },
+  "concept_bureaucracy": {
+   "en": "Bureaucracy",
+   "target": "Bürokrasi"
+  },
+  "concept_buy_orders_demand": {
+   "en": "Demand",
+   "target": "Talep"
+  },
+  "concept_capacity": {
+   "en": "Capacity",
+   "target": "Kapasite"
+  },
+  "concept_casualties": {
+   "en": "Casualties",
+   "target": "Zayiat"
+  },
+  "concept_character_role": {
+   "en": "Role",
+   "target": "Rol"
+  },
+  "concept_claim": {
+   "en": "Claim",
+   "target": "Hak İddiası"
+  },
+  "concept_claims": {
+   "en": "Claims",
+   "target": "Hak İddiaları"
+  },
+  "concept_clout": {
+   "en": "Clout",
+   "target": "Tesir"
+  },
+  "concept_colonial": {
+   "en": "Colonial",
+   "target": "Koloni"
+  },
+  "concept_command": {
+   "en": "Command",
+   "target": "Komuta"
+  },
+  "concept_commanders": {
+   "en": "Commanders",
+   "target": "Komutanlar"
+  },
+  "concept_confidence": {
+   "en": "Confidence",
+   "target": "Kararlılık"
+  },
+  "concept_conscription": {
+   "en": "Conscription",
+   "target": "Askeralma"
+  },
+  "concept_conscription_center_conscription": {
+   "en": "Conscription",
+   "target": "Asker Alım"
+  },
+  "concept_construct": {
+   "en": "Construct",
+   "target": "İnşaat"
+  },
+  "concept_construction": {
+   "en": "Construction",
+   "target": "İnşaat"
+  },
+  "concept_conversion": {
+   "en": "Conversion",
+   "target": "Din Değiştirme"
+  },
+  "concept_convert": {
+   "en": "Convert",
+   "target": "Din Değiştir"
+  },
+  "concept_converting": {
+   "en": "Converting",
+   "target": "Din Değiştiriliyor"
+  },
+  "concept_country_nation": {
+   "en": "Nation",
+   "target": "Ulus"
+  },
+  "concept_coup_resist": {
+   "en": "Resist",
+   "target": "Direnç"
+  },
+  "concept_credit": {
+   "en": "Credit",
+   "target": "Kredi"
+  },
+  "concept_cultural": {
+   "en": "Cultural",
+   "target": "Kültürel"
+  },
+  "concept_cultural_movements": {
+   "en": "Cultural Movements",
+   "target": "Kültürel Hareketler"
+  },
+  "concept_culture": {
+   "en": "Culture",
+   "target": "Kültür"
+  },
+  "concept_cultures": {
+   "en": "Cultures",
+   "target": "Kültürler"
+  },
+  "concept_decay": {
+   "en": "Decay",
+   "target": "Azalış"
+  },
+  "concept_decisions": {
+   "en": "Decisions",
+   "target": "Kararlar"
+  },
+  "concept_decree": {
+   "en": "Decree",
+   "target": "Hüküm"
+  },
+  "concept_defense": {
+   "en": "Defense",
+   "target": "Savunma"
+  },
+  "concept_dependent": {
+   "en": "Dependent",
+   "target": "Muhtaç"
+  },
+  "concept_diplomatic_play_negotiated": {
+   "en": "Negotiated",
+   "target": "Pazarlık Yapıldı"
+  },
+  "concept_education_access": {
+   "en": "Education Access",
+   "target": "Eğitime Erişim"
+  },
+  "concept_enactment_of_laws_enact": {
+   "en": "Enact",
+   "target": "Çıkar"
+  },
+  "concept_enactment_of_laws_enactment": {
+   "en": "Enactment",
+   "target": "Çıkarma"
+  },
+  "concept_enactment_success": {
+   "en": "Enactment Success",
+   "target": "Kanun Çıkarma Başarısı"
+  },
+  "concept_escalate": {
+   "en": "Escalate",
+   "target": "Tırmandır"
+  },
+  "concept_experience": {
+   "en": "Experience",
+   "target": "Tecrübe"
+  },
+  "concept_export": {
+   "en": "Export",
+   "target": "İhracat"
+  },
+  "concept_fleet": {
+   "en": "Fleet",
+   "target": "Filo"
+  },
+  "concept_front": {
+   "en": "Front",
+   "target": "Cephe"
+  },
+  "concept_general": {
+   "en": "General",
+   "target": "General"
+  },
+  "concept_good_consumes": {
+   "en": "Consumes",
+   "target": "Tüketim"
+  },
+  "concept_good_produce": {
+   "en": "Produce",
+   "target": "Üret"
+  },
+  "concept_good_produced": {
+   "en": "Produced",
+   "target": "Üretilen"
+  },
+  "concept_good_produces": {
+   "en": "Produces",
+   "target": "Üretir"
+  },
+  "concept_good_production": {
+   "en": "Production",
+   "target": "Üretim"
+  },
+  "concept_government": {
+   "en": "Government",
+   "target": "Hükümet"
+  },
+  "concept_great_power": {
+   "en": "Great Power",
+   "target": "Üstün Güç"
+  },
+  "concept_great_powers": {
+   "en": "Great Powers",
+   "target": "Üstün Güçler"
+  },
+  "concept_holding": {
+   "en": "Holding",
+   "target": "Mülk"
+  },
+  "concept_imported": {
+   "en": "Imported",
+   "target": "İthal Edilen"
+  },
+  "concept_individual": {
+   "en": "Individual",
+   "target": "Birey"
+  },
+  "concept_influence": {
+   "en": "Influence",
+   "target": "Nüfuz"
+  },
+  "concept_infrastructure": {
+   "en": "Infrastructure",
+   "target": "Altyapı"
+  },
+  "concept_innovation": {
+   "en": "Innovation",
+   "target": "Buluş"
+  },
+  "concept_institution": {
+   "en": "Institution",
+   "target": "Kurum"
+  },
+  "concept_institutions": {
+   "en": "Institutions",
+   "target": "Kurumlar"
+  },
+  "concept_integrated_culture_present": {
+   "en": "Integrate",
+   "target": "Entegre Et"
+  },
+  "concept_integrated_culture_process": {
+   "en": "Integration",
+   "target": "Entegrasyon"
+  },
+  "concept_interest": {
+   "en": "Interest",
+   "target": "İlgi"
+  },
+  "concept_interest_group": {
+   "en": "Interest Group",
+   "target": "Çıkar Grubu"
+  },
+  "concept_interests": {
+   "en": "Interests",
+   "target": "İlgiler"
+  },
+  "concept_invasion": {
+   "en": "Invasion",
+   "target": "İşgal"
+  },
+  "concept_job_satisfaction_satisfied": {
+   "en": "Satisfied",
+   "target": "Memnun"
+  },
+  "concept_journal": {
+   "en": "Journal",
+   "target": "Günlük"
+  },
+  "concept_journal_entry": {
+   "en": "Journal Entry",
+   "target": "Günlük Girdisi"
+  },
+  "concept_law": {
+   "en": "Law",
+   "target": "Kanun"
+  },
+  "concept_leaders": {
+   "en": "Leaders",
+   "target": "Liderler"
+  },
+  "concept_legitimacy": {
+   "en": "Legitimacy",
+   "target": "Meşruluk"
+  },
+  "concept_legitimate": {
+   "en": "Legitimate",
+   "target": "Meşru"
+  },
+  "concept_literacy": {
+   "en": "Literacy",
+   "target": "Okuryazarlık"
+  },
+  "concept_literate": {
+   "en": "Literate",
+   "target": "Okuryazar"
+  },
+  "concept_loyalist": {
+   "en": "Loyalist",
+   "target": "Sadık"
+  },
+  "concept_loyalists": {
+   "en": "Loyalists",
+   "target": "Sadıklar"
+  },
+  "concept_loyalty": {
+   "en": "Loyalty",
+   "target": "Sadakat"
+  },
+  "concept_major_powers": {
+   "en": "Major Powers",
+   "target": "Büyük Güçler"
+  },
+  "concept_market": {
+   "en": "Market",
+   "target": "Pazar"
+  },
+  "concept_markets": {
+   "en": "Markets",
+   "target": "Pazarlar"
+  },
+  "concept_mass_migration_eligible": {
+   "en": "Eligible",
+   "target": "Uygun"
+  },
+  "concept_migration": {
+   "en": "Migration",
+   "target": "Göç"
+  },
+  "concept_migration_pull": {
+   "en": "Migration Attraction",
+   "target": "Göç Cazibesi"
+  },
+  "concept_mobilize_army_mobilization": {
+   "en": "Mobilization",
+   "target": "Seferberlik"
+  },
+  "concept_mobilize_army_mobilize": {
+   "en": "Mobilize",
+   "target": "Seferber Et"
+  },
+  "concept_mobilize_army_mobilized": {
+   "en": "Mobilized",
+   "target": "Seferber"
+  },
+  "concept_mobilize_army_mobilizing": {
+   "en": "Mobilizing",
+   "target": "Seferber Oluyor"
+  },
+  "concept_mobilize_battalion_mobilization": {
+   "en": "Mobilization",
+   "target": "Seferberlik"
+  },
+  "concept_mobilize_battalion_mobilize": {
+   "en": "Mobilize",
+   "target": "Seferber Et"
+  },
+  "concept_mobilize_battalion_mobilized": {
+   "en": "Mobilized",
+   "target": "Seferber"
+  },
+  "concept_mobilize_battalion_mobilizing": {
+   "en": "Mobilizing",
+   "target": "Seferber Oluyor"
+  },
+  "concept_modifier": {
+   "en": "Modifier",
+   "target": "Etken"
+  },
+  "concept_modifiers": {
+   "en": "Modifiers",
+   "target": "Etkenler"
+  },
+  "concept_momentum": {
+   "en": "Momentum",
+   "target": "İvme"
+  },
+  "concept_money": {
+   "en": "Money",
+   "target": "Para"
+  },
+  "concept_monuments": {
+   "en": "Monuments",
+   "target": "Anıtlar"
+  },
+  "concept_nation_formation_short_past": {
+   "en": "Formed",
+   "target": "Kuruldu"
+  },
+  "concept_nation_formation_short_present": {
+   "en": "Form",
+   "target": "Kur"
+  },
+  "concept_national_awakening": {
+   "en": "National Awakening",
+   "target": "Ulusal Uyanış"
+  },
+  "concept_nationalize": {
+   "en": "Nationalize",
+   "target": "Kamulaştır"
+  },
+  "concept_naval_invasion": {
+   "en": "Naval Invasion",
+   "target": "Donanma İstilası"
+  },
+  "concept_negotiate": {
+   "en": "Negotiate",
+   "target": "Müzakere Et"
+  },
+  "concept_negotiated": {
+   "en": "Negotiated",
+   "target": "Müzakere Edilen"
+  },
+  "concept_negotiating": {
+   "en": "Negotiating",
+   "target": "Müzakere Sürecinde"
+  },
+  "concept_negotiation": {
+   "en": "Negotiation",
+   "target": "Müzakere"
+  },
+  "concept_negotiations": {
+   "en": "Negotiations",
+   "target": "Müzakereler"
+  },
+  "concept_neutral": {
+   "en": "Neutral",
+   "target": "Tarafsız"
+  },
+  "concept_neutrality": {
+   "en": "Neutrality",
+   "target": "Tarafsızlık"
+  },
+  "concept_obligation": {
+   "en": "Obligation",
+   "target": "Yükümlülük"
+  },
+  "concept_obligations": {
+   "en": "Obligations",
+   "target": "Yükümlülükler"
+  },
+  "concept_occupies": {
+   "en": "Occupies",
+   "target": "İşgal Etmekte"
+  },
+  "concept_offense": {
+   "en": "Offense",
+   "target": "Saldırı"
+  },
+  "concept_opposition": {
+   "en": "Opposition",
+   "target": "Karşı Çıkma"
+  },
+  "concept_orders": {
+   "en": "Orders",
+   "target": "Emirler"
+  },
+  "concept_organization": {
+   "en": "Organization",
+   "target": "Organizasyon"
+  },
+  "concept_organization_organized": {
+   "en": "Organized",
+   "target": "Organize"
+  },
+  "concept_party": {
+   "en": "Party",
+   "target": "Parti"
+  },
+  "concept_political_movement_supporting": {
+   "en": "Supporting",
+   "target": "Destekleme"
+  },
+  "concept_political_movements": {
+   "en": "Political Movements",
+   "target": "Siyasi Hareketler"
+  },
+  "concept_political_strength": {
+   "en": "Political Strength",
+   "target": "Siyasi Güç"
+  },
+  "concept_pop_growth_mortality": {
+   "en": "Mortality",
+   "target": "Ölüm Oranı"
+  },
+  "concept_pop_qualifications": {
+   "en": "Qualifications",
+   "target": "Nitelikler"
+  },
+  "concept_pops": {
+   "en": "Pops",
+   "target": "Toplumlar"
+  },
+  "concept_popular": {
+   "en": "Popular",
+   "target": "Popüler"
+  },
+  "concept_population": {
+   "en": "Population",
+   "target": "Nüfus"
+  },
+  "concept_power_bloc": {
+   "en": "Power Bloc",
+   "target": "Ülkeler Bloku"
+  },
+  "concept_power_bloc_cohesion": {
+   "en": "Cohesion",
+   "target": "Uyum"
+  },
+  "concept_power_bloc_mandate": {
+   "en": "Mandate",
+   "target": "Direktif"
+  },
+  "concept_power_bloc_principle": {
+   "en": "Principle",
+   "target": "İlke"
+  },
+  "concept_powerful": {
+   "en": "Powerful",
+   "target": "Güçlü"
+  },
+  "concept_presence": {
+   "en": "Presence",
+   "target": "Varlık Gösterme"
+  },
+  "concept_prestige": {
+   "en": "Prestige",
+   "target": "Prestij"
+  },
+  "concept_primary_culture": {
+   "en": "Primary Culture",
+   "target": "Ana Kültür"
+  },
+  "concept_primary_cultures": {
+   "en": "Primary Cultures",
+   "target": "Ana Kültürler"
+  },
+  "concept_private": {
+   "en": "Private",
+   "target": "Özel"
+  },
+  "concept_province_land": {
+   "en": "Land",
+   "target": "Arazi"
+  },
+  "concept_provinces": {
+   "en": "Provinces",
+   "target": "İdari Bölgeler"
+  },
+  "concept_qualified": {
+   "en": "Qualified",
+   "target": "Nitelikli"
+  },
+  "concept_radical": {
+   "en": "Radical",
+   "target": "Radikal"
+  },
+  "concept_radicalism": {
+   "en": "Radicalism",
+   "target": "Radikalizm"
+  },
+  "concept_radicalization": {
+   "en": "Radicalization",
+   "target": "Radikalleşme"
+  },
+  "concept_radicalize": {
+   "en": "Radicalize",
+   "target": "Radikalleştirmek"
+  },
+  "concept_radicals": {
+   "en": "Radicals",
+   "target": "Radikaller"
+  },
+  "concept_rank": {
+   "en": "Rank",
+   "target": "Derece"
+  },
+  "concept_readiness": {
+   "en": "Readiness",
+   "target": "Hazırlık"
+  },
+  "concept_recognition": {
+   "en": "Recognition",
+   "target": "Tanıma"
+  },
+  "concept_religion": {
+   "en": "Religion",
+   "target": "Din"
+  },
+  "concept_religious": {
+   "en": "Religious",
+   "target": "Dini"
+  },
+  "concept_risk": {
+   "en": "Risk",
+   "target": "Risk"
+  },
+  "concept_rival": {
+   "en": "Rival",
+   "target": "Rakip"
+  },
+  "concept_ruler": {
+   "en": "Ruler",
+   "target": "Hükümdar"
+  },
+  "concept_sell_orders_supply": {
+   "en": "Supply",
+   "target": "Arz"
+  },
+  "concept_ship_construct": {
+   "en": "Construct",
+   "target": "İnşaat"
+  },
+  "concept_shortage": {
+   "en": "Shortage",
+   "target": "Kıtlık"
+  },
+  "concept_shortages": {
+   "en": "Shortages",
+   "target": "Kıtlıklar"
+  },
+  "concept_slavery": {
+   "en": "Slavery",
+   "target": "Kölelik"
+  },
+  "concept_sovereignty": {
+   "en": "Sovereignty",
+   "target": "Egemenlik"
+  },
+  "concept_state": {
+   "en": "State",
+   "target": "Vilayet"
+  },
+  "concept_state_religion": {
+   "en": "State Religion",
+   "target": "Devlet Dini"
+  },
+  "concept_states": {
+   "en": "States",
+   "target": "Vilayetler"
+  },
+  "concept_subject": {
+   "en": "Subject",
+   "target": "Egemenlik Altındaki Ülke"
+  },
+  "concept_subjects": {
+   "en": "Subjects",
+   "target": "Egemenlik Altındaki Ülkeler"
+  },
+  "concept_supplies": {
+   "en": "Supplies",
+   "target": "İkmal Unsurları"
+  },
+  "concept_supply": {
+   "en": "Supply",
+   "target": "İkmal"
+  },
+  "concept_target": {
+   "en": "Target",
+   "target": "Hedef"
+  },
+  "concept_tax": {
+   "en": "Tax",
+   "target": "Vergi"
+  },
+  "concept_taxes": {
+   "en": "Taxes",
+   "target": "Vergiler"
+  },
+  "concept_technology": {
+   "en": "Technology",
+   "target": "Teknoloji"
+  },
+  "concept_technology_spread": {
+   "en": "Technology Spread",
+   "target": "Teknoloji Yayılımı"
+  },
+  "concept_tensions": {
+   "en": "Tensions",
+   "target": "Gerilimler"
+  },
+  "concept_throughput": {
+   "en": "Throughput",
+   "target": "Üretim Hacmi"
+  },
+  "concept_trade": {
+   "en": "Trade",
+   "target": "Ticaret"
+  },
+  "concept_trading": {
+   "en": "Trading",
+   "target": "Ticaret Yapıyor"
+  },
+  "concept_training_rate": {
+   "en": "Training Rate",
+   "target": "Eğitim Oranı"
+  },
+  "concept_turmoil": {
+   "en": "Turmoil",
+   "target": "Kargaşa"
+  },
+  "concept_unification_support": {
+   "en": "Support",
+   "target": "Destek"
+  },
+  "concept_unification_supporting": {
+   "en": "Supporting",
+   "target": "Destekleyen"
+  },
+  "concept_unify": {
+   "en": "Unify",
+   "target": "Birleş"
+  },
+  "concept_unit_experience": {
+   "en": "Experience",
+   "target": "Tecrübe"
+  },
+  "concept_war": {
+   "en": "War",
+   "target": "Savaş"
+  },
+  "concept_war_exhaustion": {
+   "en": "War Exhaustion",
+   "target": "Savaş Bitkinliği"
+  },
+  "concept_war_exhaustion_exhausted": {
+   "en": "Exhausted",
+   "target": "Bitkin"
+  },
+  "concept_wars": {
+   "en": "Wars",
+   "target": "Savaşlar"
+  },
+  "concept_workforce": {
+   "en": "Workforce",
+   "target": "İşgücü"
+  },
+  "country_authority_add": {
+   "en": "Authority",
+   "target": "Otorite"
+  },
+  "country_authority_mult": {
+   "en": "Authority",
+   "target": "Otorite"
+  },
+  "country_bureaucracy_add": {
+   "en": "Bureaucracy",
+   "target": "Bürokrasi"
+  },
+  "country_bureaucracy_mult": {
+   "en": "Bureaucracy",
+   "target": "Bürokrasi"
+  },
+  "country_influence_add": {
+   "en": "Influence",
+   "target": "Nüfuz"
+  },
+  "country_influence_mult": {
+   "en": "Influence",
+   "target": "Nüfuz"
+  },
+  "country_law_enactment_speed_mult": {
+   "en": "Enactment Speed",
+   "target": "Kanun Çıkarma Hızı"
+  },
+  "country_legitimacy_base_add": {
+   "en": "Legitimacy",
+   "target": "Meşruluk"
+  },
+  "country_prestige_add": {
+   "en": "Prestige",
+   "target": "Prestij"
+  },
+  "country_prestige_mult": {
+   "en": "Prestige",
+   "target": "Prestij"
+  },
+  "country_resource_discovery_chance_mult": {
+   "en": "Resource Discovery Chance",
+   "target": "Kaynak Keşfetme İhtimali"
+  },
+  "country_tech_spread_add": {
+   "en": "Technology Spread",
+   "target": "Teknoloji Yayılımı"
+  },
+  "country_tech_spread_mult": {
+   "en": "Technology Spread",
+   "target": "Teknoloji Yayılımı"
+  },
+  "country_war_exhaustion_casualties_mult": {
+   "en": "War Exhaustion from Casualties",
+   "target": "gelen Savaş Bitkinliği"
+  },
+  "country_weekly_innovation_add": {
+   "en": "Innovation",
+   "target": "Buluş"
+  },
+  "country_weekly_innovation_mult": {
+   "en": "Innovation",
+   "target": "Buluş"
+  },
+  "ig_approval_neutral": {
+   "en": "Neutral",
+   "target": "Nötr"
+  },
+  "ig_armed_forces": {
+   "en": "Armed Forces",
+   "target": "Silahlı Kuvvetler"
+  },
+  "ig_civil_servants": {
+   "en": "Civil Servants",
+   "target": "Kamu Çalışanları"
+  },
+  "ig_devout": {
+   "en": "Devout",
+   "target": "Dindarlar"
+  },
+  "ig_industrialists": {
+   "en": "Industrialists",
+   "target": "Sanayiciler"
+  },
+  "ig_intelligentsia": {
+   "en": "Intelligentsia",
+   "target": "Aydınlar"
+  },
+  "ig_landowners": {
+   "en": "Landowners",
+   "target": "Toprak Sahipleri"
+  },
+  "ig_petty_bourgeoisie": {
+   "en": "Petite Bourgeoisie",
+   "target": "Küçük Burjuvazi"
+  },
+  "ig_rural_folk": {
+   "en": "Rural Folk",
+   "target": "Kırsal Kesim"
+  },
+  "ig_trade_unions": {
+   "en": "Trade Unions",
+   "target": "Sendikalar"
+  },
+  "ig_trait_civil_service": {
+   "en": "Civil Service",
+   "target": "Kamu Hizmeti"
+  },
+  "ig_trait_self_strengthening": {
+   "en": "Self-Strengthening",
+   "target": "Kendini Güçlendirme"
+  },
+  "institution_health_system": {
+   "en": "Health System",
+   "target": "Sağlık Sistemi"
+  },
+  "institution_schools": {
+   "en": "Education",
+   "target": "Eğitim"
+  },
+  "institution_social_security": {
+   "en": "Social Security",
+   "target": "Sosyal Güvenlik"
+  },
+  "interest_group_approval_add": {
+   "en": "Interest Group Approval",
+   "target": "Çıkar Grubu Onayı"
+  },
+  "law_colonial_administration": {
+   "en": "Colonial Administration",
+   "target": "Koloni Yönetimi"
+  },
+  "law_council_republic": {
+   "en": "Council Republic",
+   "target": "Konsey Cumhuriyeti"
+  },
+  "law_cultural_exclusion": {
+   "en": "Cultural Exclusion",
+   "target": "Kültürel Dışlama"
+  },
+  "law_ethnostate": {
+   "en": "Ethnostate",
+   "target": "Etnik Devlet"
+  },
+  "law_freedom_of_conscience": {
+   "en": "Freedom of Conscience",
+   "target": "Vicdan Özgürlüğü"
+  },
+  "law_mass_conscription": {
+   "en": "Mass Conscription",
+   "target": "Toplu Asker Alım"
+  },
+  "law_national_supremacy": {
+   "en": "National Supremacy",
+   "target": "Ulusal Üstüncülük"
+  },
+  "law_presidential_republic": {
+   "en": "Presidential Republic",
+   "target": "Başkanlık Sistemli Cumhuriyet"
+  },
+  "law_professional_army": {
+   "en": "Professional Army",
+   "target": "Profesyonel Ordu"
+  },
+  "law_proportional_representation": {
+   "en": "Proportional Representation",
+   "target": "Nispi Temsil"
+  },
+  "law_public_schools": {
+   "en": "Public Schools",
+   "target": "Devlet Okulları"
+  },
+  "law_racial_segregation": {
+   "en": "Racial Segregation",
+   "target": "Irksal Tecrit"
+  },
+  "law_serfdom": {
+   "en": "Serfdom",
+   "target": "Serflik"
+  },
+  "law_state_atheism": {
+   "en": "State Atheism",
+   "target": "Devlet Ateizmi"
+  },
+  "law_state_religion": {
+   "en": "State Religion",
+   "target": "Devlet Dini"
+  },
+  "law_total_separation": {
+   "en": "Total Separation",
+   "target": "Tam Ayrılma"
+  },
+  "law_universal_suffrage": {
+   "en": "Universal Suffrage",
+   "target": "Evrensel Oy Hakkı"
+  },
+  "state_assimilation_mult": {
+   "en": "Assimilation",
+   "target": "Asimilasyon"
+  },
+  "state_conscription_rate_add": {
+   "en": "Conscription Rate",
+   "target": "Asker Alım Oranı"
+  },
+  "state_conversion_mult": {
+   "en": "Conversion",
+   "target": "Din Değiştirme"
+  },
+  "state_education_access_add": {
+   "en": "Education Access",
+   "target": "Eğitime Erişim"
+  },
+  "state_infrastructure_mult": {
+   "en": "Infrastructure",
+   "target": "Altyapı"
+  },
+  "state_loyalists_from_political_movements_mult": {
+   "en": "Loyalists from Political Movements",
+   "target": "Siyasi Hareket Sadıkları"
+  },
+  "state_migration_pull_mult": {
+   "en": "Migration Attraction",
+   "target": "Göç Cazibesi"
+  },
+  "state_mortality_mult": {
+   "en": "Mortality",
+   "target": "Ölüm Oranı"
+  },
+  "state_pop_qualifications_mult": {
+   "en": "Qualifications",
+   "target": "Nitelikler"
+  },
+  "state_radicals_from_political_movements_mult": {
+   "en": "Radicals from Political Movements",
+   "target": "Siyasi Hareket Radikalleri"
+  },
+  "state_tax_collection_mult": {
+   "en": "Tax Collection",
+   "target": "Vergi Toplama"
+  },
+  "unit_army_offense_add": {
+   "en": "Army Offense",
+   "target": "Ordu Saldırı"
+  },
+  "unit_army_offense_mult": {
+   "en": "Army Offense",
+   "target": "Ordu Saldırı"
+  },
+  "unit_offense_add": {
+   "en": "Offense",
+   "target": "Saldırı"
+  },
+  "unit_provinces_lost_mult": {
+   "en": "Lost",
+   "target": "Kaybedilen"
+  }
+ }
+}

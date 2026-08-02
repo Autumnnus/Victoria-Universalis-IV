@@ -1,0 +1,93 @@
+### Victoria Universalis IV - Korean termbase.
+### Tab-separated: id, translation, status, note
+### status: locked (human-approved, never re-translated) | candidate (model proposal in use) | todo (undecided)
+### Term ids and their English source live in localization/glossary/terms.tsv.
+id	translation	status	note
+national_insight	국가식견	candidate	Avoids collision with Innovation (혁신) while maintaining a scholarly and administrative resource feel. | alternatives: 국정통찰, 국가통찰
+piety_reform	종교개혁력	candidate	Distinguishes the spendable state reform currency from personal piety. | alternatives: 신앙개혁력
+cultural_mandate	문화위임력	candidate	Captures the political authorization meaning of mandate without sounding like an order. | alternatives: 문화통치력
+era_momentum	시대동력	candidate	Represents age-scoped momentum used for era rewards. | alternatives: 시대추세
+religious_settlement	종교합의	candidate	Specifically means an accord or arrangement between state and faith, avoiding physical settlement. | alternatives: 종교타협, 종교화해
+national_cohesion	국민통합도	candidate	Measures how well the identity model fits the entire population. | alternatives: 국가결속도
+religious_model	종교 제도	candidate	Refers to the constitutional framework governing church and state. | alternatives: 종교 모델
+confessional_state	신조국가	candidate	Represents a state that privileges one confession of faith. | alternatives: 고백국가
+freedom_of_conscience	양심의 자유	candidate	Standard 19th-century civil-liberty phrase.
+total_separation	정교분리	candidate	Standard historical term for the full separation of religion and state. | alternatives: 완전분리
+state_atheism	국가무신론	candidate	Names the active secularisation policy of the state.
+identity_model	정체성 제도	candidate	The nationhood framework governing the state. | alternatives: 국민정체성 모델
+ethnic_nation	민족국가	candidate	Nationhood framework built primarily on a single culture. | alternatives: 혈연국가
+civic_nation	시민국가	candidate	Nationhood framework built on shared citizenship. | alternatives: 국민국가
+composite_state	복합국가	candidate	Political term for a state composed of multiple constituent cultures under one crown. | alternatives: 연합국가
+religious_program	종교 과업	candidate	A permanent reform program under a religious model. | alternatives: 종교 계획
+religious_project	종교 사업	candidate	State-targeted campaign running progress under a religious model. | alternatives: 종교 프로젝트
+confessional_conversion	신조 개종	candidate	Project of the Confessional State converting population. | alternatives: 신앙 개종
+freedom_outreach	자유 포교	candidate	Public engagement and religious provision under Freedom of Conscience. | alternatives: 자유 선교
+secularization_campaign	세속화 운동	candidate	Project of State Atheism. | alternatives: 세속화 캠페인
+cultural_project	문화 사업	candidate	Countrywide or state-targeted campaign under an Identity Model. | alternatives: 문화 프로젝트
+national_curriculum	국가 교육과정	candidate	Countrywide cultural project representing a shared school syllabus. | alternatives: 국가 교과과정
+shared_symbols	공유 상징	candidate	Matches standard official terminology for shared cultural symbols. | alternatives: 공동 상징
+ethnic_integration_campaign	민족 통합 캠페인	candidate	Directly conveys an active assimilation campaign targeting minorities. | alternatives: 민족 융합 운동
+equal_citizenship_initiative	동등한 시민권 발의	candidate	Refers to a civic nationalist initiative raising cultural acceptance. | alternatives: 평등 시민권 운동
+constituent_compact	구성 협약	candidate	Captures the political pact/covenant meaning of a compact in statecraft. | alternatives: 국민 협약
+idea_group	이념 무리	candidate	Follows the EU4-to-Vic3 conversion of ideological doctrine trees. | alternatives: 사상 무리, 학파
+embrace	채택	candidate	Standard state vocabulary for adopting a formal doctrine or policy. | alternatives: 수용
+idea	이념	candidate	Represents one level inside an idea group. | alternatives: 사상
+ambition	지향	candidate	Represents the crowning capstone bonus of a fully unlocked doctrine. | alternatives: 포부
+doctrine	교리	candidate	Consistent umbrella term for the entire idea/doctrine mechanic. | alternatives: 이념 체계
+doctrine_implementation_strain	교리 도입 과부하	candidate	Conveys administrative strain caused by adopting new doctrines. | alternatives: 교리 시행 피로
+idea_group_capacity	이념 무리 수용량	candidate	Indicates the maximum number of idea groups a country can hold. | alternatives: 이념 무리 한도
+national_idea	국가 이념	candidate	Distinct country-specific bonuses unlocked at specific idea level milestones. | alternatives: 고유 이념
+tradition	전통	candidate	Standard term for initial country bonuses at campaign start.
+national_bonus	국가 보너스	candidate	Denotes the final overarching bonus for completing all ideas. | alternatives: 국가 보상
+category_production	생산	candidate	Matches the existing Victoria 3 production category.
+category_society	사회	candidate	Matches the existing Victoria 3 society category.
+category_military	군사	candidate	Matches the existing Victoria 3 military category.
+group_industrialist	산업가	candidate	Refers to the doctrine associated with factory owners and manufacturing. | alternatives: 공업가
+group_mercantile	상인	candidate	Refers to trade and merchant capital doctrines. | alternatives: 상업주의
+group_financial	금융	candidate	Refers to banking, credit, and minting doctrines. | alternatives: 재정
+group_infrastructure	사회간접자본	candidate	Refers to railways, ports, and construction doctrines. | alternatives: 기반시설
+group_extraction	자원 채굴	candidate	Refers to mining and raw resource extraction doctrines. | alternatives: 채광
+group_labour	노동	candidate	Short and captures the production doctrine of the organised labour movement. | alternatives: 노동 운동
+group_agrarian	농업	candidate	Reflects farming and rural society doctrine. | alternatives: 농촌
+group_academic	학술	candidate	Denotes universities and learned inquiry. | alternatives: 학문
+group_bureaucratic	관료	candidate	Denotes administration and records in the 19th-century state register. | alternatives: 관료제
+group_parliamentary	의회	candidate	Represents law-making and representation. | alternatives: 의회주의
+group_welfare	복지	candidate	Reflects health, insurance and social security doctrine. | alternatives: 사회보장
+group_diplomatic	외교	candidate	Covers influence, infamy and relations. | alternatives: 외교술
+group_nationalist	민족주의	candidate	Standard term for national homogeneity doctrine. | alternatives: 국가주의
+group_reformist	개혁	candidate	Reflects egalitarian reform doctrine. | alternatives: 개혁주의
+group_offensive	공세	candidate	Military doctrine of attack, avoiding any sense of insult. | alternatives: 공격
+group_defensive	방어	candidate	Military doctrine of defence and fortification. | alternatives: 수성
+group_naval	해군	candidate	Military doctrine of fleets and shipbuilding. | alternatives: 해양
+group_professional_army	상비군	candidate	Historical term for a trained standing army. | alternatives: 직업 군대
+group_mass_conscription	국민 개병제	candidate	Historical term for the conscript nation. | alternatives: 총동원령
+group_colonial	식민	candidate	Covers colonial expansion and tropical medicine. | alternatives: 식민지 개척
+group_war_economy	전시 경제	candidate	Reflects mobilised industry and propaganda. | alternatives: 동원 경제
+age	시대	candidate	One of the campaign's three eras, distinct from a person's age. | alternatives: 기
+age_1	산업과 국가	candidate	Translation for Age 1 (1836-1870). | alternatives: 산업과 민족
+age_2	제국과 대중사회	candidate	Translation for Age 2 (1871-1905). | alternatives: 제국과 대중 사회
+age_3	대중 정치와 총력전	candidate	Translation for Age 3 (1906-1936). | alternatives: 대중정치와 총력전
+objective	목표	candidate	One of seven goals per Age, avoiding tactical map objectives. | alternatives: 과제
+era_reward	시대 보상	candidate	Bonus bought with Era Momentum lasting for the current Age. | alternatives: 시대 특전
+golden_age	황금기	candidate	Standard historical and statecraft term for a period of supreme national flourishing. | alternatives: 번영기
+golden_age_industrial	산업 황금기	candidate	Directly links the variant to the general golden age term while highlighting its focus on manufacturing. | alternatives: 공업 황금기
+golden_age_cultural	문화 황금기	candidate	Maintains word family with golden age while covering education and prestige. | alternatives: 학예 황금기
+golden_age_strategic	전략 황금기	candidate	Reflects the military and tactical focus of this variant. | alternatives: 군사 황금기
+doctrine_journey	교리 과업	candidate	Journey translates to a sustained national undertaking in this context, consistent with journal entries. | alternatives: 교리 여정
+era_crossroads	시대의 갈림길	candidate	Crossroads of an Age, representing major strategic decisions. | alternatives: 시대적 분기점
+route	진로	candidate	A strategic course of action chosen at a crossroads. | alternatives: 방향, 노선
+milestone	이정표	candidate	Standard term for a significant progress marker in a project. | alternatives: 핵심 단계
+transition_journey	전환 과업	candidate	Journal entry measuring the assimilation period of a major model change. | alternatives: 개편 과업
+journey_steam_and_the_state	증기와 국가	candidate	Refers strictly to steam power and industrial statecraft, avoiding any platform confusion. | alternatives: 증기력과 국가
+journey_empire_and_mass_society	제국과 대중사회	candidate	Age 2 crossroads and age name sharing the exact state-society terminology. | alternatives: 제국과 군중사회
+journey_mobilized_society	동원된 사회	candidate	Describes a society organized and mobilized for national goals. | alternatives: 총력동원 사회
+journey_factory_system	공장제 표준화	candidate	Focuses on the industrial factory system as an economic order. | alternatives: 공장제 확립
+journey_republic_of_scholars	학자의 공화국	candidate	Translates the traditional scholarly metaphor of a republic of letters/scholars. | alternatives: 학문 공동체
+journey_general_staff	참모본부 개혁	candidate	Refers to the military institution of the General Staff. | alternatives: 통수부 개편
+doctrine_ledger	교리 장부	candidate	Ledger translated accurately as an accounting and comparison table for doctrines. | alternatives: 교리 대장
+national_doctrine	국가 교리	candidate	Read-only summary of a country's doctrine standing. | alternatives: 국정 교리
+backlash	반발	candidate	Political reaction against a cancelled project or policy shift. | alternatives: 정치적 반작용
+strain	과부하	candidate	Timed implementation penalty blocking repeated quick actions. | alternatives: 긴장 상태
+tier	단계	candidate	Meter band classification used in UI elements. | alternatives: 구간, 등급
+equilibrium	균형점	candidate	The target value toward which a meter naturally drifts. | alternatives: 평형치
+progress	진척도	candidate	Measured completion value from 0 to 100, distinct from ideological progress. | alternatives: 진행도
