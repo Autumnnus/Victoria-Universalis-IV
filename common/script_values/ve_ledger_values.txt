@@ -1,0 +1,79 @@
+﻿# Doctrine Ledger sort key.
+#
+# ordered_country sorts descending, so position 0 is always "the most" of the
+# selected key. Every branch is guarded with has_variable: order_by may be
+# evaluated for countries that the limit block would reject, and reading a
+# missing variable would spam the error log.
+
+ve_ledger_sort_value = {
+	value = 0
+
+	# 1 - Prestige (the ledger's default order, matches the country rank list)
+	if = {
+		limit = { global_var:ve_ledger_sort == 1 }
+		add = prestige
+	}
+	# 2 - National Insight stock
+	else_if = {
+		limit = {
+			global_var:ve_ledger_sort == 2
+			has_variable = idea_point_pool
+		}
+		add = var:idea_point_pool
+	}
+	# 3 - Purchased group ideas (National Idea progress)
+	else_if = {
+		limit = {
+			global_var:ve_ledger_sort == 3
+			has_variable = national_idea_pool
+		}
+		add = var:national_idea_pool
+	}
+	# 4 - Embraced idea groups
+	else_if = {
+		limit = {
+			global_var:ve_ledger_sort == 4
+			has_variable = idea_group_unlocked
+		}
+		add = var:idea_group_unlocked
+	}
+	# 5 - Religious Settlement
+	else_if = {
+		limit = {
+			global_var:ve_ledger_sort == 5
+			has_variable = piety_bar_point
+		}
+		add = var:piety_bar_point
+	}
+	# 6 - National Cohesion
+	else_if = {
+		limit = {
+			global_var:ve_ledger_sort == 6
+			has_variable = ve_national_cohesion
+		}
+		add = var:ve_national_cohesion
+	}
+	# 7 - Era Momentum
+	else_if = {
+		limit = {
+			global_var:ve_ledger_sort == 7
+			has_variable = ve_splender_points
+		}
+		add = var:ve_splender_points
+	}
+	# 8 - Era Rewards bought in the current age
+	else_if = {
+		limit = {
+			global_var:ve_ledger_sort == 8
+			has_variable = ve_age_rewards_purchased
+		}
+		add = var:ve_age_rewards_purchased
+	}
+
+	# Prestige as a tie-breaker keeps rows from jumping around between rebuilds
+	# when the selected key is equal, and is the fallback for any unknown key.
+	add = {
+		value = prestige
+		multiply = 0.0001
+	}
+}

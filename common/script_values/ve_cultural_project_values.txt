@@ -1,0 +1,173 @@
+﻿ve_cultural_project_progress_base = 1
+
+ve_cultural_project_progress_administration = {
+	if = {
+		limit = {
+			bureaucracy >= 0
+			approaching_bureaucracy_shortage = no
+		}
+		add = 2
+	}
+	else = {
+		subtract = 1
+	}
+}
+
+ve_cultural_project_progress_legitimacy = {
+	if = {
+		limit = { government_legitimacy >= 75 }
+		add = 1
+	}
+	else_if = {
+		limit = { government_legitimacy < 25 }
+		subtract = 1
+	}
+}
+
+ve_cultural_project_progress_education = {
+	if = {
+		limit = { ve_is_civic_identity = yes }
+		if = {
+			limit = { literacy_rate >= 0.75 }
+			add = 2
+		}
+		else_if = {
+			limit = { literacy_rate >= 0.50 }
+			add = 1
+		}
+	}
+	else_if = {
+		limit = {
+			ve_is_ethnic_identity = yes
+			primary_cultures_percent_country >= 0.75
+		}
+		add = 1
+	}
+	else_if = {
+		limit = {
+			ve_is_composite_identity = yes
+			primary_cultures_percent_country <= 0.75
+		}
+		add = 1
+	}
+}
+
+ve_cultural_project_progress_cohesion = {
+	# This value is also evaluated by the culture-panel tooltip before the
+	# monthly country pulse has initialized every country in an existing save.
+	# Never dereference the variable until the migration/default setup has run.
+	if = {
+		limit = { has_variable = ve_national_cohesion }
+		if = {
+			limit = { var:ve_national_cohesion >= 75 }
+			add = 1
+		}
+		else_if = {
+			limit = { var:ve_national_cohesion <= 25 }
+			subtract = 1
+		}
+	}
+}
+
+ve_cultural_project_progress_movement = {
+	if = {
+		limit = { ve_has_cultural_movement_pressure = yes }
+		subtract = 1
+	}
+}
+
+ve_cultural_project_progress_target = {
+	if = {
+		limit = {
+			ve_project_is_targeted = yes
+			has_variable = ve_cultural_project_target_state
+		}
+		if = {
+			limit = {
+				ve_cultural_project_target_state_check = { CHECK = { turmoil >= 0.25 } }
+			}
+			subtract = 2
+		}
+		else_if = {
+			limit = {
+				ve_cultural_project_target_state_check = { CHECK = { turmoil >= 0.10 } }
+			}
+			subtract = 1
+		}
+	}
+}
+
+ve_monthly_cultural_project_progress = {
+	add = ve_cultural_project_progress_base
+	add = ve_cultural_project_progress_administration
+	add = ve_cultural_project_progress_legitimacy
+	add = ve_cultural_project_progress_education
+	add = ve_cultural_project_progress_cohesion
+	add = ve_cultural_project_progress_movement
+	add = ve_cultural_project_progress_target
+	add = ve_cultural_project_progress_idea_bonus
+	min = 1
+	max = 7
+	round = yes
+}
+
+# Direct idea-group contribution to active Cultural Project progress. These
+# are model-specific and capped at 2; cohesion and target turmoil stay relevant.
+ve_cultural_project_progress_idea_bonus = {
+	if = {
+		limit = {
+			has_variable = nationalist_idea_7_var
+			ve_is_ethnic_identity = yes
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_modifier = reformist_idea_7_mdf
+			OR = {
+				ve_is_civic_identity = yes
+				ve_is_composite_identity = yes
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_modifier = academic_idea_7_mdf
+			ve_is_civic_identity = yes
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_modifier = welfare_idea_6_mdf
+			ve_is_civic_identity = yes
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_modifier = diplomatic_idea_6_mdf
+			ve_is_composite_identity = yes
+		}
+		add = 1
+	}
+	min = 0
+	max = 2
+}
+
+ve_cultural_project_progress_remaining = {
+	value = 100
+	subtract = var:ve_cultural_project_progress
+	min = 0
+	round = yes
+}
+
+# Scope: pop during an Ethnic Integration Campaign. ROOT is the acting country.
+ve_ethnic_campaign_conversion_amount = {
+	value = 0.05
+	if = {
+		limit = { ROOT = { has_variable = nationalist_idea_7_var } }
+		add = 0.02
+	}
+}

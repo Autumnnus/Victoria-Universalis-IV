@@ -1,4 +1,4 @@
-national_supremacy_mdf_1 = {
+﻿national_supremacy_mdf_1 = {
 	icon = gfx/interface/monarch_cultures_icon.dds
 	state_food_security_add = 0.02
 }

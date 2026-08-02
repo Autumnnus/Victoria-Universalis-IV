@@ -1,0 +1,463 @@
+﻿ve_age_obj_1 = {
+	scope = country
+	is_valid = { ve_age_objective_1_trigger = yes }
+	effect = { custom_tooltip = { text = ve_age_obj_efct_tt } }
+}
+
+ve_age_obj_2 = {
+	scope = country
+	is_valid = { ve_age_objective_2_trigger = yes }
+	effect = { custom_tooltip = { text = ve_age_obj_efct_tt } }
+}
+
+ve_age_obj_3 = {
+	scope = country
+	is_valid = { ve_age_objective_3_trigger = yes }
+	effect = { custom_tooltip = { text = ve_age_obj_efct_tt } }
+}
+
+ve_age_obj_4 = {
+	scope = country
+	is_valid = { ve_age_objective_4_trigger = yes }
+	effect = { custom_tooltip = { text = ve_age_obj_efct_tt } }
+}
+
+ve_age_obj_5 = {
+	scope = country
+	is_valid = { ve_age_objective_5_trigger = yes }
+	effect = { custom_tooltip = { text = ve_age_obj_efct_tt } }
+}
+
+ve_age_obj_6 = {
+	scope = country
+	is_valid = { ve_age_objective_6_trigger = yes }
+	effect = { custom_tooltip = { text = ve_age_obj_efct_tt } }
+}
+
+ve_age_obj_7 = {
+	scope = country
+	is_valid = { ve_age_objective_7_trigger = yes }
+	effect = { custom_tooltip = { text = ve_age_obj_efct_tt } }
+}
+
+ve_age_bonus_1 = {
+	scope = country
+	is_shown = {
+		OR = {
+			AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_1 } }
+			AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_1 } }
+			AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_1 } }
+		}
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = splendor_default_bonus
+			ve_can_purchase_era_reward = yes
+		}
+	}
+	effect = { ve_add_era_reward_1 = yes }
+}
+
+ve_age_bonus_2 = {
+	scope = country
+	is_shown = {
+		OR = {
+			AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_2 } }
+			AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_2 } }
+			AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_2 } }
+		}
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = splendor_default_bonus
+			ve_can_purchase_era_reward = yes
+		}
+	}
+	effect = { ve_add_era_reward_2 = yes }
+}
+
+ve_age_bonus_3 = {
+	scope = country
+	is_shown = {
+		OR = {
+			AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_3 } }
+			AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_3 } }
+			AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_3 } }
+		}
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = splendor_default_bonus
+			ve_can_purchase_era_reward = yes
+		}
+	}
+	effect = { ve_add_era_reward_3 = yes }
+}
+
+ve_age_bonus_4 = {
+	scope = country
+	is_shown = {
+		OR = {
+			AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_4 } }
+			AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_4 } }
+			AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_4 } }
+		}
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = splendor_default_bonus
+			ve_can_purchase_era_reward = yes
+		}
+	}
+	effect = { ve_add_era_reward_4 = yes }
+}
+
+ve_age_bonus_5 = {
+	scope = country
+	is_shown = {
+		OR = {
+			AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_5 } }
+			AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_5 } }
+			AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_5 } }
+		}
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = splendor_default_bonus
+			ve_can_purchase_era_reward = yes
+		}
+	}
+	effect = { ve_add_era_reward_5 = yes }
+}
+
+ve_age_bonus_6 = {
+	scope = country
+	is_shown = {
+		OR = {
+			AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_6 } }
+			AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_6 } }
+			AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_6 } }
+		}
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = splendor_default_bonus
+			ve_can_purchase_era_reward = yes
+		}
+	}
+	effect = { ve_add_era_reward_6 = yes }
+}
+
+ve_age_bonus_7 = {
+	scope = country
+	is_shown = {
+		OR = {
+			AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_7 } }
+			AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_7 } }
+			AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_7 } }
+		}
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = splendor_default_bonus
+			ve_can_purchase_era_reward = yes
+		}
+	}
+	effect = { ve_add_era_reward_7 = yes }
+}
+
+ve_age_bonus_8 = {
+	scope = country
+	is_shown = {
+		OR = {
+			AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_8 } }
+			AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_8 } }
+			AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_8 } }
+		}
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = splendor_default_bonus
+			ve_can_purchase_era_reward = yes
+		}
+	}
+	effect = { ve_add_era_reward_8 = yes }
+}
+
+ve_age_bonus_9 = {
+	scope = country
+	is_shown = {
+		OR = {
+			AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_9 } }
+			AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_9 } }
+			AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_9 } }
+		}
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = splendor_default_bonus
+			ve_can_purchase_era_reward = yes
+		}
+	}
+	effect = { ve_add_era_reward_9 = yes }
+}
+
+# Two additional rewards are national specializations. They remain optional;
+# every country still has the nine shared rewards above.
+ve_age_bonus_10 = {
+	scope = country
+	is_shown = {
+		OR = {
+			AND = {
+				has_global_variable = ve_age_1_started
+				NOT = { has_modifier = age_1_bonus_10 }
+			}
+			AND = {
+				has_global_variable = ve_age_2_started
+				NOT = { has_modifier = age_2_bonus_10 }
+			}
+			AND = {
+				has_global_variable = ve_age_3_started
+				NOR = {
+					has_modifier = age_3_bonus_10
+					has_modifier = age_3_bonus_10_2
+				}
+			}
+		}
+	}
+	is_valid = {
+		trigger_if = {
+			limit = { has_global_variable = ve_age_1_started }
+			custom_tooltip = {
+				text = ve_age_1_bonus_10_tt
+				ve_can_purchase_era_reward = yes
+				OR = {
+					country_has_primary_culture = cu:north_italian
+					country_has_primary_culture = cu:south_italian
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { has_global_variable = ve_age_2_started }
+			custom_tooltip = {
+				text = ve_age_2_bonus_10_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:AUS
+				this = c:AUS
+			}
+		}
+		trigger_else_if = {
+			limit = { has_global_variable = ve_age_3_started }
+			custom_tooltip = {
+				text = ve_age_3_bonus_10_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:GBR
+				this = c:GBR
+			}
+		}
+	}
+	effect = { ve_add_era_reward_10 = yes }
+}
+
+ve_age_bonus_11 = {
+	scope = country
+	is_shown = {
+		OR = {
+			AND = {
+				has_global_variable = ve_age_1_started
+				NOT = { has_modifier = age_1_bonus_11 }
+			}
+			AND = {
+				has_global_variable = ve_age_2_started
+				NOT = { has_modifier = age_2_bonus_11 }
+			}
+			AND = {
+				has_global_variable = ve_age_3_started
+				NOT = { has_modifier = age_3_bonus_11 }
+			}
+		}
+	}
+	is_valid = {
+		trigger_if = {
+			limit = { has_global_variable = ve_age_1_started }
+			custom_tooltip = {
+				text = ve_age_1_bonus_11_tt
+				ve_can_purchase_era_reward = yes
+				OR = {
+					country_has_primary_culture = cu:north_german
+					country_has_primary_culture = cu:south_german
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { has_global_variable = ve_age_2_started }
+			custom_tooltip = {
+				text = ve_age_2_bonus_11_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:RUS
+				this = c:RUS
+			}
+		}
+		trigger_else_if = {
+			limit = { has_global_variable = ve_age_3_started }
+			custom_tooltip = {
+				text = ve_age_3_bonus_11_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:CHI
+				this = c:CHI
+			}
+		}
+	}
+	effect = { ve_add_era_reward_11 = yes }
+}
+
+ve_age_bonus_12 = {
+	scope = country
+	is_shown = {
+		OR = {
+			AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_12 } }
+			AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_12 } }
+			AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_12 } }
+		}
+	}
+	is_valid = {
+		trigger_if = {
+			limit = { has_global_variable = ve_age_1_started }
+			custom_tooltip = {
+				text = ve_age_1_bonus_12_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:NET
+				this = c:NET
+			}
+		}
+		trigger_else_if = {
+			limit = { has_global_variable = ve_age_2_started }
+			custom_tooltip = {
+				text = ve_age_2_bonus_12_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:BEL
+				this = c:BEL
+			}
+		}
+		trigger_else_if = {
+			limit = { has_global_variable = ve_age_3_started }
+			custom_tooltip = {
+				text = ve_age_3_bonus_12_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:FRA
+				this = c:FRA
+			}
+		}
+	}
+	effect = { ve_add_era_reward_12 = yes }
+}
+
+ve_age_bonus_13 = {
+	scope = country
+	is_shown = {
+		OR = {
+			AND = { has_global_variable = ve_age_1_started NOT = { has_modifier = age_1_bonus_13 } }
+			AND = { has_global_variable = ve_age_2_started NOT = { has_modifier = age_2_bonus_13 } }
+			AND = { has_global_variable = ve_age_3_started NOT = { has_modifier = age_3_bonus_13 } }
+		}
+	}
+	is_valid = {
+		trigger_if = {
+			limit = { has_global_variable = ve_age_1_started }
+			custom_tooltip = {
+				text = ve_age_1_bonus_13_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:TUR
+				this = c:TUR
+			}
+		}
+		trigger_else_if = {
+			limit = { has_global_variable = ve_age_2_started }
+			custom_tooltip = {
+				text = ve_age_2_bonus_13_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:USA
+				this = c:USA
+			}
+		}
+		trigger_else_if = {
+			limit = { has_global_variable = ve_age_3_started }
+			custom_tooltip = {
+				text = ve_age_3_bonus_13_tt
+				ve_can_purchase_era_reward = yes
+				exists = c:JAP
+				this = c:JAP
+			}
+		}
+	}
+	effect = { ve_add_era_reward_13 = yes }
+}
+
+ve_golden_age_industrial = {
+	scope = country
+	is_valid = {
+		custom_tooltip = {
+			text = ve_golden_age_industrial_tt
+			always = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_unused
+			ve_golden_age_not_yet_used = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_year
+			ve_golden_age_year_reached = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_objectives
+			ve_golden_age_objective_requirement_met = yes
+		}
+	}
+	effect = { ve_activate_industrial_golden_age = yes }
+}
+
+ve_golden_age_cultural = {
+	scope = country
+	is_valid = {
+		custom_tooltip = {
+			text = ve_golden_age_cultural_tt
+			always = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_unused
+			ve_golden_age_not_yet_used = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_year
+			ve_golden_age_year_reached = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_objectives
+			ve_golden_age_objective_requirement_met = yes
+		}
+	}
+	effect = { ve_activate_cultural_golden_age = yes }
+}
+
+ve_golden_age_strategic = {
+	scope = country
+	is_valid = {
+		custom_tooltip = {
+			text = ve_golden_age_strategic_tt
+			always = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_unused
+			ve_golden_age_not_yet_used = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_year
+			ve_golden_age_year_reached = yes
+		}
+		custom_tooltip = {
+			text = ve_golden_age_requirement_objectives
+			ve_golden_age_objective_requirement_met = yes
+		}
+	}
+	effect = { ve_activate_strategic_golden_age = yes }
+}

@@ -1,0 +1,93 @@
+### Victoria Universalis IV - Japanese termbase.
+### Tab-separated: id, translation, status, note
+### status: locked (human-approved, never re-translated) | candidate (model proposal in use) | todo (undecided)
+### Term ids and their English source live in localization/glossary/terms.tsv.
+id	translation	status	note
+national_insight	国政識見	candidate	Captures the political and scholarly resource without colliding with the vanilla word for Innovation. | alternatives: 国家見識, 国内見識
+piety_reform	信仰改革力	candidate	Frames the spendable currency as a state resource for religious reform. | alternatives: 宗教改革点, 敬虔改革点
+cultural_mandate	文化政策力	candidate	Represents political authorisation and resource for cultural management. | alternatives: 文化統治力, 文化委任点
+era_momentum	時代勢力	candidate	Denotes the dynamic momentum and progress accumulated across a specific game age. | alternatives: 時代弾力, 時代機運
+religious_settlement	宗教的和解	candidate	Represents the modus vivendi and political accommodation between church and state, avoiding geographic settlement. | alternatives: 宗教的協調, 教政和合
+national_cohesion	国家結束	candidate	Measures the societal fit and cohesion of the nation's identity model. | alternatives: 国民的団結, 国家連帯
+religious_model	宗教モデル	candidate	Maintains family consistency with model terminology while fitting the church-state framework. | alternatives: 宗教体制, 教政モデル
+confessional_state	告白国家	candidate	Refers to a state defined by a formal religious confession of faith. | alternatives: 国教制国家, 特定信仰国家
+freedom_of_conscience	良心の自由	candidate	Uses the established 19th-century civil-liberty phrase. | alternatives: 信仰自由, 良心自由
+total_separation	完全分離	candidate	Denotes the complete separation of church and state without implying territorial partition. | alternatives: 政教完全分離, 全面分離
+state_atheism	国家無神論	candidate	Standard political term for state-sponsored secularisation. | alternatives: 公認無神論, 体制無神論
+identity_model	アイデンティティモデル	candidate	Refers to the nationhood framework without sounding like a personal ID card. | alternatives: 国民モデル, アイデンティティ体制
+ethnic_nation	民族国家	candidate	Standard historical term for a nation built upon a primary culture. | alternatives: 単一民族国家, 血縁国家
+civic_nation	市民国家	candidate	Represents a nation built upon shared citizenship rather than blood ties. | alternatives: 国籍国家, 共和市民国家
+composite_state	複合国家	candidate	Historical political term for a state composed of multiple constituent cultures or realms. | alternatives: 合邦国家, 連合国家
+religious_program	宗教プログラム	candidate	Represents a permanent state-level reform program within a religious model. | alternatives: 宗教政策, 宗教計画
+religious_project	宗教事業	candidate	Maintains family consistency with project terms for state-targeted campaigns. | alternatives: 宗教プロジェクト, 宗教工作
+confessional_conversion	告白教化	candidate	Targeted project for a confessional state to spread its faith. | alternatives: 国教化事業, 信仰改宗工作
+freedom_outreach	自由啓発活動	candidate	Reflects public engagement and tolerant outreach rather than coercive expansion. | alternatives: 寛容普及工作, 自由布教事業
+secularization_campaign	世俗化運動	candidate	Active state project driving secularisation. | alternatives: 世俗化キャンペーン, 脱宗教化事業
+cultural_project	文化事業	candidate	Standard state campaign terminology for identity and culture. | alternatives: 文化プロジェクト, 文化工作
+national_curriculum	国家カリキュラム	candidate	Represents a unified, countrywide school syllabus. | alternatives: 国定教育課程, 国民教育課程
+shared_symbols	共通の象徴	candidate	Captures the national symbolism and shared identity project cleanly. | alternatives: 国家の象徴
+ethnic_integration_campaign	民族統合運動	candidate	Reflects an active state campaign aimed at integrating target cultures. | alternatives: 同化運動
+equal_citizenship_initiative	平等市民権構想	candidate	Fits the civic nation project raising cultural acceptance. | alternatives: 市民平等の発議
+constituent_compact	構成協約	candidate	Denotes a fundamental pact or covenant between constituent groups. | alternatives: 国家契約
+idea_group	思想群	candidate	Distinguishes the doctrine tree without implying a committee or physical group. | alternatives: 理念群, 学派
+embrace	採用	candidate	Standard official term for a state adopting a doctrine or policy. | alternatives: 受容
+idea	思想	candidate	Represents a single level within an Idea Group while maintaining the roman numeral. | alternatives: 理念
+ambition	大望	candidate	Denotes the crowning capstone bonus of a completed doctrine tree. | alternatives: 究極目標
+doctrine	国策	candidate	Provides a consistent umbrella term across the entire idea system in UI headers. | alternatives: 教義, ドクトリン
+doctrine_implementation_strain	国策実行負荷	candidate	Reflects the administrative overload caused by enacting new doctrines. | alternatives: 施策実施のひずみ
+idea_group_capacity	思想群許容量	candidate	Directly indicates the limit on active Idea Groups a country can hold. | alternatives: 理念群スロット枠
+national_idea	国家思想	candidate	Keeps it distinct from general ideas and idea groups as a country-specific bonus. | alternatives: 固有理念
+tradition	伝統	candidate	Standard term for the starting country bonus. | alternatives: 固有伝統
+national_bonus	国家ボーナス	candidate	Reflects the final completion bonus granted at maximum idea levels. | alternatives: 国家完遂ボーナス
+category_production	生産	candidate	Matches the vanilla category header for economic doctrines. | alternatives: 経済
+category_society	社会	candidate	Matches the category header covering social and political doctrines. | alternatives: 内政
+category_military	軍事	candidate	Standard military category header. | alternatives: 国防
+group_industrialist	実業家	candidate	Reflects the class doctrine of factory owners and manufacturing scale. | alternatives: 工業化
+group_mercantile	重商主義	candidate	Standard 19th-century terminology for trade and merchant capital. | alternatives: 商業主義
+group_financial	金融	candidate	Covers banking, credit, and monetary minting doctrines. | alternatives: 財政
+group_infrastructure	インフラストラクチャー	candidate	Covers railways, ports, and construction doctrines. | alternatives: 基幹施設
+group_extraction	採掘	candidate	Covers mining and raw resource extraction doctrines, mutually exclusive with agrarian. | alternatives: 資源採掘
+group_labour	労働	candidate	Refers to the production doctrine of the organised labour movement. | alternatives: 労働運動
+group_agrarian	農本主義	candidate	Captures the rural society and farming doctrine of the era. | alternatives: 農業
+group_academic	学術	candidate	Represents the scholarly doctrine of universities and learned inquiry. | alternatives: 学究
+group_bureaucratic	官僚主義	candidate	The doctrine of administration and records in the 19th-century state. | alternatives: 官僚制
+group_parliamentary	議会主義	candidate	Captures the doctrine of law-making and political representation. | alternatives: 議会制
+group_welfare	社会福祉	candidate	Standard term for health, insurance, and social security in this period. | alternatives: 厚生
+group_diplomatic	外交	candidate	Represents the societal doctrine governing influence and relations. | alternatives: 外交政策
+group_nationalist	国家主義	candidate	Doctrine of national homogeneity, contrasting with reformism. | alternatives: 民族主義
+group_reformist	改革主義	candidate	Doctrine of egalitarian reform, mutually exclusive with nationalism. | alternatives: 改良主義
+group_offensive	攻撃	candidate	Standard military doctrine of attack. | alternatives: 攻勢
+group_defensive	防御	candidate	Standard military doctrine of defense and fortification. | alternatives: 守勢
+group_naval	海軍	candidate	Military doctrine focusing on fleets and shipbuilding. | alternatives: 造船
+group_professional_army	常備軍	candidate	Historical term for a trained standing army. | alternatives: 専門軍隊
+group_mass_conscription	国民皆兵	candidate	Period-appropriate term for the conscript nation doctrine. | alternatives: 大量徴兵
+group_colonial	植民地	candidate	Doctrine of colonial expansion and tropical medicine. | alternatives: 植民地主義
+group_war_economy	戦時経済	candidate	Doctrine of mobilised industry and wartime propaganda. | alternatives: 総力戦経済
+age	時代	candidate	Denotes one of the campaign's three eras. | alternatives: 期
+age_1	産業と国家	candidate	Age 1 title covering 1836-1870. | alternatives: 工業と国家
+age_2	帝国と大衆社会	candidate	Age 2 title covering 1871-1905. | alternatives: 帝国と大衆
+age_3	大衆政治と総力戦	candidate	Age 3 title covering 1906-1936. | alternatives: 大衆政治と世界戦争
+objective	目標	candidate	One of seven goals per Age that pays Era Momentum. | alternatives: 課題
+era_reward	時代の報酬	candidate	Bonus bought with Era Momentum lasting for the current Age. | alternatives: 時代ボーナス
+golden_age	黄金時代	candidate	Standard historical term for a period of peak national prosperity. | alternatives: 盛世
+golden_age_industrial	工業の黄金時代	candidate	Maintains word family with Golden Age while denoting the industrial variant. | alternatives: 産業黄金時代
+golden_age_cultural	文化の黄金時代	candidate	Maintains word family with Golden Age while denoting the cultural variant. | alternatives: 文化黄金時代
+golden_age_strategic	戦略の黄金時代	candidate	Maintains word family with Golden Age while denoting the strategic variant. | alternatives: 軍事黄金時代
+doctrine_journey	ドクトリンの歩み	candidate	Journey translates to a sustained undertaking or progress (歩み) rather than physical travel. | alternatives: 方針の歩み, 学説の歩み
+era_crossroads	時代の分水嶺	candidate	Crossroads in a historical/strategic context refers to a critical turning point or watershed moment. | alternatives: 時代の岐路
+route	路線	candidate	Represents a strategic course of action or path rather than a physical road. | alternatives: 進路, 道筋
+milestone	節目	candidate	Traditional term for a significant stage or turning point in a process. | alternatives: マイルストーン
+transition_journey	移行の歩み	candidate	Retains the journey word family while denoting a period of systemic transition. | alternatives: 変革の歩み
+journey_steam_and_the_state	蒸気と国家	candidate	Refers strictly to steam power and statecraft; avoids any modern platform naming. | alternatives: 蒸気機関と国家
+journey_empire_and_mass_society	帝国と大衆社会	candidate	Standard historical sociological terminology for the 19th-century mass society era. | alternatives: 大帝国と大衆社会
+journey_mobilized_society	動員された社会	candidate	Reflects a society organized and mobilized for total state efforts. | alternatives: 総力動員社会
+journey_factory_system	工場制の標準化	candidate	Denotes the institutionalized industrial order of the factory system. | alternatives: 工場制度の定着
+journey_republic_of_scholars	学問共和国	candidate	Traditional historical term 'Republic of Letters/Scholars' denoting an international community of learning. | alternatives: 学者共和国
+journey_general_staff	参謀本部の改革	candidate	Uses the established historical military institution name (参謀本部) for the General Staff. | alternatives: 軍令部改革
+doctrine_ledger	ドクトリン台帳	candidate	Ledger is translated as an accounting register or table (台帳), completely avoiding untranslated English. | alternatives: 方針一覧, 学説台帳
+national_doctrine	国家ドクトリン	candidate	Clear, read-only designation for a nation's overarching doctrines. | alternatives: 国家方針, 国家学説
+backlash	反発	candidate	Denotes political and social reaction against a cancelled project or policy. | alternatives: 反動, 揺り戻し
+strain	重圧	candidate	Represents the implementation penalty and administrative strain. | alternatives: 負担, 緊張
+tier	段階	candidate	Denotes a meter band or level without implying a political rank or league. | alternatives: 階層, 等級
+equilibrium	均衡値	candidate	Standard economic and systemic term for the target value a modifier drifts toward. | alternatives: 平衡点, 均衡
+progress	進捗	candidate	Progress measured numerically as completion value, distinct from ideological progress. | alternatives: 進行度

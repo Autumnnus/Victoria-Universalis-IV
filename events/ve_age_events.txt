@@ -1,0 +1,42 @@
+﻿namespace = ve_ages
+
+# Player-facing age transition notifications.
+# The actual age state change (globals, splendor reset, previous age bonus removal)
+# happens in dev.5 / dev.6, which run hidden on an AI country via on_yearly_pulse_country.
+# Those events fire these two for every human player so the age change is visible.
+
+ve_ages.1 = {
+	#Age of Imperialism has begun
+	type = country_event
+	event_image = {
+		video = "gfx/event_pictures/middleeast_oil_derricks.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/world_fair"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+	title = ve_imperialism_age_title
+	desc = ve_imperialism_age_desc
+	duration = 0
+	option = {
+		name = ve_age_notify_option
+		default_option = yes
+	}
+}
+
+ve_ages.2 = {
+	#Age of The Great Wars has begun
+	type = country_event
+	event_image = {
+		video = "gfx/event_pictures/middleeast_oil_derricks.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/world_fair"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+	title = ve_great_wars_age_title
+	desc = ve_great_wars_age_desc
+	duration = 0
+	option = {
+		name = ve_age_notify_option
+		default_option = yes
+	}
+}

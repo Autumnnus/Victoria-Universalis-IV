@@ -1,0 +1,750 @@
+﻿# Records the first time each objective is completed in the current age.
+# Losing an objective stops its monthly income, but never grants the +50 again.
+ve_initialize_era_momentum = {
+	if = {
+		limit = { NOT = { has_variable = ve_splender_points } }
+		set_variable = { name = ve_splender_points value = 0 }
+	}
+	if = {
+		limit = { NOT = { has_variable = ve_triggered_objectives } }
+		set_variable = { name = ve_triggered_objectives value = 0 }
+	}
+	if = {
+		limit = { NOT = { has_variable = ve_age_rewards_purchased } }
+		set_variable = {
+			name = ve_age_rewards_purchased
+			value = ve_current_age_rewards_owned
+		}
+	}
+	if = {
+		limit = {
+			has_variable = clicked_golden_age
+			NOT = { has_variable = ve_golden_age_used }
+		}
+		set_variable = ve_golden_age_used
+	}
+	if = {
+		limit = { var:ve_splender_points < 0 }
+		set_variable = { name = ve_splender_points value = 0 }
+	}
+}
+
+# Rebuild the displayed/persistent objective count from the current Age's
+# completion flags. This is save-safe: it repairs a stale counter without
+# replaying the one-time +50 Momentum awards.
+ve_reconcile_era_objective_count = {
+	set_variable = { name = ve_triggered_objectives value = 0 }
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		if = { limit = { has_variable = ve_age_1_objective_1_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_1_objective_2_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_1_objective_3_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_1_objective_4_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_1_objective_5_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_1_objective_6_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_1_objective_7_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		if = { limit = { has_variable = ve_age_2_objective_1_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_2_objective_2_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_2_objective_3_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_2_objective_4_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_2_objective_5_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_2_objective_6_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_2_objective_7_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		if = { limit = { has_variable = ve_age_3_objective_1_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_3_objective_2_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_3_objective_3_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_3_objective_4_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_3_objective_5_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_3_objective_6_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+		if = { limit = { has_variable = ve_age_3_objective_7_completed } change_variable = { name = ve_triggered_objectives add = 1 } }
+	}
+}
+
+ve_update_era_objective_completions = {
+	if = {
+		limit = { ve_age_objective_1_trigger = yes }
+		if = {
+			limit = {
+				has_global_variable = ve_age_1_started
+				NOT = { has_variable = ve_age_1_objective_1_completed }
+			}
+			set_variable = ve_age_1_objective_1_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+		else_if = {
+			limit = {
+				has_global_variable = ve_age_2_started
+				NOT = { has_variable = ve_age_2_objective_1_completed }
+			}
+			set_variable = ve_age_2_objective_1_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+		else_if = {
+			limit = {
+				has_global_variable = ve_age_3_started
+				NOT = { has_variable = ve_age_3_objective_1_completed }
+			}
+			set_variable = ve_age_3_objective_1_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+	}
+	if = {
+		limit = { ve_age_objective_2_trigger = yes }
+		if = {
+			limit = {
+				has_global_variable = ve_age_1_started
+				NOT = { has_variable = ve_age_1_objective_2_completed }
+			}
+			set_variable = ve_age_1_objective_2_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+		else_if = {
+			limit = {
+				has_global_variable = ve_age_2_started
+				NOT = { has_variable = ve_age_2_objective_2_completed }
+			}
+			set_variable = ve_age_2_objective_2_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+		else_if = {
+			limit = {
+				has_global_variable = ve_age_3_started
+				NOT = { has_variable = ve_age_3_objective_2_completed }
+			}
+			set_variable = ve_age_3_objective_2_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+	}
+	if = {
+		limit = { ve_age_objective_3_trigger = yes }
+		if = {
+			limit = {
+				has_global_variable = ve_age_1_started
+				NOT = { has_variable = ve_age_1_objective_3_completed }
+			}
+			set_variable = ve_age_1_objective_3_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+		else_if = {
+			limit = {
+				has_global_variable = ve_age_2_started
+				NOT = { has_variable = ve_age_2_objective_3_completed }
+			}
+			set_variable = ve_age_2_objective_3_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+		else_if = {
+			limit = {
+				has_global_variable = ve_age_3_started
+				NOT = { has_variable = ve_age_3_objective_3_completed }
+			}
+			set_variable = ve_age_3_objective_3_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+	}
+	if = {
+		limit = { ve_age_objective_4_trigger = yes }
+		if = {
+			limit = {
+				has_global_variable = ve_age_1_started
+				NOT = { has_variable = ve_age_1_objective_4_completed }
+			}
+			set_variable = ve_age_1_objective_4_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+		else_if = {
+			limit = {
+				has_global_variable = ve_age_2_started
+				NOT = { has_variable = ve_age_2_objective_4_completed }
+			}
+			set_variable = ve_age_2_objective_4_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+		else_if = {
+			limit = {
+				has_global_variable = ve_age_3_started
+				NOT = { has_variable = ve_age_3_objective_4_completed }
+			}
+			set_variable = ve_age_3_objective_4_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+	}
+	if = {
+		limit = { ve_age_objective_5_trigger = yes }
+		if = {
+			limit = {
+				has_global_variable = ve_age_1_started
+				NOT = { has_variable = ve_age_1_objective_5_completed }
+			}
+			set_variable = ve_age_1_objective_5_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+		else_if = {
+			limit = {
+				has_global_variable = ve_age_2_started
+				NOT = { has_variable = ve_age_2_objective_5_completed }
+			}
+			set_variable = ve_age_2_objective_5_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+		else_if = {
+			limit = {
+				has_global_variable = ve_age_3_started
+				NOT = { has_variable = ve_age_3_objective_5_completed }
+			}
+			set_variable = ve_age_3_objective_5_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+	}
+	if = {
+		limit = { ve_age_objective_6_trigger = yes }
+		if = {
+			limit = {
+				has_global_variable = ve_age_1_started
+				NOT = { has_variable = ve_age_1_objective_6_completed }
+			}
+			set_variable = ve_age_1_objective_6_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+		else_if = {
+			limit = {
+				has_global_variable = ve_age_2_started
+				NOT = { has_variable = ve_age_2_objective_6_completed }
+			}
+			set_variable = ve_age_2_objective_6_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+		else_if = {
+			limit = {
+				has_global_variable = ve_age_3_started
+				NOT = { has_variable = ve_age_3_objective_6_completed }
+			}
+			set_variable = ve_age_3_objective_6_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+	}
+	if = {
+		limit = { ve_age_objective_7_trigger = yes }
+		if = {
+			limit = {
+				has_global_variable = ve_age_1_started
+				NOT = { has_variable = ve_age_1_objective_7_completed }
+			}
+			set_variable = ve_age_1_objective_7_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+		else_if = {
+			limit = {
+				has_global_variable = ve_age_2_started
+				NOT = { has_variable = ve_age_2_objective_7_completed }
+			}
+			set_variable = ve_age_2_objective_7_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+		else_if = {
+			limit = {
+				has_global_variable = ve_age_3_started
+				NOT = { has_variable = ve_age_3_objective_7_completed }
+			}
+			set_variable = ve_age_3_objective_7_completed
+			change_variable = { name = ve_splender_points add = 50 }
+			change_variable = { name = ve_triggered_objectives add = 1 }
+		}
+	}
+}
+
+ve_purchase_era_reward = {
+	if = {
+		limit = { var:ve_age_rewards_purchased <= 0 }
+		change_variable = { name = ve_splender_points subtract = 200 }
+	}
+	else_if = {
+		limit = { var:ve_age_rewards_purchased == 1 }
+		change_variable = { name = ve_splender_points subtract = 300 }
+	}
+	else_if = {
+		limit = { var:ve_age_rewards_purchased == 2 }
+		change_variable = { name = ve_splender_points subtract = 400 }
+	}
+	else_if = {
+		limit = { var:ve_age_rewards_purchased == 3 }
+		change_variable = { name = ve_splender_points subtract = 500 }
+	}
+	else = {
+		change_variable = { name = ve_splender_points subtract = 600 }
+	}
+	change_variable = {
+		name = ve_age_rewards_purchased
+		add = 1
+	}
+}
+
+ve_reset_era_momentum = {
+	set_variable = { name = ve_splender_points value = 0 }
+	set_variable = { name = ve_age_rewards_purchased value = 0 }
+	set_variable = { name = ve_triggered_objectives value = 0 }
+}
+
+ve_clear_age_1_objective_flags = {
+	remove_variable = ve_age_1_objective_1_completed
+	remove_variable = ve_age_1_objective_2_completed
+	remove_variable = ve_age_1_objective_3_completed
+	remove_variable = ve_age_1_objective_4_completed
+	remove_variable = ve_age_1_objective_5_completed
+	remove_variable = ve_age_1_objective_6_completed
+	remove_variable = ve_age_1_objective_7_completed
+}
+
+ve_clear_age_2_objective_flags = {
+	remove_variable = ve_age_2_objective_1_completed
+	remove_variable = ve_age_2_objective_2_completed
+	remove_variable = ve_age_2_objective_3_completed
+	remove_variable = ve_age_2_objective_4_completed
+	remove_variable = ve_age_2_objective_5_completed
+	remove_variable = ve_age_2_objective_6_completed
+	remove_variable = ve_age_2_objective_7_completed
+}
+
+ve_add_era_reward_1 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_1 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_1 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		add_modifier = { name = age_3_bonus_1 months = -1 }
+	}
+}
+
+ve_add_era_reward_2 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_2 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_2 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		add_modifier = { name = age_3_bonus_2 months = -1 }
+	}
+}
+
+ve_add_era_reward_3 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_3 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_3 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		add_modifier = { name = age_3_bonus_3 months = -1 }
+	}
+}
+
+ve_add_era_reward_4 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_4 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_4 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		add_modifier = { name = age_3_bonus_4 months = -1 }
+	}
+}
+
+ve_add_era_reward_5 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_5 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_5 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		add_modifier = { name = age_3_bonus_5 months = -1 }
+	}
+}
+
+ve_add_era_reward_6 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_6 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_6 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		add_modifier = { name = age_3_bonus_6 months = -1 }
+	}
+}
+
+ve_add_era_reward_7 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_7 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_7 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		add_modifier = { name = age_3_bonus_7 months = -1 }
+	}
+}
+
+ve_add_era_reward_8 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_8 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_8 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		add_modifier = { name = age_3_bonus_8 months = -1 }
+	}
+}
+
+ve_add_era_reward_9 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_9 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_9 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		add_modifier = { name = age_3_bonus_9 months = -1 }
+	}
+}
+
+ve_add_era_reward_10 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_10 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_10 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		if = {
+			limit = { has_modifier = naval_idea_4_mdf }
+			add_modifier = { name = age_3_bonus_10_2 months = -1 }
+		}
+		else = {
+			add_modifier = { name = age_3_bonus_10 months = -1 }
+		}
+	}
+}
+
+ve_add_era_reward_11 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_11 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_11 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		add_modifier = { name = age_3_bonus_11 months = -1 }
+	}
+}
+
+ve_add_era_reward_12 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_12 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_12 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		add_modifier = { name = age_3_bonus_12 months = -1 }
+	}
+}
+
+ve_add_era_reward_13 = {
+	ve_purchase_era_reward = yes
+	if = {
+		limit = { has_global_variable = ve_age_1_started }
+		add_modifier = { name = age_1_bonus_13 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		add_modifier = { name = age_2_bonus_13 months = -1 }
+	}
+	else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		add_modifier = { name = age_3_bonus_13 months = -1 }
+	}
+}
+
+ve_activate_industrial_golden_age = {
+	set_variable = ve_golden_age_used
+	add_modifier = { name = ve_golden_age_industrial_mdf years = 15 }
+}
+
+ve_activate_cultural_golden_age = {
+	set_variable = ve_golden_age_used
+	add_modifier = { name = ve_golden_age_cultural_mdf years = 15 }
+}
+
+ve_activate_strategic_golden_age = {
+	set_variable = ve_golden_age_used
+	add_modifier = { name = ve_golden_age_strategic_mdf years = 15 }
+}
+
+# AI selects only from affordable, untaken rewards. Strategy modifiers preserve
+# some variety while making industrial, colonial and military countries favor
+# rewards that support their current vanilla AI plan.
+ve_ai_uses_age_bonuses = {
+	if = {
+		limit = { ve_can_purchase_era_reward = yes }
+		random_list = {
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 1 } }
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								has_strategy = ai_strategy_progressive_agenda
+								bureaucracy < 0
+							}
+						}
+						add = 20
+					}
+				}
+				ve_add_era_reward_1 = yes
+			}
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 2 } }
+				modifier = {
+					if = {
+						limit = { has_strategy = ai_strategy_egalitarian_agenda }
+						add = 25
+					}
+				}
+				ve_add_era_reward_2 = yes
+			}
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 3 } }
+				modifier = {
+					if = {
+						limit = { has_strategy = ai_strategy_progressive_agenda }
+						add = 20
+					}
+				}
+				ve_add_era_reward_3 = yes
+			}
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 4 } }
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								has_strategy = ai_strategy_resource_expansion
+								has_strategy = ai_strategy_industrial_expansion
+							}
+						}
+						add = 30
+					}
+				}
+				ve_add_era_reward_4 = yes
+			}
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 5 } }
+				modifier = {
+					if = {
+						limit = { has_strategy = ai_strategy_industrial_expansion }
+						add = 50
+					}
+				}
+				ve_add_era_reward_5 = yes
+			}
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 6 } }
+				modifier = {
+					if = {
+						limit = { has_strategy = ai_strategy_economic_imperialism }
+						add = 35
+					}
+				}
+				ve_add_era_reward_6 = yes
+			}
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 7 } }
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								has_strategy = ai_strategy_colonial_expansion
+								has_strategy = ai_strategy_territorial_expansion
+							}
+						}
+						add = 45
+					}
+				}
+				ve_add_era_reward_7 = yes
+			}
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 8 } }
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								has_strategy = ai_strategy_colonial_expansion
+								has_strategy = ai_strategy_maintain_power_balance
+							}
+						}
+						add = 35
+					}
+				}
+				ve_add_era_reward_8 = yes
+			}
+			20 = {
+				trigger = { ve_can_purchase_era_reward_slot = { SLOT = 9 } }
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								is_at_war = yes
+								has_strategy = ai_strategy_territorial_expansion
+							}
+						}
+						add = 45
+					}
+				}
+				ve_add_era_reward_9 = yes
+			}
+			35 = {
+				trigger = { ve_can_purchase_country_era_reward_10 = yes }
+				ve_add_era_reward_10 = yes
+			}
+			35 = {
+				trigger = { ve_can_purchase_country_era_reward_11 = yes }
+				ve_add_era_reward_11 = yes
+			}
+			35 = {
+				trigger = { ve_can_purchase_country_era_reward_12 = yes }
+				ve_add_era_reward_12 = yes
+			}
+			35 = {
+				trigger = { ve_can_purchase_country_era_reward_13 = yes }
+				ve_add_era_reward_13 = yes
+			}
+		}
+	}
+	if = {
+		limit = { ve_can_activate_golden_age = yes }
+		random_list = {
+			40 = {
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								has_strategy = ai_strategy_industrial_expansion
+								has_strategy = ai_strategy_resource_expansion
+							}
+						}
+						add = 50
+					}
+				}
+				ve_activate_industrial_golden_age = yes
+			}
+			30 = {
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								has_strategy = ai_strategy_progressive_agenda
+								has_strategy = ai_strategy_egalitarian_agenda
+							}
+						}
+						add = 50
+					}
+				}
+				ve_activate_cultural_golden_age = yes
+			}
+			30 = {
+				modifier = {
+					if = {
+						limit = {
+							OR = {
+								is_at_war = yes
+								has_strategy = ai_strategy_territorial_expansion
+							}
+						}
+						add = 60
+					}
+				}
+				ve_activate_strategic_golden_age = yes
+			}
+		}
+	}
+}

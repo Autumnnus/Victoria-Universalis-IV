@@ -27,12 +27,13 @@ dev.1 = {
 		}
 		if = {
 			limit = {
-				idea_point_value < 999
+				ve_national_insight_value < 1000
 			}
 			change_variable = {
 				name = idea_point_pool
 				add = 300
 			}
+			ve_clamp_national_insight = yes
 		}
 	}
 	option = {
@@ -50,12 +51,13 @@ dev.1 = {
 		}
 		if = {
 			limit = {
-				idea_point_value > 0
+				ve_national_insight_value > 0
 			}
 			change_variable = {
 				name = idea_point_pool
 				subtract = 300
 			}
+			ve_clamp_national_insight = yes
 		}
 	}
 	option = {
@@ -73,12 +75,13 @@ dev.1 = {
 		}
 		if = {
 			limit = {
-				piety_value < 200
+				ve_religious_state_value < 100
 			}
 			change_variable = {
 				name = piety_bar_point
-				add = 125
+				add = 25
 			}
+			ve_clamp_religious_state = yes
 		}
 	}
 	option = {
@@ -96,12 +99,13 @@ dev.1 = {
 		}
 		if = {
 			limit = {
-				piety_value > 0
+				ve_religious_state_value > 0
 			}
 			change_variable = {
 				name = piety_bar_point
-				subtract = 125
+				subtract = 25
 			}
+			ve_clamp_religious_state = yes
 		}
 	}
 	option = {
@@ -119,12 +123,13 @@ dev.1 = {
 		}
 		if = {
 			limit = {
-				culture_reform_point_value < 1000
+				ve_national_identity_value < 500
 			}
 			change_variable = {
 				name = culture_reform_point
-				add = 750
+				add = 200
 			}
+			ve_clamp_cultural_mandate = yes
 		}
 	}
 	option = {
@@ -142,12 +147,13 @@ dev.1 = {
 		}
 		if = {
 			limit = {
-				culture_reform_point_value > 0
+				ve_national_identity_value > 0
 			}
 			change_variable = {
 				name = culture_reform_point
-				subtract = 750
+				subtract = 200
 			}
+			ve_clamp_cultural_mandate = yes
 		}
 	}
 	option = {
@@ -195,6 +201,80 @@ dev.1 = {
 				subtract = 800
 			}
 		}
+	}
+	option = {
+		name = dev.1.i
+		if = {
+			limit = {
+				NOT = {
+					has_variable = piety_reform_point
+				}
+			}
+			set_variable = {
+				name = piety_reform_point
+				value = 0
+			}
+		}
+		change_variable = {
+			name = piety_reform_point
+			add = 200
+		}
+		ve_clamp_piety_reform = yes
+	}
+	option = {
+		name = dev.1.j
+		if = {
+			limit = {
+				NOT = {
+					has_variable = piety_reform_point
+				}
+			}
+			set_variable = {
+				name = piety_reform_point
+				value = 0
+			}
+		}
+		change_variable = {
+			name = piety_reform_point
+			subtract = 200
+		}
+		ve_clamp_piety_reform = yes
+	}
+	option = {
+		name = dev.1.k
+		set_variable = {
+			name = idea_point_pool
+			value = 950
+		}
+		set_variable = {
+			name = piety_reform_point
+			value = 450
+		}
+		set_variable = {
+			name = piety_bar_point
+			value = 75
+		}
+		set_variable = {
+			name = culture_reform_point
+			value = 450
+		}
+		set_variable = {
+			name = ve_national_cohesion
+			value = 75
+		}
+		set_variable = {
+			name = ve_splender_points
+			value = 950
+		}
+	}
+	option = {
+		name = dev.1.l
+		# Fixes a save whose idea_group_unlocked counter got inflated by the
+		# now-fixed double-increment bug in embrace_idea_group (see
+		# common/scripted_guis/ve_idea.txt). Recalculates the true count from
+		# the can_go_X flags instead of just zeroing it, so groups you have
+		# actually embraced still count against the cap.
+		ve_recalculate_idea_group_unlocked = yes
 	}
 }
 
@@ -285,15 +365,6 @@ dev.2 = {
 		# }
 	}
 	option = {
-		name = dev.2.c
-		ve_holy_site_effects = yes
-		# ve_ai_boost_idea = yes
-		# ve_ai_choose_idea = yes
-		# ve_ai_uses_religion = yes
-		# ve_ai_uses_culture = yes
-		# ve_ai_uses_age_bonuses = yes
-	}
-	option = {
 		name = dev.2.d
 		# every_scope_state = {
 		# 	limit = {
@@ -345,7 +416,6 @@ dev.3 = {
 	desc = dev.3.d
 	flavor = dev.3.f
 	duration = 1
-	popup = yes
 	immediate = {
 		set_global_variable = dev_3_triggered
 	}
@@ -407,53 +477,13 @@ dev.3 = {
 }
 
 dev.4 = {
-	#Monthly Event
+	# Deprecated monthly compatibility wrapper.
 	type = country_event
-	event_image = {
-		video = "gfx/event_pictures/middleeast_oil_derricks.bk2"
-	}
-	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-	on_opened_soundeffect = "event:/SFX/Events/unspecific/world_fair"
-	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
-	title = dev.4.t
-	desc = dev.4.d
-	flavor = dev.4.f
-	duration = 0
 	hidden = yes
 	immediate = {
-		if = {
-			#For released countries
-			limit = {
-				NOT = {
-					has_variable = victoria_universalis_system_on
-				}
-			}
-			set_missionary_cultural_missionary = yes
-			set_point_system = yes
-			set_idea_buttons = yes
-			set_ideas = yes
-			set_national_idea = yes
-			religion_passive_bonuses = yes
-			national_idea_traditions = yes
-		}
-		ve_monthly_points = yes
-		ve_idea_cap_effects = yes
-		ve_holy_site_effects = yes
-		prevent_annex_foreign_missionary = yes
-		prevent_annex_foreign_cultural_missionary = yes
-		ve_law_change_effects = yes
-		ve_becoming_atheist = yes
-		if = {
-			#For AI
-			limit = {
-				is_ai = yes
-			}
-			ve_ai_choose_idea = yes
-			ve_ai_boost_idea = yes
-			ve_ai_uses_religion = yes
-			ve_ai_uses_culture = yes
-			ve_ai_uses_age_bonuses = yes
-		}
+		# Deprecated compatibility wrapper. Live monthly dispatch calls the
+		# effect directly from on_monthly_pulse_country.
+		ve_monthly_country_tick = yes
 		if = {
 			#For Released and Civil War Countries
 			limit = {
@@ -462,35 +492,13 @@ dev.4 = {
 				}
 			}
 			set_variable = ve_1936_countries
-			set_variable = {
-				name = idea_point_pool
-				value = global_var:idea_point_value_pool
-			}
-			set_variable = {
-				name = culture_reform_point
-				value = global_var:culture_point_value_pool
-			}
 		}
-	}
-	option = {
-		name = dev.4.a
-		default_option = yes
 	}
 }
 
 dev.5 = {
 	#Imperial Age 
 	type = country_event
-	event_image = {
-		video = "gfx/event_pictures/middleeast_oil_derricks.bk2"
-	}
-	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-	on_opened_soundeffect = "event:/SFX/Events/unspecific/world_fair"
-	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
-	title = dev.4.t
-	desc = dev.4.d
-	flavor = dev.4.f
-	duration = 0
 	hidden = yes
 	immediate = {
 		set_global_variable = ve_age_2_started
@@ -498,10 +506,16 @@ dev.5 = {
 		remove_global_variable = ve_age_3_started
 		set_global_variable = age_2_started_trigger
 		every_country = {
-			set_variable = {
-				name = ve_splender_points
-				value = 0
+			limit = {
+				is_ai = no
 			}
+			trigger_event = {
+				id = ve_ages.1
+			}
+		}
+		every_country = {
+			ve_reset_era_momentum = yes
+			ve_clear_age_1_objective_flags = yes
 			if = {
 				limit = {
 					has_modifier = age_1_bonus_1
@@ -568,6 +582,14 @@ dev.5 = {
 				}
 				remove_modifier = age_1_bonus_11
 			}
+			if = {
+				limit = { has_modifier = age_1_bonus_12 }
+				remove_modifier = age_1_bonus_12
+			}
+			if = {
+				limit = { has_modifier = age_1_bonus_13 }
+				remove_modifier = age_1_bonus_13
+			}
 		}
 	}
 	trigger = {
@@ -578,35 +600,28 @@ dev.5 = {
 			has_global_variable = age_2_started_trigger
 		}
 	}
-	option = {
-		name = dev.4.a
-		default_option = yes
-	}
 }
 
 dev.6 = {
 	#The Last Age
 	type = country_event
-	event_image = {
-		video = "gfx/event_pictures/middleeast_oil_derricks.bk2"
-	}
-	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-	on_opened_soundeffect = "event:/SFX/Events/unspecific/world_fair"
-	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
-	title = dev.4.t
-	desc = dev.4.d
-	flavor = dev.4.f
-	duration = 0
+	hidden = yes
 	immediate = {
 		set_global_variable = ve_age_3_started
 		remove_global_variable = ve_age_1_started
 		remove_global_variable = ve_age_2_started
 		set_global_variable = age_3_started_trigger
 		every_country = {
-			set_variable = {
-				name = ve_splender_points
-				value = 0
+			limit = {
+				is_ai = no
 			}
+			trigger_event = {
+				id = ve_ages.2
+			}
+		}
+		every_country = {
+			ve_reset_era_momentum = yes
+			ve_clear_age_2_objective_flags = yes
 			if = {
 				limit = {
 					has_modifier = age_2_bonus_1
@@ -673,6 +688,14 @@ dev.6 = {
 				}
 				remove_modifier = age_2_bonus_11
 			}
+			if = {
+				limit = { has_modifier = age_2_bonus_12 }
+				remove_modifier = age_2_bonus_12
+			}
+			if = {
+				limit = { has_modifier = age_2_bonus_13 }
+				remove_modifier = age_2_bonus_13
+			}
 		}
 	}
 	trigger = {
@@ -682,264 +705,125 @@ dev.6 = {
 			has_global_variable = age_3_started_trigger
 		}
 	}
-	option = {
-		name = dev.4.a
-		default_option = yes
-	}
 }
 
 dev.7 = {
-	#Missionary Mechanic
+	# Retired: the missionary system (ve_process_active_missionaries,
+	# ve_reconcile_missionary_pool) was replaced by the Targeted Religious
+	# Project - see common/scripted_effects/ve_religious_state_effects.txt.
 	type = country_event
-	event_image = {
-		video = "gfx/event_pictures/middleeast_oil_derricks.bk2"
-	}
-	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-	on_opened_soundeffect = "event:/SFX/Events/unspecific/world_fair"
-	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
-	title = dev.7.t
-	desc = dev.7.d
-	flavor = dev.7.f
-	duration = 0
 	hidden = yes
 	immediate = {
-		religion = {
-			save_scope_as = ve_religion
-		}
-		every_scope_state = {
-			limit = {
-				has_variable = selected_state_religion
-				state_population <= 250000
-			}
-			convert_population = {
-				target = scope:ve_religion
-				value = missionary_power_250k
-			}
-		}
-		every_scope_state = {
-			#500k ve altı
-			limit = {
-				has_variable = selected_state_religion
-				state_population <= 500000
-				state_population > 250000
-			}
-			convert_population = {
-				target = scope:ve_religion
-				value = missionary_power_500k
-			}
-		}
-		every_scope_state = {
-			#750k ve altı
-			limit = {
-				has_variable = selected_state_religion
-				state_population <= 750000
-				state_population > 500000
-			}
-			convert_population = {
-				target = scope:ve_religion
-				value = missionary_power_750k
-			}
-		}
-		every_scope_state = {
-			#1m ve altı:	1000000
-			limit = {
-				has_variable = selected_state_religion
-				state_population <= 1000000
-				state_population > 750000
-			}
-			convert_population = {
-				target = scope:ve_religion
-				value = missionary_power_1m
-			}
-		}
-		every_scope_state = {
-			#5m ve altı:	5000000
-			limit = {
-				has_variable = selected_state_religion
-				state_population <= 5000000
-				state_population > 1000000
-			}
-			convert_population = {
-				target = scope:ve_religion
-				value = missionary_power_5m
-			}
-		}
-		every_scope_state = {
-			#10m ve altı:	10000000
-			limit = {
-				has_variable = selected_state_religion
-				state_population <= 10000000
-				state_population > 5000000
-			}
-			convert_population = {
-				target = scope:ve_religion
-				value = missionary_power_10m
-			}
-		}
-		every_scope_state = {
-			#10m+
-			limit = {
-				has_variable = selected_state_religion
-				state_population >= 10000000
-			}
-			convert_population = {
-				target = scope:ve_religion
-				value = missionary_power_10mplus
-			}
-		}
-		every_scope_state = {
-			random_scope_pop = {
-				limit = {
-					pop_has_primary_culture = yes
-				}
-				culture = {
-					save_scope_as = ve_culture
-				}
-			}
-		}
-		every_scope_state = {
-			limit = {
-				has_variable = selected_state_culture
-				state_population <= 250000
-			}
-			every_scope_pop = {
-				limit = {
-					pop_has_primary_culture = no
-				}
-				change_pop_culture = {
-					target = scope:ve_culture
-					value = cultural_missionary_power_250k
-				}
-			}
-		}
-		every_scope_state = {
-			limit = {
-				has_variable = selected_state_culture
-				state_population <= 500000
-				state_population > 250000
-			}
-			every_scope_pop = {
-				limit = {
-					pop_has_primary_culture = no
-				}
-				change_pop_culture = {
-					target = scope:ve_culture
-					value = cultural_missionary_power_500k
-				}
-			}
-		}
-		every_scope_state = {
-			limit = {
-				has_variable = selected_state_culture
-				state_population <= 750000
-				state_population > 500000
-			}
-			every_scope_pop = {
-				limit = {
-					pop_has_primary_culture = no
-				}
-				change_pop_culture = {
-					target = scope:ve_culture
-					value = cultural_missionary_power_750k
-				}
-			}
-		}
-		every_scope_state = {
-			limit = {
-				has_variable = selected_state_culture
-				state_population <= 1000000
-				state_population > 750000
-			}
-			every_scope_pop = {
-				limit = {
-					pop_has_primary_culture = no
-				}
-				change_pop_culture = {
-					target = scope:ve_culture
-					value = cultural_missionary_power_1m
-				}
-			}
-		}
-		every_scope_state = {
-			limit = {
-				has_variable = selected_state_culture
-				state_population <= 5000000
-				state_population > 1000000
-			}
-			every_scope_pop = {
-				limit = {
-					pop_has_primary_culture = no
-				}
-				change_pop_culture = {
-					target = scope:ve_culture
-					value = cultural_missionary_power_5m
-				}
-			}
-		}
-		every_scope_state = {
-			limit = {
-				has_variable = selected_state_culture
-				state_population <= 10000000
-				state_population > 5000000
-			}
-			every_scope_pop = {
-				limit = {
-					pop_has_primary_culture = no
-				}
-				change_pop_culture = {
-					target = scope:ve_culture
-					value = cultural_missionary_power_10m
-				}
-			}
-		}
-		every_scope_state = {
-			limit = {
-				has_variable = selected_state_culture
-				state_population >= 10000000
-			}
-			every_scope_pop = {
-				limit = {
-					pop_has_primary_culture = no
-				}
-				change_pop_culture = {
-					target = scope:ve_culture
-					value = cultural_missionary_power_10mplus
-				}
-			}
-		}
-	}
-	option = {
-		name = dev.2.c
 	}
 }
 
 dev.8 = {
+	#VE Testing - Force Religious Model
 	type = country_event
 	event_image = {
-		video = "gfx/event_pictures/middleeast_oil_derricks.bk2"
+		video = "gfx/event_pictures/unspecific_politicians_arguing.bk2"
 	}
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-	on_opened_soundeffect = "event:/SFX/Events/unspecific/world_fair"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/trains"
 	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
 	title = dev.8.t
-	desc = dev.8.d
-	flavor = dev.8.f
+	desc = dev.8.desc
 	duration = 1
-	hidden = yes
-	trigger = {
-		global_country_ranking = 1
+	option = {
+		name = dev.8.a
+		default_option = yes
+		activate_law = law_type:law_state_religion
 	}
-	immediate = {
-		change_global_variable = {
-			name = idea_point_value_pool
-			add = 13
-		}
-		change_global_variable = {
-			name = culture_point_value_pool
-			add = 7
+	option = {
+		name = dev.8.b
+		activate_law = law_type:law_freedom_of_conscience
+	}
+	option = {
+		name = dev.8.c
+		activate_law = law_type:law_total_separation
+	}
+	option = {
+		name = dev.8.d
+		activate_law = law_type:law_state_atheism
+	}
+}
+
+dev.9 = {
+	#VE Testing - Force Identity/Citizenship Law
+	type = country_event
+	event_image = {
+		video = "gfx/event_pictures/unspecific_ruler_speaking_to_people.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/trains"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+	title = dev.9.t
+	desc = dev.9.desc
+	duration = 1
+	option = {
+		name = dev.9.a
+		default_option = yes
+		activate_law = law_type:law_ethnostate
+	}
+	option = {
+		name = dev.9.b
+		activate_law = law_type:law_national_supremacy
+	}
+	option = {
+		name = dev.9.c
+		activate_law = law_type:law_multicultural
+	}
+	option = {
+		name = dev.9.d
+		activate_law = law_type:law_racial_segregation
+	}
+	option = {
+		name = dev.9.e
+		activate_law = law_type:law_cultural_exclusion
+	}
+}
+
+dev.10 = {
+	#VE Testing - Force Age / Instant-Finish Active Projects
+	type = country_event
+	event_image = {
+		video = "gfx/event_pictures/unspecific_signed_contract.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/trains"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+	title = dev.10.t
+	desc = dev.10.desc
+	duration = 1
+	option = {
+		name = dev.10.a
+		default_option = yes
+		trigger_event = { id = dev.5 }
+	}
+	option = {
+		name = dev.10.b
+		trigger_event = { id = dev.6 }
+	}
+	option = {
+		name = dev.10.c
+		if = {
+			limit = { ve_has_active_cultural_project = yes }
+			set_variable = {
+				name = ve_cultural_project_progress
+				value = 100
+			}
+			ve_update_cultural_project = yes
 		}
 	}
 	option = {
-		name = dev.2.c
+		name = dev.10.d
+		if = {
+			limit = { ve_has_active_religious_project = yes }
+			set_variable = {
+				name = ve_religious_project_progress
+				value = 100
+			}
+			ve_update_religious_project = yes
+		}
 	}
 }

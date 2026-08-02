@@ -1,0 +1,281 @@
+﻿# Display-only bindings for the doctrine section of the country panel
+# (gui/ve_country_panel_doctrines.gui). Every entry here is read-only: the
+# section is shown for the player and for foreign countries alike, so nothing
+# in this file may expose an executable action.
+#
+# Helper triggers live in common/scripted_triggers/ve_country_panel_triggers.txt.
+
+ve_cp_system_active = {
+	scope = country
+	is_shown = {
+		has_variable = victoria_universalis_system_on
+	}
+}
+
+### IDEA GROUPS ###############################################################
+
+ve_cp_idea_group_embraced = {
+	scope = country
+	saved_scopes = {
+		idea_group
+	}
+	is_shown = {
+		ve_cp_group_embraced = yes
+	}
+}
+
+ve_cp_idea_group_level_1 = {
+	scope = country
+	saved_scopes = {
+		idea_group
+	}
+	is_shown = {
+		ve_cp_group_level_reached = { LEVEL = 1 }
+	}
+}
+
+ve_cp_idea_group_level_2 = {
+	scope = country
+	saved_scopes = {
+		idea_group
+	}
+	is_shown = {
+		ve_cp_group_level_reached = { LEVEL = 2 }
+	}
+}
+
+ve_cp_idea_group_level_3 = {
+	scope = country
+	saved_scopes = {
+		idea_group
+	}
+	is_shown = {
+		ve_cp_group_level_reached = { LEVEL = 3 }
+	}
+}
+
+ve_cp_idea_group_level_4 = {
+	scope = country
+	saved_scopes = {
+		idea_group
+	}
+	is_shown = {
+		ve_cp_group_level_reached = { LEVEL = 4 }
+	}
+}
+
+ve_cp_idea_group_level_5 = {
+	scope = country
+	saved_scopes = {
+		idea_group
+	}
+	is_shown = {
+		ve_cp_group_level_reached = { LEVEL = 5 }
+	}
+}
+
+ve_cp_idea_group_level_6 = {
+	scope = country
+	saved_scopes = {
+		idea_group
+	}
+	is_shown = {
+		ve_cp_group_level_reached = { LEVEL = 6 }
+	}
+}
+
+ve_cp_idea_group_level_7 = {
+	scope = country
+	saved_scopes = {
+		idea_group
+	}
+	is_shown = {
+		ve_cp_group_level_reached = { LEVEL = 7 }
+	}
+}
+
+# Row tooltip: only the levels this country actually bought, reusing the same
+# tooltip effects the idea panel uses so the numbers can never drift apart.
+ve_cp_idea_group_details = {
+	scope = country
+	saved_scopes = {
+		idea_group
+	}
+	effect = {
+		if = {
+			limit = { ve_cp_group_level_reached = { LEVEL = 1 } }
+			idea_1_tt_effects = yes
+		}
+		if = {
+			limit = { ve_cp_group_level_reached = { LEVEL = 2 } }
+			idea_2_tt_effects = yes
+		}
+		if = {
+			limit = { ve_cp_group_level_reached = { LEVEL = 3 } }
+			idea_3_tt_effects = yes
+		}
+		if = {
+			limit = { ve_cp_group_level_reached = { LEVEL = 4 } }
+			idea_4_tt_effects = yes
+		}
+		if = {
+			limit = { ve_cp_group_level_reached = { LEVEL = 5 } }
+			idea_5_tt_effects = yes
+		}
+		if = {
+			limit = { ve_cp_group_level_reached = { LEVEL = 6 } }
+			idea_6_tt_effects = yes
+		}
+		if = {
+			limit = { ve_cp_group_level_reached = { LEVEL = 7 } }
+			idea_7_tt_effects = yes
+		}
+		if = {
+			limit = { NOT = { ve_cp_group_level_reached = { LEVEL = 1 } } }
+			custom_tooltip = {
+				text = ve_cp_group_no_idea_bought
+			}
+		}
+	}
+}
+
+### NATIONAL IDEAS ############################################################
+
+ve_cp_national_bonus_active = {
+	scope = country
+	is_shown = {
+		var:national_idea_pool >= 21
+	}
+}
+
+### RELIGION ##################################################################
+
+ve_cp_religious_program_1 = {
+	scope = country
+	is_shown = { ve_has_religious_program_1 = yes }
+}
+
+ve_cp_religious_program_2 = {
+	scope = country
+	is_shown = { ve_has_religious_program_2 = yes }
+}
+
+ve_cp_religious_program_3 = {
+	scope = country
+	is_shown = { ve_has_religious_program_3 = yes }
+}
+
+ve_cp_religious_program_4 = {
+	scope = country
+	is_shown = { ve_has_religious_program_4 = yes }
+}
+
+ve_cp_religious_program_5 = {
+	scope = country
+	is_shown = { ve_has_religious_program_5 = yes }
+}
+
+ve_cp_religious_program_6 = {
+	scope = country
+	is_shown = { ve_has_religious_program_6 = yes }
+}
+
+ve_cp_religious_program_7 = {
+	scope = country
+	is_shown = { ve_has_religious_program_7 = yes }
+}
+
+ve_cp_religious_program_8 = {
+	scope = country
+	is_shown = { ve_has_religious_program_8 = yes }
+}
+
+ve_cp_no_religious_program = {
+	scope = country
+	is_shown = {
+		NOT = { ve_cp_has_any_religious_program = yes }
+	}
+}
+
+ve_cp_religious_project_active = {
+	scope = country
+	is_shown = {
+		ve_has_active_religious_project = yes
+	}
+}
+
+### NATIONAL IDENTITY #########################################################
+
+ve_cp_cultural_project_active = {
+	scope = country
+	is_shown = {
+		ve_has_active_cultural_project = yes
+	}
+}
+
+### ERA #######################################################################
+
+ve_cp_era_reward_1 = {
+	scope = country
+	is_shown = { ve_cp_has_era_reward = { SLOT = 1 } }
+}
+
+ve_cp_era_reward_2 = {
+	scope = country
+	is_shown = { ve_cp_has_era_reward = { SLOT = 2 } }
+}
+
+ve_cp_era_reward_3 = {
+	scope = country
+	is_shown = { ve_cp_has_era_reward = { SLOT = 3 } }
+}
+
+ve_cp_era_reward_4 = {
+	scope = country
+	is_shown = { ve_cp_has_era_reward = { SLOT = 4 } }
+}
+
+ve_cp_era_reward_5 = {
+	scope = country
+	is_shown = { ve_cp_has_era_reward = { SLOT = 5 } }
+}
+
+ve_cp_era_reward_6 = {
+	scope = country
+	is_shown = { ve_cp_has_era_reward = { SLOT = 6 } }
+}
+
+ve_cp_era_reward_7 = {
+	scope = country
+	is_shown = { ve_cp_has_era_reward = { SLOT = 7 } }
+}
+
+ve_cp_era_reward_8 = {
+	scope = country
+	is_shown = { ve_cp_has_era_reward = { SLOT = 8 } }
+}
+
+ve_cp_era_reward_9 = {
+	scope = country
+	is_shown = { ve_cp_has_era_reward = { SLOT = 9 } }
+}
+
+ve_cp_era_reward_10 = {
+	scope = country
+	is_shown = { ve_cp_has_era_reward = { SLOT = 10 } }
+}
+
+ve_cp_era_reward_11 = {
+	scope = country
+	is_shown = { ve_cp_has_era_reward = { SLOT = 11 } }
+}
+
+ve_cp_era_reward_12 = {
+	scope = country
+	is_shown = { ve_cp_has_era_reward = { SLOT = 12 } }
+}
+
+ve_cp_era_reward_13 = {
+	scope = country
+	is_shown = { ve_cp_has_era_reward = { SLOT = 13 } }
+}

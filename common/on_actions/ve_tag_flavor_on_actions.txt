@@ -1,0 +1,19 @@
+# Yearly carrier for Phase 7 country tag-flavor offers.
+#
+# Eligibility is evaluated before the roll. The 25/75 list is the only
+# frequency roll after at least one complete pilot pack passes its gates.
+ve_tag_flavor_yearly = {
+	trigger = {
+		ve_can_roll_tag_flavor_offer = yes
+	}
+
+	effect = {
+		ve_tm_change_country_variable = { NAME = ve_tag_flavor_tm_eligible_rolls DELTA = 1 }
+		random_list = {
+			25 = {
+				ve_dispatch_tag_flavor_offer = yes
+			}
+			75 = { }
+		}
+	}
+}

@@ -1,0 +1,912 @@
+# Victoria Universalis IV - Doctrine Ledger.
+#
+# A sortable, filterable, paged table of every country's doctrine state: idea
+# groups, National Ideas, Religious Model, Identity Model and Era standing.
+# Read-only; clicking a row opens that country's panel, where the per-group
+# detail lives (gui/ve_country_panel_doctrines.gui).
+#
+# WHY THE TABLE IS BUILT WITH ABSOLUTE COLUMNS
+# The engine forbids position/parentanchor on hbox/vbox children and forbids
+# box children under a (flow)container. A table needs pixel-exact column
+# alignment between the header and every row, so each cell is a plain widget
+# positioned at a shared column offset inside the row widget. Change a column
+# width in one place (@ve_lg_* below) and header plus rows move together.
+#
+# WHERE THE DATA COMES FROM
+# The GUI cannot sort or filter a list, so common/scripted_effects/ve_ledger_effects.txt
+# rebuilds a global list holding exactly the current page, in order. Buttons here
+# only call those effects. Row values are read live off the country.
+#
+# Script bindings: common/scripted_guis/ve_ledger.txt
+# Filters: common/scripted_triggers/ve_ledger_triggers.txt
+# Sort key: common/script_values/ve_ledger_values.txt
+
+@ve_lg_table_width = 1370
+@ve_lg_row_height = 34
+
+@ve_lg_x_rank = 0
+@ve_lg_w_rank = 50
+@ve_lg_x_name = 50
+@ve_lg_w_name = 250
+@ve_lg_x_insight = 300
+@ve_lg_w_insight = 95
+@ve_lg_x_groups = 395
+@ve_lg_w_groups = 95
+@ve_lg_x_ideas = 490
+@ve_lg_w_ideas = 150
+@ve_lg_x_pips = 640
+@ve_lg_w_pips = 140
+@ve_lg_x_religion = 780
+@ve_lg_w_religion = 220
+@ve_lg_x_identity = 1000
+@ve_lg_w_identity = 220
+@ve_lg_x_era = 1220
+@ve_lg_w_era = 150
+
+types ve_ledger_types
+{
+	### One National Idea slot marker on a ledger row.
+	type ve_lg_pip = textbox {
+		parentanchor = vcenter
+		minimumsize = { 12 -1 }
+		maximumsize = { 12 -1 }
+		autoresize = yes
+		align = nobaseline
+		using = fontsize_medium
+		raw_text = "#P ●#!"
+
+		block "pip_state" {
+			alpha = 1.0
+		}
+	}
+
+	### Column header cell. The click surface is a real button - onclick on a
+	### plain widget is silently dropped ("Callback property 'onclick' not
+	### handled"). The label and the arrow are alwaystransparent so the mouse
+	### reaches that button.
+	type ve_lg_header_cell = widget {
+		block "cell_position" {
+			position = { 0 0 }
+		}
+		block "cell_size" {
+			size = { 100 30 }
+		}
+
+		background = {
+			using = Background_Area_Dark
+		}
+
+		button = {
+			size = { 100% 100% }
+			using = clean_button
+
+			block "cell_click" {}
+			block "cell_tooltip" {}
+		}
+
+		textbox = {
+			parentanchor = left|vcenter
+			position = { 8 0 }
+			autoresize = yes
+			elide = right
+			fontsize_min = 10
+			align = nobaseline
+			default_format = "#title"
+			alwaystransparent = yes
+
+			block "cell_max_width" {
+				max_width = 84
+			}
+
+			block "cell_label" {
+				raw_text = ""
+			}
+		}
+
+		### Active sort marker
+		icon = {
+			parentanchor = right|vcenter
+			position = { -6 0 }
+			size = { 14 14 }
+			texture = "gfx/interface/icons/generic_icons/trend_down.dds"
+			alwaystransparent = yes
+
+			block "cell_sorted" {
+				visible = no
+			}
+		}
+	}
+
+	### One country row. Every cell sits at a shared column offset so the header
+	### and the rows stay aligned.
+	type ve_ledger_row = widget {
+		size = { @ve_lg_table_width @ve_lg_row_height }
+
+		block "row_background" {
+			background = {
+				using = entry_bg_simple
+			}
+		}
+
+		### RANK
+		widget = {
+			position = { @ve_lg_x_rank 0 }
+			size = { @ve_lg_w_rank @ve_lg_row_height }
+			tooltip = "[Country.GetRankTooltip]"
+
+			textbox = {
+				parentanchor = right|vcenter
+				position = { -8 0 }
+				autoresize = yes
+				align = right|nobaseline
+				fontsize_min = 10
+				default_format = "#lore"
+				raw_text = "[Country.GetCountryScorePositionDesc]"
+			}
+		}
+
+		### FLAG AND NAME - opens the country panel, which carries the detail
+		widget = {
+			position = { @ve_lg_x_name 0 }
+			size = { @ve_lg_w_name @ve_lg_row_height }
+
+			tiny_flag = {
+				parentanchor = left|vcenter
+				position = { 4 0 }
+			}
+
+			button = {
+				using = clean_button
+				parentanchor = left|vcenter
+				position = { 34 0 }
+				size = { 206 28 }
+				onclick = "[InformationPanelBar.OpenCountryPanel(Country.Self)]"
+				onclick = "[GetVariableSystem.Clear('ve_tab_var')]"
+				tooltip = "VE_LG_OPEN_COUNTRY_TT"
+
+				textbox = {
+					parentanchor = left|vcenter
+					position = { 4 0 }
+					size = { 198 24 }
+					elide = right
+					fontsize_min = 11
+					align = left|nobaseline
+					raw_text = "[Country.GetNameNoFlag]"
+				}
+			}
+		}
+
+		### NATIONAL INSIGHT
+		widget = {
+			position = { @ve_lg_x_insight 0 }
+			size = { @ve_lg_w_insight @ve_lg_row_height }
+			tooltip = "VE_CP_INSIGHT_TT"
+
+			textbox = {
+				parentanchor = left|vcenter
+				position = { 8 0 }
+				autoresize = yes
+				max_width = 79
+				elide = right
+				align = nobaseline
+				fontsize_min = 10
+				default_format = "#v"
+				raw_text = "[Country.MakeScope.Var('idea_point_pool').GetValue|0]"
+			}
+		}
+
+		### EMBRACED IDEA GROUPS
+		widget = {
+			position = { @ve_lg_x_groups 0 }
+			size = { @ve_lg_w_groups @ve_lg_row_height }
+			tooltip = "[GetScriptedGui('ve_ledger_idea_groups_tooltip').ExecuteTooltip(GuiScope.SetRoot(Country.MakeScope).End)]"
+
+			textbox = {
+				parentanchor = left|vcenter
+				position = { 8 0 }
+				autoresize = yes
+				max_width = 79
+				elide = right
+				align = nobaseline
+				fontsize_min = 10
+				default_format = "#v"
+				text = "VE_LG_GROUPS_VALUE"
+			}
+		}
+
+		### PURCHASED GROUP IDEAS
+		widget = {
+			position = { @ve_lg_x_ideas 0 }
+			size = { @ve_lg_w_ideas @ve_lg_row_height }
+			tooltip = "VE_CP_NATIONAL_IDEA_PROGRESS_TT"
+
+			textbox = {
+				parentanchor = left|vcenter
+				position = { 8 0 }
+				autoresize = yes
+				max_width = 46
+				elide = right
+				align = nobaseline
+				fontsize_min = 10
+				default_format = "#v"
+				text = "VE_LG_IDEAS_VALUE"
+			}
+
+			white_progressbar_horizontal = {
+				parentanchor = right|vcenter
+				position = { -8 0 }
+				size = { 70 8 }
+
+				blockoverride "values" {
+					min = 0
+					max = 21
+					value = "[Country.MakeScope.Var('national_idea_pool').GetValue]"
+				}
+			}
+		}
+
+		### NATIONAL IDEA SLOTS
+		widget = {
+			position = { @ve_lg_x_pips 0 }
+			size = { @ve_lg_w_pips @ve_lg_row_height }
+			tooltip = "VE_CP_NATIONAL_IDEA_PROGRESS_TT"
+
+			flowcontainer = {
+				parentanchor = left|vcenter
+				position = { 8 0 }
+				spacing = 2
+
+				ve_lg_pip = {
+					blockoverride "pip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_national_idea_1_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.2')]"
+					}
+				}
+				ve_lg_pip = {
+					blockoverride "pip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_national_idea_2_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.2')]"
+					}
+				}
+				ve_lg_pip = {
+					blockoverride "pip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_national_idea_3_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.2')]"
+					}
+				}
+				ve_lg_pip = {
+					blockoverride "pip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_national_idea_4_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.2')]"
+					}
+				}
+				ve_lg_pip = {
+					blockoverride "pip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_national_idea_5_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.2')]"
+					}
+				}
+				ve_lg_pip = {
+					blockoverride "pip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_national_idea_6_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.2')]"
+					}
+				}
+				ve_lg_pip = {
+					blockoverride "pip_state" {
+						alpha = "[Select_float(GetScriptedGui('ve_national_idea_7_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.2')]"
+					}
+				}
+			}
+
+			### National Bonus marker, granted with the seventh National Idea
+			icon = {
+				parentanchor = right|vcenter
+				position = { -8 0 }
+				size = { 16 16 }
+				texture = "gfx/interface/icons/generic_icons/prestige.dds"
+				alpha = "[Select_float(GetScriptedGui('ve_cp_national_bonus_active').IsShown(GuiScope.SetRoot(Country.MakeScope).End),'(float)1.0','(float)0.2')]"
+			}
+		}
+
+		### RELIGION
+		widget = {
+			position = { @ve_lg_x_religion 0 }
+			size = { @ve_lg_w_religion @ve_lg_row_height }
+			tooltip = "VE_CP_SETTLEMENT_TT"
+
+			icon = {
+				parentanchor = left|vcenter
+				position = { 8 0 }
+				size = { 20 20 }
+				texture = "[Country.GetStateReligion.GetTexture]"
+			}
+
+			textbox = {
+				parentanchor = left|vcenter
+				position = { 34 0 }
+				size = { 120 24 }
+				elide = right
+				fontsize_min = 10
+				align = left|nobaseline
+				raw_text = "[Country.GetCustom('ve_religious_model_name')]"
+			}
+
+			textbox = {
+				parentanchor = right|vcenter
+				position = { -8 0 }
+				autoresize = yes
+				max_width = 50
+				elide = right
+				align = right|nobaseline
+				fontsize_min = 10
+				default_format = "#v"
+				raw_text = "[Country.MakeScope.Var('piety_bar_point').GetValue|0]"
+			}
+		}
+
+		### NATIONAL IDENTITY
+		widget = {
+			position = { @ve_lg_x_identity 0 }
+			size = { @ve_lg_w_identity @ve_lg_row_height }
+			tooltip = "VE_CP_COHESION_TT"
+
+			widget = {
+				parentanchor = left|vcenter
+				position = { 8 0 }
+				size = { 20 20 }
+
+				icon = {
+					size = { 100% 100% }
+					texture = "gfx/interface/icons/ideology_icons/ethno_nationalist.dds"
+					visible = "[EqualTo_CFixedPoint(Country.MakeScope.Var('ve_identity_model').GetValue,'(CFixedPoint)1')]"
+				}
+				icon = {
+					size = { 100% 100% }
+					texture = "gfx/interface/icons/ideology_icons/egalitarian.dds"
+					visible = "[EqualTo_CFixedPoint(Country.MakeScope.Var('ve_identity_model').GetValue,'(CFixedPoint)2')]"
+				}
+				icon = {
+					size = { 100% 100% }
+					texture = "gfx/interface/icons/ideology_icons/particularist.dds"
+					visible = "[EqualTo_CFixedPoint(Country.MakeScope.Var('ve_identity_model').GetValue,'(CFixedPoint)3')]"
+				}
+			}
+
+			textbox = {
+				parentanchor = left|vcenter
+				position = { 34 0 }
+				size = { 120 24 }
+				elide = right
+				fontsize_min = 10
+				align = left|nobaseline
+				raw_text = "[Country.GetCustom('ve_identity_model_name')]"
+			}
+
+			textbox = {
+				parentanchor = right|vcenter
+				position = { -8 0 }
+				autoresize = yes
+				max_width = 50
+				elide = right
+				align = right|nobaseline
+				fontsize_min = 10
+				default_format = "#v"
+				raw_text = "[Country.MakeScope.Var('ve_national_cohesion').GetValue|0]"
+			}
+		}
+
+		### ERA
+		widget = {
+			position = { @ve_lg_x_era 0 }
+			size = { @ve_lg_w_era @ve_lg_row_height }
+			tooltip = "VE_LG_ERA_TT"
+
+			icon = {
+				parentanchor = left|vcenter
+				position = { 8 0 }
+				size = { 18 18 }
+				texture = "gfx/interface/icons/generic_icons/age.dds"
+			}
+
+			textbox = {
+				parentanchor = left|vcenter
+				position = { 32 0 }
+				autoresize = yes
+				max_width = 50
+				elide = right
+				align = nobaseline
+				fontsize_min = 10
+				default_format = "#v"
+				raw_text = "[Country.MakeScope.Var('ve_splender_points').GetValue|0]"
+			}
+
+			textbox = {
+				parentanchor = right|vcenter
+				position = { -8 0 }
+				autoresize = yes
+				max_width = 46
+				elide = right
+				align = right|nobaseline
+				fontsize_min = 10
+				default_format = "#lore"
+				text = "VE_LG_REWARDS_VALUE"
+			}
+		}
+
+		divider_clean = {
+			parentanchor = bottom
+			position = { 0 1 }
+
+			blockoverride "size" {
+				size = { @ve_lg_table_width 2 }
+			}
+		}
+	}
+
+	##########################################################################
+	### PANEL
+	##########################################################################
+	type ve_panel_ledger = vbox {
+		layoutpolicy_horizontal = expanding
+		layoutpolicy_vertical = expanding
+		margin_top = 10
+		spacing = 8
+
+		### TITLE AND FILTERS
+		widget = {
+			size = { @ve_lg_table_width 92 }
+
+			background = {
+				using = main_bg
+			}
+
+			textbox = {
+				parentanchor = left|top
+				position = { 12 8 }
+				autoresize = yes
+				align = nobaseline
+				using = fontsize_xxl
+				default_format = "#title"
+				text = "VE_LG_TITLE"
+			}
+
+			textbox = {
+				parentanchor = left|top
+				position = { 14 42 }
+				autoresize = yes
+				max_width = 640
+				align = nobaseline
+				using = fontsize_small
+				default_format = "#lore"
+				text = "VE_LG_HINT"
+			}
+
+			### FILTER BUTTONS
+			flowcontainer = {
+				parentanchor = left|bottom
+				position = { 12 -8 }
+				spacing = 4
+
+				ve_lg_filter_button = {
+					blockoverride "filter_label" {
+						text = "VE_LG_F_ALL"
+					}
+					blockoverride "filter_click" {
+						onclick = "[GetScriptedGui('ve_ledger_filter_all').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					blockoverride "filter_active" {
+						visible = "[GetScriptedGui('ve_ledger_filter_is_all').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+				}
+				ve_lg_filter_button = {
+					blockoverride "filter_label" {
+						text = "VE_LG_F_GREAT_POWERS"
+					}
+					blockoverride "filter_click" {
+						onclick = "[GetScriptedGui('ve_ledger_filter_great_powers').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					blockoverride "filter_active" {
+						visible = "[GetScriptedGui('ve_ledger_filter_is_great_powers').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+				}
+				ve_lg_filter_button = {
+					blockoverride "filter_label" {
+						text = "VE_LG_F_MAJOR_POWERS"
+					}
+					blockoverride "filter_click" {
+						onclick = "[GetScriptedGui('ve_ledger_filter_major_powers').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					blockoverride "filter_active" {
+						visible = "[GetScriptedGui('ve_ledger_filter_is_major_powers').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+				}
+				ve_lg_filter_button = {
+					blockoverride "filter_label" {
+						text = "VE_LG_F_RECOGNIZED"
+					}
+					blockoverride "filter_click" {
+						onclick = "[GetScriptedGui('ve_ledger_filter_recognized').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					blockoverride "filter_active" {
+						visible = "[GetScriptedGui('ve_ledger_filter_is_recognized').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+				}
+				ve_lg_filter_button = {
+					blockoverride "filter_label" {
+						text = "VE_LG_F_RELEVANT"
+					}
+					blockoverride "filter_click" {
+						onclick = "[GetScriptedGui('ve_ledger_filter_relevant').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					blockoverride "filter_active" {
+						visible = "[GetScriptedGui('ve_ledger_filter_is_relevant').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+				}
+				ve_lg_filter_button = {
+					blockoverride "filter_label" {
+						text = "VE_LG_F_WITH_GROUPS"
+					}
+					blockoverride "filter_click" {
+						onclick = "[GetScriptedGui('ve_ledger_filter_with_groups').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					blockoverride "filter_active" {
+						visible = "[GetScriptedGui('ve_ledger_filter_is_with_groups').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+				}
+			}
+
+			### PAGING AND REFRESH
+			flowcontainer = {
+				parentanchor = right|bottom
+				position = { -12 -8 }
+				spacing = 6
+
+				button = {
+					using = default_button
+					size = { 120 30 }
+					text = "VE_LG_REFRESH"
+					tooltip = "VE_LG_REFRESH_TT"
+					onclick = "[GetScriptedGui('ve_ledger_refresh').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+
+				button = {
+					using = default_button
+					size = { 40 30 }
+					raw_text = "<<"
+					tooltip = "VE_LG_FIRST_TT"
+					enabled = "[GetScriptedGui('ve_ledger_page_first').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					onclick = "[GetScriptedGui('ve_ledger_page_first').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+
+				button = {
+					using = default_button
+					size = { 40 30 }
+					raw_text = "<"
+					tooltip = "VE_LG_PREV_TT"
+					enabled = "[GetScriptedGui('ve_ledger_page_previous').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					onclick = "[GetScriptedGui('ve_ledger_page_previous').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+
+				widget = {
+					size = { 190 30 }
+
+					textbox = {
+						parentanchor = center
+						autoresize = yes
+						max_width = 186
+						elide = right
+						align = hcenter|nobaseline
+						fontsize_min = 10
+						default_format = "#v"
+						text = "VE_LG_PAGE_INFO"
+					}
+				}
+
+				button = {
+					using = default_button
+					size = { 40 30 }
+					raw_text = ">"
+					tooltip = "VE_LG_NEXT_TT"
+					enabled = "[GetScriptedGui('ve_ledger_page_next').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					onclick = "[GetScriptedGui('ve_ledger_page_next').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+		}
+
+		### COLUMN HEADER
+		widget = {
+			size = { @ve_lg_table_width 30 }
+
+			ve_lg_header_cell = {
+				blockoverride "cell_position" {
+					position = { @ve_lg_x_rank 0 }
+				}
+				blockoverride "cell_size" {
+					size = { @ve_lg_w_rank 30 }
+				}
+				blockoverride "cell_max_width" {
+					max_width = 22
+				}
+				blockoverride "cell_label" {
+					text = "VE_LG_COL_RANK"
+				}
+				blockoverride "cell_tooltip" {
+					tooltip = "VE_LG_SORT_PRESTIGE_TT"
+				}
+				blockoverride "cell_click" {
+					onclick = "[GetScriptedGui('ve_ledger_sort_prestige').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+				blockoverride "cell_sorted" {
+					visible = "[GetScriptedGui('ve_ledger_sorted_by_prestige').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+
+			ve_lg_header_cell = {
+				blockoverride "cell_position" {
+					position = { @ve_lg_x_name 0 }
+				}
+				blockoverride "cell_size" {
+					size = { @ve_lg_w_name 30 }
+				}
+				blockoverride "cell_max_width" {
+					max_width = 234
+				}
+				blockoverride "cell_label" {
+					text = "VE_LG_COL_COUNTRY"
+				}
+			}
+
+			ve_lg_header_cell = {
+				blockoverride "cell_position" {
+					position = { @ve_lg_x_insight 0 }
+				}
+				blockoverride "cell_size" {
+					size = { @ve_lg_w_insight 30 }
+				}
+				blockoverride "cell_label" {
+					text = "VE_LG_COL_INSIGHT"
+				}
+				blockoverride "cell_tooltip" {
+					tooltip = "VE_LG_SORT_INSIGHT_TT"
+				}
+				blockoverride "cell_click" {
+					onclick = "[GetScriptedGui('ve_ledger_sort_insight').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+				blockoverride "cell_sorted" {
+					visible = "[GetScriptedGui('ve_ledger_sorted_by_insight').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+
+			ve_lg_header_cell = {
+				blockoverride "cell_position" {
+					position = { @ve_lg_x_groups 0 }
+				}
+				blockoverride "cell_size" {
+					size = { @ve_lg_w_groups 30 }
+				}
+				blockoverride "cell_label" {
+					text = "VE_LG_COL_GROUPS"
+				}
+				blockoverride "cell_tooltip" {
+					tooltip = "VE_LG_SORT_GROUPS_TT"
+				}
+				blockoverride "cell_click" {
+					onclick = "[GetScriptedGui('ve_ledger_sort_groups').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+				blockoverride "cell_sorted" {
+					visible = "[GetScriptedGui('ve_ledger_sorted_by_groups').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+
+			ve_lg_header_cell = {
+				blockoverride "cell_position" {
+					position = { @ve_lg_x_ideas 0 }
+				}
+				blockoverride "cell_size" {
+					size = { @ve_lg_w_ideas 30 }
+				}
+				blockoverride "cell_max_width" {
+					max_width = 110
+				}
+				blockoverride "cell_label" {
+					text = "VE_LG_COL_IDEAS"
+				}
+				blockoverride "cell_tooltip" {
+					tooltip = "VE_LG_SORT_IDEAS_TT"
+				}
+				blockoverride "cell_click" {
+					onclick = "[GetScriptedGui('ve_ledger_sort_ideas').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+				blockoverride "cell_sorted" {
+					visible = "[GetScriptedGui('ve_ledger_sorted_by_ideas').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+
+			ve_lg_header_cell = {
+				blockoverride "cell_position" {
+					position = { @ve_lg_x_pips 0 }
+				}
+				blockoverride "cell_size" {
+					size = { @ve_lg_w_pips 30 }
+				}
+				blockoverride "cell_max_width" {
+					max_width = 124
+				}
+				blockoverride "cell_label" {
+					text = "VE_LG_COL_NATIONAL_IDEAS"
+				}
+				blockoverride "cell_tooltip" {
+					tooltip = "VE_LG_COL_NATIONAL_IDEAS_TT"
+				}
+			}
+
+			ve_lg_header_cell = {
+				blockoverride "cell_position" {
+					position = { @ve_lg_x_religion 0 }
+				}
+				blockoverride "cell_size" {
+					size = { @ve_lg_w_religion 30 }
+				}
+				blockoverride "cell_max_width" {
+					max_width = 180
+				}
+				blockoverride "cell_label" {
+					text = "VE_LG_COL_RELIGION"
+				}
+				blockoverride "cell_tooltip" {
+					tooltip = "VE_LG_SORT_SETTLEMENT_TT"
+				}
+				blockoverride "cell_click" {
+					onclick = "[GetScriptedGui('ve_ledger_sort_settlement').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+				blockoverride "cell_sorted" {
+					visible = "[GetScriptedGui('ve_ledger_sorted_by_settlement').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+
+			ve_lg_header_cell = {
+				blockoverride "cell_position" {
+					position = { @ve_lg_x_identity 0 }
+				}
+				blockoverride "cell_size" {
+					size = { @ve_lg_w_identity 30 }
+				}
+				blockoverride "cell_max_width" {
+					max_width = 180
+				}
+				blockoverride "cell_label" {
+					text = "VE_LG_COL_IDENTITY"
+				}
+				blockoverride "cell_tooltip" {
+					tooltip = "VE_LG_SORT_COHESION_TT"
+				}
+				blockoverride "cell_click" {
+					onclick = "[GetScriptedGui('ve_ledger_sort_cohesion').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+				blockoverride "cell_sorted" {
+					visible = "[GetScriptedGui('ve_ledger_sorted_by_cohesion').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+
+			ve_lg_header_cell = {
+				blockoverride "cell_position" {
+					position = { @ve_lg_x_era 0 }
+				}
+				blockoverride "cell_size" {
+					size = { @ve_lg_w_era 30 }
+				}
+				blockoverride "cell_max_width" {
+					max_width = 124
+				}
+				blockoverride "cell_label" {
+					text = "VE_LG_COL_ERA"
+				}
+				blockoverride "cell_tooltip" {
+					tooltip = "VE_LG_SORT_MOMENTUM_TT"
+				}
+				blockoverride "cell_click" {
+					onclick = "[GetScriptedGui('ve_ledger_sort_momentum').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+				blockoverride "cell_sorted" {
+					visible = "[GetScriptedGui('ve_ledger_sorted_by_momentum').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+		}
+
+		### YOUR OWN COUNTRY, always visible as the comparison baseline.
+		### The container is 24px taller than the row so the label sits in its own
+		### band instead of touching the highlighted row's frame.
+		widget = {
+			size = { @ve_lg_table_width 58 }
+
+			textbox = {
+				parentanchor = left|top
+				position = { 4 2 }
+				autoresize = yes
+				align = nobaseline
+				using = fontsize_small
+				default_format = "#lore"
+				text = "VE_LG_YOU"
+			}
+
+			ve_ledger_row = {
+				datacontext = "[GetPlayer]"
+				parentanchor = bottom
+
+				blockoverride "row_background" {
+					background = {
+						using = entry_bg_simple
+					}
+
+					icon = {
+						size = { 100% 100% }
+						alwaystransparent = yes
+						using = highlighted_square_selection
+					}
+				}
+			}
+		}
+
+		### THE PAGE
+		flowcontainer = {
+			direction = vertical
+			datamodel = "[GetGlobalList('ve_ledger_countries')]"
+
+			item = {
+				ve_ledger_row = {
+					datacontext = "[Scope.GetCountry]"
+				}
+			}
+		}
+
+		### EMPTY STATE
+		widget = {
+			size = { @ve_lg_table_width 60 }
+			visible = "[GetScriptedGui('ve_ledger_is_empty').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+			textbox = {
+				parentanchor = center
+				autoresize = yes
+				max_width = 900
+				multiline = yes
+				align = hcenter|nobaseline
+				default_format = "#lore"
+				text = "VE_LG_EMPTY"
+			}
+		}
+
+		expand = {}
+	}
+
+	### Filter toggle: label, plus a selection frame while this filter is active.
+	### The frame is a separate icon so the button itself always stays visible.
+	type ve_lg_filter_button = widget {
+		size = { 148 30 }
+
+		button = {
+			size = { 100% 100% }
+			using = default_button
+
+			block "filter_click" {}
+
+			textbox = {
+				parentanchor = center
+				autoresize = yes
+				max_width = 138
+				elide = right
+				align = hcenter|nobaseline
+				fontsize_min = 10
+				alwaystransparent = yes
+
+				block "filter_label" {
+					raw_text = ""
+				}
+			}
+		}
+
+		icon = {
+			size = { 100% 100% }
+			alwaystransparent = yes
+			using = highlighted_square_selection
+
+			block "filter_active" {
+				visible = no
+			}
+		}
+	}
+}

@@ -1,0 +1,17 @@
+#!/bin/sh
+# Victoria Universalis IV - localization pipeline (macOS, Linux, Git Bash).
+# Run `./loc` for the menu, or `./loc doctor`, `./loc sync turkish`, `./loc verify`.
+# Windows users can use loc.cmd instead.
+set -e
+cd "$(dirname "$0")"
+PYTHONIOENCODING=utf-8
+export PYTHONIOENCODING
+
+for candidate in python3 python py; do
+    if command -v "$candidate" >/dev/null 2>&1; then
+        exec "$candidate" -m tools.loc "$@"
+    fi
+done
+
+echo "Python 3.10 or newer is required but no python interpreter was found." >&2
+exit 1

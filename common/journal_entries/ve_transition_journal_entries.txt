@@ -1,0 +1,126 @@
+# Model Transition Journeys are presentation layers. Their core transition
+# modifiers are the sole authority for duration and completion.
+
+ve_je_religious_settlement_transition = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	group = je_group_internal_affairs
+
+	on_monthly_pulse = {
+		effect = {
+			ve_tick_religious_transition_journey = yes
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = ve_je_religious_settlement_transition_complete_tt
+			NOT = { has_modifier = ve_religious_settlement_crisis_mdf }
+		}
+	}
+
+	on_complete = {
+		ve_complete_religious_transition_journey = yes
+	}
+
+	invalid = {
+		OR = {
+			NOT = { has_variable = ve_religious_model }
+			NOT = { has_variable = ve_rel_transition_total_months }
+		}
+	}
+
+	on_invalid = {
+		ve_clear_religious_transition_journey_session = yes
+	}
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = ve_je_religious_settlement_transition_status_confessional
+				trigger = { var:ve_rel_transition_target_model = 1 }
+			}
+			triggered_desc = {
+				desc = ve_je_religious_settlement_transition_status_freedom
+				trigger = { var:ve_rel_transition_target_model = 2 }
+			}
+			triggered_desc = {
+				desc = ve_je_religious_settlement_transition_status_separation
+				trigger = { var:ve_rel_transition_target_model = 3 }
+			}
+			triggered_desc = {
+				desc = ve_je_religious_settlement_transition_status_atheism
+				trigger = { var:ve_rel_transition_target_model = 4 }
+			}
+			triggered_desc = {
+				desc = ve_je_transition_resolving_status
+				trigger = { always = yes }
+			}
+		}
+	}
+
+	progressbar = no
+	weight = 100
+	transferable = no
+	can_revolution_inherit = no
+	should_be_pinned_by_default_uninvolved_or_context = yes
+}
+
+ve_je_national_compact_transition = {
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	group = je_group_internal_affairs
+
+	on_monthly_pulse = {
+		effect = {
+			ve_tick_identity_transition_journey = yes
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = ve_je_national_compact_transition_complete_tt
+			NOT = { has_modifier = ve_identity_transition_backlash_mdf }
+		}
+	}
+
+	on_complete = {
+		ve_complete_identity_transition_journey = yes
+	}
+
+	invalid = {
+		OR = {
+			NOT = { has_variable = ve_identity_model }
+			NOT = { has_variable = ve_identity_transition_total_months }
+		}
+	}
+
+	on_invalid = {
+		ve_clear_identity_transition_journey_session = yes
+	}
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = ve_je_national_compact_transition_status_ethnic
+				trigger = { var:ve_identity_transition_target_model = 1 }
+			}
+			triggered_desc = {
+				desc = ve_je_national_compact_transition_status_civic
+				trigger = { var:ve_identity_transition_target_model = 2 }
+			}
+			triggered_desc = {
+				desc = ve_je_national_compact_transition_status_composite
+				trigger = { var:ve_identity_transition_target_model = 3 }
+			}
+			triggered_desc = {
+				desc = ve_je_transition_resolving_status
+				trigger = { always = yes }
+			}
+		}
+	}
+
+	progressbar = no
+	weight = 100
+	transferable = no
+	can_revolution_inherit = no
+	should_be_pinned_by_default_uninvolved_or_context = yes
+}

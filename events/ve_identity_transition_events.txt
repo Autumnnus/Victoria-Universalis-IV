@@ -1,0 +1,564 @@
+namespace = ve_cul_evt
+
+# National Compact Transition milestones.
+
+ve_cul_evt.210 = {
+	type = country_event
+	title = ve_cul_evt.210.t
+	desc = ve_cul_evt.210.d
+	event_image = { video = "gfx/event_pictures/europenorthamerica_capitalists_meeting.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	trigger = {
+		ve_has_valid_identity_transition_journey_context = yes
+		var:ve_identity_transition_target_model = 1
+	}
+	cancellation_trigger = {
+		NOT = {
+			AND = {
+				ve_has_valid_identity_transition_journey_context = yes
+				var:ve_identity_transition_target_model = 1
+			}
+		}
+	}
+	option = {
+		name = ve_cul_evt.210.a
+		trigger = { var:culture_reform_point >= 10 }
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:ve_national_cohesion <= 40 } add = 35 }
+			modifier = { trigger = { var:culture_reform_point >= 60 } add = 20 }
+			modifier = { trigger = { var:culture_reform_point < 25 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_identity_transition_conciliatory_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_conciliatory_choice = yes } }
+	}
+	option = {
+		name = ve_cul_evt.210.b
+		default_option = yes
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:ve_national_cohesion >= 60 } add = 30 }
+			modifier = { trigger = { var:ve_national_cohesion <= 25 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_identity_transition_central_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_central_choice = yes } }
+	}
+	option = {
+		name = ve_cul_evt.210.c
+		trigger = {
+			var:culture_reform_point >= 5
+			OR = {
+				has_modifier = nationalist_idea_5_mdf
+				has_modifier = mass_conscription_idea_5_mdf
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:culture_reform_point >= 40 } add = 30 }
+			modifier = { trigger = { var:culture_reform_point < 15 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_identity_transition_doctrine_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_doctrine_choice = yes } }
+	}
+}
+
+ve_cul_evt.211 = {
+	type = country_event
+	title = ve_cul_evt.211.t
+	desc = ve_cul_evt.211.d
+	event_image = { video = "gfx/event_pictures/unspecific_military_parade.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	trigger = {
+		ve_has_valid_identity_transition_journey_context = yes
+		var:ve_identity_transition_target_model = 1
+	}
+	cancellation_trigger = {
+		NOT = {
+			AND = {
+				ve_has_valid_identity_transition_journey_context = yes
+				var:ve_identity_transition_target_model = 1
+			}
+		}
+	}
+	option = {
+		name = ve_cul_evt.211.a
+		trigger = { var:culture_reform_point >= 10 }
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:ve_national_cohesion <= 40 } add = 35 }
+			modifier = { trigger = { var:culture_reform_point >= 60 } add = 20 }
+			modifier = { trigger = { var:culture_reform_point < 25 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_identity_transition_conciliatory_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_conciliatory_choice = yes } }
+	}
+	option = {
+		name = ve_cul_evt.211.b
+		default_option = yes
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:ve_national_cohesion >= 60 } add = 30 }
+			modifier = { trigger = { var:ve_national_cohesion <= 25 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_identity_transition_central_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_central_choice = yes } }
+	}
+	option = {
+		name = ve_cul_evt.211.c
+		trigger = {
+			var:culture_reform_point >= 5
+			OR = {
+				has_modifier = nationalist_idea_5_mdf
+				has_modifier = mass_conscription_idea_5_mdf
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:culture_reform_point >= 40 } add = 30 }
+			modifier = { trigger = { var:culture_reform_point < 15 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_identity_transition_doctrine_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_doctrine_choice = yes } }
+	}
+}
+
+ve_cul_evt.220 = {
+	type = country_event
+	title = ve_cul_evt.220.t
+	desc = ve_cul_evt.220.d
+	event_image = { video = "gfx/event_pictures/europenorthamerica_capitalists_meeting.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	trigger = {
+		ve_has_valid_identity_transition_journey_context = yes
+		var:ve_identity_transition_target_model = 2
+	}
+	cancellation_trigger = {
+		NOT = {
+			AND = {
+				ve_has_valid_identity_transition_journey_context = yes
+				var:ve_identity_transition_target_model = 2
+			}
+		}
+	}
+	option = {
+		name = ve_cul_evt.220.a
+		trigger = { var:culture_reform_point >= 10 }
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:ve_national_cohesion <= 40 } add = 35 }
+			modifier = { trigger = { var:culture_reform_point >= 60 } add = 20 }
+			modifier = { trigger = { var:culture_reform_point < 25 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_identity_transition_conciliatory_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_conciliatory_choice = yes } }
+	}
+	option = {
+		name = ve_cul_evt.220.b
+		default_option = yes
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:ve_national_cohesion >= 60 } add = 30 }
+			modifier = { trigger = { var:ve_national_cohesion <= 25 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_identity_transition_central_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_central_choice = yes } }
+	}
+	option = {
+		name = ve_cul_evt.220.c
+		trigger = {
+			var:culture_reform_point >= 5
+			OR = {
+				has_modifier = reformist_idea_5_mdf
+				has_modifier = academic_idea_5_mdf
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:culture_reform_point >= 40 } add = 30 }
+			modifier = { trigger = { var:culture_reform_point < 15 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_identity_transition_doctrine_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_doctrine_choice = yes } }
+	}
+}
+
+ve_cul_evt.221 = {
+	type = country_event
+	title = ve_cul_evt.221.t
+	desc = ve_cul_evt.221.d
+	event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	trigger = {
+		ve_has_valid_identity_transition_journey_context = yes
+		var:ve_identity_transition_target_model = 2
+	}
+	cancellation_trigger = {
+		NOT = {
+			AND = {
+				ve_has_valid_identity_transition_journey_context = yes
+				var:ve_identity_transition_target_model = 2
+			}
+		}
+	}
+	option = {
+		name = ve_cul_evt.221.a
+		trigger = { var:culture_reform_point >= 10 }
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:ve_national_cohesion <= 40 } add = 35 }
+			modifier = { trigger = { var:culture_reform_point >= 60 } add = 20 }
+			modifier = { trigger = { var:culture_reform_point < 25 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_identity_transition_conciliatory_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_conciliatory_choice = yes } }
+	}
+	option = {
+		name = ve_cul_evt.221.b
+		default_option = yes
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:ve_national_cohesion >= 60 } add = 30 }
+			modifier = { trigger = { var:ve_national_cohesion <= 25 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_identity_transition_central_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_central_choice = yes } }
+	}
+	option = {
+		name = ve_cul_evt.221.c
+		trigger = {
+			var:culture_reform_point >= 5
+			OR = {
+				has_modifier = reformist_idea_5_mdf
+				has_modifier = academic_idea_5_mdf
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:culture_reform_point >= 40 } add = 30 }
+			modifier = { trigger = { var:culture_reform_point < 15 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_identity_transition_doctrine_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_doctrine_choice = yes } }
+	}
+}
+
+ve_cul_evt.230 = {
+	type = country_event
+	title = ve_cul_evt.230.t
+	desc = ve_cul_evt.230.d
+	event_image = { video = "gfx/event_pictures/europenorthamerica_capitalists_meeting.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	trigger = {
+		ve_has_valid_identity_transition_journey_context = yes
+		var:ve_identity_transition_target_model = 3
+	}
+	cancellation_trigger = {
+		NOT = {
+			AND = {
+				ve_has_valid_identity_transition_journey_context = yes
+				var:ve_identity_transition_target_model = 3
+			}
+		}
+	}
+	option = {
+		name = ve_cul_evt.230.a
+		trigger = { var:culture_reform_point >= 10 }
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:ve_national_cohesion <= 40 } add = 35 }
+			modifier = { trigger = { var:culture_reform_point >= 60 } add = 20 }
+			modifier = { trigger = { var:culture_reform_point < 25 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_identity_transition_conciliatory_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_conciliatory_choice = yes } }
+	}
+	option = {
+		name = ve_cul_evt.230.b
+		default_option = yes
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:ve_national_cohesion >= 60 } add = 30 }
+			modifier = { trigger = { var:ve_national_cohesion <= 25 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_identity_transition_central_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_central_choice = yes } }
+	}
+	option = {
+		name = ve_cul_evt.230.c
+		trigger = {
+			var:culture_reform_point >= 5
+			OR = {
+				has_modifier = diplomatic_idea_4_mdf
+				has_modifier = parliamentary_idea_4_mdf
+				has_modifier = bureaucratic_idea_4_mdf
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:culture_reform_point >= 40 } add = 30 }
+			modifier = { trigger = { var:culture_reform_point < 15 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_identity_transition_doctrine_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_doctrine_choice = yes } }
+	}
+}
+
+ve_cul_evt.231 = {
+	type = country_event
+	title = ve_cul_evt.231.t
+	desc = ve_cul_evt.231.d
+	event_image = { video = "gfx/event_pictures/unspecific_politicians_arguing.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	trigger = {
+		ve_has_valid_identity_transition_journey_context = yes
+		var:ve_identity_transition_target_model = 3
+	}
+	cancellation_trigger = {
+		NOT = {
+			AND = {
+				ve_has_valid_identity_transition_journey_context = yes
+				var:ve_identity_transition_target_model = 3
+			}
+		}
+	}
+	option = {
+		name = ve_cul_evt.231.a
+		trigger = { var:culture_reform_point >= 10 }
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:ve_national_cohesion <= 40 } add = 35 }
+			modifier = { trigger = { var:culture_reform_point >= 60 } add = 20 }
+			modifier = { trigger = { var:culture_reform_point < 25 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_identity_transition_conciliatory_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_conciliatory_choice = yes } }
+	}
+	option = {
+		name = ve_cul_evt.231.b
+		default_option = yes
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:ve_national_cohesion >= 60 } add = 30 }
+			modifier = { trigger = { var:ve_national_cohesion <= 25 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_identity_transition_central_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_central_choice = yes } }
+	}
+	option = {
+		name = ve_cul_evt.231.c
+		trigger = {
+			var:culture_reform_point >= 5
+			OR = {
+				has_modifier = diplomatic_idea_4_mdf
+				has_modifier = parliamentary_idea_4_mdf
+				has_modifier = bureaucratic_idea_4_mdf
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:culture_reform_point >= 40 } add = 30 }
+			modifier = { trigger = { var:culture_reform_point < 15 } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_identity_transition_doctrine_tt }
+		hidden_effect = { if = { limit = { ve_has_valid_identity_transition_journey_context = yes } ve_transition_identity_doctrine_choice = yes } }
+	}
+}
+
+# New National Compact
+ve_cul_evt.290 = {
+	type = country_event
+	title = ve_cul_evt.290.t
+	desc = ve_cul_evt.290.d
+	event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	trigger = { ve_has_identity_transition_closure_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_identity_transition_closure_context = yes }
+	}
+	option = {
+		name = ve_cul_evt.290.a
+		default_option = yes
+		ai_chance = { base = 60 }
+		custom_tooltip = { text = ve_cul_evt.290.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_identity_transition_closure_context = yes }
+				ve_transition_tm_record_identity_option = yes
+				ve_transition_change_cultural_mandate = { DELTA = 10 }
+				ve_resolve_identity_transition_closure = yes
+			}
+		}
+	}
+	option = {
+		name = ve_cul_evt.290.b
+		ai_chance = {
+			base = 40
+			modifier = { trigger = { var:ve_national_cohesion < 75 } add = 30 }
+		}
+		custom_tooltip = { text = ve_cul_evt.290.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_identity_transition_closure_context = yes }
+				ve_transition_tm_record_identity_option = yes
+				ve_transition_change_national_cohesion = { DELTA = 3 }
+				ve_resolve_identity_transition_closure = yes
+			}
+		}
+	}
+}
+
+# Fragile Compact
+ve_cul_evt.291 = {
+	type = country_event
+	title = ve_cul_evt.291.t
+	desc = ve_cul_evt.291.d
+	event_image = { video = "gfx/event_pictures/unspecific_politicians_arguing.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	trigger = { ve_has_identity_transition_closure_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_identity_transition_closure_context = yes }
+	}
+	option = {
+		name = ve_cul_evt.291.a
+		default_option = yes
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:culture_reform_point < 20 } add = 35 }
+		}
+		custom_tooltip = { text = ve_cul_evt.291.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_identity_transition_closure_context = yes }
+				ve_transition_tm_record_identity_option = yes
+				ve_resolve_identity_transition_closure = yes
+			}
+		}
+	}
+	option = {
+		name = ve_cul_evt.291.b
+		trigger = { var:culture_reform_point >= 10 }
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:ve_national_cohesion <= 40 } add = 35 }
+			modifier = { trigger = { var:culture_reform_point >= 60 } add = 20 }
+		}
+		custom_tooltip = { text = ve_cul_evt.291.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_identity_transition_closure_context = yes }
+				ve_transition_tm_record_identity_option = yes
+				ve_transition_change_cultural_mandate = { DELTA = -10 }
+				ve_transition_change_national_cohesion = { DELTA = 3 }
+				ve_resolve_identity_transition_closure = yes
+			}
+		}
+	}
+	option = {
+		name = ve_cul_evt.291.c
+		trigger = {
+			var:culture_reform_point >= 5
+			ve_has_identity_transition_model_fit_doctrine = yes
+		}
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:culture_reform_point >= 40 } add = 30 }
+		}
+		custom_tooltip = { text = ve_cul_evt.291.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_identity_transition_closure_context = yes }
+				ve_transition_tm_record_identity_option = yes
+				ve_transition_change_cultural_mandate = { DELTA = -5 }
+				ve_transition_change_national_cohesion = { DELTA = 2 }
+				ve_resolve_identity_transition_closure = yes
+			}
+		}
+	}
+}
+
+# National Compact Crisis
+ve_cul_evt.292 = {
+	type = country_event
+	title = ve_cul_evt.292.t
+	desc = ve_cul_evt.292.d
+	event_image = { video = "gfx/event_pictures/africa_public_protest.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	trigger = { ve_has_identity_transition_closure_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_identity_transition_closure_context = yes }
+	}
+	option = {
+		name = ve_cul_evt.292.a
+		trigger = { var:culture_reform_point >= 15 }
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:culture_reform_point >= 60 } add = 35 }
+		}
+		custom_tooltip = { text = ve_cul_evt.292.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_identity_transition_closure_context = yes }
+				ve_transition_tm_record_identity_option = yes
+				ve_transition_change_cultural_mandate = { DELTA = -15 }
+				ve_transition_change_national_cohesion = { DELTA = 5 }
+				ve_resolve_identity_transition_closure = yes
+			}
+		}
+	}
+	option = {
+		name = ve_cul_evt.292.b
+		default_option = yes
+		ai_chance = {
+			base = 45
+			modifier = { trigger = { var:culture_reform_point < 15 } add = 50 }
+		}
+		custom_tooltip = { text = ve_cul_evt.292.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_identity_transition_closure_context = yes }
+				ve_transition_tm_record_identity_option = yes
+				ve_transition_add_identity_crisis_radicals = yes
+				ve_resolve_identity_transition_closure = yes
+			}
+		}
+	}
+	option = {
+		name = ve_cul_evt.292.c
+		trigger = {
+			var:culture_reform_point >= 5
+			ve_has_identity_transition_model_fit_doctrine = yes
+		}
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:culture_reform_point >= 40 } add = 30 }
+		}
+		custom_tooltip = { text = ve_cul_evt.292.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_identity_transition_closure_context = yes }
+				ve_transition_tm_record_identity_option = yes
+				ve_transition_change_cultural_mandate = { DELTA = -5 }
+				ve_transition_change_national_cohesion = { DELTA = 2 }
+				ve_resolve_identity_transition_closure = yes
+			}
+		}
+	}
+}

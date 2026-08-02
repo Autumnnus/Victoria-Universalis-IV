@@ -1,0 +1,263 @@
+﻿# Phase 7: Targeted Religious Project progress. Mirrors
+# common/script_values/ve_cultural_project_values.txt.
+
+ve_religious_project_progress_base = 1
+
+ve_religious_project_progress_administration = {
+	if = {
+		limit = {
+			bureaucracy >= 0
+			approaching_bureaucracy_shortage = no
+		}
+		add = 2
+	}
+	else = {
+		subtract = 1
+	}
+}
+
+ve_religious_project_progress_legitimacy = {
+	if = {
+		limit = { government_legitimacy >= 75 }
+		add = 1
+	}
+	else_if = {
+		limit = { government_legitimacy < 25 }
+		subtract = 1
+	}
+}
+
+ve_religious_project_progress_devout = {
+	if = {
+		limit = { ve_is_confessional_state = yes }
+		if = {
+			limit = { ig:ig_devout = { ig_approval >= 5 } }
+				add = 2
+		}
+		else_if = {
+			limit = { ig:ig_devout = { ig_approval <= -5 } }
+			subtract = 1
+		}
+	}
+	else_if = {
+		limit = { ve_is_atheism_state = yes }
+		if = {
+			limit = { literacy_rate >= 0.75 }
+			add = 2
+		}
+		else_if = {
+			limit = { literacy_rate >= 0.50 }
+			add = 1
+		}
+	}
+	else_if = {
+		limit = { ve_is_freedom_state = yes }
+		if = {
+			limit = { literacy_rate >= 0.50 }
+			add = 1
+		}
+	}
+}
+
+ve_religious_project_progress_equilibrium = {
+	if = {
+		limit = { var:piety_bar_point >= 75 }
+		add = 1
+	}
+	else_if = {
+		limit = { var:piety_bar_point <= 25 }
+		subtract = 1
+	}
+}
+
+ve_religious_project_progress_movement = {
+	if = {
+		limit = {
+			any_political_movement = {
+				OR = {
+					is_political_movement_type = movement_religious_minority
+					is_political_movement_type = movement_religious_majority
+				}
+				political_movement_radicalism >= 0.25
+			}
+		}
+		subtract = 1
+	}
+}
+
+ve_religious_project_progress_target = {
+	if = {
+		limit = {
+			ve_religious_project_is_targeted = yes
+			has_variable = ve_religious_project_target_state
+		}
+		if = {
+			limit = {
+				ve_religious_project_target_state_check = { CHECK = { turmoil >= 0.25 } }
+			}
+			subtract = 2
+		}
+		else_if = {
+			limit = {
+				ve_religious_project_target_state_check = { CHECK = { turmoil >= 0.10 } }
+			}
+			subtract = 1
+		}
+	}
+}
+
+ve_monthly_religious_project_progress = {
+	add = ve_religious_project_progress_base
+	add = ve_religious_project_progress_administration
+	add = ve_religious_project_progress_legitimacy
+	add = ve_religious_project_progress_devout
+	add = ve_religious_project_progress_equilibrium
+	add = ve_religious_project_progress_movement
+	add = ve_religious_project_progress_target
+	add = ve_religious_project_progress_idea_bonus
+	min = 1
+	max = 7
+	round = yes
+}
+
+# Phase 7: piety_reform_point income - the spendable currency, separate from
+# the piety_bar_point equilibrium meter. Mirrors
+# common/script_values/ve_national_identity_values.txt (base + legitimacy +
+# administration + a model-fit bonus), with the same soft cap shape.
+
+ve_piety_reform_base = 2
+
+ve_piety_reform_legitimacy = {
+	if = {
+		limit = { government_legitimacy >= 75 }
+		add = 2
+	}
+	else_if = {
+		limit = { government_legitimacy >= 50 }
+		add = 1
+	}
+	else_if = {
+		limit = { government_legitimacy < 25 }
+		subtract = 1
+	}
+}
+
+ve_piety_reform_administration = {
+	if = {
+		limit = {
+			bureaucracy >= 0
+			approaching_bureaucracy_shortage = no
+		}
+		add = 2
+	}
+	else = {
+		subtract = 2
+	}
+}
+
+ve_piety_reform_devout_support = {
+	if = {
+		limit = { ig:ig_devout = { ig_approval >= 5 } }
+		add = 1
+	}
+	else_if = {
+		limit = { ig:ig_devout = { ig_approval <= -5 } }
+		subtract = 1
+	}
+}
+
+# Direct doctrine contribution to Piety Reform income. The traditions are
+# alternatives, so a country can receive at most one point from idea groups.
+ve_piety_reform_idea_bonus = {
+	if = {
+		limit = {
+			has_variable = nationalist_idea_5_var
+			OR = {
+				ve_is_confessional_state = yes
+				ve_is_atheism_state = yes
+			}
+		}
+		add = 1
+	}
+	else_if = {
+		limit = {
+			has_modifier = reformist_idea_5_mdf
+			OR = {
+				ve_is_freedom_state = yes
+				ve_is_separation_state = yes
+			}
+		}
+		add = 1
+	}
+	min = 0
+	max = 1
+}
+
+ve_piety_reform_cap_multiplier = {
+	if = {
+		limit = { var:piety_reform_point >= 500 }
+		value = 0
+	}
+	else_if = {
+		limit = { var:piety_reform_point >= 400 }
+		value = 0.50
+	}
+	else = {
+		value = 1
+	}
+}
+
+ve_monthly_piety_reform = {
+	add = ve_piety_reform_base
+	add = ve_piety_reform_legitimacy
+	add = ve_piety_reform_administration
+	add = ve_piety_reform_devout_support
+	add = ve_piety_reform_idea_bonus
+	min = 1
+	max = 8
+	multiply = ve_piety_reform_cap_multiplier
+	round = yes
+}
+
+
+# Scope: state (the project target). Share of the state's population converted
+# When a conversion project completes: 5% base, plus 2 percentage points from
+# Nationalist idea VII. The same capstone improves the ethnic project result.
+ve_religious_project_conversion_amount = {
+	value = 0.05
+	if = {
+		limit = { owner = { has_variable = nationalist_idea_7_var } }
+		add = 0.02
+	}
+}
+
+# Direct idea-group contribution to active Religious Project progress.
+# These model-specific bonuses are capped so social conditions stay relevant.
+ve_religious_project_progress_idea_bonus = {
+	if = {
+		limit = {
+			has_variable = nationalist_idea_7_var
+			OR = {
+				ve_is_confessional_state = yes
+				ve_is_atheism_state = yes
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_modifier = reformist_idea_7_mdf
+			ve_is_freedom_state = yes
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_modifier = academic_idea_7_mdf
+			ve_is_atheism_state = yes
+		}
+		add = 1
+	}
+	min = 0
+	max = 2
+}

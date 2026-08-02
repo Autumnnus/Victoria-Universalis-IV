@@ -1,0 +1,252 @@
+# Phase 4 Idea Group ambient dispatch and shared state.
+#
+# Group branches deliberately remain gameplay-neutral until their event pack is
+# implemented. A real event must call ve_doctrine_ambient_begin_event from its
+# immediate block; the roll itself never creates a cooldown or telemetry entry.
+
+ve_doctrine_ambient_dispatch_category = {
+	random_list = {
+		2 = {
+			trigger = {
+				ve_has_production_doctrine_ambient_candidate = yes
+			}
+			ve_doctrine_ambient_dispatch_production = yes
+		}
+		3 = {
+			trigger = {
+				ve_has_society_doctrine_ambient_candidate = yes
+			}
+			ve_doctrine_ambient_dispatch_society = yes
+		}
+		1 = {
+			trigger = {
+				ve_has_military_doctrine_ambient_candidate = yes
+			}
+			ve_doctrine_ambient_dispatch_military = yes
+		}
+	}
+}
+
+ve_doctrine_ambient_dispatch_production = {
+	random_list = {
+		1 = {
+			trigger = {
+				ve_has_industrialist_doctrine_ambient_candidate = yes
+			}
+			ve_doctrine_ambient_dispatch_industrialist = yes
+		}
+		1 = {
+			trigger = {
+				ve_has_agrarian_doctrine_ambient_candidate = yes
+			}
+			ve_doctrine_ambient_dispatch_agrarian = yes
+		}
+	}
+}
+
+ve_doctrine_ambient_dispatch_industrialist = {
+	random_list = {
+		1 = {
+			trigger = {
+				ve_can_fire_doctrine_ambient_industrialist_10 = yes
+			}
+			trigger_event = { id = ve_idea_evt.10 popup = yes }
+		}
+		1 = {
+			trigger = {
+				ve_can_fire_doctrine_ambient_industrialist_11 = yes
+			}
+			trigger_event = { id = ve_idea_evt.11 popup = yes }
+		}
+		1 = {
+			trigger = {
+				ve_can_fire_doctrine_ambient_industrialist_12 = yes
+			}
+			trigger_event = { id = ve_idea_evt.12 popup = yes }
+		}
+	}
+}
+
+ve_doctrine_ambient_dispatch_agrarian = {
+	random_list = {
+		1 = {
+			trigger = {
+				ve_can_fire_doctrine_ambient_agrarian_60 = yes
+			}
+			trigger_event = { id = ve_idea_evt.60 popup = yes }
+		}
+		1 = {
+			trigger = {
+				ve_can_fire_doctrine_ambient_agrarian_61 = yes
+			}
+			trigger_event = { id = ve_idea_evt.61 popup = yes }
+		}
+		1 = {
+			trigger = {
+				ve_can_fire_doctrine_ambient_agrarian_62 = yes
+			}
+			trigger_event = { id = ve_idea_evt.62 popup = yes }
+		}
+	}
+}
+
+ve_doctrine_ambient_dispatch_society = {
+	random_list = {
+		1 = {
+			trigger = {
+				ve_has_academic_doctrine_ambient_candidate = yes
+			}
+			ve_doctrine_ambient_dispatch_academic = yes
+		}
+		1 = {
+			trigger = {
+				ve_has_nationalist_doctrine_ambient_candidate = yes
+			}
+			ve_doctrine_ambient_dispatch_nationalist = yes
+		}
+		1 = {
+			trigger = {
+				ve_has_reformist_doctrine_ambient_candidate = yes
+			}
+			ve_doctrine_ambient_dispatch_reformist = yes
+		}
+	}
+}
+
+ve_doctrine_ambient_dispatch_academic = {
+	random_list = {
+		1 = {
+			trigger = { ve_can_fire_doctrine_ambient_academic_20 = yes }
+			trigger_event = { id = ve_idea_evt.20 popup = yes }
+		}
+		1 = {
+			trigger = { ve_can_fire_doctrine_ambient_academic_21 = yes }
+			trigger_event = { id = ve_idea_evt.21 popup = yes }
+		}
+		1 = {
+			trigger = { ve_can_fire_doctrine_ambient_academic_22 = yes }
+			trigger_event = { id = ve_idea_evt.22 popup = yes }
+		}
+	}
+}
+
+ve_doctrine_ambient_dispatch_nationalist = {
+	random_list = {
+		1 = {
+			trigger = { ve_can_fire_doctrine_ambient_nationalist_30 = yes }
+			trigger_event = { id = ve_idea_evt.30 popup = yes }
+		}
+		1 = {
+			trigger = { ve_can_fire_doctrine_ambient_nationalist_31 = yes }
+			trigger_event = { id = ve_idea_evt.31 popup = yes }
+		}
+		1 = {
+			trigger = { ve_can_fire_doctrine_ambient_nationalist_32 = yes }
+			trigger_event = { id = ve_idea_evt.32 popup = yes }
+		}
+	}
+}
+
+ve_doctrine_ambient_dispatch_reformist = {
+	random_list = {
+		1 = {
+			trigger = { ve_can_fire_doctrine_ambient_reformist_40 = yes }
+			trigger_event = { id = ve_idea_evt.40 popup = yes }
+		}
+		1 = {
+			trigger = { ve_can_fire_doctrine_ambient_reformist_41 = yes }
+			trigger_event = { id = ve_idea_evt.41 popup = yes }
+		}
+		1 = {
+			trigger = { ve_can_fire_doctrine_ambient_reformist_42 = yes }
+			trigger_event = { id = ve_idea_evt.42 popup = yes }
+		}
+	}
+}
+
+ve_doctrine_ambient_dispatch_military = {
+	ve_doctrine_ambient_dispatch_professional_army = yes
+}
+
+ve_doctrine_ambient_dispatch_professional_army = {
+	random_list = {
+		1 = {
+			trigger = { ve_can_fire_doctrine_ambient_professional_army_50 = yes }
+			trigger_event = { id = ve_idea_evt.50 popup = yes }
+		}
+		1 = {
+			trigger = { ve_can_fire_doctrine_ambient_professional_army_51 = yes }
+			trigger_event = { id = ve_idea_evt.51 popup = yes }
+		}
+		1 = {
+			trigger = { ve_can_fire_doctrine_ambient_professional_army_52 = yes }
+			trigger_event = { id = ve_idea_evt.52 popup = yes }
+		}
+	}
+}
+
+# Called only when a real event opens, never when an empty pilot branch is
+# selected. This preserves the frequency contract during staged implementation.
+ve_doctrine_ambient_begin_event = {
+	add_modifier = {
+		name = ve_doctrine_ambient_cooldown_mdf
+		months = 36
+	}
+	ve_tm_change_country_variable = { NAME = ve_idea_tm_ambient_events DELTA = 1 }
+}
+
+# Event immediate blocks call this once with stable lowercase tokens:
+# ve_doctrine_ambient_record_event = {
+#     GROUP = industrialist
+#     CLASS = dilemma
+# }
+ve_doctrine_ambient_record_event = {
+	ve_doctrine_ambient_begin_event = yes
+	ve_tm_change_country_variable = { NAME = ve_idea_tm_$GROUP$_events DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_idea_tm_ambient_$CLASS$ DELTA = 1 }
+}
+
+ve_doctrine_ambient_record_option = {
+	ve_tm_change_country_variable = { NAME = ve_idea_tm_ambient_options DELTA = 1 }
+}
+
+# Applies a signed delta, clamps National Insight to its normal 0-1000 range,
+# and records the actual post-clamp change rather than the requested amount.
+ve_doctrine_ambient_change_national_insight = {
+	set_variable = {
+		name = ve_idea_tm_ambient_insight_before
+		value = var:idea_point_pool
+	}
+	change_variable = {
+		name = idea_point_pool
+		add = $DELTA$
+	}
+	ve_clamp_national_insight = yes
+	set_variable = {
+		name = ve_idea_tm_ambient_insight_actual
+		value = var:idea_point_pool
+	}
+	change_variable = {
+		name = ve_idea_tm_ambient_insight_actual
+		subtract = var:ve_idea_tm_ambient_insight_before
+	}
+	ve_tm_change_country_variable = { NAME = ve_idea_tm_ambient_insight_net_total DELTA = var:ve_idea_tm_ambient_insight_actual }
+	remove_variable = ve_idea_tm_ambient_insight_before
+	remove_variable = ve_idea_tm_ambient_insight_actual
+}
+
+# These helpers are called from an explicit Interest Group scope, e.g.
+# ig:ig_industrialists ?= { ve_doctrine_ambient_support_interest_group = yes }.
+ve_doctrine_ambient_support_interest_group = {
+	add_modifier = {
+		name = ve_doctrine_ambient_ig_supported_mdf
+		months = 24
+	}
+}
+
+ve_doctrine_ambient_slight_interest_group = {
+	add_modifier = {
+		name = ve_doctrine_ambient_ig_slighted_mdf
+		months = 24
+	}
+}

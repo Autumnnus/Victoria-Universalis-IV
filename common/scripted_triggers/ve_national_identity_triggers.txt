@@ -1,0 +1,42 @@
+﻿# Phase 5: National Identity
+
+ve_is_ethnic_identity = {
+	has_variable = ve_identity_model
+	var:ve_identity_model == 1
+}
+
+ve_is_civic_identity = {
+	has_variable = ve_identity_model
+	var:ve_identity_model == 2
+}
+
+ve_is_composite_identity = {
+	has_variable = ve_identity_model
+	var:ve_identity_model == 3
+}
+
+ve_cultural_mandate_affordable = {
+	ve_national_identity_value >= 200
+}
+
+ve_can_change_identity_model = {
+	ve_cultural_mandate_affordable = yes
+	NOT = {
+		has_modifier = ve_identity_transition_backlash_mdf
+	}
+}
+
+ve_can_choose_ethnic_identity = {
+	ve_can_change_identity_model = yes
+	NOT = { ve_is_ethnic_identity = yes }
+}
+
+ve_can_choose_civic_identity = {
+	ve_can_change_identity_model = yes
+	NOT = { ve_is_civic_identity = yes }
+}
+
+ve_can_choose_composite_identity = {
+	ve_can_change_identity_model = yes
+	NOT = { ve_is_composite_identity = yes }
+}

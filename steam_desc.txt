@@ -1,48 +1,90 @@
-What if EU4 mechanics were in Victoria 3?
+[h1]Victoria Universalis IV[/h1]
 
-[h1]About Mod[/h1]
-Welcome! Aren't you tired of the fact that every country in the game is equal in terms of quality? For example, as Prussia, can't you feel that military power? Or can't you RP in the style you want like in eu4? No problem, this mod meets all your wishes.
+[i]A national-development overhaul for Victoria 3.[/i]
 
-[h1]Features[/h1]
-*Eu4 Style Ideas
-*Eu4 Style Religion
-*Eu4 Style Ages
-*Special Culture Mechanic (It is no longer unreasonable to go fascist or theocrat)
-*Missionary mechanics
+Victoria Universalis IV adds a new strategic layer to the Victorian century. It is built for players who want their country to have a clearer political character, deeper long-term choices, and more reasons to care about the direction of their economy, laws, society, and military.
 
-[h1]Important Warning[/h1]
-This mod changes some of the vanilla interfaces. So it may not work with some interface mods. If you want the mod to work properly, either disable the interface mods or put the mod at the bottom of the mod list so that the mod has priority. 
+This is not a conversion of Europa Universalis IV systems. Its ideas, religion, national identity, and ages are designed around Victoria 3's own laws, populations, institutions, buildings, and Journal Entries.
 
-For Modders:[url=https://i.imgur.com/42EY2Ne.png] This mod replaces these vanilla interfaces and requires compatibility patches with mods that have the same files. [/url]
+[h1]Build a national doctrine[/h1]
 
-Secondly: If you want to cheat for point system use event dev.1 on console but do not change citizenship and religion laws by cheat. Because It doesn't effect for missionaries
+Choose from [b]21 Idea Groups[/b] across Production, Society, and Military development. Each group contains seven ideas, a capstone Ambition, and meaningful links to the rest of your country.
 
-[h1]Mod Compatibility[/h1]
--[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3006273065]The Great Rework Patch[/url]
+* Earn National Insight from literacy, universities, institutions, legitimacy, administration, and social conditions.
+* Invest in ideas one at a time; every purchase creates a 24-month implementation strain, so a strong doctrine takes commitment rather than one large stockpile.
+* Gain Idea Group capacity from your actual investment. You start with one slot and can earn up to seven over the campaign.
+* Follow technological paths: some groups require technologies such as Nationalism, Human Rights, Labor Movement, Quinine, or War Propaganda.
+* Choose between mutually exclusive directions, including Agrarian vs. Extraction, Nationalist vs. Reformist, and Professional Army vs. Mass Conscription.
 
-[h1]Planned Features[/h1]
-*Localization and GFX Enhancements
-*Balance Fixes
-*Recommended content (My Discord Server's members and donors are priority)
-*Flavor Events and more content
+Your purchased ideas also advance [b]National Ideas[/b]. Countries receive traditions, seven progression rewards, and a National Bonus that reflect their own national profile ([i]Britain, France, Prussia/Germany, Austria, Russia, the Ottoman Empire, Qing China, Japan, the United States, Spain, Italy, Sweden/Scandinavia, India, Mexico, Brazil, the Netherlands, Belgium, Persia, Egypt, Korea, and Argentina[/i]; all other countries receive a generic profile). Forming a new country updates that profile to match your new tag.
 
-[h1]Localization support[/h1]
--English
--[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2880069248]Chinese - (Subscribe this mod)[/url]
--[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3007380368]Russian - (Subscribe this mod)[/url]
--Other Languages use English Localization
+[h1]Religion is a political system[/h1]
 
+Your Church and State law determines your Religious Model:
 
-[h1]Support Me[/h1]
+* [b]Confessional State[/b] - authority, conversion, and Devout influence.
+* [b]Freedom of Conscience[/b] - migration and pluralism, with administrative costs.
+* [b]Total Separation[/b] - a neutral, tolerant model without conversion projects.
+* [b]State Atheism[/b] - aggressive secularisation through education and technological progress.
 
-I plan to make a lot of mechanical mods. But if you want me to spend more time on my Mods, you can support me by donating.
+Each model has its own permanent Religious Programs, funded by [b]Piety Reform[/b], and its own relationship with [b]Religious Settlement[/b]. A high Settlement grants a model-specific bonus; a low one creates political strain.
 
-[url=https://www.buymeacoffee.com/vectorthegreat][img] https://i.imgur.com/nyZtCjx.png [/img][/url]
+Religious change is not instant. Replacing the Church and State order triggers a transition crisis and a Journal Entry journey with milestone choices and consequences.
 
+You can also run a single state-targeted Religious Project at a time: Confessional Conversion, Freedom Outreach, or Secularisation Campaign. Projects have costs, progress, setbacks, rare breakthroughs, and event-driven outcomes.
 
-Join my Discord Server here. It is a new server. Server members will have priority in mod recommendations. You can post your mod errors, and bugs in more detail here, and most importantly, you can follow the progress of the mod and give directions.
+[h1]Define the nation[/h1]
 
-[url=https://discord.gg/baBgsMtwv7][img] https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvkuTm44iiN24a80WThzvDppYOVmvbQ6RBF6yEHEKjgnCbcslkJ4isZEjJHUMgeJfIyw&usqp=CAU [/img][/url]
+National Identity gives culture and citizenship a direction beyond a single modifier. Choose the model that fits your state:
+
+* [b]Ethnic Nation[/b] - authority and assimilation.
+* [b]Civic Nation[/b] - migration, education, and inclusive citizenship.
+* [b]Composite State[/b] - influence, minority stability, and constituent cultures.
+
+Build [b]Cultural Mandate[/b], maintain [b]National Cohesion[/b], and pursue Cultural Projects. National Curriculum and Shared Symbols strengthen the country as a whole, while state projects let you pursue ethnic integration, equal citizenship, or a constituent compact with an important minority.
+
+Changing identity is a serious state-building decision, with a long backlash period and its own National Compact transition journey.
+
+[h1]Compete across the Ages[/h1]
+
+The campaign is divided into three Ages:
+
+* [b]Industry and Nations[/b] (1836-1870)
+* [b]Empire and Mass Society[/b] (1871-1905)
+* [b]Mass Politics and Total War[/b] (1906-1936)
+
+Meet age objectives to earn [b]Era Momentum[/b], unlock age-specific rewards, and work toward one of three 15-year [b]Golden Ages[/b]. Every age offers different goals, bonuses, and strategic routes, so an industrialiser, reformer, colonial power, or military state can pursue success in its own way.
+
+[h1]A country that reacts to your choices[/h1]
+
+Victoria Universalis IV includes content that responds to what your country has become:
+
+* Doctrine ambient events for Industrialist, Agrarian, Academic, Nationalist, Reformist, and Professional Army paths.
+* Doctrine Journeys for industrial standardisation, a republic of scholars, and general-staff reform.
+* Era Crossroads with three strategic routes in every Age.
+* Tag-specific flavour chains for the Ottoman Empire, Japan, and the United States.
+* Incident events throughout Religious and Cultural Projects, including crises, compromises, and rare breakthroughs.
+
+[h1]Interface and quality of life[/h1]
+
+New systems are integrated through dedicated Ideas, Religion, National Identity, Age, and Doctrine Ledger panels. The topbar displays your core resources and live project progress; alerts highlight available actions; Journal Entries track long-running projects and transitions; and every country panel includes a read-only doctrine summary for easy comparison.
+
+[h1]Compatibility and saves[/h1]
+
+This mod extends parts of the vanilla interface. It may conflict with other UI mods that modify the same files. If you use several UI mods, place Victoria Universalis IV lower in the playset so its interface changes load afterwards, or use a compatibility patch where available.
+
+[b]Start a new campaign after major updates.[/b] Version 2.0 is not compatible with 1.x saves because the idea-group identifiers and the religion/culture systems were rebuilt.
+
+[h1]Localization[/h1]
+
+Victoria Universalis IV supports all of its available game localizations: Brazilian Portuguese, English, French, German, Japanese, Korean, Polish, Russian, Simplified Chinese, Spanish, and Turkish.
+
+English is the original localization. The other languages are AI-assisted translations, provided so every player can use the mod in their preferred game language. Translation quality may vary, and feedback on unclear or inaccurate text is always welcome.
+
+[h1]Links and support[/h1]
 
 [url=https://mods.paradoxplaza.com/mods/59082/Any]Paradox Mods[/url]
-[url=https://github.com/VectortheGreat/Victoria-Universalis-IV]Github[/url]
+[url=https://github.com/VectortheGreat/Victoria-Universalis-IV]GitHub[/url]
+[url=https://github.com/Autumnnus/Victoria-Universalis-IV/tree/version-1]Version 1[/url]
+[url=https://discord.gg/baBgsMtwv7]Discord[/url]
+[url=https://www.buymeacoffee.com/vectorthegreat]Support development on Buy Me a Coffee[/url]

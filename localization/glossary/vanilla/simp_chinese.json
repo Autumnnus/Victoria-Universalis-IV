@@ -1,0 +1,1210 @@
+{
+ "language": "simp_chinese",
+ "source": "Victoria 3 game localization (read-only reference)",
+ "terms": {
+  "bg_agriculture": {
+   "en": "Agriculture",
+   "target": "农业"
+  },
+  "bg_coffee_plantations": {
+   "en": "Coffee Plantations",
+   "target": "咖啡种植园"
+  },
+  "bg_construction": {
+   "en": "Construction",
+   "target": "建造"
+  },
+  "bg_extraction": {
+   "en": "Extraction",
+   "target": "开采业"
+  },
+  "bg_infrastructure": {
+   "en": "Infrastructure",
+   "target": "基础设施"
+  },
+  "bg_mining": {
+   "en": "Mines",
+   "target": "矿井"
+  },
+  "bg_monuments": {
+   "en": "Monuments",
+   "target": "奇观"
+  },
+  "bg_monuments_hidden": {
+   "en": "Monuments",
+   "target": "奇观"
+  },
+  "bg_plantations": {
+   "en": "Plantations",
+   "target": "种植园"
+  },
+  "bg_shipyards": {
+   "en": "Shipyards",
+   "target": "造船厂"
+  },
+  "building_barrack": {
+   "en": "Barracks",
+   "target": "兵营"
+  },
+  "building_clerks_shares_add": {
+   "en": "Clerks",
+   "target": "职员"
+  },
+  "building_clerks_shares_mult": {
+   "en": "Clerks",
+   "target": "职员"
+  },
+  "building_coffee_plantation": {
+   "en": "Coffee Plantations",
+   "target": "咖啡种植园"
+  },
+  "building_engineers_shares_add": {
+   "en": "Engineers",
+   "target": "工程师"
+  },
+  "building_engineers_shares_mult": {
+   "en": "Engineers",
+   "target": "工程师"
+  },
+  "building_gold_field_discovered_resource": {
+   "en": "Gold",
+   "target": "黄金"
+  },
+  "building_group_bg_agriculture_throughput_add": {
+   "en": "Agriculture Throughput",
+   "target": "农业吞吐量"
+  },
+  "building_mobilization_cost_mult": {
+   "en": "Requirements",
+   "target": "需求"
+  },
+  "building_officers_shares_add": {
+   "en": "Officers",
+   "target": "军官"
+  },
+  "building_officers_shares_mult": {
+   "en": "Officers",
+   "target": "军官"
+  },
+  "building_oil_rig_discovered_resource": {
+   "en": "Oil",
+   "target": "石油"
+  },
+  "building_port": {
+   "en": "Port",
+   "target": "港口"
+  },
+  "building_port_lens_option": {
+   "en": "Port",
+   "target": "港口"
+  },
+  "building_railway": {
+   "en": "Railway",
+   "target": "铁路"
+  },
+  "building_railway_lens_option": {
+   "en": "Railway",
+   "target": "铁路"
+  },
+  "building_shipyard": {
+   "en": "Shipyards",
+   "target": "造船厂"
+  },
+  "building_throughput_add": {
+   "en": "Throughput",
+   "target": "吞吐量"
+  },
+  "building_training_rate_add": {
+   "en": "Training Rate",
+   "target": "训练率"
+  },
+  "building_training_rate_mult": {
+   "en": "Training Rate",
+   "target": "训练率"
+  },
+  "building_tropical_wood_lodge_lens_option": {
+   "en": "Expand",
+   "target": "扩建"
+  },
+  "building_university": {
+   "en": "University",
+   "target": "大学"
+  },
+  "concept_acceptance": {
+   "en": "Acceptance",
+   "target": "接纳度"
+  },
+  "concept_accepted": {
+   "en": "Accepted",
+   "target": "接纳"
+  },
+  "concept_agitators": {
+   "en": "Agitators",
+   "target": "鼓动者"
+  },
+  "concept_approval": {
+   "en": "Approval",
+   "target": "支持度"
+  },
+  "concept_armies": {
+   "en": "Armies",
+   "target": "陆军"
+  },
+  "concept_army": {
+   "en": "Army",
+   "target": "陆军"
+  },
+  "concept_assimilate": {
+   "en": "Assimilate",
+   "target": "同化"
+  },
+  "concept_assimilation": {
+   "en": "Assimilation",
+   "target": "同化"
+  },
+  "concept_authority": {
+   "en": "Authority",
+   "target": "权威力"
+  },
+  "concept_autonomy": {
+   "en": "Autonomy",
+   "target": "自治权"
+  },
+  "concept_budget_interest": {
+   "en": "Interest",
+   "target": "利息"
+  },
+  "concept_building": {
+   "en": "Building",
+   "target": "建筑"
+  },
+  "concept_building_balance": {
+   "en": "Balance",
+   "target": "结余"
+  },
+  "concept_building_industries": {
+   "en": "Industries",
+   "target": "产业"
+  },
+  "concept_building_industry": {
+   "en": "Industry",
+   "target": "产业"
+  },
+  "concept_building_levels": {
+   "en": "Building Levels",
+   "target": "建筑等级"
+  },
+  "concept_building_workplace": {
+   "en": "Workplace",
+   "target": "工作场所"
+  },
+  "concept_bureaucracy": {
+   "en": "Bureaucracy",
+   "target": "行政力"
+  },
+  "concept_buy_orders_demand": {
+   "en": "Demand",
+   "target": "需求"
+  },
+  "concept_capacity": {
+   "en": "Capacity",
+   "target": "能力"
+  },
+  "concept_casualties": {
+   "en": "Casualties",
+   "target": "伤亡"
+  },
+  "concept_character_role": {
+   "en": "Role",
+   "target": "职责"
+  },
+  "concept_claim": {
+   "en": "Claim",
+   "target": "宣称"
+  },
+  "concept_claims": {
+   "en": "Claims",
+   "target": "宣称"
+  },
+  "concept_clout": {
+   "en": "Clout",
+   "target": "势力"
+  },
+  "concept_colonial": {
+   "en": "Colonial",
+   "target": "殖民地"
+  },
+  "concept_command": {
+   "en": "Command",
+   "target": "指挥"
+  },
+  "concept_commanders": {
+   "en": "Commanders",
+   "target": "指挥官"
+  },
+  "concept_confidence": {
+   "en": "Confidence",
+   "target": "信心"
+  },
+  "concept_conscription": {
+   "en": "Conscription",
+   "target": "征兵"
+  },
+  "concept_conscription_center_conscription": {
+   "en": "Conscription",
+   "target": "征兵"
+  },
+  "concept_construct": {
+   "en": "Construct",
+   "target": "建造"
+  },
+  "concept_construction": {
+   "en": "Construction",
+   "target": "建造力"
+  },
+  "concept_conversion": {
+   "en": "Conversion",
+   "target": "皈依"
+  },
+  "concept_convert": {
+   "en": "Convert",
+   "target": "皈依"
+  },
+  "concept_converting": {
+   "en": "Converting",
+   "target": "皈依"
+  },
+  "concept_country_nation": {
+   "en": "Nation",
+   "target": "民族"
+  },
+  "concept_coup_resist": {
+   "en": "Resist",
+   "target": "抵抗"
+  },
+  "concept_credit": {
+   "en": "Credit",
+   "target": "信贷额"
+  },
+  "concept_cultural": {
+   "en": "Cultural",
+   "target": "文化"
+  },
+  "concept_cultural_movements": {
+   "en": "Cultural Movements",
+   "target": "文化运动"
+  },
+  "concept_culture": {
+   "en": "Culture",
+   "target": "文化"
+  },
+  "concept_cultures": {
+   "en": "Cultures",
+   "target": "文化"
+  },
+  "concept_decay": {
+   "en": "Decay",
+   "target": "衰减"
+  },
+  "concept_decisions": {
+   "en": "Decisions",
+   "target": "决议"
+  },
+  "concept_decree": {
+   "en": "Decree",
+   "target": "法令"
+  },
+  "concept_defense": {
+   "en": "Defense",
+   "target": "防御"
+  },
+  "concept_dependent": {
+   "en": "Dependent",
+   "target": "受扶养人口"
+  },
+  "concept_diplomatic_play_negotiated": {
+   "en": "Negotiated",
+   "target": "谈判"
+  },
+  "concept_education_access": {
+   "en": "Education Access",
+   "target": "受教育机会"
+  },
+  "concept_enactment_of_laws_enact": {
+   "en": "Enact",
+   "target": "制定"
+  },
+  "concept_enactment_of_laws_enactment": {
+   "en": "Enactment",
+   "target": "制定"
+  },
+  "concept_enactment_success": {
+   "en": "Enactment Success",
+   "target": "立法成功"
+  },
+  "concept_escalate": {
+   "en": "Escalate",
+   "target": "激化"
+  },
+  "concept_experience": {
+   "en": "Experience",
+   "target": "经验"
+  },
+  "concept_export": {
+   "en": "Export",
+   "target": "出口"
+  },
+  "concept_fleet": {
+   "en": "Fleet",
+   "target": "舰队"
+  },
+  "concept_front": {
+   "en": "Front",
+   "target": "前线"
+  },
+  "concept_general": {
+   "en": "General",
+   "target": "陆军将领"
+  },
+  "concept_good_consumes": {
+   "en": "Consumes",
+   "target": "消费"
+  },
+  "concept_good_produce": {
+   "en": "Produce",
+   "target": "生产"
+  },
+  "concept_good_produced": {
+   "en": "Produced",
+   "target": "生产"
+  },
+  "concept_good_produces": {
+   "en": "Produces",
+   "target": "生产"
+  },
+  "concept_good_production": {
+   "en": "Production",
+   "target": "生产值"
+  },
+  "concept_government": {
+   "en": "Government",
+   "target": "政府"
+  },
+  "concept_great_power": {
+   "en": "Great Power",
+   "target": "列强"
+  },
+  "concept_great_powers": {
+   "en": "Great Powers",
+   "target": "列强"
+  },
+  "concept_holding": {
+   "en": "Holding",
+   "target": "地产"
+  },
+  "concept_imported": {
+   "en": "Imported",
+   "target": "进口"
+  },
+  "concept_individual": {
+   "en": "Individual",
+   "target": "个体"
+  },
+  "concept_influence": {
+   "en": "Influence",
+   "target": "影响力"
+  },
+  "concept_infrastructure": {
+   "en": "Infrastructure",
+   "target": "基础设施"
+  },
+  "concept_innovation": {
+   "en": "Innovation",
+   "target": "创新力"
+  },
+  "concept_institution": {
+   "en": "Institution",
+   "target": "机构"
+  },
+  "concept_institutions": {
+   "en": "Institutions",
+   "target": "机构"
+  },
+  "concept_integrated_culture_present": {
+   "en": "Integrate",
+   "target": "整合"
+  },
+  "concept_integrated_culture_process": {
+   "en": "Integration",
+   "target": "整合"
+  },
+  "concept_interest": {
+   "en": "Interest",
+   "target": "利益"
+  },
+  "concept_interest_group": {
+   "en": "Interest Group",
+   "target": "利益集团"
+  },
+  "concept_interests": {
+   "en": "Interests",
+   "target": "利益"
+  },
+  "concept_invasion": {
+   "en": "Invasion",
+   "target": "入侵"
+  },
+  "concept_job_satisfaction_satisfied": {
+   "en": "Satisfied",
+   "target": "满意"
+  },
+  "concept_journal": {
+   "en": "Journal",
+   "target": "日志"
+  },
+  "concept_journal_entry": {
+   "en": "Journal Entry",
+   "target": "日志条目"
+  },
+  "concept_law": {
+   "en": "Law",
+   "target": "法律"
+  },
+  "concept_leaders": {
+   "en": "Leaders",
+   "target": "领袖"
+  },
+  "concept_legitimacy": {
+   "en": "Legitimacy",
+   "target": "合法性"
+  },
+  "concept_legitimate": {
+   "en": "Legitimate",
+   "target": "合法"
+  },
+  "concept_literacy": {
+   "en": "Literacy",
+   "target": "识字率"
+  },
+  "concept_literate": {
+   "en": "Literate",
+   "target": "识字"
+  },
+  "concept_loyalist": {
+   "en": "Loyalist",
+   "target": "效忠派"
+  },
+  "concept_loyalists": {
+   "en": "Loyalists",
+   "target": "效忠派"
+  },
+  "concept_loyalty": {
+   "en": "Loyalty",
+   "target": "忠诚"
+  },
+  "concept_major_powers": {
+   "en": "Major Powers",
+   "target": "主要政权"
+  },
+  "concept_market": {
+   "en": "Market",
+   "target": "市场"
+  },
+  "concept_markets": {
+   "en": "Markets",
+   "target": "市场"
+  },
+  "concept_mass_migration_eligible": {
+   "en": "Eligible",
+   "target": "符合条件"
+  },
+  "concept_migration": {
+   "en": "Migration",
+   "target": "移民"
+  },
+  "concept_migration_pull": {
+   "en": "Migration Attraction",
+   "target": "移民吸引力"
+  },
+  "concept_mobilize_army_mobilization": {
+   "en": "Mobilization",
+   "target": "动员"
+  },
+  "concept_mobilize_army_mobilize": {
+   "en": "Mobilize",
+   "target": "动员"
+  },
+  "concept_mobilize_army_mobilized": {
+   "en": "Mobilized",
+   "target": "动员"
+  },
+  "concept_mobilize_army_mobilizing": {
+   "en": "Mobilizing",
+   "target": "动员"
+  },
+  "concept_mobilize_battalion_mobilization": {
+   "en": "Mobilization",
+   "target": "动员"
+  },
+  "concept_mobilize_battalion_mobilize": {
+   "en": "Mobilize",
+   "target": "动员"
+  },
+  "concept_mobilize_battalion_mobilized": {
+   "en": "Mobilized",
+   "target": "动员"
+  },
+  "concept_mobilize_battalion_mobilizing": {
+   "en": "Mobilizing",
+   "target": "动员"
+  },
+  "concept_modifier": {
+   "en": "Modifier",
+   "target": "修正"
+  },
+  "concept_modifiers": {
+   "en": "Modifiers",
+   "target": "修正"
+  },
+  "concept_momentum": {
+   "en": "Momentum",
+   "target": "声势"
+  },
+  "concept_money": {
+   "en": "Money",
+   "target": "金钱"
+  },
+  "concept_monuments": {
+   "en": "Monuments",
+   "target": "奇观"
+  },
+  "concept_nation_formation_short_past": {
+   "en": "Formed",
+   "target": "成立"
+  },
+  "concept_nation_formation_short_present": {
+   "en": "Form",
+   "target": "成立"
+  },
+  "concept_national_awakening": {
+   "en": "National Awakening",
+   "target": "民族觉醒"
+  },
+  "concept_nationalize": {
+   "en": "Nationalize",
+   "target": "国有化"
+  },
+  "concept_naval_invasion": {
+   "en": "Naval Invasion",
+   "target": "海上入侵"
+  },
+  "concept_negotiate": {
+   "en": "Negotiate",
+   "target": "谈判"
+  },
+  "concept_negotiated": {
+   "en": "Negotiated",
+   "target": "谈判"
+  },
+  "concept_negotiating": {
+   "en": "Negotiating",
+   "target": "谈判"
+  },
+  "concept_negotiation": {
+   "en": "Negotiation",
+   "target": "谈判"
+  },
+  "concept_negotiations": {
+   "en": "Negotiations",
+   "target": "谈判"
+  },
+  "concept_neutral": {
+   "en": "Neutral",
+   "target": "中立派"
+  },
+  "concept_neutrality": {
+   "en": "Neutrality",
+   "target": "中立"
+  },
+  "concept_obligation": {
+   "en": "Obligation",
+   "target": "义务"
+  },
+  "concept_obligations": {
+   "en": "Obligations",
+   "target": "义务"
+  },
+  "concept_occupies": {
+   "en": "Occupies",
+   "target": "占领"
+  },
+  "concept_offense": {
+   "en": "Offense",
+   "target": "进攻"
+  },
+  "concept_opposition": {
+   "en": "Opposition",
+   "target": "反对"
+  },
+  "concept_orders": {
+   "en": "Orders",
+   "target": "命令"
+  },
+  "concept_organization": {
+   "en": "Organization",
+   "target": "组织度"
+  },
+  "concept_organization_organized": {
+   "en": "Organized",
+   "target": "组织"
+  },
+  "concept_party": {
+   "en": "Party",
+   "target": "党派"
+  },
+  "concept_political_movement_supporting": {
+   "en": "Supporting",
+   "target": "支持"
+  },
+  "concept_political_movements": {
+   "en": "Political Movements",
+   "target": "政治运动"
+  },
+  "concept_political_strength": {
+   "en": "Political Strength",
+   "target": "政治力量"
+  },
+  "concept_pop_growth_mortality": {
+   "en": "Mortality",
+   "target": "死亡率"
+  },
+  "concept_pop_qualifications": {
+   "en": "Qualifications",
+   "target": "资质"
+  },
+  "concept_pops": {
+   "en": "Pops",
+   "target": "人群"
+  },
+  "concept_popular": {
+   "en": "Popular",
+   "target": "受欢迎"
+  },
+  "concept_population": {
+   "en": "Population",
+   "target": "人口"
+  },
+  "concept_power_bloc": {
+   "en": "Power Bloc",
+   "target": "国家集团"
+  },
+  "concept_power_bloc_cohesion": {
+   "en": "Cohesion",
+   "target": "凝聚力"
+  },
+  "concept_power_bloc_mandate": {
+   "en": "Mandate",
+   "target": "授权"
+  },
+  "concept_power_bloc_principle": {
+   "en": "Principle",
+   "target": "原则"
+  },
+  "concept_powerful": {
+   "en": "Powerful",
+   "target": "举足轻重"
+  },
+  "concept_presence": {
+   "en": "Presence",
+   "target": "存在"
+  },
+  "concept_prestige": {
+   "en": "Prestige",
+   "target": "威望"
+  },
+  "concept_primary_culture": {
+   "en": "Primary Culture",
+   "target": "主流文化"
+  },
+  "concept_primary_cultures": {
+   "en": "Primary Cultures",
+   "target": "主流文化"
+  },
+  "concept_private": {
+   "en": "Private",
+   "target": "私人"
+  },
+  "concept_province_land": {
+   "en": "Land",
+   "target": "土地"
+  },
+  "concept_provinces": {
+   "en": "Provinces",
+   "target": "地块"
+  },
+  "concept_qualified": {
+   "en": "Qualified",
+   "target": "有资质"
+  },
+  "concept_radical": {
+   "en": "Radical",
+   "target": "激进派"
+  },
+  "concept_radicalism": {
+   "en": "Radicalism",
+   "target": "激进度"
+  },
+  "concept_radicalization": {
+   "en": "Radicalization",
+   "target": "激进化"
+  },
+  "concept_radicalize": {
+   "en": "Radicalize",
+   "target": "激进化"
+  },
+  "concept_radicals": {
+   "en": "Radicals",
+   "target": "激进派"
+  },
+  "concept_rank": {
+   "en": "Rank",
+   "target": "国际地位"
+  },
+  "concept_readiness": {
+   "en": "Readiness",
+   "target": "就绪性"
+  },
+  "concept_recognition": {
+   "en": "Recognition",
+   "target": "认可"
+  },
+  "concept_religion": {
+   "en": "Religion",
+   "target": "宗教"
+  },
+  "concept_religious": {
+   "en": "Religious",
+   "target": "宗教"
+  },
+  "concept_risk": {
+   "en": "Risk",
+   "target": "风险"
+  },
+  "concept_rival": {
+   "en": "Rival",
+   "target": "宿敌"
+  },
+  "concept_ruler": {
+   "en": "Ruler",
+   "target": "统治者"
+  },
+  "concept_sell_orders_supply": {
+   "en": "Supply",
+   "target": "供给"
+  },
+  "concept_ship_construct": {
+   "en": "Construct",
+   "target": "建造"
+  },
+  "concept_shortage": {
+   "en": "Shortage",
+   "target": "短缺"
+  },
+  "concept_shortages": {
+   "en": "Shortages",
+   "target": "短缺"
+  },
+  "concept_slavery": {
+   "en": "Slavery",
+   "target": "奴隶制"
+  },
+  "concept_sovereignty": {
+   "en": "Sovereignty",
+   "target": "主权"
+  },
+  "concept_state": {
+   "en": "State",
+   "target": "地区"
+  },
+  "concept_state_religion": {
+   "en": "State Religion",
+   "target": "国教"
+  },
+  "concept_states": {
+   "en": "States",
+   "target": "地区"
+  },
+  "concept_subject": {
+   "en": "Subject",
+   "target": "附属"
+  },
+  "concept_subjects": {
+   "en": "Subjects",
+   "target": "附属国"
+  },
+  "concept_supplies": {
+   "en": "Supplies",
+   "target": "补给"
+  },
+  "concept_supply": {
+   "en": "Supply",
+   "target": "补给"
+  },
+  "concept_target": {
+   "en": "Target",
+   "target": "目标"
+  },
+  "concept_tax": {
+   "en": "Tax",
+   "target": "赋税"
+  },
+  "concept_taxes": {
+   "en": "Taxes",
+   "target": "赋税"
+  },
+  "concept_technology": {
+   "en": "Technology",
+   "target": "科技"
+  },
+  "concept_technology_spread": {
+   "en": "Technology Spread",
+   "target": "科技扩散"
+  },
+  "concept_tensions": {
+   "en": "Tensions",
+   "target": "紧张度"
+  },
+  "concept_throughput": {
+   "en": "Throughput",
+   "target": "吞吐量"
+  },
+  "concept_trade": {
+   "en": "Trade",
+   "target": "贸易"
+  },
+  "concept_trading": {
+   "en": "Trading",
+   "target": "贸易"
+  },
+  "concept_training_rate": {
+   "en": "Training Rate",
+   "target": "训练率"
+  },
+  "concept_turmoil": {
+   "en": "Turmoil",
+   "target": "动乱"
+  },
+  "concept_unification_support": {
+   "en": "Support",
+   "target": "支持"
+  },
+  "concept_unification_supporting": {
+   "en": "Supporting",
+   "target": "支持"
+  },
+  "concept_unify": {
+   "en": "Unify",
+   "target": "统一"
+  },
+  "concept_unit_experience": {
+   "en": "Experience",
+   "target": "经验"
+  },
+  "concept_war": {
+   "en": "War",
+   "target": "战争"
+  },
+  "concept_war_exhaustion": {
+   "en": "War Exhaustion",
+   "target": "厌战度"
+  },
+  "concept_war_exhaustion_exhausted": {
+   "en": "Exhausted",
+   "target": "耗损"
+  },
+  "concept_wars": {
+   "en": "Wars",
+   "target": "战争"
+  },
+  "concept_workforce": {
+   "en": "Workforce",
+   "target": "劳动力"
+  },
+  "country_authority_add": {
+   "en": "Authority",
+   "target": "权威力"
+  },
+  "country_authority_mult": {
+   "en": "Authority",
+   "target": "权威力"
+  },
+  "country_bureaucracy_add": {
+   "en": "Bureaucracy",
+   "target": "行政力"
+  },
+  "country_bureaucracy_mult": {
+   "en": "Bureaucracy",
+   "target": "行政力"
+  },
+  "country_influence_add": {
+   "en": "Influence",
+   "target": "影响力"
+  },
+  "country_influence_mult": {
+   "en": "Influence",
+   "target": "影响力"
+  },
+  "country_law_enactment_speed_mult": {
+   "en": "Enactment Speed",
+   "target": "制定速度"
+  },
+  "country_legitimacy_base_add": {
+   "en": "Legitimacy",
+   "target": "合法性"
+  },
+  "country_prestige_add": {
+   "en": "Prestige",
+   "target": "威望"
+  },
+  "country_prestige_mult": {
+   "en": "Prestige",
+   "target": "威望"
+  },
+  "country_resource_discovery_chance_mult": {
+   "en": "Resource Discovery Chance",
+   "target": "资源发现几率"
+  },
+  "country_tech_spread_add": {
+   "en": "Technology Spread",
+   "target": "科技扩散"
+  },
+  "country_tech_spread_mult": {
+   "en": "Technology Spread",
+   "target": "科技扩散"
+  },
+  "country_war_exhaustion_casualties_mult": {
+   "en": "War Exhaustion from Casualties",
+   "target": "伤亡产生的厌战度"
+  },
+  "country_weekly_innovation_add": {
+   "en": "Innovation",
+   "target": "创新力"
+  },
+  "country_weekly_innovation_mult": {
+   "en": "Innovation",
+   "target": "创新力"
+  },
+  "ig_approval_neutral": {
+   "en": "Neutral",
+   "target": "中立"
+  },
+  "ig_armed_forces": {
+   "en": "Armed Forces",
+   "target": "军队"
+  },
+  "ig_civil_servants": {
+   "en": "Civil Servants",
+   "target": "公务员"
+  },
+  "ig_devout": {
+   "en": "Devout",
+   "target": "虔信者"
+  },
+  "ig_industrialists": {
+   "en": "Industrialists",
+   "target": "实业家"
+  },
+  "ig_intelligentsia": {
+   "en": "Intelligentsia",
+   "target": "知识分子"
+  },
+  "ig_landowners": {
+   "en": "Landowners",
+   "target": "地主"
+  },
+  "ig_petty_bourgeoisie": {
+   "en": "Petite Bourgeoisie",
+   "target": "小市民"
+  },
+  "ig_rural_folk": {
+   "en": "Rural Folk",
+   "target": "乡村民众"
+  },
+  "ig_trade_unions": {
+   "en": "Trade Unions",
+   "target": "工会"
+  },
+  "ig_trait_civil_service": {
+   "en": "Civil Service",
+   "target": "公务员体系"
+  },
+  "ig_trait_self_strengthening": {
+   "en": "Self-Strengthening",
+   "target": "自强"
+  },
+  "institution_health_system": {
+   "en": "Health System",
+   "target": "卫生系统"
+  },
+  "institution_schools": {
+   "en": "Education",
+   "target": "教育"
+  },
+  "institution_social_security": {
+   "en": "Social Security",
+   "target": "社会保障"
+  },
+  "interest_group_approval_add": {
+   "en": "Interest Group Approval",
+   "target": "利益集团支持度"
+  },
+  "interest_group_ig_armed_forces_pol_str_mult": {
+   "en": "Political Strength",
+   "target": "政治力量"
+  },
+  "interest_group_ig_devout_pol_str_mult": {
+   "en": "Political Strength",
+   "target": "政治力量"
+  },
+  "interest_group_ig_intelligentsia_pol_str_mult": {
+   "en": "Political Strength",
+   "target": "政治力量"
+  },
+  "interest_group_ig_trade_unions_approval_add": {
+   "en": "Approval",
+   "target": "支持度"
+  },
+  "interest_group_ig_trade_unions_pol_str_mult": {
+   "en": "Political Strength",
+   "target": "政治力量"
+  },
+  "law_colonial_administration": {
+   "en": "Colonial Administration",
+   "target": "殖民政府"
+  },
+  "law_council_republic": {
+   "en": "Council Republic",
+   "target": "委员会共和制"
+  },
+  "law_cultural_exclusion": {
+   "en": "Cultural Exclusion",
+   "target": "文化排斥"
+  },
+  "law_ethnostate": {
+   "en": "Ethnostate",
+   "target": "族裔国家"
+  },
+  "law_freedom_of_conscience": {
+   "en": "Freedom of Conscience",
+   "target": "信仰自由"
+  },
+  "law_mass_conscription": {
+   "en": "Mass Conscription",
+   "target": "大规模征兵"
+  },
+  "law_national_supremacy": {
+   "en": "National Supremacy",
+   "target": "民族至上"
+  },
+  "law_presidential_republic": {
+   "en": "Presidential Republic",
+   "target": "总统共和制"
+  },
+  "law_professional_army": {
+   "en": "Professional Army",
+   "target": "职业军队"
+  },
+  "law_proportional_representation": {
+   "en": "Proportional Representation",
+   "target": "比例代表制"
+  },
+  "law_public_schools": {
+   "en": "Public Schools",
+   "target": "公立学校"
+  },
+  "law_racial_segregation": {
+   "en": "Racial Segregation",
+   "target": "种族隔离"
+  },
+  "law_serfdom": {
+   "en": "Serfdom",
+   "target": "农奴制"
+  },
+  "law_state_atheism": {
+   "en": "State Atheism",
+   "target": "国家无神论"
+  },
+  "law_state_religion": {
+   "en": "State Religion",
+   "target": "国教"
+  },
+  "law_total_separation": {
+   "en": "Total Separation",
+   "target": "完全分离"
+  },
+  "law_universal_suffrage": {
+   "en": "Universal Suffrage",
+   "target": "普选制"
+  },
+  "state_assimilation_mult": {
+   "en": "Assimilation",
+   "target": "同化"
+  },
+  "state_conscription_rate_add": {
+   "en": "Conscription Rate",
+   "target": "征兵率"
+  },
+  "state_conversion_mult": {
+   "en": "Conversion",
+   "target": "皈依"
+  },
+  "state_education_access_add": {
+   "en": "Education Access",
+   "target": "受教育机会"
+  },
+  "state_infrastructure_mult": {
+   "en": "Infrastructure",
+   "target": "基础设施"
+  },
+  "state_loyalists_from_political_movements_mult": {
+   "en": "Loyalists from Political Movements",
+   "target": "来自政治运动的效忠派"
+  },
+  "state_migration_pull_mult": {
+   "en": "Migration Attraction",
+   "target": "移民吸引力"
+  },
+  "state_mortality_mult": {
+   "en": "Mortality",
+   "target": "死亡率"
+  },
+  "state_pop_qualifications_mult": {
+   "en": "Qualifications",
+   "target": "资质"
+  },
+  "state_radicals_from_political_movements_mult": {
+   "en": "Radicals from Political Movements",
+   "target": "来自政治运动的激进派"
+  },
+  "state_tax_collection_mult": {
+   "en": "Tax Collection",
+   "target": "税收"
+  },
+  "unit_army_offense_add": {
+   "en": "Army Offense",
+   "target": "陆军进攻"
+  },
+  "unit_army_offense_mult": {
+   "en": "Army Offense",
+   "target": "陆军进攻"
+  },
+  "unit_offense_add": {
+   "en": "Offense",
+   "target": "进攻"
+  },
+  "unit_provinces_lost_mult": {
+   "en": "Lost",
+   "target": "损失"
+  }
+ }
+}

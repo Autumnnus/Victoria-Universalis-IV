@@ -1,57 +1,119 @@
 ﻿STATES = {
-	s:STATE_MINSK = {
-		add_to_global_variable_list = {
-			name = adm_ideas
-			target = this
-		}
-		set_variable = {
-			name = idea_group
-			value = flag:innovative_idea
-		}
-	}
+	# ===== prod_ideas =====
 	s:STATE_LOUISIANA = {
 		add_to_global_variable_list = {
-			name = adm_ideas
+			name = prod_ideas
 			target = this
 		}
 		set_variable = {
 			name = idea_group
-			value = flag:economic_idea
+			value = flag:industrialist_idea
+		}
+	}
+	s:STATE_LANCASHIRE = {
+		add_to_global_variable_list = {
+			name = prod_ideas
+			target = this
+		}
+		set_variable = {
+			name = idea_group
+			value = flag:mercantile_idea
+		}
+	}
+	s:STATE_LOMBARDY = {
+		add_to_global_variable_list = {
+			name = prod_ideas
+			target = this
+		}
+		set_variable = {
+			name = idea_group
+			value = flag:financial_idea
+		}
+	}
+	s:STATE_RHINELAND = {
+		add_to_global_variable_list = {
+			name = prod_ideas
+			target = this
+		}
+		set_variable = {
+			name = idea_group
+			value = flag:infrastructure_idea
+		}
+	}
+	s:STATE_URAL = {
+		add_to_global_variable_list = {
+			name = prod_ideas
+			target = this
+		}
+		set_variable = {
+			name = idea_group
+			value = flag:extraction_idea
+		}
+	}
+	s:STATE_EAST_ANGOLA = {
+		add_to_global_variable_list = {
+			name = prod_ideas
+			target = this
+		}
+		set_variable = {
+			name = idea_group
+			value = flag:labour_idea
+		}
+	}
+	s:STATE_PUNJAB = {
+		add_to_global_variable_list = {
+			name = prod_ideas
+			target = this
+		}
+		set_variable = {
+			name = idea_group
+			value = flag:agrarian_idea
+		}
+	}
+	# ===== soc_ideas =====
+	s:STATE_MINSK = {
+		add_to_global_variable_list = {
+			name = soc_ideas
+			target = this
+		}
+		set_variable = {
+			name = idea_group
+			value = flag:academic_idea
 		}
 	}
 	s:STATE_NEW_YORK = {
 		add_to_global_variable_list = {
-			name = adm_ideas
+			name = soc_ideas
 			target = this
 		}
 		set_variable = {
 			name = idea_group
-			value = flag:administrative_idea
-		}
-	}
-	s:STATE_VIRGINIA = {
-		add_to_global_variable_list = {
-			name = adm_ideas
-			target = this
-		}
-		set_variable = {
-			name = idea_group
-			value = flag:ethnocentrism_idea
+			value = flag:bureaucratic_idea
 		}
 	}
 	s:STATE_LOWER_EGYPT = {
 		add_to_global_variable_list = {
-			name = adm_ideas
+			name = soc_ideas
 			target = this
 		}
 		set_variable = {
 			name = idea_group
-			value = flag:politics_idea
+			value = flag:parliamentary_idea
+		}
+	}
+	s:STATE_PROVENCE = {
+		add_to_global_variable_list = {
+			name = soc_ideas
+			target = this
+		}
+		set_variable = {
+			name = idea_group
+			value = flag:welfare_idea
 		}
 	}
 	s:STATE_HOME_COUNTIES = {
 		add_to_global_variable_list = {
-			name = dip_ideas
+			name = soc_ideas
 			target = this
 		}
 		set_variable = {
@@ -59,47 +121,27 @@
 			value = flag:diplomatic_idea
 		}
 	}
-	s:STATE_LANCASHIRE = {
+	s:STATE_VIRGINIA = {
 		add_to_global_variable_list = {
-			name = dip_ideas
+			name = soc_ideas
 			target = this
 		}
 		set_variable = {
 			name = idea_group
-			value = flag:trade_idea
-		}
-	}
-	s:STATE_PROVENCE = {
-		add_to_global_variable_list = {
-			name = dip_ideas
-			target = this
-		}
-		set_variable = {
-			name = idea_group
-			value = flag:qualification_idea
+			value = flag:nationalist_idea
 		}
 	}
 	s:STATE_NORMANDY = {
 		add_to_global_variable_list = {
-			name = dip_ideas
+			name = soc_ideas
 			target = this
 		}
 		set_variable = {
 			name = idea_group
-			value = flag:humanist_idea
+			value = flag:reformist_idea
 		}
 	}
-	s:STATE_EAST_ANGOLA = {
-		add_to_global_variable_list = {
-			name = dip_ideas
-			target = this
-		}
-		set_variable = {
-			name = idea_group
-			value = flag:syndicalism_idea
-		}
-		
-	}
+	# ===== mil_ideas =====
 	s:STATE_HOLLAND = {
 		add_to_global_variable_list = {
 			name = mil_ideas
@@ -109,7 +151,6 @@
 			name = idea_group
 			value = flag:offensive_idea
 		}
-		
 	}
 	s:STATE_BALUCHISTAN = {
 		add_to_global_variable_list = {
@@ -120,7 +161,6 @@
 			name = idea_group
 			value = flag:defensive_idea
 		}
-		
 	}
 	s:STATE_EAST_BENGAL = {
 		add_to_global_variable_list = {
@@ -131,7 +171,6 @@
 			name = idea_group
 			value = flag:naval_idea
 		}
-		
 	}
 	s:STATE_DOBRUDJA = {
 		add_to_global_variable_list = {
@@ -140,9 +179,18 @@
 		}
 		set_variable = {
 			name = idea_group
-			value = flag:militarization_idea
+			value = flag:professional_army_idea
 		}
-		
+	}
+	s:STATE_ILE_DE_FRANCE = {
+		add_to_global_variable_list = {
+			name = mil_ideas
+			target = this
+		}
+		set_variable = {
+			name = idea_group
+			value = flag:mass_conscription_idea
+		}
 	}
 	s:STATE_BASRA = {
 		add_to_global_variable_list = {
@@ -151,8 +199,17 @@
 		}
 		set_variable = {
 			name = idea_group
-			value = flag:imperialist_idea
+			value = flag:colonial_idea
 		}
-		
+	}
+	s:STATE_RUHR = {
+		add_to_global_variable_list = {
+			name = mil_ideas
+			target = this
+		}
+		set_variable = {
+			name = idea_group
+			value = flag:war_economy_idea
+		}
 	}
 }

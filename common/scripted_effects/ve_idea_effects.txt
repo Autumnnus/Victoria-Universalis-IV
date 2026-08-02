@@ -1,1113 +1,878 @@
-boost_inno_idea_effect = {
+﻿# Dev-cheat repair tool (see events/developer_events.txt dev.1.l): recomputes
+# idea_group_unlocked as the number of can_go_X flags actually set, instead of
+# trusting the stored counter - fixes saves inflated by the pre-fix
+# embrace_idea_group double-increment bug.
+ve_recalculate_idea_group_unlocked = {
+	set_variable = {
+		name = idea_group_unlocked
+		value = 0
+	}
+	if = {
+		limit = { has_variable = can_go_academic }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_agrarian }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_financial }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_infrastructure }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_extraction }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_mass_conscription }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_war_economy }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_industrialist }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_bureaucratic }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_nationalist }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_parliamentary }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_diplomatic }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_mercantile }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_welfare }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_reformist }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_labour }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_offensive }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_defensive }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_naval }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_professional_army }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+	if = {
+		limit = { has_variable = can_go_colonial }
+		change_variable = { name = idea_group_unlocked add = 1 }
+	}
+}
+
+boost_academic_idea_effect = {
 	if = {
 		limit = {
-			var:innovative_idea == 0
+			var:academic_idea == 0
 		}
 		change_variable = {
-			name = innovative_idea
+			name = academic_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
+				NOT = {
+					has_modifier = academic_idea_1_mdf
+				}
 			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
+			add_modifier = {
+				name = academic_idea_1_mdf
+				months = -1
 			}
 		}
+		ve_idea_purchase_1 = yes
+	}
+	else_if = {
+		limit = {
+			var:academic_idea == 1
+		}
+		change_variable = {
+			name = academic_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = academic_idea_2_mdf
+				}
+			}
+			add_modifier = {
+				name = academic_idea_2_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_2 = yes
+	}
+	else_if = {
+		limit = {
+			var:academic_idea == 2
+		}
+		change_variable = {
+			name = academic_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = academic_idea_3_mdf
+				}
+			}
+			add_modifier = {
+				name = academic_idea_3_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_3 = yes
+	}
+	else_if = {
+		limit = {
+			var:academic_idea == 3
+		}
+		change_variable = {
+			name = academic_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = academic_idea_4_mdf
+				}
+			}
+			add_modifier = {
+				name = academic_idea_4_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_4 = yes
+	}
+	else_if = {
+		limit = {
+			var:academic_idea == 4
+		}
+		change_variable = {
+			name = academic_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = academic_idea_5_mdf
+				}
+			}
+			add_modifier = {
+				name = academic_idea_5_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_5 = yes
+	}
+	else_if = {
+		limit = {
+			var:academic_idea == 5
+		}
+		change_variable = {
+			name = academic_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = academic_idea_6_mdf
+				}
+			}
+			add_modifier = {
+				name = academic_idea_6_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_6 = yes
+	}
+	else_if = {
+		limit = {
+			var:academic_idea == 6
+		}
+		change_variable = {
+			name = academic_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = academic_idea_7_mdf
+				}
+			}
+			add_modifier = {
+				name = academic_idea_7_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_7 = yes
+		set_variable = academic_idea_completed
 		add_modifier = {
-			name = innovative_idea_1_mdf
+			name = academic_ambition_mdf
 			months = -1
 		}
-		if = {
-			limit = {
-				NOT = {
-					has_modifier = innovative_idea_1_mdf
-				}
-			}
-			add_modifier = {
-				name = innovative_idea_1_mdf
-				months = -1
-			}
-		}
-		idea_cost = yes
-	}
-	else_if = {
-		limit = {
-			var:innovative_idea == 1
-		}
-		change_variable = {
-			name = innovative_idea
-			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					has_modifier = innovative_idea_2_mdf
-				}
-			}
-			add_modifier = {
-				name = innovative_idea_2_mdf
-				months = -1
-			}
-		}
-		idea_cost = yes
-	}
-	else_if = {
-		limit = {
-			var:innovative_idea == 2
-		}
-		change_variable = {
-			name = innovative_idea
-			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					has_modifier = innovative_idea_3_mdf
-				}
-			}
-			add_modifier = {
-				name = innovative_idea_3_mdf
-				months = -1
-			}
-		}
-		idea_cost = yes
-	}
-	else_if = {
-		limit = {
-			var:innovative_idea == 3
-		}
-		change_variable = {
-			name = innovative_idea
-			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					has_modifier = innovative_idea_4_mdf
-				}
-			}
-			add_modifier = {
-				name = innovative_idea_4_mdf
-				months = -1
-			}
-		}
-		idea_cost = yes
-	}
-	else_if = {
-		limit = {
-			var:innovative_idea == 4
-		}
-		change_variable = {
-			name = innovative_idea
-			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					has_modifier = innovative_idea_5_mdf
-				}
-			}
-			add_modifier = {
-				name = innovative_idea_5_mdf
-				months = -1
-			}
-		}
-		idea_cost = yes
-	}
-	else_if = {
-		limit = {
-			var:innovative_idea == 5
-		}
-		change_variable = {
-			name = innovative_idea
-			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					has_modifier = innovative_idea_6_mdf
-				}
-			}
-			add_modifier = {
-				name = innovative_idea_6_mdf
-				months = -1
-			}
-		}
-		idea_cost = yes
-	}
-	else_if = {
-		limit = {
-			var:innovative_idea == 6
-		}
-		change_variable = {
-			name = innovative_idea
-			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					has_modifier = innovative_idea_7_mdf
-				}
-			}
-			add_modifier = {
-				name = innovative_idea_7_mdf
-				months = -1
-			}
-		}
-		idea_cost = yes
-		set_variable = innovative_idea_completed
 	}
 }
 
-boost_eco_idea_effect = {
+boost_industrialist_idea_effect = {
 	if = {
 		limit = {
-			var:economic_idea == 0
+			var:industrialist_idea == 0
 		}
 		change_variable = {
-			name = economic_idea
+			name = industrialist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = economic_idea_1_mdf
+					has_modifier = industrialist_idea_1_mdf
 				}
 			}
 			add_modifier = {
-				name = economic_idea_1_mdf
+				name = industrialist_idea_1_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_1 = yes
 	}
 	else_if = {
 		limit = {
-			var:economic_idea == 1
+			var:industrialist_idea == 1
 		}
 		change_variable = {
-			name = economic_idea
+			name = industrialist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = economic_idea_2_mdf
+					has_modifier = industrialist_idea_2_mdf
 				}
 			}
 			add_modifier = {
-				name = economic_idea_2_mdf
+				name = industrialist_idea_2_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_2 = yes
 	}
 	else_if = {
 		limit = {
-			var:economic_idea == 2
+			var:industrialist_idea == 2
 		}
 		change_variable = {
-			name = economic_idea
+			name = industrialist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = economic_idea_3_mdf
+					has_modifier = industrialist_idea_3_mdf
 				}
 			}
 			add_modifier = {
-				name = economic_idea_3_mdf
+				name = industrialist_idea_3_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_3 = yes
 	}
 	else_if = {
 		limit = {
-			var:economic_idea == 3
+			var:industrialist_idea == 3
 		}
 		change_variable = {
-			name = economic_idea
+			name = industrialist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = economic_idea_4_mdf
+					has_modifier = industrialist_idea_4_mdf
 				}
 			}
 			add_modifier = {
-				name = economic_idea_4_mdf
+				name = industrialist_idea_4_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_4 = yes
 	}
 	else_if = {
 		limit = {
-			var:economic_idea == 4
+			var:industrialist_idea == 4
 		}
 		change_variable = {
-			name = economic_idea
+			name = industrialist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = economic_idea_5_mdf
+					has_modifier = industrialist_idea_5_mdf
 				}
 			}
 			add_modifier = {
-				name = economic_idea_5_mdf
+				name = industrialist_idea_5_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_5 = yes
 	}
 	else_if = {
 		limit = {
-			var:economic_idea == 5
+			var:industrialist_idea == 5
 		}
 		change_variable = {
-			name = economic_idea
+			name = industrialist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = economic_idea_6_mdf
+					has_modifier = industrialist_idea_6_mdf
 				}
 			}
 			add_modifier = {
-				name = economic_idea_6_mdf
+				name = industrialist_idea_6_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_6 = yes
 	}
 	else_if = {
 		limit = {
-			var:economic_idea == 6
+			var:industrialist_idea == 6
 		}
 		change_variable = {
-			name = economic_idea
+			name = industrialist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = economic_idea_7_mdf
+					has_modifier = industrialist_idea_7_mdf
 				}
 			}
 			add_modifier = {
-				name = economic_idea_7_mdf
+				name = industrialist_idea_7_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
-		set_variable = economic_idea_completed
+		ve_idea_purchase_7 = yes
+		set_variable = industrialist_idea_completed
+		add_modifier = {
+			name = industrialist_ambition_mdf
+			months = -1
+		}
 	}
 }
 
-boost_adm_idea_effect = {
+boost_bureaucratic_idea_effect = {
 	if = {
 		limit = {
-			var:administrative_idea == 0
+			var:bureaucratic_idea == 0
 		}
 		change_variable = {
-			name = administrative_idea
+			name = bureaucratic_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = administrative_idea_1_mdf
+					has_modifier = bureaucratic_idea_1_mdf
 				}
 			}
 			add_modifier = {
-				name = administrative_idea_1_mdf
+				name = bureaucratic_idea_1_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_1 = yes
 	}
 	else_if = {
 		limit = {
-			var:administrative_idea == 1
+			var:bureaucratic_idea == 1
 		}
 		change_variable = {
-			name = administrative_idea
+			name = bureaucratic_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = administrative_idea_2_mdf
+					has_modifier = bureaucratic_idea_2_mdf
 				}
 			}
 			add_modifier = {
-				name = administrative_idea_2_mdf
+				name = bureaucratic_idea_2_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_2 = yes
 	}
 	else_if = {
 		limit = {
-			var:administrative_idea == 2
+			var:bureaucratic_idea == 2
 		}
 		change_variable = {
-			name = administrative_idea
+			name = bureaucratic_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = administrative_idea_3_mdf
+					has_modifier = bureaucratic_idea_3_mdf
 				}
 			}
 			add_modifier = {
-				name = administrative_idea_3_mdf
+				name = bureaucratic_idea_3_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_3 = yes
 	}
 	else_if = {
 		limit = {
-			var:administrative_idea == 3
+			var:bureaucratic_idea == 3
 		}
 		change_variable = {
-			name = administrative_idea
+			name = bureaucratic_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = administrative_idea_4_mdf
+					has_modifier = bureaucratic_idea_4_mdf
 				}
 			}
 			add_modifier = {
-				name = administrative_idea_4_mdf
+				name = bureaucratic_idea_4_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_4 = yes
 	}
 	else_if = {
 		limit = {
-			var:administrative_idea == 4
+			var:bureaucratic_idea == 4
 		}
 		change_variable = {
-			name = administrative_idea
+			name = bureaucratic_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = administrative_idea_5_mdf
+					has_modifier = bureaucratic_idea_5_mdf
 				}
 			}
 			add_modifier = {
-				name = administrative_idea_5_mdf
+				name = bureaucratic_idea_5_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_5 = yes
 	}
 	else_if = {
 		limit = {
-			var:administrative_idea == 5
+			var:bureaucratic_idea == 5
 		}
 		change_variable = {
-			name = administrative_idea
+			name = bureaucratic_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = administrative_idea_6_mdf
+					has_modifier = bureaucratic_idea_6_mdf
 				}
 			}
 			add_modifier = {
-				name = administrative_idea_6_mdf
+				name = bureaucratic_idea_6_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_6 = yes
 	}
 	else_if = {
 		limit = {
-			var:administrative_idea == 6
+			var:bureaucratic_idea == 6
 		}
 		change_variable = {
-			name = administrative_idea
+			name = bureaucratic_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = administrative_idea_7_mdf
+					has_modifier = bureaucratic_idea_7_mdf
 				}
 			}
 			add_modifier = {
-				name = administrative_idea_7_mdf
+				name = bureaucratic_idea_7_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
-		set_variable = administrative_idea_completed
+		ve_idea_purchase_7 = yes
+		set_variable = bureaucratic_idea_completed
+		add_modifier = {
+			name = bureaucratic_ambition_mdf
+			months = -1
+		}
 	}
 }
 
-boost_ethno_idea_effect = {
+boost_nationalist_idea_effect = {
 	if = {
 		limit = {
-			var:ethnocentrism_idea == 0
+			var:nationalist_idea == 0
 		}
 		change_variable = {
-			name = ethnocentrism_idea
+			name = nationalist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = ethnocentrism_idea_1_mdf
+					has_modifier = nationalist_idea_1_mdf
 				}
 			}
 			add_modifier = {
-				name = ethnocentrism_idea_1_mdf
+				name = nationalist_idea_1_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_1 = yes
 	}
 	else_if = {
 		limit = {
-			var:ethnocentrism_idea == 1
+			var:nationalist_idea == 1
 		}
 		change_variable = {
-			name = ethnocentrism_idea
+			name = nationalist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = ethnocentrism_idea_2_mdf
+					has_modifier = nationalist_idea_2_mdf
 				}
 			}
 			add_modifier = {
-				name = ethnocentrism_idea_2_mdf
+				name = nationalist_idea_2_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_2 = yes
 	}
 	else_if = {
 		limit = {
-			var:ethnocentrism_idea == 2
+			var:nationalist_idea == 2
 		}
 		change_variable = {
-			name = ethnocentrism_idea
+			name = nationalist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = ethnocentrism_idea_3_mdf
+					has_modifier = nationalist_idea_3_mdf
 				}
 			}
 			add_modifier = {
-				name = ethnocentrism_idea_3_mdf
+				name = nationalist_idea_3_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_3 = yes
 	}
 	else_if = {
 		limit = {
-			var:ethnocentrism_idea == 3
+			var:nationalist_idea == 3
 		}
 		change_variable = {
-			name = ethnocentrism_idea
+			name = nationalist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = ethnocentrism_idea_4_mdf
+					has_modifier = nationalist_idea_4_mdf
 				}
 			}
 			add_modifier = {
-				name = ethnocentrism_idea_4_mdf
+				name = nationalist_idea_4_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_4 = yes
 	}
 	else_if = {
 		limit = {
-			var:ethnocentrism_idea == 4
+			var:nationalist_idea == 4
 		}
 		change_variable = {
-			name = ethnocentrism_idea
+			name = nationalist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_variable = ethnocentrism_idea_5_var
+					has_variable = nationalist_idea_5_var
 				}
 			}
-			set_variable = ethnocentrism_idea_5_var
-			every_scope_state = {
-				limit = {
-					owner = ROOT
-					has_modifier = ve_missionary_mdf
-				}
-				remove_modifier = ve_missionary_mdf
-				add_modifier = {
-					name = ve_missionary_mdf
-					multiplier = 3
-					months = -1
-				}
+			set_variable = nationalist_idea_5_var
+			add_modifier = {
+				name = nationalist_idea_5_mdf
+				months = -1
 			}
-			every_scope_state = {
-				limit = {
-					owner = ROOT
-					has_modifier = ve_diffusionist_mdf
-				}
-				remove_modifier = ve_diffusionist_mdf
-				add_modifier = {
-					name = ve_diffusionist_mdf
-					multiplier = 3
-					months = -1
-				}
-			}
-			idea_cost = yes
+			ve_idea_purchase_5 = yes
 		}
 	}
 	else_if = {
 		limit = {
-			var:ethnocentrism_idea == 5
+			var:nationalist_idea == 5
 		}
 		change_variable = {
-			name = ethnocentrism_idea
+			name = nationalist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = ethnocentrism_idea_6_mdf
+					has_modifier = nationalist_idea_6_mdf
 				}
 			}
 			add_modifier = {
-				name = ethnocentrism_idea_6_mdf
+				name = nationalist_idea_6_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_6 = yes
 	}
 	else_if = {
 		limit = {
-			var:ethnocentrism_idea == 6
+			var:nationalist_idea == 6
 		}
 		change_variable = {
-			name = ethnocentrism_idea
+			name = nationalist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_variable = ethnocentrism_idea_7_var
+					has_variable = nationalist_idea_7_var
 				}
 			}
-			set_variable = ethnocentrism_idea_7_var
-			ve_law_change_effects = yes
-			# change_variable = {
-			# 	name = avaible_missionaries
-			# 	add = 2
-			# }
-			# change_variable = {
-			# 	name = avaible_culture_missionaries
-			# 	add = 2
-			# }
-			# change_variable = {
-			# 	name = total_missionaries
-			# 	add = 2
-			# }
-			# change_variable = {
-			# 	name = total_culture_missionaries
-			# 	add = 2
-			# }
+			# Adds +0.02 to coercive religious and ethnic project outcomes, and
+			# enables the Nationalist project-progress bonuses (see project values).
+			set_variable = nationalist_idea_7_var
+			add_modifier = {
+				name = nationalist_idea_7_mdf
+				months = -1
+			}
 		}
-		idea_cost = yes
-		set_variable = ethnocentrism_idea_completed
+		ve_idea_purchase_7 = yes
+		set_variable = nationalist_idea_completed
+		add_modifier = {
+			name = nationalist_ambition_mdf
+			months = -1
+		}
 	}
 }
 
-boost_pol_idea_effect = {
+boost_parliamentary_idea_effect = {
 	if = {
 		limit = {
-			var:politics_idea == 0
+			var:parliamentary_idea == 0
 		}
 		change_variable = {
-			name = politics_idea
+			name = parliamentary_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = politics_idea_1_mdf
+					has_modifier = parliamentary_idea_1_mdf
 				}
 			}
 			add_modifier = {
-				name = politics_idea_1_mdf
+				name = parliamentary_idea_1_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_1 = yes
 	}
 	else_if = {
 		limit = {
-			var:politics_idea == 1
+			var:parliamentary_idea == 1
 		}
 		change_variable = {
-			name = politics_idea
+			name = parliamentary_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = politics_idea_2_mdf
+					has_modifier = parliamentary_idea_2_mdf
 				}
 			}
 			add_modifier = {
-				name = politics_idea_2_mdf
+				name = parliamentary_idea_2_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_2 = yes
 	}
 	else_if = {
 		limit = {
-			var:politics_idea == 2
+			var:parliamentary_idea == 2
 		}
 		change_variable = {
-			name = politics_idea
+			name = parliamentary_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = politics_idea_3_mdf
+					has_modifier = parliamentary_idea_3_mdf
 				}
 			}
 			add_modifier = {
-				name = politics_idea_3_mdf
+				name = parliamentary_idea_3_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_3 = yes
 	}
 	else_if = {
 		limit = {
-			var:politics_idea == 3
+			var:parliamentary_idea == 3
 		}
 		change_variable = {
-			name = politics_idea
+			name = parliamentary_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = politics_idea_4_mdf
+					has_modifier = parliamentary_idea_4_mdf
 				}
 			}
 			add_modifier = {
-				name = politics_idea_4_mdf
+				name = parliamentary_idea_4_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_4 = yes
 	}
 	else_if = {
 		limit = {
-			var:politics_idea == 4
+			var:parliamentary_idea == 4
 		}
 		change_variable = {
-			name = politics_idea
+			name = parliamentary_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = politics_idea_5_mdf
+					has_modifier = parliamentary_idea_5_mdf
 				}
 			}
 			add_modifier = {
-				name = politics_idea_5_mdf
+				name = parliamentary_idea_5_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_5 = yes
 	}
 	else_if = {
 		limit = {
-			var:politics_idea == 5
+			var:parliamentary_idea == 5
 		}
 		change_variable = {
-			name = politics_idea
+			name = parliamentary_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = politics_idea_6_mdf
+					has_modifier = parliamentary_idea_6_mdf
 				}
 			}
 			add_modifier = {
-				name = politics_idea_6_mdf
+				name = parliamentary_idea_6_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_6 = yes
 	}
 	else_if = {
 		limit = {
-			var:politics_idea == 6
+			var:parliamentary_idea == 6
 		}
 		change_variable = {
-			name = politics_idea
+			name = parliamentary_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = politics_idea_7_mdf
+					has_modifier = parliamentary_idea_7_mdf
 				}
 			}
 			add_modifier = {
-				name = politics_idea_7_mdf
+				name = parliamentary_idea_7_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
-		set_variable = politics_idea_completed
+		ve_idea_purchase_7 = yes
+		set_variable = parliamentary_idea_completed
+		add_modifier = {
+			name = parliamentary_ambition_mdf
+			months = -1
+		}
 	}
 }
 
-boost_dip_idea_effect = {
+boost_diplomatic_idea_effect = {
 	if = {
 		limit = {
 			var:diplomatic_idea == 0
@@ -1115,15 +880,6 @@ boost_dip_idea_effect = {
 		change_variable = {
 			name = diplomatic_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -1136,7 +892,7 @@ boost_dip_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_1 = yes
 	}
 	else_if = {
 		limit = {
@@ -1145,15 +901,6 @@ boost_dip_idea_effect = {
 		change_variable = {
 			name = diplomatic_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -1166,7 +913,7 @@ boost_dip_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_2 = yes
 	}
 	else_if = {
 		limit = {
@@ -1175,15 +922,6 @@ boost_dip_idea_effect = {
 		change_variable = {
 			name = diplomatic_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -1196,7 +934,7 @@ boost_dip_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_3 = yes
 	}
 	else_if = {
 		limit = {
@@ -1205,15 +943,6 @@ boost_dip_idea_effect = {
 		change_variable = {
 			name = diplomatic_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -1226,7 +955,7 @@ boost_dip_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_4 = yes
 	}
 	else_if = {
 		limit = {
@@ -1235,15 +964,6 @@ boost_dip_idea_effect = {
 		change_variable = {
 			name = diplomatic_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -1256,7 +976,7 @@ boost_dip_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_5 = yes
 	}
 	else_if = {
 		limit = {
@@ -1265,15 +985,6 @@ boost_dip_idea_effect = {
 		change_variable = {
 			name = diplomatic_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -1286,7 +997,7 @@ boost_dip_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_6 = yes
 	}
 	else_if = {
 		limit = {
@@ -1295,15 +1006,6 @@ boost_dip_idea_effect = {
 		change_variable = {
 			name = diplomatic_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -1316,868 +1018,636 @@ boost_dip_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_7 = yes
 		set_variable = diplomatic_idea_completed
+		add_modifier = {
+			name = diplomatic_ambition_mdf
+			months = -1
+		}
 	}
 }
 
-boost_trade_idea_effect = {
+boost_mercantile_idea_effect = {
 	if = {
 		limit = {
-			var:trade_idea == 0
+			var:mercantile_idea == 0
 		}
 		change_variable = {
-			name = trade_idea
+			name = mercantile_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = trade_idea_1_mdf
+					has_modifier = mercantile_idea_1_mdf
 				}
 			}
 			add_modifier = {
-				name = trade_idea_1_mdf
+				name = mercantile_idea_1_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_1 = yes
 	}
 	else_if = {
 		limit = {
-			var:trade_idea == 1
+			var:mercantile_idea == 1
 		}
 		change_variable = {
-			name = trade_idea
+			name = mercantile_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = trade_idea_2_mdf
+					has_modifier = mercantile_idea_2_mdf
 				}
 			}
 			add_modifier = {
-				name = trade_idea_2_mdf
+				name = mercantile_idea_2_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_2 = yes
 	}
 	else_if = {
 		limit = {
-			var:trade_idea == 2
+			var:mercantile_idea == 2
 		}
 		change_variable = {
-			name = trade_idea
+			name = mercantile_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = trade_idea_3_mdf
+					has_modifier = mercantile_idea_3_mdf
 				}
 			}
 			add_modifier = {
-				name = trade_idea_3_mdf
+				name = mercantile_idea_3_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_3 = yes
 	}
 	else_if = {
 		limit = {
-			var:trade_idea == 3
+			var:mercantile_idea == 3
 		}
 		change_variable = {
-			name = trade_idea
+			name = mercantile_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = trade_idea_4_mdf
+					has_modifier = mercantile_idea_4_mdf
 				}
 			}
 			add_modifier = {
-				name = trade_idea_4_mdf
+				name = mercantile_idea_4_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_4 = yes
 	}
 	else_if = {
 		limit = {
-			var:trade_idea == 4
+			var:mercantile_idea == 4
 		}
 		change_variable = {
-			name = trade_idea
+			name = mercantile_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = trade_idea_5_mdf
+					has_modifier = mercantile_idea_5_mdf
 				}
 			}
 			add_modifier = {
-				name = trade_idea_5_mdf
+				name = mercantile_idea_5_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_5 = yes
 	}
 	else_if = {
 		limit = {
-			var:trade_idea == 5
+			var:mercantile_idea == 5
 		}
 		change_variable = {
-			name = trade_idea
+			name = mercantile_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = trade_idea_6_mdf
+					has_modifier = mercantile_idea_6_mdf
 				}
 			}
 			add_modifier = {
-				name = trade_idea_6_mdf
+				name = mercantile_idea_6_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_6 = yes
 	}
 	else_if = {
 		limit = {
-			var:trade_idea == 6
+			var:mercantile_idea == 6
 		}
 		change_variable = {
-			name = trade_idea
+			name = mercantile_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = trade_idea_7_mdf
+					has_modifier = mercantile_idea_7_mdf
 				}
 			}
 			add_modifier = {
-				name = trade_idea_7_mdf
+				name = mercantile_idea_7_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
-		set_variable = trade_idea_completed
+		ve_idea_purchase_7 = yes
+		set_variable = mercantile_idea_completed
+		add_modifier = {
+			name = mercantile_ambition_mdf
+			months = -1
+		}
 	}
 }
 
-boost_quali_idea_effect = {
+boost_welfare_idea_effect = {
 	if = {
 		limit = {
-			var:qualification_idea == 0
+			var:welfare_idea == 0
 		}
 		change_variable = {
-			name = qualification_idea
+			name = welfare_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = qualification_idea_1_mdf
+					has_modifier = welfare_idea_1_mdf
 				}
 			}
 			add_modifier = {
-				name = qualification_idea_1_mdf
+				name = welfare_idea_1_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_1 = yes
 	}
 	else_if = {
 		limit = {
-			var:qualification_idea == 1
+			var:welfare_idea == 1
 		}
 		change_variable = {
-			name = qualification_idea
+			name = welfare_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = qualification_idea_2_mdf
+					has_modifier = welfare_idea_2_mdf
 				}
 			}
 			add_modifier = {
-				name = qualification_idea_2_mdf
+				name = welfare_idea_2_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_2 = yes
 	}
 	else_if = {
 		limit = {
-			var:qualification_idea == 2
+			var:welfare_idea == 2
 		}
 		change_variable = {
-			name = qualification_idea
+			name = welfare_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = qualification_idea_3_mdf
+					has_modifier = welfare_idea_3_mdf
 				}
 			}
 			add_modifier = {
-				name = qualification_idea_3_mdf
+				name = welfare_idea_3_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_3 = yes
 	}
 	else_if = {
 		limit = {
-			var:qualification_idea == 3
+			var:welfare_idea == 3
 		}
 		change_variable = {
-			name = qualification_idea
+			name = welfare_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = qualification_idea_4_mdf
+					has_modifier = welfare_idea_4_mdf
 				}
 			}
 			add_modifier = {
-				name = qualification_idea_4_mdf
+				name = welfare_idea_4_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_4 = yes
 	}
 	else_if = {
 		limit = {
-			var:qualification_idea == 4
+			var:welfare_idea == 4
 		}
 		change_variable = {
-			name = qualification_idea
+			name = welfare_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = qualification_idea_5_mdf
+					has_modifier = welfare_idea_5_mdf
 				}
 			}
 			add_modifier = {
-				name = qualification_idea_5_mdf
+				name = welfare_idea_5_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_5 = yes
 	}
 	else_if = {
 		limit = {
-			var:qualification_idea == 5
+			var:welfare_idea == 5
 		}
 		change_variable = {
-			name = qualification_idea
+			name = welfare_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = qualification_idea_6_mdf
+					has_modifier = welfare_idea_6_mdf
 				}
 			}
 			add_modifier = {
-				name = qualification_idea_6_mdf
+				name = welfare_idea_6_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_6 = yes
 	}
 	else_if = {
 		limit = {
-			var:qualification_idea == 6
+			var:welfare_idea == 6
 		}
 		change_variable = {
-			name = qualification_idea
+			name = welfare_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = qualification_idea_7_mdf
+					has_modifier = welfare_idea_7_mdf
 				}
 			}
 			add_modifier = {
-				name = qualification_idea_7_mdf
+				name = welfare_idea_7_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
-		set_variable = qualification_idea_completed
+		ve_idea_purchase_7 = yes
+		set_variable = welfare_idea_completed
+		add_modifier = {
+			name = welfare_ambition_mdf
+			months = -1
+		}
 	}
 }
 
-boost_hum_idea_effect = {
+boost_reformist_idea_effect = {
 	if = {
 		limit = {
-			var:humanist_idea == 0
+			var:reformist_idea == 0
 		}
 		change_variable = {
-			name = humanist_idea
+			name = reformist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = humanist_idea_1_mdf
+					has_modifier = reformist_idea_1_mdf
 				}
 			}
 			add_modifier = {
-				name = humanist_idea_1_mdf
+				name = reformist_idea_1_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_1 = yes
 	}
 	else_if = {
 		limit = {
-			var:humanist_idea == 1
+			var:reformist_idea == 1
 		}
 		change_variable = {
-			name = humanist_idea
+			name = reformist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = humanist_idea_2_mdf
+					has_modifier = reformist_idea_2_mdf
 				}
 			}
 			add_modifier = {
-				name = humanist_idea_2_mdf
+				name = reformist_idea_2_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_2 = yes
 	}
 	else_if = {
 		limit = {
-			var:humanist_idea == 2
+			var:reformist_idea == 2
 		}
 		change_variable = {
-			name = humanist_idea
+			name = reformist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = humanist_idea_3_mdf
+					has_modifier = reformist_idea_3_mdf
 				}
 			}
 			add_modifier = {
-				name = humanist_idea_3_mdf
+				name = reformist_idea_3_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_3 = yes
 	}
 	else_if = {
 		limit = {
-			var:humanist_idea == 3
+			var:reformist_idea == 3
 		}
 		change_variable = {
-			name = humanist_idea
+			name = reformist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = humanist_idea_4_mdf
+					has_modifier = reformist_idea_4_mdf
 				}
 			}
 			add_modifier = {
-				name = humanist_idea_4_mdf
+				name = reformist_idea_4_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_4 = yes
 	}
 	else_if = {
 		limit = {
-			var:humanist_idea == 4
+			var:reformist_idea == 4
 		}
 		change_variable = {
-			name = humanist_idea
+			name = reformist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = humanist_idea_5_mdf
+					has_modifier = reformist_idea_5_mdf
 				}
 			}
 			add_modifier = {
-				name = humanist_idea_5_mdf
+				name = reformist_idea_5_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_5 = yes
 	}
 	else_if = {
 		limit = {
-			var:humanist_idea == 5
+			var:reformist_idea == 5
 		}
 		change_variable = {
-			name = humanist_idea
+			name = reformist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = humanist_idea_6_mdf
+					has_modifier = reformist_idea_6_mdf
 				}
 			}
 			add_modifier = {
-				name = humanist_idea_6_mdf
+				name = reformist_idea_6_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_6 = yes
 	}
 	else_if = {
 		limit = {
-			var:humanist_idea == 6
+			var:reformist_idea == 6
 		}
 		change_variable = {
-			name = humanist_idea
+			name = reformist_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = humanist_idea_7_mdf
+					has_modifier = reformist_idea_7_mdf
 				}
 			}
 			add_modifier = {
-				name = humanist_idea_7_mdf
+				name = reformist_idea_7_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
-		set_variable = humanist_idea_completed
+		ve_idea_purchase_7 = yes
+		set_variable = reformist_idea_completed
+		add_modifier = {
+			name = reformist_ambition_mdf
+			months = -1
+		}
 	}
 }
 
-boost_synd_idea_effect = {
+boost_labour_idea_effect = {
 	if = {
 		limit = {
-			var:syndicalism_idea == 0
+			var:labour_idea == 0
 		}
 		change_variable = {
-			name = syndicalism_idea
+			name = labour_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = syndicalism_idea_1_mdf
+					has_modifier = labour_idea_1_mdf
 				}
 			}
 			add_modifier = {
-				name = syndicalism_idea_1_mdf
+				name = labour_idea_1_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_1 = yes
 	}
 	else_if = {
 		limit = {
-			var:syndicalism_idea == 1
+			var:labour_idea == 1
 		}
 		change_variable = {
-			name = syndicalism_idea
+			name = labour_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = syndicalism_idea_2_mdf
+					has_modifier = labour_idea_2_mdf
 				}
 			}
 			add_modifier = {
-				name = syndicalism_idea_2_mdf
+				name = labour_idea_2_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_2 = yes
 	}
 	else_if = {
 		limit = {
-			var:syndicalism_idea == 2
+			var:labour_idea == 2
 		}
 		change_variable = {
-			name = syndicalism_idea
+			name = labour_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = syndicalism_idea_3_mdf
+					has_modifier = labour_idea_3_mdf
 				}
 			}
 			add_modifier = {
-				name = syndicalism_idea_3_mdf
+				name = labour_idea_3_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_3 = yes
 	}
 	else_if = {
 		limit = {
-			var:syndicalism_idea == 3
+			var:labour_idea == 3
 		}
 		change_variable = {
-			name = syndicalism_idea
+			name = labour_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = syndicalism_idea_4_mdf
+					has_modifier = labour_idea_4_mdf
 				}
 			}
 			add_modifier = {
-				name = syndicalism_idea_4_mdf
+				name = labour_idea_4_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_4 = yes
 	}
 	else_if = {
 		limit = {
-			var:syndicalism_idea == 4
+			var:labour_idea == 4
 		}
 		change_variable = {
-			name = syndicalism_idea
+			name = labour_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = syndicalism_idea_5_mdf
+					has_modifier = labour_idea_5_mdf
 				}
 			}
 			add_modifier = {
-				name = syndicalism_idea_5_mdf
+				name = labour_idea_5_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_5 = yes
 	}
 	else_if = {
 		limit = {
-			var:syndicalism_idea == 5
+			var:labour_idea == 5
 		}
 		change_variable = {
-			name = syndicalism_idea
+			name = labour_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = syndicalism_idea_6_mdf
+					has_modifier = labour_idea_6_mdf
 				}
 			}
 			add_modifier = {
-				name = syndicalism_idea_6_mdf
+				name = labour_idea_6_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_6 = yes
 	}
 	else_if = {
 		limit = {
-			var:syndicalism_idea == 6
+			var:labour_idea == 6
 		}
 		change_variable = {
-			name = syndicalism_idea
+			name = labour_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = syndicalism_idea_7_mdf
+					has_modifier = labour_idea_7_mdf
 				}
 			}
 			add_modifier = {
-				name = syndicalism_idea_7_mdf
+				name = labour_idea_7_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
-		set_variable = syndicalism_idea_completed
+		ve_idea_purchase_7 = yes
+		set_variable = labour_idea_completed
+		add_modifier = {
+			name = labour_ambition_mdf
+			months = -1
+		}
 	}
 }
 
-boost_off_idea_effect = {
+boost_offensive_idea_effect = {
 	if = {
 		limit = {
 			var:offensive_idea == 0
@@ -2185,15 +1655,6 @@ boost_off_idea_effect = {
 		change_variable = {
 			name = offensive_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2206,7 +1667,7 @@ boost_off_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_1 = yes
 	}
 	else_if = {
 		limit = {
@@ -2215,15 +1676,6 @@ boost_off_idea_effect = {
 		change_variable = {
 			name = offensive_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2236,7 +1688,7 @@ boost_off_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_2 = yes
 	}
 	else_if = {
 		limit = {
@@ -2245,15 +1697,6 @@ boost_off_idea_effect = {
 		change_variable = {
 			name = offensive_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2266,7 +1709,7 @@ boost_off_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_3 = yes
 	}
 	else_if = {
 		limit = {
@@ -2275,15 +1718,6 @@ boost_off_idea_effect = {
 		change_variable = {
 			name = offensive_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2296,7 +1730,7 @@ boost_off_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_4 = yes
 	}
 	else_if = {
 		limit = {
@@ -2305,15 +1739,6 @@ boost_off_idea_effect = {
 		change_variable = {
 			name = offensive_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2326,7 +1751,7 @@ boost_off_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_5 = yes
 	}
 	else_if = {
 		limit = {
@@ -2335,15 +1760,6 @@ boost_off_idea_effect = {
 		change_variable = {
 			name = offensive_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2356,7 +1772,7 @@ boost_off_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_6 = yes
 	}
 	else_if = {
 		limit = {
@@ -2365,15 +1781,6 @@ boost_off_idea_effect = {
 		change_variable = {
 			name = offensive_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2386,12 +1793,16 @@ boost_off_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_7 = yes
 		set_variable = offensive_idea_completed
+		add_modifier = {
+			name = offensive_ambition_mdf
+			months = -1
+		}
 	}
 }
 
-boost_def_idea_effect = {
+boost_defensive_idea_effect = {
 	if = {
 		limit = {
 			var:defensive_idea == 0
@@ -2399,15 +1810,6 @@ boost_def_idea_effect = {
 		change_variable = {
 			name = defensive_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2420,7 +1822,7 @@ boost_def_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_1 = yes
 	}
 	else_if = {
 		limit = {
@@ -2429,15 +1831,6 @@ boost_def_idea_effect = {
 		change_variable = {
 			name = defensive_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2450,7 +1843,7 @@ boost_def_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_2 = yes
 	}
 	else_if = {
 		limit = {
@@ -2459,15 +1852,6 @@ boost_def_idea_effect = {
 		change_variable = {
 			name = defensive_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2480,7 +1864,7 @@ boost_def_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_3 = yes
 	}
 	else_if = {
 		limit = {
@@ -2489,15 +1873,6 @@ boost_def_idea_effect = {
 		change_variable = {
 			name = defensive_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2510,7 +1885,7 @@ boost_def_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_4 = yes
 	}
 	else_if = {
 		limit = {
@@ -2519,15 +1894,6 @@ boost_def_idea_effect = {
 		change_variable = {
 			name = defensive_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2540,7 +1906,7 @@ boost_def_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_5 = yes
 	}
 	else_if = {
 		limit = {
@@ -2549,15 +1915,6 @@ boost_def_idea_effect = {
 		change_variable = {
 			name = defensive_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2570,7 +1927,7 @@ boost_def_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_6 = yes
 	}
 	else_if = {
 		limit = {
@@ -2579,15 +1936,6 @@ boost_def_idea_effect = {
 		change_variable = {
 			name = defensive_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2600,12 +1948,16 @@ boost_def_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_7 = yes
 		set_variable = defensive_idea_completed
+		add_modifier = {
+			name = defensive_ambition_mdf
+			months = -1
+		}
 	}
 }
 
-boost_nav_idea_effect = {
+boost_naval_idea_effect = {
 	if = {
 		limit = {
 			var:naval_idea == 0
@@ -2613,15 +1965,6 @@ boost_nav_idea_effect = {
 		change_variable = {
 			name = naval_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2634,7 +1977,7 @@ boost_nav_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_1 = yes
 	}
 	else_if = {
 		limit = {
@@ -2643,15 +1986,6 @@ boost_nav_idea_effect = {
 		change_variable = {
 			name = naval_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2664,7 +1998,7 @@ boost_nav_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_2 = yes
 	}
 	else_if = {
 		limit = {
@@ -2673,15 +2007,6 @@ boost_nav_idea_effect = {
 		change_variable = {
 			name = naval_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2694,7 +2019,7 @@ boost_nav_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_3 = yes
 	}
 	else_if = {
 		limit = {
@@ -2703,15 +2028,6 @@ boost_nav_idea_effect = {
 		change_variable = {
 			name = naval_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2724,7 +2040,7 @@ boost_nav_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_4 = yes
 	}
 	else_if = {
 		limit = {
@@ -2733,15 +2049,6 @@ boost_nav_idea_effect = {
 		change_variable = {
 			name = naval_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2754,7 +2061,7 @@ boost_nav_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_5 = yes
 	}
 	else_if = {
 		limit = {
@@ -2763,15 +2070,6 @@ boost_nav_idea_effect = {
 		change_variable = {
 			name = naval_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2784,7 +2082,7 @@ boost_nav_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_6 = yes
 	}
 	else_if = {
 		limit = {
@@ -2793,15 +2091,6 @@ boost_nav_idea_effect = {
 		change_variable = {
 			name = naval_idea
 			add = 1
-		}
-		if = {
-			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
 		}
 		if = {
 			limit = {
@@ -2814,435 +2103,1252 @@ boost_nav_idea_effect = {
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_7 = yes
 		set_variable = naval_idea_completed
+		add_modifier = {
+			name = naval_ambition_mdf
+			months = -1
+		}
 	}
 }
 
-boost_mil_idea_effect = {
+boost_professional_army_idea_effect = {
 	if = {
 		limit = {
-			var:militarization_idea == 0
+			var:professional_army_idea == 0
 		}
 		change_variable = {
-			name = militarization_idea
+			name = professional_army_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = militarization_idea_1_mdf
+					has_modifier = professional_army_idea_1_mdf
 				}
 			}
 			add_modifier = {
-				name = militarization_idea_1_mdf
+				name = professional_army_idea_1_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_1 = yes
 	}
 	else_if = {
 		limit = {
-			var:militarization_idea == 1
+			var:professional_army_idea == 1
 		}
 		change_variable = {
-			name = militarization_idea
+			name = professional_army_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = militarization_idea_2_mdf
+					has_modifier = professional_army_idea_2_mdf
 				}
 			}
 			add_modifier = {
-				name = militarization_idea_2_mdf
+				name = professional_army_idea_2_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_2 = yes
 	}
 	else_if = {
 		limit = {
-			var:militarization_idea == 2
+			var:professional_army_idea == 2
 		}
 		change_variable = {
-			name = militarization_idea
+			name = professional_army_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = militarization_idea_3_mdf
+					has_modifier = professional_army_idea_3_mdf
 				}
 			}
 			add_modifier = {
-				name = militarization_idea_3_mdf
+				name = professional_army_idea_3_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_3 = yes
 	}
 	else_if = {
 		limit = {
-			var:militarization_idea == 3
+			var:professional_army_idea == 3
 		}
 		change_variable = {
-			name = militarization_idea
+			name = professional_army_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = militarization_idea_4_mdf
+					has_modifier = professional_army_idea_4_mdf
 				}
 			}
 			add_modifier = {
-				name = militarization_idea_4_mdf
+				name = professional_army_idea_4_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_4 = yes
 	}
 	else_if = {
 		limit = {
-			var:militarization_idea == 4
+			var:professional_army_idea == 4
 		}
 		change_variable = {
-			name = militarization_idea
+			name = professional_army_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = militarization_idea_5_mdf
+					has_modifier = professional_army_idea_5_mdf
 				}
 			}
 			add_modifier = {
-				name = militarization_idea_5_mdf
+				name = professional_army_idea_5_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_5 = yes
 	}
 	else_if = {
 		limit = {
-			var:militarization_idea == 5
+			var:professional_army_idea == 5
 		}
 		change_variable = {
-			name = militarization_idea
+			name = professional_army_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = militarization_idea_6_mdf
+					has_modifier = professional_army_idea_6_mdf
 				}
 			}
 			add_modifier = {
-				name = militarization_idea_6_mdf
+				name = professional_army_idea_6_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_6 = yes
 	}
 	else_if = {
 		limit = {
-			var:militarization_idea == 6
+			var:professional_army_idea == 6
 		}
 		change_variable = {
-			name = militarization_idea
+			name = professional_army_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = militarization_idea_7_mdf
+					has_modifier = professional_army_idea_7_mdf
 				}
 			}
 			add_modifier = {
-				name = militarization_idea_7_mdf
+				name = professional_army_idea_7_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
-		set_variable = militarization_idea_completed
+		ve_idea_purchase_7 = yes
+		set_variable = professional_army_idea_completed
+		add_modifier = {
+			name = professional_army_ambition_mdf
+			months = -1
+		}
 	}
 }
 
-boost_imp_idea_effect = {
+boost_colonial_idea_effect = {
 	if = {
 		limit = {
-			var:imperialist_idea == 0
+			var:colonial_idea == 0
 		}
 		change_variable = {
-			name = imperialist_idea
+			name = colonial_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = imperialist_idea_1_mdf
+					has_modifier = colonial_idea_1_mdf
 				}
 			}
 			add_modifier = {
-				name = imperialist_idea_1_mdf
+				name = colonial_idea_1_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_1 = yes
 	}
 	else_if = {
 		limit = {
-			var:imperialist_idea == 1
+			var:colonial_idea == 1
 		}
 		change_variable = {
-			name = imperialist_idea
+			name = colonial_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = imperialist_idea_2_mdf
+					has_modifier = colonial_idea_2_mdf
 				}
 			}
 			add_modifier = {
-				name = imperialist_idea_2_mdf
+				name = colonial_idea_2_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_2 = yes
 	}
 	else_if = {
 		limit = {
-			var:imperialist_idea == 2
+			var:colonial_idea == 2
 		}
 		change_variable = {
-			name = imperialist_idea
+			name = colonial_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = imperialist_idea_3_mdf
+					has_modifier = colonial_idea_3_mdf
 				}
 			}
 			add_modifier = {
-				name = imperialist_idea_3_mdf
+				name = colonial_idea_3_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_3 = yes
 	}
 	else_if = {
 		limit = {
-			var:imperialist_idea == 3
+			var:colonial_idea == 3
 		}
 		change_variable = {
-			name = imperialist_idea
+			name = colonial_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = imperialist_idea_4_mdf
+					has_modifier = colonial_idea_4_mdf
 				}
 			}
 			add_modifier = {
-				name = imperialist_idea_4_mdf
+				name = colonial_idea_4_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_4 = yes
 	}
 	else_if = {
 		limit = {
-			var:imperialist_idea == 4
+			var:colonial_idea == 4
 		}
 		change_variable = {
-			name = imperialist_idea
+			name = colonial_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = imperialist_idea_5_mdf
+					has_modifier = colonial_idea_5_mdf
 				}
 			}
 			add_modifier = {
-				name = imperialist_idea_5_mdf
+				name = colonial_idea_5_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_5 = yes
 	}
 	else_if = {
 		limit = {
-			var:imperialist_idea == 5
+			var:colonial_idea == 5
 		}
 		change_variable = {
-			name = imperialist_idea
+			name = colonial_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
-			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
-			}
-		}
-		if = {
-			limit = {
 				NOT = {
-					has_modifier = imperialist_idea_6_mdf
+					has_modifier = colonial_idea_6_mdf
 				}
 			}
 			add_modifier = {
-				name = imperialist_idea_6_mdf
+				name = colonial_idea_6_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
+		ve_idea_purchase_6 = yes
 	}
 	else_if = {
 		limit = {
-			var:imperialist_idea == 6
+			var:colonial_idea == 6
 		}
 		change_variable = {
-			name = imperialist_idea
+			name = colonial_idea
 			add = 1
 		}
 		if = {
 			limit = {
-				var:national_idea_pool < 200
+				NOT = {
+					has_modifier = colonial_idea_7_mdf
+				}
 			}
-			change_variable = {
-				name = national_idea_pool
-				add = 1
+			add_modifier = {
+				name = colonial_idea_7_mdf
+				months = -1
 			}
+		}
+		ve_idea_purchase_7 = yes
+		set_variable = colonial_idea_completed
+		add_modifier = {
+			name = colonial_ambition_mdf
+			months = -1
+		}
+	}
+}
+
+boost_financial_idea_effect = {
+	if = {
+		limit = {
+			var:financial_idea == 0
+		}
+		change_variable = {
+			name = financial_idea
+			add = 1
 		}
 		if = {
 			limit = {
 				NOT = {
-					has_modifier = imperialist_idea_7_mdf
+					has_modifier = financial_idea_1_mdf
 				}
 			}
 			add_modifier = {
-				name = imperialist_idea_7_mdf
+				name = financial_idea_1_mdf
 				months = -1
 			}
 		}
-		idea_cost = yes
-		set_variable = imperialist_idea_completed
+		ve_idea_purchase_1 = yes
+	}
+	else_if = {
+		limit = {
+			var:financial_idea == 1
+		}
+		change_variable = {
+			name = financial_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = financial_idea_2_mdf
+				}
+			}
+			add_modifier = {
+				name = financial_idea_2_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_2 = yes
+	}
+	else_if = {
+		limit = {
+			var:financial_idea == 2
+		}
+		change_variable = {
+			name = financial_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = financial_idea_3_mdf
+				}
+			}
+			add_modifier = {
+				name = financial_idea_3_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_3 = yes
+	}
+	else_if = {
+		limit = {
+			var:financial_idea == 3
+		}
+		change_variable = {
+			name = financial_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = financial_idea_4_mdf
+				}
+			}
+			add_modifier = {
+				name = financial_idea_4_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_4 = yes
+	}
+	else_if = {
+		limit = {
+			var:financial_idea == 4
+		}
+		change_variable = {
+			name = financial_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = financial_idea_5_mdf
+				}
+			}
+			add_modifier = {
+				name = financial_idea_5_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_5 = yes
+	}
+	else_if = {
+		limit = {
+			var:financial_idea == 5
+		}
+		change_variable = {
+			name = financial_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = financial_idea_6_mdf
+				}
+			}
+			add_modifier = {
+				name = financial_idea_6_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_6 = yes
+	}
+	else_if = {
+		limit = {
+			var:financial_idea == 6
+		}
+		change_variable = {
+			name = financial_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = financial_idea_7_mdf
+				}
+			}
+			add_modifier = {
+				name = financial_idea_7_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_7 = yes
+		set_variable = financial_idea_completed
+		add_modifier = {
+			name = financial_ambition_mdf
+			months = -1
+		}
+	}
+}
+
+boost_infrastructure_idea_effect = {
+	if = {
+		limit = {
+			var:infrastructure_idea == 0
+		}
+		change_variable = {
+			name = infrastructure_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = infrastructure_idea_1_mdf
+				}
+			}
+			add_modifier = {
+				name = infrastructure_idea_1_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_1 = yes
+	}
+	else_if = {
+		limit = {
+			var:infrastructure_idea == 1
+		}
+		change_variable = {
+			name = infrastructure_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = infrastructure_idea_2_mdf
+				}
+			}
+			add_modifier = {
+				name = infrastructure_idea_2_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_2 = yes
+	}
+	else_if = {
+		limit = {
+			var:infrastructure_idea == 2
+		}
+		change_variable = {
+			name = infrastructure_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = infrastructure_idea_3_mdf
+				}
+			}
+			add_modifier = {
+				name = infrastructure_idea_3_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_3 = yes
+	}
+	else_if = {
+		limit = {
+			var:infrastructure_idea == 3
+		}
+		change_variable = {
+			name = infrastructure_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = infrastructure_idea_4_mdf
+				}
+			}
+			add_modifier = {
+				name = infrastructure_idea_4_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_4 = yes
+	}
+	else_if = {
+		limit = {
+			var:infrastructure_idea == 4
+		}
+		change_variable = {
+			name = infrastructure_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = infrastructure_idea_5_mdf
+				}
+			}
+			add_modifier = {
+				name = infrastructure_idea_5_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_5 = yes
+	}
+	else_if = {
+		limit = {
+			var:infrastructure_idea == 5
+		}
+		change_variable = {
+			name = infrastructure_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = infrastructure_idea_6_mdf
+				}
+			}
+			add_modifier = {
+				name = infrastructure_idea_6_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_6 = yes
+	}
+	else_if = {
+		limit = {
+			var:infrastructure_idea == 6
+		}
+		change_variable = {
+			name = infrastructure_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = infrastructure_idea_7_mdf
+				}
+			}
+			add_modifier = {
+				name = infrastructure_idea_7_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_7 = yes
+		set_variable = infrastructure_idea_completed
+		add_modifier = {
+			name = infrastructure_ambition_mdf
+			months = -1
+		}
+	}
+}
+
+boost_extraction_idea_effect = {
+	if = {
+		limit = {
+			var:extraction_idea == 0
+		}
+		change_variable = {
+			name = extraction_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = extraction_idea_1_mdf
+				}
+			}
+			add_modifier = {
+				name = extraction_idea_1_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_1 = yes
+	}
+	else_if = {
+		limit = {
+			var:extraction_idea == 1
+		}
+		change_variable = {
+			name = extraction_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = extraction_idea_2_mdf
+				}
+			}
+			add_modifier = {
+				name = extraction_idea_2_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_2 = yes
+	}
+	else_if = {
+		limit = {
+			var:extraction_idea == 2
+		}
+		change_variable = {
+			name = extraction_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = extraction_idea_3_mdf
+				}
+			}
+			add_modifier = {
+				name = extraction_idea_3_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_3 = yes
+	}
+	else_if = {
+		limit = {
+			var:extraction_idea == 3
+		}
+		change_variable = {
+			name = extraction_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = extraction_idea_4_mdf
+				}
+			}
+			add_modifier = {
+				name = extraction_idea_4_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_4 = yes
+	}
+	else_if = {
+		limit = {
+			var:extraction_idea == 4
+		}
+		change_variable = {
+			name = extraction_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = extraction_idea_5_mdf
+				}
+			}
+			add_modifier = {
+				name = extraction_idea_5_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_5 = yes
+	}
+	else_if = {
+		limit = {
+			var:extraction_idea == 5
+		}
+		change_variable = {
+			name = extraction_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = extraction_idea_6_mdf
+				}
+			}
+			add_modifier = {
+				name = extraction_idea_6_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_6 = yes
+	}
+	else_if = {
+		limit = {
+			var:extraction_idea == 6
+			has_global_variable = age_3_started_trigger
+		}
+		change_variable = {
+			name = extraction_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = extraction_idea_7_mdf
+				}
+			}
+			add_modifier = {
+				name = extraction_idea_7_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_7 = yes
+		set_variable = extraction_idea_completed
+		add_modifier = {
+			name = extraction_ambition_mdf
+			months = -1
+		}
+	}
+}
+
+boost_mass_conscription_idea_effect = {
+	if = {
+		limit = {
+			var:mass_conscription_idea == 0
+		}
+		change_variable = {
+			name = mass_conscription_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = mass_conscription_idea_1_mdf
+				}
+			}
+			add_modifier = {
+				name = mass_conscription_idea_1_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_1 = yes
+	}
+	else_if = {
+		limit = {
+			var:mass_conscription_idea == 1
+		}
+		change_variable = {
+			name = mass_conscription_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = mass_conscription_idea_2_mdf
+				}
+			}
+			add_modifier = {
+				name = mass_conscription_idea_2_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_2 = yes
+	}
+	else_if = {
+		limit = {
+			var:mass_conscription_idea == 2
+		}
+		change_variable = {
+			name = mass_conscription_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = mass_conscription_idea_3_mdf
+				}
+			}
+			add_modifier = {
+				name = mass_conscription_idea_3_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_3 = yes
+	}
+	else_if = {
+		limit = {
+			var:mass_conscription_idea == 3
+		}
+		change_variable = {
+			name = mass_conscription_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = mass_conscription_idea_4_mdf
+				}
+			}
+			add_modifier = {
+				name = mass_conscription_idea_4_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_4 = yes
+	}
+	else_if = {
+		limit = {
+			var:mass_conscription_idea == 4
+		}
+		change_variable = {
+			name = mass_conscription_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = mass_conscription_idea_5_mdf
+				}
+			}
+			add_modifier = {
+				name = mass_conscription_idea_5_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_5 = yes
+	}
+	else_if = {
+		limit = {
+			var:mass_conscription_idea == 5
+		}
+		change_variable = {
+			name = mass_conscription_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = mass_conscription_idea_6_mdf
+				}
+			}
+			add_modifier = {
+				name = mass_conscription_idea_6_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_6 = yes
+	}
+	else_if = {
+		limit = {
+			var:mass_conscription_idea == 6
+		}
+		change_variable = {
+			name = mass_conscription_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = mass_conscription_idea_7_mdf
+				}
+			}
+			add_modifier = {
+				name = mass_conscription_idea_7_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_7 = yes
+		set_variable = mass_conscription_idea_completed
+		add_modifier = {
+			name = mass_conscription_ambition_mdf
+			months = -1
+		}
+	}
+}
+
+boost_war_economy_idea_effect = {
+	if = {
+		limit = {
+			var:war_economy_idea == 0
+		}
+		change_variable = {
+			name = war_economy_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = war_economy_idea_1_mdf
+				}
+			}
+			add_modifier = {
+				name = war_economy_idea_1_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_1 = yes
+	}
+	else_if = {
+		limit = {
+			var:war_economy_idea == 1
+		}
+		change_variable = {
+			name = war_economy_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = war_economy_idea_2_mdf
+				}
+			}
+			add_modifier = {
+				name = war_economy_idea_2_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_2 = yes
+	}
+	else_if = {
+		limit = {
+			var:war_economy_idea == 2
+		}
+		change_variable = {
+			name = war_economy_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = war_economy_idea_3_mdf
+				}
+			}
+			add_modifier = {
+				name = war_economy_idea_3_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_3 = yes
+	}
+	else_if = {
+		limit = {
+			var:war_economy_idea == 3
+		}
+		change_variable = {
+			name = war_economy_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = war_economy_idea_4_mdf
+				}
+			}
+			add_modifier = {
+				name = war_economy_idea_4_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_4 = yes
+	}
+	else_if = {
+		limit = {
+			var:war_economy_idea == 4
+		}
+		change_variable = {
+			name = war_economy_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = war_economy_idea_5_mdf
+				}
+			}
+			add_modifier = {
+				name = war_economy_idea_5_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_5 = yes
+	}
+	else_if = {
+		limit = {
+			var:war_economy_idea == 5
+		}
+		change_variable = {
+			name = war_economy_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = war_economy_idea_6_mdf
+				}
+			}
+			add_modifier = {
+				name = war_economy_idea_6_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_6 = yes
+	}
+	else_if = {
+		limit = {
+			var:war_economy_idea == 6
+		}
+		change_variable = {
+			name = war_economy_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = war_economy_idea_7_mdf
+				}
+			}
+			add_modifier = {
+				name = war_economy_idea_7_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_7 = yes
+		set_variable = war_economy_idea_completed
+		add_modifier = {
+			name = war_economy_ambition_mdf
+			months = -1
+		}
+	}
+}
+
+boost_agrarian_idea_effect = {
+	if = {
+		limit = {
+			var:agrarian_idea == 0
+		}
+		change_variable = {
+			name = agrarian_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = agrarian_idea_1_mdf
+				}
+			}
+			add_modifier = {
+				name = agrarian_idea_1_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_1 = yes
+	}
+	else_if = {
+		limit = {
+			var:agrarian_idea == 1
+		}
+		change_variable = {
+			name = agrarian_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = agrarian_idea_2_mdf
+				}
+			}
+			add_modifier = {
+				name = agrarian_idea_2_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_2 = yes
+	}
+	else_if = {
+		limit = {
+			var:agrarian_idea == 2
+		}
+		change_variable = {
+			name = agrarian_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = agrarian_idea_3_mdf
+				}
+			}
+			add_modifier = {
+				name = agrarian_idea_3_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_3 = yes
+	}
+	else_if = {
+		limit = {
+			var:agrarian_idea == 3
+		}
+		change_variable = {
+			name = agrarian_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = agrarian_idea_4_mdf
+				}
+			}
+			add_modifier = {
+				name = agrarian_idea_4_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_4 = yes
+	}
+	else_if = {
+		limit = {
+			var:agrarian_idea == 4
+		}
+		change_variable = {
+			name = agrarian_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = agrarian_idea_5_mdf
+				}
+			}
+			add_modifier = {
+				name = agrarian_idea_5_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_5 = yes
+	}
+	else_if = {
+		limit = {
+			var:agrarian_idea == 5
+		}
+		change_variable = {
+			name = agrarian_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = agrarian_idea_6_mdf
+				}
+			}
+			add_modifier = {
+				name = agrarian_idea_6_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_6 = yes
+	}
+	else_if = {
+		limit = {
+			var:agrarian_idea == 6
+		}
+		change_variable = {
+			name = agrarian_idea
+			add = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_modifier = agrarian_idea_7_mdf
+				}
+			}
+			add_modifier = {
+				name = agrarian_idea_7_mdf
+				months = -1
+			}
+		}
+		ve_idea_purchase_7 = yes
+		set_variable = agrarian_idea_completed
+		add_modifier = {
+			name = agrarian_ambition_mdf
+			months = -1
+		}
 	}
 }

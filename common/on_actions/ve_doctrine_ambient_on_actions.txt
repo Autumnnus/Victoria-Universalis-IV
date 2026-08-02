@@ -1,0 +1,19 @@
+# Half-yearly carrier for Phase 4 Idea Group ambient content.
+#
+# The 25/75 random list is the single global frequency roll. Category and group
+# selection are delegated to scripted effects so later event packs can extend
+# their own branch without widening this on-action.
+ve_doctrine_ambient_half_yearly = {
+	trigger = {
+		ve_can_roll_doctrine_ambient_event = yes
+	}
+
+	effect = {
+		random_list = {
+			25 = {
+				ve_doctrine_ambient_dispatch_category = yes
+			}
+			75 = { }
+		}
+	}
+}

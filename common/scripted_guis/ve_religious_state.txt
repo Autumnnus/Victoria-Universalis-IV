@@ -1,0 +1,293 @@
+﻿ve_aspect_button_1 = {
+	scope = country
+	is_shown = { NOT = { ve_has_religious_program_1 = yes } }
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_program_1_tt
+			ve_religious_program_affordable = yes
+		}
+		NOT = { ve_has_religious_program_1 = yes }
+	}
+	effect = { ve_adopt_religious_program_1 = yes }
+}
+
+ve_aspect_button_2 = {
+	scope = country
+	is_shown = { NOT = { ve_has_religious_program_2 = yes } }
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_program_2_tt
+			ve_religious_program_affordable = yes
+		}
+		NOT = { ve_has_religious_program_2 = yes }
+	}
+	effect = { ve_adopt_religious_program_2 = yes }
+}
+
+ve_aspect_button_3 = {
+	scope = country
+	is_shown = { NOT = { ve_has_religious_program_3 = yes } }
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_program_3_tt
+			ve_religious_program_affordable = yes
+		}
+		NOT = { ve_has_religious_program_3 = yes }
+	}
+	effect = { ve_adopt_religious_program_3 = yes }
+}
+
+ve_aspect_button_4 = {
+	scope = country
+	is_shown = { NOT = { ve_has_religious_program_4 = yes } }
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_program_4_tt
+			ve_religious_program_affordable = yes
+		}
+		NOT = { ve_has_religious_program_4 = yes }
+	}
+	effect = { ve_adopt_religious_program_4 = yes }
+}
+
+ve_aspect_button_5 = {
+	scope = country
+	is_shown = { NOT = { ve_has_religious_program_5 = yes } }
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_program_5_tt
+			ve_religious_program_affordable = yes
+		}
+		NOT = { ve_has_religious_program_5 = yes }
+	}
+	effect = { ve_adopt_religious_program_5 = yes }
+}
+
+ve_aspect_button_6 = {
+	scope = country
+	is_shown = { NOT = { ve_has_religious_program_6 = yes } }
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_program_6_tt
+			ve_religious_program_affordable = yes
+		}
+		NOT = { ve_has_religious_program_6 = yes }
+	}
+	effect = { ve_adopt_religious_program_6 = yes }
+}
+
+ve_aspect_button_7 = {
+	scope = country
+	is_shown = { NOT = { ve_has_religious_program_7 = yes } }
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_program_7_tt
+			ve_religious_program_affordable = yes
+		}
+		NOT = { ve_has_religious_program_7 = yes }
+	}
+	effect = { ve_adopt_religious_program_7 = yes }
+}
+
+ve_aspect_button_8 = {
+	scope = country
+	is_shown = { NOT = { ve_has_religious_program_8 = yes } }
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_program_8_tt
+			ve_religious_program_affordable = yes
+		}
+		NOT = { ve_has_religious_program_8 = yes }
+	}
+	effect = { ve_adopt_religious_program_8 = yes }
+}
+
+# Phase 7: Targeted Religious Project (replaces the missionary system).
+# Mirrors common/scripted_guis/ve_cultural_projects.txt.
+
+ve_begin_targeted_religious_project_state = {
+	scope = state
+	saved_scopes = { country2 }
+	is_shown = {
+		owner = scope:country2
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = ve_religious_project_req_model
+			scope:country2 = { ve_religious_project_enabled = yes }
+		}
+		custom_tooltip = {
+			text = ve_religious_project_req_no_active
+			scope:country2 = { ve_has_no_active_religious_project = yes }
+		}
+		custom_tooltip = {
+			text = ve_religious_project_req_no_backlash
+			scope:country2 = { NOT = { has_modifier = ve_religious_project_backlash_mdf } }
+		}
+		custom_tooltip = {
+			text = ve_religious_project_req_reform_point
+			scope:country2 = { ve_country_meets_religious_project_cost = yes }
+		}
+		custom_tooltip = {
+			text = ve_religious_project_req_target
+			NOT = {
+				religion_percent_state = {
+					target = scope:country2.religion
+					value >= 0.90
+				}
+			}
+		}
+	}
+	effect = {
+		ve_begin_targeted_religious_project = yes
+	}
+}
+
+ve_cancel_targeted_religious_project_state = {
+	scope = state
+	saved_scopes = { country4 }
+	is_shown = {
+		has_modifier = ve_religious_project_active_mdf
+	}
+	is_valid = {
+		scope:country4 = { ve_religious_project_is_targeted = yes }
+		custom_tooltip = {
+			text = ve_religious_project_cancel_warning
+			always = yes
+		}
+	}
+	effect = {
+		scope:country4 = { ve_cancel_religious_project = yes }
+	}
+}
+
+# Country-scope readouts for gui/ve_panel_religion.gui. These mirror the
+# cultural-project pair in common/scripted_guis/ve_cultural_projects.txt so both
+# pages can branch between an "active project" card and a "no project" card, and
+# can warn about the two blocking timers.
+ve_has_active_religious_project_gui = {
+	scope = country
+	is_shown = {
+		ve_has_active_religious_project = yes
+	}
+}
+
+ve_has_no_active_religious_project_gui = {
+	scope = country
+	is_shown = {
+		ve_has_no_active_religious_project = yes
+	}
+}
+
+# Cancel from the Religion page instead of the target state's panel. The state
+# scoped ve_cancel_targeted_religious_project_state stays as it is for the state
+# panel button.
+ve_cancel_religious_project_gui = {
+	scope = country
+	is_shown = {
+		ve_has_active_religious_project = yes
+	}
+	is_valid = {
+		ve_has_active_religious_project = yes
+		custom_tooltip = {
+			text = ve_religious_project_cancel_warning
+			always = yes
+		}
+	}
+	effect = {
+		ve_cancel_religious_project = yes
+	}
+}
+
+ve_religious_program_strain_gui = {
+	scope = country
+	is_shown = {
+		has_modifier = ve_religious_program_strain_mdf
+	}
+}
+
+ve_religious_project_backlash_gui = {
+	scope = country
+	is_shown = {
+		has_modifier = ve_religious_project_backlash_mdf
+	}
+}
+
+# Phase 7 UI: is THIS state the owner's active project target? Drives the
+# per-state progress bar in states_panel.gui.
+ve_state_active_religious_project_gui = {
+	scope = state
+	is_shown = {
+		ve_state_is_active_religious_project_target = yes
+	}
+}
+
+ve_passive_bonus_tooltip = {
+	scope = country
+	effect = {
+		if = {
+			limit = { ve_is_confessional_state = yes }
+			add_modifier = { name = ve_confessional_settlement_mdf months = -1 }
+			if = {
+				limit = {
+					OR = {
+						country_has_state_religion = rel:catholic
+						country_has_state_religion = rel:protestant
+						country_has_state_religion = rel:orthodox
+						country_has_state_religion = rel:oriental_orthodox
+					}
+				}
+				add_modifier = { name = ve_confessional_christian_family_mdf months = -1 }
+			}
+			else_if = {
+				limit = {
+					OR = {
+						country_has_state_religion = rel:sunni
+						country_has_state_religion = rel:shiite
+					}
+				}
+				add_modifier = { name = ve_confessional_islamic_family_mdf months = -1 }
+			}
+			else_if = {
+				limit = { country_has_state_religion = rel:jewish }
+				add_modifier = { name = ve_confessional_jewish_family_mdf months = -1 }
+			}
+			else_if = {
+				limit = {
+					OR = {
+						country_has_state_religion = rel:hindu
+						country_has_state_religion = rel:sikh
+					}
+				}
+				add_modifier = { name = ve_confessional_dharmic_family_mdf months = -1 }
+			}
+			else_if = {
+				limit = {
+					OR = {
+						country_has_state_religion = rel:mahayana
+						country_has_state_religion = rel:gelugpa
+						country_has_state_religion = rel:theravada
+						country_has_state_religion = rel:shinto
+						country_has_state_religion = rel:confucian
+					}
+				}
+				add_modifier = { name = ve_confessional_scholarly_family_mdf months = -1 }
+			}
+			else_if = {
+				limit = { country_has_state_religion = rel:animist }
+				add_modifier = { name = ve_confessional_animist_family_mdf months = -1 }
+			}
+		}
+		else_if = {
+			limit = { ve_is_freedom_state = yes }
+			add_modifier = { name = ve_freedom_settlement_mdf months = -1 }
+		}
+		else_if = {
+			limit = { ve_is_separation_state = yes }
+			add_modifier = { name = ve_separation_settlement_mdf months = -1 }
+		}
+		else = {
+			add_modifier = { name = ve_atheism_settlement_mdf months = -1 }
+		}
+	}
+}

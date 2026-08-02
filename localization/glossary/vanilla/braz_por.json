@@ -1,0 +1,1214 @@
+{
+ "language": "braz_por",
+ "source": "Victoria 3 game localization (read-only reference)",
+ "terms": {
+  "bg_agriculture": {
+   "en": "Agriculture",
+   "target": "Agricultura"
+  },
+  "bg_coffee_plantations": {
+   "en": "Coffee Plantations",
+   "target": "Plantações de Café"
+  },
+  "bg_construction": {
+   "en": "Construction",
+   "target": "Obras"
+  },
+  "bg_extraction": {
+   "en": "Extraction",
+   "target": "Extração"
+  },
+  "bg_infrastructure": {
+   "en": "Infrastructure",
+   "target": "Infraestrutura"
+  },
+  "bg_mining": {
+   "en": "Mines",
+   "target": "Minas"
+  },
+  "bg_monuments": {
+   "en": "Monuments",
+   "target": "Monumentos"
+  },
+  "bg_monuments_hidden": {
+   "en": "Monuments",
+   "target": "Monumentos"
+  },
+  "bg_plantations": {
+   "en": "Plantations",
+   "target": "Plantações"
+  },
+  "bg_shipyards": {
+   "en": "Shipyards",
+   "target": "Estaleiros"
+  },
+  "building_barrack": {
+   "en": "Barracks",
+   "target": "Quartéis"
+  },
+  "building_clerks_shares_add": {
+   "en": "Clerks",
+   "target": "de Funcionários"
+  },
+  "building_clerks_shares_mult": {
+   "en": "Clerks",
+   "target": "de Funcionários"
+  },
+  "building_coffee_plantation": {
+   "en": "Coffee Plantations",
+   "target": "Plantações de Café"
+  },
+  "building_engineers_shares_add": {
+   "en": "Engineers",
+   "target": "de Engenheiros"
+  },
+  "building_engineers_shares_mult": {
+   "en": "Engineers",
+   "target": "de Engenheiros"
+  },
+  "building_gold_field_discovered_resource": {
+   "en": "Gold",
+   "target": "Ouro"
+  },
+  "building_group_bg_agriculture_throughput_add": {
+   "en": "Agriculture Throughput",
+   "target": "Rendimento de Agricultura"
+  },
+  "building_mobilization_cost_mult": {
+   "en": "Requirements",
+   "target": "Requisitos de para"
+  },
+  "building_officers_shares_add": {
+   "en": "Officers",
+   "target": "de Oficiais"
+  },
+  "building_officers_shares_mult": {
+   "en": "Officers",
+   "target": "de Oficiais"
+  },
+  "building_oil_rig_discovered_resource": {
+   "en": "Oil",
+   "target": "Petróleo"
+  },
+  "building_port": {
+   "en": "Port",
+   "target": "Porto"
+  },
+  "building_port_lens_option": {
+   "en": "Port",
+   "target": "Porto"
+  },
+  "building_railway": {
+   "en": "Railway",
+   "target": "Ferrovia"
+  },
+  "building_railway_lens_option": {
+   "en": "Railway",
+   "target": "Ferrovia"
+  },
+  "building_shipyard": {
+   "en": "Shipyards",
+   "target": "Estaleiros"
+  },
+  "building_smallholders_fertility_mult": {
+   "en": "of",
+   "target": "de"
+  },
+  "building_throughput_add": {
+   "en": "Throughput",
+   "target": "Rendimento"
+  },
+  "building_training_rate_add": {
+   "en": "Training Rate",
+   "target": "Taxa de Treinamento"
+  },
+  "building_training_rate_mult": {
+   "en": "Training Rate",
+   "target": "Taxa de Treinamento"
+  },
+  "building_tropical_wood_lodge_lens_option": {
+   "en": "Expand",
+   "target": "Expandir Depósitos de Madeira Tropical"
+  },
+  "building_university": {
+   "en": "University",
+   "target": "Universidade"
+  },
+  "concept_acceptance": {
+   "en": "Acceptance",
+   "target": "Aceitação"
+  },
+  "concept_accepted": {
+   "en": "Accepted",
+   "target": "Aceito"
+  },
+  "concept_agitators": {
+   "en": "Agitators",
+   "target": "Incitantes"
+  },
+  "concept_approval": {
+   "en": "Approval",
+   "target": "Aprovação"
+  },
+  "concept_armies": {
+   "en": "Armies",
+   "target": "Exércitos"
+  },
+  "concept_army": {
+   "en": "Army",
+   "target": "Exército"
+  },
+  "concept_assimilate": {
+   "en": "Assimilate",
+   "target": "Assimilar"
+  },
+  "concept_assimilation": {
+   "en": "Assimilation",
+   "target": "Assimilação"
+  },
+  "concept_authority": {
+   "en": "Authority",
+   "target": "Autoridade"
+  },
+  "concept_autonomy": {
+   "en": "Autonomy",
+   "target": "Autonomia"
+  },
+  "concept_budget_interest": {
+   "en": "Interest",
+   "target": "Juros"
+  },
+  "concept_building": {
+   "en": "Building",
+   "target": "Construção"
+  },
+  "concept_building_balance": {
+   "en": "Balance",
+   "target": "Saldo"
+  },
+  "concept_building_industries": {
+   "en": "Industries",
+   "target": "Indústrias"
+  },
+  "concept_building_industry": {
+   "en": "Industry",
+   "target": "Indústria"
+  },
+  "concept_building_levels": {
+   "en": "Building Levels",
+   "target": "Níveis da Construção"
+  },
+  "concept_building_workplace": {
+   "en": "Workplace",
+   "target": "Ambiente de Trabalho"
+  },
+  "concept_bureaucracy": {
+   "en": "Bureaucracy",
+   "target": "Burocracia"
+  },
+  "concept_buy_orders_demand": {
+   "en": "Demand",
+   "target": "Demanda"
+  },
+  "concept_capacity": {
+   "en": "Capacity",
+   "target": "Artifício"
+  },
+  "concept_casualties": {
+   "en": "Casualties",
+   "target": "Baixas"
+  },
+  "concept_character_role": {
+   "en": "Role",
+   "target": "Função"
+  },
+  "concept_claim": {
+   "en": "Claim",
+   "target": "Reivindicação"
+  },
+  "concept_claims": {
+   "en": "Claims",
+   "target": "Reivindicações"
+  },
+  "concept_clout": {
+   "en": "Clout",
+   "target": "Pressão"
+  },
+  "concept_colonial": {
+   "en": "Colonial",
+   "target": "Colonial"
+  },
+  "concept_command": {
+   "en": "Command",
+   "target": "Comando"
+  },
+  "concept_commanders": {
+   "en": "Commanders",
+   "target": "Comandantes"
+  },
+  "concept_confidence": {
+   "en": "Confidence",
+   "target": "Confiança"
+  },
+  "concept_conscription": {
+   "en": "Conscription",
+   "target": "Conscrição"
+  },
+  "concept_conscription_center_conscription": {
+   "en": "Conscription",
+   "target": "Conscrição"
+  },
+  "concept_construct": {
+   "en": "Construct",
+   "target": "Erguer"
+  },
+  "concept_construction": {
+   "en": "Construction",
+   "target": "Obras"
+  },
+  "concept_conversion": {
+   "en": "Conversion",
+   "target": "Conversão"
+  },
+  "concept_convert": {
+   "en": "Convert",
+   "target": "Converter"
+  },
+  "concept_converting": {
+   "en": "Converting",
+   "target": "Convertendo"
+  },
+  "concept_country_nation": {
+   "en": "Nation",
+   "target": "Nação"
+  },
+  "concept_coup_resist": {
+   "en": "Resist",
+   "target": "Resistir"
+  },
+  "concept_credit": {
+   "en": "Credit",
+   "target": "Crédito"
+  },
+  "concept_cultural": {
+   "en": "Cultural",
+   "target": "Cultural"
+  },
+  "concept_cultural_movements": {
+   "en": "Cultural Movements",
+   "target": "Movimentos Culturais"
+  },
+  "concept_culture": {
+   "en": "Culture",
+   "target": "Cultura"
+  },
+  "concept_cultures": {
+   "en": "Cultures",
+   "target": "Culturas"
+  },
+  "concept_decay": {
+   "en": "Decay",
+   "target": "Decadência"
+  },
+  "concept_decisions": {
+   "en": "Decisions",
+   "target": "Decisões"
+  },
+  "concept_decree": {
+   "en": "Decree",
+   "target": "Decreto"
+  },
+  "concept_defense": {
+   "en": "Defense",
+   "target": "Defesa"
+  },
+  "concept_dependent": {
+   "en": "Dependent",
+   "target": "Dependente"
+  },
+  "concept_diplomatic_play_negotiated": {
+   "en": "Negotiated",
+   "target": "Negociada"
+  },
+  "concept_education_access": {
+   "en": "Education Access",
+   "target": "Acesso à Educação"
+  },
+  "concept_enactment_of_laws_enact": {
+   "en": "Enact",
+   "target": "Promulgar"
+  },
+  "concept_enactment_of_laws_enactment": {
+   "en": "Enactment",
+   "target": "Promulgação"
+  },
+  "concept_enactment_success": {
+   "en": "Enactment Success",
+   "target": "Sucesso da Promulgação"
+  },
+  "concept_escalate": {
+   "en": "Escalate",
+   "target": "Escalar"
+  },
+  "concept_experience": {
+   "en": "Experience",
+   "target": "Experiência"
+  },
+  "concept_export": {
+   "en": "Export",
+   "target": "Exportar"
+  },
+  "concept_fleet": {
+   "en": "Fleet",
+   "target": "Frota"
+  },
+  "concept_front": {
+   "en": "Front",
+   "target": "Fronte"
+  },
+  "concept_general": {
+   "en": "General",
+   "target": "General"
+  },
+  "concept_good_consumes": {
+   "en": "Consumes",
+   "target": "Consome"
+  },
+  "concept_good_produce": {
+   "en": "Produce",
+   "target": "Produzir"
+  },
+  "concept_good_produced": {
+   "en": "Produced",
+   "target": "Produzida"
+  },
+  "concept_good_produces": {
+   "en": "Produces",
+   "target": "Produz"
+  },
+  "concept_good_production": {
+   "en": "Production",
+   "target": "Produção"
+  },
+  "concept_government": {
+   "en": "Government",
+   "target": "Governo"
+  },
+  "concept_great_power": {
+   "en": "Great Power",
+   "target": "Superpotência"
+  },
+  "concept_great_powers": {
+   "en": "Great Powers",
+   "target": "Superpotências"
+  },
+  "concept_holding": {
+   "en": "Holding",
+   "target": "Holding"
+  },
+  "concept_imported": {
+   "en": "Imported",
+   "target": "Importou"
+  },
+  "concept_individual": {
+   "en": "Individual",
+   "target": "Indivíduo"
+  },
+  "concept_influence": {
+   "en": "Influence",
+   "target": "Influência"
+  },
+  "concept_infrastructure": {
+   "en": "Infrastructure",
+   "target": "Infraestrutura"
+  },
+  "concept_innovation": {
+   "en": "Innovation",
+   "target": "Inovação"
+  },
+  "concept_institution": {
+   "en": "Institution",
+   "target": "Instituição"
+  },
+  "concept_institutions": {
+   "en": "Institutions",
+   "target": "Instituições"
+  },
+  "concept_integrated_culture_present": {
+   "en": "Integrate",
+   "target": "Integrar"
+  },
+  "concept_integrated_culture_process": {
+   "en": "Integration",
+   "target": "Integração"
+  },
+  "concept_interest": {
+   "en": "Interest",
+   "target": "Interesse"
+  },
+  "concept_interest_group": {
+   "en": "Interest Group",
+   "target": "Grupo de Interesse"
+  },
+  "concept_interests": {
+   "en": "Interests",
+   "target": "Interesses"
+  },
+  "concept_invasion": {
+   "en": "Invasion",
+   "target": "Invasão"
+  },
+  "concept_job_satisfaction_satisfied": {
+   "en": "Satisfied",
+   "target": "Satisfeito"
+  },
+  "concept_journal": {
+   "en": "Journal",
+   "target": "Diário"
+  },
+  "concept_journal_entry": {
+   "en": "Journal Entry",
+   "target": "Registro no Diário"
+  },
+  "concept_law": {
+   "en": "Law",
+   "target": "Lei"
+  },
+  "concept_leaders": {
+   "en": "Leaders",
+   "target": "Lideranças"
+  },
+  "concept_legitimacy": {
+   "en": "Legitimacy",
+   "target": "Legitimidade"
+  },
+  "concept_legitimate": {
+   "en": "Legitimate",
+   "target": "Legítimo"
+  },
+  "concept_literacy": {
+   "en": "Literacy",
+   "target": "Instrução"
+  },
+  "concept_literate": {
+   "en": "Literate",
+   "target": "Instruídos"
+  },
+  "concept_loyalist": {
+   "en": "Loyalist",
+   "target": "Lealista"
+  },
+  "concept_loyalists": {
+   "en": "Loyalists",
+   "target": "Lealistas"
+  },
+  "concept_loyalty": {
+   "en": "Loyalty",
+   "target": "Lealdade"
+  },
+  "concept_major_powers": {
+   "en": "Major Powers",
+   "target": "Grandes Potências"
+  },
+  "concept_market": {
+   "en": "Market",
+   "target": "Mercado"
+  },
+  "concept_markets": {
+   "en": "Markets",
+   "target": "Mercados"
+  },
+  "concept_mass_migration_eligible": {
+   "en": "Eligible",
+   "target": "Elegível"
+  },
+  "concept_migration": {
+   "en": "Migration",
+   "target": "Migração"
+  },
+  "concept_migration_pull": {
+   "en": "Migration Attraction",
+   "target": "Atração de Migração"
+  },
+  "concept_mobilize_army_mobilization": {
+   "en": "Mobilization",
+   "target": "Mobilização"
+  },
+  "concept_mobilize_army_mobilize": {
+   "en": "Mobilize",
+   "target": "Mobilizar"
+  },
+  "concept_mobilize_army_mobilized": {
+   "en": "Mobilized",
+   "target": "Mobilizado"
+  },
+  "concept_mobilize_army_mobilizing": {
+   "en": "Mobilizing",
+   "target": "Mobilizando"
+  },
+  "concept_mobilize_battalion_mobilization": {
+   "en": "Mobilization",
+   "target": "Mobilização"
+  },
+  "concept_mobilize_battalion_mobilize": {
+   "en": "Mobilize",
+   "target": "Mobilizar"
+  },
+  "concept_mobilize_battalion_mobilized": {
+   "en": "Mobilized",
+   "target": "Mobilizado"
+  },
+  "concept_mobilize_battalion_mobilizing": {
+   "en": "Mobilizing",
+   "target": "Mobilizando"
+  },
+  "concept_modifier": {
+   "en": "Modifier",
+   "target": "Modificador"
+  },
+  "concept_modifiers": {
+   "en": "Modifiers",
+   "target": "Modificadores"
+  },
+  "concept_momentum": {
+   "en": "Momentum",
+   "target": "Embalo"
+  },
+  "concept_money": {
+   "en": "Money",
+   "target": "Dinheiro"
+  },
+  "concept_monuments": {
+   "en": "Monuments",
+   "target": "Monumentos"
+  },
+  "concept_nation_formation_short_past": {
+   "en": "Formed",
+   "target": "Formada"
+  },
+  "concept_nation_formation_short_present": {
+   "en": "Form",
+   "target": "Formar"
+  },
+  "concept_national_awakening": {
+   "en": "National Awakening",
+   "target": "Despertar Nacional"
+  },
+  "concept_nationalize": {
+   "en": "Nationalize",
+   "target": "Nacionalizar"
+  },
+  "concept_naval_invasion": {
+   "en": "Naval Invasion",
+   "target": "Invasão Naval"
+  },
+  "concept_negotiate": {
+   "en": "Negotiate",
+   "target": "Negociar"
+  },
+  "concept_negotiated": {
+   "en": "Negotiated",
+   "target": "Negociado"
+  },
+  "concept_negotiating": {
+   "en": "Negotiating",
+   "target": "Negociando"
+  },
+  "concept_negotiation": {
+   "en": "Negotiation",
+   "target": "Negociação"
+  },
+  "concept_negotiations": {
+   "en": "Negotiations",
+   "target": "Negociações"
+  },
+  "concept_neutral": {
+   "en": "Neutral",
+   "target": "Neutro"
+  },
+  "concept_neutrality": {
+   "en": "Neutrality",
+   "target": "Neutralidade"
+  },
+  "concept_obligation": {
+   "en": "Obligation",
+   "target": "Obrigação"
+  },
+  "concept_obligations": {
+   "en": "Obligations",
+   "target": "Obrigações"
+  },
+  "concept_occupies": {
+   "en": "Occupies",
+   "target": "Ocupa"
+  },
+  "concept_offense": {
+   "en": "Offense",
+   "target": "Ataque"
+  },
+  "concept_opposition": {
+   "en": "Opposition",
+   "target": "Oposição"
+  },
+  "concept_orders": {
+   "en": "Orders",
+   "target": "Ordens"
+  },
+  "concept_organization": {
+   "en": "Organization",
+   "target": "Organização"
+  },
+  "concept_organization_organized": {
+   "en": "Organized",
+   "target": "Organizada"
+  },
+  "concept_party": {
+   "en": "Party",
+   "target": "Partido"
+  },
+  "concept_political_movement_supporting": {
+   "en": "Supporting",
+   "target": "Apoiando"
+  },
+  "concept_political_movements": {
+   "en": "Political Movements",
+   "target": "Movimentos Políticos"
+  },
+  "concept_political_strength": {
+   "en": "Political Strength",
+   "target": "Força Política"
+  },
+  "concept_pop_growth_mortality": {
+   "en": "Mortality",
+   "target": "Taxa de Mortalidade"
+  },
+  "concept_pop_qualifications": {
+   "en": "Qualifications",
+   "target": "Qualificações"
+  },
+  "concept_pops": {
+   "en": "Pops",
+   "target": "Pops"
+  },
+  "concept_popular": {
+   "en": "Popular",
+   "target": "Popular"
+  },
+  "concept_population": {
+   "en": "Population",
+   "target": "População"
+  },
+  "concept_power_bloc": {
+   "en": "Power Bloc",
+   "target": "Bloco de Poder"
+  },
+  "concept_power_bloc_cohesion": {
+   "en": "Cohesion",
+   "target": "Coesão"
+  },
+  "concept_power_bloc_mandate": {
+   "en": "Mandate",
+   "target": "Mandato"
+  },
+  "concept_power_bloc_principle": {
+   "en": "Principle",
+   "target": "Princípio"
+  },
+  "concept_powerful": {
+   "en": "Powerful",
+   "target": "Poderoso"
+  },
+  "concept_presence": {
+   "en": "Presence",
+   "target": "Presença"
+  },
+  "concept_prestige": {
+   "en": "Prestige",
+   "target": "Prestígio"
+  },
+  "concept_primary_culture": {
+   "en": "Primary Culture",
+   "target": "Cultura Primária"
+  },
+  "concept_primary_cultures": {
+   "en": "Primary Cultures",
+   "target": "Culturas Primárias"
+  },
+  "concept_private": {
+   "en": "Private",
+   "target": "Privada"
+  },
+  "concept_province_land": {
+   "en": "Land",
+   "target": "Terra"
+  },
+  "concept_provinces": {
+   "en": "Provinces",
+   "target": "Províncias"
+  },
+  "concept_qualified": {
+   "en": "Qualified",
+   "target": "Qualificado"
+  },
+  "concept_radical": {
+   "en": "Radical",
+   "target": "Radical"
+  },
+  "concept_radicalism": {
+   "en": "Radicalism",
+   "target": "Radicalismo"
+  },
+  "concept_radicalization": {
+   "en": "Radicalization",
+   "target": "Radicalização"
+  },
+  "concept_radicalize": {
+   "en": "Radicalize",
+   "target": "Radicalizar"
+  },
+  "concept_radicals": {
+   "en": "Radicals",
+   "target": "Radicais"
+  },
+  "concept_rank": {
+   "en": "Rank",
+   "target": "Ranque"
+  },
+  "concept_readiness": {
+   "en": "Readiness",
+   "target": "Prontidão"
+  },
+  "concept_recognition": {
+   "en": "Recognition",
+   "target": "Reconhecimento"
+  },
+  "concept_religion": {
+   "en": "Religion",
+   "target": "Religião"
+  },
+  "concept_religious": {
+   "en": "Religious",
+   "target": "Religioso"
+  },
+  "concept_risk": {
+   "en": "Risk",
+   "target": "Risco"
+  },
+  "concept_rival": {
+   "en": "Rival",
+   "target": "Rival"
+  },
+  "concept_ruler": {
+   "en": "Ruler",
+   "target": "Governante"
+  },
+  "concept_sell_orders_supply": {
+   "en": "Supply",
+   "target": "Oferta"
+  },
+  "concept_ship_construct": {
+   "en": "Construct",
+   "target": "Construir"
+  },
+  "concept_shortage": {
+   "en": "Shortage",
+   "target": "Escassez"
+  },
+  "concept_shortages": {
+   "en": "Shortages",
+   "target": "Escassez"
+  },
+  "concept_slavery": {
+   "en": "Slavery",
+   "target": "Escravidão"
+  },
+  "concept_sovereignty": {
+   "en": "Sovereignty",
+   "target": "Soberania"
+  },
+  "concept_state": {
+   "en": "State",
+   "target": "Estado"
+  },
+  "concept_state_religion": {
+   "en": "State Religion",
+   "target": "Religião do Estado"
+  },
+  "concept_states": {
+   "en": "States",
+   "target": "Estados"
+  },
+  "concept_subject": {
+   "en": "Subject",
+   "target": "Súdito"
+  },
+  "concept_subjects": {
+   "en": "Subjects",
+   "target": "Súditos"
+  },
+  "concept_supplies": {
+   "en": "Supplies",
+   "target": "Suprimentos"
+  },
+  "concept_supply": {
+   "en": "Supply",
+   "target": "Suprimentos"
+  },
+  "concept_target": {
+   "en": "Target",
+   "target": "Alvo"
+  },
+  "concept_tax": {
+   "en": "Tax",
+   "target": "Imposto"
+  },
+  "concept_taxes": {
+   "en": "Taxes",
+   "target": "Impostos"
+  },
+  "concept_technology": {
+   "en": "Technology",
+   "target": "Tecnologia"
+  },
+  "concept_technology_spread": {
+   "en": "Technology Spread",
+   "target": "Propagação de Tecnologia"
+  },
+  "concept_tensions": {
+   "en": "Tensions",
+   "target": "Tensões"
+  },
+  "concept_throughput": {
+   "en": "Throughput",
+   "target": "Rendimento"
+  },
+  "concept_trade": {
+   "en": "Trade",
+   "target": "Comércio"
+  },
+  "concept_trading": {
+   "en": "Trading",
+   "target": "Comercializando"
+  },
+  "concept_training_rate": {
+   "en": "Training Rate",
+   "target": "Taxa de Treinamento"
+  },
+  "concept_turmoil": {
+   "en": "Turmoil",
+   "target": "Instabilidade"
+  },
+  "concept_unification_support": {
+   "en": "Support",
+   "target": "Apoiar"
+  },
+  "concept_unification_supporting": {
+   "en": "Supporting",
+   "target": "Apoiando"
+  },
+  "concept_unify": {
+   "en": "Unify",
+   "target": "Unificar"
+  },
+  "concept_unit_experience": {
+   "en": "Experience",
+   "target": "Experiência"
+  },
+  "concept_war": {
+   "en": "War",
+   "target": "Guerra"
+  },
+  "concept_war_exhaustion": {
+   "en": "War Exhaustion",
+   "target": "Exaustão da Guerra"
+  },
+  "concept_war_exhaustion_exhausted": {
+   "en": "Exhausted",
+   "target": "Exaustos"
+  },
+  "concept_wars": {
+   "en": "Wars",
+   "target": "Guerras"
+  },
+  "concept_workforce": {
+   "en": "Workforce",
+   "target": "Mão de Obra"
+  },
+  "country_authority_add": {
+   "en": "Authority",
+   "target": "Autoridade"
+  },
+  "country_authority_mult": {
+   "en": "Authority",
+   "target": "Autoridade"
+  },
+  "country_bureaucracy_add": {
+   "en": "Bureaucracy",
+   "target": "Burocracia"
+  },
+  "country_bureaucracy_mult": {
+   "en": "Bureaucracy",
+   "target": "Burocracia"
+  },
+  "country_influence_add": {
+   "en": "Influence",
+   "target": "Influência"
+  },
+  "country_influence_mult": {
+   "en": "Influence",
+   "target": "Influência"
+  },
+  "country_law_enactment_speed_mult": {
+   "en": "Enactment Speed",
+   "target": "Velocidade de Promulgação"
+  },
+  "country_legitimacy_base_add": {
+   "en": "Legitimacy",
+   "target": "Legitimidade"
+  },
+  "country_prestige_add": {
+   "en": "Prestige",
+   "target": "Prestígio"
+  },
+  "country_prestige_mult": {
+   "en": "Prestige",
+   "target": "Prestígio"
+  },
+  "country_resource_discovery_chance_mult": {
+   "en": "Resource Discovery Chance",
+   "target": "Chance de Descoberta de Recurso"
+  },
+  "country_tech_spread_add": {
+   "en": "Technology Spread",
+   "target": "Propagação de Tecnologia"
+  },
+  "country_tech_spread_mult": {
+   "en": "Technology Spread",
+   "target": "Propagação de Tecnologia"
+  },
+  "country_war_exhaustion_casualties_mult": {
+   "en": "War Exhaustion from Casualties",
+   "target": "Exaustão da Guerra por Baixas"
+  },
+  "country_weekly_innovation_add": {
+   "en": "Innovation",
+   "target": "Inovação"
+  },
+  "country_weekly_innovation_mult": {
+   "en": "Innovation",
+   "target": "Inovação"
+  },
+  "ig_approval_neutral": {
+   "en": "Neutral",
+   "target": "Neutro"
+  },
+  "ig_armed_forces": {
+   "en": "Armed Forces",
+   "target": "Forças Armadas"
+  },
+  "ig_civil_servants": {
+   "en": "Civil Servants",
+   "target": "Servidores Públicos"
+  },
+  "ig_devout": {
+   "en": "Devout",
+   "target": "Devotos"
+  },
+  "ig_industrialists": {
+   "en": "Industrialists",
+   "target": "Industrialistas"
+  },
+  "ig_intelligentsia": {
+   "en": "Intelligentsia",
+   "target": "Elite Intelectual"
+  },
+  "ig_landowners": {
+   "en": "Landowners",
+   "target": "Latifundiários"
+  },
+  "ig_petty_bourgeoisie": {
+   "en": "Petite Bourgeoisie",
+   "target": "Pequena Burguesia"
+  },
+  "ig_rural_folk": {
+   "en": "Rural Folk",
+   "target": "Comunidade Rural"
+  },
+  "ig_trade_unions": {
+   "en": "Trade Unions",
+   "target": "Sindicatos"
+  },
+  "ig_trait_civil_service": {
+   "en": "Civil Service",
+   "target": "Serviço Público"
+  },
+  "ig_trait_self_strengthening": {
+   "en": "Self-Strengthening",
+   "target": "Autofortalecimento"
+  },
+  "institution_health_system": {
+   "en": "Health System",
+   "target": "Sistema de Saúde"
+  },
+  "institution_schools": {
+   "en": "Education",
+   "target": "Educação"
+  },
+  "institution_social_security": {
+   "en": "Social Security",
+   "target": "Segurança Social"
+  },
+  "interest_group_approval_add": {
+   "en": "Interest Group Approval",
+   "target": "Aprovação do Grupo de Interesse"
+  },
+  "interest_group_ig_armed_forces_pol_str_mult": {
+   "en": "Political Strength",
+   "target": "Força Política do grupo"
+  },
+  "interest_group_ig_devout_pol_str_mult": {
+   "en": "Political Strength",
+   "target": "Força Política do grupo"
+  },
+  "interest_group_ig_intelligentsia_pol_str_mult": {
+   "en": "Political Strength",
+   "target": "Força Política do grupo"
+  },
+  "interest_group_ig_trade_unions_approval_add": {
+   "en": "Approval",
+   "target": "Aprovação do grupo"
+  },
+  "interest_group_ig_trade_unions_pol_str_mult": {
+   "en": "Political Strength",
+   "target": "Força Política do grupo"
+  },
+  "law_colonial_administration": {
+   "en": "Colonial Administration",
+   "target": "Administração Colonial"
+  },
+  "law_council_republic": {
+   "en": "Council Republic",
+   "target": "República Conciliar"
+  },
+  "law_cultural_exclusion": {
+   "en": "Cultural Exclusion",
+   "target": "Exclusão Cultural"
+  },
+  "law_ethnostate": {
+   "en": "Ethnostate",
+   "target": "Etnoestado"
+  },
+  "law_freedom_of_conscience": {
+   "en": "Freedom of Conscience",
+   "target": "Liberdade de Consciência"
+  },
+  "law_mass_conscription": {
+   "en": "Mass Conscription",
+   "target": "Conscrição em Massa"
+  },
+  "law_national_supremacy": {
+   "en": "National Supremacy",
+   "target": "Supremacia Nacional"
+  },
+  "law_presidential_republic": {
+   "en": "Presidential Republic",
+   "target": "República Presidencialista"
+  },
+  "law_professional_army": {
+   "en": "Professional Army",
+   "target": "Exército Profissional"
+  },
+  "law_proportional_representation": {
+   "en": "Proportional Representation",
+   "target": "Representação Proporcional"
+  },
+  "law_public_schools": {
+   "en": "Public Schools",
+   "target": "Escolas Públicas"
+  },
+  "law_racial_segregation": {
+   "en": "Racial Segregation",
+   "target": "Segregação Racial"
+  },
+  "law_serfdom": {
+   "en": "Serfdom",
+   "target": "Servidão"
+  },
+  "law_state_atheism": {
+   "en": "State Atheism",
+   "target": "Ateísmo de Estado"
+  },
+  "law_state_religion": {
+   "en": "State Religion",
+   "target": "Religião do Estado"
+  },
+  "law_total_separation": {
+   "en": "Total Separation",
+   "target": "Separação Total"
+  },
+  "law_universal_suffrage": {
+   "en": "Universal Suffrage",
+   "target": "Sufrágio Universal"
+  },
+  "state_assimilation_mult": {
+   "en": "Assimilation",
+   "target": "Assimilação"
+  },
+  "state_conscription_rate_add": {
+   "en": "Conscription Rate",
+   "target": "Taxa de Conscrição"
+  },
+  "state_conversion_mult": {
+   "en": "Conversion",
+   "target": "Conversão"
+  },
+  "state_education_access_add": {
+   "en": "Education Access",
+   "target": "Acesso à Educação"
+  },
+  "state_infrastructure_mult": {
+   "en": "Infrastructure",
+   "target": "Infraestrutura"
+  },
+  "state_loyalists_from_political_movements_mult": {
+   "en": "Loyalists from Political Movements",
+   "target": "Lealistas de Movimentos Políticos"
+  },
+  "state_migration_pull_mult": {
+   "en": "Migration Attraction",
+   "target": "Atração de Migração"
+  },
+  "state_mortality_mult": {
+   "en": "Mortality",
+   "target": "Taxa de Mortalidade"
+  },
+  "state_pop_qualifications_mult": {
+   "en": "Qualifications",
+   "target": "Qualificações"
+  },
+  "state_radicals_from_political_movements_mult": {
+   "en": "Radicals from Political Movements",
+   "target": "Radicais de Movimentos Políticos"
+  },
+  "state_tax_collection_mult": {
+   "en": "Tax Collection",
+   "target": "Cobrança de Impostos"
+  },
+  "unit_army_offense_add": {
+   "en": "Army Offense",
+   "target": "Ataque do Exército"
+  },
+  "unit_army_offense_mult": {
+   "en": "Army Offense",
+   "target": "Ataque do Exército"
+  },
+  "unit_offense_add": {
+   "en": "Offense",
+   "target": "Ataque"
+  },
+  "unit_provinces_lost_mult": {
+   "en": "Lost",
+   "target": "Perdidas"
+  }
+ }
+}

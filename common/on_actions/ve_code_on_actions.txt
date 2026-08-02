@@ -1,20 +1,135 @@
-﻿on_monthly_pulse_country = {
-	events = {
-		dev.3
-		dev.4
-		dev.8
+﻿# Extends vanilla game/common/on_actions/00_code_on_actions.txt.
+# Only the named code on-actions below are extended; the vanilla blocks remain
+# reference-only and are not replaced.
+
+on_game_started_after_lobby = {
+	effect = {
+		every_country = {
+			ve_initialize_country_system = yes
+		}
+		random_country = {
+			limit = {
+				is_player = yes
+				NOT = { has_global_variable = dev_3_triggered }
+			}
+			trigger_event = {
+				id = dev.3
+				popup = yes
+			}
+		}
+		# Version 2.0 welcome popup. Every human player gets it once; the event
+		# itself guards on the country variable ve_welcome_2_0_shown.
+		every_country = {
+			limit = {
+				is_player = yes
+			}
+			trigger_event = {
+				id = ve_welcome.1
+				popup = yes
+			}
+		}
+	}
+}
+
+on_monthly_pulse_country = {
+	effect = {
+		ve_monthly_country_tick = yes
 	}
 }
 
 on_half_yearly_pulse_country = {
-	events = {
-		dev.7
+	on_actions = {
+		# Keep doctrine ambient popups away from the vanilla half-yearly event
+		# batch. The child on-action owns its own 25% roll and eligibility.
+		delay = { days = 31 }
+		ve_doctrine_ambient_half_yearly
+
+		# Doctrine Journey offers use a second offset so they do not stack with
+		# either vanilla half-yearly content or the ambient doctrine carrier.
+		delay = { days = 62 }
+		ve_doctrine_journey_half_yearly
+
+		# Era Crossroads offers use a third offset. Their pack-live gates remain
+		# closed until each Age's anchors and milestone content are complete.
+		delay = { days = 93 }
+		ve_era_crossroads_half_yearly
+	}
+	effect = {
+		ve_half_yearly_country_tick = yes
 	}
 }
 
 on_yearly_pulse_country = {
+	on_actions = {
+		# Tag-flavor offers are separated from the vanilla yearly batch. The
+		# child on-action owns the 25% roll; its pilot pack-live gates are the
+		# final authority on whether any offer can enter the queue.
+		delay = { days = 45 }
+		ve_tag_flavor_yearly
+	}
 	events = {
 		dev.5
 		dev.6
+	}
+	effect = {
+		ve_yearly_country_tick = yes
+	}
+}
+
+# Released countries use scope:target in the vanilla hooks.
+on_country_released_as_independent = {
+	effect = {
+		scope:target = { ve_initialize_country_system = yes }
+	}
+}
+
+on_country_released_as_own_subject = {
+	effect = {
+		scope:target = { ve_initialize_country_system = yes }
+	}
+}
+
+on_country_released_as_company_subject = {
+	effect = {
+		scope:target = { ve_initialize_country_system = yes }
+	}
+}
+
+on_country_released_as_overlord_subject = {
+	effect = {
+		scope:target = { ve_initialize_country_system = yes }
+	}
+}
+
+on_country_formed = {
+	effect = {
+		ve_initialize_country_system = yes
+		ve_refresh_national_idea_profile = yes
+	}
+}
+
+on_law_activated = {
+	effect = {
+		# Root here is the activated law itself, not the country - vanilla's own
+		# on_law_activated body re-scopes the same way (see
+		# common/on_actions/00_code_on_actions.txt:5098 in the base game files).
+		owner = {
+			ve_initialize_or_transition_religious_model = yes
+			ve_sync_religious_state_if_needed = yes
+		}
+	}
+}
+
+on_state_owner_change = {
+	effect = {
+		# A Targeted Religious Project belongs to the former owner - a captured
+		# target state is cleared here instead of waiting for the former
+		# owner's next monthly tick to notice the ownership mismatch.
+		if = {
+			limit = {
+				has_modifier = ve_religious_project_active_mdf
+			}
+			remove_modifier = ve_religious_project_active_mdf
+		}
 	}
 }

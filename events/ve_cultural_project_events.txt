@@ -1,0 +1,2565 @@
+namespace = ve_cul_evt
+
+# The Translation Bureaus
+ve_cul_evt.1 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_cul_evt.1.t
+	desc = ve_cul_evt.1.d
+	flavor = ve_cul_evt.1.f
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_capitalists_meeting.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_cultural_project_incident = yes
+		ve_cultural_project_type_is = { TYPE = 4 }
+		var:ve_cultural_project_progress >= 10
+		var:ve_cultural_project_progress <= 60
+		NOT = { has_variable = ve_evt_cul_1_fired }
+	}
+
+	immediate = {
+		var:ve_cultural_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		var:ve_cultural_project_target_culture ?= {
+			save_scope_as = ve_evt_target_culture
+		}
+		ve_evt_record_cultural_incident_1 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_cultural_project_type_is = { TYPE = 4 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			NOT = { exists = scope:ve_evt_target_culture }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.1.a
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.1:a"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 35 }
+				add = 50
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.10
+					}
+				}
+				add = 20
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.1.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = 3 }
+				ve_evt_change_cultural_project_progress = { DELTA = -4 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.1.b
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.1:b"
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:ve_national_cohesion >= 55 }
+				add = 30
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.25
+					}
+				}
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.1.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = -2 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.005
+						culture = scope:ve_evt_target_culture
+					}
+				}
+				ve_evt_change_cultural_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.1.c
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.1:c"
+		trigger = {
+			var:culture_reform_point >= 10
+			has_modifier = academic_idea_3_mdf
+		}
+		ai_chance = {
+			base = 25
+			modifier = {
+				trigger = { var:culture_reform_point >= 75 }
+				add = 50
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.1.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -10 }
+				ve_evt_change_national_cohesion = { DELTA = 1 }
+				ve_evt_change_cultural_project_progress = { DELTA = 3 }
+			}
+		}
+	}
+}
+
+# A Shortage of Local Teachers
+ve_cul_evt.2 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_cul_evt.2.t
+	desc = ve_cul_evt.2.d
+	flavor = ve_cul_evt.2.f
+
+	event_image = {
+		video = "gfx/event_pictures/asia_politician_parliament_motion.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_cultural_project_incident = yes
+		ve_cultural_project_type_is = { TYPE = 4 }
+		var:ve_cultural_project_progress >= 15
+		var:ve_cultural_project_progress <= 65
+		literacy_rate < 0.65
+		NOT = { has_variable = ve_evt_cul_2_fired }
+	}
+
+	immediate = {
+		var:ve_cultural_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		var:ve_cultural_project_target_culture ?= {
+			save_scope_as = ve_evt_target_culture
+		}
+		ve_evt_record_cultural_incident_2 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_cultural_project_type_is = { TYPE = 4 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			NOT = { exists = scope:ve_evt_target_culture }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.2.a
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.2:a"
+		trigger = {
+			var:culture_reform_point >= 15
+		}
+		ai_chance = {
+			base = 40
+			modifier = {
+				trigger = { var:culture_reform_point >= 75 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 40 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.2.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -15 }
+				ve_evt_change_cultural_project_progress = { DELTA = 4 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.2.b
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.2:b"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:culture_reform_point < 40 }
+				add = 50
+			}
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 35 }
+				add = 20
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.2.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = 2 }
+				ve_evt_change_cultural_project_progress = { DELTA = -6 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.2.c
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.2:c"
+		trigger = {
+			var:culture_reform_point >= 10
+			OR = {
+				has_modifier = academic_idea_3_mdf
+				has_modifier = welfare_idea_5_mdf
+			}
+		}
+		ai_chance = {
+			base = 30
+			modifier = {
+				trigger = { var:culture_reform_point >= 60 }
+				add = 50
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.2.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -10 }
+				ve_evt_change_national_cohesion = { DELTA = 1 }
+				ve_evt_change_cultural_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+}
+
+# The Categories of the Census
+ve_cul_evt.3 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_cul_evt.3.t
+	desc = ve_cul_evt.3.d
+	flavor = ve_cul_evt.3.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_signed_contract.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_cultural_project_incident = yes
+		ve_cultural_project_type_is = { TYPE = 4 }
+		var:ve_cultural_project_progress >= 20
+		var:ve_cultural_project_progress <= 70
+		NOT = { has_variable = ve_evt_cul_3_fired }
+	}
+
+	immediate = {
+		var:ve_cultural_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		var:ve_cultural_project_target_culture ?= {
+			save_scope_as = ve_evt_target_culture
+		}
+		ve_evt_record_cultural_incident_3 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_cultural_project_type_is = { TYPE = 4 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			NOT = { exists = scope:ve_evt_target_culture }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.3.a
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.3:a"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 40 }
+				add = 50
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.3.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = 4 }
+				ve_evt_change_cultural_project_progress = { DELTA = -4 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.3.b
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.3:b"
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:ve_national_cohesion >= 60 }
+				add = 40
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.25
+					}
+				}
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.3.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.005
+						culture = scope:ve_evt_target_culture
+					}
+				}
+				ve_evt_change_national_cohesion = { DELTA = -4 }
+				ve_evt_change_cultural_project_progress = { DELTA = 6 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.3.c
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.3:c"
+		trigger = {
+			var:culture_reform_point >= 10
+			has_modifier = bureaucratic_idea_4_mdf
+		}
+		ai_chance = {
+			base = 30
+			modifier = {
+				trigger = { var:culture_reform_point >= 75 }
+				add = 50
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.3.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -10 }
+				ve_evt_change_national_cohesion = { DELTA = 1 }
+				ve_evt_change_cultural_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+}
+
+# The Municipal Notables
+ve_cul_evt.4 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_cul_evt.4.t
+	desc = ve_cul_evt.4.d
+	flavor = ve_cul_evt.4.f
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_capitalists_meeting.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_cultural_project_incident = yes
+		ve_cultural_project_type_is = { TYPE = 4 }
+		var:ve_cultural_project_progress >= 25
+		var:ve_cultural_project_progress <= 75
+		NOT = { has_variable = ve_evt_cul_4_fired }
+		ve_cultural_project_target_state_check = { CHECK = { is_incorporated = yes } }
+	}
+
+	immediate = {
+		var:ve_cultural_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		var:ve_cultural_project_target_culture ?= {
+			save_scope_as = ve_evt_target_culture
+		}
+		ve_evt_record_cultural_incident_4 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_cultural_project_type_is = { TYPE = 4 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			NOT = { exists = scope:ve_evt_target_culture }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.4.a
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.4:a"
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:ve_cultural_project_progress >= 60 }
+				add = 30
+			}
+			modifier = {
+				trigger = {
+					OR = {
+						bureaucracy < 0
+						approaching_bureaucracy_shortage = yes
+					}
+				}
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.4.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				scope:ve_evt_target_state ?= {
+					add_modifier = {
+						name = ve_evt_municipal_patronage_mdf
+						months = 24
+					}
+				}
+				ve_evt_change_cultural_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.4.b
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.4:b"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 40 }
+				add = 40
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.4.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = 3 }
+				ve_evt_change_cultural_project_progress = { DELTA = -3 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.4.c
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.4:c"
+		trigger = {
+			var:culture_reform_point >= 10
+			OR = {
+				has_modifier = parliamentary_idea_4_mdf
+				has_modifier = reformist_idea_5_mdf
+			}
+		}
+		ai_chance = {
+			base = 30
+			modifier = {
+				trigger = { var:culture_reform_point >= 60 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.4.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -10 }
+				ve_evt_change_national_cohesion = { DELTA = 1 }
+				ve_evt_change_cultural_project_progress = { DELTA = 3 }
+			}
+		}
+	}
+}
+
+# The Civil Service Examinations
+ve_cul_evt.5 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_cul_evt.5.t
+	desc = ve_cul_evt.5.d
+	flavor = ve_cul_evt.5.f
+
+	event_image = {
+		video = "gfx/event_pictures/middleeast_courtroom_upheaval.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_cultural_project_incident = yes
+		ve_cultural_project_type_is = { TYPE = 4 }
+		var:ve_cultural_project_progress >= 30
+		var:ve_cultural_project_progress <= 75
+		NOT = { has_variable = ve_evt_cul_5_fired }
+	}
+
+	immediate = {
+		var:ve_cultural_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		var:ve_cultural_project_target_culture ?= {
+			save_scope_as = ve_evt_target_culture
+		}
+		ve_evt_record_cultural_incident_5 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_cultural_project_type_is = { TYPE = 4 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			NOT = { exists = scope:ve_evt_target_culture }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.5.a
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.5:a"
+		trigger = {
+			var:culture_reform_point >= 15
+		}
+		ai_chance = {
+			base = 40
+			modifier = {
+				trigger = { var:culture_reform_point >= 90 }
+				add = 50
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 40 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.5.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -15 }
+				ve_evt_change_national_cohesion = { DELTA = 2 }
+				ve_evt_change_cultural_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.5.b
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.5:b"
+		ai_chance = {
+			base = 40
+			modifier = {
+				trigger = { var:ve_national_cohesion >= 60 }
+				add = 40
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.25
+					}
+				}
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.5.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.005
+					}
+				}
+				ve_evt_change_national_cohesion = { DELTA = -4 }
+				ve_evt_change_cultural_project_progress = { DELTA = 7 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.5.c
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.5:c"
+		trigger = {
+			var:culture_reform_point >= 10
+			OR = {
+				has_modifier = academic_idea_5_mdf
+				has_modifier = welfare_idea_5_mdf
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:culture_reform_point >= 60 }
+				add = 50
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.5.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -10 }
+				ve_evt_change_national_cohesion = { DELTA = 2 }
+				ve_evt_change_cultural_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.5.e
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.5:e"
+		default_option = yes
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 35 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 25 }
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.5.e.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = 3 }
+				ve_evt_change_cultural_project_progress = { DELTA = -4 }
+			}
+		}
+	}
+}
+
+# The Majority Pushes Back
+ve_cul_evt.6 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_cul_evt.6.t
+	desc = ve_cul_evt.6.d
+	flavor = ve_cul_evt.6.f
+
+	event_image = {
+		video = "gfx/event_pictures/africa_public_protest.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_cultural_project_incident = yes
+		ve_cultural_project_type_is = { TYPE = 4 }
+		var:ve_cultural_project_progress >= 35
+		var:ve_cultural_project_progress <= 80
+		NOT = { has_variable = ve_evt_cul_6_fired }
+		OR = {
+			var:ve_national_cohesion <= 50
+			ve_has_cultural_movement_pressure = yes
+		}
+	}
+
+	immediate = {
+		var:ve_cultural_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		var:ve_cultural_project_target_culture ?= {
+			save_scope_as = ve_evt_target_culture
+		}
+		ve_evt_record_cultural_incident_6 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_cultural_project_type_is = { TYPE = 4 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			NOT = { exists = scope:ve_evt_target_culture }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.6.a
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.6:a"
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:ve_national_cohesion >= 45 }
+				add = 30
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.25
+					}
+				}
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.6.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.01
+					}
+				}
+				ve_evt_change_national_cohesion = { DELTA = -4 }
+				ve_evt_change_cultural_project_progress = { DELTA = 4 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.6.b
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.6:b"
+		default_option = yes
+		ai_chance = {
+			base = 55
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 35 }
+				add = 50
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.6.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = 3 }
+				ve_evt_change_cultural_project_progress = { DELTA = -5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.6.c
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.6:c"
+		trigger = {
+			var:culture_reform_point >= 10
+			has_modifier = reformist_idea_6_mdf
+		}
+		ai_chance = {
+			base = 30
+			modifier = {
+				trigger = { var:culture_reform_point >= 60 }
+				add = 50
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.6.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				scope:ve_evt_target_state ?= {
+					add_loyalists_in_state = {
+						value = 0.005
+						culture = scope:ve_evt_target_culture
+					}
+				}
+				ve_evt_change_cultural_mandate = { DELTA = -10 }
+				ve_evt_change_national_cohesion = { DELTA = 2 }
+				ve_evt_change_cultural_project_progress = { DELTA = 3 }
+			}
+		}
+	}
+}
+
+# The Initiative Loses Legitimacy
+ve_cul_evt.7 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_cul_evt.7.t
+	desc = ve_cul_evt.7.d
+	flavor = ve_cul_evt.7.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_vandalized_storefront.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_cultural_project_incident = yes
+		ve_cultural_project_type_is = { TYPE = 4 }
+		var:ve_cultural_project_progress < 70
+		var:ve_national_cohesion <= 25
+		NOT = { has_variable = ve_evt_cul_7_fired }
+		ve_cultural_project_target_state_check = { CHECK = { turmoil >= 0.25 } }
+		ve_has_cultural_movement_pressure = yes
+	}
+
+	immediate = {
+		var:ve_cultural_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		var:ve_cultural_project_target_culture ?= {
+			save_scope_as = ve_evt_target_culture
+		}
+		ve_evt_record_cultural_incident_7 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_cultural_project_type_is = { TYPE = 4 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			NOT = { exists = scope:ve_evt_target_culture }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.7.a
+		ve_evt_tm_record_cultural_option = yes
+		ve_evt_tm_record_cultural_crisis_cancel = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.7:a"
+		ai_chance = {
+			base = 25
+			modifier = {
+				trigger = { var:culture_reform_point < 15 }
+				add = 100
+			}
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 15 }
+				add = 50
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.40
+					}
+				}
+				add = 50
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.7.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_cancel_cultural_project = yes
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.7.b
+		ve_evt_tm_record_cultural_option = yes
+		ve_evt_tm_record_cultural_crisis_rescue = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.7:b"
+		trigger = {
+			var:culture_reform_point >= 25
+		}
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:culture_reform_point >= 75 }
+				add = 50
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.40
+					}
+				}
+				factor = 0.5
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 50 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.7.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -25 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.01
+						culture = scope:ve_evt_target_culture
+					}
+				}
+				ve_evt_change_cultural_project_progress = { DELTA = -5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.7.c
+		ve_evt_tm_record_cultural_option = yes
+		ve_evt_tm_record_cultural_crisis_limp = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.7:c"
+		default_option = yes
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:culture_reform_point < 25 }
+				add = 60
+			}
+			modifier = {
+				trigger = { var:ve_cultural_project_progress >= 55 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.7.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = -2 }
+				ve_evt_change_cultural_project_progress = { DELTA = -10 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.7.e
+		ve_evt_tm_record_cultural_option = yes
+		ve_evt_tm_record_cultural_crisis_rescue = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.7:e"
+		trigger = {
+			var:culture_reform_point >= 15
+			OR = {
+				has_modifier = reformist_idea_5_mdf
+				has_modifier = parliamentary_idea_4_mdf
+			}
+		}
+		ai_chance = {
+			base = 60
+			modifier = {
+				trigger = { always = yes }
+				add = 60
+			}
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 15 }
+				add = 30
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 40 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.7.e.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -15 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.005
+						culture = scope:ve_evt_target_culture
+					}
+				}
+				ve_evt_change_national_cohesion = { DELTA = 2 }
+				ve_evt_change_cultural_project_progress = { DELTA = -3 }
+			}
+		}
+	}
+}
+
+# A Local Civic Coalition
+ve_cul_evt.8 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_cul_evt.8.t
+	desc = ve_cul_evt.8.d
+	flavor = ve_cul_evt.8.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_signed_contract.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 10 }
+
+	trigger = {
+		ve_can_fire_cultural_project_incident = yes
+		ve_cultural_project_type_is = { TYPE = 4 }
+		var:ve_cultural_project_progress >= 70
+		var:ve_national_cohesion >= 75
+		government_legitimacy >= 75
+		bureaucracy >= 0
+		approaching_bureaucracy_shortage = no
+		OR = {
+			has_modifier = reformist_idea_7_mdf
+			has_modifier = academic_idea_7_mdf
+			has_modifier = welfare_idea_6_mdf
+		}
+		NOT = { has_variable = ve_evt_cul_8_fired }
+		ve_cultural_project_target_state_check = { CHECK = { turmoil < 0.05 } }
+	}
+
+	immediate = {
+		var:ve_cultural_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		var:ve_cultural_project_target_culture ?= {
+			save_scope_as = ve_evt_target_culture
+		}
+		ve_evt_record_cultural_incident_8 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_cultural_project_type_is = { TYPE = 4 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			NOT = { exists = scope:ve_evt_target_culture }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.8.a
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.8:a"
+		ai_chance = {
+			base = 65
+			modifier = {
+				trigger = { var:ve_cultural_project_progress <= 80 }
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.8.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = 1 }
+				# Keep progress last: reaching 100 invokes the authoritative finish effect.
+				ve_evt_change_cultural_project_progress = { DELTA = 25 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.8.b
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.8:b"
+		default_option = yes
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:ve_national_cohesion < 80 }
+				add = 50
+			}
+			modifier = {
+				trigger = { var:ve_cultural_project_progress > 90 }
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.8.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_civic_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = 4 }
+				# Keep progress last: reaching 100 invokes the authoritative finish effect.
+				ve_evt_change_cultural_project_progress = { DELTA = 10 }
+			}
+		}
+	}
+}
+
+# Local School Boards
+ve_cul_evt.40 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_cul_evt.40.t
+	desc = ve_cul_evt.40.d
+	flavor = ve_cul_evt.40.f
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_capitalists_meeting.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_cultural_project_incident = yes
+		OR = {
+			ve_cultural_project_type_is = { TYPE = 3 }
+			ve_cultural_project_type_is = { TYPE = 5 }
+		}
+		var:ve_cultural_project_progress >= 10
+		var:ve_cultural_project_progress <= 60
+		NOT = { has_variable = ve_evt_cul_40_fired }
+	}
+
+	immediate = {
+		var:ve_cultural_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		var:ve_cultural_project_target_culture ?= {
+			save_scope_as = ve_evt_target_culture
+		}
+		ve_evt_record_cultural_incident_40 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = {
+				OR = {
+					ve_cultural_project_type_is = { TYPE = 3 }
+					ve_cultural_project_type_is = { TYPE = 5 }
+				}
+			}
+			NOT = { exists = scope:ve_evt_target_state }
+			NOT = { exists = scope:ve_evt_target_culture }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.40.a
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.40:a"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 40 }
+				add = 40
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.40.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_ethnic_or_composite_cultural_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = 3 }
+				ve_evt_change_cultural_project_progress = { DELTA = -4 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.40.b
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.40:b"
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:ve_national_cohesion >= 55 }
+				add = 30
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.25
+					}
+				}
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.40.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_ethnic_or_composite_cultural_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = -2 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.005
+						culture = scope:ve_evt_target_culture
+					}
+				}
+				ve_evt_change_cultural_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.40.c
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.40:c"
+		trigger = {
+			var:culture_reform_point >= 10
+			OR = {
+				has_modifier = academic_idea_3_mdf
+				has_modifier = welfare_idea_5_mdf
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:culture_reform_point >= 60 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.40.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_ethnic_or_composite_cultural_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -10 }
+				ve_evt_change_national_cohesion = { DELTA = 2 }
+				ve_evt_change_cultural_project_progress = { DELTA = 4 }
+			}
+		}
+	}
+}
+
+# Statistical Boundaries
+ve_cul_evt.41 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_cul_evt.41.t
+	desc = ve_cul_evt.41.d
+	flavor = ve_cul_evt.41.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_politicians_arguing.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_cultural_project_incident = yes
+		OR = {
+			ve_cultural_project_type_is = { TYPE = 3 }
+			ve_cultural_project_type_is = { TYPE = 5 }
+		}
+		var:ve_cultural_project_progress >= 20
+		var:ve_cultural_project_progress <= 70
+		NOT = { has_variable = ve_evt_cul_41_fired }
+	}
+
+	immediate = {
+		var:ve_cultural_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		var:ve_cultural_project_target_culture ?= {
+			save_scope_as = ve_evt_target_culture
+		}
+		ve_evt_record_cultural_incident_41 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = {
+				OR = {
+					ve_cultural_project_type_is = { TYPE = 3 }
+					ve_cultural_project_type_is = { TYPE = 5 }
+				}
+			}
+			NOT = { exists = scope:ve_evt_target_state }
+			NOT = { exists = scope:ve_evt_target_culture }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.41.a
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.41:a"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 40 }
+				add = 40
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.41.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_ethnic_or_composite_cultural_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = 3 }
+				ve_evt_change_cultural_project_progress = { DELTA = -3 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.41.b
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.41:b"
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:ve_national_cohesion >= 60 }
+				add = 30
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.25
+					}
+				}
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.41.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_ethnic_or_composite_cultural_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = -3 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.005
+						culture = scope:ve_evt_target_culture
+					}
+				}
+				ve_evt_change_cultural_project_progress = { DELTA = 6 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.41.c
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.41:c"
+		trigger = {
+			var:culture_reform_point >= 10
+			has_modifier = bureaucratic_idea_4_mdf
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:culture_reform_point >= 60 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.41.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_ethnic_or_composite_cultural_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -10 }
+				ve_evt_change_national_cohesion = { DELTA = 1 }
+				ve_evt_change_cultural_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+}
+
+# The National Project at Breaking Point
+ve_cul_evt.42 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_cul_evt.42.t
+	desc = ve_cul_evt.42.d
+	flavor = ve_cul_evt.42.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_vandalized_storefront.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_cultural_project_incident = yes
+		OR = {
+			ve_cultural_project_type_is = { TYPE = 3 }
+			ve_cultural_project_type_is = { TYPE = 5 }
+		}
+		var:ve_cultural_project_progress < 70
+		var:ve_national_cohesion <= 25
+		NOT = { has_variable = ve_evt_cul_42_fired }
+		ve_cultural_project_target_state_check = { CHECK = { turmoil >= 0.25 } }
+		ve_has_cultural_movement_pressure = yes
+	}
+
+	immediate = {
+		var:ve_cultural_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		var:ve_cultural_project_target_culture ?= {
+			save_scope_as = ve_evt_target_culture
+		}
+		ve_evt_record_cultural_incident_42 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = {
+				OR = {
+					ve_cultural_project_type_is = { TYPE = 3 }
+					ve_cultural_project_type_is = { TYPE = 5 }
+				}
+			}
+			NOT = { exists = scope:ve_evt_target_state }
+			NOT = { exists = scope:ve_evt_target_culture }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.42.a
+		ve_evt_tm_record_cultural_option = yes
+		ve_evt_tm_record_cultural_crisis_cancel = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.42:a"
+		ai_chance = {
+			base = 25
+			modifier = {
+				trigger = { var:culture_reform_point < 15 }
+				add = 100
+			}
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 15 }
+				add = 50
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.40
+					}
+				}
+				add = 50
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.42.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_ethnic_or_composite_cultural_project_event_context = yes }
+				ve_cancel_cultural_project = yes
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.42.b
+		ve_evt_tm_record_cultural_option = yes
+		ve_evt_tm_record_cultural_crisis_rescue = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.42:b"
+		trigger = {
+			var:culture_reform_point >= 25
+		}
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:culture_reform_point >= 75 }
+				add = 50
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.40
+					}
+				}
+				factor = 0.5
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 50 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.42.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_ethnic_or_composite_cultural_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -25 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.01
+						culture = scope:ve_evt_target_culture
+					}
+				}
+				ve_evt_change_cultural_project_progress = { DELTA = -5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.42.c
+		ve_evt_tm_record_cultural_option = yes
+		ve_evt_tm_record_cultural_crisis_limp = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.42:c"
+		default_option = yes
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:culture_reform_point < 25 }
+				add = 60
+			}
+			modifier = {
+				trigger = { var:ve_cultural_project_progress >= 55 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.42.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_ethnic_or_composite_cultural_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = -2 }
+				ve_evt_change_cultural_project_progress = { DELTA = -10 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.42.e
+		ve_evt_tm_record_cultural_option = yes
+		ve_evt_tm_record_cultural_crisis_rescue = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.42:e"
+		trigger = {
+			var:culture_reform_point >= 15
+			OR = {
+				AND = {
+					ve_cultural_project_type_is = { TYPE = 3 }
+					OR = {
+						has_variable = nationalist_idea_5_var
+						has_modifier = bureaucratic_idea_5_mdf
+					}
+				}
+				AND = {
+					ve_cultural_project_type_is = { TYPE = 5 }
+					OR = {
+						has_modifier = diplomatic_idea_5_mdf
+						has_modifier = bureaucratic_idea_5_mdf
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 60
+			modifier = {
+				trigger = { always = yes }
+				add = 60
+			}
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 15 }
+				add = 30
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 40 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.42.e.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_ethnic_or_composite_cultural_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -15 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.005
+						culture = scope:ve_evt_target_culture
+					}
+				}
+				ve_evt_change_national_cohesion = { DELTA = 2 }
+				ve_evt_change_cultural_project_progress = { DELTA = -3 }
+			}
+		}
+	}
+}
+
+# The Surname and Language Directive
+ve_cul_evt.50 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_cul_evt.50.t
+	desc = ve_cul_evt.50.d
+	flavor = ve_cul_evt.50.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_politicians_arguing.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_cultural_project_incident = yes
+		ve_cultural_project_type_is = { TYPE = 3 }
+		var:ve_cultural_project_progress >= 15
+		var:ve_cultural_project_progress <= 65
+		NOT = { has_variable = ve_evt_cul_50_fired }
+	}
+
+	immediate = {
+		var:ve_cultural_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		var:ve_cultural_project_target_culture ?= {
+			save_scope_as = ve_evt_target_culture
+		}
+		ve_evt_record_cultural_incident_50 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_cultural_project_type_is = { TYPE = 3 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			NOT = { exists = scope:ve_evt_target_culture }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.50.a
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.50:a"
+		trigger = {
+			var:culture_reform_point >= 10
+		}
+		ai_chance = {
+			base = 40
+			modifier = {
+				trigger = { var:culture_reform_point >= 60 }
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.50.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_ethnic_cultural_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -10 }
+				ve_evt_change_national_cohesion = { DELTA = 1 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.005
+						culture = scope:ve_evt_target_culture
+					}
+				}
+				ve_evt_change_cultural_project_progress = { DELTA = 4 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.50.b
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.50:b"
+		ai_chance = {
+			base = 40
+			modifier = {
+				trigger = { var:ve_national_cohesion >= 65 }
+				add = 30
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.25
+					}
+				}
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.50.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_ethnic_cultural_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = -4 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.01
+						culture = scope:ve_evt_target_culture
+					}
+				}
+				ve_evt_change_cultural_project_progress = { DELTA = 7 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.50.c
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.50:c"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 40 }
+				add = 50
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.50.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_ethnic_cultural_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = 3 }
+				ve_evt_change_cultural_project_progress = { DELTA = -5 }
+			}
+		}
+	}
+}
+
+# The Conscription Registers
+ve_cul_evt.51 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_cul_evt.51.t
+	desc = ve_cul_evt.51.d
+	flavor = ve_cul_evt.51.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_military_parade.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_cultural_project_incident = yes
+		ve_cultural_project_type_is = { TYPE = 3 }
+		var:ve_cultural_project_progress >= 25
+		var:ve_cultural_project_progress <= 75
+		NOT = { has_variable = ve_evt_cul_51_fired }
+	}
+
+	immediate = {
+		var:ve_cultural_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		var:ve_cultural_project_target_culture ?= {
+			save_scope_as = ve_evt_target_culture
+		}
+		ve_evt_record_cultural_incident_51 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_cultural_project_type_is = { TYPE = 3 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			NOT = { exists = scope:ve_evt_target_culture }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.51.a
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.51:a"
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:ve_national_cohesion >= 55 }
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.51.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_ethnic_cultural_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = -2 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.005
+						culture = scope:ve_evt_target_culture
+					}
+				}
+				ve_evt_change_cultural_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.51.b
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.51:b"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 40 }
+				add = 40
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.51.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_ethnic_cultural_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = 3 }
+				ve_evt_change_cultural_project_progress = { DELTA = -3 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.51.c
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.51:c"
+		trigger = {
+			var:culture_reform_point >= 10
+			OR = {
+				has_variable = nationalist_idea_5_var
+				has_modifier = mass_conscription_idea_5_mdf
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:culture_reform_point >= 60 }
+				add = 40
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.51.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_ethnic_cultural_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -10 }
+				ve_evt_change_national_cohesion = { DELTA = 1 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.005
+						culture = scope:ve_evt_target_culture
+					}
+				}
+				ve_evt_change_cultural_project_progress = { DELTA = 6 }
+			}
+		}
+	}
+}
+
+# The Constituent Delegation
+ve_cul_evt.100 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_cul_evt.100.t
+	desc = ve_cul_evt.100.d
+	flavor = ve_cul_evt.100.f
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_capitalists_meeting.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_cultural_project_incident = yes
+		ve_cultural_project_type_is = { TYPE = 5 }
+		var:ve_cultural_project_progress >= 10
+		var:ve_cultural_project_progress <= 65
+		NOT = { has_variable = ve_evt_cul_100_fired }
+	}
+
+	immediate = {
+		var:ve_cultural_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		var:ve_cultural_project_target_culture ?= {
+			save_scope_as = ve_evt_target_culture
+		}
+		ve_evt_record_cultural_incident_100 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_cultural_project_type_is = { TYPE = 5 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			NOT = { exists = scope:ve_evt_target_culture }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.100.a
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.100:a"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 45 }
+				add = 40
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.100.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_composite_cultural_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = 4 }
+				ve_evt_change_cultural_project_progress = { DELTA = -4 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.100.b
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.100:b"
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:ve_national_cohesion >= 60 }
+				add = 30
+			}
+			modifier = {
+				trigger = {
+					scope:ve_evt_target_state ?= {
+						turmoil >= 0.25
+					}
+				}
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.100.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_composite_cultural_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = -2 }
+				scope:ve_evt_target_state ?= {
+					add_radicals_in_state = {
+						value = 0.005
+						culture = scope:ve_evt_target_culture
+					}
+				}
+				ve_evt_change_cultural_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.100.c
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.100:c"
+		trigger = {
+			var:culture_reform_point >= 10
+			OR = {
+				has_modifier = parliamentary_idea_4_mdf
+				has_modifier = diplomatic_idea_5_mdf
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:culture_reform_point >= 60 }
+				add = 40
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.100.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_composite_cultural_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -10 }
+				ve_evt_change_national_cohesion = { DELTA = 2 }
+				ve_evt_change_cultural_project_progress = { DELTA = 4 }
+			}
+		}
+	}
+}
+
+# Dual Administration
+ve_cul_evt.101 = {
+	type = country_event
+	placement = scope:ve_evt_target_state
+
+	title = ve_cul_evt.101.t
+	desc = ve_cul_evt.101.d
+	flavor = ve_cul_evt.101.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_politicians_arguing.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_cultural_project_incident = yes
+		ve_cultural_project_type_is = { TYPE = 5 }
+		var:ve_cultural_project_progress >= 25
+		var:ve_cultural_project_progress <= 75
+		OR = {
+			bureaucracy < 0
+			approaching_bureaucracy_shortage = yes
+		}
+		NOT = { has_variable = ve_evt_cul_101_fired }
+	}
+
+	immediate = {
+		var:ve_cultural_project_target_state ?= {
+			save_scope_as = ve_evt_target_state
+		}
+		var:ve_cultural_project_target_culture ?= {
+			save_scope_as = ve_evt_target_culture
+		}
+		ve_evt_record_cultural_incident_101 = yes
+	}
+
+	cancellation_trigger = {
+		OR = {
+			NOT = { ve_cultural_project_type_is = { TYPE = 5 } }
+			NOT = { exists = scope:ve_evt_target_state }
+			NOT = { exists = scope:ve_evt_target_culture }
+			scope:ve_evt_target_state ?= {
+				NOT = { owner = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.101.a
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.101:a"
+		trigger = {
+			var:culture_reform_point >= 15
+		}
+		ai_chance = {
+			base = 40
+			modifier = {
+				trigger = { var:culture_reform_point >= 75 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.101.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_composite_cultural_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -15 }
+				ve_evt_change_cultural_project_progress = { DELTA = 6 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.101.b
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.101:b"
+		default_option = yes
+		ai_chance = {
+			base = 55
+			modifier = {
+				trigger = { var:culture_reform_point < 40 }
+				add = 50
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.101.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_composite_cultural_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = 2 }
+				ve_evt_change_cultural_project_progress = { DELTA = -6 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.101.c
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.101:c"
+		trigger = {
+			var:culture_reform_point >= 10
+			has_modifier = bureaucratic_idea_5_mdf
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:culture_reform_point >= 60 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.101.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_composite_cultural_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -10 }
+				ve_evt_change_national_cohesion = { DELTA = 2 }
+				ve_evt_change_cultural_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+}
+
+# Implementation in the Provinces
+ve_cul_evt.150 = {
+	type = country_event
+
+	title = ve_cul_evt.150.t
+	desc = ve_cul_evt.150.d
+	flavor = ve_cul_evt.150.f
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_capitalists_meeting.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_countrywide_cultural_project_incident = yes
+		OR = {
+			ve_cultural_project_type_is = { TYPE = 1 }
+			ve_cultural_project_type_is = { TYPE = 2 }
+		}
+		var:ve_cultural_project_progress >= 15
+		var:ve_cultural_project_progress <= 65
+		NOT = { has_variable = ve_evt_cul_150_fired }
+	}
+
+	immediate = {
+		ve_evt_record_cultural_incident_150 = yes
+	}
+
+	cancellation_trigger = {
+		NOT = {
+			OR = {
+				ve_cultural_project_type_is = { TYPE = 1 }
+				ve_cultural_project_type_is = { TYPE = 2 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.150.a
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.150:a"
+		trigger = {
+			var:culture_reform_point >= 10
+		}
+		ai_chance = {
+			base = 40
+			modifier = {
+				trigger = { var:culture_reform_point >= 60 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.150.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_countrywide_cultural_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -10 }
+				ve_evt_change_cultural_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.150.b
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.150:b"
+		default_option = yes
+		ai_chance = {
+			base = 55
+			modifier = {
+				trigger = { var:culture_reform_point < 35 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 40 }
+				add = 20
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.150.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_countrywide_cultural_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = 2 }
+				ve_evt_change_cultural_project_progress = { DELTA = -4 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.150.c
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.150:c"
+		trigger = {
+			var:culture_reform_point >= 5
+			has_modifier = bureaucratic_idea_4_mdf
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:culture_reform_point >= 45 }
+				add = 30
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 20 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.150.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_countrywide_cultural_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -5 }
+				ve_evt_change_national_cohesion = { DELTA = 2 }
+				ve_evt_change_cultural_project_progress = { DELTA = 3 }
+			}
+		}
+	}
+}
+
+# The Language of Instruction
+ve_cul_evt.151 = {
+	type = country_event
+
+	title = ve_cul_evt.151.t
+	desc = ve_cul_evt.151.d
+	flavor = ve_cul_evt.151.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_politicians_arguing.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_countrywide_cultural_project_incident = yes
+		ve_cultural_project_type_is = { TYPE = 1 }
+		var:ve_cultural_project_progress >= 20
+		var:ve_cultural_project_progress <= 75
+		NOT = { has_variable = ve_evt_cul_151_fired }
+	}
+
+	immediate = {
+		ve_evt_record_cultural_incident_151 = yes
+	}
+
+	cancellation_trigger = {
+		NOT = { ve_cultural_project_type_is = { TYPE = 1 } }
+	}
+
+	option = {
+		name = ve_cul_evt.151.a
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.151:a"
+		trigger = {
+			var:culture_reform_point >= 10
+		}
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 45 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.151.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_curriculum_cultural_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -10 }
+				ve_evt_change_national_cohesion = { DELTA = 3 }
+				ve_evt_change_cultural_project_progress = { DELTA = 3 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.151.b
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.151:b"
+		default_option = yes
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:ve_national_cohesion >= 60 }
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.151.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_curriculum_cultural_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = -3 }
+				ve_evt_change_cultural_project_progress = { DELTA = 6 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.151.c
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.151:c"
+		trigger = {
+			var:culture_reform_point >= 10
+			OR = {
+				has_modifier = academic_idea_5_mdf
+				has_modifier = welfare_idea_5_mdf
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:culture_reform_point >= 60 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.151.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_curriculum_cultural_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -10 }
+				ve_evt_change_national_cohesion = { DELTA = 2 }
+				ve_evt_change_cultural_project_progress = { DELTA = 5 }
+			}
+		}
+	}
+}
+
+# Who Represents the Nation?
+ve_cul_evt.160 = {
+	type = country_event
+
+	title = ve_cul_evt.160.t
+	desc = ve_cul_evt.160.d
+	flavor = ve_cul_evt.160.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_military_parade.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	duration = 3
+	cooldown = { years = 5 }
+
+	trigger = {
+		ve_can_fire_countrywide_cultural_project_incident = yes
+		ve_cultural_project_type_is = { TYPE = 2 }
+		var:ve_cultural_project_progress >= 20
+		var:ve_cultural_project_progress <= 75
+		NOT = { has_variable = ve_evt_cul_160_fired }
+	}
+
+	immediate = {
+		ve_evt_record_cultural_incident_160 = yes
+	}
+
+	cancellation_trigger = {
+		NOT = { ve_cultural_project_type_is = { TYPE = 2 } }
+	}
+
+	option = {
+		name = ve_cul_evt.160.a
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.160:a"
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = { var:ve_national_cohesion <= 45 }
+				add = 40
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.160.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_symbols_cultural_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = 4 }
+				ve_evt_change_cultural_project_progress = { DELTA = -3 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.160.b
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.160:b"
+		ai_chance = {
+			base = 45
+			modifier = {
+				trigger = { var:ve_national_cohesion >= 60 }
+				add = 30
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.160.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_symbols_cultural_project_event_context = yes }
+				ve_evt_change_national_cohesion = { DELTA = -3 }
+				ve_evt_change_cultural_project_progress = { DELTA = 6 }
+			}
+		}
+	}
+
+	option = {
+		name = ve_cul_evt.160.c
+		ve_evt_tm_record_cultural_option = yes
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_OPTION:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.160:c"
+		trigger = {
+			var:culture_reform_point >= 10
+			OR = {
+				has_modifier = parliamentary_idea_4_mdf
+				has_modifier = diplomatic_idea_4_mdf
+			}
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				trigger = { var:culture_reform_point >= 60 }
+				add = 40
+			}
+			modifier = {
+				trigger = { var:culture_reform_point < 35 }
+				factor = 0.5
+			}
+		}
+		custom_tooltip = { text = ve_cul_evt.160.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_symbols_cultural_project_event_context = yes }
+				ve_evt_change_cultural_mandate = { DELTA = -10 }
+				ve_evt_change_national_cohesion = { DELTA = 2 }
+				ve_evt_change_cultural_project_progress = { DELTA = 4 }
+			}
+		}
+	}
+}

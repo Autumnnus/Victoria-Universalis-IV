@@ -9,6 +9,26 @@ types ve_gui_panel_types
 			trigger_on_create = yes
 			on_start = "[GetVariableSystem.Set('ve_last_tab', 've_ideas')]"
 		}
+		### VU4: auto-close watcher.
+		# The sidebar stays clickable while this panel is up and this panel is drawn
+		# under it, so opening a vanilla panel used to leave politics/market/etc.
+		# beneath our fullscreen. This widget is invisible until any vanilla panel or
+		# the map list opens; that visibility flip fires _show, which clears
+		# ve_tab_var and closes us.
+		# Kept here instead of patching onclicks into gui/information_panel_bar.gui:
+		# no vanilla file is overridden (mod compatible) and it catches every entry
+		# point - sidebar, hotkeys, map clicks and other mods' buttons alike.
+		widget = {
+			name = "ve_close_on_vanilla_panel"
+			size = { 0 0 }
+			alwaystransparent = yes
+			visible = "[Or( InformationPanelBar.IsAnyPanelOpen, MapListPanelManager.IsVisible )]"
+
+			state = {
+				name = _show
+				on_start = "[GetVariableSystem.Clear('ve_tab_var')]"
+			}
+		}
 		blockoverride
 		"animation_state_block"
 		{
@@ -55,7 +75,7 @@ types ve_gui_panel_types
 				blockoverride
 				"first_button_selected"
 				{
-					text = "VE_IDEAS"
+					text = "VE_IDEAS_SELECTED"
 				}
 				blockoverride
 				"second_button"
@@ -81,7 +101,7 @@ types ve_gui_panel_types
 				blockoverride
 				"second_button_selected"
 				{
-					text = "VE_RELIGION"
+					text = "VE_RELIGION_SELECTED"
 				}
 				blockoverride
 				"third_button"
@@ -107,7 +127,7 @@ types ve_gui_panel_types
 				blockoverride
 				"third_button_selected"
 				{
-					text = "VE_CULTURE"
+					text = "VE_CULTURE_SELECTED"
 				}
 				blockoverride
 				"fourth_button"
@@ -133,7 +153,37 @@ types ve_gui_panel_types
 				blockoverride
 				"fourth_button_selected"
 				{
-					text = "VE_AGE_BONUS"
+					text = "VE_AGE_BONUS_SELECTED"
+				}
+				### LEDGER - every country's doctrine state in one table.
+				### Opening the tab rebuilds the page list, so the table is never
+				### stale when the player arrives (see ve_ledger_effects.txt).
+				blockoverride
+				"fifth_button"
+				{
+					text = "VE_LEDGER"
+				}
+				blockoverride
+				"fifth_button_click"
+				{
+					onclick = "[GetVariableSystem.Set('ve_tab_var', 've_ledger')]"
+					onclick = "[GetVariableSystem.Set('ve_last_tab', 've_ledger')]"
+					onclick = "[GetScriptedGui('ve_ledger_refresh').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+				blockoverride
+				"fifth_button_visibility"
+				{
+					visible = "[GetVariableSystem.HasValue('ve_tab_var', 've_ledger')]"
+				}
+				blockoverride
+				"fifth_button_visibility_checked"
+				{
+					visible = "[Not( GetVariableSystem.HasValue('ve_tab_var', 've_ledger') )]"
+				}
+				blockoverride
+				"fifth_button_selected"
+				{
+					text = "VE_LEDGER_SELECTED"
 				}
 			}
 		}
@@ -173,6 +223,15 @@ types ve_gui_panel_types
 				"scrollarea_content"
 				{
 					ve_panel_age_bonusses = {
+					}
+				}
+			}
+			fullscreen_scrollarea = {
+				visible = "[GetVariableSystem.HasValue('ve_tab_var', 've_ledger')]"
+				blockoverride
+				"scrollarea_content"
+				{
+					ve_panel_ledger = {
 					}
 				}
 			}

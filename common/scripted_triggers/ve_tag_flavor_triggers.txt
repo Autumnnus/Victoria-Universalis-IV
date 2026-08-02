@@ -1,0 +1,234 @@
+# Phase 7 shared tag-flavor lifecycle and pilot eligibility.
+
+ve_has_pending_tag_flavor_offer = {
+	has_variable = ve_tag_flavor_offer_pending
+}
+
+ve_has_active_tag_flavor_chain = {
+	has_variable = ve_tag_flavor_active_chain
+}
+
+ve_has_tag_flavor_cooldown = {
+	has_variable = ve_tag_flavor_cooldown
+}
+
+ve_tag_flavor_offer_window_open = {
+	has_variable = victoria_universalis_system_on
+	NOT = { ve_has_pending_tag_flavor_offer = yes }
+	NOT = { ve_has_active_tag_flavor_chain = yes }
+	NOT = { ve_has_tag_flavor_cooldown = yes }
+}
+
+# A pilot becomes live only after both events, all three routes, modifiers,
+# AI weights, telemetry, and EN/TR localization are complete.
+ve_tag_flavor_tur_pack_live = { always = yes }
+ve_tag_flavor_jap_pack_live = { always = yes }
+ve_tag_flavor_usa_pack_live = { always = yes }
+
+ve_tag_flavor_tur_available = {
+	ve_tag_flavor_tur_pack_live = yes
+	exists = c:TUR
+	this = c:TUR
+	has_modifier = tur_idea_2
+	year >= 1840
+	year < 1896
+	has_variable = ve_religious_model
+	has_variable = ve_identity_model
+	NOT = { ve_has_active_religious_transition_journey = yes }
+	NOT = { ve_has_active_identity_transition_journey = yes }
+	NOT = { has_variable = ve_tag_flavor_tur_offered }
+	NOT = { has_variable = ve_tag_flavor_tur_completed }
+}
+
+ve_tag_flavor_jap_available = {
+	ve_tag_flavor_jap_pack_live = yes
+	exists = c:JAP
+	this = c:JAP
+	has_modifier = jap_idea_2
+	year >= 1850
+	year < 1911
+	OR = {
+		has_global_variable = ve_age_1_started
+		has_global_variable = ve_age_2_started
+		has_global_variable = ve_age_3_started
+	}
+	NOT = { has_variable = ve_tag_flavor_jap_offered }
+	NOT = { has_variable = ve_tag_flavor_jap_completed }
+}
+
+ve_tag_flavor_usa_available = {
+	ve_tag_flavor_usa_pack_live = yes
+	exists = c:USA
+	this = c:USA
+	has_modifier = usa_idea_1
+	year >= 1845
+	year < 1906
+	has_variable = ve_identity_model
+	NOT = { ve_has_active_identity_transition_journey = yes }
+	NOT = { has_variable = ve_tag_flavor_usa_offered }
+	NOT = { has_variable = ve_tag_flavor_usa_completed }
+}
+
+ve_can_offer_tag_flavor_tur = {
+	ve_tag_flavor_offer_window_open = yes
+	ve_tag_flavor_tur_available = yes
+}
+
+ve_can_offer_tag_flavor_jap = {
+	ve_tag_flavor_offer_window_open = yes
+	ve_tag_flavor_jap_available = yes
+}
+
+ve_can_offer_tag_flavor_usa = {
+	ve_tag_flavor_offer_window_open = yes
+	ve_tag_flavor_usa_available = yes
+}
+
+ve_can_roll_tag_flavor_offer = {
+	OR = {
+		ve_can_offer_tag_flavor_tur = yes
+		ve_can_offer_tag_flavor_jap = yes
+		ve_can_offer_tag_flavor_usa = yes
+	}
+}
+
+# Offered flags are set by opener immediate blocks, so these checks use the
+# pending reservation and current country/profile context.
+ve_can_accept_tag_flavor_tur_offer = {
+	ve_tag_flavor_tur_pack_live = yes
+	ve_has_pending_tag_flavor_offer = yes
+	var:ve_tag_flavor_offer_chain = 1
+	NOT = { ve_has_active_tag_flavor_chain = yes }
+	exists = c:TUR
+	this = c:TUR
+	has_modifier = tur_idea_2
+	year >= 1840
+	year < 1896
+	has_variable = ve_religious_model
+	has_variable = ve_identity_model
+	NOT = { ve_has_active_religious_transition_journey = yes }
+	NOT = { ve_has_active_identity_transition_journey = yes }
+	NOT = { has_variable = ve_tag_flavor_tur_completed }
+}
+
+ve_can_accept_tag_flavor_jap_offer = {
+	ve_tag_flavor_jap_pack_live = yes
+	ve_has_pending_tag_flavor_offer = yes
+	var:ve_tag_flavor_offer_chain = 2
+	NOT = { ve_has_active_tag_flavor_chain = yes }
+	exists = c:JAP
+	this = c:JAP
+	has_modifier = jap_idea_2
+	year >= 1850
+	year < 1911
+	OR = {
+		has_global_variable = ve_age_1_started
+		has_global_variable = ve_age_2_started
+		has_global_variable = ve_age_3_started
+	}
+	NOT = { has_variable = ve_tag_flavor_jap_completed }
+}
+
+ve_can_accept_tag_flavor_usa_offer = {
+	ve_tag_flavor_usa_pack_live = yes
+	ve_has_pending_tag_flavor_offer = yes
+	var:ve_tag_flavor_offer_chain = 3
+	NOT = { ve_has_active_tag_flavor_chain = yes }
+	exists = c:USA
+	this = c:USA
+	has_modifier = usa_idea_1
+	year >= 1845
+	year < 1906
+	has_variable = ve_identity_model
+	NOT = { ve_has_active_identity_transition_journey = yes }
+	NOT = { has_variable = ve_tag_flavor_usa_completed }
+}
+
+ve_has_valid_tag_flavor_closure_context = {
+	has_variable = ve_tag_flavor_active_chain
+	has_variable = ve_tag_flavor_route
+	var:ve_tag_flavor_route >= 1
+	var:ve_tag_flavor_route <= 3
+	OR = {
+		AND = {
+			var:ve_tag_flavor_active_chain = 1
+			exists = c:TUR
+			this = c:TUR
+			has_modifier = tur_idea_2
+		}
+		AND = {
+			var:ve_tag_flavor_active_chain = 2
+			exists = c:JAP
+			this = c:JAP
+			has_modifier = jap_idea_2
+		}
+		AND = {
+			var:ve_tag_flavor_active_chain = 3
+			exists = c:USA
+			this = c:USA
+			has_modifier = usa_idea_1
+		}
+	}
+}
+
+ve_tag_flavor_tur_civic_lexicon_fit = {
+	OR = {
+		ve_is_civic_identity = yes
+		ve_is_composite_identity = yes
+	}
+}
+
+ve_tag_flavor_tur_sacred_continuity_fit = {
+	has_variable = ve_religious_model
+	var:ve_religious_model = 1
+	ve_is_confessional_state = yes
+}
+
+ve_has_valid_tag_flavor_tur_closure_context = {
+	ve_has_valid_tag_flavor_closure_context = yes
+	var:ve_tag_flavor_active_chain = 1
+}
+
+ve_tag_flavor_jap_translation_bureaus_fit = {
+	OR = {
+		has_modifier = academic_idea_4_mdf
+		has_modifier = infrastructure_idea_4_mdf
+	}
+}
+
+ve_tag_flavor_jap_directed_borrowing_fit = {
+	has_modifier = jap_idea_4
+}
+
+ve_has_valid_tag_flavor_jap_closure_context = {
+	ve_has_valid_tag_flavor_closure_context = yes
+	var:ve_tag_flavor_active_chain = 2
+}
+
+ve_tag_flavor_usa_citizenship_compact_fit = {
+	ve_is_civic_identity = yes
+}
+
+ve_tag_flavor_usa_composite_bargain_fit = {
+	ve_is_composite_identity = yes
+}
+
+ve_has_valid_tag_flavor_usa_closure_context = {
+	ve_has_valid_tag_flavor_closure_context = yes
+	var:ve_tag_flavor_active_chain = 3
+}
+
+ve_can_afford_tag_flavor_insight = {
+	has_variable = idea_point_pool
+	var:idea_point_pool >= $COST$
+}
+
+ve_can_afford_tag_flavor_cultural_mandate = {
+	has_variable = culture_reform_point
+	var:culture_reform_point >= $COST$
+}
+
+ve_can_afford_tag_flavor_piety_reform = {
+	has_variable = piety_reform_point
+	var:piety_reform_point >= $COST$
+}

@@ -1,38 +1,42 @@
-﻿can_unlock_ideas = {
+can_unlock_ideas = {
 	script_context = player_country
-	texture = "gfx/interface/intelligensia.dds"
+	texture = "gfx/interface/icons/generic_icons/innovation.dds"
+	color = red
 	valid = {
-		idea_cost_trigger = yes
-		var:national_idea_pool < 56
+		ve_can_purchase_any_idea = yes
 	}
 	type = alert
 }
 
 max_piety = {
 	script_context = player_country
-	texture = "gfx/interface/catholic.dds"
+	texture = "gfx/interface/icons/central_identity_pillars_icons/religious.dds"
+	color = red
 	valid = {
-		piety_cost_trigger = yes
+		ve_can_adopt_any_religious_program = yes
 	}
 	type = alert
 }
 
-max_culture_reform_point = {
+# There is deliberately no alert for "you could change the Identity Model".
+# A country always has an active model, switching is a rare strategic choice,
+# and an alert there reads as an instruction to adopt something every time the
+# Mandate stock passes 200. Cultural Mandate surplus is covered by the single
+# alert below instead.
+ve_can_begin_cultural_project = {
 	script_context = player_country
-	texture = "gfx/interface/monarch_cultures_icon.dds"
+	texture = "gfx/interface/icons/generic_icons/cultural_fervor.dds"
+	color = red
 	valid = {
-		culture_cost_trigger = yes
-		NOR = {
-			has_variable = supremacy_7_on
-			has_variable = intellectual_7_on
-		}
+		ve_should_alert_cultural_mandate_surplus = yes
 	}
 	type = alert
 }
 
 can_unlock_age_bonus = {
 	script_context = player_country
-	texture = "gfx/interface/icon_splendor_tiny.dds"
+	texture = "gfx/interface/icons/generic_icons/age.dds"
+	color = red
 	valid = {
 		splendor_cost_trigger = yes
 		trigger_if = {
@@ -47,6 +51,9 @@ can_unlock_age_bonus = {
 					has_modifier = age_1_bonus_4
 					has_modifier = age_1_bonus_5
 					has_modifier = age_1_bonus_6
+					has_modifier = age_1_bonus_7
+					has_modifier = age_1_bonus_8
+					has_modifier = age_1_bonus_9
 				}
 			}
 		}
@@ -62,6 +69,9 @@ can_unlock_age_bonus = {
 					has_modifier = age_2_bonus_4
 					has_modifier = age_2_bonus_5
 					has_modifier = age_2_bonus_6
+					has_modifier = age_2_bonus_7
+					has_modifier = age_2_bonus_8
+					has_modifier = age_2_bonus_9
 				}
 			}
 		}
@@ -77,6 +87,9 @@ can_unlock_age_bonus = {
 					has_modifier = age_3_bonus_4
 					has_modifier = age_3_bonus_5
 					has_modifier = age_3_bonus_6
+					has_modifier = age_3_bonus_7
+					has_modifier = age_3_bonus_8
+					has_modifier = age_3_bonus_9
 				}
 			}
 		}
@@ -84,28 +97,24 @@ can_unlock_age_bonus = {
 	type = alert
 }
 
-can_use_missionary = {
+ve_can_begin_targeted_cultural_project = {
 	script_context = player_country
+	texture = "gfx/interface/icons/generic_icons/cultural_fervor.dds"
+	color = red
 	valid = {
-		has_variable = avaible_missionaries
-		avaible_missionaries >= 1
-		NOT = {
-			has_law = law_type:law_total_separation
-		}
+		ve_can_begin_targeted_cultural_project_now = yes
 	}
 	type = important_action
-	alert_group = ve_missionary_group
+	alert_group = ve_state_project_group
 }
 
-can_use_culture_missionary = {
+ve_can_begin_targeted_religious_project = {
 	script_context = player_country
+	texture = "gfx/interface/icons/generic_icons/national_awakening.dds"
+	color = red
 	valid = {
-		has_variable = avaible_culture_missionaries
-		avaible_culture_missionaries >= 1
-		NOT = {
-			has_law = law_type:law_multicultural
-		}
+		ve_can_begin_targeted_religious_project_now = yes
 	}
 	type = important_action
-	alert_group = ve_missionary_group
+	alert_group = ve_state_project_group
 }

@@ -1,0 +1,12 @@
+# Half-yearly carrier for Phase 6 Era Crossroads offers.
+# There is no frequency roll. Pack-live gates keep unfinished Age packs out.
+
+ve_era_crossroads_half_yearly = {
+	trigger = {
+		ve_can_dispatch_era_crossroads_offer = yes
+	}
+
+	effect = {
+		ve_dispatch_era_crossroads_offer = yes
+	}
+}

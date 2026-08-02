@@ -1,0 +1,25 @@
+# Phase 6 shared Era Crossroads progress and presentation values.
+
+ve_era_crossroads_monthly_progress = {
+	value = 0
+	if = {
+		limit = { ve_era_crossroads_active_anchor_1_secured = yes }
+		add = 1
+	}
+	if = {
+		limit = { ve_era_crossroads_active_anchor_2_secured = yes }
+		add = 1
+	}
+	min = 0
+	max = 2
+}
+
+ve_era_crossroads_remaining_months = {
+	value = 60
+	if = {
+		limit = { has_variable = ve_era_crossroads_months }
+		subtract = var:ve_era_crossroads_months
+	}
+	min = 0
+	max = 60
+}

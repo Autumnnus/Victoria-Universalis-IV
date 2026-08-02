@@ -1,0 +1,191 @@
+﻿# A national idea is complete when this country has received its matching
+# profile modifier. Keeping this as a modifier check also makes existing saves
+# immediately show the correct UI state.
+ve_national_idea_1_completed = {
+	OR = {
+		has_modifier = gbr_idea_1
+		has_modifier = fra_idea_1
+		has_modifier = ger_idea_1
+		has_modifier = aus_idea_1
+		has_modifier = rus_idea_1
+		has_modifier = tur_idea_1
+		has_modifier = qng_idea_1
+		has_modifier = jap_idea_1
+		has_modifier = usa_idea_1
+		has_modifier = generic_idea_1
+		has_modifier = ve_arg_idea_1
+		has_modifier = ve_bel_idea_1
+		has_modifier = ve_bra_idea_1
+		has_modifier = ve_egy_idea_1
+		has_modifier = ve_ind_idea_1
+		has_modifier = ve_ita_idea_1
+		has_modifier = ve_kor_idea_1
+		has_modifier = ve_mex_idea_1
+		has_modifier = ve_net_idea_1
+		has_modifier = ve_per_idea_1
+		has_modifier = ve_spa_idea_1
+		has_modifier = ve_swe_idea_1
+	}
+}
+
+ve_national_idea_2_completed = {
+	OR = {
+		has_modifier = gbr_idea_2
+		has_modifier = fra_idea_2
+		has_modifier = ger_idea_2
+		has_modifier = aus_idea_2
+		has_modifier = rus_idea_2
+		has_modifier = tur_idea_2
+		has_modifier = qng_idea_2
+		has_modifier = jap_idea_2
+		has_modifier = usa_idea_2
+		has_modifier = generic_idea_2
+		has_modifier = ve_arg_idea_2
+		has_modifier = ve_bel_idea_2
+		has_modifier = ve_bra_idea_2
+		has_modifier = ve_egy_idea_2
+		has_modifier = ve_ind_idea_2
+		has_modifier = ve_ita_idea_2
+		has_modifier = ve_kor_idea_2
+		has_modifier = ve_mex_idea_2
+		has_modifier = ve_net_idea_2
+		has_modifier = ve_per_idea_2
+		has_modifier = ve_spa_idea_2
+		has_modifier = ve_swe_idea_2
+	}
+}
+
+ve_national_idea_3_completed = {
+	OR = {
+		has_modifier = gbr_idea_3
+		has_modifier = fra_idea_3
+		has_modifier = ger_idea_3
+		has_modifier = aus_idea_3
+		has_modifier = rus_idea_3
+		has_modifier = tur_idea_3
+		has_modifier = qng_idea_3
+		has_modifier = jap_idea_3
+		has_modifier = usa_idea_3
+		has_modifier = generic_idea_3
+		has_modifier = ve_arg_idea_3
+		has_modifier = ve_bel_idea_3
+		has_modifier = ve_bra_idea_3
+		has_modifier = ve_egy_idea_3
+		has_modifier = ve_ind_idea_3
+		has_modifier = ve_ita_idea_3
+		has_modifier = ve_kor_idea_3
+		has_modifier = ve_mex_idea_3
+		has_modifier = ve_net_idea_3
+		has_modifier = ve_per_idea_3
+		has_modifier = ve_spa_idea_3
+		has_modifier = ve_swe_idea_3
+	}
+}
+
+ve_national_idea_4_completed = {
+	OR = {
+		has_modifier = gbr_idea_4
+		has_modifier = fra_idea_4
+		has_modifier = ger_idea_4
+		has_modifier = aus_idea_4
+		has_modifier = rus_idea_4
+		has_modifier = tur_idea_4
+		has_modifier = qng_idea_4
+		has_modifier = jap_idea_4
+		has_modifier = usa_idea_4
+		has_modifier = generic_idea_4
+		has_modifier = ve_arg_idea_4
+		has_modifier = ve_bel_idea_4
+		has_modifier = ve_bra_idea_4
+		has_modifier = ve_egy_idea_4
+		has_modifier = ve_ind_idea_4
+		has_modifier = ve_ita_idea_4
+		has_modifier = ve_kor_idea_4
+		has_modifier = ve_mex_idea_4
+		has_modifier = ve_net_idea_4
+		has_modifier = ve_per_idea_4
+		has_modifier = ve_spa_idea_4
+		has_modifier = ve_swe_idea_4
+	}
+}
+
+ve_national_idea_5_completed = {
+	OR = {
+		has_modifier = gbr_idea_5
+		has_modifier = fra_idea_5
+		has_modifier = ger_idea_5
+		has_modifier = aus_idea_5
+		has_modifier = rus_idea_5
+		has_modifier = tur_idea_5
+		has_modifier = qng_idea_5
+		has_modifier = jap_idea_5
+		has_modifier = usa_idea_5
+		has_modifier = generic_idea_5
+		has_modifier = ve_arg_idea_5
+		has_modifier = ve_bel_idea_5
+		has_modifier = ve_bra_idea_5
+		has_modifier = ve_egy_idea_5
+		has_modifier = ve_ind_idea_5
+		has_modifier = ve_ita_idea_5
+		has_modifier = ve_kor_idea_5
+		has_modifier = ve_mex_idea_5
+		has_modifier = ve_net_idea_5
+		has_modifier = ve_per_idea_5
+		has_modifier = ve_spa_idea_5
+		has_modifier = ve_swe_idea_5
+	}
+}
+
+ve_national_idea_6_completed = {
+	OR = {
+		has_modifier = gbr_idea_6
+		has_modifier = fra_idea_6
+		has_modifier = ger_idea_6
+		has_modifier = aus_idea_6
+		has_modifier = rus_idea_6
+		has_modifier = tur_idea_6
+		has_modifier = qng_idea_6
+		has_modifier = jap_idea_6
+		has_modifier = usa_idea_6
+		has_modifier = generic_idea_6
+		has_modifier = ve_arg_idea_6
+		has_modifier = ve_bel_idea_6
+		has_modifier = ve_bra_idea_6
+		has_modifier = ve_egy_idea_6
+		has_modifier = ve_ind_idea_6
+		has_modifier = ve_ita_idea_6
+		has_modifier = ve_kor_idea_6
+		has_modifier = ve_mex_idea_6
+		has_modifier = ve_net_idea_6
+		has_modifier = ve_per_idea_6
+		has_modifier = ve_spa_idea_6
+		has_modifier = ve_swe_idea_6
+	}
+}
+
+ve_national_idea_7_completed = {
+	OR = {
+		has_modifier = gbr_idea_7
+		has_modifier = fra_idea_7
+		has_modifier = ger_idea_7
+		has_modifier = aus_idea_7
+		has_modifier = rus_idea_7
+		has_modifier = tur_idea_7
+		has_modifier = qng_idea_7
+		has_modifier = jap_idea_7
+		has_modifier = usa_idea_7
+		has_modifier = generic_idea_7
+		has_modifier = ve_arg_idea_7
+		has_modifier = ve_bel_idea_7
+		has_modifier = ve_bra_idea_7
+		has_modifier = ve_egy_idea_7
+		has_modifier = ve_ind_idea_7
+		has_modifier = ve_ita_idea_7
+		has_modifier = ve_kor_idea_7
+		has_modifier = ve_mex_idea_7
+		has_modifier = ve_net_idea_7
+		has_modifier = ve_per_idea_7
+		has_modifier = ve_spa_idea_7
+		has_modifier = ve_swe_idea_7
+	}
+}

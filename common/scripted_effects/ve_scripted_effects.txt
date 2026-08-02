@@ -83,12 +83,121 @@
 		}
 		american_ideas = yes
 	}
+	else_if = {
+		limit = {
+			exists = c:SPA
+			this = c:SPA
+		}
+		ve_spanish_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:IBE
+			this = c:IBE
+		}
+		ve_spanish_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:ITA
+			this = c:ITA
+		}
+		ve_italian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:SWE
+			this = c:SWE
+		}
+		ve_swedish_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:SCA
+			this = c:SCA
+		}
+		ve_swedish_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:BIC
+			this = c:BIC
+		}
+		ve_indian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:HND
+			this = c:HND
+		}
+		ve_indian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:MEX
+			this = c:MEX
+		}
+		ve_mexican_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:BRZ
+			this = c:BRZ
+		}
+		ve_brazilian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:NET
+			this = c:NET
+		}
+		ve_dutch_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:BEL
+			this = c:BEL
+		}
+		ve_belgian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:PER
+			this = c:PER
+		}
+		ve_persian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:EGY
+			this = c:EGY
+		}
+		ve_egyptian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:KOR
+			this = c:KOR
+		}
+		ve_korean_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:ARG
+			this = c:ARG
+		}
+		ve_argentine_ideas = yes
+	}
 	else = {
 		generic_ideas = yes
 	}
 }
 
 cancel_national_idea_mdf = {
+	# National ideas are earned from individual group-idea levels. Rebuild the
+	# progress before removing national modifiers so cancellation cannot leave
+	# stale national-idea progress behind.
+	ve_recalculate_national_idea_pool = yes
 	if = {
 		limit = {
 			exists = c:GBR
@@ -173,708 +282,352 @@ cancel_national_idea_mdf = {
 		}
 		cancel_american_ideas = yes
 	}
+	else_if = {
+		limit = {
+			exists = c:SPA
+			this = c:SPA
+		}
+		ve_cancel_spanish_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:IBE
+			this = c:IBE
+		}
+		ve_cancel_spanish_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:ITA
+			this = c:ITA
+		}
+		ve_cancel_italian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:SWE
+			this = c:SWE
+		}
+		ve_cancel_swedish_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:SCA
+			this = c:SCA
+		}
+		ve_cancel_swedish_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:BIC
+			this = c:BIC
+		}
+		ve_cancel_indian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:HND
+			this = c:HND
+		}
+		ve_cancel_indian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:MEX
+			this = c:MEX
+		}
+		ve_cancel_mexican_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:BRZ
+			this = c:BRZ
+		}
+		ve_cancel_brazilian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:NET
+			this = c:NET
+		}
+		ve_cancel_dutch_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:BEL
+			this = c:BEL
+		}
+		ve_cancel_belgian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:PER
+			this = c:PER
+		}
+		ve_cancel_persian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:EGY
+			this = c:EGY
+		}
+		ve_cancel_egyptian_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:KOR
+			this = c:KOR
+		}
+		ve_cancel_korean_ideas = yes
+	}
+	else_if = {
+		limit = {
+			exists = c:ARG
+			this = c:ARG
+		}
+		ve_cancel_argentine_ideas = yes
+	}
 	else = {
 		cancel_generic_ideas = yes
 	}
 }
 
-idea_cost = {
+# A formed country can change tag after its VE systems are already initialized.
+# Clear every possible legacy national set before applying the profile for its
+# current tag, so generic or predecessor-country modifiers never stack.
+ve_refresh_national_idea_profile = {
+	set_variable = {
+		name = national_idea_pool
+		value = 0
+	}
+	cancel_british_ideas = yes
+	cancel_french_ideas = yes
+	cancel_german_ideas = yes
+	cancel_austrian_ideas = yes
+	cancel_russian_ideas = yes
+	cancel_turkish_ideas = yes
+	cancel_chinese_ideas = yes
+	cancel_japanese_ideas = yes
+	cancel_american_ideas = yes
+	cancel_generic_ideas = yes
+	ve_cancel_spanish_ideas = yes
+	ve_cancel_italian_ideas = yes
+	ve_cancel_swedish_ideas = yes
+	ve_cancel_indian_ideas = yes
+	ve_cancel_mexican_ideas = yes
+	ve_cancel_brazilian_ideas = yes
+	ve_cancel_dutch_ideas = yes
+	ve_cancel_belgian_ideas = yes
+	ve_cancel_persian_ideas = yes
+	ve_cancel_egyptian_ideas = yes
+	ve_cancel_korean_ideas = yes
+	ve_cancel_argentine_ideas = yes
+
+	remove_modifier = gbr_idea_tradition_1
+	remove_modifier = gbr_idea_tradition_2
+	remove_modifier = fra_idea_tradition_1
+	remove_modifier = fra_idea_tradition_2
+	remove_modifier = ger_idea_tradition_1
+	remove_modifier = ger_idea_tradition_2
+	remove_modifier = aus_idea_tradition_1
+	remove_modifier = aus_idea_tradition_2
+	remove_modifier = rus_idea_tradition_1
+	remove_modifier = rus_idea_tradition_2
+	remove_modifier = tur_idea_tradition_1
+	remove_modifier = tur_idea_tradition_2
+	remove_modifier = qng_idea_tradition_1
+	remove_modifier = qng_idea_tradition_2
+	remove_modifier = jap_idea_tradition_1
+	remove_modifier = jap_idea_tradition_2
+	remove_modifier = usa_idea_tradition_1
+	remove_modifier = usa_idea_tradition_2
+	remove_modifier = ve_spa_idea_tradition_1
+	remove_modifier = ve_spa_idea_tradition_2
+	remove_modifier = ve_ita_idea_tradition_1
+	remove_modifier = ve_ita_idea_tradition_2
+	remove_modifier = ve_swe_idea_tradition_1
+	remove_modifier = ve_swe_idea_tradition_2
+	remove_modifier = ve_ind_idea_tradition_1
+	remove_modifier = ve_ind_idea_tradition_2
+	remove_modifier = ve_mex_idea_tradition_1
+	remove_modifier = ve_mex_idea_tradition_2
+	remove_modifier = ve_bra_idea_tradition_1
+	remove_modifier = ve_bra_idea_tradition_2
+	remove_modifier = ve_net_idea_tradition_1
+	remove_modifier = ve_net_idea_tradition_2
+	remove_modifier = ve_bel_idea_tradition_1
+	remove_modifier = ve_bel_idea_tradition_2
+	remove_modifier = ve_per_idea_tradition_1
+	remove_modifier = ve_per_idea_tradition_2
+	remove_modifier = ve_egy_idea_tradition_1
+	remove_modifier = ve_egy_idea_tradition_2
+	remove_modifier = ve_kor_idea_tradition_1
+	remove_modifier = ve_kor_idea_tradition_2
+	remove_modifier = ve_arg_idea_tradition_1
+	remove_modifier = ve_arg_idea_tradition_2
+	remove_modifier = generic_idea_tradition_1
+	remove_modifier = generic_idea_tradition_2
+	remove_variable = generic_idea_country
+
+	set_national_idea = yes
+	national_idea_traditions = yes
+	ve_recalculate_national_idea_pool = yes
+	national_idea_mdf = yes
+}
+
+# Every purchased group idea contributes to two progress tracks:
+# - ve_idea_capacity_progress is the uncapped 0-49 doctrine-investment total
+#   used to earn permanent idea-group slots;
+# - national_idea_pool mirrors that total but remains capped at 21 for the
+#   seven National Ideas and National Bonus.
+# Recalculation also makes group cancellation deterministic. Capacity never
+# decreases: ve_update_idea_group_capacity only raises idea_group_cap.
+ve_recalculate_national_idea_pool = {
+	# Nationalist ideas 5 and 7 use variables for their mechanical effects.
+	# Mirror existing saves into permanent ownership modifiers so every group
+	# icon can consistently use its modifier as the active-state source.
+	if = {
+		limit = {
+			has_variable = nationalist_idea_5_var
+			NOT = { has_modifier = nationalist_idea_5_mdf }
+		}
+		add_modifier = { name = nationalist_idea_5_mdf months = -1 }
+	}
+	if = {
+		limit = {
+			has_variable = nationalist_idea_7_var
+			NOT = { has_modifier = nationalist_idea_7_mdf }
+		}
+		add_modifier = { name = nationalist_idea_7_mdf months = -1 }
+	}
+	set_variable = {
+		name = ve_idea_capacity_progress
+		value = 0
+	}
+	change_variable = { name = ve_idea_capacity_progress add = var:academic_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:agrarian_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:financial_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:infrastructure_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:extraction_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:mass_conscription_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:war_economy_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:industrialist_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:bureaucratic_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:nationalist_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:parliamentary_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:diplomatic_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:mercantile_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:welfare_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:reformist_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:labour_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:offensive_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:defensive_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:naval_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:professional_army_idea }
+	change_variable = { name = ve_idea_capacity_progress add = var:colonial_idea }
+	set_variable = {
+		name = national_idea_pool
+		value = var:ve_idea_capacity_progress
+	}
+	if = {
+		limit = { var:national_idea_pool > 21 }
+		set_variable = { name = national_idea_pool value = 21 }
+	}
+	ve_update_idea_group_capacity = yes
+}
+
+splendor_cost = {
+	ve_purchase_era_reward = yes
+}
+
+# The retired +/-7 culture reform bar (reform_limiter, reform_bar_effects)
+# was removed: it had no caller and its var:culture_reform_value /
+# var:selected_reform_value reads logged "variable is used but never set"
+# every load. National Identity replaces it - see MECHANICS_REFERENCE.md 4.
+
+
+# The missionary system (call_missionaries_effect, ve_process_active_missionaries,
+# ve_reconcile_missionary_pool, prevent_annex_foreign_missionary, ve_law_change_effects)
+# was retired in favor of the Targeted Religious Project - see
+# common/scripted_effects/ve_religious_state_effects.txt.
+
+# Tiered cost. One per idea level; called from the matching branch of
+# boost_<group>_idea_effect, which is the only place that knows the level.
+# Rebuilds both progress tracks, charges that level's cost, then starts the
+# 24-month implementation window that blocks another group-idea purchase.
+ve_apply_national_insight_strain = {
+	add_modifier = {
+		name = ve_national_insight_implementation_strain
+		months = 24
+	}
+}
+
+ve_idea_purchase_1 = {
+	ve_recalculate_national_idea_pool = yes
+	change_variable = {
+		name = idea_point_pool
+		subtract = 200
+	}
+	ve_clamp_national_insight = yes
+	ve_apply_national_insight_strain = yes
+}
+
+ve_idea_purchase_2 = {
+	ve_recalculate_national_idea_pool = yes
+	change_variable = {
+		name = idea_point_pool
+		subtract = 250
+	}
+	ve_clamp_national_insight = yes
+	ve_apply_national_insight_strain = yes
+}
+
+ve_idea_purchase_3 = {
+	ve_recalculate_national_idea_pool = yes
 	change_variable = {
 		name = idea_point_pool
 		subtract = 300
 	}
+	ve_clamp_national_insight = yes
+	ve_apply_national_insight_strain = yes
 }
 
-splendor_cost = {
+ve_idea_purchase_4 = {
+	ve_recalculate_national_idea_pool = yes
 	change_variable = {
-		name = ve_splender_points
-		subtract = 800
+		name = idea_point_pool
+		subtract = 375
 	}
+	ve_clamp_national_insight = yes
+	ve_apply_national_insight_strain = yes
 }
 
-reform_limiter = {
-	if = {
-		limit = {
-			var:selected_reform_value == 7
-		}
-		set_variable = {
-			name = culture_reform_point
-			value = 750
-		}
-		set_variable = stop_getting_reform_point
+ve_idea_purchase_5 = {
+	ve_recalculate_national_idea_pool = yes
+	change_variable = {
+		name = idea_point_pool
+		subtract = 450
 	}
+	ve_clamp_national_insight = yes
+	ve_apply_national_insight_strain = yes
 }
 
-reform_bar_effects = {
-	if = {
-		limit = {
-			var:culture_reform_value == 7
-		}
-		add_modifier = {
-			name = bar_supremacy_mdf_7
-			months = -1
-		}
-		if = {
-			limit = {
-				has_modifier = bar_supremacy_mdf_6
-			}
-			remove_modifier = bar_supremacy_mdf_6
-		}
+ve_idea_purchase_6 = {
+	ve_recalculate_national_idea_pool = yes
+	change_variable = {
+		name = idea_point_pool
+		subtract = 550
 	}
-	else_if = {
-		limit = {
-			var:culture_reform_value == 6
-		}
-		add_modifier = {
-			name = bar_supremacy_mdf_6
-			months = -1
-		}
-		if = {
-			limit = {
-				has_modifier = bar_supremacy_mdf_7
-			}
-			remove_modifier = bar_supremacy_mdf_7
-		}
-		else_if = {
-			limit = {
-				has_modifier = bar_supremacy_mdf_5
-			}
-			remove_modifier = bar_supremacy_mdf_5
-		}
-	}
-	else_if = {
-		limit = {
-			var:culture_reform_value == 5
-		}
-		add_modifier = {
-			name = bar_supremacy_mdf_5
-			months = -1
-		}
-		if = {
-			limit = {
-				has_modifier = bar_supremacy_mdf_6
-			}
-			remove_modifier = bar_supremacy_mdf_6
-		}
-		else_if = {
-			limit = {
-				has_modifier = bar_supremacy_mdf_4
-			}
-			remove_modifier = bar_supremacy_mdf_4
-		}
-	}
-	else_if = {
-		limit = {
-			var:culture_reform_value == 4
-		}
-		add_modifier = {
-			name = bar_supremacy_mdf_4
-			months = -1
-		}
-		if = {
-			limit = {
-				has_modifier = bar_supremacy_mdf_5
-			}
-			remove_modifier = bar_supremacy_mdf_5
-		}
-		else_if = {
-			limit = {
-				has_modifier = bar_supremacy_mdf_3
-			}
-			remove_modifier = bar_supremacy_mdf_3
-		}
-	}
-	else_if = {
-		limit = {
-			var:culture_reform_value == 3
-		}
-		add_modifier = {
-			name = bar_supremacy_mdf_3
-			months = -1
-		}
-		if = {
-			limit = {
-				has_modifier = bar_supremacy_mdf_4
-			}
-			remove_modifier = bar_supremacy_mdf_4
-		}
-		else_if = {
-			limit = {
-				has_modifier = bar_supremacy_mdf_2
-			}
-			remove_modifier = bar_supremacy_mdf_2
-		}
-	}
-	else_if = {
-		limit = {
-			var:culture_reform_value == 2
-		}
-		add_modifier = {
-			name = bar_supremacy_mdf_2
-			months = -1
-		}
-		if = {
-			limit = {
-				has_modifier = bar_supremacy_mdf_3
-			}
-			remove_modifier = bar_supremacy_mdf_3
-		}
-		else_if = {
-			limit = {
-				has_modifier = bar_supremacy_mdf_1
-			}
-			remove_modifier = bar_supremacy_mdf_1
-		}
-	}
-	else_if = {
-		limit = {
-			var:culture_reform_value == 1
-		}
-		add_modifier = {
-			name = bar_supremacy_mdf_1
-			months = -1
-		}
-		if = {
-			limit = {
-				has_modifier = bar_supremacy_mdf_2
-			}
-			remove_modifier = bar_supremacy_mdf_2
-		}
-	}
-	else_if = {
-		limit = {
-			var:culture_reform_value == 0
-		}
-		if = {
-			limit = {
-				has_modifier = bar_supremacy_mdf_1
-			}
-			remove_modifier = bar_supremacy_mdf_1
-		}
-		else_if = {
-			limit = {
-				has_modifier = bar_intellectual_mdf_1
-			}
-			remove_modifier = bar_intellectual_mdf_1
-		}
-	}
-	else_if = {
-		limit = {
-			var:culture_reform_value == -1
-		}
-		add_modifier = {
-			name = bar_intellectual_mdf_1
-			months = -1
-		}
-		if = {
-			limit = {
-				has_modifier = bar_intellectual_mdf_2
-			}
-			remove_modifier = bar_intellectual_mdf_2
-		}
-	}
-	else_if = {
-		limit = {
-			var:culture_reform_value == -2
-		}
-		add_modifier = {
-			name = bar_intellectual_mdf_2
-			months = -1
-		}
-		if = {
-			limit = {
-				has_modifier = bar_intellectual_mdf_1
-			}
-			remove_modifier = bar_intellectual_mdf_1
-		}
-		else_if = {
-			limit = {
-				has_modifier = bar_intellectual_mdf_3
-			}
-			remove_modifier = bar_intellectual_mdf_3
-		}
-	}
-	else_if = {
-		limit = {
-			var:culture_reform_value == -3
-		}
-		add_modifier = {
-			name = bar_intellectual_mdf_3
-			months = -1
-		}
-		if = {
-			limit = {
-				has_modifier = bar_intellectual_mdf_2
-			}
-			remove_modifier = bar_intellectual_mdf_2
-		}
-		else_if = {
-			limit = {
-				has_modifier = bar_intellectual_mdf_4
-			}
-			remove_modifier = bar_intellectual_mdf_4
-		}
-	}
-	else_if = {
-		limit = {
-			var:culture_reform_value == -4
-		}
-		add_modifier = {
-			name = bar_intellectual_mdf_4
-			months = -1
-		}
-		if = {
-			limit = {
-				has_modifier = bar_intellectual_mdf_3
-			}
-			remove_modifier = bar_intellectual_mdf_3
-		}
-		else_if = {
-			limit = {
-				has_modifier = bar_intellectual_mdf_5
-			}
-			remove_modifier = bar_intellectual_mdf_5
-		}
-	}
-	else_if = {
-		limit = {
-			var:culture_reform_value == -5
-		}
-		add_modifier = {
-			name = bar_intellectual_mdf_5
-			months = -1
-		}
-		if = {
-			limit = {
-				has_modifier = bar_intellectual_mdf_4
-			}
-			remove_modifier = bar_intellectual_mdf_4
-		}
-		else_if = {
-			limit = {
-				has_modifier = bar_intellectual_mdf_6
-			}
-			remove_modifier = bar_intellectual_mdf_6
-		}
-	}
-	else_if = {
-		limit = {
-			var:culture_reform_value == -6
-		}
-		add_modifier = {
-			name = bar_intellectual_mdf_6
-			months = -1
-		}
-		if = {
-			limit = {
-				has_modifier = bar_intellectual_mdf_5
-			}
-			remove_modifier = bar_intellectual_mdf_5
-		}
-		else_if = {
-			limit = {
-				has_modifier = bar_intellectual_mdf_7
-			}
-			remove_modifier = bar_intellectual_mdf_7
-		}
-	}
-	else_if = {
-		limit = {
-			var:culture_reform_value == -7
-		}
-		add_modifier = {
-			name = bar_intellectual_mdf_7
-			months = -1
-		}
-		if = {
-			limit = {
-				has_modifier = bar_intellectual_mdf_6
-			}
-			remove_modifier = bar_intellectual_mdf_6
-		}
-	}
+	ve_clamp_national_insight = yes
+	ve_apply_national_insight_strain = yes
 }
 
-balance_missionaries = {
-	if = {
-		limit = {
-			avaible_missionaries < 0
-		}
-		every_scope_state = {
-			limit = {
-				has_modifier = ve_missionary_mdf
-			}
-			remove_modifier = ve_missionary_mdf
-			remove_variable = selected_state_religion
-		}
-		set_variable = {
-			name = avaible_missionaries
-			value = total_missionaries
-		}
+ve_idea_purchase_7 = {
+	ve_recalculate_national_idea_pool = yes
+	change_variable = {
+		name = idea_point_pool
+		subtract = 675
 	}
-}
-
-call_missionaries_effect = {
-	every_scope_state = {
-		limit = {
-			has_modifier = ve_missionary_mdf
-		}
-		remove_modifier = ve_missionary_mdf
-		remove_variable = selected_state_religion
-	}
-	set_variable = {
-		name = avaible_missionaries
-		value = total_missionaries
-	}
-}
-
-balance_cultural_missionaries = {
-	if = {
-		limit = {
-			avaible_culture_missionaries < 0
-		}
-		every_scope_state = {
-			limit = {
-				has_modifier = ve_diffusionist_mdf
-			}
-			remove_modifier = ve_diffusionist_mdf
-			remove_variable = selected_state_culture
-		}
-		set_variable = {
-			name = avaible_culture_missionaries
-			value = total_culture_missionaries
-		}
-	}
-}
-
-call_cultural_missionaries_effect = {
-	every_scope_state = {
-		limit = {
-			has_modifier = ve_diffusionist_mdf
-		}
-		remove_modifier = ve_diffusionist_mdf
-		remove_variable = selected_state_culture
-	}
-	set_variable = {
-		name = avaible_culture_missionaries
-		value = total_culture_missionaries
-	}
-}
-
-prevent_annex_foreign_missionary = {
-	if = {
-		limit = {
-			avaible_missionaries > total_missionaries
-		}
-		call_missionaries_effect = yes
-	}
-	else_if = {
-		limit = {
-			total_missionaries < my_script_value
-		}
-		call_missionaries_effect = yes
-	}
-}
-
-prevent_annex_foreign_missionary = {
-	if = {
-		limit = {
-			avaible_missionaries > total_missionaries
-		}
-		call_missionaries_effect = yes
-	}
-	else_if = {
-		limit = {
-			total_missionaries < my_script_value
-		}
-		call_missionaries_effect = yes
-	}
-}
-
-prevent_annex_foreign_missionary = {
-	if = {
-		limit = {
-			avaible_missionaries > total_missionaries
-		}
-		call_missionaries_effect = yes
-	}
-	else_if = {
-		limit = {
-			total_missionaries < my_script_value
-		}
-		call_missionaries_effect = yes
-	}
-}
-
-prevent_annex_foreign_missionary = {
-	if = {
-		limit = {
-			avaible_missionaries > total_missionaries
-		}
-		call_missionaries_effect = yes
-	}
-	else_if = {
-		limit = {
-			total_missionaries < my_script_value
-		}
-		call_missionaries_effect = yes
-	}
-}
-
-prevent_annex_foreign_missionary = {
-	if = {
-		limit = {
-			avaible_missionaries > total_missionaries
-		}
-		call_missionaries_effect = yes
-	}
-	else_if = {
-		limit = {
-			total_missionaries < my_script_value
-		}
-		call_missionaries_effect = yes
-	}
-}
-
-prevent_annex_foreign_missionary = {
-	if = {
-		limit = {
-			avaible_missionaries > total_missionaries
-		}
-		call_missionaries_effect = yes
-	}
-	else_if = {
-		limit = {
-			total_missionaries < active_missionary_value
-		}
-		call_missionaries_effect = yes
-	}
-}
-
-prevent_annex_foreign_cultural_missionary = {
-	if = {
-		limit = {
-			avaible_culture_missionaries > total_culture_missionaries
-		}
-		call_cultural_missionaries_effect = yes
-	}
-	else_if = {
-		limit = {
-			total_culture_missionaries < active_cultural_missionary_value
-		}
-		call_cultural_missionaries_effect = yes
-	}
-}
-
-ve_law_change_effects = {
-	if = {
-		limit = {
-			NOT = {
-				has_variable = ethnocentrism_idea_5_var
-			}
-		}
-		if = {
-			limit = {
-				has_law = law_type:law_state_religion
-				total_missionaries != 3
-			}
-			set_variable = {
-				name = total_missionaries
-				value = 3
-			}
-			call_missionaries_effect = yes
-		}
-		else_if = {
-			limit = {
-				has_law = law_type:law_freedom_of_conscience
-				total_missionaries != 1
-			}
-			set_variable = {
-				name = total_missionaries
-				value = 1
-			}
-			call_missionaries_effect = yes
-		}
-		else_if = {
-			limit = {
-				has_law = law_type:law_state_atheism
-				total_missionaries != 3
-			}
-			set_variable = {
-				name = total_missionaries
-				value = 3
-			}
-			call_missionaries_effect = yes
-		}
-		else_if = {
-			limit = {
-				has_law = law_type:law_total_separation
-				total_missionaries != 0
-			}
-			set_variable = {
-				name = total_missionaries
-				value = 0
-			}
-			call_missionaries_effect = yes
-		}
-		if = {
-			limit = {
-				has_law = law_type:law_ethnostate
-				total_culture_missionaries != 4
-			}
-			set_variable = {
-				name = total_culture_missionaries
-				value = 4
-			}
-			call_cultural_missionaries_effect = yes
-		}
-		else_if = {
-			limit = {
-				has_law = law_type:law_national_supremacy
-				total_culture_missionaries != 3
-			}
-			set_variable = {
-				name = total_culture_missionaries
-				value = 3
-			}
-			call_cultural_missionaries_effect = yes
-		}
-		else_if = {
-			limit = {
-				has_law = law_type:law_racial_segregation
-				total_culture_missionaries != 2
-			}
-			set_variable = {
-				name = total_culture_missionaries
-				value = 2
-			}
-			call_cultural_missionaries_effect = yes
-		}
-		else_if = {
-			limit = {
-				has_law = law_type:law_cultural_exclusion
-				total_culture_missionaries != 1
-			}
-			set_variable = {
-				name = total_culture_missionaries
-				value = 1
-			}
-			call_cultural_missionaries_effect = yes
-		}
-		else_if = {
-			limit = {
-				has_law = law_type:law_multicultural
-				total_culture_missionaries != 0
-			}
-			set_variable = {
-				name = total_culture_missionaries
-				value = 0
-			}
-			call_cultural_missionaries_effect = yes
-		}
-	}
-	else_if = {
-		limit = {
-			has_variable = ethnocentrism_idea_5_var
-		}
-		if = {
-			limit = {
-				has_law = law_type:law_state_religion
-				total_missionaries != 5
-			}
-			set_variable = {
-				name = total_missionaries
-				value = 5
-			}
-			call_missionaries_effect = yes
-		}
-		else_if = {
-			limit = {
-				has_law = law_type:law_freedom_of_conscience
-				total_missionaries != 3
-			}
-			set_variable = {
-				name = total_missionaries
-				value = 3
-			}
-			call_missionaries_effect = yes
-		}
-		else_if = {
-			limit = {
-				has_law = law_type:law_state_atheism
-				total_missionaries != 5
-			}
-			set_variable = {
-				name = total_missionaries
-				value = 5
-			}
-			call_missionaries_effect = yes
-		}
-		else_if = {
-			limit = {
-				has_law = law_type:law_total_separation
-				total_missionaries != 0
-			}
-			set_variable = {
-				name = total_missionaries
-				value = 0
-			}
-			call_missionaries_effect = yes
-		}
-		if = {
-			limit = {
-				has_law = law_type:law_ethnostate
-				total_culture_missionaries != 6
-			}
-			set_variable = {
-				name = total_culture_missionaries
-				value = 6
-			}
-			call_cultural_missionaries_effect = yes
-		}
-		else_if = {
-			limit = {
-				has_law = law_type:law_national_supremacy
-				total_culture_missionaries != 5
-			}
-			set_variable = {
-				name = total_culture_missionaries
-				value = 5
-			}
-			call_cultural_missionaries_effect = yes
-		}
-		else_if = {
-			limit = {
-				has_law = law_type:law_racial_segregation
-				total_culture_missionaries != 4
-			}
-			set_variable = {
-				name = total_culture_missionaries
-				value = 4
-			}
-			call_cultural_missionaries_effect = yes
-		}
-		else_if = {
-			limit = {
-				has_law = law_type:law_cultural_exclusion
-				total_culture_missionaries != 3
-			}
-			set_variable = {
-				name = total_culture_missionaries
-				value = 3
-			}
-			call_cultural_missionaries_effect = yes
-		}
-		else_if = {
-			limit = {
-				has_law = law_type:law_multicultural
-				total_culture_missionaries != 0
-			}
-			set_variable = {
-				name = total_culture_missionaries
-				value = 0
-			}
-			call_cultural_missionaries_effect = yes
-		}
-	}
+	ve_clamp_national_insight = yes
+	ve_apply_national_insight_strain = yes
 }

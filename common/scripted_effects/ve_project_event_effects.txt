@@ -1,0 +1,888 @@
+# Shared lifecycle and bounded value changes for Religious/Cultural Project
+# Journal Entries and their event pools. Project progress remains authoritative
+# in the existing core project variables and completion effects.
+
+ve_evt_clear_religious_je_resolution = {
+	if = {
+		limit = { has_variable = ve_evt_religious_je_success }
+		remove_variable = ve_evt_religious_je_success
+	}
+	if = {
+		limit = { has_variable = ve_evt_religious_je_failure }
+		remove_variable = ve_evt_religious_je_failure
+	}
+	if = {
+		limit = { has_variable = ve_evt_religious_je_invalid }
+		remove_variable = ve_evt_religious_je_invalid
+	}
+}
+
+ve_evt_clear_cultural_je_resolution = {
+	if = {
+		limit = { has_variable = ve_evt_cultural_je_success }
+		remove_variable = ve_evt_cultural_je_success
+	}
+	if = {
+		limit = { has_variable = ve_evt_cultural_je_failure }
+		remove_variable = ve_evt_cultural_je_failure
+	}
+	if = {
+		limit = { has_variable = ve_evt_cultural_je_invalid }
+		remove_variable = ve_evt_cultural_je_invalid
+	}
+}
+
+ve_evt_clear_religious_incident_session = {
+	if = {
+		limit = { has_modifier = ve_evt_religious_incident_cooldown_mdf }
+		remove_modifier = ve_evt_religious_incident_cooldown_mdf
+	}
+	if = {
+		limit = { has_variable = ve_evt_religious_incident_count }
+		remove_variable = ve_evt_religious_incident_count
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_1_fired }
+		remove_variable = ve_evt_rel_1_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_2_fired }
+		remove_variable = ve_evt_rel_2_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_3_fired }
+		remove_variable = ve_evt_rel_3_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_4_fired }
+		remove_variable = ve_evt_rel_4_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_5_fired }
+		remove_variable = ve_evt_rel_5_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_6_fired }
+		remove_variable = ve_evt_rel_6_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_7_fired }
+		remove_variable = ve_evt_rel_7_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_8_fired }
+		remove_variable = ve_evt_rel_8_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_40_fired }
+		remove_variable = ve_evt_rel_40_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_41_fired }
+		remove_variable = ve_evt_rel_41_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_42_fired }
+		remove_variable = ve_evt_rel_42_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_43_fired }
+		remove_variable = ve_evt_rel_43_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_100_fired }
+		remove_variable = ve_evt_rel_100_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_101_fired }
+		remove_variable = ve_evt_rel_101_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_102_fired }
+		remove_variable = ve_evt_rel_102_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_150_fired }
+		remove_variable = ve_evt_rel_150_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_151_fired }
+		remove_variable = ve_evt_rel_151_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_rel_152_fired }
+		remove_variable = ve_evt_rel_152_fired
+	}
+}
+
+ve_evt_clear_cultural_incident_session = {
+	if = {
+		limit = { has_modifier = ve_evt_cultural_incident_cooldown_mdf }
+		remove_modifier = ve_evt_cultural_incident_cooldown_mdf
+	}
+	if = {
+		limit = { has_variable = ve_evt_cultural_incident_count }
+		remove_variable = ve_evt_cultural_incident_count
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_1_fired }
+		remove_variable = ve_evt_cul_1_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_2_fired }
+		remove_variable = ve_evt_cul_2_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_3_fired }
+		remove_variable = ve_evt_cul_3_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_4_fired }
+		remove_variable = ve_evt_cul_4_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_5_fired }
+		remove_variable = ve_evt_cul_5_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_6_fired }
+		remove_variable = ve_evt_cul_6_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_7_fired }
+		remove_variable = ve_evt_cul_7_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_8_fired }
+		remove_variable = ve_evt_cul_8_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_40_fired }
+		remove_variable = ve_evt_cul_40_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_41_fired }
+		remove_variable = ve_evt_cul_41_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_42_fired }
+		remove_variable = ve_evt_cul_42_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_50_fired }
+		remove_variable = ve_evt_cul_50_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_51_fired }
+		remove_variable = ve_evt_cul_51_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_100_fired }
+		remove_variable = ve_evt_cul_100_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_101_fired }
+		remove_variable = ve_evt_cul_101_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_150_fired }
+		remove_variable = ve_evt_cul_150_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_151_fired }
+		remove_variable = ve_evt_cul_151_fired
+	}
+	if = {
+		limit = { has_variable = ve_evt_cul_160_fired }
+		remove_variable = ve_evt_cul_160_fired
+	}
+}
+
+# Scope: country. Called only after the core begin effect has set progress to
+# zero and, for targeted projects, stored the target state.
+ve_evt_begin_religious_incident_session = {
+	ve_evt_clear_religious_incident_session = yes
+	ve_evt_clear_religious_je_resolution = yes
+	set_variable = {
+		name = ve_evt_religious_incident_count
+		value = 0
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 3
+	}
+	if = {
+		limit = {
+			NOT = { has_journal_entry = ve_je_religious_project }
+			has_variable = ve_religious_project_target_state
+		}
+		# Journal Entry targets require a named scope. Passing the state variable
+		# directly leaves SCOPE.sState('target') unset in the JE localization.
+		var:ve_religious_project_target_state ?= {
+			save_temporary_scope_as = ve_religious_project_je_target
+		}
+		add_journal_entry = {
+			type = ve_je_religious_project
+			target = scope:ve_religious_project_je_target
+		}
+	}
+}
+
+# Countrywide Cultural Projects do not have a state target, so they receive the
+# same JE without a target. Targeted projects pass their stored state.
+ve_evt_begin_cultural_incident_session = {
+	ve_evt_clear_cultural_incident_session = yes
+	ve_evt_clear_cultural_je_resolution = yes
+	set_variable = {
+		name = ve_evt_cultural_incident_count
+		value = 0
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 3
+	}
+	if = {
+		limit = {
+			NOT = { has_journal_entry = ve_je_cultural_project }
+			has_variable = ve_cultural_project_target_state
+		}
+		# See the religious-project equivalent above: the JE target must receive
+		# an explicit saved scope, not a variable expression.
+		var:ve_cultural_project_target_state ?= {
+			save_temporary_scope_as = ve_cultural_project_je_target
+		}
+		add_journal_entry = {
+			type = ve_je_cultural_project
+			target = scope:ve_cultural_project_je_target
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_journal_entry = ve_je_cultural_project }
+		}
+		add_journal_entry = {
+			type = ve_je_cultural_project
+		}
+	}
+}
+
+# Incident state is committed when the event is created, rather than when an
+# option is selected. This prevents a second monthly JE pulse from opening a
+# different project incident while the first popup is still unresolved.
+ve_evt_record_religious_incident_1 = {
+	set_variable = ve_evt_rel_1_fired
+	ve_evt_tm_record_religious_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.1"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_2 = {
+	set_variable = ve_evt_rel_2_fired
+	ve_evt_tm_record_religious_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.2"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_3 = {
+	set_variable = ve_evt_rel_3_fired
+	ve_evt_tm_record_religious_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.3"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_4 = {
+	set_variable = ve_evt_rel_4_fired
+	ve_evt_tm_record_religious_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.4"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_5 = {
+	set_variable = ve_evt_rel_5_fired
+	ve_evt_tm_record_religious_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.5"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_6 = {
+	set_variable = ve_evt_rel_6_fired
+	ve_evt_tm_record_religious_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.6"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_7 = {
+	set_variable = ve_evt_rel_7_fired
+	ve_evt_tm_record_religious_crisis = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.7"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_8 = {
+	set_variable = ve_evt_rel_8_fired
+	ve_evt_tm_record_religious_rare = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.8"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_40 = {
+	set_variable = ve_evt_rel_40_fired
+	ve_evt_tm_record_religious_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.40"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_41 = {
+	set_variable = ve_evt_rel_41_fired
+	ve_evt_tm_record_religious_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.41"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_42 = {
+	set_variable = ve_evt_rel_42_fired
+	ve_evt_tm_record_religious_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.42"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_43 = {
+	set_variable = ve_evt_rel_43_fired
+	ve_evt_tm_record_religious_crisis = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.43"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_100 = {
+	set_variable = ve_evt_rel_100_fired
+	ve_evt_tm_record_religious_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.100"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_101 = {
+	set_variable = ve_evt_rel_101_fired
+	ve_evt_tm_record_religious_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.101"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_102 = {
+	set_variable = ve_evt_rel_102_fired
+	ve_evt_tm_record_religious_rare = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.102"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_150 = {
+	set_variable = ve_evt_rel_150_fired
+	ve_evt_tm_record_religious_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.150"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_151 = {
+	set_variable = ve_evt_rel_151_fired
+	ve_evt_tm_record_religious_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.151"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_religious_incident_152 = {
+	set_variable = ve_evt_rel_152_fired
+	ve_evt_tm_record_religious_rare = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_rel_evt.152"
+	change_variable = {
+		name = ve_evt_religious_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_religious_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_1 = {
+	set_variable = ve_evt_cul_1_fired
+	ve_evt_tm_record_cultural_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.1"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_2 = {
+	set_variable = ve_evt_cul_2_fired
+	ve_evt_tm_record_cultural_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.2"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_3 = {
+	set_variable = ve_evt_cul_3_fired
+	ve_evt_tm_record_cultural_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.3"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_4 = {
+	set_variable = ve_evt_cul_4_fired
+	ve_evt_tm_record_cultural_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.4"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_5 = {
+	set_variable = ve_evt_cul_5_fired
+	ve_evt_tm_record_cultural_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.5"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_6 = {
+	set_variable = ve_evt_cul_6_fired
+	ve_evt_tm_record_cultural_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.6"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_7 = {
+	set_variable = ve_evt_cul_7_fired
+	ve_evt_tm_record_cultural_crisis = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.7"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_8 = {
+	set_variable = ve_evt_cul_8_fired
+	ve_evt_tm_record_cultural_rare = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.8"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_40 = {
+	set_variable = ve_evt_cul_40_fired
+	ve_evt_tm_record_cultural_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.40"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_41 = {
+	set_variable = ve_evt_cul_41_fired
+	ve_evt_tm_record_cultural_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.41"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_42 = {
+	set_variable = ve_evt_cul_42_fired
+	ve_evt_tm_record_cultural_crisis = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.42"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_50 = {
+	set_variable = ve_evt_cul_50_fired
+	ve_evt_tm_record_cultural_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.50"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_51 = {
+	set_variable = ve_evt_cul_51_fired
+	ve_evt_tm_record_cultural_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.51"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_100 = {
+	set_variable = ve_evt_cul_100_fired
+	ve_evt_tm_record_cultural_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.100"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_101 = {
+	set_variable = ve_evt_cul_101_fired
+	ve_evt_tm_record_cultural_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.101"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_150 = {
+	set_variable = ve_evt_cul_150_fired
+	ve_evt_tm_record_cultural_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.150"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_151 = {
+	set_variable = ve_evt_cul_151_fired
+	ve_evt_tm_record_cultural_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.151"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_record_cultural_incident_160 = {
+	set_variable = ve_evt_cul_160_fired
+	ve_evt_tm_record_cultural_normal = yes
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_EVENT:[THIS.GetCountry.GetNameNoFormatting]:ve_cul_evt.160"
+	change_variable = {
+		name = ve_evt_cultural_incident_count
+		add = 1
+	}
+	add_modifier = {
+		name = ve_evt_cultural_incident_cooldown_mdf
+		months = 6
+	}
+}
+
+ve_evt_change_piety_reform = {
+	set_variable = {
+		name = ve_evt_tm_piety_before
+		value = var:piety_reform_point
+	}
+	change_variable = {
+		name = piety_reform_point
+		add = $DELTA$
+	}
+	ve_clamp_piety_reform = yes
+	set_variable = {
+		name = ve_evt_tm_piety_actual
+		value = var:piety_reform_point
+	}
+	change_variable = {
+		name = ve_evt_tm_piety_actual
+		subtract = var:ve_evt_tm_piety_before
+	}
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_current_mana_net DELTA = var:ve_evt_tm_piety_actual }
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_mana_net_total DELTA = var:ve_evt_tm_piety_actual }
+	remove_variable = ve_evt_tm_piety_before
+	remove_variable = ve_evt_tm_piety_actual
+}
+
+ve_evt_change_cultural_mandate = {
+	set_variable = {
+		name = ve_evt_tm_mandate_before
+		value = var:culture_reform_point
+	}
+	change_variable = {
+		name = culture_reform_point
+		add = $DELTA$
+	}
+	ve_clamp_cultural_mandate = yes
+	set_variable = {
+		name = ve_evt_tm_mandate_actual
+		value = var:culture_reform_point
+	}
+	change_variable = {
+		name = ve_evt_tm_mandate_actual
+		subtract = var:ve_evt_tm_mandate_before
+	}
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_current_mana_net DELTA = var:ve_evt_tm_mandate_actual }
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_mana_net_total DELTA = var:ve_evt_tm_mandate_actual }
+	remove_variable = ve_evt_tm_mandate_before
+	remove_variable = ve_evt_tm_mandate_actual
+}
+
+ve_evt_change_religious_settlement = {
+	change_variable = {
+		name = piety_bar_point
+		add = $DELTA$
+	}
+	ve_clamp_religious_state = yes
+}
+
+ve_evt_change_national_cohesion = {
+	change_variable = {
+		name = ve_national_cohesion
+		add = $DELTA$
+	}
+	ve_clamp_national_cohesion = yes
+}
+
+ve_evt_change_religious_project_progress = {
+	if = {
+		limit = { ve_has_active_religious_project = yes }
+		change_variable = {
+			name = ve_religious_project_progress
+			add = $DELTA$
+		}
+		if = {
+			limit = { var:ve_religious_project_progress < 0 }
+			set_variable = {
+				name = ve_religious_project_progress
+				value = 0
+			}
+		}
+		else_if = {
+			limit = { var:ve_religious_project_progress >= 100 }
+			set_variable = {
+				name = ve_religious_project_progress
+				value = 100
+			}
+			ve_finish_religious_project = yes
+		}
+	}
+}
+
+ve_evt_change_cultural_project_progress = {
+	if = {
+		limit = { ve_has_active_cultural_project = yes }
+		change_variable = {
+			name = ve_cultural_project_progress
+			add = $DELTA$
+		}
+		if = {
+			limit = { var:ve_cultural_project_progress < 0 }
+			set_variable = {
+				name = ve_cultural_project_progress
+				value = 0
+			}
+		}
+		else_if = {
+			limit = { var:ve_cultural_project_progress >= 100 }
+			set_variable = {
+				name = ve_cultural_project_progress
+				value = 100
+			}
+			ve_finish_cultural_project = yes
+		}
+	}
+}

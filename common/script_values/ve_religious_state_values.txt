@@ -1,0 +1,151 @@
+﻿# The meter is an equilibrium state, not a stockpile. Every model starts from a
+# different social settlement and then reacts to institutions and instability.
+
+ve_religious_model_base_equilibrium = {
+	if = {
+		limit = { ve_is_confessional_state = yes }
+		value = 55
+	}
+	else_if = {
+		limit = { ve_is_atheism_state = yes }
+		value = 45
+	}
+	else_if = {
+		limit = { ve_is_separation_state = yes }
+		value = 60
+	}
+	else = {
+		value = 55
+	}
+}
+
+ve_religious_model_support = {
+	if = {
+		limit = { ve_is_confessional_state = yes }
+		if = {
+			limit = { ig:ig_devout = { ig_approval >= 5 } }
+			add = 10
+		}
+		else_if = {
+			limit = { ig:ig_devout = { ig_approval <= -5 } }
+			subtract = 10
+		}
+		if = {
+			limit = { ig:ig_devout = { ig_clout >= 0.20 } }
+			add = 5
+		}
+	}
+	else_if = {
+		limit = { ve_is_atheism_state = yes }
+		if = {
+			limit = { literacy_rate >= 0.75 }
+			add = 15
+		}
+		else_if = {
+			limit = { literacy_rate >= 0.50 }
+			add = 5
+		}
+		else_if = {
+			limit = { literacy_rate < 0.30 }
+			subtract = 10
+		}
+		if = {
+			limit = { ig:ig_intelligentsia = { ig_approval >= 5 } }
+			add = 10
+		}
+		else_if = {
+			limit = { ig:ig_intelligentsia = { ig_approval <= -5 } }
+			subtract = 10
+		}
+		if = {
+			limit = { ig:ig_devout = { ig_clout >= 0.20 } }
+			subtract = 10
+		}
+	}
+	else_if = {
+		limit = { ve_is_separation_state = yes }
+		if = {
+			limit = { country_turmoil < 0.10 }
+			add = 5
+		}
+		if = {
+			limit = { ig:ig_devout = { ig_clout >= 0.20 } }
+			subtract = 5
+		}
+	}
+	else = {
+		if = {
+			limit = { country_turmoil < 0.10 }
+			add = 5
+		}
+	}
+}
+
+ve_religious_common_support = {
+	if = {
+		limit = { government_legitimacy >= 75 }
+		add = 10
+	}
+	else_if = {
+		limit = { government_legitimacy >= 50 }
+		add = 5
+	}
+	else_if = {
+		limit = { government_legitimacy < 25 }
+		subtract = 10
+	}
+
+	if = {
+		limit = {
+			bureaucracy >= 0
+			approaching_bureaucracy_shortage = no
+		}
+		add = 5
+	}
+	else = {
+		subtract = 10
+	}
+
+	if = {
+		limit = { country_turmoil >= 0.25 }
+		subtract = 15
+	}
+	else_if = {
+		limit = { country_turmoil >= 0.10 }
+		subtract = 8
+	}
+
+	if = {
+		limit = { has_modifier = ve_religious_settlement_crisis_mdf }
+		subtract = 20
+	}
+	if = {
+		limit = { has_modifier = ve_religious_program_strain_mdf }
+		subtract = 10
+	}
+}
+
+ve_religious_state_equilibrium = {
+	add = ve_religious_model_base_equilibrium
+	add = ve_religious_model_support
+	add = ve_religious_common_support
+	min = 15
+	max = 85
+	round = yes
+}
+
+ve_monthly_religious_state = {
+	value = 0
+	# GUI tooltips can evaluate this before piety_bar_point has been
+	# initialized for the scope being displayed - guard instead of erroring
+	# (see the identical fix on ve_monthly_national_cohesion).
+	if = {
+		limit = { has_variable = piety_bar_point }
+		add = ve_religious_state_equilibrium
+		subtract = var:piety_bar_point
+		multiply = 0.20
+	}
+	min = -5
+	max = 5
+	round = yes
+}

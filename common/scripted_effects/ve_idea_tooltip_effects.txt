@@ -1,38 +1,80 @@
-idea_1_tt_effects = {
+﻿idea_1_tt_effects = {
 	switch = {
 		trigger = scope:idea_group
-		flag:innovative_idea = {
+		flag:academic_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = innovative_idea_1_mdf
+				name = academic_idea_1_mdf
 				months = -1
 			}
 		}
-		flag:economic_idea = {
+		flag:agrarian_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = agrarian_idea_1_mdf
+				months = -1
+			}
+		}
+		flag:financial_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = financial_idea_1_mdf
+				months = -1
+			}
+		}
+		flag:infrastructure_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = infrastructure_idea_1_mdf
+				months = -1
+			}
+		}
+		flag:extraction_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = extraction_idea_1_mdf
+				months = -1
+			}
+		}
+		flag:mass_conscription_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = mass_conscription_idea_1_mdf
+				months = -1
+			}
+		}
+		flag:war_economy_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = war_economy_idea_1_mdf
+				months = -1
+			}
+		}
+		flag:industrialist_idea = {
 			#custom_label = ve_gecici_10
 			add_modifier = {
-				name = economic_idea_1_mdf
+				name = industrialist_idea_1_mdf
 				months = -1
 			}
 		}
-		flag:administrative_idea = {
+		flag:bureaucratic_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = administrative_idea_1_mdf
+				name = bureaucratic_idea_1_mdf
 				months = -1
 			}
 		}
-		flag:ethnocentrism_idea = {
+		flag:nationalist_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = ethnocentrism_idea_1_mdf
+				name = nationalist_idea_1_mdf
 				months = -1
 			}
 		}
-		flag:politics_idea = {
+		flag:parliamentary_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = politics_idea_1_mdf
+				name = parliamentary_idea_1_mdf
 				months = -1
 			}
 		}
@@ -43,31 +85,31 @@ idea_1_tt_effects = {
 				months = -1
 			}
 		}
-		flag:trade_idea = {
+		flag:mercantile_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = trade_idea_1_mdf
+				name = mercantile_idea_1_mdf
 				months = -1
 			}
 		}
-		flag:qualification_idea = {
+		flag:welfare_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = qualification_idea_1_mdf
+				name = welfare_idea_1_mdf
 				months = -1
 			}
 		}
-		flag:humanist_idea = {
+		flag:reformist_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = humanist_idea_1_mdf
+				name = reformist_idea_1_mdf
 				months = -1
 			}
 		}
-		flag:syndicalism_idea = {
+		flag:labour_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = syndicalism_idea_1_mdf
+				name = labour_idea_1_mdf
 				months = -1
 			}
 		}
@@ -92,17 +134,17 @@ idea_1_tt_effects = {
 				months = -1
 			}
 		}
-		flag:militarization_idea = {
+		flag:professional_army_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = militarization_idea_1_mdf
+				name = professional_army_idea_1_mdf
 				months = -1
 			}
 		}
-		flag:imperialist_idea = {
+		flag:colonial_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = imperialist_idea_1_mdf
+				name = colonial_idea_1_mdf
 				months = -1
 			}
 		}
@@ -112,38 +154,80 @@ idea_1_tt_effects = {
 idea_2_tt_effects = {
 	switch = {
 		trigger = scope:idea_group
-		flag:innovative_idea = {
+		flag:academic_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = innovative_idea_2_mdf
+				name = academic_idea_2_mdf
 				months = -1
 			}
 		}
-		flag:economic_idea = {
+		flag:agrarian_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = agrarian_idea_2_mdf
+				months = -1
+			}
+		}
+		flag:financial_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = financial_idea_2_mdf
+				months = -1
+			}
+		}
+		flag:infrastructure_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = infrastructure_idea_2_mdf
+				months = -1
+			}
+		}
+		flag:extraction_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = extraction_idea_2_mdf
+				months = -1
+			}
+		}
+		flag:mass_conscription_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = mass_conscription_idea_2_mdf
+				months = -1
+			}
+		}
+		flag:war_economy_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = war_economy_idea_2_mdf
+				months = -1
+			}
+		}
+		flag:industrialist_idea = {
 			#custom_label = ve_gecici_10
 			add_modifier = {
-				name = economic_idea_2_mdf
+				name = industrialist_idea_2_mdf
 				months = -1
 			}
 		}
-		flag:administrative_idea = {
+		flag:bureaucratic_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = administrative_idea_2_mdf
+				name = bureaucratic_idea_2_mdf
 				months = -1
 			}
 		}
-		flag:ethnocentrism_idea = {
+		flag:nationalist_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = ethnocentrism_idea_2_mdf
+				name = nationalist_idea_2_mdf
 				months = -1
 			}
 		}
-		flag:politics_idea = {
+		flag:parliamentary_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = politics_idea_2_mdf
+				name = parliamentary_idea_2_mdf
 				months = -1
 			}
 		}
@@ -154,31 +238,31 @@ idea_2_tt_effects = {
 				months = -1
 			}
 		}
-		flag:trade_idea = {
+		flag:mercantile_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = trade_idea_2_mdf
+				name = mercantile_idea_2_mdf
 				months = -1
 			}
 		}
-		flag:qualification_idea = {
+		flag:welfare_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = qualification_idea_2_mdf
+				name = welfare_idea_2_mdf
 				months = -1
 			}
 		}
-		flag:humanist_idea = {
+		flag:reformist_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = humanist_idea_2_mdf
+				name = reformist_idea_2_mdf
 				months = -1
 			}
 		}
-		flag:syndicalism_idea = {
+		flag:labour_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = syndicalism_idea_2_mdf
+				name = labour_idea_2_mdf
 				months = -1
 			}
 		}
@@ -203,58 +287,128 @@ idea_2_tt_effects = {
 				months = -1
 			}
 		}
-		flag:militarization_idea = {
+		flag:professional_army_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = militarization_idea_2_mdf
+				name = professional_army_idea_2_mdf
 				months = -1
 			}
 		}
-		flag:imperialist_idea = {
+		flag:colonial_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = imperialist_idea_2_mdf
+				name = colonial_idea_2_mdf
 				months = -1
 			}
 		}
 	}
 }
 
+# Show the age-specific momentum gain on every level-IV idea card.
+ve_idea_4_era_momentum_tooltip = {
+	switch = {
+		trigger = scope:idea_group
+		flag:industrialist_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_1_tt } }
+		flag:mercantile_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_1_tt } }
+		flag:financial_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_1_tt } }
+		flag:infrastructure_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_1_tt } }
+		flag:academic_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_1_tt } }
+		flag:bureaucratic_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_1_tt } }
+		flag:parliamentary_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_1_tt } }
+		flag:extraction_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_2_tt } }
+		flag:agrarian_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_2_tt } }
+		flag:labour_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_2_tt } }
+		flag:welfare_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_2_tt } }
+		flag:diplomatic_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_2_tt } }
+		flag:nationalist_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_2_tt } }
+		flag:reformist_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_2_tt } }
+		flag:colonial_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_2_tt } }
+		flag:offensive_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_3_tt } }
+		flag:defensive_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_3_tt } }
+		flag:naval_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_3_tt } }
+		flag:professional_army_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_3_tt } }
+		flag:mass_conscription_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_3_tt } }
+		flag:war_economy_idea = { custom_tooltip = { text = ve_idea_era_momentum_age_3_tt } }
+	}
+}
+
 idea_3_tt_effects = {
 	switch = {
 		trigger = scope:idea_group
-		flag:innovative_idea = {
+		flag:academic_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = innovative_idea_3_mdf
+				name = academic_idea_3_mdf
 				months = -1
 			}
 		}
-		flag:economic_idea = {
+		flag:agrarian_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = agrarian_idea_3_mdf
+				months = -1
+			}
+		}
+		flag:financial_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = financial_idea_3_mdf
+				months = -1
+			}
+		}
+		flag:infrastructure_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = infrastructure_idea_3_mdf
+				months = -1
+			}
+		}
+		flag:extraction_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = extraction_idea_3_mdf
+				months = -1
+			}
+		}
+		flag:mass_conscription_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = mass_conscription_idea_3_mdf
+				months = -1
+			}
+		}
+		flag:war_economy_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = war_economy_idea_3_mdf
+				months = -1
+			}
+		}
+		flag:industrialist_idea = {
 			#custom_label = ve_gecici_10
 			add_modifier = {
-				name = economic_idea_3_mdf
+				name = industrialist_idea_3_mdf
 				months = -1
 			}
 		}
-		flag:administrative_idea = {
+		flag:bureaucratic_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = administrative_idea_3_mdf
+				name = bureaucratic_idea_3_mdf
 				months = -1
 			}
 		}
-		flag:ethnocentrism_idea = {
+		flag:nationalist_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = ethnocentrism_idea_3_mdf
+				name = nationalist_idea_3_mdf
 				months = -1
 			}
 		}
-		flag:politics_idea = {
+		flag:parliamentary_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = politics_idea_3_mdf
+				name = parliamentary_idea_3_mdf
 				months = -1
 			}
 		}
@@ -265,31 +419,31 @@ idea_3_tt_effects = {
 				months = -1
 			}
 		}
-		flag:trade_idea = {
+		flag:mercantile_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = trade_idea_3_mdf
+				name = mercantile_idea_3_mdf
 				months = -1
 			}
 		}
-		flag:qualification_idea = {
+		flag:welfare_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = qualification_idea_3_mdf
+				name = welfare_idea_3_mdf
 				months = -1
 			}
 		}
-		flag:humanist_idea = {
+		flag:reformist_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = humanist_idea_3_mdf
+				name = reformist_idea_3_mdf
 				months = -1
 			}
 		}
-		flag:syndicalism_idea = {
+		flag:labour_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = syndicalism_idea_3_mdf
+				name = labour_idea_3_mdf
 				months = -1
 			}
 		}
@@ -314,17 +468,17 @@ idea_3_tt_effects = {
 				months = -1
 			}
 		}
-		flag:militarization_idea = {
+		flag:professional_army_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = militarization_idea_3_mdf
+				name = professional_army_idea_3_mdf
 				months = -1
 			}
 		}
-		flag:imperialist_idea = {
+		flag:colonial_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = imperialist_idea_3_mdf
+				name = colonial_idea_3_mdf
 				months = -1
 			}
 		}
@@ -334,38 +488,80 @@ idea_3_tt_effects = {
 idea_4_tt_effects = {
 	switch = {
 		trigger = scope:idea_group
-		flag:innovative_idea = {
+		flag:academic_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = innovative_idea_4_mdf
+				name = academic_idea_4_mdf
 				months = -1
 			}
 		}
-		flag:economic_idea = {
+		flag:agrarian_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = agrarian_idea_4_mdf
+				months = -1
+			}
+		}
+		flag:financial_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = financial_idea_4_mdf
+				months = -1
+			}
+		}
+		flag:infrastructure_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = infrastructure_idea_4_mdf
+				months = -1
+			}
+		}
+		flag:extraction_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = extraction_idea_4_mdf
+				months = -1
+			}
+		}
+		flag:mass_conscription_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = mass_conscription_idea_4_mdf
+				months = -1
+			}
+		}
+		flag:war_economy_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = war_economy_idea_4_mdf
+				months = -1
+			}
+		}
+		flag:industrialist_idea = {
 			#custom_label = ve_gecici_10
 			add_modifier = {
-				name = economic_idea_4_mdf
+				name = industrialist_idea_4_mdf
 				months = -1
 			}
 		}
-		flag:administrative_idea = {
+		flag:bureaucratic_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = administrative_idea_4_mdf
+				name = bureaucratic_idea_4_mdf
 				months = -1
 			}
 		}
-		flag:ethnocentrism_idea = {
+		flag:nationalist_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = ethnocentrism_idea_4_mdf
+				name = nationalist_idea_4_mdf
 				months = -1
 			}
 		}
-		flag:politics_idea = {
+		flag:parliamentary_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = politics_idea_4_mdf
+				name = parliamentary_idea_4_mdf
 				months = -1
 			}
 		}
@@ -376,31 +572,31 @@ idea_4_tt_effects = {
 				months = -1
 			}
 		}
-		flag:trade_idea = {
+		flag:mercantile_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = trade_idea_4_mdf
+				name = mercantile_idea_4_mdf
 				months = -1
 			}
 		}
-		flag:qualification_idea = {
+		flag:welfare_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = qualification_idea_4_mdf
+				name = welfare_idea_4_mdf
 				months = -1
 			}
 		}
-		flag:humanist_idea = {
+		flag:reformist_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = humanist_idea_4_mdf
+				name = reformist_idea_4_mdf
 				months = -1
 			}
 		}
-		flag:syndicalism_idea = {
+		flag:labour_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = syndicalism_idea_4_mdf
+				name = labour_idea_4_mdf
 				months = -1
 			}
 		}
@@ -425,57 +621,101 @@ idea_4_tt_effects = {
 				months = -1
 			}
 		}
-		flag:militarization_idea = {
+		flag:professional_army_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = militarization_idea_4_mdf
+				name = professional_army_idea_4_mdf
 				months = -1
 			}
 		}
-		flag:imperialist_idea = {
+		flag:colonial_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = imperialist_idea_4_mdf
+				name = colonial_idea_4_mdf
 				months = -1
 			}
 		}
 	}
+	ve_idea_4_era_momentum_tooltip = yes
 }
 
 idea_5_tt_effects = {
 	switch = {
 		trigger = scope:idea_group
-		flag:innovative_idea = {
+		flag:academic_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = innovative_idea_5_mdf
+				name = academic_idea_5_mdf
+				months = -1
+			}
+			custom_tooltip = { text = academic_idea_5_system_tt }
+		}
+		flag:agrarian_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = agrarian_idea_5_mdf
 				months = -1
 			}
 		}
-		flag:economic_idea = {
+		flag:financial_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = financial_idea_5_mdf
+				months = -1
+			}
+		}
+		flag:infrastructure_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = infrastructure_idea_5_mdf
+				months = -1
+			}
+		}
+		flag:extraction_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = extraction_idea_5_mdf
+				months = -1
+			}
+		}
+		flag:mass_conscription_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = mass_conscription_idea_5_mdf
+				months = -1
+			}
+		}
+		flag:war_economy_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = war_economy_idea_5_mdf
+				months = -1
+			}
+		}
+		flag:industrialist_idea = {
 			#custom_label = ve_gecici_10
 			add_modifier = {
-				name = economic_idea_5_mdf
+				name = industrialist_idea_5_mdf
 				months = -1
 			}
 		}
-		flag:administrative_idea = {
+		flag:bureaucratic_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = administrative_idea_5_mdf
+				name = bureaucratic_idea_5_mdf
 				months = -1
 			}
 		}
-		flag:ethnocentrism_idea = {
+		flag:nationalist_idea = {
 			#custom_label = ve_gecici_9
 			custom_tooltip = {
-				text = ethnocentrism_idea_5_tt
+				text = nationalist_idea_5_tt
 			}
 		}
-		flag:politics_idea = {
+		flag:parliamentary_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = politics_idea_5_mdf
+				name = parliamentary_idea_5_mdf
 				months = -1
 			}
 		}
@@ -486,31 +726,32 @@ idea_5_tt_effects = {
 				months = -1
 			}
 		}
-		flag:trade_idea = {
+		flag:mercantile_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = trade_idea_5_mdf
+				name = mercantile_idea_5_mdf
 				months = -1
 			}
 		}
-		flag:qualification_idea = {
+		flag:welfare_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = qualification_idea_5_mdf
+				name = welfare_idea_5_mdf
 				months = -1
 			}
 		}
-		flag:humanist_idea = {
+		flag:reformist_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = humanist_idea_5_mdf
+				name = reformist_idea_5_mdf
 				months = -1
 			}
+			custom_tooltip = { text = reformist_idea_5_system_tt }
 		}
-		flag:syndicalism_idea = {
+		flag:labour_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = syndicalism_idea_5_mdf
+				name = labour_idea_5_mdf
 				months = -1
 			}
 		}
@@ -535,17 +776,17 @@ idea_5_tt_effects = {
 				months = -1
 			}
 		}
-		flag:militarization_idea = {
+		flag:professional_army_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = militarization_idea_5_mdf
+				name = professional_army_idea_5_mdf
 				months = -1
 			}
 		}
-		flag:imperialist_idea = {
+		flag:colonial_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = imperialist_idea_5_mdf
+				name = colonial_idea_5_mdf
 				months = -1
 			}
 		}
@@ -555,38 +796,80 @@ idea_5_tt_effects = {
 idea_6_tt_effects = {
 	switch = {
 		trigger = scope:idea_group
-		flag:innovative_idea = {
+		flag:academic_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = innovative_idea_6_mdf
+				name = academic_idea_6_mdf
 				months = -1
 			}
 		}
-		flag:economic_idea = {
+		flag:agrarian_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = agrarian_idea_6_mdf
+				months = -1
+			}
+		}
+		flag:financial_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = financial_idea_6_mdf
+				months = -1
+			}
+		}
+		flag:infrastructure_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = infrastructure_idea_6_mdf
+				months = -1
+			}
+		}
+		flag:extraction_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = extraction_idea_6_mdf
+				months = -1
+			}
+		}
+		flag:mass_conscription_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = mass_conscription_idea_6_mdf
+				months = -1
+			}
+		}
+		flag:war_economy_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = war_economy_idea_6_mdf
+				months = -1
+			}
+		}
+		flag:industrialist_idea = {
 			#custom_label = ve_gecici_10
 			add_modifier = {
-				name = economic_idea_6_mdf
+				name = industrialist_idea_6_mdf
 				months = -1
 			}
 		}
-		flag:administrative_idea = {
+		flag:bureaucratic_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = administrative_idea_6_mdf
+				name = bureaucratic_idea_6_mdf
 				months = -1
 			}
 		}
-		flag:ethnocentrism_idea = {
+		flag:nationalist_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = ethnocentrism_idea_6_mdf
+				name = nationalist_idea_6_mdf
 				months = -1
 			}
 		}
-		flag:politics_idea = {
+		flag:parliamentary_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = politics_idea_6_mdf
+				name = parliamentary_idea_6_mdf
 				months = -1
 			}
 		}
@@ -596,32 +879,34 @@ idea_6_tt_effects = {
 				name = diplomatic_idea_6_mdf
 				months = -1
 			}
+			custom_tooltip = { text = diplomatic_idea_6_system_tt }
 		}
-		flag:trade_idea = {
+		flag:mercantile_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = trade_idea_6_mdf
+				name = mercantile_idea_6_mdf
 				months = -1
 			}
 		}
-		flag:qualification_idea = {
+		flag:welfare_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = qualification_idea_6_mdf
+				name = welfare_idea_6_mdf
+				months = -1
+			}
+			custom_tooltip = { text = welfare_idea_6_system_tt }
+		}
+		flag:reformist_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = reformist_idea_6_mdf
 				months = -1
 			}
 		}
-		flag:humanist_idea = {
+		flag:labour_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = humanist_idea_6_mdf
-				months = -1
-			}
-		}
-		flag:syndicalism_idea = {
-			#custom_label = ve_gecici_9
-			add_modifier = {
-				name = syndicalism_idea_6_mdf
+				name = labour_idea_6_mdf
 				months = -1
 			}
 		}
@@ -646,17 +931,17 @@ idea_6_tt_effects = {
 				months = -1
 			}
 		}
-		flag:militarization_idea = {
+		flag:professional_army_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = militarization_idea_6_mdf
+				name = professional_army_idea_6_mdf
 				months = -1
 			}
 		}
-		flag:imperialist_idea = {
+		flag:colonial_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = imperialist_idea_6_mdf
+				name = colonial_idea_6_mdf
 				months = -1
 			}
 		}
@@ -666,37 +951,80 @@ idea_6_tt_effects = {
 idea_7_tt_effects = {
 	switch = {
 		trigger = scope:idea_group
-		flag:innovative_idea = {
+		flag:academic_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = innovative_idea_7_mdf
+				name = academic_idea_7_mdf
+				months = -1
+			}
+			custom_tooltip = { text = academic_idea_7_system_tt }
+		}
+		flag:agrarian_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = agrarian_idea_7_mdf
 				months = -1
 			}
 		}
-		flag:economic_idea = {
+		flag:financial_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = financial_idea_7_mdf
+				months = -1
+			}
+		}
+		flag:infrastructure_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = infrastructure_idea_7_mdf
+				months = -1
+			}
+		}
+		flag:extraction_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = extraction_idea_7_mdf
+				months = -1
+			}
+		}
+		flag:mass_conscription_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = mass_conscription_idea_7_mdf
+				months = -1
+			}
+		}
+		flag:war_economy_idea = {
+			#custom_label = ve_gecici_9
+			add_modifier = {
+				name = war_economy_idea_7_mdf
+				months = -1
+			}
+		}
+		flag:industrialist_idea = {
 			#custom_label = ve_gecici_10
 			add_modifier = {
-				name = economic_idea_7_mdf
+				name = industrialist_idea_7_mdf
 				months = -1
 			}
 		}
-		flag:administrative_idea = {
+		flag:bureaucratic_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = administrative_idea_7_mdf
+				name = bureaucratic_idea_7_mdf
 				months = -1
 			}
 		}
-		flag:ethnocentrism_idea = {
+		flag:nationalist_idea = {
 			#custom_label = ve_gecici_9
 			custom_tooltip = {
-				text = ethnocentrism_idea_7_tt
+				text = nationalist_idea_7_tt
 			}
 		}
-		flag:politics_idea = {
+		flag:parliamentary_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = politics_idea_7_mdf
+				name = parliamentary_idea_7_mdf
 				months = -1
 			}
 		}
@@ -707,31 +1035,32 @@ idea_7_tt_effects = {
 				months = -1
 			}
 		}
-		flag:trade_idea = {
+		flag:mercantile_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = trade_idea_7_mdf
+				name = mercantile_idea_7_mdf
 				months = -1
 			}
 		}
-		flag:qualification_idea = {
+		flag:welfare_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = qualification_idea_7_mdf
+				name = welfare_idea_7_mdf
 				months = -1
 			}
 		}
-		flag:humanist_idea = {
+		flag:reformist_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = humanist_idea_7_mdf
+				name = reformist_idea_7_mdf
 				months = -1
 			}
+			custom_tooltip = { text = reformist_idea_7_system_tt }
 		}
-		flag:syndicalism_idea = {
+		flag:labour_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = syndicalism_idea_7_mdf
+				name = labour_idea_7_mdf
 				months = -1
 			}
 		}
@@ -756,17 +1085,17 @@ idea_7_tt_effects = {
 				months = -1
 			}
 		}
-		flag:militarization_idea = {
+		flag:professional_army_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = militarization_idea_7_mdf
+				name = professional_army_idea_7_mdf
 				months = -1
 			}
 		}
-		flag:imperialist_idea = {
+		flag:colonial_idea = {
 			#custom_label = ve_gecici_9
 			add_modifier = {
-				name = imperialist_idea_7_mdf
+				name = colonial_idea_7_mdf
 				months = -1
 			}
 		}

@@ -1,0 +1,93 @@
+### Victoria Universalis IV - Russian termbase.
+### Tab-separated: id, translation, status, note
+### status: locked (human-approved, never re-translated) | candidate (model proposal in use) | todo (undecided)
+### Term ids and their English source live in localization/glossary/terms.tsv.
+id	translation	status	note
+national_insight	Национальный опыт	candidate	Captures the administrative and scholarly accumulation of ideas, distinct from vanilla Innovation. | alternatives: Государственная мысль, Национальное постижение
+piety_reform	Религиозное усердие	candidate	Refers to a political resource spent on religious reforms rather than personal virtue. | alternatives: Благочестивый фонд, Религиозный капитал
+cultural_mandate	Культурный мандат	candidate	Political authorisation for cultural reforms and projects. | alternatives: Культурные полномочия
+era_momentum	Дыхание эпохи	candidate	Age-scoped currency representing historical drive. | alternatives: Импульс эпохи, Дух эпохи
+religious_settlement	Религиозный компромисс	candidate	Modus vivendi between state and faith, avoiding any meaning of physical settlement or colony. | alternatives: Церковный лад, Вероисповедный уклад
+national_cohesion	Национальное единение	candidate	Measures how well the Identity Model fits the populace. | alternatives: Национальная сплоченность
+religious_model	Религиозная модель	candidate	Framework set by church and state law. | alternatives: Вероисповедная модель
+confessional_state	Конфессиональное государство	candidate	Standard historical term for a state with a privileged religion. | alternatives: Государственная конфессия
+freedom_of_conscience	Свобода совести	candidate	Standard 19th-century civil-liberty phrase.
+total_separation	Полное отделение	candidate	Refers to the separation of church and state. | alternatives: Строгий секуляризм
+state_atheism	Государственный атеизм	candidate	Active state policy of secularisation. | alternatives: Воинствующий атеизм
+identity_model	Модель идентичности	candidate	Framework defining nationhood. | alternatives: Национальная модель
+ethnic_nation	Этническая нация	candidate	Nationhood built around a single primary culture. | alternatives: Этногосударство
+civic_nation	Гражданская нация	candidate	Nationhood built on shared citizenship. | alternatives: Гражданское общество
+composite_state	Составное государство	candidate	Political term for a state of several constituent parts. | alternatives: Комплексное государство
+religious_program	Религиозная программа	candidate	Permanent reform available under a religious model. | alternatives: Церковная программа
+religious_project	Религиозный проект	candidate	State-targeted campaign under a religious model. | alternatives: Церковный проект
+confessional_conversion	Конфессиональное обращение	candidate	Project of the Confessional State that converts population. | alternatives: Вероисповедное обращение
+freedom_outreach	Церковное просвещение	candidate	Public engagement and religious provision under Freedom of Conscience. | alternatives: Религиозная деятельность, Духовное окормление
+secularization_campaign	Кампания секуляризации	candidate	Project of State Atheism. | alternatives: Антирелигиозная кампания
+cultural_project	Культурный проект	candidate	Countrywide or state-targeted campaign under an Identity Model. | alternatives: Культурная инициатива
+national_curriculum	Национальная учебная программа	candidate	Shared school syllabus across the country. | alternatives: Школьная программа, Единый учебный план
+shared_symbols	Общие символы	candidate	Direct and standard state terminology for common national symbols. | alternatives: Общественные символы
+ethnic_integration_campaign	Кампания этнической интеграции	candidate	Fits the campaign format and matches vanilla assimilation themes. | alternatives: Кампания национальной интеграции
+equal_citizenship_initiative	Инициатива равного гражданства	candidate	Accurately captures civic nationalism and acceptance increase. | alternatives: Инициатива равноправия граждан
+constituent_compact	Учредительный пакт	candidate	Compact translated as pact/treaty in a political context, avoiding size confusion. | alternatives: Конституционный пакт, Учредительный договор
+idea_group	Группа идей	candidate	Maintains familiarity with EU4-derived terminology while fitting the 19th-century context. | alternatives: Направление доктрин, Школа доктрин
+embrace	Принять	candidate	Standard administrative verb for adopting a policy or doctrine. | alternatives: Одобрить, Внедрить
+idea	Идея	candidate	Keeps the exact 1-to-1 concept level for roman-numeral progression. | alternatives: Догма
+ambition	Стремление	candidate	Period-appropriate term for a crowning systemic goal or national objective. | alternatives: Амбиция
+doctrine	Доктрина	candidate	Unified umbrella term for the entire idea/policy framework. | alternatives: Принцип
+doctrine_implementation_strain	Нагрузка от внедрения доктрины	candidate	Reflects administrative overload and strain correctly. | alternatives: Административное напряжение доктрины
+idea_group_capacity	Вместимость групп идей	candidate	Clear representation of slot limits for doctrine trees. | alternatives: Ли по групп идей
+national_idea	Национальная идея	candidate	Distinguished clearly from Idea Group and Idea. | alternatives: Государственная идея
+tradition	Традиция	candidate	Standard paradox terminology for starting national bonuses. | alternatives: Обычай
+national_bonus	Национальный бонус	candidate	Direct and clear nomenclature for the final bonus. | alternatives: Государственная премия
+category_production	Производство	candidate	Matches vanilla Victoria 3 production category. | alternatives: Экономика
+category_society	Общество	candidate	Matches vanilla Victoria 3 society category. | alternatives: Социум
+category_military	Армия и флот	candidate	Matches traditional grand strategy military category naming. | alternatives: Военное дело
+group_industrialist	Промышленность	candidate	Names the doctrine of factory owners appropriately. | alternatives: Индустриализм
+group_mercantile	Меркантилизм	candidate	Accurately represents merchant capital and trade doctrine. | alternatives: Торговый капитал
+group_financial	Финансы	candidate	Covers banking, credit, and minting. | alternatives: Банковское дело
+group_infrastructure	Инфраструктура	candidate	Standard administrative term for railways, ports, and construction. | alternatives: Пути сообщения
+group_extraction	Добыча	candidate	Refers specifically to resource extraction and mining. | alternatives: Промысел
+group_labour	Труд	candidate	Short noun fitting an idea group name, representing organised labour doctrine. | alternatives: Рабочее движение
+group_agrarian	Аграрная	candidate	Adjective matching standard doctrine naming conventions in the period style. | alternatives: Земледелие
+group_academic	Академическая	candidate	Denotes higher learning and university doctrine without confusing with the physical building. | alternatives: Научная
+group_bureaucratic	Бюрократическая	candidate	Matches the established 'Bureaucracy' root used in the game. | alternatives: Административная
+group_parliamentary	Парламентская	candidate	Standard 19th-century political term for law-making and representation systems. | alternatives: Представительная
+group_welfare	Социальная	candidate	Period-appropriate adjective for social security and state-provided welfare. | alternatives: Благосостояние
+group_diplomatic	Дипломатическая	candidate	Standard adjective for foreign relations doctrine. | alternatives: Внешняя политика
+group_nationalist	Национальная	candidate	Refers to national homogeneity doctrine in state policy. | alternatives: Националистическая
+group_reformist	Реформистская	candidate	Captures the essence of egalitarian reform doctrines. | alternatives: Эгалитарная
+group_offensive	Наступательная	candidate	Standard military terminology for attack-oriented doctrine. | alternatives: Атакующая
+group_defensive	Оборонительная	candidate	Standard military terminology for defence and fortification. | alternatives: Фортификационная
+group_naval	Военно-морская	candidate	Standard military terminology for fleets and naval matters. | alternatives: Морская
+group_professional_army	Профессиональная армия	candidate	Refers to a standing, trained professional military force. | alternatives: Кадровая армия
+group_mass_conscription	Массовая мобилизация	candidate	Period-accurate term for a conscript nation doctrine. | alternatives: Всеобщая воинская повинность
+group_colonial	Колониальная	candidate	Standard doctrine name for expansion and overseas territories. | alternatives: Заморская
+group_war_economy	Военная экономика	candidate	Standard term for state economy mobilized for total war. | alternatives: Мобилизационная экономика
+age	Эпоха	candidate	Standard strategic grand-strategy term for historical chronological phases. | alternatives: Веке
+age_1	Промышленность и нации	candidate	Direct translation of the first campaign era name (1836-1870). | alternatives: Индустрия и нации
+age_2	Империи и массовое общество	candidate	Direct translation of the second campaign era name (1871-1905). | alternatives: Империя и массовое общество
+age_3	Массовая политика и тотальная война	candidate	Direct translation of the third campaign era name (1906-1936). | alternatives: Массовая политика и всеобщая война
+objective	Цель	candidate	State goal or ambition to achieve during an age for momentum. | alternatives: Задача
+era_reward	Награда эпохи	candidate	Bonus purchased with era momentum lasting for the current age. | alternatives: Бонус эпохи
+golden_age	Золотой век	candidate	Standard historical phrase for a golden age. | alternatives: Эпоха расцвета
+golden_age_industrial	Промышленный золотой век	candidate	Follows the golden age word family while denoting industry. | alternatives: Индустриальный золотой век
+golden_age_cultural	Культурный золотой век	candidate	Standard adjective form for cultural achievements. | alternatives: Золотой век культуры
+golden_age_strategic	Стратегический золотой век	candidate	Maintains consistency with the golden age pattern. | alternatives: Военный золотой век
+doctrine_journey	Путь доктрины	candidate	Journey translated as an enduring path of undertaking. | alternatives: Становление доктрины
+era_crossroads	Перепутье эпохи	candidate	Crossroads as a critical singular decision point. | alternatives: Распутье эпохи
+route	Путь	candidate	Strategic course of action rather than a physical road. | alternatives: Направление, Курс
+milestone	Веха	candidate	Standard term for significant checkpoints in progress. | alternatives: Рубеж
+transition_journey	Путь переходного периода	candidate	Keeps journey family while indicating transition. | alternatives: Переходный путь
+journey_steam_and_the_state	Пар и государство	candidate	Translates steam correctly as steam power in 19th-century context. | alternatives: Паровая машина и государство
+journey_empire_and_mass_society	Империя и массовое общество	candidate	Direct historical translation matching the Age name. | alternatives: Империя и общество масс
+journey_mobilized_society	Мобилизованное общество	candidate	Captures the sense of a mobilized societal structure. | alternatives: Мобилизация общества
+journey_factory_system	Стандартизация фабричной системы	candidate	Factory system as an overarching industrial structure. | alternatives: Упорядочение фабричного строя
+journey_republic_of_scholars	Ученые круги	candidate	Denotes an academic community rather than a literal republic state. | alternatives: Республика ученых
+journey_general_staff	Реформа генерального штаба	candidate	Uses the established military institution name. | alternatives: Преобразование генштаба
+doctrine_ledger	Регистр доктрин	candidate	Ledger translated as an administrative accounting and comparison table. | alternatives: Ведомость доктрин, Свод доктрин
+national_doctrine	Национальная доктрина	candidate	Direct and clear reading for the country's doctrines. | alternatives: Государственная доктрина
+backlash	Отпор	candidate	Political reaction and penalty following a cancelled policy. | alternatives: Реакция, Откат
+strain	Напряжение	candidate	Timed implementation penalty indicating system stress. | alternatives: Нагрузка
+tier	Уровень	candidate	Standard interface term for a meter band or grade. | alternatives: Ступень, Категория
+equilibrium	Равновесие	candidate	Standard mechanical term for the drift target. | alternatives: Баланс
+progress	Прогресс	candidate	Measured completion value of a project. | alternatives: Шкала прогресса

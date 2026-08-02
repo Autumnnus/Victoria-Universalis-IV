@@ -1,188 +1,231 @@
-golden_age_mdf = {
+﻿ve_golden_age_industrial_mdf = {
 	icon = gfx/interface/icon_splendor_tiny.dds
-	unit_army_offense_mult = 0.1
-	ship_accuracy_mult = 0.1
-	building_group_bg_manufacturing_throughput_add = 0.1
-	building_group_bg_mining_throughput_add = 0.1
-	#idea, piety ve kültür cost indirimi
+	building_group_bg_manufacturing_throughput_add = 0.10
+	country_resource_discovery_chance_mult = 0.10
 }
 
-age_1_bonus_1 = {
+ve_golden_age_cultural_mdf = {
 	icon = gfx/interface/icon_splendor_tiny.dds
-	country_authority_mult = 0.1
+	state_education_access_add = 0.05
+	country_prestige_mult = 0.10
+}
+
+ve_golden_age_strategic_mdf = {
+	icon = gfx/interface/icon_splendor_tiny.dds
+	unit_army_offense_mult = 0.05
+	country_war_exhaustion_casualties_mult = -0.10
+}
+
+# Age 1 — Industry and Nations
+age_1_bonus_1 = {
+	icon = gfx/interface/icons/notification_icons/bureaucracy.dds
+	country_bureaucracy_add = 50
 }
 
 age_1_bonus_2 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	country_loan_interest_rate_mult = -0.1
+	icon = gfx/interface/icons/law_icons/public_schools.dds
+	state_education_access_add = 0.05
 }
 
 age_1_bonus_3 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	state_colony_growth_creation_factor = 0.1
+	icon = gfx/interface/icons/notification_icons/laws.dds
+	country_law_enactment_success_add = 0.05
 }
 
 age_1_bonus_4 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	country_influence_mult = 0.1
+	icon = gfx/interface/icons/invention_icons/banking.dds
+	country_loan_interest_rate_mult = -0.05
 }
 
 age_1_bonus_5 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	state_urbanization_per_level_mult = -0.1
+	icon = gfx/interface/icons/building_icons/steel_mills.dds
+	building_group_bg_manufacturing_throughput_add = 0.05
 }
 
 age_1_bonus_6 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	country_consumption_tax_cost_mult = -0.1
+	icon = gfx/interface/icons/invention_icons/railways.dds
+	state_infrastructure_mult = 0.05
 }
 
 age_1_bonus_7 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	building_coal_mine_throughput_add = 0.2
+	icon = gfx/interface/icons/character_trait_icons/experienced_diplomat.dds
+	country_influence_mult = 0.05
 }
 
 age_1_bonus_8 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	ship_supply_capacity_mult = 0.25
+	icon = gfx/interface/icons/military_icons/navy_icons/supply_efficiency.dds
+	ship_supply_capacity_mult = 0.10
 }
 
 age_1_bonus_9 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	country_law_enactment_success_add = 0.1
+	icon = gfx/interface/icons/law_icons/professional_army.dds
+	unit_army_offense_mult = 0.05
 }
 
-age_1_bonus_10 = {
+# Age 2 — Empire and Mass Society
+age_2_bonus_1 = {
+	icon = gfx/interface/icons/law_icons/public_schools.dds
+	state_education_access_add = 0.05
+}
+
+age_2_bonus_2 = {
+	icon = gfx/interface/icons/production_method_icons/field_hospitals.dds
+	state_mortality_mult = -0.03
+}
+
+age_2_bonus_3 = {
+	icon = gfx/interface/icons/notification_icons/bureaucracy.dds
+	state_tax_capacity_mult = 0.10
+}
+
+age_2_bonus_4 = {
+	icon = gfx/interface/icons/notification_icons/resource.dds
+	country_resource_discovery_chance_mult = 0.15
+}
+
+age_2_bonus_5 = {
+	icon = gfx/interface/icons/building_icons/steel_mills.dds
+	building_group_bg_manufacturing_throughput_add = 0.05
+}
+
+age_2_bonus_6 = {
+	icon = gfx/interface/icons/generic_icons/trade.dds
+	state_trade_advantage_mult = 0.10
+}
+
+age_2_bonus_7 = {
+	icon = gfx/interface/icons/law_icons/colonial_administration.dds
+	state_colony_growth_speed_mult = 0.10
+}
+
+age_2_bonus_8 = {
+	icon = gfx/interface/icons/character_trait_icons/experienced_diplomat.dds
+	country_influence_mult = 0.10
+}
+
+age_2_bonus_9 = {
+	icon = gfx/interface/icons/invention_icons/army_reserves.dds
+	state_conscription_rate_mult = 0.10
+}
+
+# Age 3 — Mass Politics and Total War
+age_3_bonus_1 = {
+	icon = gfx/interface/icons/institution_icons/social_security.dds
+	country_institution_social_security_max_investment_add = 1
+}
+
+age_3_bonus_2 = {
+	icon = gfx/interface/icons/generic_icons/legitimacy.dds
+	country_legitimacy_base_add = 5
+}
+
+age_3_bonus_3 = {
+	icon = gfx/interface/icons/notification_icons/technology.dds
+	country_weekly_innovation_add = 5
+}
+
+age_3_bonus_4 = {
+	icon = gfx/interface/icons/invention_icons/electric_railway.dds
+	state_infrastructure_mult = 0.10
+}
+
+age_3_bonus_5 = {
+	icon = gfx/interface/icons/building_icons/motor_industry.dds
+	building_group_bg_manufacturing_throughput_add = 0.10
+}
+
+age_3_bonus_6 = {
+	icon = gfx/interface/icons/building_icons/arms_industry.dds
+	country_military_goods_cost_mult = -0.05
+}
+
+age_3_bonus_7 = {
+	icon = gfx/interface/icons/production_method_icons/field_hospitals.dds
+	country_war_exhaustion_casualties_mult = -0.10
+}
+
+age_3_bonus_8 = {
+	icon = gfx/interface/icons/mobilization_options/forced_march.dds
+	military_formation_army_movement_speed_mult = 0.10
+}
+
+age_3_bonus_9 = {
+	icon = gfx/interface/icons/character_trait_icons/experienced_diplomat.dds
+	country_improve_relations_speed_mult = 0.15
+}
+
+# Retained legacy modifier for existing saves.
+golden_age_mdf = {
 	icon = gfx/interface/icon_splendor_tiny.dds
+}
+
+# Country-specific Era Momentum rewards. Slots 10 through 13 are deliberately
+# restricted by their scripted GUI bindings; the shared rewards above remain
+# available to every country.
+age_1_bonus_10 = {
+	icon = gfx/interface/icons/war_goals/unify_italy.dds
 	country_radicals_from_conquest_mult = -0.25
 }
 
 age_1_bonus_11 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
+	icon = gfx/interface/icons/war_goals/unify_germany.dds
 	country_infamy_decay_mult = 0.15
 }
 
-age_2_bonus_1 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
+age_1_bonus_12 = {
+	icon = gfx/interface/icons/principles_icons/external_trade.dds
+	state_trade_advantage_mult = 0.15
+}
+
+age_1_bonus_13 = {
+	icon = gfx/interface/icons/law_icons/appointed_bureaucrats.dds
 	country_law_enactment_max_setbacks_add = 1
 }
 
-age_2_bonus_2 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	country_resource_discovery_chance_mult = 0.2
-	country_institution_colonial_affairs_max_investment_add = 1
-}
-
-age_2_bonus_3 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	country_agitator_slots_add = 2
-}
-
-age_2_bonus_4 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	country_radicalism_increases_violent_hostility_mult = -0.03
-	country_radicalism_increases_cultural_erasure_mult = -0.03
-	country_radicalism_increases_open_prejudice_mult = -0.03
-}
-
-age_2_bonus_5 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	state_trade_advantage_mult =  0.2
-}
-
-age_2_bonus_6 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	state_assimilation_mult = 0.2
-	state_conversion_mult = 0.2
-}
-
-age_2_bonus_7 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	state_colony_growth_speed_mult = 0.2
-}
-
-age_2_bonus_8 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	country_minting_mult = 0.1
-}
-
-age_2_bonus_9 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	country_resource_depletion_chance_mult = -0.25
-}
-
 age_2_bonus_10 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
+	icon = gfx/interface/icons/law_icons/national_supremacy.dds
 	country_radicalism_increases_violent_hostility_mult = -0.015
 	country_radicalism_increases_cultural_erasure_mult = -0.015
 	country_radicalism_increases_open_prejudice_mult = -0.015
 }
 
 age_2_bonus_11 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
+	icon = gfx/interface/icons/generic_icons/assimilation.dds
 	state_assimilation_mult = 0.35
 }
 
-age_3_bonus_1 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	state_birth_rate_mult = 0.03
+age_2_bonus_12 = {
+	icon = gfx/interface/icons/principles_icons/colonial_offices.dds
+	state_colony_growth_speed_mult = 0.20
 }
 
-age_3_bonus_2 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	country_damage_relations_speed_mult = 0.2
-	country_improve_relations_speed_mult = 0.2
-}
-
-age_3_bonus_3 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	country_military_goods_cost_mult = -0.1
-}
-
-age_3_bonus_4 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	country_war_exhaustion_casualties_mult = -0.1
-}
-
-age_3_bonus_5 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	state_infrastructure_mult = 0.15
-}
-
-age_3_bonus_6 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	state_decree_cost_mult = -0.2
-}
-
-age_3_bonus_7 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	battle_casualties_mult = -0.1
-}
-
-age_3_bonus_8 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	battle_defense_owned_province_mult = 0.15
-}
-
-age_3_bonus_9 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	military_formation_army_movement_speed_mult = 0.15
-	military_formation_fleet_movement_speed_mult = 0.15
+age_2_bonus_13 = {
+	icon = gfx/interface/icons/invention_icons/banking.dds
+	country_minting_mult = 0.10
 }
 
 age_3_bonus_10 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
+	icon = gfx/interface/icons/formation_order_icons/naval_invasion.dds
 	ship_naval_invasion_efficiency_mult = 0.25
 	unit_offense_water_add = 10
 }
 
 age_3_bonus_10_2 = {
-	#If it has naval idea
-	icon = gfx/interface/icon_splendor_tiny.dds
+	icon = gfx/interface/icons/military_icons/navy_icons/marine_capacity.dds
 	unit_offense_water_add = 10
 }
 
 age_3_bonus_11 = {
-	icon = gfx/interface/icon_splendor_tiny.dds
-	state_conscription_rate_mult = 0.2
+	icon = gfx/interface/icons/notification_icons/technology.dds
+	country_weekly_innovation_add = 10
+}
+
+age_3_bonus_12 = {
+	icon = gfx/interface/icons/character_trait_icons/defense_in_depth_specialist.dds
+	battle_defense_owned_province_mult = 0.15
+}
+
+age_3_bonus_13 = {
+	icon = gfx/interface/icons/military_icons/navy_icons/speed_navy.dds
+	ship_supply_capacity_mult = 0.15
 }

@@ -1,0 +1,149 @@
+# Shared eligibility guards for the Project JE incident pools.
+
+ve_can_fire_religious_project_incident = {
+	ve_has_active_religious_project = yes
+	has_variable = ve_religious_project_progress
+	has_variable = ve_religious_project_target_state
+	has_variable = ve_evt_religious_incident_count
+	var:ve_evt_religious_incident_count < 3
+	NOT = { has_modifier = ve_evt_religious_incident_cooldown_mdf }
+	var:ve_religious_project_target_state ?= {
+		owner = ROOT
+	}
+}
+
+ve_can_fire_cultural_project_incident = {
+	ve_has_active_cultural_project = yes
+	ve_project_is_targeted = yes
+	has_variable = ve_cultural_project_progress
+	has_variable = ve_cultural_project_target_state
+	has_variable = ve_cultural_project_target_culture
+	has_variable = ve_evt_cultural_incident_count
+	var:ve_evt_cultural_incident_count < 3
+	NOT = { has_modifier = ve_evt_cultural_incident_cooldown_mdf }
+	var:ve_cultural_project_target_state ?= {
+		owner = ROOT
+	}
+}
+
+ve_can_fire_countrywide_cultural_project_incident = {
+	ve_has_active_cultural_project = yes
+	ve_project_is_countrywide = yes
+	has_variable = ve_cultural_project_progress
+	has_variable = ve_evt_cultural_incident_count
+	var:ve_evt_cultural_incident_count < 3
+	NOT = { has_modifier = ve_evt_cultural_incident_cooldown_mdf }
+}
+
+ve_has_religious_movement_pressure = {
+	any_political_movement = {
+		OR = {
+			is_political_movement_type = movement_religious_minority
+			is_political_movement_type = movement_religious_majority
+		}
+		political_movement_radicalism >= 0.25
+	}
+}
+
+# Option effects re-check these contexts. Event cancellation normally closes a
+# stale popup, but these guards prevent costs or meter changes if project state
+# changes during the same engine tick.
+ve_has_valid_confessional_project_event_context = {
+	ve_has_active_religious_project = yes
+	ve_religious_project_type_is = { TYPE = 1 }
+	has_variable = ve_religious_project_target_state
+	var:ve_religious_project_target_state ?= {
+		owner = ROOT
+	}
+}
+
+ve_has_valid_plural_or_secular_religious_project_event_context = {
+	ve_has_active_religious_project = yes
+	OR = {
+		ve_religious_project_type_is = { TYPE = 2 }
+		ve_religious_project_type_is = { TYPE = 3 }
+	}
+	has_variable = ve_religious_project_target_state
+	var:ve_religious_project_target_state ?= {
+		owner = ROOT
+	}
+}
+
+ve_has_valid_freedom_religious_project_event_context = {
+	ve_has_active_religious_project = yes
+	ve_religious_project_type_is = { TYPE = 2 }
+	has_variable = ve_religious_project_target_state
+	var:ve_religious_project_target_state ?= {
+		owner = ROOT
+	}
+}
+
+ve_has_valid_secularization_religious_project_event_context = {
+	ve_has_active_religious_project = yes
+	ve_religious_project_type_is = { TYPE = 3 }
+	has_variable = ve_religious_project_target_state
+	var:ve_religious_project_target_state ?= {
+		owner = ROOT
+	}
+}
+
+ve_has_valid_civic_project_event_context = {
+	ve_has_active_cultural_project = yes
+	ve_cultural_project_type_is = { TYPE = 4 }
+	has_variable = ve_cultural_project_target_state
+	has_variable = ve_cultural_project_target_culture
+	var:ve_cultural_project_target_state ?= {
+		owner = ROOT
+	}
+}
+
+ve_has_valid_ethnic_or_composite_cultural_project_event_context = {
+	ve_has_active_cultural_project = yes
+	OR = {
+		ve_cultural_project_type_is = { TYPE = 3 }
+		ve_cultural_project_type_is = { TYPE = 5 }
+	}
+	has_variable = ve_cultural_project_target_state
+	has_variable = ve_cultural_project_target_culture
+	var:ve_cultural_project_target_state ?= {
+		owner = ROOT
+	}
+}
+
+ve_has_valid_ethnic_cultural_project_event_context = {
+	ve_has_active_cultural_project = yes
+	ve_cultural_project_type_is = { TYPE = 3 }
+	has_variable = ve_cultural_project_target_state
+	has_variable = ve_cultural_project_target_culture
+	var:ve_cultural_project_target_state ?= {
+		owner = ROOT
+	}
+}
+
+ve_has_valid_composite_cultural_project_event_context = {
+	ve_has_active_cultural_project = yes
+	ve_cultural_project_type_is = { TYPE = 5 }
+	has_variable = ve_cultural_project_target_state
+	has_variable = ve_cultural_project_target_culture
+	var:ve_cultural_project_target_state ?= {
+		owner = ROOT
+	}
+}
+
+ve_has_valid_countrywide_cultural_project_event_context = {
+	ve_has_active_cultural_project = yes
+	ve_project_is_countrywide = yes
+	has_variable = ve_cultural_project_progress
+}
+
+ve_has_valid_curriculum_cultural_project_event_context = {
+	ve_has_active_cultural_project = yes
+	ve_cultural_project_type_is = { TYPE = 1 }
+	has_variable = ve_cultural_project_progress
+}
+
+ve_has_valid_symbols_cultural_project_event_context = {
+	ve_has_active_cultural_project = yes
+	ve_cultural_project_type_is = { TYPE = 2 }
+	has_variable = ve_cultural_project_progress
+}

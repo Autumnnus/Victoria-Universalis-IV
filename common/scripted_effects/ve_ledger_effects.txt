@@ -1,0 +1,246 @@
+﻿# Doctrine Ledger page builder.
+#
+# The GUI cannot sort or filter a list on its own, so the ledger keeps one
+# global list (ve_ledger_countries) that always holds exactly the rows of the
+# page currently on screen, in order. Every sort, filter and page button
+# rebuilds that list; the row contents themselves stay live because the GUI
+# reads them straight off the country.
+#
+# Root contract: always executed with the viewing player's country as root, so
+# ve_ledger_filter_pass can offer "relative to me" filters.
+#
+# Cost: one rebuild walks the country list (offset + page size) times. With the
+# 20-row page that is a few thousand trigger evaluations on a button click and
+# nothing at all per frame, which is why the ledger is paged instead of showing
+# every country at once.
+
+# Page size is 20 rows. Kept as a literal in each place it is needed so the
+# file does not depend on @constant substitution inside script blocks.
+
+ve_ledger_initialize = {
+	if = {
+		limit = { NOT = { has_global_variable = ve_ledger_sort } }
+		set_global_variable = {
+			name = ve_ledger_sort
+			value = 1
+		}
+	}
+	if = {
+		limit = { NOT = { has_global_variable = ve_ledger_filter } }
+		set_global_variable = {
+			name = ve_ledger_filter
+			value = 0
+		}
+	}
+	if = {
+		limit = { NOT = { has_global_variable = ve_ledger_offset } }
+		set_global_variable = {
+			name = ve_ledger_offset
+			value = 0
+		}
+	}
+	if = {
+		limit = { NOT = { has_global_variable = ve_ledger_total } }
+		set_global_variable = {
+			name = ve_ledger_total
+			value = 0
+		}
+	}
+}
+
+ve_ledger_rebuild = {
+	ve_ledger_initialize = yes
+	clear_global_variable_list = ve_ledger_countries
+	every_country = {
+		limit = { has_variable = ve_ledger_taken }
+		remove_variable = ve_ledger_taken
+	}
+
+	# How many countries the current filter matches - drives the page counter
+	# and the clamp below.
+	set_global_variable = {
+		name = ve_ledger_total
+		value = 0
+	}
+	every_country = {
+		limit = { ve_ledger_filter_pass = yes }
+		change_global_variable = {
+			name = ve_ledger_total
+			add = 1
+		}
+	}
+
+	# A filter change can leave the offset past the end of the new result set.
+	if = {
+		limit = { global_var:ve_ledger_offset >= global_var:ve_ledger_total }
+		set_global_variable = {
+			name = ve_ledger_offset
+			value = 0
+		}
+	}
+
+	# Pass 1: consume the rows before this page, in the same sorted order, so
+	# pass 2 starts exactly at the page boundary.
+	set_global_variable = {
+		name = ve_ledger_cursor
+		value = 0
+	}
+	while = {
+		limit = { global_var:ve_ledger_cursor < global_var:ve_ledger_offset }
+		ordered_country = {
+			limit = {
+				ve_ledger_filter_pass = yes
+				NOT = { has_variable = ve_ledger_taken }
+			}
+			order_by = ve_ledger_sort_value
+			position = 0
+			check_range_bounds = no
+			set_variable = ve_ledger_taken
+		}
+		change_global_variable = {
+			name = ve_ledger_cursor
+			add = 1
+		}
+	}
+
+	# Pass 2: the page itself.
+	set_global_variable = {
+		name = ve_ledger_cursor
+		value = 0
+	}
+	while = {
+		limit = { global_var:ve_ledger_cursor < 20 }
+		ordered_country = {
+			limit = {
+				ve_ledger_filter_pass = yes
+				NOT = { has_variable = ve_ledger_taken }
+			}
+			order_by = ve_ledger_sort_value
+			position = 0
+			check_range_bounds = no
+			set_variable = ve_ledger_taken
+			add_to_global_variable_list = {
+				name = ve_ledger_countries
+				target = THIS
+			}
+		}
+		change_global_variable = {
+			name = ve_ledger_cursor
+			add = 1
+		}
+	}
+
+	# Never leave the marker on countries: it would break the next rebuild and
+	# would be written into the save.
+	every_country = {
+		limit = { has_variable = ve_ledger_taken }
+		remove_variable = ve_ledger_taken
+	}
+
+	ve_ledger_update_page_counters = yes
+}
+
+# The footer prints these directly. Page arithmetic lives here because the GUI
+# has no integer division, and the offset is always a multiple of the page size
+# so offset / 20 is exact. The page count is counted out instead of divided so
+# it rounds up without a floor operation.
+ve_ledger_update_page_counters = {
+	set_global_variable = {
+		name = ve_ledger_page_number
+		value = global_var:ve_ledger_offset
+	}
+	change_global_variable = {
+		name = ve_ledger_page_number
+		divide = 20
+	}
+	change_global_variable = {
+		name = ve_ledger_page_number
+		add = 1
+	}
+	set_global_variable = {
+		name = ve_ledger_page_count
+		value = 0
+	}
+	set_global_variable = {
+		name = ve_ledger_page_scan
+		value = 0
+	}
+	while = {
+		limit = { global_var:ve_ledger_page_scan < global_var:ve_ledger_total }
+		change_global_variable = {
+			name = ve_ledger_page_scan
+			add = 20
+		}
+		change_global_variable = {
+			name = ve_ledger_page_count
+			add = 1
+		}
+	}
+	if = {
+		limit = { global_var:ve_ledger_page_count == 0 }
+		set_global_variable = {
+			name = ve_ledger_page_count
+			value = 1
+		}
+	}
+}
+
+ve_ledger_set_sort = {
+	ve_ledger_initialize = yes
+	set_global_variable = {
+		name = ve_ledger_sort
+		value = $KEY$
+	}
+	set_global_variable = {
+		name = ve_ledger_offset
+		value = 0
+	}
+	ve_ledger_rebuild = yes
+}
+
+ve_ledger_set_filter = {
+	ve_ledger_initialize = yes
+	set_global_variable = {
+		name = ve_ledger_filter
+		value = $ID$
+	}
+	set_global_variable = {
+		name = ve_ledger_offset
+		value = 0
+	}
+	ve_ledger_rebuild = yes
+}
+
+ve_ledger_next_page = {
+	ve_ledger_initialize = yes
+	change_global_variable = {
+		name = ve_ledger_offset
+		add = 20
+	}
+	ve_ledger_rebuild = yes
+}
+
+ve_ledger_previous_page = {
+	ve_ledger_initialize = yes
+	change_global_variable = {
+		name = ve_ledger_offset
+		subtract = 20
+	}
+	if = {
+		limit = { global_var:ve_ledger_offset < 0 }
+		set_global_variable = {
+			name = ve_ledger_offset
+			value = 0
+		}
+	}
+	ve_ledger_rebuild = yes
+}
+
+ve_ledger_first_page = {
+	ve_ledger_initialize = yes
+	set_global_variable = {
+		name = ve_ledger_offset
+		value = 0
+	}
+	ve_ledger_rebuild = yes
+}

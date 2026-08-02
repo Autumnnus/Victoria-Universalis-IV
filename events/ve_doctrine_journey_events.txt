@@ -1,0 +1,641 @@
+namespace = ve_doctrine_journey
+
+# Phase 5 common offer events. Pack-live triggers admit only complete content
+# packs to this offer namespace.
+
+ve_doctrine_journey.1 = {
+	type = country_event
+	title = ve_doctrine_journey.1.t
+	desc = ve_doctrine_journey.1.d
+	event_image = { video = "gfx/event_pictures/southamerica_factory_opening.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	trigger = { ve_can_accept_doctrine_journey_industrialist_offer = yes }
+	cancellation_trigger = {
+		NOT = { ve_can_accept_doctrine_journey_industrialist_offer = yes }
+	}
+	immediate = {
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_offers DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_industrialist_offers DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_DOCTRINE_JOURNEY_OFFER:[THIS.GetCountry.GetNameNoFormatting]:INDUSTRIALIST"
+	}
+	option = {
+		name = ve_doctrine_journey.1.a
+		trigger = { ve_can_accept_doctrine_journey_industrialist_offer = yes }
+		ai_chance = {
+			base = 40
+			modifier = { trigger = { ve_doctrine_journey_industrialist_core_met = yes } add = 30 }
+			modifier = { trigger = { ve_doctrine_journey_industrialist_support_met = yes } add = 20 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey_start_tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_doctrine_journey_industrialist_offer = yes }
+				ve_begin_doctrine_journey_industrialist = yes
+			}
+		}
+	}
+	option = {
+		name = ve_doctrine_journey.1.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = {
+					NOT = { ve_doctrine_journey_industrialist_core_met = yes }
+					NOT = { ve_doctrine_journey_industrialist_support_met = yes }
+				}
+				add = 50
+			}
+		}
+		custom_tooltip = { text = ve_doctrine_journey_defer_tt }
+		hidden_effect = { ve_defer_doctrine_journey_offer = yes }
+	}
+	option = {
+		name = ve_doctrine_journey.1.c
+		ai_chance = { base = 5 }
+		custom_tooltip = { text = ve_doctrine_journey_decline_tt }
+		hidden_effect = { ve_decline_doctrine_journey_offer = yes }
+	}
+}
+
+ve_doctrine_journey.2 = {
+	type = country_event
+	title = ve_doctrine_journey.2.t
+	desc = ve_doctrine_journey.2.d
+	event_image = { video = "gfx/event_pictures/unspecific_world_fair.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	trigger = { ve_can_accept_doctrine_journey_academic_offer = yes }
+	cancellation_trigger = {
+		NOT = { ve_can_accept_doctrine_journey_academic_offer = yes }
+	}
+	immediate = {
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_offers DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_academic_offers DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_DOCTRINE_JOURNEY_OFFER:[THIS.GetCountry.GetNameNoFormatting]:ACADEMIC"
+	}
+	option = {
+		name = ve_doctrine_journey.2.a
+		trigger = { ve_can_accept_doctrine_journey_academic_offer = yes }
+		ai_chance = {
+			base = 40
+			modifier = { trigger = { ve_doctrine_journey_academic_core_met = yes } add = 30 }
+			modifier = { trigger = { ve_doctrine_journey_academic_support_met = yes } add = 20 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey_start_tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_doctrine_journey_academic_offer = yes }
+				ve_begin_doctrine_journey_academic = yes
+			}
+		}
+	}
+	option = {
+		name = ve_doctrine_journey.2.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = {
+					NOT = { ve_doctrine_journey_academic_core_met = yes }
+					NOT = { ve_doctrine_journey_academic_support_met = yes }
+				}
+				add = 50
+			}
+		}
+		custom_tooltip = { text = ve_doctrine_journey_defer_tt }
+		hidden_effect = { ve_defer_doctrine_journey_offer = yes }
+	}
+	option = {
+		name = ve_doctrine_journey.2.c
+		ai_chance = { base = 5 }
+		custom_tooltip = { text = ve_doctrine_journey_decline_tt }
+		hidden_effect = { ve_decline_doctrine_journey_offer = yes }
+	}
+}
+
+ve_doctrine_journey.3 = {
+	type = country_event
+	title = ve_doctrine_journey.3.t
+	desc = ve_doctrine_journey.3.d
+	event_image = { video = "gfx/event_pictures/unspecific_military_parade.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	trigger = { ve_can_accept_doctrine_journey_professional_army_offer = yes }
+	cancellation_trigger = {
+		NOT = { ve_can_accept_doctrine_journey_professional_army_offer = yes }
+	}
+	immediate = {
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_offers DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_doctrine_journey_tm_professional_army_offers DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_DOCTRINE_JOURNEY_OFFER:[THIS.GetCountry.GetNameNoFormatting]:PROFESSIONAL_ARMY"
+	}
+	option = {
+		name = ve_doctrine_journey.3.a
+		trigger = { ve_can_accept_doctrine_journey_professional_army_offer = yes }
+		ai_chance = {
+			base = 40
+			modifier = { trigger = { ve_doctrine_journey_professional_army_core_met = yes } add = 30 }
+			modifier = { trigger = { ve_doctrine_journey_professional_army_support_met = yes } add = 20 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey_start_tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_doctrine_journey_professional_army_offer = yes }
+				ve_begin_doctrine_journey_professional_army = yes
+			}
+		}
+	}
+	option = {
+		name = ve_doctrine_journey.3.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = {
+					NOT = { ve_doctrine_journey_professional_army_core_met = yes }
+					NOT = { ve_doctrine_journey_professional_army_support_met = yes }
+				}
+				add = 50
+			}
+		}
+		custom_tooltip = { text = ve_doctrine_journey_defer_tt }
+		hidden_effect = { ve_defer_doctrine_journey_offer = yes }
+	}
+	option = {
+		name = ve_doctrine_journey.3.c
+		ai_chance = { base = 5 }
+		custom_tooltip = { text = ve_doctrine_journey_decline_tt }
+		hidden_effect = { ve_decline_doctrine_journey_offer = yes }
+	}
+}
+
+ve_doctrine_journey.10 = {
+	type = country_event
+	title = ve_doctrine_journey.10.t
+	desc = ve_doctrine_journey.10.d
+	event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	trigger = { ve_has_valid_industrialist_doctrine_journey_milestone_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_valid_industrialist_doctrine_journey_milestone_context = yes }
+	}
+	option = {
+		name = ve_doctrine_journey.10.a
+		trigger = { ve_can_afford_doctrine_journey_insight = { COST = 15 } }
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_doctrine_journey_months >= 45 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.10.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_industrialist_doctrine_journey_milestone_context = yes
+					ve_can_afford_doctrine_journey_insight = { COST = 15 }
+				}
+				ve_record_doctrine_journey_option = { GROUP = industrialist MILESTONE = 1 CLASS = paid }
+				ve_doctrine_journey_change_national_insight = { DELTA = -15 }
+				ve_doctrine_journey_change_progress = { DELTA = 4 }
+			}
+		}
+	}
+	option = {
+		name = ve_doctrine_journey.10.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 50 } add = 30 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.10.b.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_industrialist_doctrine_journey_milestone_context = yes
+				}
+				ve_record_doctrine_journey_option = { GROUP = industrialist MILESTONE = 1 CLASS = default }
+			}
+		}
+	}
+	option = {
+		name = ve_doctrine_journey.10.c
+		trigger = {
+			has_modifier = industrialist_idea_5_mdf
+			ve_can_afford_doctrine_journey_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_doctrine_journey_months >= 45 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.10.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_industrialist_doctrine_journey_milestone_context = yes
+					has_modifier = industrialist_idea_5_mdf
+					ve_can_afford_doctrine_journey_insight = { COST = 10 }
+				}
+				ve_record_doctrine_journey_option = { GROUP = industrialist MILESTONE = 1 CLASS = doctrine }
+				ve_doctrine_journey_change_national_insight = { DELTA = -10 }
+				ve_doctrine_journey_change_progress = { DELTA = 4 }
+			}
+		}
+	}
+}
+
+ve_doctrine_journey.11 = {
+	type = country_event
+	title = ve_doctrine_journey.11.t
+	desc = ve_doctrine_journey.11.d
+	event_image = { video = "gfx/event_pictures/asia_factory_accident.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	trigger = { ve_has_valid_industrialist_doctrine_journey_milestone_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_valid_industrialist_doctrine_journey_milestone_context = yes }
+	}
+	option = {
+		name = ve_doctrine_journey.11.a
+		trigger = { ve_can_afford_doctrine_journey_insight = { COST = 15 } }
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_doctrine_journey_months >= 45 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.11.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_industrialist_doctrine_journey_milestone_context = yes
+					ve_can_afford_doctrine_journey_insight = { COST = 15 }
+				}
+				ve_record_doctrine_journey_option = { GROUP = industrialist MILESTONE = 2 CLASS = paid }
+				ve_doctrine_journey_change_national_insight = { DELTA = -15 }
+				ve_doctrine_journey_change_progress = { DELTA = 4 }
+			}
+		}
+	}
+	option = {
+		name = ve_doctrine_journey.11.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 50 } add = 30 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.11.b.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_industrialist_doctrine_journey_milestone_context = yes
+				}
+				ve_record_doctrine_journey_option = { GROUP = industrialist MILESTONE = 2 CLASS = default }
+			}
+		}
+	}
+	option = {
+		name = ve_doctrine_journey.11.c
+		trigger = {
+			has_modifier = industrialist_idea_7_mdf
+			ve_can_afford_doctrine_journey_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_doctrine_journey_months >= 45 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.11.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_industrialist_doctrine_journey_milestone_context = yes
+					has_modifier = industrialist_idea_7_mdf
+					ve_can_afford_doctrine_journey_insight = { COST = 10 }
+				}
+				ve_record_doctrine_journey_option = { GROUP = industrialist MILESTONE = 2 CLASS = doctrine }
+				ve_doctrine_journey_change_national_insight = { DELTA = -10 }
+				ve_doctrine_journey_change_progress = { DELTA = 4 }
+			}
+		}
+	}
+}
+
+ve_doctrine_journey.20 = {
+	type = country_event
+	title = ve_doctrine_journey.20.t
+	desc = ve_doctrine_journey.20.d
+	event_image = { video = "gfx/event_pictures/middleeast_engineer_blueprint.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	duration = 3
+	trigger = { ve_has_valid_academic_doctrine_journey_milestone_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_valid_academic_doctrine_journey_milestone_context = yes }
+	}
+	option = {
+		name = ve_doctrine_journey.20.a
+		trigger = { ve_can_afford_doctrine_journey_insight = { COST = 15 } }
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_doctrine_journey_months >= 45 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.20.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_academic_doctrine_journey_milestone_context = yes
+					ve_can_afford_doctrine_journey_insight = { COST = 15 }
+				}
+				ve_record_doctrine_journey_option = { GROUP = academic MILESTONE = 1 CLASS = paid }
+				ve_doctrine_journey_change_national_insight = { DELTA = -15 }
+				ve_doctrine_journey_change_progress = { DELTA = 4 }
+			}
+		}
+	}
+	option = {
+		name = ve_doctrine_journey.20.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 50 } add = 30 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.20.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_academic_doctrine_journey_milestone_context = yes }
+				ve_record_doctrine_journey_option = { GROUP = academic MILESTONE = 1 CLASS = default }
+			}
+		}
+	}
+	option = {
+		name = ve_doctrine_journey.20.c
+		trigger = {
+			has_modifier = academic_idea_5_mdf
+			ve_can_afford_doctrine_journey_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_doctrine_journey_months >= 45 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.20.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_academic_doctrine_journey_milestone_context = yes
+					has_modifier = academic_idea_5_mdf
+					ve_can_afford_doctrine_journey_insight = { COST = 10 }
+				}
+				ve_record_doctrine_journey_option = { GROUP = academic MILESTONE = 1 CLASS = doctrine }
+				ve_doctrine_journey_change_national_insight = { DELTA = -10 }
+				ve_doctrine_journey_change_progress = { DELTA = 4 }
+			}
+		}
+	}
+}
+
+ve_doctrine_journey.21 = {
+	type = country_event
+	title = ve_doctrine_journey.21.t
+	desc = ve_doctrine_journey.21.d
+	event_image = { video = "gfx/event_pictures/unspecific_world_fair.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	trigger = { ve_has_valid_academic_doctrine_journey_milestone_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_valid_academic_doctrine_journey_milestone_context = yes }
+	}
+	option = {
+		name = ve_doctrine_journey.21.a
+		trigger = { ve_can_afford_doctrine_journey_insight = { COST = 15 } }
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_doctrine_journey_months >= 45 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.21.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_academic_doctrine_journey_milestone_context = yes
+					ve_can_afford_doctrine_journey_insight = { COST = 15 }
+				}
+				ve_record_doctrine_journey_option = { GROUP = academic MILESTONE = 2 CLASS = paid }
+				ve_doctrine_journey_change_national_insight = { DELTA = -15 }
+				ve_doctrine_journey_change_progress = { DELTA = 4 }
+			}
+		}
+	}
+	option = {
+		name = ve_doctrine_journey.21.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 50 } add = 30 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.21.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_academic_doctrine_journey_milestone_context = yes }
+				ve_record_doctrine_journey_option = { GROUP = academic MILESTONE = 2 CLASS = default }
+			}
+		}
+	}
+	option = {
+		name = ve_doctrine_journey.21.c
+		trigger = {
+			has_modifier = academic_idea_7_mdf
+			ve_can_afford_doctrine_journey_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_doctrine_journey_months >= 45 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.21.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_academic_doctrine_journey_milestone_context = yes
+					has_modifier = academic_idea_7_mdf
+					ve_can_afford_doctrine_journey_insight = { COST = 10 }
+				}
+				ve_record_doctrine_journey_option = { GROUP = academic MILESTONE = 2 CLASS = doctrine }
+				ve_doctrine_journey_change_national_insight = { DELTA = -10 }
+				ve_doctrine_journey_change_progress = { DELTA = 4 }
+			}
+		}
+	}
+}
+
+ve_doctrine_journey.30 = {
+	type = country_event
+	title = ve_doctrine_journey.30.t
+	desc = ve_doctrine_journey.30.d
+	event_image = { video = "gfx/event_pictures/europenorthamerica_before_the_battle.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	duration = 3
+	trigger = { ve_has_valid_professional_army_doctrine_journey_milestone_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_valid_professional_army_doctrine_journey_milestone_context = yes }
+	}
+	option = {
+		name = ve_doctrine_journey.30.a
+		trigger = { ve_can_afford_doctrine_journey_insight = { COST = 15 } }
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_doctrine_journey_months >= 45 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.30.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_professional_army_doctrine_journey_milestone_context = yes
+					ve_can_afford_doctrine_journey_insight = { COST = 15 }
+				}
+				ve_record_doctrine_journey_option = { GROUP = professional_army MILESTONE = 1 CLASS = paid }
+				ve_doctrine_journey_change_national_insight = { DELTA = -15 }
+				ve_doctrine_journey_change_progress = { DELTA = 4 }
+			}
+		}
+	}
+	option = {
+		name = ve_doctrine_journey.30.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 50 } add = 30 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.30.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_professional_army_doctrine_journey_milestone_context = yes }
+				ve_record_doctrine_journey_option = { GROUP = professional_army MILESTONE = 1 CLASS = default }
+			}
+		}
+	}
+	option = {
+		name = ve_doctrine_journey.30.c
+		trigger = {
+			has_modifier = professional_army_idea_5_mdf
+			ve_can_afford_doctrine_journey_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_doctrine_journey_months >= 45 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.30.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_professional_army_doctrine_journey_milestone_context = yes
+					has_modifier = professional_army_idea_5_mdf
+					ve_can_afford_doctrine_journey_insight = { COST = 10 }
+				}
+				ve_record_doctrine_journey_option = { GROUP = professional_army MILESTONE = 1 CLASS = doctrine }
+				ve_doctrine_journey_change_national_insight = { DELTA = -10 }
+				ve_doctrine_journey_change_progress = { DELTA = 4 }
+			}
+		}
+	}
+}
+
+ve_doctrine_journey.31 = {
+	type = country_event
+	title = ve_doctrine_journey.31.t
+	desc = ve_doctrine_journey.31.d
+	event_image = { video = "gfx/event_pictures/unspecific_armored_train.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	trigger = { ve_has_valid_professional_army_doctrine_journey_milestone_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_valid_professional_army_doctrine_journey_milestone_context = yes }
+	}
+	option = {
+		name = ve_doctrine_journey.31.a
+		trigger = { ve_can_afford_doctrine_journey_insight = { COST = 15 } }
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_doctrine_journey_months >= 45 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.31.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_professional_army_doctrine_journey_milestone_context = yes
+					ve_can_afford_doctrine_journey_insight = { COST = 15 }
+				}
+				ve_record_doctrine_journey_option = { GROUP = professional_army MILESTONE = 2 CLASS = paid }
+				ve_doctrine_journey_change_national_insight = { DELTA = -15 }
+				ve_doctrine_journey_change_progress = { DELTA = 4 }
+			}
+		}
+	}
+	option = {
+		name = ve_doctrine_journey.31.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 50 } add = 30 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.31.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_professional_army_doctrine_journey_milestone_context = yes }
+				ve_record_doctrine_journey_option = { GROUP = professional_army MILESTONE = 2 CLASS = default }
+			}
+		}
+	}
+	option = {
+		name = ve_doctrine_journey.31.c
+		trigger = {
+			has_modifier = professional_army_idea_7_mdf
+			ve_can_afford_doctrine_journey_insight = { COST = 10 }
+		}
+		ai_chance = {
+			base = 60
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_doctrine_journey_months >= 45 } add = 30 }
+			modifier = { trigger = { var:idea_point_pool < 50 } factor = 0.25 }
+		}
+		custom_tooltip = { text = ve_doctrine_journey.31.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_professional_army_doctrine_journey_milestone_context = yes
+					has_modifier = professional_army_idea_7_mdf
+					ve_can_afford_doctrine_journey_insight = { COST = 10 }
+				}
+				ve_record_doctrine_journey_option = { GROUP = professional_army MILESTONE = 2 CLASS = doctrine }
+				ve_doctrine_journey_change_national_insight = { DELTA = -10 }
+				ve_doctrine_journey_change_progress = { DELTA = 4 }
+			}
+		}
+	}
+}

@@ -1,0 +1,124 @@
+﻿ve_begin_national_curriculum_gui = {
+	scope = country
+	is_valid = {
+		custom_tooltip = {
+			text = ve_national_curriculum_requirements_tt
+			ve_can_begin_national_curriculum = yes
+		}
+	}
+	effect = {
+		ve_begin_national_curriculum = yes
+	}
+}
+
+ve_begin_shared_symbols_gui = {
+	scope = country
+	is_valid = {
+		custom_tooltip = {
+			text = ve_shared_symbols_requirements_tt
+			ve_can_begin_shared_symbols = yes
+		}
+	}
+	effect = {
+		ve_begin_shared_symbols = yes
+	}
+}
+
+ve_cancel_cultural_project_gui = {
+	scope = country
+	is_shown = {
+		ve_has_active_cultural_project = yes
+	}
+	is_valid = {
+		ve_has_active_cultural_project = yes
+		custom_tooltip = {
+			text = ve_cultural_project_cancel_warning
+			always = yes
+		}
+	}
+	effect = {
+		ve_cancel_cultural_project = yes
+	}
+}
+
+ve_has_active_cultural_project_gui = {
+	scope = country
+	is_shown = {
+		ve_has_active_cultural_project = yes
+	}
+}
+
+ve_has_no_active_cultural_project_gui = {
+	scope = country
+	is_shown = {
+		ve_has_no_active_cultural_project = yes
+	}
+}
+
+ve_begin_targeted_cultural_project_state = {
+	scope = state
+	saved_scopes = { country2 }
+	is_shown = {
+		owner = scope:country2
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = ve_cultural_project_req_no_active
+			scope:country2 = { ve_has_no_active_cultural_project = yes }
+		}
+		custom_tooltip = {
+			text = ve_cultural_project_req_no_backlash
+			scope:country2 = { NOT = { has_modifier = ve_cultural_project_backlash_mdf } }
+		}
+		custom_tooltip = {
+			text = ve_cultural_project_req_reform_point
+			scope:country2 = { ve_country_meets_cultural_project_cost = yes }
+		}
+		custom_tooltip = {
+			text = ve_cultural_project_req_target
+			ve_state_has_eligible_target_culture = yes
+		}
+	}
+	effect = {
+		ve_begin_targeted_cultural_project = yes
+	}
+}
+
+ve_cancel_targeted_cultural_project_state = {
+	scope = state
+	saved_scopes = { country4 }
+	is_shown = {
+		OR = {
+			has_modifier = ve_ethnic_campaign_active_mdf
+			has_modifier = ve_civic_initiative_active_mdf
+			has_modifier = ve_composite_compact_active_mdf
+		}
+	}
+	is_valid = {
+		scope:country4 = { ve_project_is_targeted = yes }
+		custom_tooltip = {
+			text = ve_cultural_project_cancel_warning
+			always = yes
+		}
+	}
+	effect = {
+		scope:country4 = { ve_cancel_cultural_project = yes }
+	}
+}
+
+# Phase 7 UI: is THIS state the owner's active project target? Drives the
+# per-state progress bar in states_panel.gui.
+ve_state_active_cultural_project_gui = {
+	scope = state
+	is_shown = {
+		ve_state_is_active_cultural_project_target = yes
+	}
+}
+
+# Cancellation backlash readout for gui/ve_panel_culture.gui.
+ve_cultural_project_backlash_gui = {
+	scope = country
+	is_shown = {
+		has_modifier = ve_cultural_project_backlash_mdf
+	}
+}

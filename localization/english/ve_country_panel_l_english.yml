@@ -1,0 +1,59 @@
+﻿l_english:
+ # Country panel doctrine section - gui/ve_country_panel_doctrines.gui
+ VE_CP_HEADER:0 "National Doctrine"
+ VE_CP_COLLAPSE_TT:0 "Hide the Victoria Universalis overview for this country"
+ VE_CP_EXPAND_TT:0 "Show the Victoria Universalis overview for this country"
+
+ VE_CP_INSIGHT_LABEL:0 "National Insight"
+ VE_CP_INSIGHT_TT:0 "#header National Insight#!\nStock: #Y [Country.MakeScope.Var('idea_point_pool').GetValue|0] / 1000#!\n\nSpent on individual ideas inside an embraced idea group."
+ VE_CP_PIETY_LABEL:0 "Piety Reform"
+ VE_CP_PIETY_TT:0 "#header Piety Reform#!\nStock: #Y [Country.MakeScope.Var('piety_reform_point').GetValue|0] / 500#!\n\nSpent on Religious Programs and on the Targeted Religious Project."
+ VE_CP_MANDATE_LABEL:0 "Cultural Mandate"
+ VE_CP_MANDATE_TT:0 "#header Cultural Mandate#!\nStock: #Y [Country.MakeScope.Var('culture_reform_point').GetValue|0] / 500#!\n\nSpent on changing the Identity Model and on Cultural Projects."
+ VE_CP_MOMENTUM_LABEL:0 "Era Momentum"
+ VE_CP_MOMENTUM_TT:0 "#header Era Momentum#!\nStock: #Y [Country.MakeScope.Var('ve_splender_points').GetValue|0]#!\n\nEarned from satisfied Era Objectives and spent on Era Rewards. Momentum resets when a new Age begins."
+ VE_CP_MOMENTUM_VALUE:0 "[Country.MakeScope.Var('ve_splender_points').GetValue|0]"
+
+ VE_CP_IDEAS_TITLE:0 "Ideas"
+ VE_CP_GROUP_SLOTS:0 "[Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]"
+ VE_CP_GROUP_SLOTS_TT:0 "#header Idea Groups#!\nUsed slots: #Y [Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]#!\nFree slots: #Y [Country.MakeScope.ScriptValue('ve_idea_group_free_slots')|0]#!\nCurrent Doctrine Investment: #Y [Country.MakeScope.Var('ve_idea_capacity_progress').GetValue|0]#! active purchased ideas\n\n[Country.GetCustom('ve_idea_capacity_country_detail')]\n\nActive group ideas earn permanent capacity at #Y 4, 8, 13, 19, 26#! and #Y 34#!. Slots 5–6 also require Age 2 and slot 7 requires Age 3. Cancelling a group lowers current investment and never refunds Insight, but capacity already earned is retained."
+ VE_CP_NATIONAL_IDEAS_LABEL:0 "National Ideas"
+ VE_CP_PROGRESS_LABEL:0 "Idea Progress"
+ VE_CP_NATIONAL_IDEA_PROGRESS_TT:0 "#header National Idea Progress#!\nPurchased group ideas: #Y [Country.MakeScope.Var('national_idea_pool').GetValue|0] / 21#!\n\nEvery third purchased group idea unlocks the next National Idea. The twenty-first also grants the National Bonus."
+ VE_CP_NO_IDEA_GROUPS:0 "#lore No idea group embraced yet.#!"
+ VE_CP_PROGRAMS_LABEL:0 "Religious Programs"
+ VE_CP_NONE_YET:0 "#lore None yet#!"
+ VE_CP_PROJECT_LABEL:0 "Project"
+ VE_CP_COHESION_LABEL:0 "National Cohesion"
+ VE_CP_OBJECTIVES_LABEL:0 "Era Objectives"
+ VE_CP_OBJECTIVES_TT:0 "#header Era Objectives#!\nCompleted in this Age: #Y [Country.MakeScope.Var('ve_triggered_objectives').GetValue|0] / 7#!\n\nEach satisfied objective pays Era Momentum every month. Four completed objectives unlock a Golden Age."
+ VE_CP_REWARDS_LABEL:0 "Era Rewards"
+ VE_CP_REWARDS_VALUE:0 "[Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0] bought this Age"
+ VE_CP_REWARDS_TT:0 "#header Era Rewards#!\nBought in this Age: #Y [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]#!\n\nEach reward costs more than the last, and reward effects end with the Age. Slots 10-13 are country-specific."
+
+ # Customizable localization targets - common/customizable_localization/ve_country_panel_cl.txt
+ ve_cp_unknown_age:0 "Unknown Age"
+ ve_cp_golden_age_industrial_active:0 "#P Industrial Golden Age#!"
+ ve_cp_golden_age_cultural_active:0 "#P Cultural Golden Age#!"
+ ve_cp_golden_age_strategic_active:0 "#P Strategic Golden Age#!"
+ ve_cp_golden_age_spent:0 "#lore Golden Age used#!"
+ ve_cp_golden_age_ready:0 "#Y Golden Age available#!"
+ ve_cp_golden_age_locked:0 "#lore Golden Age locked#!"
+ ve_cp_tier_high:0 "#P Thriving#!"
+ ve_cp_tier_stable:0 "#lore Stable#!"
+ ve_cp_tier_low:0 "#N Strained#!"
+
+ # Scripted GUI tooltip - common/scripted_guis/ve_country_panel.txt
+ ve_cp_group_no_idea_bought:0 "#lore Embraced, but no idea bought in this group yet.#!"
+
+ # Country-scoped meter and project tooltips. These must never use GetPlayer:
+ # the country panel shows them for foreign countries too.
+ VE_CP_SETTLEMENT_TT:0 "#header Religious Settlement#!\nCurrent: #Y [Country.MakeScope.Var('piety_bar_point').GetValue|0] / 100#!\nEquilibrium: #Y [Country.MakeScope.ScriptValue('ve_religious_state_equilibrium')|0]#!\nMonthly movement: [Country.MakeScope.ScriptValue('ve_monthly_religious_state')|+=0]\n\nThe meter moves 20% toward equilibrium each month, limited to #Y 5#! points. At #P 75#!: [Country.GetCustom('ve_religious_high_settlement_effect')]\nAt #N 25#! or below: #N -5 Legitimacy and -5% Law Enactment Success#!."
+ VE_CP_COHESION_TT:0 "#header National Cohesion#!\nCurrent: #Y [Country.MakeScope.Var('ve_national_cohesion').GetValue|0] / 100#!\nEquilibrium: #Y [Country.MakeScope.ScriptValue('ve_national_cohesion_equilibrium')|0]#!\nMonthly movement: [Country.MakeScope.ScriptValue('ve_monthly_national_cohesion')|+=0]\n\nCohesion moves 20% toward equilibrium each month, limited to #Y 5#! points. At #P 75#! the Identity Model grants an extra benefit; at #N 25#! or below national instability applies."
+ VE_CP_RELIGIOUS_PROJECT_TT:0 "#header Targeted Religious Project#!\nStatus: #Y [Country.GetCustom('ve_religious_project_status')]#!\n[Country.GetCustom('ve_cp_religious_project_detail')]"
+ VE_CP_CULTURAL_PROJECT_TT:0 "#header Cultural Project#!\nStatus: #Y [Country.GetCustom('ve_cultural_project_name')]#!\nTarget: [Country.GetCustom('ve_cultural_project_target')]\n[Country.GetCustom('ve_cp_cultural_project_detail')]\n\n[Country.GetCustom('ve_cultural_project_description')]"
+
+ ve_cp_religious_project_detail_active:0 "Progress: #Y [Country.MakeScope.Var('ve_religious_project_progress').GetValue|0] / 100#!\nMonthly progress: [Country.MakeScope.ScriptValue('ve_monthly_religious_project_progress')|+=0]"
+ ve_cp_religious_project_detail_none:0 "#lore No project is running. A project is started from an owned state's panel, and Total Separation cannot run one.#!"
+ ve_cp_cultural_project_detail_active:0 "Progress: #Y [Country.MakeScope.Var('ve_cultural_project_progress').GetValue|0] / 100#!\nMonthly progress: [Country.MakeScope.ScriptValue('ve_monthly_cultural_project_progress')|+=0]"
+ ve_cp_cultural_project_detail_none:0 "#lore No project is running. Countrywide projects start from the National Identity panel, targeted ones from an owned state's panel.#!"

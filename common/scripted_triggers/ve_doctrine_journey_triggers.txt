@@ -1,0 +1,374 @@
+# Phase 5 Doctrine Journey lifecycle and offer eligibility.
+
+ve_has_active_doctrine_journey = {
+	has_variable = ve_doctrine_journey_active_group
+}
+
+ve_has_pending_doctrine_journey_offer = {
+	has_variable = ve_doctrine_journey_offer_pending
+}
+
+ve_doctrine_journey_current_age_has_capacity = {
+	trigger_if = {
+		limit = { has_global_variable = ve_age_1_started }
+		OR = {
+			NOT = { has_variable = ve_doctrine_journeys_completed_age_1 }
+			var:ve_doctrine_journeys_completed_age_1 < 2
+		}
+	}
+	trigger_else_if = {
+		limit = { has_global_variable = ve_age_2_started }
+		OR = {
+			NOT = { has_variable = ve_doctrine_journeys_completed_age_2 }
+			var:ve_doctrine_journeys_completed_age_2 < 2
+		}
+	}
+	trigger_else_if = {
+		limit = { has_global_variable = ve_age_3_started }
+		OR = {
+			NOT = { has_variable = ve_doctrine_journeys_completed_age_3 }
+			var:ve_doctrine_journeys_completed_age_3 < 2
+		}
+	}
+	trigger_else = { always = no }
+}
+
+ve_doctrine_journey_offer_window_open = {
+	has_variable = victoria_universalis_system_on
+	NOT = { ve_has_active_doctrine_journey = yes }
+	NOT = { ve_has_pending_doctrine_journey_offer = yes }
+	ve_doctrine_journey_current_age_has_capacity = yes
+}
+
+# Each pilot turns its pack-live trigger on only when its JE conditions,
+# milestones, reward, localization, and telemetry are complete.
+ve_doctrine_journey_industrialist_pack_live = { always = yes }
+ve_doctrine_journey_academic_pack_live = { always = yes }
+ve_doctrine_journey_professional_army_pack_live = { always = yes }
+
+ve_doctrine_journey_industrialist_available = {
+	ve_doctrine_journey_industrialist_pack_live = yes
+	has_modifier = industrialist_idea_4_mdf
+	NOT = { has_variable = ve_doctrine_journey_industrialist_completed }
+	NOT = { has_variable = ve_doctrine_journey_industrialist_failed }
+	NOT = { has_variable = ve_doctrine_journey_industrialist_declined }
+	NOT = { has_variable = ve_doctrine_journey_industrialist_deferred }
+}
+
+ve_doctrine_journey_academic_available = {
+	ve_doctrine_journey_academic_pack_live = yes
+	has_modifier = academic_idea_4_mdf
+	NOT = { has_variable = ve_doctrine_journey_academic_completed }
+	NOT = { has_variable = ve_doctrine_journey_academic_failed }
+	NOT = { has_variable = ve_doctrine_journey_academic_declined }
+	NOT = { has_variable = ve_doctrine_journey_academic_deferred }
+}
+
+ve_doctrine_journey_professional_army_available = {
+	ve_doctrine_journey_professional_army_pack_live = yes
+	has_modifier = professional_army_idea_4_mdf
+	NOT = { has_variable = ve_doctrine_journey_professional_army_completed }
+	NOT = { has_variable = ve_doctrine_journey_professional_army_failed }
+	NOT = { has_variable = ve_doctrine_journey_professional_army_declined }
+	NOT = { has_variable = ve_doctrine_journey_professional_army_deferred }
+}
+
+ve_can_offer_doctrine_journey_industrialist = {
+	ve_doctrine_journey_offer_window_open = yes
+	ve_doctrine_journey_industrialist_available = yes
+}
+
+ve_can_offer_doctrine_journey_academic = {
+	ve_doctrine_journey_offer_window_open = yes
+	ve_doctrine_journey_academic_available = yes
+}
+
+ve_can_offer_doctrine_journey_professional_army = {
+	ve_doctrine_journey_offer_window_open = yes
+	ve_doctrine_journey_professional_army_available = yes
+}
+
+ve_can_dispatch_doctrine_journey_offer = {
+	OR = {
+		ve_can_offer_doctrine_journey_industrialist = yes
+		ve_can_offer_doctrine_journey_academic = yes
+		ve_can_offer_doctrine_journey_professional_army = yes
+	}
+}
+
+# Offer events run with the pending lock already set, so acceptance checks use
+# the group availability and quota directly instead of the open-window trigger.
+ve_can_accept_doctrine_journey_industrialist_offer = {
+	ve_has_pending_doctrine_journey_offer = yes
+	NOT = { ve_has_active_doctrine_journey = yes }
+	ve_doctrine_journey_current_age_has_capacity = yes
+	ve_doctrine_journey_industrialist_available = yes
+}
+
+ve_can_accept_doctrine_journey_academic_offer = {
+	ve_has_pending_doctrine_journey_offer = yes
+	NOT = { ve_has_active_doctrine_journey = yes }
+	ve_doctrine_journey_current_age_has_capacity = yes
+	ve_doctrine_journey_academic_available = yes
+}
+
+ve_can_accept_doctrine_journey_professional_army_offer = {
+	ve_has_pending_doctrine_journey_offer = yes
+	NOT = { ve_has_active_doctrine_journey = yes }
+	ve_doctrine_journey_current_age_has_capacity = yes
+	ve_doctrine_journey_professional_army_available = yes
+}
+
+ve_has_valid_doctrine_journey_context = {
+	ve_has_active_doctrine_journey = yes
+	has_variable = ve_doctrine_journey_start_age
+	has_variable = ve_doctrine_journey_progress
+	has_variable = ve_doctrine_journey_months
+	OR = {
+		AND = {
+			var:ve_doctrine_journey_active_group = 1
+			has_modifier = industrialist_idea_4_mdf
+			has_journal_entry = ve_je_doctrine_journey_industrialist
+		}
+		AND = {
+			var:ve_doctrine_journey_active_group = 2
+			has_modifier = academic_idea_4_mdf
+			has_journal_entry = ve_je_doctrine_journey_academic
+		}
+		AND = {
+			var:ve_doctrine_journey_active_group = 3
+			has_modifier = professional_army_idea_4_mdf
+			has_journal_entry = ve_je_doctrine_journey_professional_army
+		}
+	}
+}
+
+# Pilot target hooks. A group remains excluded through its pack-live trigger
+# until its measured conditions and the rest of its content pack are complete.
+ve_doctrine_journey_industrialist_core_met = {
+	OR = {
+		AND = {
+			total_population < 5000000
+			country_has_building_group_levels = {
+				type = bg_manufacturing
+				value >= 10
+			}
+		}
+		AND = {
+			total_population >= 5000000
+			total_population < 20000000
+			country_has_building_group_levels = {
+				type = bg_manufacturing
+				value >= 25
+			}
+		}
+		AND = {
+			total_population >= 20000000
+			total_population < 50000000
+			country_has_building_group_levels = {
+				type = bg_manufacturing
+				value >= 50
+			}
+		}
+		AND = {
+			total_population >= 50000000
+			country_has_building_group_levels = {
+				type = bg_manufacturing
+				value >= 100
+			}
+		}
+	}
+}
+
+ve_doctrine_journey_industrialist_support_met = {
+	bureaucracy >= 0
+	approaching_bureaucracy_shortage = no
+	country_turmoil < 0.15
+}
+ve_doctrine_journey_academic_core_met = {
+	OR = {
+		AND = {
+			total_population < 5000000
+			country_has_building_group_levels = {
+				type = bg_technology
+				value >= 3
+			}
+		}
+		AND = {
+			total_population >= 5000000
+			total_population < 20000000
+			country_has_building_group_levels = {
+				type = bg_technology
+				value >= 8
+			}
+		}
+		AND = {
+			total_population >= 20000000
+			total_population < 50000000
+			country_has_building_group_levels = {
+				type = bg_technology
+				value >= 15
+			}
+		}
+		AND = {
+			total_population >= 50000000
+			country_has_building_group_levels = {
+				type = bg_technology
+				value >= 25
+			}
+		}
+	}
+}
+
+ve_doctrine_journey_academic_support_met = {
+	OR = {
+		literacy_rate >= 0.50
+		AND = {
+			has_variable = ve_doctrine_journey_literacy_target
+			literacy_rate >= var:ve_doctrine_journey_literacy_target
+		}
+	}
+}
+ve_doctrine_journey_professional_army_core_met = {
+	OR = {
+		AND = {
+			total_population < 5000000
+			country_has_building_type_levels = {
+				target = bt:building_barrack
+				value >= 10
+			}
+		}
+		AND = {
+			total_population >= 5000000
+			total_population < 20000000
+			country_has_building_type_levels = {
+				target = bt:building_barrack
+				value >= 25
+			}
+		}
+		AND = {
+			total_population >= 20000000
+			total_population < 50000000
+			country_has_building_type_levels = {
+				target = bt:building_barrack
+				value >= 50
+			}
+		}
+		AND = {
+			total_population >= 50000000
+			country_has_building_type_levels = {
+				target = bt:building_barrack
+				value >= 100
+			}
+		}
+	}
+}
+
+ve_doctrine_journey_professional_army_support_met = {
+	OR = {
+		has_law_or_variant = law_type:law_professional_army
+		has_technology_researched = general_staff
+	}
+}
+
+ve_doctrine_journey_active_core_met = {
+	OR = {
+		AND = {
+			var:ve_doctrine_journey_active_group = 1
+			ve_doctrine_journey_industrialist_core_met = yes
+		}
+		AND = {
+			var:ve_doctrine_journey_active_group = 2
+			ve_doctrine_journey_academic_core_met = yes
+		}
+		AND = {
+			var:ve_doctrine_journey_active_group = 3
+			ve_doctrine_journey_professional_army_core_met = yes
+		}
+	}
+}
+
+ve_doctrine_journey_active_support_met = {
+	OR = {
+		AND = {
+			var:ve_doctrine_journey_active_group = 1
+			ve_doctrine_journey_industrialist_support_met = yes
+		}
+		AND = {
+			var:ve_doctrine_journey_active_group = 2
+			ve_doctrine_journey_academic_support_met = yes
+		}
+		AND = {
+			var:ve_doctrine_journey_active_group = 3
+			ve_doctrine_journey_professional_army_support_met = yes
+		}
+	}
+}
+
+ve_doctrine_journey_industrialist_milestone_1_due = {
+	ve_has_valid_doctrine_journey_context = yes
+	var:ve_doctrine_journey_active_group = 1
+	NOT = { has_variable = ve_doctrine_journey_milestone_1_fired }
+	var:ve_doctrine_journey_progress >= 20
+}
+
+ve_doctrine_journey_industrialist_milestone_2_due = {
+	ve_has_valid_doctrine_journey_context = yes
+	var:ve_doctrine_journey_active_group = 1
+	has_variable = ve_doctrine_journey_milestone_1_fired
+	NOT = { has_variable = ve_doctrine_journey_milestone_2_fired }
+	var:ve_doctrine_journey_progress >= 40
+}
+
+ve_doctrine_journey_academic_milestone_1_due = {
+	ve_has_valid_doctrine_journey_context = yes
+	var:ve_doctrine_journey_active_group = 2
+	NOT = { has_variable = ve_doctrine_journey_milestone_1_fired }
+	var:ve_doctrine_journey_progress >= 20
+}
+
+ve_doctrine_journey_academic_milestone_2_due = {
+	ve_has_valid_doctrine_journey_context = yes
+	var:ve_doctrine_journey_active_group = 2
+	has_variable = ve_doctrine_journey_milestone_1_fired
+	NOT = { has_variable = ve_doctrine_journey_milestone_2_fired }
+	var:ve_doctrine_journey_progress >= 40
+}
+
+ve_doctrine_journey_professional_army_milestone_1_due = {
+	ve_has_valid_doctrine_journey_context = yes
+	var:ve_doctrine_journey_active_group = 3
+	NOT = { has_variable = ve_doctrine_journey_milestone_1_fired }
+	var:ve_doctrine_journey_progress >= 20
+}
+
+ve_doctrine_journey_professional_army_milestone_2_due = {
+	ve_has_valid_doctrine_journey_context = yes
+	var:ve_doctrine_journey_active_group = 3
+	has_variable = ve_doctrine_journey_milestone_1_fired
+	NOT = { has_variable = ve_doctrine_journey_milestone_2_fired }
+	var:ve_doctrine_journey_progress >= 40
+}
+
+ve_has_valid_industrialist_doctrine_journey_milestone_context = {
+	ve_has_valid_doctrine_journey_context = yes
+	var:ve_doctrine_journey_active_group = 1
+	has_modifier = industrialist_idea_4_mdf
+}
+
+ve_has_valid_academic_doctrine_journey_milestone_context = {
+	ve_has_valid_doctrine_journey_context = yes
+	var:ve_doctrine_journey_active_group = 2
+	has_modifier = academic_idea_4_mdf
+}
+
+ve_has_valid_professional_army_doctrine_journey_milestone_context = {
+	ve_has_valid_doctrine_journey_context = yes
+	var:ve_doctrine_journey_active_group = 3
+	has_modifier = professional_army_idea_4_mdf
+}
+
+ve_can_afford_doctrine_journey_insight = {
+	has_variable = idea_point_pool
+	var:idea_point_pool >= $COST$
+}

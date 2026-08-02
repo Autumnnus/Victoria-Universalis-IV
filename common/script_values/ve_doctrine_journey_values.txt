@@ -1,0 +1,118 @@
+# Phase 5 shared Doctrine Journey presentation and progress values.
+
+ve_doctrine_journey_monthly_progress = {
+	value = 0
+	if = {
+		limit = { ve_doctrine_journey_active_core_met = yes }
+		add = 1
+	}
+	if = {
+		limit = { ve_doctrine_journey_active_support_met = yes }
+		add = 1
+	}
+	min = 0
+	max = 2
+}
+
+ve_doctrine_journey_remaining_months = {
+	value = 60
+	if = {
+		limit = { has_variable = ve_doctrine_journey_months }
+		subtract = var:ve_doctrine_journey_months
+	}
+	min = 0
+	max = 60
+}
+
+ve_current_doctrine_journey_completions = {
+	value = 0
+	if = {
+		limit = {
+			has_global_variable = ve_age_1_started
+			has_variable = ve_doctrine_journeys_completed_age_1
+		}
+		add = var:ve_doctrine_journeys_completed_age_1
+	}
+	else_if = {
+		limit = {
+			has_global_variable = ve_age_2_started
+			has_variable = ve_doctrine_journeys_completed_age_2
+		}
+		add = var:ve_doctrine_journeys_completed_age_2
+	}
+	else_if = {
+		limit = {
+			has_global_variable = ve_age_3_started
+			has_variable = ve_doctrine_journeys_completed_age_3
+		}
+		add = var:ve_doctrine_journeys_completed_age_3
+	}
+	min = 0
+	max = 2
+}
+
+ve_doctrine_journey_industrialist_required_manufacturing = {
+	value = 10
+	if = {
+		limit = {
+			total_population >= 5000000
+			total_population < 20000000
+		}
+		value = 25
+	}
+	else_if = {
+		limit = {
+			total_population >= 20000000
+			total_population < 50000000
+		}
+		value = 50
+	}
+	else_if = {
+		limit = { total_population >= 50000000 }
+		value = 100
+	}
+}
+
+ve_doctrine_journey_academic_required_universities = {
+	value = 3
+	if = {
+		limit = {
+			total_population >= 5000000
+			total_population < 20000000
+		}
+		value = 8
+	}
+	else_if = {
+		limit = {
+			total_population >= 20000000
+			total_population < 50000000
+		}
+		value = 15
+	}
+	else_if = {
+		limit = { total_population >= 50000000 }
+		value = 25
+	}
+}
+
+ve_doctrine_journey_professional_army_required_barracks = {
+	value = 10
+	if = {
+		limit = {
+			total_population >= 5000000
+			total_population < 20000000
+		}
+		value = 25
+	}
+	else_if = {
+		limit = {
+			total_population >= 20000000
+			total_population < 50000000
+		}
+		value = 50
+	}
+	else_if = {
+		limit = { total_population >= 50000000 }
+		value = 100
+	}
+}

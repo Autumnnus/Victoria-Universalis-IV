@@ -1,0 +1,330 @@
+# Gameplay-neutral telemetry for the Phase 1 Religious/Cultural Project pilot.
+# Persistent ve_evt_tm_* country variables provide aggregate measurements.
+# VEU4_PROJECT_* debug_log lines provide dated event/option observations.
+
+# Telemetry can be added to an existing save, while Victoria 3 rejects
+# change_variable for a numeric variable that does not exist yet. Route every
+# aggregate mutation through this save-compatible helper.
+ve_tm_change_country_variable = {
+	if = {
+		limit = { has_variable = $NAME$ }
+		change_variable = {
+			name = $NAME$
+			add = $DELTA$
+		}
+	}
+	else = {
+		set_variable = {
+			name = $NAME$
+			value = $DELTA$
+		}
+	}
+}
+
+ve_evt_tm_begin_religious_project = {
+	set_variable = {
+		name = ve_evt_tm_rel_current_months
+		value = 0
+	}
+	set_variable = {
+		name = ve_evt_tm_rel_current_mana_net
+		value = 0
+	}
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_projects_started DELTA = 1 }
+	if = {
+		limit = { is_ai = yes }
+		ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_ai_projects_started DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_BEGIN:[THIS.GetCountry.GetNameNoFormatting]:RELIGIOUS:AI"
+	}
+	else = {
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_BEGIN:[THIS.GetCountry.GetNameNoFormatting]:RELIGIOUS:PLAYER"
+	}
+}
+
+ve_evt_tm_begin_cultural_project = {
+	set_variable = {
+		name = ve_evt_tm_cul_current_months
+		value = 0
+	}
+	set_variable = {
+		name = ve_evt_tm_cul_current_mana_net
+		value = 0
+	}
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_projects_started DELTA = 1 }
+	if = {
+		limit = { is_ai = yes }
+		ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_ai_projects_started DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_BEGIN:[THIS.GetCountry.GetNameNoFormatting]:CULTURAL:AI"
+	}
+	else = {
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_BEGIN:[THIS.GetCountry.GetNameNoFormatting]:CULTURAL:PLAYER"
+	}
+}
+
+ve_evt_tm_tick_religious_project = {
+	if = {
+		limit = { has_variable = ve_evt_tm_rel_current_months }
+		ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_current_months DELTA = 1 }
+	}
+	else = {
+		# Compatibility for a project that predates the telemetry layer.
+		set_variable = {
+			name = ve_evt_tm_rel_current_months
+			value = 1
+		}
+		set_variable = {
+			name = ve_evt_tm_rel_current_mana_net
+			value = 0
+		}
+	}
+}
+
+ve_evt_tm_tick_cultural_project = {
+	if = {
+		limit = { has_variable = ve_evt_tm_cul_current_months }
+		ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_current_months DELTA = 1 }
+	}
+	else = {
+		# Compatibility for a project that predates the telemetry layer.
+		set_variable = {
+			name = ve_evt_tm_cul_current_months
+			value = 1
+		}
+		set_variable = {
+			name = ve_evt_tm_cul_current_mana_net
+			value = 0
+		}
+	}
+}
+
+ve_evt_tm_record_religious_normal = {
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_events_total DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_events_normal DELTA = 1 }
+}
+
+ve_evt_tm_record_religious_crisis = {
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_events_total DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_events_crisis DELTA = 1 }
+}
+
+ve_evt_tm_record_religious_rare = {
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_events_total DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_events_rare DELTA = 1 }
+}
+
+ve_evt_tm_record_cultural_normal = {
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_events_total DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_events_normal DELTA = 1 }
+}
+
+ve_evt_tm_record_cultural_crisis = {
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_events_total DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_events_crisis DELTA = 1 }
+}
+
+ve_evt_tm_record_cultural_rare = {
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_events_total DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_events_rare DELTA = 1 }
+}
+
+ve_evt_tm_record_religious_option = {
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_options_selected DELTA = 1 }
+	if = {
+		limit = { is_ai = yes }
+		ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_ai_options_selected DELTA = 1 }
+	}
+}
+
+ve_evt_tm_record_cultural_option = {
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_options_selected DELTA = 1 }
+	if = {
+		limit = { is_ai = yes }
+		ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_ai_options_selected DELTA = 1 }
+	}
+}
+
+ve_evt_tm_record_religious_crisis_cancel = {
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_crisis_cancel DELTA = 1 }
+	if = {
+		limit = { is_ai = yes }
+		ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_ai_crisis_cancel DELTA = 1 }
+	}
+}
+
+ve_evt_tm_record_religious_crisis_rescue = {
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_crisis_rescue DELTA = 1 }
+	if = {
+		limit = { is_ai = yes }
+		ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_ai_crisis_rescue DELTA = 1 }
+	}
+}
+
+ve_evt_tm_record_religious_crisis_limp = {
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_crisis_limp DELTA = 1 }
+	if = {
+		limit = { is_ai = yes }
+		ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_ai_crisis_limp DELTA = 1 }
+	}
+}
+
+ve_evt_tm_record_cultural_crisis_cancel = {
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_crisis_cancel DELTA = 1 }
+	if = {
+		limit = { is_ai = yes }
+		ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_ai_crisis_cancel DELTA = 1 }
+	}
+}
+
+ve_evt_tm_record_cultural_crisis_rescue = {
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_crisis_rescue DELTA = 1 }
+	if = {
+		limit = { is_ai = yes }
+		ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_ai_crisis_rescue DELTA = 1 }
+	}
+}
+
+ve_evt_tm_record_cultural_crisis_limp = {
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_crisis_limp DELTA = 1 }
+	if = {
+		limit = { is_ai = yes }
+		ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_ai_crisis_limp DELTA = 1 }
+	}
+}
+
+ve_evt_tm_capture_religious_resolution = {
+	if = {
+		limit = { has_variable = ve_evt_tm_rel_current_months }
+		set_variable = {
+			name = ve_evt_tm_rel_last_duration
+			value = var:ve_evt_tm_rel_current_months
+		}
+		ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_duration_total DELTA = var:ve_evt_tm_rel_current_months }
+	}
+	else = {
+		set_variable = {
+			name = ve_evt_tm_rel_last_duration
+			value = 0
+		}
+	}
+	if = {
+		limit = { has_variable = ve_evt_tm_rel_current_mana_net }
+		set_variable = {
+			name = ve_evt_tm_rel_last_mana_net
+			value = var:ve_evt_tm_rel_current_mana_net
+		}
+	}
+	else = {
+		set_variable = {
+			name = ve_evt_tm_rel_last_mana_net
+			value = 0
+		}
+	}
+	if = {
+		limit = { has_variable = ve_evt_religious_incident_count }
+		set_variable = {
+			name = ve_evt_tm_rel_last_event_count
+			value = var:ve_evt_religious_incident_count
+		}
+	}
+	else = {
+		set_variable = {
+			name = ve_evt_tm_rel_last_event_count
+			value = 0
+		}
+	}
+	if = {
+		limit = { has_variable = ve_evt_tm_rel_current_months }
+		remove_variable = ve_evt_tm_rel_current_months
+	}
+	if = {
+		limit = { has_variable = ve_evt_tm_rel_current_mana_net }
+		remove_variable = ve_evt_tm_rel_current_mana_net
+	}
+}
+
+ve_evt_tm_capture_cultural_resolution = {
+	if = {
+		limit = { has_variable = ve_evt_tm_cul_current_months }
+		set_variable = {
+			name = ve_evt_tm_cul_last_duration
+			value = var:ve_evt_tm_cul_current_months
+		}
+		ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_duration_total DELTA = var:ve_evt_tm_cul_current_months }
+	}
+	else = {
+		set_variable = {
+			name = ve_evt_tm_cul_last_duration
+			value = 0
+		}
+	}
+	if = {
+		limit = { has_variable = ve_evt_tm_cul_current_mana_net }
+		set_variable = {
+			name = ve_evt_tm_cul_last_mana_net
+			value = var:ve_evt_tm_cul_current_mana_net
+		}
+	}
+	else = {
+		set_variable = {
+			name = ve_evt_tm_cul_last_mana_net
+			value = 0
+		}
+	}
+	if = {
+		limit = { has_variable = ve_evt_cultural_incident_count }
+		set_variable = {
+			name = ve_evt_tm_cul_last_event_count
+			value = var:ve_evt_cultural_incident_count
+		}
+	}
+	else = {
+		set_variable = {
+			name = ve_evt_tm_cul_last_event_count
+			value = 0
+		}
+	}
+	if = {
+		limit = { has_variable = ve_evt_tm_cul_current_months }
+		remove_variable = ve_evt_tm_cul_current_months
+	}
+	if = {
+		limit = { has_variable = ve_evt_tm_cul_current_mana_net }
+		remove_variable = ve_evt_tm_cul_current_mana_net
+	}
+}
+
+ve_evt_tm_resolve_religious_success = {
+	ve_evt_tm_capture_religious_resolution = yes
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_projects_success DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_RESOLUTION:[THIS.GetCountry.GetNameNoFormatting]:RELIGIOUS:SUCCESS"
+}
+
+ve_evt_tm_resolve_religious_failure = {
+	ve_evt_tm_capture_religious_resolution = yes
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_projects_failure DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_RESOLUTION:[THIS.GetCountry.GetNameNoFormatting]:RELIGIOUS:FAILURE"
+}
+
+ve_evt_tm_resolve_religious_invalid = {
+	ve_evt_tm_capture_religious_resolution = yes
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_rel_projects_invalid DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_RESOLUTION:[THIS.GetCountry.GetNameNoFormatting]:RELIGIOUS:INVALID"
+}
+
+ve_evt_tm_resolve_cultural_success = {
+	ve_evt_tm_capture_cultural_resolution = yes
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_projects_success DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_RESOLUTION:[THIS.GetCountry.GetNameNoFormatting]:CULTURAL:SUCCESS"
+}
+
+ve_evt_tm_resolve_cultural_failure = {
+	ve_evt_tm_capture_cultural_resolution = yes
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_projects_failure DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_RESOLUTION:[THIS.GetCountry.GetNameNoFormatting]:CULTURAL:FAILURE"
+}
+
+ve_evt_tm_resolve_cultural_invalid = {
+	ve_evt_tm_capture_cultural_resolution = yes
+	ve_tm_change_country_variable = { NAME = ve_evt_tm_cul_projects_invalid DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_PROJECT_RESOLUTION:[THIS.GetCountry.GetNameNoFormatting]:CULTURAL:INVALID"
+}

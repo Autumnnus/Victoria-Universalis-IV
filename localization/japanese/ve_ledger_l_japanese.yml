@@ -1,0 +1,56 @@
+﻿l_japanese:
+ # Doctrine Ledger - gui/ve_panel_ledger.gui
+ VE_LEDGER:0 "台帳"
+ VE_LEDGER_SELECTED:0 "#bold 台帳#!"
+ VE_LG_TITLE:0 "ドクトリン台帳"
+ VE_LG_HINT:0 "各国における国策の状況。列見出しをクリックして並べ替え、フィルターで一覧を絞り込み、国名をクリックして各グループの詳細パネルを開きます。"
+
+ # Columns
+ VE_LG_COL_RANK:0 "#"
+ VE_LG_COL_COUNTRY:0 "国名"
+ VE_LG_COL_INSIGHT:0 "国政識見"
+ VE_LG_COL_GROUPS:0 "グループ"
+ VE_LG_COL_IDEAS:0 "グループ思想"
+ VE_LG_COL_NATIONAL_IDEAS:0 "国家思想"
+ VE_LG_COL_NATIONAL_IDEAS_TT:0 "#header 国家思想#!\n各国家思想スロットにつき1つの目印があり、右側には国家ボーナスが表示されます。グループ思想を3つ獲得するごとに、次のスロットが解放されます。"
+ VE_LG_COL_RELIGION:0 "宗教モデル"
+ VE_LG_COL_IDENTITY:0 "アイデンティティモデル"
+ VE_LG_COL_ERA:0 "時代"
+
+ # Cell values
+ VE_LG_GROUPS_VALUE:0 "[Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]"
+ VE_LG_IDEAS_VALUE:0 "[Country.MakeScope.Var('national_idea_pool').GetValue|0] / 21"
+ VE_LG_REWARDS_VALUE:0 "R [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]"
+ VE_LG_ERA_TT:0 "#header [Country.GetCustom('ve_cp_age_name')]#!\n時代勢力: #Y [Country.MakeScope.Var('ve_splender_points').GetValue|0]#!\nこの時代に購入した時代報酬: #Y [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]#!\n現在満たされている目標: #Y [Country.MakeScope.ScriptValue('ve_era_objectives_satisfied')|0] / 7#!\nこの時代に確保した目標: #Y [Country.MakeScope.Var('ve_triggered_objectives').GetValue|0] / 7#!\n黄金時代: [Country.GetCustom('ve_cp_golden_age_status')]"
+ VE_LG_OPEN_COUNTRY_TT:0 "この国のパネルを開きます。その国の思想、宗教、アイデンティティ、時代の詳細については、そこにある#Y 国家ドクトリン#!セクションをご確認ください。"
+
+ # Sort tooltips
+ VE_LG_SORT_PRESTIGE_TT:0 "#Y 威信#!で並べ替えます（デフォルトの順序、高い順）。"
+ VE_LG_SORT_INSIGHT_TT:0 "蓄積された#Y 国政識見#!で並べ替えます（高い順）。"
+ VE_LG_SORT_GROUPS_TT:0 "#Y 採用済み思想グループ#!でソート（多い順）"
+ VE_LG_SORT_IDEAS_TT:0 "#Y購入済みグループ思想#!（国家思想の進捗）の多い順に並べ替えます。"
+ VE_LG_SORT_SETTLEMENT_TT:0 "#Y 宗教的和解#!で並べ替えます（高い順）。"
+ VE_LG_SORT_COHESION_TT:0 "#Y 国家結束#!で並べ替えます（高い順）。"
+ VE_LG_SORT_MOMENTUM_TT:0 "#Y 時代勢力#!で並べ替えます（高い順）。"
+
+ # Filters
+ VE_LG_F_ALL:0 "すべて"
+ VE_LG_F_GREAT_POWERS:0 "列強"
+ VE_LG_F_MAJOR_POWERS:0 "大国以上"
+ VE_LG_F_RECOGNIZED:0 "承認国"
+ VE_LG_F_RELEVANT:0 "関わりのある国"
+ VE_LG_F_WITH_GROUPS:0 "思想グループあり"
+
+ # Paging
+ VE_LG_PAGE_INFO:0 "ページ [GetGlobalVariable('ve_ledger_page_number').GetValue|0] / [GetGlobalVariable('ve_ledger_page_count').GetValue|0]  ([GetGlobalVariable('ve_ledger_total').GetValue|0])"
+ VE_LG_REFRESH:0 "更新"
+ VE_LG_REFRESH_TT:0 "リストを再構築します。行の値は常にライブですが、リストの順序とページの構成メンバーはリストの構築時に設定されます。"
+ VE_LG_FIRST_TT:0 "最初のページ"
+ VE_LG_PREV_TT:0 "前のページ"
+ VE_LG_NEXT_TT:0 "次のページ"
+ VE_LG_YOU:0 "#lore あなたの国#!"
+ VE_LG_EMPTY:0 "#lore このフィルターに一致する国はありません。「更新」を押すか、より広いフィルターを選択してください。#!"
+
+ # Scripted GUI tooltip - common/scripted_guis/ve_ledger.txt
+ ve_ledger_groups_tt_header:0 "#header 採用済み思想群#!"
+ ve_ledger_groups_tt_none:0 "#lore まだ思想群を採用していません。#!"

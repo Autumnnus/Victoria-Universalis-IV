@@ -1,0 +1,35 @@
+﻿namespace = ve_welcome
+
+# Victoria Universalis IV 2.0 welcome popup.
+# Dispatched once per human player from on_game_started_after_lobby in
+# common/on_actions/ve_code_on_actions.txt. The country variable
+# ve_welcome_2_0_shown keeps it to a single showing per country per campaign,
+# so a reload of the same save cannot repeat it.
+
+ve_welcome.1 = {
+	#Victoria Universalis IV 2.0 - summary of the rebuilt systems
+	type = country_event
+	event_image = {
+		video = "gfx/event_pictures/unspecific_trains.bk2"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/trains"
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+	title = ve_welcome.1.t
+	desc = ve_welcome.1.d
+	flavor = ve_welcome.1.f
+	duration = 0
+	trigger = {
+		is_ai = no
+		NOT = {
+			has_variable = ve_welcome_2_0_shown
+		}
+	}
+	immediate = {
+		set_variable = ve_welcome_2_0_shown
+	}
+	option = {
+		name = ve_welcome.1.a
+		default_option = yes
+	}
+}

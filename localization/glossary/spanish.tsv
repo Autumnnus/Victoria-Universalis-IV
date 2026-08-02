@@ -1,0 +1,93 @@
+### Victoria Universalis IV - Spanish termbase.
+### Tab-separated: id, translation, status, note
+### status: locked (human-approved, never re-translated) | candidate (model proposal in use) | todo (undecided)
+### Term ids and their English source live in localization/glossary/terms.tsv.
+id	translation	status	note
+national_insight	Perspicacia nacional	candidate	Captures the sense of intellectual and scholarly advancement without colliding with Innovation. | alternatives: Sabiduría nacional, Erudición nacional
+piety_reform	Reforma piadosa	candidate	Denotes a state budget or allocation dedicated to religious reforms. | alternatives: Fondo de piedad
+cultural_mandate	Mandato cultural	candidate	Reflects political authorization for identity and cultural action. | alternatives: Directiva cultural
+era_momentum	Ímpetu de era	candidate	Period-appropriate term for age-scoped progress and momentum. | alternatives: Dinámica de era, Impulso de era
+religious_settlement	Arreglo religioso	candidate	Avoids any geographical meaning and refers strictly to the political-religious modus vivendi. | alternatives: Avenencia religiosa, Modus vivendi religioso
+national_cohesion	Cohesión nacional	candidate	Matches the concept of how well the Identity Model fits the populace. | alternatives: Unidad nacional
+religious_model	Modelo religioso	candidate	Standard institutional term for a constitutional framework. | alternatives: Esquema religioso
+confessional_state	Estado confesional	candidate	The exact historical term for a state with an official confession of faith. | alternatives: Confesionalidad estatal
+freedom_of_conscience	Libertad de conciencia	candidate	Established 19th-century civil-liberty phrase in Spanish. | alternatives: Tolerancia de conciencia
+total_separation	Separación total	candidate	Clear, concise institutional term for complete church-state separation. | alternatives: Separación absoluta
+state_atheism	Ateísmo de Estado	candidate	Standard political science term for active secularization policies. | alternatives: Ateísmo estatal
+identity_model	Modelo de identidad	candidate	Maintains the family word with religious model while naming the nationhood framework. | alternatives: Esquema identitario
+ethnic_nation	Nación étnica	candidate	Direct and clear representation of an identity model built on primary culture. | alternatives: Estado étnico
+civic_nation	Nación cívica	candidate	Direct and clear representation of an identity model built on citizenship. | alternatives: Estado cívico
+composite_state	Estado compuesto	candidate	Period-appropriate political term for a state encompassing several constituent cultures or realms. | alternatives: Monarquía compuesta, Estado complejo
+religious_program	Programa religioso	candidate	Keeps the word family with Religious Model and Religious Project. | alternatives: Plan religioso
+religious_project	Proyecto religioso	candidate	Maintains consistency within the religious mechanics term family. | alternatives: Campaña religiosa
+confessional_conversion	Conversión confesional	candidate	Accurately names the specific project of the Confessional State. | alternatives: Adoctrinamiento confesional
+freedom_outreach	Labor de acercamiento	candidate	Conveys public engagement and provision rather than physical extension. | alternatives: Extensión de libertades, Acción cívica
+secularization_campaign	Campaña de secularización	candidate	Clear historical state project nomenclature. | alternatives: Proyecto laico
+cultural_project	Proyecto cultural	candidate	Maintains the same structural terminology as religious projects. | alternatives: Campaña cultural
+national_curriculum	Plan de estudios nacional	candidate	Standard 19th-century terminology for a unified school syllabus. | alternatives: Currículo nacional, Plan educativo nacional
+shared_symbols	Símbolos compartidos	candidate	Direct translation fitting a state cultural project. | alternatives: Símbolos comunes
+ethnic_integration_campaign	Campaña de integración étnica	candidate	Standard political campaign terminology in 19th-century administration. | alternatives: Campaña de asimilación étnica
+equal_citizenship_initiative	Iniciativa de igualdad ciudadana	candidate	Captures the civic nation project cleanly. | alternatives: Iniciativa de ciudadanía igualitaria
+constituent_compact	Pacto constituyente	candidate	Compact correctly translated as a fundamental state pact. | alternatives: Convenio constituyente
+idea_group	Grupo de doctrinas	candidate	Reflects a systematic school of thought rather than a committee. | alternatives: Grupo de ideas
+embrace	Adoptar	candidate	Standard administrative verb for taking up a new doctrine. | alternatives: Instituir, Asumir
+idea	Doctrina	candidate	Maintains family consistency with the doctrine system. | alternatives: Idea
+ambition	Aspiración	candidate	Period-appropriate term for a crowning systemic goal. | alternatives: Cima, Culminación
+doctrine	Doctrina	candidate	Unifying umbrella term requested for the whole system.
+doctrine_implementation_strain	Tensión de implantación doctrinal	candidate	Denotes administrative stress from rapid reform. | alternatives: Sobrecarga doctrinal
+idea_group_capacity	Capacidad de grupos de doctrinas	candidate	Clear mechanical indicator of slot limits. | alternatives: Capacidad de grupos
+national_idea	Idea nacional	candidate	Differentiates country-specific level unlocks from groups and single ideas. | alternatives: Doctrina nacional
+tradition	Tradición	candidate	Standard starting bonus term.
+national_bonus	Bonificación nacional	candidate	Clear final capstone designation. | alternatives: Premio nacional
+category_production	Producción	candidate	Standard economic category matching Victoria economic terminology.
+category_society	Sociedad	candidate	Standard social category.
+category_military	Militar	candidate	Standard military category.
+group_industrialist	Industrial	candidate	Names the economic doctrine of the industrialist class. | alternatives: Industrialismo
+group_mercantile	Mercantil	candidate	Reflects trade and merchant capital. | alternatives: Mercantilismo
+group_financial	Financiero	candidate	Covers banking, credit, and monetary policy. | alternatives: Finanzas
+group_infrastructure	Infraestructura	candidate	Standard transportation and public works term.
+group_extraction	Extractiva	candidate	Reflects resource extraction and mining doctrine. | alternatives: Extracción
+group_labour	Laborista	candidate	Fits the doctrine naming convention of political and economic orientation in 19th-century statecraft. | alternatives: Del trabajo, Sindical
+group_agrarian	Agraria	candidate	Standard period term for rural and farming production doctrines. | alternatives: Agrario
+group_academic	Académica	candidate	Captures the scholarly and university doctrine without confusing it with physical academy buildings. | alternatives: Erudita
+group_bureaucratic	Burocrática	candidate	Maintains the word family established by the vanilla term Burocracia. | alternatives: Administrativa
+group_parliamentary	Parlamentaria	candidate	Standard state vocabulary for legislative and representative doctrines. | alternatives: Representativa
+group_welfare	Asistencial	candidate	Reflects 19th-century social security and health doctrines concisely. | alternatives: De bienestar social
+group_diplomatic	Diplomática	candidate	Standard adjective matching the doctrine of relations and influence. | alternatives: Exterior
+group_nationalist	Nacionalista	candidate	Reflects the doctrine of national homogeneity. | alternatives: Nacional
+group_reformist	Reformista	candidate	Standard political doctrine term for egalitarian reform. | alternatives: Egalitaria
+group_offensive	Ofensiva	candidate	Military doctrine term distinct from any meaning of insult. | alternatives: De ataque
+group_defensive	Defensiva	candidate	Standard military doctrine for defence and fortifications. | alternatives: De fortificación
+group_naval	Naval	candidate	Standard military doctrine for fleets and shipbuilding. | alternatives: Marítima
+group_professional_army	Ejército profesional	candidate	Clear military doctrine name for a standing trained army. | alternatives: Fuerzas profesionales
+group_mass_conscription	Conscripción en masa	candidate	Historical term for the mass conscription military doctrine. | alternatives: Lleva general
+group_colonial	Colonial	candidate	Standard doctrine name for colonial expansion. | alternatives: De ultramar
+group_war_economy	Economía de guerra	candidate	Period-accurate term for mobilised wartime industry. | alternatives: Movilización industrial
+age	Era	candidate	Avoids confusion with human age while denoting a campaign era. | alternatives: Época
+age_1	Industria y Naciones	candidate	Formal title for the first historical era of the mod. | alternatives: La Industria y las Naciones
+age_2	Imperio y Sociedad de Masas	candidate	Formal title for the second historical era. | alternatives: Imperio y Masas
+age_3	Política de Masas y Guerra Total	candidate	Formal title for the third historical era. | alternatives: Masas y Guerra Total
+objective	Meta	candidate	Distinguishes campaign goals from military map objectives. | alternatives: Objetivo de era
+era_reward	Recompensa de era	candidate	Clear mechanical description of a bonus bought with Era Momentum. | alternatives: Bonificación de era
+golden_age	Edad de oro	candidate	Standard historical and literary term for a golden age. | alternatives: Época dorada
+golden_age_industrial	Edad de oro industrial	candidate	Keeps the word family with Golden Age while highlighting manufacturing. | alternatives: Época dorada industrial
+golden_age_cultural	Edad de oro cultural	candidate	Keeps the word family with Golden Age while highlighting culture and education. | alternatives: Época dorada cultural
+golden_age_strategic	Edad de oro estratégica	candidate	Keeps the word family with Golden Age while highlighting military and war. | alternatives: Época dorada estratégica
+doctrine_journey	Proceso de doctrina	candidate	Represents a sustained undertaking or process rather than physical travel. | alternatives: Trayectoria doctrinal, Campaña de doctrina
+era_crossroads	Encrucijada de era	candidate	Captures the exact metaphorical sense of a decisive turning point. | alternatives: Encrucijada histórica
+route	Vía	candidate	Denotes a strategic course of action or policy path. | alternatives: Ruta, Camino
+milestone	Hito	candidate	Standard term for a significant developmental marker. | alternatives: Paso crucial
+transition_journey	Proceso de transición	candidate	Maintains consistency with journey translated as process. | alternatives: Trayectoria de transición
+journey_steam_and_the_state	Vapor y Estado	candidate	Direct historical reference to industrial power and statecraft. | alternatives: El vapor y el Estado
+journey_empire_and_mass_society	Imperio y sociedad de masas	candidate	Matches the Age 2 title precisely. | alternatives: El imperio y la sociedad de masas
+journey_mobilized_society	La sociedad movilizada	candidate	Accurate reflection of mobilization in a 19th-century societal context. | alternatives: Sociedad movilizada
+journey_factory_system	Estandarización del sistema fabril	candidate	Uses the appropriate period adjective fabril for industrial systems. | alternatives: Normalización del sistema de fábricas
+journey_republic_of_scholars	Una república de letrados	candidate	León de letrados or académicos fits 19th-century intellectual communities better than scholars. | alternatives: Una república de estudiosos
+journey_general_staff	Reforma del Estado Mayor	candidate	State Mayor is the standard historical term for a national military general staff. | alternatives: Reforma del alto mando
+doctrine_ledger	Registro de doctrinas	candidate	Ledger translated as an administrative register or comparison table. | alternatives: Tabulador de doctrinas, Libro de doctrinas
+national_doctrine	Doctrina nacional	candidate	Direct, clear and unambiguous panel label. | alternatives: Doctrinas nacionales
+backlash	Reacción	candidate	Captures the political backlash against policy changes. | alternatives: Represalia, Repercusión
+strain	Tensión	candidate	Reflects the strain and administrative friction of repeated actions. | alternatives: Sobrecarga, Fatiga
+tier	Nivel	candidate	Standard UI term for meter bands or thresholds. | alternatives: Grado, Estrato
+equilibrium	Equilibrio	candidate	Standard economic and systemic term for a drift target. | alternatives: Punto de equilibrio
+progress	Progreso	candidate	Meets the vanilla standard for measured completion values while avoiding ideological baggage. | alternatives: Avance, Consecución

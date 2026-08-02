@@ -53,18 +53,18 @@ The vanilla game also contains many applicable `common/` categories, including `
 
 ## Where to implement things
 
-| Need | Primary location(s) |
-| --- | --- |
-| A recurring or externally triggered outcome | `events/`, dispatched from `common/on_actions/` or a scripted effect |
-| Reusable condition | `common/scripted_triggers/` |
-| Reusable mutation/workflow | `common/scripted_effects/` |
-| Reusable number/calculation | `common/script_values/` |
-| Player-facing mechanical bonus | `common/static_modifiers/` (or another vanilla-supported modifier mechanism) |
-| Data/actions displayed in a custom panel | `common/scripted_guis/` plus `gui/` |
-| Custom alert | `common/alert_types/` and, where needed, `common/alert_groups/` |
-| New texture/icon | `gfx/` with a mod-local path, then reference it from GUI/script |
-| Text visible to players | `localization/<language>/` |
-| Initial save/start setup | the appropriate `common/history/` location |
+| Need                                        | Primary location(s)                                                          |
+| ------------------------------------------- | ---------------------------------------------------------------------------- |
+| A recurring or externally triggered outcome | `events/`, dispatched from `common/on_actions/` or a scripted effect         |
+| Reusable condition                          | `common/scripted_triggers/`                                                  |
+| Reusable mutation/workflow                  | `common/scripted_effects/`                                                   |
+| Reusable number/calculation                 | `common/script_values/`                                                      |
+| Player-facing mechanical bonus              | `common/static_modifiers/` (or another vanilla-supported modifier mechanism) |
+| Data/actions displayed in a custom panel    | `common/scripted_guis/` plus `gui/`                                          |
+| Custom alert                                | `common/alert_types/` and, where needed, `common/alert_groups/`              |
+| New texture/icon                            | `gfx/` with a mod-local path, then reference it from GUI/script              |
+| Text visible to players                     | `localization/<language>/`                                                   |
+| Initial save/start setup                    | the appropriate `common/history/` location                                   |
 
 ## Events and scripting conventions
 
@@ -93,6 +93,19 @@ The vanilla game also contains many applicable `common/` categories, including `
 - Add names, descriptions, tooltips, event title/description/options, and concept text together with the mechanics that use them. Validate that all referenced keys exist.
 - Keep formatting markup (`#P`, `#Y`, `#tooltippable_concept`, icons, `\n`, etc.) consistent with nearby working entries and vanilla examples.
 
+## Testing and logs
+
+- Do not repeatedly ask the user to launch the game or manually test routine changes. When syntax, identifiers, braces, localization references, modifier definitions, and comparable vanilla patterns can be checked statically, perform those checks yourself and treat them as sufficient for normal implementation work.
+- Request or recommend user-run game testing only for important, critical, or genuinely runtime-dependent behavior that static inspection cannot establish. Examples include risky GUI overrides, save compatibility or migration, event/on-action dispatch, scope-dependent behavior, timing and pulse logic, multiplayer behavior, crashes, or a suspected engine-specific issue.
+- Do not end every task with a generic “test this in game” requirement. If no critical runtime uncertainty remains, report the static verification performed and finish the task.
+- When the user mentions errors, debugging, crashes, warnings, or logs—or when diagnosis requires game output—inspect the Victoria 3 logs at:
+
+```text
+C:\Users\prost\OneDrive\Documents\Paradox Interactive\Victoria 3\logs
+```
+
+- Treat the logs directory as a diagnostic, read-only source. Inspect relevant files such as `error.log`, `debug.log`, `game.log`, and `system.log` when present; do not modify, delete, truncate, or clear them.
+
 ## Verification checklist
 
 After an implementation, before reporting the task done:
@@ -100,7 +113,7 @@ After an implementation, before reporting the task done:
 1. Review every edited file and confirm nothing outside the workspace was touched.
 2. Search for all new identifiers and localization keys to catch spelling or scope mismatches.
 3. Check script braces and GUI block nesting; compare changed syntax with a known working vanilla or mod example.
-4. Validate the feature in Victoria 3 where feasible: load the mod, open the affected UI, exercise its action/trigger, and inspect the error log for parse, missing localization, missing asset, or invalid scope errors. If this isn't feasible in the current session, say so explicitly instead of claiming the feature works.
+4. Require Victoria 3 runtime validation only when the change is critical or cannot be verified reliably through static checks. When logs are relevant, inspect the configured Victoria 3 logs directory directly.
 5. Report files changed, validation performed, and any game-runtime checks that remain for the user.
 
 ## Working style for future requests
@@ -108,3 +121,9 @@ After an implementation, before reporting the task done:
 Translate requested EU4 concepts into a Victoria 3-compatible design before coding. State any necessary adaptation (for example, a mechanic that needs country variables, modifiers, scripted GUI, and pulse events rather than a native EU4 subsystem). Use the installed game's source files whenever syntax, available triggers/effects, GUI hierarchy, assets, or localization conventions are uncertain — always read-only.
 
 Do not create planning or summary documents in the repository unless explicitly requested; report progress directly in chat instead.
+
+## Mechanics reference
+
+- Before answering, designing, debugging, or implementing anything related to religion, culture/National Identity, Cultural or Religious Projects, idea groups, National Ideas, ages/Era Momentum, or the culture/religion actions in the state panel, read `MECHANICS_REFERENCE.md`.
+- Treat that document as the durable system map and vocabulary reference. The implementation files linked from it remain the final source of truth when exact syntax or a recently changed value matters.
+- When one of those mechanics changes, update `MECHANICS_REFERENCE.md` in the same task so the documented rules, variables, thresholds, state actions, and source map do not drift from the code.

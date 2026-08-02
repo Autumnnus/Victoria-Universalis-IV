@@ -1,0 +1,16 @@
+﻿l_french:
+ # events/Economic_Idea.txt and events/InnovativeIdeaGroupEvents.txt reference
+ # only this one key set for all of their events, so the text is deliberately
+ # neutral: an event in either file may grant a positive or a negative modifier.
+ # Give each event its own keys when they are wired to an on_action.
+ economic_flavor.1.t:0 "Développements économiques"
+ economic_flavor.1.desc:0 "Notre doctrine économique porte ses fruits d'une manière que les ministères n'avaient pas prévue. Quoi qu'il advienne, les effets se feront sentir dans toute l'économie pendant des années."
+ economic_flavor.1.a:0 "Ainsi soit-il"
+ innovative_flavor.1.t:0 "Un changement de doctrine"
+ innovative_flavor.1.desc:0 "Les idées que nous avons adoptées remodèlent le fonctionnement de nos Institutions et la manière dont le reste du monde nous juge."
+ innovative_flavor.1.a:0 "Très bien"
+
+ dev.2.t:0 "Événement de test pour les développeurs"
+ dev.2.d:0 "Ceci est un événement de test pour les développeurs de Victoria Universalis IV."
+ dev.2.a:0 "Octroyer des ressources de test"
+ dev.2.b:0 "Fermer"

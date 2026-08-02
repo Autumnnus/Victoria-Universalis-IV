@@ -1,0 +1,853 @@
+namespace = ve_era_crossroads
+
+# Phase 6 route offers. Each Age gate opens only after its anchors, milestones,
+# closure, AI, telemetry, and localization are complete.
+
+ve_era_crossroads.1 = {
+	type = country_event
+	title = ve_era_crossroads.1.t
+	desc = ve_era_crossroads.1.d
+	event_image = { video = "gfx/event_pictures/southamerica_factory_opening.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+	duration = 3
+	trigger = { ve_can_accept_era_crossroads_age_1_offer = yes }
+	cancellation_trigger = {
+		NOT = { ve_can_accept_era_crossroads_age_1_offer = yes }
+	}
+	immediate = {
+		set_variable = ve_era_crossroads_age_1_offered
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_offers DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_1_offers DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_ERA_CROSSROADS_OFFER:[THIS.GetCountry.GetNameNoFormatting]:1"
+	}
+	option = {
+		name = ve_era_crossroads.1.a
+		trigger = { ve_can_accept_era_crossroads_age_1_offer = yes }
+		ai_chance = {
+			base = 10
+			modifier = {
+				trigger = {
+					ve_era_crossroads_age_1_route_1_anchor_1_secured = yes
+					ve_era_crossroads_age_1_route_1_anchor_2_secured = yes
+				}
+				add = 50
+			}
+			modifier = { trigger = { ve_era_crossroads_age_1_route_1_anchor_1_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_1_route_1_anchor_2_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_1_route_1_doctrine_fit = yes } add = 15 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.1.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_era_crossroads_age_1_offer = yes }
+				ve_begin_era_crossroads_age_1 = { ROUTE = 1 }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.1.b
+		default_option = yes
+		trigger = { ve_can_accept_era_crossroads_age_1_offer = yes }
+		ai_chance = {
+			base = 10
+			modifier = {
+				trigger = {
+					ve_era_crossroads_age_1_route_2_anchor_1_secured = yes
+					ve_era_crossroads_age_1_route_2_anchor_2_secured = yes
+				}
+				add = 50
+			}
+			modifier = { trigger = { ve_era_crossroads_age_1_route_2_anchor_1_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_1_route_2_anchor_2_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_1_route_2_doctrine_fit = yes } add = 15 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.1.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_era_crossroads_age_1_offer = yes }
+				ve_begin_era_crossroads_age_1 = { ROUTE = 2 }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.1.c
+		trigger = { ve_can_accept_era_crossroads_age_1_offer = yes }
+		ai_chance = {
+			base = 10
+			modifier = {
+				trigger = {
+					ve_era_crossroads_age_1_route_3_anchor_1_secured = yes
+					ve_era_crossroads_age_1_route_3_anchor_2_secured = yes
+				}
+				add = 50
+			}
+			modifier = { trigger = { ve_era_crossroads_age_1_route_3_anchor_1_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_1_route_3_anchor_2_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_1_route_3_doctrine_fit = yes } add = 15 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.1.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_era_crossroads_age_1_offer = yes }
+				ve_begin_era_crossroads_age_1 = { ROUTE = 3 }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.1.d.option
+		trigger = { ve_can_accept_era_crossroads_age_1_offer = yes }
+		ai_chance = {
+			base = 5
+			modifier = {
+				trigger = {
+					NOT = { ve_era_crossroads_age_1_any_anchor_secured = yes }
+					NOT = { ve_era_crossroads_age_1_any_doctrine_fit = yes }
+				}
+				add = 60
+			}
+		}
+		custom_tooltip = { text = ve_era_crossroads_decline_tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_era_crossroads_age_1_offer = yes }
+				ve_decline_era_crossroads_offer = yes
+			}
+		}
+	}
+}
+
+ve_era_crossroads.2 = {
+	type = country_event
+	title = ve_era_crossroads.2.t
+	desc = ve_era_crossroads.2.d
+	event_image = { video = "gfx/event_pictures/africa_diplomats_negotiating.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	trigger = { ve_can_accept_era_crossroads_age_2_offer = yes }
+	cancellation_trigger = {
+		NOT = { ve_can_accept_era_crossroads_age_2_offer = yes }
+	}
+	immediate = {
+		set_variable = ve_era_crossroads_age_2_offered
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_offers DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_2_offers DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_ERA_CROSSROADS_OFFER:[THIS.GetCountry.GetNameNoFormatting]:2"
+	}
+	option = {
+		name = ve_era_crossroads.2.a
+		trigger = { ve_can_accept_era_crossroads_age_2_offer = yes }
+		ai_chance = {
+			base = 10
+			modifier = {
+				trigger = {
+					ve_era_crossroads_age_2_route_1_anchor_1_secured = yes
+					ve_era_crossroads_age_2_route_1_anchor_2_secured = yes
+				}
+				add = 50
+			}
+			modifier = { trigger = { ve_era_crossroads_age_2_route_1_anchor_1_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_2_route_1_anchor_2_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_2_route_1_doctrine_fit = yes } add = 15 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.2.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_era_crossroads_age_2_offer = yes }
+				ve_begin_era_crossroads_age_2 = { ROUTE = 1 }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.2.b
+		default_option = yes
+		trigger = { ve_can_accept_era_crossroads_age_2_offer = yes }
+		ai_chance = {
+			base = 10
+			modifier = {
+				trigger = {
+					ve_era_crossroads_age_2_route_2_anchor_1_secured = yes
+					ve_era_crossroads_age_2_route_2_anchor_2_secured = yes
+				}
+				add = 50
+			}
+			modifier = { trigger = { ve_era_crossroads_age_2_route_2_anchor_1_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_2_route_2_anchor_2_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_2_route_2_doctrine_fit = yes } add = 15 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.2.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_era_crossroads_age_2_offer = yes }
+				ve_begin_era_crossroads_age_2 = { ROUTE = 2 }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.2.c
+		trigger = { ve_can_accept_era_crossroads_age_2_offer = yes }
+		ai_chance = {
+			base = 10
+			modifier = {
+				trigger = {
+					ve_era_crossroads_age_2_route_3_anchor_1_secured = yes
+					ve_era_crossroads_age_2_route_3_anchor_2_secured = yes
+				}
+				add = 50
+			}
+			modifier = { trigger = { ve_era_crossroads_age_2_route_3_anchor_1_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_2_route_3_anchor_2_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_2_route_3_doctrine_fit = yes } add = 15 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.2.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_era_crossroads_age_2_offer = yes }
+				ve_begin_era_crossroads_age_2 = { ROUTE = 3 }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.2.d.option
+		trigger = { ve_can_accept_era_crossroads_age_2_offer = yes }
+		ai_chance = {
+			base = 5
+			modifier = {
+				trigger = {
+					NOT = { ve_era_crossroads_age_2_any_anchor_secured = yes }
+					NOT = { ve_era_crossroads_age_2_any_doctrine_fit = yes }
+				}
+				add = 60
+			}
+		}
+		custom_tooltip = { text = ve_era_crossroads_decline_tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_era_crossroads_age_2_offer = yes }
+				ve_decline_era_crossroads_offer = yes
+			}
+		}
+	}
+}
+
+ve_era_crossroads.3 = {
+	type = country_event
+	title = ve_era_crossroads.3.t
+	desc = ve_era_crossroads.3.d
+	event_image = { video = "gfx/event_pictures/unspecific_military_parade.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	duration = 3
+	trigger = { ve_can_accept_era_crossroads_age_3_offer = yes }
+	cancellation_trigger = {
+		NOT = { ve_can_accept_era_crossroads_age_3_offer = yes }
+	}
+	immediate = {
+		set_variable = ve_era_crossroads_age_3_offered
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_offers DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_3_offers DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_ERA_CROSSROADS_OFFER:[THIS.GetCountry.GetNameNoFormatting]:3"
+	}
+	option = {
+		name = ve_era_crossroads.3.a
+		trigger = { ve_can_accept_era_crossroads_age_3_offer = yes }
+		ai_chance = {
+			base = 10
+			modifier = {
+				trigger = {
+					ve_era_crossroads_age_3_route_1_anchor_1_secured = yes
+					ve_era_crossroads_age_3_route_1_anchor_2_secured = yes
+				}
+				add = 50
+			}
+			modifier = { trigger = { ve_era_crossroads_age_3_route_1_anchor_1_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_3_route_1_anchor_2_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_3_route_1_doctrine_fit = yes } add = 15 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.3.a.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_era_crossroads_age_3_offer = yes }
+				ve_begin_era_crossroads_age_3 = { ROUTE = 1 }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.3.b
+		default_option = yes
+		trigger = { ve_can_accept_era_crossroads_age_3_offer = yes }
+		ai_chance = {
+			base = 10
+			modifier = {
+				trigger = {
+					ve_era_crossroads_age_3_route_2_anchor_1_secured = yes
+					ve_era_crossroads_age_3_route_2_anchor_2_secured = yes
+				}
+				add = 50
+			}
+			modifier = { trigger = { ve_era_crossroads_age_3_route_2_anchor_1_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_3_route_2_anchor_2_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_3_route_2_doctrine_fit = yes } add = 15 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.3.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_era_crossroads_age_3_offer = yes }
+				ve_begin_era_crossroads_age_3 = { ROUTE = 2 }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.3.c
+		trigger = { ve_can_accept_era_crossroads_age_3_offer = yes }
+		ai_chance = {
+			base = 10
+			modifier = {
+				trigger = {
+					ve_era_crossroads_age_3_route_3_anchor_1_secured = yes
+					ve_era_crossroads_age_3_route_3_anchor_2_secured = yes
+				}
+				add = 50
+			}
+			modifier = { trigger = { ve_era_crossroads_age_3_route_3_anchor_1_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_3_route_3_anchor_2_secured = yes } add = 15 }
+			modifier = { trigger = { ve_era_crossroads_age_3_route_3_doctrine_fit = yes } add = 15 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.3.c.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_era_crossroads_age_3_offer = yes }
+				ve_begin_era_crossroads_age_3 = { ROUTE = 3 }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.3.d.option
+		trigger = { ve_can_accept_era_crossroads_age_3_offer = yes }
+		ai_chance = {
+			base = 5
+			modifier = {
+				trigger = {
+					NOT = { ve_era_crossroads_age_3_any_anchor_secured = yes }
+					NOT = { ve_era_crossroads_age_3_any_doctrine_fit = yes }
+				}
+				add = 60
+			}
+		}
+		custom_tooltip = { text = ve_era_crossroads_decline_tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_can_accept_era_crossroads_age_3_offer = yes }
+				ve_decline_era_crossroads_offer = yes
+			}
+		}
+	}
+}
+
+ve_era_crossroads.10 = {
+	type = country_event
+	title = ve_era_crossroads.10.t
+	desc = ve_era_crossroads.10.d
+	event_image = { video = "gfx/event_pictures/unspecific_trains.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	trigger = { ve_has_valid_era_crossroads_age_1_milestone_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_valid_era_crossroads_age_1_milestone_context = yes }
+	}
+	option = {
+		name = ve_era_crossroads.10.a
+		trigger = { ve_can_afford_era_crossroads_insight = { COST = 10 } }
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_era_crossroads_months >= 45 } add = 30 }
+			modifier = { trigger = { ve_era_crossroads_age_1_route_doctrine_fit = yes } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.10.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_era_crossroads_age_1_milestone_context = yes
+					ve_can_afford_era_crossroads_insight = { COST = 10 }
+				}
+				ve_record_era_crossroads_option = { AGE = 1 MILESTONE = 1 CLASS = paid }
+				ve_era_crossroads_change_national_insight = { DELTA = -10 }
+				ve_era_crossroads_change_progress = { DELTA = 3 }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.10.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 10 } add = 30 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.10.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_era_crossroads_age_1_milestone_context = yes }
+				ve_record_era_crossroads_option = { AGE = 1 MILESTONE = 1 CLASS = default }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.10.c
+		trigger = {
+			ve_era_crossroads_age_1_route_doctrine_fit = yes
+			ve_can_afford_era_crossroads_insight = { COST = 5 }
+		}
+		ai_chance = {
+			base = 65
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_era_crossroads_months >= 45 } add = 30 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.10.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_era_crossroads_age_1_milestone_context = yes
+					ve_era_crossroads_age_1_route_doctrine_fit = yes
+					ve_can_afford_era_crossroads_insight = { COST = 5 }
+				}
+				ve_record_era_crossroads_option = { AGE = 1 MILESTONE = 1 CLASS = doctrine }
+				ve_era_crossroads_change_national_insight = { DELTA = -5 }
+				ve_era_crossroads_change_progress = { DELTA = 3 }
+			}
+		}
+	}
+}
+
+ve_era_crossroads.11 = {
+	type = country_event
+	title = ve_era_crossroads.11.t
+	desc = ve_era_crossroads.11.d
+	event_image = { video = "gfx/event_pictures/asia_politician_parliament_motion.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	duration = 3
+	trigger = { ve_has_valid_era_crossroads_age_1_milestone_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_valid_era_crossroads_age_1_milestone_context = yes }
+	}
+	option = {
+		name = ve_era_crossroads.11.a
+		trigger = { ve_can_afford_era_crossroads_insight = { COST = 10 } }
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_era_crossroads_months >= 45 } add = 30 }
+			modifier = { trigger = { ve_era_crossroads_age_1_route_doctrine_fit = yes } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.11.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_era_crossroads_age_1_milestone_context = yes
+					ve_can_afford_era_crossroads_insight = { COST = 10 }
+				}
+				ve_record_era_crossroads_option = { AGE = 1 MILESTONE = 2 CLASS = paid }
+				ve_era_crossroads_change_national_insight = { DELTA = -10 }
+				ve_era_crossroads_change_progress = { DELTA = 3 }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.11.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 10 } add = 30 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.11.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_era_crossroads_age_1_milestone_context = yes }
+				ve_record_era_crossroads_option = { AGE = 1 MILESTONE = 2 CLASS = default }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.11.c
+		trigger = {
+			ve_era_crossroads_age_1_route_doctrine_fit = yes
+			ve_can_afford_era_crossroads_insight = { COST = 5 }
+		}
+		ai_chance = {
+			base = 65
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_era_crossroads_months >= 45 } add = 30 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.11.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_era_crossroads_age_1_milestone_context = yes
+					ve_era_crossroads_age_1_route_doctrine_fit = yes
+					ve_can_afford_era_crossroads_insight = { COST = 5 }
+				}
+				ve_record_era_crossroads_option = { AGE = 1 MILESTONE = 2 CLASS = doctrine }
+				ve_era_crossroads_change_national_insight = { DELTA = -5 }
+				ve_era_crossroads_change_progress = { DELTA = 3 }
+			}
+		}
+	}
+}
+
+ve_era_crossroads.40 = {
+	type = country_event
+	title = ve_era_crossroads.40.t
+	desc = ve_era_crossroads.40.d
+	event_image = { video = "gfx/event_pictures/middleeast_engineer_blueprint.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+	duration = 3
+	trigger = { ve_can_show_era_crossroads_age_1_success = yes }
+	option = {
+		name = ve_era_crossroads.40.a
+		default_option = yes
+		ai_chance = { base = 100 }
+		custom_tooltip = { text = ve_era_crossroads.40.a.tt }
+	}
+}
+
+ve_era_crossroads.20 = {
+	type = country_event
+	title = ve_era_crossroads.20.t
+	desc = ve_era_crossroads.20.d
+	event_image = { video = "gfx/event_pictures/africa_construction_colony.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+	duration = 3
+	trigger = { ve_has_valid_era_crossroads_age_2_milestone_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_valid_era_crossroads_age_2_milestone_context = yes }
+	}
+	option = {
+		name = ve_era_crossroads.20.a
+		trigger = { ve_can_afford_era_crossroads_insight = { COST = 10 } }
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_era_crossroads_months >= 45 } add = 30 }
+			modifier = { trigger = { ve_era_crossroads_age_2_route_doctrine_fit = yes } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.20.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_era_crossroads_age_2_milestone_context = yes
+					ve_can_afford_era_crossroads_insight = { COST = 10 }
+				}
+				ve_record_era_crossroads_option = { AGE = 2 MILESTONE = 1 CLASS = paid }
+				ve_era_crossroads_change_national_insight = { DELTA = -10 }
+				ve_era_crossroads_change_progress = { DELTA = 3 }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.20.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 10 } add = 30 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.20.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_era_crossroads_age_2_milestone_context = yes }
+				ve_record_era_crossroads_option = { AGE = 2 MILESTONE = 1 CLASS = default }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.20.c
+		trigger = {
+			ve_era_crossroads_age_2_route_doctrine_fit = yes
+			ve_can_afford_era_crossroads_insight = { COST = 5 }
+		}
+		ai_chance = {
+			base = 65
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_era_crossroads_months >= 45 } add = 30 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.20.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_era_crossroads_age_2_milestone_context = yes
+					ve_era_crossroads_age_2_route_doctrine_fit = yes
+					ve_can_afford_era_crossroads_insight = { COST = 5 }
+				}
+				ve_record_era_crossroads_option = { AGE = 2 MILESTONE = 1 CLASS = doctrine }
+				ve_era_crossroads_change_national_insight = { DELTA = -5 }
+				ve_era_crossroads_change_progress = { DELTA = 3 }
+			}
+		}
+	}
+}
+
+ve_era_crossroads.21 = {
+	type = country_event
+	title = ve_era_crossroads.21.t
+	desc = ve_era_crossroads.21.d
+	event_image = { video = "gfx/event_pictures/unspecific_sick_in_hospital.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	duration = 3
+	trigger = { ve_has_valid_era_crossroads_age_2_milestone_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_valid_era_crossroads_age_2_milestone_context = yes }
+	}
+	option = {
+		name = ve_era_crossroads.21.a
+		trigger = { ve_can_afford_era_crossroads_insight = { COST = 10 } }
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_era_crossroads_months >= 45 } add = 30 }
+			modifier = { trigger = { ve_era_crossroads_age_2_route_doctrine_fit = yes } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.21.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_era_crossroads_age_2_milestone_context = yes
+					ve_can_afford_era_crossroads_insight = { COST = 10 }
+				}
+				ve_record_era_crossroads_option = { AGE = 2 MILESTONE = 2 CLASS = paid }
+				ve_era_crossroads_change_national_insight = { DELTA = -10 }
+				ve_era_crossroads_change_progress = { DELTA = 3 }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.21.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 10 } add = 30 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.21.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_era_crossroads_age_2_milestone_context = yes }
+				ve_record_era_crossroads_option = { AGE = 2 MILESTONE = 2 CLASS = default }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.21.c
+		trigger = {
+			ve_era_crossroads_age_2_route_doctrine_fit = yes
+			ve_can_afford_era_crossroads_insight = { COST = 5 }
+		}
+		ai_chance = {
+			base = 65
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_era_crossroads_months >= 45 } add = 30 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.21.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_era_crossroads_age_2_milestone_context = yes
+					ve_era_crossroads_age_2_route_doctrine_fit = yes
+					ve_can_afford_era_crossroads_insight = { COST = 5 }
+				}
+				ve_record_era_crossroads_option = { AGE = 2 MILESTONE = 2 CLASS = doctrine }
+				ve_era_crossroads_change_national_insight = { DELTA = -5 }
+				ve_era_crossroads_change_progress = { DELTA = 3 }
+			}
+		}
+	}
+}
+
+ve_era_crossroads.41 = {
+	type = country_event
+	title = ve_era_crossroads.41.t
+	desc = ve_era_crossroads.41.d
+	event_image = { video = "gfx/event_pictures/africa_city_center.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+	duration = 3
+	trigger = { ve_can_show_era_crossroads_age_2_success = yes }
+	option = {
+		name = ve_era_crossroads.41.a
+		default_option = yes
+		ai_chance = { base = 100 }
+		custom_tooltip = { text = ve_era_crossroads.41.a.tt }
+	}
+}
+
+ve_era_crossroads.30 = {
+	type = country_event
+	title = ve_era_crossroads.30.t
+	desc = ve_era_crossroads.30.d
+	event_image = { video = "gfx/event_pictures/africa_public_protest.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+	duration = 3
+	trigger = { ve_has_valid_era_crossroads_age_3_milestone_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_valid_era_crossroads_age_3_milestone_context = yes }
+	}
+	option = {
+		name = ve_era_crossroads.30.a
+		trigger = { ve_can_afford_era_crossroads_insight = { COST = 10 } }
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_era_crossroads_months >= 45 } add = 30 }
+			modifier = { trigger = { ve_era_crossroads_age_3_route_doctrine_fit = yes } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.30.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_era_crossroads_age_3_milestone_context = yes
+					ve_can_afford_era_crossroads_insight = { COST = 10 }
+				}
+				ve_record_era_crossroads_option = { AGE = 3 MILESTONE = 1 CLASS = paid }
+				ve_era_crossroads_change_national_insight = { DELTA = -10 }
+				ve_era_crossroads_change_progress = { DELTA = 3 }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.30.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 10 } add = 30 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.30.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_era_crossroads_age_3_milestone_context = yes }
+				ve_record_era_crossroads_option = { AGE = 3 MILESTONE = 1 CLASS = default }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.30.c
+		trigger = {
+			ve_era_crossroads_age_3_route_doctrine_fit = yes
+			ve_can_afford_era_crossroads_insight = { COST = 5 }
+		}
+		ai_chance = {
+			base = 65
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_era_crossroads_months >= 45 } add = 30 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.30.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_era_crossroads_age_3_milestone_context = yes
+					ve_era_crossroads_age_3_route_doctrine_fit = yes
+					ve_can_afford_era_crossroads_insight = { COST = 5 }
+				}
+				ve_record_era_crossroads_option = { AGE = 3 MILESTONE = 1 CLASS = doctrine }
+				ve_era_crossroads_change_national_insight = { DELTA = -5 }
+				ve_era_crossroads_change_progress = { DELTA = 3 }
+			}
+		}
+	}
+}
+
+ve_era_crossroads.31 = {
+	type = country_event
+	title = ve_era_crossroads.31.t
+	desc = ve_era_crossroads.31.d
+	event_image = { video = "gfx/event_pictures/southamerica_war_civilians.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	duration = 3
+	trigger = { ve_has_valid_era_crossroads_age_3_milestone_context = yes }
+	cancellation_trigger = {
+		NOT = { ve_has_valid_era_crossroads_age_3_milestone_context = yes }
+	}
+	option = {
+		name = ve_era_crossroads.31.a
+		trigger = { ve_can_afford_era_crossroads_insight = { COST = 10 } }
+		ai_chance = {
+			base = 35
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_era_crossroads_months >= 45 } add = 30 }
+			modifier = { trigger = { ve_era_crossroads_age_3_route_doctrine_fit = yes } factor = 0.5 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.31.a.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_era_crossroads_age_3_milestone_context = yes
+					ve_can_afford_era_crossroads_insight = { COST = 10 }
+				}
+				ve_record_era_crossroads_option = { AGE = 3 MILESTONE = 2 CLASS = paid }
+				ve_era_crossroads_change_national_insight = { DELTA = -10 }
+				ve_era_crossroads_change_progress = { DELTA = 3 }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.31.b
+		default_option = yes
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { var:idea_point_pool < 10 } add = 30 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.31.b.tt }
+		hidden_effect = {
+			if = {
+				limit = { ve_has_valid_era_crossroads_age_3_milestone_context = yes }
+				ve_record_era_crossroads_option = { AGE = 3 MILESTONE = 2 CLASS = default }
+			}
+		}
+	}
+	option = {
+		name = ve_era_crossroads.31.c
+		trigger = {
+			ve_era_crossroads_age_3_route_doctrine_fit = yes
+			ve_can_afford_era_crossroads_insight = { COST = 5 }
+		}
+		ai_chance = {
+			base = 65
+			modifier = { trigger = { var:idea_point_pool >= 100 } add = 20 }
+			modifier = { trigger = { var:ve_era_crossroads_months >= 45 } add = 30 }
+		}
+		custom_tooltip = { text = ve_era_crossroads.31.c.tt }
+		hidden_effect = {
+			if = {
+				limit = {
+					ve_has_valid_era_crossroads_age_3_milestone_context = yes
+					ve_era_crossroads_age_3_route_doctrine_fit = yes
+					ve_can_afford_era_crossroads_insight = { COST = 5 }
+				}
+				ve_record_era_crossroads_option = { AGE = 3 MILESTONE = 2 CLASS = doctrine }
+				ve_era_crossroads_change_national_insight = { DELTA = -5 }
+				ve_era_crossroads_change_progress = { DELTA = 3 }
+			}
+		}
+	}
+}
+
+ve_era_crossroads.42 = {
+	type = country_event
+	title = ve_era_crossroads.42.t
+	desc = ve_era_crossroads.42.d
+	event_image = { video = "gfx/event_pictures/unspecific_automobile.bk2" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+	duration = 3
+	trigger = { ve_can_show_era_crossroads_age_3_success = yes }
+	option = {
+		name = ve_era_crossroads.42.a
+		default_option = yes
+		ai_chance = { base = 100 }
+		custom_tooltip = { text = ve_era_crossroads.42.a.tt }
+	}
+}

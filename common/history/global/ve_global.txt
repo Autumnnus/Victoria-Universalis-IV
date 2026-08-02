@@ -1,14 +1,6 @@
 ﻿GLOBAL = {
 	random_country = {
-		set_global_variable = ve_age_1_started		#Victorian Age - 1936
-		set_global_variable = {
-			name = idea_point_value_pool
-			value = 0
-		}
-		set_global_variable = {
-			name = culture_point_value_pool
-			value = 0
-		}
+		set_global_variable = ve_age_1_started		#Age of Victoria - until 1871 (see dev.5 / dev.6 for age transitions)
 		set_global_variable = {
 			name = 1_string
 			value = flag:1
@@ -107,15 +99,11 @@
 		}
 	}
 	every_country = {
-		set_missionary_cultural_missionary = yes
-		ve_law_change_effects = yes
 		set_point_system = yes
 		set_idea_buttons = yes
 		set_ideas = yes
 		set_national_idea = yes
-		religion_passive_bonuses = yes
 		national_idea_traditions = yes
-		ve_holy_site_effects = yes
 		set_variable = ve_1936_countries
 	}
 }

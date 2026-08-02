@@ -1,0 +1,58 @@
+﻿# Single-line status strings for the country panel doctrine section
+# (gui/ve_country_panel_doctrines.gui). Keeping these here instead of stacking
+# conditional textboxes in the GUI keeps each card one fixed-height row, which
+# is what stops the section from growing unpredictably.
+
+ve_cp_age_name = {
+	type = country
+	random_valid = no
+	text = { trigger = { has_global_variable = ve_age_1_started } localization_key = ve_age_of_victoria_title }
+	text = { trigger = { has_global_variable = ve_age_2_started } localization_key = ve_imperialism_age_title }
+	text = { trigger = { has_global_variable = ve_age_3_started } localization_key = ve_great_wars_age_title }
+	text = { localization_key = ve_cp_unknown_age }
+}
+
+ve_cp_golden_age_status = {
+	type = country
+	random_valid = no
+	text = { trigger = { has_modifier = ve_golden_age_industrial_mdf } localization_key = ve_cp_golden_age_industrial_active }
+	text = { trigger = { has_modifier = ve_golden_age_cultural_mdf } localization_key = ve_cp_golden_age_cultural_active }
+	text = { trigger = { has_modifier = ve_golden_age_strategic_mdf } localization_key = ve_cp_golden_age_strategic_active }
+	text = { trigger = { has_variable = ve_golden_age_used } localization_key = ve_cp_golden_age_spent }
+	text = { trigger = { ve_can_activate_golden_age = yes } localization_key = ve_cp_golden_age_ready }
+	text = { localization_key = ve_cp_golden_age_locked }
+}
+
+# Religious Settlement / National Cohesion tier in words, so the meters read as
+# an outcome instead of a bare number.
+# Project detail blocks. The progress variables are removed while no project
+# runs, so the progress lines must only be reachable through the active branch.
+ve_cp_religious_project_detail = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_has_active_religious_project = yes } localization_key = ve_cp_religious_project_detail_active }
+	text = { localization_key = ve_cp_religious_project_detail_none }
+}
+
+ve_cp_cultural_project_detail = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_has_active_cultural_project = yes } localization_key = ve_cp_cultural_project_detail_active }
+	text = { localization_key = ve_cp_cultural_project_detail_none }
+}
+
+ve_cp_settlement_tier = {
+	type = country
+	random_valid = no
+	text = { trigger = { var:piety_bar_point >= 75 } localization_key = ve_cp_tier_high }
+	text = { trigger = { var:piety_bar_point <= 25 } localization_key = ve_cp_tier_low }
+	text = { localization_key = ve_cp_tier_stable }
+}
+
+ve_cp_cohesion_tier = {
+	type = country
+	random_valid = no
+	text = { trigger = { var:ve_national_cohesion >= 75 } localization_key = ve_cp_tier_high }
+	text = { trigger = { var:ve_national_cohesion <= 25 } localization_key = ve_cp_tier_low }
+	text = { localization_key = ve_cp_tier_stable }
+}

@@ -1,0 +1,78 @@
+# Marker-only modifier. Its duration is the shared Idea Group ambient cooldown;
+# it deliberately has no mechanical modifier.
+ve_doctrine_ambient_cooldown_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+}
+
+# Shared Interest Group outcomes. Apply these in an explicit IG scope.
+ve_doctrine_ambient_ig_supported_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	interest_group_approval_add = 1
+}
+
+ve_doctrine_ambient_ig_slighted_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	interest_group_approval_add = -1
+}
+
+# Group-specific opportunity/setback axes. Positive modifiers are designed for
+# 36 months and negative modifiers for 24 months; event effects own duration.
+ve_doctrine_industrialist_positive_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
+	building_group_bg_manufacturing_throughput_add = 0.05
+}
+
+ve_doctrine_industrialist_negative_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_negative.dds
+	building_group_bg_manufacturing_throughput_add = -0.05
+}
+
+ve_doctrine_academic_positive_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
+	building_university_throughput_add = 0.05
+}
+
+ve_doctrine_academic_negative_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_negative.dds
+	building_university_throughput_add = -0.05
+}
+
+ve_doctrine_nationalist_positive_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	country_loyalists_from_legitimacy_mult = 0.05
+}
+
+ve_doctrine_nationalist_negative_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
+	country_radicals_from_legitimacy_mult = 0.05
+}
+
+ve_doctrine_reformist_positive_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	state_loyalists_from_political_movements_mult = 0.05
+}
+
+ve_doctrine_reformist_negative_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
+	state_radicals_from_political_movements_mult = 0.05
+}
+
+ve_doctrine_professional_army_positive_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
+	building_training_rate_mult = 0.05
+}
+
+ve_doctrine_professional_army_negative_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_negative.dds
+	building_training_rate_mult = -0.05
+}
+
+ve_doctrine_agrarian_positive_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
+	building_group_bg_agriculture_throughput_add = 0.05
+}
+
+ve_doctrine_agrarian_negative_mdf = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_negative.dds
+	building_group_bg_agriculture_throughput_add = -0.05
+}

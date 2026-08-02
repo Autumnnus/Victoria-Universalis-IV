@@ -1,0 +1,299 @@
+﻿# Doctrine Ledger bindings for gui/ve_panel_ledger.gui.
+#
+# All of these are executed with the viewing player's country as root; the
+# rebuild's filters depend on that (see ve_ledger_triggers.txt).
+# Effects here only touch the ledger's own presentation globals, never country
+# state, so a ledger click can never change the game.
+
+### OPEN AND REFRESH #########################################################
+
+ve_ledger_refresh = {
+	scope = country
+	effect = { ve_ledger_rebuild = yes }
+}
+
+# True while the current page holds no rows: either nothing matches the filter
+# or the ledger has not been built yet in this session.
+ve_ledger_is_empty = {
+	scope = country
+	is_shown = {
+		OR = {
+			NOT = { has_global_variable = ve_ledger_total }
+			global_var:ve_ledger_total == 0
+		}
+	}
+}
+
+### SORTING ##################################################################
+
+ve_ledger_sort_prestige = {
+	scope = country
+	effect = { ve_ledger_set_sort = { KEY = 1 } }
+}
+
+ve_ledger_sort_insight = {
+	scope = country
+	effect = { ve_ledger_set_sort = { KEY = 2 } }
+}
+
+ve_ledger_sort_ideas = {
+	scope = country
+	effect = { ve_ledger_set_sort = { KEY = 3 } }
+}
+
+ve_ledger_sort_groups = {
+	scope = country
+	effect = { ve_ledger_set_sort = { KEY = 4 } }
+}
+
+ve_ledger_sort_settlement = {
+	scope = country
+	effect = { ve_ledger_set_sort = { KEY = 5 } }
+}
+
+ve_ledger_sort_cohesion = {
+	scope = country
+	effect = { ve_ledger_set_sort = { KEY = 6 } }
+}
+
+ve_ledger_sort_momentum = {
+	scope = country
+	effect = { ve_ledger_set_sort = { KEY = 7 } }
+}
+
+ve_ledger_sort_rewards = {
+	scope = country
+	effect = { ve_ledger_set_sort = { KEY = 8 } }
+}
+
+# Which column header shows the active-sort arrow.
+ve_ledger_sorted_by_prestige = {
+	scope = country
+	is_shown = { global_var:ve_ledger_sort ?= 1 }
+}
+
+ve_ledger_sorted_by_insight = {
+	scope = country
+	is_shown = { global_var:ve_ledger_sort ?= 2 }
+}
+
+ve_ledger_sorted_by_ideas = {
+	scope = country
+	is_shown = { global_var:ve_ledger_sort ?= 3 }
+}
+
+ve_ledger_sorted_by_groups = {
+	scope = country
+	is_shown = { global_var:ve_ledger_sort ?= 4 }
+}
+
+ve_ledger_sorted_by_settlement = {
+	scope = country
+	is_shown = { global_var:ve_ledger_sort ?= 5 }
+}
+
+ve_ledger_sorted_by_cohesion = {
+	scope = country
+	is_shown = { global_var:ve_ledger_sort ?= 6 }
+}
+
+ve_ledger_sorted_by_momentum = {
+	scope = country
+	is_shown = { global_var:ve_ledger_sort ?= 7 }
+}
+
+ve_ledger_sorted_by_rewards = {
+	scope = country
+	is_shown = { global_var:ve_ledger_sort ?= 8 }
+}
+
+### FILTERS ##################################################################
+
+ve_ledger_filter_all = {
+	scope = country
+	effect = { ve_ledger_set_filter = { ID = 0 } }
+}
+
+ve_ledger_filter_great_powers = {
+	scope = country
+	effect = { ve_ledger_set_filter = { ID = 1 } }
+}
+
+ve_ledger_filter_major_powers = {
+	scope = country
+	effect = { ve_ledger_set_filter = { ID = 2 } }
+}
+
+ve_ledger_filter_recognized = {
+	scope = country
+	effect = { ve_ledger_set_filter = { ID = 3 } }
+}
+
+ve_ledger_filter_relevant = {
+	scope = country
+	effect = { ve_ledger_set_filter = { ID = 4 } }
+}
+
+ve_ledger_filter_with_groups = {
+	scope = country
+	effect = { ve_ledger_set_filter = { ID = 5 } }
+}
+
+ve_ledger_filter_is_all = {
+	scope = country
+	is_shown = { global_var:ve_ledger_filter ?= 0 }
+}
+
+ve_ledger_filter_is_great_powers = {
+	scope = country
+	is_shown = { global_var:ve_ledger_filter ?= 1 }
+}
+
+ve_ledger_filter_is_major_powers = {
+	scope = country
+	is_shown = { global_var:ve_ledger_filter ?= 2 }
+}
+
+ve_ledger_filter_is_recognized = {
+	scope = country
+	is_shown = { global_var:ve_ledger_filter ?= 3 }
+}
+
+ve_ledger_filter_is_relevant = {
+	scope = country
+	is_shown = { global_var:ve_ledger_filter ?= 4 }
+}
+
+ve_ledger_filter_is_with_groups = {
+	scope = country
+	is_shown = { global_var:ve_ledger_filter ?= 5 }
+}
+
+### PAGING ###################################################################
+
+ve_ledger_page_next = {
+	scope = country
+	is_valid = {
+		has_global_variable = ve_ledger_offset
+		has_global_variable = ve_ledger_total
+		global_var:ve_ledger_total > 20
+	}
+	effect = { ve_ledger_next_page = yes }
+}
+
+ve_ledger_page_previous = {
+	scope = country
+	is_valid = {
+		has_global_variable = ve_ledger_offset
+		global_var:ve_ledger_offset >= 20
+	}
+	effect = { ve_ledger_previous_page = yes }
+}
+
+ve_ledger_page_first = {
+	scope = country
+	is_valid = {
+		has_global_variable = ve_ledger_offset
+		global_var:ve_ledger_offset >= 20
+	}
+	effect = { ve_ledger_first_page = yes }
+}
+
+### ROW DETAIL ###############################################################
+
+# Hover-only tooltip: which idea groups this country embraced. Evaluated lazily
+# by the tooltip system, so listing all 21 groups costs nothing per frame.
+ve_ledger_idea_groups_tooltip = {
+	scope = country
+	effect = {
+		custom_tooltip = { text = ve_ledger_groups_tt_header }
+		if = {
+			limit = { has_variable = can_go_industrialist }
+			custom_tooltip = { text = industrialist_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_mercantile }
+			custom_tooltip = { text = mercantile_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_financial }
+			custom_tooltip = { text = financial_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_infrastructure }
+			custom_tooltip = { text = infrastructure_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_extraction }
+			custom_tooltip = { text = extraction_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_labour }
+			custom_tooltip = { text = labour_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_agrarian }
+			custom_tooltip = { text = agrarian_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_academic }
+			custom_tooltip = { text = academic_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_bureaucratic }
+			custom_tooltip = { text = bureaucratic_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_parliamentary }
+			custom_tooltip = { text = parliamentary_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_welfare }
+			custom_tooltip = { text = welfare_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_diplomatic }
+			custom_tooltip = { text = diplomatic_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_nationalist }
+			custom_tooltip = { text = nationalist_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_reformist }
+			custom_tooltip = { text = reformist_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_offensive }
+			custom_tooltip = { text = offensive_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_defensive }
+			custom_tooltip = { text = defensive_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_naval }
+			custom_tooltip = { text = naval_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_professional_army }
+			custom_tooltip = { text = professional_army_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_mass_conscription }
+			custom_tooltip = { text = mass_conscription_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_colonial }
+			custom_tooltip = { text = colonial_idea_name }
+		}
+		if = {
+			limit = { has_variable = can_go_war_economy }
+			custom_tooltip = { text = war_economy_idea_name }
+		}
+		if = {
+			limit = { NOT = { ve_ledger_has_any_idea_group = yes } }
+			custom_tooltip = { text = ve_ledger_groups_tt_none }
+		}
+	}
+}

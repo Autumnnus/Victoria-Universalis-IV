@@ -1,0 +1,367 @@
+# Phase 6 shared Era Crossroads offer and lifecycle effects.
+
+ve_clear_era_crossroads_pending_offer = {
+	if = {
+		limit = { has_variable = ve_era_crossroads_offer_pending }
+		remove_variable = ve_era_crossroads_offer_pending
+	}
+	if = {
+		limit = { has_variable = ve_era_crossroads_offer_age }
+		remove_variable = ve_era_crossroads_offer_age
+	}
+}
+
+ve_clear_era_crossroads_session = {
+	ve_clear_era_crossroads_pending_offer = yes
+	if = {
+		limit = { has_variable = ve_era_crossroads_active_age }
+		remove_variable = ve_era_crossroads_active_age
+	}
+	if = {
+		limit = { has_variable = ve_era_crossroads_route }
+		remove_variable = ve_era_crossroads_route
+	}
+	if = {
+		limit = { has_variable = ve_era_crossroads_progress }
+		remove_variable = ve_era_crossroads_progress
+	}
+	if = {
+		limit = { has_variable = ve_era_crossroads_months }
+		remove_variable = ve_era_crossroads_months
+	}
+	if = {
+		limit = { has_variable = ve_era_crossroads_milestone_1_fired }
+		remove_variable = ve_era_crossroads_milestone_1_fired
+	}
+	if = {
+		limit = { has_variable = ve_era_crossroads_milestone_2_fired }
+		remove_variable = ve_era_crossroads_milestone_2_fired
+	}
+}
+
+ve_dispatch_era_crossroads_offer = {
+	if = {
+		limit = { ve_can_offer_era_crossroads_age_1 = yes }
+		set_variable = { name = ve_era_crossroads_offer_pending days = 14 }
+		set_variable = { name = ve_era_crossroads_offer_age value = 1 days = 14 }
+		trigger_event = { id = ve_era_crossroads.1 popup = yes }
+	}
+	else_if = {
+		limit = { ve_can_offer_era_crossroads_age_2 = yes }
+		set_variable = { name = ve_era_crossroads_offer_pending days = 14 }
+		set_variable = { name = ve_era_crossroads_offer_age value = 2 days = 14 }
+		trigger_event = { id = ve_era_crossroads.2 popup = yes }
+	}
+	else_if = {
+		limit = { ve_can_offer_era_crossroads_age_3 = yes }
+		set_variable = { name = ve_era_crossroads_offer_pending days = 14 }
+		set_variable = { name = ve_era_crossroads_offer_age value = 3 days = 14 }
+		trigger_event = { id = ve_era_crossroads.3 popup = yes }
+	}
+}
+
+ve_begin_era_crossroads_session = {
+	ve_clear_era_crossroads_session = yes
+	set_variable = { name = ve_era_crossroads_active_age value = $AGE$ }
+	set_variable = { name = ve_era_crossroads_route value = $ROUTE$ }
+	set_variable = { name = ve_era_crossroads_progress value = 0 }
+	set_variable = { name = ve_era_crossroads_months value = 0 }
+	ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_starts DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_$AGE$_starts DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_route_$ROUTE$_starts DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_ERA_CROSSROADS_START:[THIS.GetCountry.GetNameNoFormatting]:$AGE$:$ROUTE$"
+}
+
+ve_begin_era_crossroads_age_1 = {
+	if = {
+		limit = { ve_can_accept_era_crossroads_age_1_offer = yes }
+		ve_begin_era_crossroads_session = { AGE = 1 ROUTE = $ROUTE$ }
+		add_journal_entry = { type = ve_je_era_crossroads_age_1 }
+	}
+}
+
+ve_begin_era_crossroads_age_2 = {
+	if = {
+		limit = { ve_can_accept_era_crossroads_age_2_offer = yes }
+		ve_begin_era_crossroads_session = { AGE = 2 ROUTE = $ROUTE$ }
+		add_journal_entry = { type = ve_je_era_crossroads_age_2 }
+	}
+}
+
+ve_begin_era_crossroads_age_3 = {
+	if = {
+		limit = { ve_can_accept_era_crossroads_age_3_offer = yes }
+		ve_begin_era_crossroads_session = { AGE = 3 ROUTE = $ROUTE$ }
+		add_journal_entry = { type = ve_je_era_crossroads_age_3 }
+	}
+}
+
+ve_dispatch_era_crossroads_milestone = {
+	if = {
+		limit = { ve_era_crossroads_age_1_milestone_1_due = yes }
+		set_variable = ve_era_crossroads_milestone_1_fired
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_1_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_milestone_1 DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_ERA_CROSSROADS_MILESTONE:[THIS.GetCountry.GetNameNoFormatting]:1:1"
+		trigger_event = { id = ve_era_crossroads.10 popup = yes }
+	}
+	else_if = {
+		limit = { ve_era_crossroads_age_1_milestone_2_due = yes }
+		set_variable = ve_era_crossroads_milestone_2_fired
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_1_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_milestone_2 DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_ERA_CROSSROADS_MILESTONE:[THIS.GetCountry.GetNameNoFormatting]:1:2"
+		trigger_event = { id = ve_era_crossroads.11 popup = yes }
+	}
+	else_if = {
+		limit = { ve_era_crossroads_age_2_milestone_1_due = yes }
+		set_variable = ve_era_crossroads_milestone_1_fired
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_2_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_milestone_1 DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_ERA_CROSSROADS_MILESTONE:[THIS.GetCountry.GetNameNoFormatting]:2:1"
+		trigger_event = { id = ve_era_crossroads.20 popup = yes }
+	}
+	else_if = {
+		limit = { ve_era_crossroads_age_2_milestone_2_due = yes }
+		set_variable = ve_era_crossroads_milestone_2_fired
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_2_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_milestone_2 DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_ERA_CROSSROADS_MILESTONE:[THIS.GetCountry.GetNameNoFormatting]:2:2"
+		trigger_event = { id = ve_era_crossroads.21 popup = yes }
+	}
+	else_if = {
+		limit = { ve_era_crossroads_age_3_milestone_1_due = yes }
+		set_variable = ve_era_crossroads_milestone_1_fired
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_3_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_milestone_1 DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_ERA_CROSSROADS_MILESTONE:[THIS.GetCountry.GetNameNoFormatting]:3:1"
+		trigger_event = { id = ve_era_crossroads.30 popup = yes }
+	}
+	else_if = {
+		limit = { ve_era_crossroads_age_3_milestone_2_due = yes }
+		set_variable = ve_era_crossroads_milestone_2_fired
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_3_milestones DELTA = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_milestone_2 DELTA = 1 }
+		debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_ERA_CROSSROADS_MILESTONE:[THIS.GetCountry.GetNameNoFormatting]:3:2"
+		trigger_event = { id = ve_era_crossroads.31 popup = yes }
+	}
+}
+
+ve_tick_era_crossroads = {
+	if = {
+		limit = { ve_has_valid_era_crossroads_context = yes }
+		change_variable = { name = ve_era_crossroads_months add = 1 }
+		change_variable = {
+			name = ve_era_crossroads_progress
+			add = ve_era_crossroads_monthly_progress
+		}
+		if = {
+			limit = { var:ve_era_crossroads_months > 60 }
+			set_variable = { name = ve_era_crossroads_months value = 60 }
+		}
+		if = {
+			limit = { var:ve_era_crossroads_progress > 60 }
+			set_variable = { name = ve_era_crossroads_progress value = 60 }
+		}
+		if = {
+			limit = { var:ve_era_crossroads_progress < 0 }
+			set_variable = { name = ve_era_crossroads_progress value = 0 }
+		}
+		ve_dispatch_era_crossroads_milestone = yes
+	}
+}
+
+ve_era_crossroads_change_progress = {
+	set_variable = {
+		name = ve_era_crossroads_tm_progress_before
+		value = var:ve_era_crossroads_progress
+	}
+	change_variable = {
+		name = ve_era_crossroads_progress
+		add = $DELTA$
+	}
+	if = {
+		limit = { var:ve_era_crossroads_progress > 60 }
+		set_variable = { name = ve_era_crossroads_progress value = 60 }
+	}
+	if = {
+		limit = { var:ve_era_crossroads_progress < 0 }
+		set_variable = { name = ve_era_crossroads_progress value = 0 }
+	}
+	set_variable = {
+		name = ve_era_crossroads_tm_progress_actual
+		value = var:ve_era_crossroads_progress
+	}
+	change_variable = {
+		name = ve_era_crossroads_tm_progress_actual
+		subtract = var:ve_era_crossroads_tm_progress_before
+	}
+	ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_progress_net_total DELTA = var:ve_era_crossroads_tm_progress_actual }
+	remove_variable = ve_era_crossroads_tm_progress_before
+	remove_variable = ve_era_crossroads_tm_progress_actual
+}
+
+ve_era_crossroads_change_national_insight = {
+	set_variable = {
+		name = ve_era_crossroads_tm_insight_before
+		value = var:idea_point_pool
+	}
+	change_variable = {
+		name = idea_point_pool
+		add = $DELTA$
+	}
+	ve_clamp_national_insight = yes
+	set_variable = {
+		name = ve_era_crossroads_tm_insight_actual
+		value = var:idea_point_pool
+	}
+	change_variable = {
+		name = ve_era_crossroads_tm_insight_actual
+		subtract = var:ve_era_crossroads_tm_insight_before
+	}
+	ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_insight_net_total DELTA = var:ve_era_crossroads_tm_insight_actual }
+	remove_variable = ve_era_crossroads_tm_insight_before
+	remove_variable = ve_era_crossroads_tm_insight_actual
+}
+
+ve_record_era_crossroads_option = {
+	ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_options DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_$AGE$_options DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_$CLASS$_options DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_ERA_CROSSROADS_OPTION:[THIS.GetCountry.GetNameNoFormatting]:$AGE$:$MILESTONE$:$CLASS$"
+}
+
+ve_era_crossroads_change_momentum = {
+	if = {
+		limit = { NOT = { has_variable = ve_splender_points } }
+		set_variable = { name = ve_splender_points value = 0 }
+	}
+	set_variable = {
+		name = ve_era_crossroads_tm_momentum_before
+		value = var:ve_splender_points
+	}
+	change_variable = {
+		name = ve_splender_points
+		add = $DELTA$
+	}
+	if = {
+		limit = { var:ve_splender_points < 0 }
+		set_variable = { name = ve_splender_points value = 0 }
+	}
+	set_variable = {
+		name = ve_era_crossroads_tm_momentum_actual
+		value = var:ve_splender_points
+	}
+	change_variable = {
+		name = ve_era_crossroads_tm_momentum_actual
+		subtract = var:ve_era_crossroads_tm_momentum_before
+	}
+	ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_momentum_net_total DELTA = var:ve_era_crossroads_tm_momentum_actual }
+	remove_variable = ve_era_crossroads_tm_momentum_before
+	remove_variable = ve_era_crossroads_tm_momentum_actual
+}
+
+ve_complete_era_crossroads = {
+	if = {
+		limit = { var:ve_era_crossroads_active_age = 1 }
+		set_variable = ve_era_crossroads_age_1_completed
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_1_successes DELTA = 1 }
+		trigger_event = { id = ve_era_crossroads.40 popup = yes }
+	}
+	else_if = {
+		limit = { var:ve_era_crossroads_active_age = 2 }
+		set_variable = ve_era_crossroads_age_2_completed
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_2_successes DELTA = 1 }
+		trigger_event = { id = ve_era_crossroads.41 popup = yes }
+	}
+	else_if = {
+		limit = { var:ve_era_crossroads_active_age = 3 }
+		set_variable = ve_era_crossroads_age_3_completed
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_3_successes DELTA = 1 }
+		trigger_event = { id = ve_era_crossroads.42 popup = yes }
+	}
+	ve_era_crossroads_change_momentum = { DELTA = 50 }
+	ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_successes DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_completion_months_total DELTA = var:ve_era_crossroads_months }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_ERA_CROSSROADS_RESOLUTION:[THIS.GetCountry.GetNameNoFormatting]:SUCCESS"
+	ve_clear_era_crossroads_session = yes
+}
+
+ve_timeout_era_crossroads = {
+	ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_timeouts DELTA = 1 }
+	if = {
+		limit = { var:ve_era_crossroads_active_age = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_1_timeouts DELTA = 1 }
+	}
+	else_if = {
+		limit = { var:ve_era_crossroads_active_age = 2 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_2_timeouts DELTA = 1 }
+	}
+	else_if = {
+		limit = { var:ve_era_crossroads_active_age = 3 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_3_timeouts DELTA = 1 }
+	}
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_ERA_CROSSROADS_RESOLUTION:[THIS.GetCountry.GetNameNoFormatting]:TIMEOUT"
+	ve_fail_era_crossroads = yes
+}
+
+ve_invalidate_era_crossroads = {
+	ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_invalidations DELTA = 1 }
+	ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_transition_invalidations DELTA = 1 }
+	if = {
+		limit = { var:ve_era_crossroads_active_age = 1 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_1_invalidations DELTA = 1 }
+	}
+	else_if = {
+		limit = { var:ve_era_crossroads_active_age = 2 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_2_invalidations DELTA = 1 }
+	}
+	else_if = {
+		limit = { var:ve_era_crossroads_active_age = 3 }
+		ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_age_3_invalidations DELTA = 1 }
+	}
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_ERA_CROSSROADS_RESOLUTION:[THIS.GetCountry.GetNameNoFormatting]:INVALIDATED"
+	ve_fail_era_crossroads = yes
+}
+
+ve_fail_era_crossroads = {
+	if = {
+		limit = { var:ve_era_crossroads_active_age = 1 }
+		set_variable = ve_era_crossroads_age_1_failed
+	}
+	else_if = {
+		limit = { var:ve_era_crossroads_active_age = 2 }
+		set_variable = ve_era_crossroads_age_2_failed
+	}
+	else_if = {
+		limit = { var:ve_era_crossroads_active_age = 3 }
+		set_variable = ve_era_crossroads_age_3_failed
+	}
+	ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_failures DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_ERA_CROSSROADS_RESOLUTION:[THIS.GetCountry.GetNameNoFormatting]:FAILURE"
+	ve_clear_era_crossroads_session = yes
+}
+
+ve_decline_era_crossroads_offer = {
+	if = {
+		limit = { var:ve_era_crossroads_offer_age = 1 }
+		set_variable = ve_era_crossroads_age_1_declined
+	}
+	else_if = {
+		limit = { var:ve_era_crossroads_offer_age = 2 }
+		set_variable = ve_era_crossroads_age_2_declined
+	}
+	else_if = {
+		limit = { var:ve_era_crossroads_offer_age = 3 }
+		set_variable = ve_era_crossroads_age_3_declined
+	}
+	ve_tm_change_country_variable = { NAME = ve_era_crossroads_tm_declines DELTA = 1 }
+	debug_log = "[TimeKeeper.GetCurrentDate.GetString]:VEU4_ERA_CROSSROADS_RESOLUTION:[THIS.GetCountry.GetNameNoFormatting]:DECLINED"
+	ve_clear_era_crossroads_pending_offer = yes
+}

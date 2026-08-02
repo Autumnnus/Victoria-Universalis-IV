@@ -1,4 +1,4 @@
-british_ideas = {
+﻿british_ideas = {
 	if = {
 		limit = {
 			var:national_idea_pool >= 3

@@ -2,11 +2,71 @@
 	add = var:piety_bar_point
 }
 
-idea_point_value = {
+ve_religious_state_value = {
+	add = var:piety_bar_point
+}
+
+ve_national_insight_value = {
 	add = var:idea_point_pool
 }
 
+# Player-facing doctrine-capacity readouts. Capacity itself is mutated by
+# ve_update_idea_group_capacity; these values only explain the next milestone.
+ve_idea_group_free_slots = {
+	add = var:idea_group_cap
+	subtract = var:idea_group_unlocked
+	min = 0
+	max = 7
+	round = yes
+}
+
+ve_next_idea_group_slot = {
+	add = var:idea_group_cap
+	add = 1
+	min = 2
+	max = 7
+	round = yes
+}
+
+ve_next_idea_group_capacity_threshold = {
+	if = {
+		limit = { var:idea_group_cap < 2 }
+		value = 4
+	}
+	else_if = {
+		limit = { var:idea_group_cap < 3 }
+		value = 8
+	}
+	else_if = {
+		limit = { var:idea_group_cap < 4 }
+		value = 13
+	}
+	else_if = {
+		limit = { var:idea_group_cap < 5 }
+		value = 19
+	}
+	else_if = {
+		limit = { var:idea_group_cap < 6 }
+		value = 26
+	}
+	else = {
+		value = 34
+	}
+}
+
+ve_idea_group_capacity_remaining = {
+	add = ve_next_idea_group_capacity_threshold
+	subtract = var:ve_idea_capacity_progress
+	min = 0
+	max = 34
+	round = yes
+}
+
 culture_reform_point_value = {
+	add = var:culture_reform_point
+}
+
+ve_national_identity_value = {
 	add = var:culture_reform_point
 }
 
@@ -14,1150 +74,259 @@ splender_points_value = {
 	add = var:ve_splender_points
 }
 
-monthly_splender_points = {
-	if = {
-		limit = {
-			is_ai = no
-		}
-		add = 3		#1260 for 35 years. 
-	}
-	else = {
-		if = {
-			limit = {
-				has_global_variable = ve_easy
-			}
-			add = 2			#840 for 35 years.
-		}
-		else_if = {
-			limit = {
-				has_global_variable = ve_medium
-			}
-			add = 3			#1260 for 35 years.
-		}
-		else_if = {
-			limit = {
-				has_global_variable = ve_hard
-			}
-			add = 4			#1680 for 35 years. 
-		}
-	}
-	if = {
-		limit = {
-			has_global_variable = ve_age_1_started
-		}
-		if = {
-			limit = {
-				calc_true_if = {
-					amount <= 1
-					root.average_sol >= 10
-					AND = {
-						has_law = law_type:law_slavery_banned
-						NOT = {
-							has_law = law_type:law_serfdom
-						}
-					}
-					government_legitimacy >= 75
-					taking_loans = no
-					ig:ig_intelligentsia = {
-						is_in_government = yes
-						ig_clout >= 0.15
-					}
-					pop_type_percent_country = {
-						pop_type = peasants
-						percent < 0.5
-					}
-					num_declared_interests >= 8
-				}
-			}
-			add = 2
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 2
-					root.average_sol >= 10
-					AND = {
-						has_law = law_type:law_slavery_banned
-						NOT = {
-							has_law = law_type:law_serfdom
-						}
-					}
-					government_legitimacy >= 75
-					taking_loans = no
-					ig:ig_intelligentsia = {
-						is_in_government = yes
-						ig_clout >= 0.15
-					}
-					pop_type_percent_country = {
-						pop_type = peasants
-						percent < 0.5
-					}
-					num_declared_interests >= 8
-				}
-			}
-			add = 4
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 3
-					root.average_sol >= 10
-					AND = {
-						has_law = law_type:law_slavery_banned
-						NOT = {
-							has_law = law_type:law_serfdom
-						}
-					}
-					government_legitimacy >= 75
-					taking_loans = no
-					ig:ig_intelligentsia = {
-						is_in_government = yes
-						ig_clout >= 0.15
-					}
-					pop_type_percent_country = {
-						pop_type = peasants
-						percent < 0.5
-					}
-					num_declared_interests >= 8
-				}
-			}
-			add = 6
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 4
-					root.average_sol >= 10
-					AND = {
-						has_law = law_type:law_slavery_banned
-						NOT = {
-							has_law = law_type:law_serfdom
-						}
-					}
-					government_legitimacy >= 75
-					taking_loans = no
-					ig:ig_intelligentsia = {
-						is_in_government = yes
-						ig_clout >= 0.15
-					}
-					pop_type_percent_country = {
-						pop_type = peasants
-						percent < 0.5
-					}
-					num_declared_interests >= 8
-				}
-			}
-			add = 8
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 5
-					root.average_sol >= 10
-					AND = {
-						has_law = law_type:law_slavery_banned
-						NOT = {
-							has_law = law_type:law_serfdom
-						}
-					}
-					government_legitimacy >= 75
-					taking_loans = no
-					ig:ig_intelligentsia = {
-						is_in_government = yes
-						ig_clout >= 0.15
-					}
-					pop_type_percent_country = {
-						pop_type = peasants
-						percent < 0.5
-					}
-					num_declared_interests >= 8
-				}
-			}
-			add = 10
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 6
-					root.average_sol >= 10
-					AND = {
-						has_law = law_type:law_slavery_banned
-						NOT = {
-							has_law = law_type:law_serfdom
-						}
-					}
-					government_legitimacy >= 75
-					taking_loans = no
-					ig:ig_intelligentsia = {
-						is_in_government = yes
-						ig_clout >= 0.15
-					}
-					pop_type_percent_country = {
-						pop_type = peasants
-						percent < 0.5
-					}
-					num_declared_interests >= 8
-				}
-			}
-			add = 12
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 7
-					root.average_sol >= 10
-					AND = {
-						has_law = law_type:law_slavery_banned
-						NOT = {
-							has_law = law_type:law_serfdom
-						}
-					}
-					government_legitimacy >= 75
-					taking_loans = no
-					ig:ig_intelligentsia = {
-						is_in_government = yes
-						ig_clout >= 0.15
-					}
-					pop_type_percent_country = {
-						pop_type = peasants
-						percent < 0.5
-					}
-					num_declared_interests >= 8
-				}
-			}
-			add = 14
-		}
-	}
-	else_if = {
-		limit = {
-			has_global_variable = ve_age_2_started
-		}
-		if = {
-			limit = {
-				calc_true_if = {
-					amount <= 1
-					OR = {
-						has_law = law_type:law_colonial_resettlement
-						has_law = law_type:law_colonial_exploitation
-					}
-					any_subject_or_below = {
-						OR = {
-							has_diplomatic_pact = {
-								who = ROOT
-								type = puppet
-							}
-							has_diplomatic_pact = {
-								who = ROOT
-								type = dominion
-							}
-						}
-						count >= 2
-					}
-					any_scope_state = {
-						owner = ROOT
-						state_population > 250000
-						has_building = building_railway
-					}
-					navy_size >= 120
-					leading_producer_of = g:coal
-					literacy_rate >= 0.5
-					total_population > 100000000
-				}
-			}
-			add = 2
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 2
-					OR = {
-						has_law = law_type:law_colonial_resettlement
-						has_law = law_type:law_colonial_exploitation
-					}
-					any_subject_or_below = {
-						OR = {
-							has_diplomatic_pact = {
-								who = ROOT
-								type = puppet
-							}
-							has_diplomatic_pact = {
-								who = ROOT
-								type = dominion
-							}
-						}
-						count >= 2
-					}
-					any_scope_state = {
-						owner = ROOT
-						state_population > 250000
-						has_building = building_railway
-					}
-					navy_size >= 120
-					leading_producer_of = g:coal
-					literacy_rate >= 0.5
-					total_population > 100000000
-				}
-			}
-			add = 4
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 3
-					OR = {
-						has_law = law_type:law_colonial_resettlement
-						has_law = law_type:law_colonial_exploitation
-					}
-					any_subject_or_below = {
-						OR = {
-							has_diplomatic_pact = {
-								who = ROOT
-								type = puppet
-							}
-							has_diplomatic_pact = {
-								who = ROOT
-								type = dominion
-							}
-						}
-						count >= 2
-					}
-					any_scope_state = {
-						owner = ROOT
-						state_population > 250000
-						has_building = building_railway
-					}
-					navy_size >= 120
-					leading_producer_of = g:coal
-					literacy_rate >= 0.5
-					total_population > 100000000
-				}
-			}
-			add = 6
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 4
-					OR = {
-						has_law = law_type:law_colonial_resettlement
-						has_law = law_type:law_colonial_exploitation
-					}
-					any_subject_or_below = {
-						OR = {
-							has_diplomatic_pact = {
-								who = ROOT
-								type = puppet
-							}
-							has_diplomatic_pact = {
-								who = ROOT
-								type = dominion
-							}
-						}
-						count >= 2
-					}
-					any_scope_state = {
-						owner = ROOT
-						state_population > 250000
-						has_building = building_railway
-					}
-					navy_size >= 120
-					leading_producer_of = g:coal
-					literacy_rate >= 0.5
-					total_population > 100000000
-				}
-			}
-			add = 8
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 5
-					OR = {
-						has_law = law_type:law_colonial_resettlement
-						has_law = law_type:law_colonial_exploitation
-					}
-					any_subject_or_below = {
-						OR = {
-							has_diplomatic_pact = {
-								who = ROOT
-								type = puppet
-							}
-							has_diplomatic_pact = {
-								who = ROOT
-								type = dominion
-							}
-						}
-						count >= 2
-					}
-					any_scope_state = {
-						owner = ROOT
-						state_population > 250000
-						has_building = building_railway
-					}
-					navy_size >= 120
-					leading_producer_of = g:coal
-					literacy_rate >= 0.5
-					total_population > 100000000
-				}
-			}
-			add = 10
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 6
-					OR = {
-						has_law = law_type:law_colonial_resettlement
-						has_law = law_type:law_colonial_exploitation
-					}
-					any_subject_or_below = {
-						OR = {
-							has_diplomatic_pact = {
-								who = ROOT
-								type = puppet
-							}
-							has_diplomatic_pact = {
-								who = ROOT
-								type = dominion
-							}
-						}
-						count >= 2
-					}
-					any_scope_state = {
-						owner = ROOT
-						state_population > 250000
-						has_building = building_railway
-					}
-					navy_size >= 120
-					leading_producer_of = g:coal
-					literacy_rate >= 0.5
-					total_population > 100000000
-				}
-			}
-			add = 12
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 7
-					OR = {
-						has_law = law_type:law_colonial_resettlement
-						has_law = law_type:law_colonial_exploitation
-					}
-					any_subject_or_below = {
-						OR = {
-							has_diplomatic_pact = {
-								who = ROOT
-								type = puppet
-							}
-							has_diplomatic_pact = {
-								who = ROOT
-								type = dominion
-							}
-						}
-						count >= 2
-					}
-					any_scope_state = {
-						owner = ROOT
-						state_population > 250000
-						has_building = building_railway
-					}
-					navy_size >= 120
-					leading_producer_of = g:coal
-					literacy_rate >= 0.5
-					total_population > 100000000
-				}
-			}
-			add = 14
-		}
-	}
-	else_if = {
-		limit = {
-			has_global_variable = ve_age_3_started
-		}
-		if = {
-			limit = {
-				calc_true_if = {
-					amount <= 1
-					NOT = {
-						has_law = law_type:law_monarchy
-					}
-					OR = {
-						institution_investment_level = {
-							institution = institution_colonial_affairs
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_social_security
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_workplace_safety
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_schools
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_police
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_health_system
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_home_affairs
-							value = 5
-						}
-					}
-					army_size >= 350
-					leading_producer_of = g:oil
-					NOT = {
-						any_scope_state = {
-							owner = ROOT
-							any_scope_building = {
-								is_building_type = building_barracks
-								OR = {
-									has_active_production_method = pm_irregular_infantry
-									has_active_production_method = pm_line_infantry
-									has_active_production_method = pm_skirmish_infantry
-									has_active_production_method = pm_trench_infantry
-									has_active_production_method = pm_squad_infantry
-								}
-								OR = {
-									has_active_production_method = pm_no_artillery
-									has_active_production_method = pm_cannon_artillery
-									has_active_production_method = pm_mobile_artillery
-									has_active_production_method = pm_shrapnel_artillery
-								}
-							}
-						}
-					}
-					GDP >= 1000000000
-					global_country_ranking = 1
-				}
-			}
-			add = 2
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 2
-					NOT = {
-						has_law = law_type:law_monarchy
-					}
-					OR = {
-						institution_investment_level = {
-							institution = institution_colonial_affairs
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_social_security
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_workplace_safety
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_schools
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_police
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_health_system
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_home_affairs
-							value = 5
-						}
-					}
-					army_size >= 350
-					leading_producer_of = g:oil
-					NOT = {
-						any_scope_state = {
-							owner = ROOT
-							any_scope_building = {
-								is_building_type = building_barracks
-								OR = {
-									has_active_production_method = pm_irregular_infantry
-									has_active_production_method = pm_line_infantry
-									has_active_production_method = pm_skirmish_infantry
-									has_active_production_method = pm_trench_infantry
-									has_active_production_method = pm_squad_infantry
-								}
-								OR = {
-									has_active_production_method = pm_no_artillery
-									has_active_production_method = pm_cannon_artillery
-									has_active_production_method = pm_mobile_artillery
-									has_active_production_method = pm_shrapnel_artillery
-								}
-							}
-						}
-					}
-					GDP >= 1000000000
-					global_country_ranking = 1
-				}
-			}
-			add = 4
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 3
-					NOT = {
-						has_law = law_type:law_monarchy
-					}
-					OR = {
-						institution_investment_level = {
-							institution = institution_colonial_affairs
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_social_security
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_workplace_safety
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_schools
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_police
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_health_system
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_home_affairs
-							value = 5
-						}
-					}
-					army_size >= 350
-					leading_producer_of = g:oil
-					NOT = {
-						any_scope_state = {
-							owner = ROOT
-							any_scope_building = {
-								is_building_type = building_barracks
-								OR = {
-									has_active_production_method = pm_irregular_infantry
-									has_active_production_method = pm_line_infantry
-									has_active_production_method = pm_skirmish_infantry
-									has_active_production_method = pm_trench_infantry
-									has_active_production_method = pm_squad_infantry
-								}
-								OR = {
-									has_active_production_method = pm_no_artillery
-									has_active_production_method = pm_cannon_artillery
-									has_active_production_method = pm_mobile_artillery
-									has_active_production_method = pm_shrapnel_artillery
-								}
-							}
-						}
-					}
-					GDP >= 1000000000
-					global_country_ranking = 1
-				}
-			}
-			add = 6
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 4
-					NOT = {
-						has_law = law_type:law_monarchy
-					}
-					OR = {
-						institution_investment_level = {
-							institution = institution_colonial_affairs
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_social_security
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_workplace_safety
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_schools
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_police
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_health_system
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_home_affairs
-							value = 5
-						}
-					}
-					army_size >= 350
-					leading_producer_of = g:oil
-					NOT = {
-						any_scope_state = {
-							owner = ROOT
-							any_scope_building = {
-								is_building_type = building_barracks
-								OR = {
-									has_active_production_method = pm_irregular_infantry
-									has_active_production_method = pm_line_infantry
-									has_active_production_method = pm_skirmish_infantry
-									has_active_production_method = pm_trench_infantry
-									has_active_production_method = pm_squad_infantry
-								}
-								OR = {
-									has_active_production_method = pm_no_artillery
-									has_active_production_method = pm_cannon_artillery
-									has_active_production_method = pm_mobile_artillery
-									has_active_production_method = pm_shrapnel_artillery
-								}
-							}
-						}
-					}
-					GDP >= 1000000000
-					global_country_ranking = 1
-				}
-			}
-			add = 8
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 5
-					NOT = {
-						has_law = law_type:law_monarchy
-					}
-					OR = {
-						institution_investment_level = {
-							institution = institution_colonial_affairs
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_social_security
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_workplace_safety
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_schools
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_police
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_health_system
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_home_affairs
-							value = 5
-						}
-					}
-					army_size >= 350
-					leading_producer_of = g:oil
-					NOT = {
-						any_scope_state = {
-							owner = ROOT
-							any_scope_building = {
-								is_building_type = building_barracks
-								OR = {
-									has_active_production_method = pm_irregular_infantry
-									has_active_production_method = pm_line_infantry
-									has_active_production_method = pm_skirmish_infantry
-									has_active_production_method = pm_trench_infantry
-									has_active_production_method = pm_squad_infantry
-								}
-								OR = {
-									has_active_production_method = pm_no_artillery
-									has_active_production_method = pm_cannon_artillery
-									has_active_production_method = pm_mobile_artillery
-									has_active_production_method = pm_shrapnel_artillery
-								}
-							}
-						}
-					}
-					GDP >= 1000000000
-					global_country_ranking = 1
-				}
-			}
-			add = 10
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 6
-					NOT = {
-						has_law = law_type:law_monarchy
-					}
-					OR = {
-						institution_investment_level = {
-							institution = institution_colonial_affairs
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_social_security
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_workplace_safety
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_schools
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_police
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_health_system
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_home_affairs
-							value = 5
-						}
-					}
-					army_size >= 350
-					leading_producer_of = g:oil
-					NOT = {
-						any_scope_state = {
-							owner = ROOT
-							any_scope_building = {
-								is_building_type = building_barracks
-								OR = {
-									has_active_production_method = pm_irregular_infantry
-									has_active_production_method = pm_line_infantry
-									has_active_production_method = pm_skirmish_infantry
-									has_active_production_method = pm_trench_infantry
-									has_active_production_method = pm_squad_infantry
-								}
-								OR = {
-									has_active_production_method = pm_no_artillery
-									has_active_production_method = pm_cannon_artillery
-									has_active_production_method = pm_mobile_artillery
-									has_active_production_method = pm_shrapnel_artillery
-								}
-							}
-						}
-					}
-					GDP >= 1000000000
-					global_country_ranking = 1
-				}
-			}
-			add = 12
-		}
-		else_if = {
-			limit = {
-				calc_true_if = {
-					amount <= 7
-					NOT = {
-						has_law = law_type:law_monarchy
-					}
-					OR = {
-						institution_investment_level = {
-							institution = institution_colonial_affairs
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_social_security
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_workplace_safety
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_schools
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_police
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_health_system
-							value = 5
-						}
-						institution_investment_level = {
-							institution = institution_home_affairs
-							value = 5
-						}
-					}
-					army_size >= 350
-					leading_producer_of = g:oil
-					NOT = {
-						any_scope_state = {
-							owner = ROOT
-							any_scope_building = {
-								is_building_type = building_barracks
-								OR = {
-									has_active_production_method = pm_irregular_infantry
-									has_active_production_method = pm_line_infantry
-									has_active_production_method = pm_skirmish_infantry
-									has_active_production_method = pm_trench_infantry
-									has_active_production_method = pm_squad_infantry
-								}
-								OR = {
-									has_active_production_method = pm_no_artillery
-									has_active_production_method = pm_cannon_artillery
-									has_active_production_method = pm_mobile_artillery
-									has_active_production_method = pm_shrapnel_artillery
-								}
-							}
-						}
-					}
-					GDP >= 1000000000
-					global_country_ranking = 1
-				}
-			}
-			add = 14
-		}
-	}
+ve_era_momentum_value = {
+	add = var:ve_splender_points
 }
 
-monthly_culture_reform_point = {
-	if = {
-		limit = {
-			NOT = {
-				var:selected_reform_value == 7
-			}
-		}
-		if = {
-			limit = {
-				is_ai = no
-			}
-			add = 7			# 840 for 10 years.
-		}
-		else = {
-			if = {
-				limit = {
-					has_global_variable = ve_easy
-				}
-				add = 5				# 600 for 10 years.
-			}
-			else_if = {
-				limit = {
-					has_global_variable = ve_medium
-				}
-				add = 7				# 840 for 10 years.
-			}
-			else_if = {
-				limit = {
-					has_global_variable = ve_hard
-				}
-				add = 9				# 1080 for 10 years.
-			}
-		}
-	}
-}
+# Phase 1 compatibility values. GUI and update effects should migrate to these
+# stable names before the underlying legacy formulas and variables are replaced.
 
-monthly_idea_points = {
+ve_national_insight_base = 6
+
+ve_national_insight_literacy = {
 	if = {
-		limit = {
-			is_ai = no
-		}
-		add = 13		#1560 for 10 years.
-	}
-	else = {
-		if = {
-			limit = {
-				has_global_variable = ve_easy
-			}
-			add = 10			#1200 for 10 years.
-		}
-		else_if = {
-			limit = {
-				has_global_variable = ve_medium
-			}
-			add = 13			#1560 for 10 years.
-		}
-		else_if = {
-			limit = {
-				has_global_variable = ve_hard
-			}
-			add = 16			#1920 for 10 years.
-		}
-	}
-	if = {
-		limit = {
-			literacy_rate <= 0.25
-		}
+		limit = { literacy_rate < 0.25 }
 		add = 1
 	}
 	else_if = {
-		limit = {
-			literacy_rate <= 0.5
-		}
+		limit = { literacy_rate < 0.50 }
 		add = 2
 	}
 	else_if = {
-		limit = {
-			literacy_rate <= 0.75
-		}
+		limit = { literacy_rate < 0.75 }
 		add = 3
 	}
-	else_if = {
-		limit = {
-			literacy_rate <= 1
-		}
+	else = {
 		add = 4
 	}
 }
 
-monthly_piety_points = {
+ve_national_insight_education = {
 	if = {
 		limit = {
-			is_ai = no
+			institution_investment_level = {
+				institution = institution_schools
+				value >= 5
+			}
 		}
-		add = 4		# 240 for 5 years.
+		add = 3
+	}
+	else_if = {
+		limit = {
+			institution_investment_level = {
+				institution = institution_schools
+				value >= 3
+			}
+		}
+		add = 2
+	}
+	else_if = {
+		limit = {
+			institution_investment_level = {
+				institution = institution_schools
+				value >= 1
+			}
+		}
+		add = 1
+	}
+}
+
+# University requirements scale in broad population bands. This rewards
+# educational capacity without making raw country size the dominant input.
+ve_national_insight_universities = {
+	if = {
+		limit = { total_population < 5000000 }
+		if = {
+			limit = {
+				country_has_building_type_levels = {
+					target = bt:building_university
+					value >= 3
+				}
+			}
+			add = 2
+		}
+		else_if = {
+			limit = {
+				country_has_building_type_levels = {
+					target = bt:building_university
+					value >= 1
+				}
+			}
+			add = 1
+		}
+	}
+	else_if = {
+		limit = { total_population < 20000000 }
+		if = {
+			limit = {
+				country_has_building_type_levels = {
+					target = bt:building_university
+					value >= 5
+				}
+			}
+			add = 2
+		}
+		else_if = {
+			limit = {
+				country_has_building_type_levels = {
+					target = bt:building_university
+					value >= 2
+				}
+			}
+			add = 1
+		}
+	}
+	else_if = {
+		limit = { total_population < 50000000 }
+		if = {
+			limit = {
+				country_has_building_type_levels = {
+					target = bt:building_university
+					value >= 10
+				}
+			}
+			add = 2
+		}
+		else_if = {
+			limit = {
+				country_has_building_type_levels = {
+					target = bt:building_university
+					value >= 5
+				}
+			}
+			add = 1
+		}
 	}
 	else = {
 		if = {
 			limit = {
-				has_global_variable = ve_easy
+				country_has_building_type_levels = {
+					target = bt:building_university
+					value >= 20
+				}
 			}
-			add = 2			# 120 for 5 years.
+			add = 2
 		}
 		else_if = {
 			limit = {
-				has_global_variable = ve_medium
+				country_has_building_type_levels = {
+					target = bt:building_university
+					value >= 10
+				}
 			}
-			add = 4			# 240 for 5 years.
-		}
-		else_if = {
-			limit = {
-				has_global_variable = ve_hard
-			}
-			add = 6			# 360 for 5 years.
+			add = 1
 		}
 	}
+}
+
+ve_national_insight_administration = {
 	if = {
 		limit = {
-			has_law = law_type:law_theocracy
+			bureaucracy >= 0
+			approaching_bureaucracy_shortage = no
 		}
-		add = 2
+		add = 1
 	}
+	else = {
+		subtract = 2
+	}
+}
+
+ve_national_insight_legitimacy = {
 	if = {
-		limit = {
-			has_law = law_type:law_state_religion
-		}
+		limit = { government_legitimacy >= 75 }
 		add = 2
 	}
 	else_if = {
+		limit = { government_legitimacy >= 50 }
+		add = 1
+	}
+	else_if = {
+		limit = { government_legitimacy < 25 }
+		subtract = 2
+	}
+	else = {
+		subtract = 1
+	}
+}
+
+ve_national_insight_intelligentsia = {
+	if = {
 		limit = {
-			has_law = law_type:law_freedom_of_conscience
+			ig:ig_intelligentsia = { ig_approval >= 5 }
 		}
 		add = 1
 	}
 	else_if = {
 		limit = {
-			has_law = law_type:law_state_atheism
+			ig:ig_intelligentsia = { ig_approval <= -5 }
 		}
-		add = 2
+		subtract = 1
+	}
+}
+
+ve_national_insight_stability = {
+	if = {
+		limit = { taking_loans = yes }
+		subtract = 1
+	}
+	if = {
+		limit = { country_turmoil >= 0.25 }
+		subtract = 2
+	}
+	else_if = {
+		limit = { country_turmoil >= 0.10 }
+		subtract = 1
 	}
 	if = {
 		limit = {
-			OR = {
-				country_has_state_religion = rel:catholic
-				country_has_state_religion = rel:protestant
-			}
-			owns_entire_state_region = STATE_NORTH_RHINE
+			has_modifier = ve_national_insight_implementation_strain
 		}
-		add = 2
-	}
-	else_if = {
-		limit = {
-			OR = {
-				country_has_state_religion = rel:sunni
-				country_has_state_religion = rel:shiite
-			}
-			owns_entire_state_region = STATE_HEDJAZ
-		}
-		add = 2
-	}
-	else_if = {
-		limit = {
-			country_has_state_religion = rel:hindu
-			owns_entire_state_region = STATE_AWADH
-		}
-		add = 2
-	}
-	else_if = {
-		limit = {
-			country_has_state_religion = rel:sikh
-			owns_entire_state_region = STATE_MYSORE
-		}
-		add = 2
+		subtract = 2
 	}
 }
 
-avaible_missionaries = {
-	add = var:avaible_missionaries
-}
-
-total_missionaries = {
-	add = var:total_missionaries
-}
-
-avaible_culture_missionaries = {
-	add = var:avaible_culture_missionaries
-}
-
-total_culture_missionaries = {
-	add = var:total_culture_missionaries
-}
-
-ve_set_religion_law_effects = {
+ve_national_insight_cap_multiplier = {
 	if = {
-		limit = {
-			has_law = law_type:law_state_religion
-		}
-		add = 3
+		limit = { var:idea_point_pool >= 1000 }
+		value = 0
 	}
 	else_if = {
-		limit = {
-			has_law = law_type:law_freedom_of_conscience
-		}
-		add = 1
+		limit = { var:idea_point_pool >= 900 }
+		value = 0.25
 	}
 	else_if = {
-		limit = {
-			has_law = law_type:law_state_atheism
-		}
-		add = 3
+		limit = { var:idea_point_pool >= 750 }
+		value = 0.50
 	}
-	else_if = {
-		limit = {
-			has_law = law_type:law_total_separation
-		}
-		add = 0
+	else = {
+		value = 1
 	}
 }
+
+ve_monthly_national_insight = {
+	add = ve_national_insight_base
+	add = ve_national_insight_literacy
+	add = ve_national_insight_education
+	add = ve_national_insight_universities
+	add = ve_national_insight_administration
+	add = ve_national_insight_legitimacy
+	add = ve_national_insight_intelligentsia
+	add = ve_national_insight_stability
+	min = 2
+	max = 18
+	multiply = ve_national_insight_cap_multiplier
+	round = yes
+}
+
+
+ve_monthly_era_momentum = {
+	add = ve_era_objectives_satisfied
+	add = ve_era_momentum_idea_bonus
+}
+
+
+
 
 ve_set_citizenship_law_effects = {
 	if = {

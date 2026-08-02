@@ -1,0 +1,306 @@
+﻿ve_religious_model_name = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_state_name }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_state_name }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_state_name }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_state_name }
+}
+
+ve_religious_resource_name = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_religious_authority }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_religious_harmony }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_civic_neutrality }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_secular_legitimacy }
+}
+
+ve_religious_high_settlement_effect = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_high_settlement_effect }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_high_settlement_effect }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_high_settlement_effect }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_high_settlement_effect }
+}
+
+# The button widget supplies its own disabled treatment. Each model/program
+# pair resolves to a dedicated vanilla text icon in gui/ve_texticons.gui; the
+# label and tooltip below it provide the complete mechanical detail.
+ve_religion_aspect_1 = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = catholic_aspect_1 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = protestant_aspect_1 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = separation_aspect_1 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = atheist_aspect_1 }
+}
+ve_religion_aspect_2 = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = catholic_aspect_2 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = protestant_aspect_2 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = separation_aspect_2 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = atheist_aspect_2 }
+}
+ve_religion_aspect_3 = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = catholic_aspect_3 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = protestant_aspect_3 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = separation_aspect_3 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = atheist_aspect_3 }
+}
+ve_religion_aspect_4 = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = catholic_aspect_4 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = protestant_aspect_4 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = separation_aspect_4 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = atheist_aspect_4 }
+}
+ve_religion_aspect_5 = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = catholic_aspect_5 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = protestant_aspect_5 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = separation_aspect_5 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = atheist_aspect_5 }
+}
+ve_religion_aspect_6 = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = catholic_aspect_6 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = protestant_aspect_6 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = separation_aspect_6 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = atheist_aspect_6 }
+}
+ve_religion_aspect_7 = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = catholic_aspect_7 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = protestant_aspect_7 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = separation_aspect_7 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = atheist_aspect_7 }
+}
+ve_religion_aspect_8 = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = catholic_aspect_8 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = protestant_aspect_8 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = separation_aspect_8 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = atheist_aspect_8 }
+}
+ve_religion_model_icon = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = catholic_aspect_9 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = protestant_aspect_9 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = separation_aspect_9 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = atheist_aspect_9 }
+}
+
+ve_religion_program_name_1 = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_program_1 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_program_1 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_program_1 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_program_1 }
+}
+ve_religion_program_name_2 = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_program_2 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_program_2 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_program_2 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_program_2 }
+}
+ve_religion_program_name_3 = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_program_3 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_program_3 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_program_3 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_program_3 }
+}
+ve_religion_program_name_4 = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_program_4 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_program_4 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_program_4 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_program_4 }
+}
+ve_religion_program_name_5 = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_program_5 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_program_5 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_program_5 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_program_5 }
+}
+ve_religion_program_name_6 = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_program_6 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_program_6 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_program_6 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_program_6 }
+}
+ve_religion_program_name_7 = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_program_7 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_program_7 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_program_7 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_program_7 }
+}
+ve_religion_program_name_8 = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_program_8 }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_program_8 }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_program_8 }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_program_8 }
+}
+
+ve_religious_program_1_effect = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_program_1_effect }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_program_1_effect }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_program_1_effect }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_program_1_effect }
+}
+ve_religious_program_2_effect = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_program_2_effect }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_program_2_effect }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_program_2_effect }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_program_2_effect }
+}
+ve_religious_program_3_effect = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_program_3_effect }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_program_3_effect }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_program_3_effect }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_program_3_effect }
+}
+ve_religious_program_4_effect = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_program_4_effect }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_program_4_effect }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_program_4_effect }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_program_4_effect }
+}
+ve_religious_program_5_effect = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_program_5_effect }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_program_5_effect }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_program_5_effect }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_program_5_effect }
+}
+ve_religious_program_6_effect = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_program_6_effect }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_program_6_effect }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_program_6_effect }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_program_6_effect }
+}
+ve_religious_program_7_effect = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_program_7_effect }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_program_7_effect }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_program_7_effect }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_program_7_effect }
+}
+ve_religious_program_8_effect = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_program_8_effect }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_program_8_effect }
+	text = { trigger = { ve_is_separation_state = yes } localization_key = ve_separation_program_8_effect }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_atheism_program_8_effect }
+}
+
+# Phase 7: Targeted Religious Project display (replaces missionary_topbar/tt).
+ve_religious_project_status = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_has_active_religious_project = yes } localization_key = ve_religious_project_in_progress }
+	text = { trigger = { always = yes } localization_key = ve_religious_project_none }
+}
+
+# Running project, named by ve_religious_project_type. Mirrors the cultural set in
+# common/customizable_localization/ve_cultural_projects_cl.txt so gui/ve_panel_religion.gui
+# can show the same "project in progress" card as the National Identity page.
+ve_religious_project_name = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_religious_project_type_is = { TYPE = 1 } } localization_key = ve_confessional_conversion_name }
+	text = { trigger = { ve_religious_project_type_is = { TYPE = 2 } } localization_key = ve_freedom_outreach_name }
+	text = { trigger = { ve_religious_project_type_is = { TYPE = 3 } } localization_key = ve_secularization_campaign_name }
+	text = { localization_key = ve_no_active_religious_project }
+}
+
+ve_religious_project_description = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_religious_project_type_is = { TYPE = 1 } } localization_key = ve_confessional_conversion_desc }
+	text = { trigger = { ve_religious_project_type_is = { TYPE = 2 } } localization_key = ve_freedom_outreach_desc }
+	text = { trigger = { ve_religious_project_type_is = { TYPE = 3 } } localization_key = ve_secularization_campaign_desc }
+	text = { localization_key = ve_no_active_religious_project }
+}
+
+ve_religious_project_target = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_has_active_religious_project = yes } localization_key = ve_targeted_religious_project_target }
+	text = { localization_key = ve_no_religious_project_target }
+}
+
+# The project the current Religious Model may start. Total Separation resolves to
+# the "unavailable" variant instead of a project.
+ve_religion_model_project_name = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_conversion_name }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_outreach_name }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_secularization_campaign_name }
+	text = { localization_key = ve_religious_project_unavailable_name }
+}
+
+ve_religion_model_project_cost = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_conversion_cost }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_outreach_cost }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_secularization_campaign_cost }
+	text = { localization_key = ve_religious_project_unavailable_cost }
+}
+
+ve_religion_model_project_short = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_conversion_short }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_outreach_short }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_secularization_campaign_short }
+	text = { localization_key = ve_religious_project_unavailable_short }
+}
+
+ve_religion_model_project_description = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_confessional_state = yes } localization_key = ve_confessional_conversion_desc }
+	text = { trigger = { ve_is_freedom_state = yes } localization_key = ve_freedom_outreach_desc }
+	text = { trigger = { ve_is_atheism_state = yes } localization_key = ve_secularization_campaign_desc }
+	text = { localization_key = ve_religious_project_unavailable_desc }
+}

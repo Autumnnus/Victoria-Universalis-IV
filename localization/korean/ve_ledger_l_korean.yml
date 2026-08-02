@@ -1,0 +1,56 @@
+﻿l_korean:
+ # Doctrine Ledger - gui/ve_panel_ledger.gui
+ VE_LEDGER:0 "장부"
+ VE_LEDGER_SELECTED:0 "#bold 장부#!"
+ VE_LG_TITLE:0 "교리 장부"
+ VE_LG_HINT:0 "모든 국가의 교리 현황입니다. 열 제목을 클릭하여 정렬하고, 필터를 통해 목록을 좁히며, 국가를 클릭하여 해당 국가의 패널에서 그룹별 상세 정보를 열 수 있습니다."
+
+ # Columns
+ VE_LG_COL_RANK:0 "#"
+ VE_LG_COL_COUNTRY:0 "국가"
+ VE_LG_COL_INSIGHT:0 "식견"
+ VE_LG_COL_GROUPS:0 "그룹"
+ VE_LG_COL_IDEAS:0 "그룹 이념"
+ VE_LG_COL_NATIONAL_IDEAS:0 "국가 이념"
+ VE_LG_COL_NATIONAL_IDEAS_TT:0 "#header 국가 이념#!\n각 국가 이념 슬롯당 하나의 표식과 오른쪽에 국가 보너스가 표시됩니다. 국가는 그룹 이념을 세 개 구매할 때마다 다음 슬롯을 해제합니다."
+ VE_LG_COL_RELIGION:0 "종교 제도"
+ VE_LG_COL_IDENTITY:0 "정체성 제도"
+ VE_LG_COL_ERA:0 "시대"
+
+ # Cell values
+ VE_LG_GROUPS_VALUE:0 "[Country.MakeScope.Var('idea_group_unlocked').GetValue|0] / [Country.MakeScope.Var('idea_group_cap').GetValue|0]"
+ VE_LG_IDEAS_VALUE:0 "[Country.MakeScope.Var('national_idea_pool').GetValue|0] / 21"
+ VE_LG_REWARDS_VALUE:0 "R [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]"
+ VE_LG_ERA_TT:0 "#header [Country.GetCustom('ve_cp_age_name')]#!\n시대 동력: #Y [Country.MakeScope.Var('ve_splender_points').GetValue|0]#!\n이번 시대에 구매한 시대 보상: #Y [Country.MakeScope.Var('ve_age_rewards_purchased').GetValue|0]#!\n현재 달성한 목표: #Y [Country.MakeScope.ScriptValue('ve_era_objectives_satisfied')|0] / 7#!\n이번 시대에 확보한 목표: #Y [Country.MakeScope.Var('ve_triggered_objectives').GetValue|0] / 7#!\n황금기: [Country.GetCustom('ve_cp_golden_age_status')]"
+ VE_LG_OPEN_COUNTRY_TT:0 "이 국가의 패널을 엽니다. 이념, 종교, 정체성 및 시대 세부 정보는 해당 패널의 #Y 국가 교리#! 항목에 있습니다."
+
+ # Sort tooltips
+ VE_LG_SORT_PRESTIGE_TT:0 "#Y 위신#!순으로 정렬합니다. 기본 정렬이며 높은 순서대로 표시됩니다."
+ VE_LG_SORT_INSIGHT_TT:0 "보유한 #Y 국가 식견#!순으로 정렬하며, 높은 순서대로 표시됩니다."
+ VE_LG_SORT_GROUPS_TT:0 "채택한 #Y 이념 그룹#!순으로 정렬하며, 많은 순서대로 표시됩니다."
+ VE_LG_SORT_IDEAS_TT:0 "구매한 #Y 그룹 이념#!순(국가 이념 진척도)으로 정렬하며, 많은 순서대로 표시됩니다."
+ VE_LG_SORT_SETTLEMENT_TT:0 "#Y 종교 합의#!순으로 정렬하며, 높은 순서대로 표시됩니다."
+ VE_LG_SORT_COHESION_TT:0 "#Y 국민통합도#!순으로 정렬하며, 높은 순서대로 표시됩니다."
+ VE_LG_SORT_MOMENTUM_TT:0 "#Y 시대 동력#!순으로 정렬하며, 높은 순서대로 표시됩니다."
+
+ # Filters
+ VE_LG_F_ALL:0 "전체"
+ VE_LG_F_GREAT_POWERS:0 "열강"
+ VE_LG_F_MAJOR_POWERS:0 "강대국+"
+ VE_LG_F_RECOGNIZED:0 "인정국"
+ VE_LG_F_RELEVANT:0 "나와 관련된 국가"
+ VE_LG_F_WITH_GROUPS:0 "이념 그룹 보유국"
+
+ # Paging
+ VE_LG_PAGE_INFO:0 "페이지 [GetGlobalVariable('ve_ledger_page_number').GetValue|0] / [GetGlobalVariable('ve_ledger_page_count').GetValue|0]  ([GetGlobalVariable('ve_ledger_total').GetValue|0])"
+ VE_LG_REFRESH:0 "새로 고침"
+ VE_LG_REFRESH_TT:0 "목록을 다시 불러옵니다. 행의 값은 언제나 실시간으로 반영되나, 목록의 정렬 순서와 구성은 목록을 생성할 때 고정됩니다."
+ VE_LG_FIRST_TT:0 "첫 페이지"
+ VE_LG_PREV_TT:0 "이전 페이지"
+ VE_LG_NEXT_TT:0 "다음 페이지"
+ VE_LG_YOU:0 "#lore 플레이어의 국가#!"
+ VE_LG_EMPTY:0 "#lore 이 필터에 일치하는 국가가 없습니다. 새로 고침을 누르거나 더 넓은 필터를 선택하십시오.#!"
+
+ # Scripted GUI tooltip - common/scripted_guis/ve_ledger.txt
+ ve_ledger_groups_tt_header:0 "#header 수용한 이념 무리#!"
+ ve_ledger_groups_tt_none:0 "#lore 아직 수용한 이념 무리가 없습니다.#!"

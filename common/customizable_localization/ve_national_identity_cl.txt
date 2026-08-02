@@ -1,0 +1,19 @@
+﻿ve_identity_model_name = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_ethnic_identity = yes } localization_key = ve_ethnic_identity_name }
+	text = { trigger = { ve_is_civic_identity = yes } localization_key = ve_civic_identity_name }
+	text = { trigger = { ve_is_composite_identity = yes } localization_key = ve_composite_identity_name }
+	text = { localization_key = ve_composite_identity_name }
+}
+
+# "At 75 Cohesion" reward of the active Identity Model, shown as a badge on the
+# National Identity page. Mirrors ve_religious_high_settlement_effect.
+ve_identity_high_cohesion_effect = {
+	type = country
+	random_valid = no
+	text = { trigger = { ve_is_ethnic_identity = yes } localization_key = ve_ethnic_high_cohesion_effect }
+	text = { trigger = { ve_is_civic_identity = yes } localization_key = ve_civic_high_cohesion_effect }
+	text = { trigger = { ve_is_composite_identity = yes } localization_key = ve_composite_high_cohesion_effect }
+	text = { localization_key = ve_composite_high_cohesion_effect }
+}

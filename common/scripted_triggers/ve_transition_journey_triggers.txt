@@ -1,0 +1,132 @@
+# Transition Journey helpers. The core transition modifiers remain authoritative;
+# these triggers only validate the presentation and milestone state.
+
+ve_has_active_religious_transition_journey = {
+	has_journal_entry = ve_je_religious_settlement_transition
+}
+
+ve_has_active_identity_transition_journey = {
+	has_journal_entry = ve_je_national_compact_transition
+}
+
+ve_has_valid_religious_transition_journey_context = {
+	ve_has_active_religious_transition_journey = yes
+	has_modifier = ve_religious_settlement_crisis_mdf
+	has_variable = ve_religious_model
+	has_variable = ve_rel_transition_elapsed_months
+	has_variable = ve_rel_transition_total_months
+	has_variable = ve_rel_transition_remaining_months
+	has_variable = ve_rel_transition_milestone_1_at
+	has_variable = ve_rel_transition_milestone_2_at
+}
+
+ve_has_valid_identity_transition_journey_context = {
+	ve_has_active_identity_transition_journey = yes
+	has_modifier = ve_identity_transition_backlash_mdf
+	has_variable = ve_identity_model
+	has_variable = ve_identity_transition_elapsed_months
+	has_variable = ve_identity_transition_total_months
+	has_variable = ve_identity_transition_remaining_months
+	has_variable = ve_identity_transition_milestone_1_at
+	has_variable = ve_identity_transition_milestone_2_at
+}
+
+ve_religious_transition_milestone_1_due = {
+	ve_has_valid_religious_transition_journey_context = yes
+	NOT = { has_variable = ve_rel_transition_milestone_1_fired }
+	var:ve_rel_transition_elapsed_months >= var:ve_rel_transition_milestone_1_at
+}
+
+ve_religious_transition_milestone_2_due = {
+	ve_has_valid_religious_transition_journey_context = yes
+	has_variable = ve_rel_transition_milestone_1_fired
+	NOT = { has_variable = ve_rel_transition_milestone_2_fired }
+	var:ve_rel_transition_elapsed_months >= var:ve_rel_transition_milestone_2_at
+}
+
+ve_identity_transition_milestone_1_due = {
+	ve_has_valid_identity_transition_journey_context = yes
+	NOT = { has_variable = ve_identity_transition_milestone_1_fired }
+	var:ve_identity_transition_elapsed_months >= var:ve_identity_transition_milestone_1_at
+}
+
+ve_identity_transition_milestone_2_due = {
+	ve_has_valid_identity_transition_journey_context = yes
+	has_variable = ve_identity_transition_milestone_1_fired
+	NOT = { has_variable = ve_identity_transition_milestone_2_fired }
+	var:ve_identity_transition_elapsed_months >= var:ve_identity_transition_milestone_2_at
+}
+
+ve_has_religious_transition_closure_context = {
+	has_variable = ve_rel_transition_closure_pending
+	has_variable = ve_rel_transition_target_model
+	has_variable = ve_religious_model
+	has_variable = piety_bar_point
+}
+
+ve_has_religious_transition_model_fit_doctrine = {
+	OR = {
+		AND = {
+			var:ve_rel_transition_target_model = 1
+			OR = {
+				has_modifier = nationalist_idea_5_mdf
+				has_modifier = bureaucratic_idea_4_mdf
+			}
+		}
+		AND = {
+			var:ve_rel_transition_target_model = 2
+			OR = {
+				has_modifier = reformist_idea_5_mdf
+				has_modifier = diplomatic_idea_4_mdf
+			}
+		}
+		AND = {
+			var:ve_rel_transition_target_model = 3
+			OR = {
+				has_modifier = academic_idea_5_mdf
+				has_modifier = bureaucratic_idea_4_mdf
+			}
+		}
+		AND = {
+			var:ve_rel_transition_target_model = 4
+			OR = {
+				has_modifier = academic_idea_5_mdf
+				has_modifier = welfare_idea_5_mdf
+			}
+		}
+	}
+}
+
+ve_has_identity_transition_closure_context = {
+	has_variable = ve_identity_transition_closure_pending
+	has_variable = ve_identity_transition_target_model
+	has_variable = ve_identity_model
+	has_variable = ve_national_cohesion
+}
+
+ve_has_identity_transition_model_fit_doctrine = {
+	OR = {
+		AND = {
+			var:ve_identity_transition_target_model = 1
+			OR = {
+				has_modifier = nationalist_idea_5_mdf
+				has_modifier = mass_conscription_idea_5_mdf
+			}
+		}
+		AND = {
+			var:ve_identity_transition_target_model = 2
+			OR = {
+				has_modifier = reformist_idea_5_mdf
+				has_modifier = academic_idea_5_mdf
+			}
+		}
+		AND = {
+			var:ve_identity_transition_target_model = 3
+			OR = {
+				has_modifier = diplomatic_idea_4_mdf
+				has_modifier = parliamentary_idea_4_mdf
+				has_modifier = bureaucratic_idea_4_mdf
+			}
+		}
+	}
+}

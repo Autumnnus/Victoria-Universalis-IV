@@ -1,0 +1,65 @@
+﻿ve_choose_ethnic_identity = {
+	scope = country
+	is_valid = {
+		custom_tooltip = {
+			text = ve_identity_change_cost_tt
+			ve_cultural_mandate_affordable = yes
+		}
+		NOT = { has_modifier = ve_identity_transition_backlash_mdf }
+		NOT = { ve_is_ethnic_identity = yes }
+	}
+	effect = { ve_change_to_ethnic_identity = yes }
+}
+
+ve_choose_civic_identity = {
+	scope = country
+	is_valid = {
+		custom_tooltip = {
+			text = ve_identity_change_cost_tt
+			ve_cultural_mandate_affordable = yes
+		}
+		NOT = { has_modifier = ve_identity_transition_backlash_mdf }
+		NOT = { ve_is_civic_identity = yes }
+	}
+	effect = { ve_change_to_civic_identity = yes }
+}
+
+ve_choose_composite_identity = {
+	scope = country
+	is_valid = {
+		custom_tooltip = {
+			text = ve_identity_change_cost_tt
+			ve_cultural_mandate_affordable = yes
+		}
+		NOT = { has_modifier = ve_identity_transition_backlash_mdf }
+		NOT = { ve_is_composite_identity = yes }
+	}
+	effect = { ve_change_to_composite_identity = yes }
+}
+
+ve_identity_model_tooltip = {
+	scope = country
+	effect = {
+		if = {
+			limit = { ve_is_ethnic_identity = yes }
+			add_modifier = { name = ve_ethnic_identity_mdf months = -1 }
+		}
+		else_if = {
+			limit = { ve_is_civic_identity = yes }
+			add_modifier = { name = ve_civic_identity_mdf months = -1 }
+		}
+		else = {
+			add_modifier = { name = ve_composite_identity_mdf months = -1 }
+		}
+	}
+}
+
+# Blocking-timer readout for gui/ve_panel_culture.gui. Mirrors
+# ve_religious_program_strain_gui / ve_religious_project_backlash_gui on the
+# Religion page so both pages can explain why an action is unavailable.
+ve_identity_transition_backlash_gui = {
+	scope = country
+	is_shown = {
+		has_modifier = ve_identity_transition_backlash_mdf
+	}
+}
